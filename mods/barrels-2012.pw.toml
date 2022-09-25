@@ -1,0 +1,13 @@
+name = "Barrels 2012"
+filename = "barrels_2012-1.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "230d1239fe59839f18003a3bfe6d805746273bcb"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3940742
+project-id = 662156

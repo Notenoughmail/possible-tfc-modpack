@@ -1,0 +1,63 @@
+{
+	"type": "tfc:cluster_vein",
+	"config": {
+		"rarity": 75,
+		"min_y": {
+			"absolute": -16
+		},
+		"max_y": {
+			"absolute": 55
+		},
+		"size": 16,
+		"density": 0.5,
+		"blocks": [
+		{
+			"replace": [
+			"tfc:rock/raw/granite"
+			],
+			"with": [
+			{
+				"weight": 30,
+				"block": "kubejs:ore/poor_lead/granite"
+			},
+			{
+				"weight": 80,
+				"block": "kubejs:ore/normal_lead/granite"
+			},
+			{
+				"weight": 15,
+				"block": "kubejs:ore/rich_lead/granite"
+			}
+			]
+		},
+		{
+			"replace": [
+			"tfc:rock/raw/gneiss"
+			],
+			"with": [
+			{
+				"weight": 30,
+				"block": "kubejs:ore/poor_lead/granite"
+			},
+			{
+				"weight": 80,
+				"block": "kubejs:ore/normal_lead/granite"
+			},
+			{
+				"weight": 15,
+				"block": "kubejs:ore/rich_lead/granite"
+			}
+			]
+		}
+		],
+		"indicator": {
+			"rarity": 12,
+			"block": [
+			{
+				"block": "kubejs:ore/small_lead"
+			}
+			]
+		},
+		"random_name": "normal_lead"
+	}
+}

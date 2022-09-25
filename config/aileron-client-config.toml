@@ -1,0 +1,11 @@
+
+["Aileron Forge Config"]
+
+	["Aileron Forge Config"."Camera Settings"]
+		#Enable camera roll
+		doCameraRoll = true
+		#Camera Roll Scale
+		cameraRollScale = 1.0
+		#Camera Roll Speed
+		cameraRollSpeed = 0.1
+

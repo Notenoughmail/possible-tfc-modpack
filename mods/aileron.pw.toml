@@ -1,0 +1,13 @@
+name = "Aileron"
+filename = "aileron-1.18.2-forge-1.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "31eb231426bd6acadb2590ea888663ca08379c4d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3908988
+project-id = 649925

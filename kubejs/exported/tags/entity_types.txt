@@ -1,0 +1,232 @@
+To refresh this file, delete it and run /reload command again! Last updated: Aug 20, 2022, 6:59:34 PM
+
+#minecraft:axolotl_always_hostiles
+- minecraft:drowned
+- minecraft:guardian
+- minecraft:elder_guardian
+
+#minecraft:freeze_immune_entity_types
+- minecraft:stray
+- minecraft:polar_bear
+- minecraft:snow_golem
+- minecraft:wither
+
+#tfc:hunted_by_land_predators
+- #tfc:land_prey
+
+#tfc:hunts_land_prey
+- #tfc:land_predators
+- minecraft:player
+
+#tfc:bubble_column_immune
+- tfc:orca
+- tfc:dolphin
+- tfc:squid
+- tfc:octopoteuthis
+- tfc:isopod
+- tfc:lobster
+- tfc:horseshoe_crab
+- tfc:cod
+- tfc:pufferfish
+- tfc:tropical_fish
+- tfc:jellyfish
+
+#tfc:spawns_on_cold_blocks
+- tfc:penguin
+- tfc:polar_bear
+
+#tfc:skeletons
+- minecraft:skeleton
+- minecraft:wither_skeleton
+- minecraft:stray
+
+#tfc:destroys_floating_plants
+- minecraft:boat
+- tfc:boat/acacia
+- tfc:boat/ash
+- tfc:boat/aspen
+- tfc:boat/birch
+- tfc:boat/blackwood
+- tfc:boat/chestnut
+- tfc:boat/douglas_fir
+- tfc:boat/hickory
+- tfc:boat/kapok
+- tfc:boat/maple
+- tfc:boat/oak
+- tfc:boat/palm
+- tfc:boat/pine
+- tfc:boat/rosewood
+- tfc:boat/sequoia
+- tfc:boat/spruce
+- tfc:boat/sycamore
+- tfc:boat/white_cedar
+- tfc:boat/willow
+
+#tfc:deals_crushing_damage
+- minecraft:drowned
+- minecraft:enderman
+- minecraft:endermite
+- minecraft:goat
+- minecraft:hoglin
+- minecraft:husk
+- minecraft:iron_golem
+- minecraft:piglin
+- minecraft:piglin_brute
+- minecraft:pillager
+- minecraft:ravager
+- minecraft:silverfish
+- minecraft:slime
+- minecraft:vindicator
+- minecraft:wither
+- minecraft:wither_skeleton
+- minecraft:zoglin
+- minecraft:zombie
+- minecraft:zombie_villager
+- minecraft:zombified_piglin
+- minecraft:skeleton
+- minecraft:stray
+- tfc:falling_block
+- tfc:goat
+
+#tfc:land_prey
+- tfc:rabbit
+- tfc:fox
+- tfc:boar
+- tfc:turtle
+- tfc:penguin
+- #tfc:livestock
+
+#tfc:creepers
+- minecraft:creeper
+
+#tfc:turtle_friends
+- minecraft:player
+- tfc:dolphin
+
+#minecraft:raiders
+- minecraft:evoker
+- minecraft:pillager
+- minecraft:ravager
+- minecraft:vindicator
+- minecraft:illusioner
+- minecraft:witch
+
+#minecraft:powder_snow_walkable_mobs
+- minecraft:rabbit
+- minecraft:endermite
+- minecraft:silverfish
+- minecraft:fox
+
+#minecraft:axolotl_hunt_targets
+- minecraft:tropical_fish
+- minecraft:pufferfish
+- minecraft:salmon
+- minecraft:cod
+- minecraft:squid
+- minecraft:glow_squid
+
+#tfc:hunted_by_ocean_predators
+- tfc:isopod
+- tfc:lobster
+- tfc:crayfish
+- tfc:cod
+- tfc:tropical_fish
+- tfc:horseshoe_crab
+
+#tfc:land_predators
+- tfc:polar_bear
+- tfc:grizzly_bear
+- tfc:black_bear
+- tfc:cougar
+- tfc:panther
+- tfc:lion
+- tfc:sabertooth
+
+#tfc:horses
+- tfc:horse
+- tfc:mule
+- tfc:donkey
+
+#minecraft:impact_projectiles
+- #minecraft:arrows
+- minecraft:snowball
+- minecraft:fireball
+- minecraft:small_fireball
+- minecraft:egg
+- minecraft:trident
+- minecraft:dragon_fireball
+- minecraft:wither_skull
+
+#minecraft:beehive_inhabitors
+- minecraft:bee
+
+#tfc:ocean_predators
+- tfc:dolphin
+- tfc:orca
+
+#tfc:needs_large_fishing_bait
+- tfc:dolphin
+- tfc:orca
+
+#minecraft:skeletons
+- minecraft:skeleton
+- minecraft:stray
+- minecraft:wither_skeleton
+
+#tfc:livestock
+- tfc:pig
+- tfc:cow
+- tfc:goat
+- tfc:yak
+- tfc:alpaca
+- tfc:sheep
+- tfc:musk_ox
+- tfc:chicken
+- tfc:duck
+- tfc:quail
+
+#tfc:deals_piercing_damage
+- minecraft:arrow
+- minecraft:bee
+- minecraft:cave_spider
+- minecraft:evoker_fangs
+- minecraft:phantom
+- minecraft:spectral_arrow
+- minecraft:spider
+- minecraft:trident
+- tfc:glow_arrow
+- tfc:thrown_javelin
+- tfc:boar
+
+#minecraft:arrows
+- minecraft:arrow
+- minecraft:spectral_arrow
+
+#minecraft:freeze_hurts_extra_types
+- minecraft:strider
+- minecraft:blaze
+- minecraft:magma_cube
+
+#tfc:vanilla_monsters
+- minecraft:spider
+- minecraft:zombie
+- minecraft:skeleton
+- minecraft:creeper
+- minecraft:slime
+
+#tfc:deals_slashing_damage
+- minecraft:polar_bear
+- minecraft:vex
+- minecraft:wolf
+- tfc:polar_bear
+- tfc:grizzly_bear
+- tfc:black_bear
+- tfc:cougar
+- tfc:panther
+- tfc:lion
+- tfc:sabertooth
+
+#tfc:zombies
+- minecraft:zombie
+- minecraft:husk
+- minecraft:zombie_villager

@@ -1,0 +1,9 @@
+{
+	"item.immersiveengineering.plate_constantan": "Constantan Sheet",
+	"item.immersiveengineering.plate_electrum": "Electrum Sheet",
+	"item.immersiveengineering.plate_lead": "Lead Sheet",
+	"item.immersiveengineering.nugget_constantan": "Constantan Double Ingot",
+	"item.immersiveengineering.nugget_electrum": "Electrum Double Ingot",
+	"item.immersiveengineering.nugget_lead": "Lead Double Ingot",
+	"desc.immersiveengineering.info.blueprint.electrode": "Metal Working"
+}

@@ -1,0 +1,13 @@
+name = "TFC a New Age"
+author = "Just Enough Mail"
+version = "0.0.1"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "e6e36ab15f8d4fce53f7eeb55b9761852bba8c5df2a713cc154d7fcd2dd9b063"
+
+[versions]
+forge = "40.1.80"
+minecraft = "1.18.2"

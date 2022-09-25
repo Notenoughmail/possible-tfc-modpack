@@ -1,0 +1,553 @@
+To refresh this file, delete it and run /reload command again! Last updated: Aug 20, 2022, 6:59:34 PM
+
+#tfc:cider
+- tfc:cider
+- tfc:flowing_cider
+
+#tfc:sterling_silver
+- tfc:metal/sterling_silver
+- tfc:metal/flowing_sterling_silver
+
+#tfc:whiskey
+- tfc:whiskey
+- tfc:flowing_whiskey
+
+#tfc:unknown
+- tfc:metal/unknown
+- tfc:metal/flowing_unknown
+
+#tfc:light_gray_dye
+- tfc:light_gray_dye
+- tfc:flowing_light_gray_dye
+
+#minecraft:water
+- minecraft:water
+- minecraft:flowing_water
+- tfc:salt_water
+- tfc:flowing_salt_water
+- tfc:spring_water
+- tfc:flowing_spring_water
+- tfc:brine
+- tfc:flowing_brine
+- tfc:curdled_milk
+- tfc:flowing_curdled_milk
+- tfc:limewater
+- tfc:flowing_limewater
+- tfc:lye
+- tfc:flowing_lye
+- tfc:milk_vinegar
+- tfc:flowing_milk_vinegar
+- tfc:olive_oil
+- tfc:flowing_olive_oil
+- tfc:olive_oil_water
+- tfc:flowing_olive_oil_water
+- tfc:tallow
+- tfc:flowing_tallow
+- tfc:tannin
+- tfc:flowing_tannin
+- tfc:vinegar
+- tfc:flowing_vinegar
+- tfc:beer
+- tfc:flowing_beer
+- tfc:cider
+- tfc:flowing_cider
+- tfc:rum
+- tfc:flowing_rum
+- tfc:sake
+- tfc:flowing_sake
+- tfc:vodka
+- tfc:flowing_vodka
+- tfc:whiskey
+- tfc:flowing_whiskey
+- tfc:corn_whiskey
+- tfc:flowing_corn_whiskey
+- tfc:rye_whiskey
+- tfc:flowing_rye_whiskey
+- tfc:white_dye
+- tfc:flowing_white_dye
+- tfc:orange_dye
+- tfc:flowing_orange_dye
+- tfc:magenta_dye
+- tfc:flowing_magenta_dye
+- tfc:light_blue_dye
+- tfc:flowing_light_blue_dye
+- tfc:yellow_dye
+- tfc:flowing_yellow_dye
+- tfc:lime_dye
+- tfc:flowing_lime_dye
+- tfc:pink_dye
+- tfc:flowing_pink_dye
+- tfc:gray_dye
+- tfc:flowing_gray_dye
+- tfc:light_gray_dye
+- tfc:flowing_light_gray_dye
+- tfc:cyan_dye
+- tfc:flowing_cyan_dye
+- tfc:purple_dye
+- tfc:flowing_purple_dye
+- tfc:blue_dye
+- tfc:flowing_blue_dye
+- tfc:brown_dye
+- tfc:flowing_brown_dye
+- tfc:green_dye
+- tfc:flowing_green_dye
+- tfc:red_dye
+- tfc:flowing_red_dye
+- tfc:black_dye
+- tfc:flowing_black_dye
+- tfc:river_water
+- create:flowing_honey
+- create:honey
+- create:flowing_chocolate
+- create:chocolate
+
+#forge:milk
+- minecraft:milk?
+- minecraft:flowing_milk?
+
+#tfc:orange_dye
+- tfc:orange_dye
+- tfc:flowing_orange_dye
+
+#tfc:black_bronze
+- tfc:metal/black_bronze
+- tfc:metal/flowing_black_bronze
+
+#tfc:weak_red_steel
+- tfc:metal/weak_red_steel
+- tfc:metal/flowing_weak_red_steel
+
+#tfc:blue_steel
+- tfc:metal/blue_steel
+- tfc:metal/flowing_blue_steel
+
+#tfc:red_steel
+- tfc:metal/red_steel
+- tfc:metal/flowing_red_steel
+
+#tfc:silver
+- tfc:metal/silver
+- tfc:metal/flowing_silver
+
+#create:bottomless/deny
+
+#tfc:salt_water
+- tfc:salt_water
+- tfc:flowing_salt_water
+
+#tfc:mixable
+- tfc:salt_water
+- tfc:flowing_salt_water
+- tfc:spring_water
+- tfc:flowing_spring_water
+- tfc:brine
+- tfc:flowing_brine
+- tfc:curdled_milk
+- tfc:flowing_curdled_milk
+- tfc:limewater
+- tfc:flowing_limewater
+- tfc:lye
+- tfc:flowing_lye
+- tfc:milk_vinegar
+- tfc:flowing_milk_vinegar
+- tfc:olive_oil
+- tfc:flowing_olive_oil
+- tfc:olive_oil_water
+- tfc:flowing_olive_oil_water
+- tfc:tallow
+- tfc:flowing_tallow
+- tfc:tannin
+- tfc:flowing_tannin
+- tfc:vinegar
+- tfc:flowing_vinegar
+- tfc:beer
+- tfc:flowing_beer
+- tfc:cider
+- tfc:flowing_cider
+- tfc:rum
+- tfc:flowing_rum
+- tfc:sake
+- tfc:flowing_sake
+- tfc:vodka
+- tfc:flowing_vodka
+- tfc:whiskey
+- tfc:flowing_whiskey
+- tfc:corn_whiskey
+- tfc:flowing_corn_whiskey
+- tfc:rye_whiskey
+- tfc:flowing_rye_whiskey
+- tfc:white_dye
+- tfc:flowing_white_dye
+- tfc:orange_dye
+- tfc:flowing_orange_dye
+- tfc:magenta_dye
+- tfc:flowing_magenta_dye
+- tfc:light_blue_dye
+- tfc:flowing_light_blue_dye
+- tfc:yellow_dye
+- tfc:flowing_yellow_dye
+- tfc:lime_dye
+- tfc:flowing_lime_dye
+- tfc:pink_dye
+- tfc:flowing_pink_dye
+- tfc:gray_dye
+- tfc:flowing_gray_dye
+- tfc:light_gray_dye
+- tfc:flowing_light_gray_dye
+- tfc:cyan_dye
+- tfc:flowing_cyan_dye
+- tfc:purple_dye
+- tfc:flowing_purple_dye
+- tfc:blue_dye
+- tfc:flowing_blue_dye
+- tfc:brown_dye
+- tfc:flowing_brown_dye
+- tfc:green_dye
+- tfc:flowing_green_dye
+- tfc:red_dye
+- tfc:flowing_red_dye
+- tfc:black_dye
+- tfc:flowing_black_dye
+- tfc:river_water
+- #minecraft:water
+
+#tfc:dyes
+- tfc:white_dye
+- tfc:orange_dye
+- tfc:magenta_dye
+- tfc:light_blue_dye
+- tfc:yellow_dye
+- tfc:lime_dye
+- tfc:pink_dye
+- tfc:gray_dye
+- tfc:light_gray_dye
+- tfc:cyan_dye
+- tfc:purple_dye
+- tfc:blue_dye
+- tfc:brown_dye
+- tfc:green_dye
+- tfc:red_dye
+- tfc:black_dye
+
+#tfc:blue_dye
+- tfc:blue_dye
+- tfc:flowing_blue_dye
+
+#create:bottomless/allow
+- minecraft:water
+- minecraft:lava
+
+#tfc:bismuth
+- tfc:metal/bismuth
+- tfc:metal/flowing_bismuth
+
+#tfc:brown_dye
+- tfc:brown_dye
+- tfc:flowing_brown_dye
+
+#tfc:vinegar
+- tfc:vinegar
+- tfc:flowing_vinegar
+
+#tfc:cyan_dye
+- tfc:cyan_dye
+- tfc:flowing_cyan_dye
+
+#tfc:pig_iron
+- tfc:metal/pig_iron
+- tfc:metal/flowing_pig_iron
+
+#tfc:high_carbon_black_steel
+- tfc:metal/high_carbon_black_steel
+- tfc:metal/flowing_high_carbon_black_steel
+
+#tfc:yellow_dye
+- tfc:yellow_dye
+- tfc:flowing_yellow_dye
+
+#tfc:corn_whiskey
+- tfc:corn_whiskey
+- tfc:flowing_corn_whiskey
+
+#tfc:curdled_milk
+- tfc:curdled_milk
+- tfc:flowing_curdled_milk
+
+#tfc:usable_in_sluice
+- #minecraft:water
+
+#tfc:gold
+- tfc:metal/gold
+- tfc:metal/flowing_gold
+
+#tfc:lime_dye
+- tfc:lime_dye
+- tfc:flowing_lime_dye
+
+#tfc:brine
+- tfc:brine
+- tfc:flowing_brine
+
+#tfc:tin
+- tfc:metal/tin
+- tfc:metal/flowing_tin
+
+#tfc:gray_dye
+- tfc:gray_dye
+- tfc:flowing_gray_dye
+
+#tfc:scribing_ink
+- tfc:black_dye
+
+#tfc:high_carbon_red_steel
+- tfc:metal/high_carbon_red_steel
+- tfc:metal/flowing_high_carbon_red_steel
+
+#tfc:vodka
+- tfc:vodka
+- tfc:flowing_vodka
+
+#tfc:olive_oil
+- tfc:olive_oil
+- tfc:flowing_olive_oil
+
+#tfc:black_dye
+- tfc:black_dye
+- tfc:flowing_black_dye
+
+#tfc:bismuth_bronze
+- tfc:metal/bismuth_bronze
+- tfc:metal/flowing_bismuth_bronze
+
+#tfc:rye_whiskey
+- tfc:rye_whiskey
+- tfc:flowing_rye_whiskey
+
+#tfc:rose_gold
+- tfc:metal/rose_gold
+- tfc:metal/flowing_rose_gold
+
+#tfc:weak_steel
+- tfc:metal/weak_steel
+- tfc:metal/flowing_weak_steel
+
+#tfc:milks
+- minecraft:milk
+
+#tfc:usable_in_blue_steel_bucket
+- #minecraft:lava
+- #tfc:molten_metals
+
+#tfc:rum
+- tfc:rum
+- tfc:flowing_rum
+
+#tfc:drinkable_ingredients
+- #minecraft:water
+- #tfc:alcohols
+- #tfc:milks
+
+#tfc:spring_water
+- tfc:spring_water
+- tfc:flowing_spring_water
+
+#tfc:light_blue_dye
+- tfc:light_blue_dye
+- tfc:flowing_light_blue_dye
+
+#tfc:hydrating
+- tfc:river_water
+- #minecraft:water
+
+#tfc:green_dye
+- tfc:green_dye
+- tfc:flowing_green_dye
+
+#tfc:usable_in_jug
+- #tfc:drinkable_ingredients
+
+#tfc:lye
+- tfc:lye
+- tfc:flowing_lye
+
+#minecraft:lava
+- minecraft:lava
+- minecraft:flowing_lava
+
+#tfc:white_dye
+- tfc:white_dye
+- tfc:flowing_white_dye
+
+#forge:chocolate
+- create:flowing_chocolate
+- create:chocolate
+
+#tfc:nickel
+- tfc:metal/nickel
+- tfc:metal/flowing_nickel
+
+#tfc:black_steel
+- tfc:metal/black_steel
+- tfc:metal/flowing_black_steel
+
+#tfc:limewater
+- tfc:limewater
+- tfc:flowing_limewater
+
+#tfc:bronze
+- tfc:metal/bronze
+- tfc:metal/flowing_bronze
+
+#tfc:ingredients
+- tfc:brine
+- tfc:curdled_milk
+- tfc:limewater
+- tfc:lye
+- tfc:milk_vinegar
+- tfc:olive_oil
+- tfc:olive_oil_water
+- tfc:tallow
+- tfc:tannin
+- tfc:vinegar
+- #tfc:drinkable_ingredients
+- #tfc:dyes
+
+#tfc:high_carbon_steel
+- tfc:metal/high_carbon_steel
+- tfc:metal/flowing_high_carbon_steel
+
+#tfc:magenta_dye
+- tfc:magenta_dye
+- tfc:flowing_magenta_dye
+
+#tfc:usable_in_pot
+- #tfc:ingredients
+
+#tfc:weak_blue_steel
+- tfc:metal/weak_blue_steel
+- tfc:metal/flowing_weak_blue_steel
+
+#tfc:molten_metals
+- tfc:metal/bismuth
+- tfc:metal/bismuth_bronze
+- tfc:metal/black_bronze
+- tfc:metal/bronze
+- tfc:metal/brass
+- tfc:metal/copper
+- tfc:metal/gold
+- tfc:metal/nickel
+- tfc:metal/rose_gold
+- tfc:metal/silver
+- tfc:metal/tin
+- tfc:metal/zinc
+- tfc:metal/sterling_silver
+- tfc:metal/wrought_iron
+- tfc:metal/cast_iron
+- tfc:metal/pig_iron
+- tfc:metal/steel
+- tfc:metal/black_steel
+- tfc:metal/blue_steel
+- tfc:metal/red_steel
+- tfc:metal/weak_steel
+- tfc:metal/weak_blue_steel
+- tfc:metal/weak_red_steel
+- tfc:metal/high_carbon_steel
+- tfc:metal/high_carbon_black_steel
+- tfc:metal/high_carbon_blue_steel
+- tfc:metal/high_carbon_red_steel
+- tfc:metal/unknown
+
+#forge:tea
+- create:flowing_tea
+- create:tea
+
+#tfc:milk_vinegar
+- tfc:milk_vinegar
+- tfc:flowing_milk_vinegar
+
+#tfc:olive_oil_water
+- tfc:olive_oil_water
+- tfc:flowing_olive_oil_water
+
+#tfc:brass
+- tfc:metal/brass
+- tfc:metal/flowing_brass
+
+#tfc:usable_in_barrel
+- #tfc:ingredients
+
+#tfc:tannin
+- tfc:tannin
+- tfc:flowing_tannin
+
+#tfc:alcohols
+- tfc:beer
+- tfc:cider
+- tfc:rum
+- tfc:sake
+- tfc:vodka
+- tfc:whiskey
+- tfc:corn_whiskey
+- tfc:rye_whiskey
+
+#tfc:drinkables
+- tfc:river_water
+- #tfc:drinkable_ingredients
+
+#tfc:red_dye
+- tfc:red_dye
+- tfc:flowing_red_dye
+
+#tfc:tallow
+- tfc:tallow
+- tfc:flowing_tallow
+
+#tfc:purple_dye
+- tfc:purple_dye
+- tfc:flowing_purple_dye
+
+#forge:honey
+- create:flowing_honey
+- create:honey
+
+#tfc:wrought_iron
+- tfc:metal/wrought_iron
+- tfc:metal/flowing_wrought_iron
+
+#tfc:usable_in_red_steel_bucket
+- #tfc:ingredients
+
+#tfc:steel
+- tfc:metal/steel
+- tfc:metal/flowing_steel
+
+#tfc:sake
+- tfc:sake
+- tfc:flowing_sake
+
+#tfc:pink_dye
+- tfc:pink_dye
+- tfc:flowing_pink_dye
+
+#tfc:beer
+- tfc:beer
+- tfc:flowing_beer
+
+#tfc:zinc
+- tfc:metal/zinc
+- tfc:metal/flowing_zinc
+
+#tfc:usable_in_wooden_bucket
+- #tfc:ingredients
+
+#tfc:high_carbon_blue_steel
+- tfc:metal/high_carbon_blue_steel
+- tfc:metal/flowing_high_carbon_blue_steel
+
+#tfc:cast_iron
+- tfc:metal/cast_iron
+- tfc:metal/flowing_cast_iron
+
+#tfc:copper
+- tfc:metal/copper
+- tfc:metal/flowing_copper

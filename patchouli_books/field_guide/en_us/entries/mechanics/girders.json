@@ -1,0 +1,17 @@
+{
+	"name": "Metal Girders",
+	"category": "tfc:mechanics",
+	"icon": "create:metal_girder",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "Much like $(l:mechanics/support_beams)Support Beams$() $(thing)Metal Girders$() also provide support below the surface. However they have a slightly larger range of 6 blocks horizontally and two blocks above and below"
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/metal_girder_from_tfc",
+		"text": "Metal Girders can be crafted with $(thing)Composite Material$() and $(thing)Cast Iron Sheets$()"
+	}
+	],
+	"read_by_default": true
+}

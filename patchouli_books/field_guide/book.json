@@ -1,0 +1,4 @@
+{
+	"name": "TFC Field Guide Extensions",
+	"extend": "tfc:field_guide"
+}

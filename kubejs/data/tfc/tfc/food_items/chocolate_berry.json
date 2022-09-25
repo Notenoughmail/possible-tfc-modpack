@@ -1,0 +1,12 @@
+{
+	"ingredient": {
+		"item": "create:chocolate_glazed_berries"
+	},
+	"category": "fruit",
+	"hunger": 7,
+	"saturation": 0.8,
+	"water": 2,
+	"decay_modifier": 0.4,
+	"fruit": 0.75,
+	"dairy": 2
+}

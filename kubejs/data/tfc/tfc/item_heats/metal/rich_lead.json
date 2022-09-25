@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"item": "kubejs:ore/rich_lead"
+	},
+	"heat_capacity": 0.20,
+	"forging_temperature": 196.0,
+	"welding_temperature": 261.0
+}

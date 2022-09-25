@@ -1,0 +1,701 @@
+To refresh this file, delete it and run /reload command again! Last updated: Aug 20, 2022, 6:59:33 PM
+
+#tfc:in_biome/surface_decoration/volcanic_oceanic_mountain_lake
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/old_mountain_river
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/soil_discs/oceanic_mountains
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/volcanic_oceanic_mountains
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+
+#tfc:in_biome/surface_decoration/volcanic_oceanic_mountains
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- #tfc:feature/land_plants
+
+#tfc:feature/berry_bushes
+- tfc:plant/blackberry_bush
+- tfc:plant/raspberry_bush
+- tfc:plant/blueberry_bush
+- tfc:plant/elderberry_bush
+- tfc:plant/bunchberry_bush_patch
+- tfc:plant/gooseberry_bush_patch
+- tfc:plant/snowberry_bush_patch
+- tfc:plant/cloudberry_bush_patch
+- tfc:plant/strawberry_bush_patch
+- tfc:plant/wintergreen_berry_bush_patch
+- tfc:plant/cranberry_bush_patch
+
+#tfc:in_biome/soil_discs/lowlands
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/shore
+
+#tfc:in_biome/large_features/river
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/soil_discs/mountain_lake
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/badlands
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:feature/corals
+- tfc:coral_tree
+- tfc:coral_mushroom
+- tfc:coral_claw
+
+#tfc:in_biome/surface_decoration/mountain_lake
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/inverted_badlands
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/large_features/canyons
+- #tfc:feature/boulders
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+- tfc:random_active_hot_spring
+
+#tfc:feature/surface_grasses
+- tfc:plant/bluegrass_patch
+- tfc:plant/bromegrass_patch
+- tfc:plant/fountain_grass_patch
+- tfc:plant/orchard_grass_patch
+- tfc:plant/ryegrass_patch
+- tfc:plant/scutch_grass_patch
+- tfc:plant/timothy_grass_patch
+- tfc:plant/raddia_grass_patch
+
+#tfc:in_biome/soil_discs/low_canyons
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/inverted_badlands
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/old_mountain_lake
+- #tfc:feature/soil_discs
+
+#tfc:feature/ore_deposits
+- tfc:native_copper_deposit
+- tfc:native_copper_deep_deposit
+- tfc:cassiterite_deposit
+- tfc:cassiterite_deep_deposit
+- tfc:native_silver_deposit
+- tfc:native_silver_deep_deposit
+- tfc:native_gold_deposit
+- tfc:native_gold_deep_deposit
+
+#tfc:in_biome/large_features/mountain_river
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/surface_decoration/lake
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/underground_decoration
+- tfc:cave_column
+- tfc:cave_spike
+- tfc:large_cave_spike
+- tfc:water_spring
+- tfc:lava_spring
+- tfc:calcite
+- tfc:mega_calcite
+- tfc:icicle
+- tfc:underground_loose_rocks
+- tfc:underground_guano_patch
+
+#tfc:in_biome/surface_decoration/low_canyons
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/volcanic_oceanic_mountain_river
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/oceanic_mountain_lake
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/surface_decoration/plateau_lake
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/plateau
+- #tfc:feature/boulders
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- tfc:random_empty_hot_spring
+
+#tfc:in_biome/surface_decoration/ocean_reef
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+
+#tfc:in_biome/large_features/volcanic_mountain_river
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+
+#tfc:feature/land_plants
+- tfc:plant/hanging_vines
+- tfc:plant/hanging_vines_cave
+- tfc:plant/ivy
+- tfc:plant/jungle_vines
+- tfc:plant/liana
+- tfc:plant/moss_cover_patch
+- tfc:plant/reindeer_lichen_cover_patch
+- tfc:plant/morning_glory_cover_patch
+- tfc:plant/tree_fern
+- tfc:plant/arundo
+- #tfc:feature/crops
+- #tfc:feature/forest_plants
+- tfc:surface_grasses
+- tfc:plant/allium_patch
+- tfc:plant/anthurium_patch
+- tfc:plant/arrowhead_patch
+- tfc:plant/houstonia_patch
+- tfc:plant/barrel_cactus_patch
+- tfc:plant/blood_lily_patch
+- tfc:plant/blue_orchid_patch
+- tfc:plant/blue_ginger_patch
+- tfc:plant/cattail_patch
+- tfc:plant/calendula_patch
+- tfc:plant/marigold_patch
+- tfc:plant/bur_reed_patch
+- tfc:plant/butterfly_milkweed_patch
+- tfc:plant/black_orchid_patch
+- tfc:plant/coontail_patch
+- tfc:plant/dandelion_patch
+- tfc:plant/dead_bush_patch
+- tfc:plant/desert_flame_patch
+- tfc:plant/duckweed_patch
+- tfc:plant/eel_grass_patch
+- tfc:plant/field_horsetail_patch
+- tfc:plant/foxglove_patch
+- tfc:plant/grape_hyacinth_patch
+- tfc:plant/heliconia_patch
+- tfc:plant/hibiscus_patch
+- tfc:plant/kangaroo_paw_patch
+- tfc:plant/king_fern_patch
+- tfc:plant/labrador_tea_patch
+- tfc:plant/lady_fern_patch
+- tfc:plant/licorice_fern_patch
+- tfc:plant/lilac_patch
+- tfc:plant/lotus_patch
+- tfc:plant/meads_milkweed_patch
+- tfc:plant/milfoil_patch
+- tfc:plant/morning_glory_patch
+- tfc:plant/moss_patch
+- tfc:plant/nasturtium_patch
+- tfc:plant/ostrich_fern_patch
+- tfc:plant/oxeye_daisy_patch
+- tfc:plant/phragmite_patch
+- tfc:plant/pickerelweed_patch
+- tfc:plant/pistia_patch
+- tfc:plant/poppy_patch
+- tfc:plant/primrose_patch
+- tfc:plant/pulsatilla_patch
+- tfc:plant/red_sealing_wax_palm_patch
+- tfc:plant/reindeer_lichen_patch
+- tfc:plant/sacred_datura_patch
+- tfc:plant/sagebrush_patch
+- tfc:plant/sago_patch
+- tfc:plant/sapphire_tower_patch
+- tfc:plant/guzmania_patch
+- tfc:plant/silver_spurflower_patch
+- tfc:plant/snapdragon_pink_patch
+- tfc:plant/snapdragon_red_patch
+- tfc:plant/snapdragon_white_patch
+- tfc:plant/snapdragon_yellow_patch
+- tfc:plant/spanish_moss_patch
+- tfc:plant/strelitzia_patch
+- tfc:plant/switchgrass_patch
+- tfc:plant/sword_fern_patch
+- tfc:plant/tall_fescue_grass_patch
+- tfc:plant/toquilla_palm_patch
+- tfc:plant/trillium_patch
+- tfc:plant/tropical_milkweed_patch
+- tfc:plant/tulip_orange_patch
+- tfc:plant/tulip_pink_patch
+- tfc:plant/tulip_red_patch
+- tfc:plant/tulip_white_patch
+- tfc:plant/vriesea_patch
+- tfc:plant/water_lily_patch
+- tfc:plant/water_taro_patch
+- tfc:plant/yucca_patch
+- #tfc:feature/berry_bushes
+- #tfc:feature/fruit_trees
+
+#tfc:in_biome/surface_decoration/volcanic_mountain_river
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/badlands
+- #tfc:feature/land_plants
+
+#tfc:feature/ocean_decorations
+- tfc:plant/giant_kelp_patch
+- tfc:plant/winged_kelp
+- tfc:plant/leafy_kelp
+- tfc:clam_patch
+- tfc:mollusk_patch
+- tfc:mussel_patch
+
+#tfc:in_biome/soil_discs/badlands
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/top_layer_modification
+- tfc:surface_loose_rocks
+- tfc:ice_and_snow
+
+#tfc:in_biome/surface_decoration/old_mountain_river
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/volcanic_mountain_lake
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+
+#tfc:in_biome/soil_discs/volcanic_oceanic_mountains
+- #tfc:feature/soil_discs
+
+#tfc:feature/clay_indicators
+- tfc:plant/athyrium_fern_patch
+- tfc:plant/canna_patch
+- tfc:plant/goldenrod_patch
+- tfc:plant/pampas_grass_patch
+- tfc:plant/perovskia_patch
+- tfc:plant/water_canna_patch
+
+#tfc:in_biome/soil_discs/plains
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/deep_ocean_trench
+
+#tfc:in_biome/all_lakes
+- tfc:underground_flood_fill_lake
+- tfc:flood_fill_lake
+
+#tfc:in_biome/surface_decoration/hills
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/shore
+- #tfc:feature/icebergs
+
+#tfc:in_biome/large_features/old_mountain_lake
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/soil_discs/old_mountain_river
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/deep_ocean
+
+#tfc:in_biome/surface_decoration/deep_ocean
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+
+#tfc:in_biome/soil_discs/mountain_river
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/oceanic_mountain_river
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/large_features/ocean_reef
+- #tfc:feature/icebergs
+- tfc:coral_reef
+
+#tfc:feature/forest_plants
+- tfc:sticks_forest_patch
+- tfc:pinecone_patch
+- tfc:salt_lick_patch
+- tfc:dead_grass_patch
+- tfc:humus_patch
+- tfc:rotten_flesh_patch
+
+#tfc:in_biome/surface_decoration/ocean
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+
+#tfc:in_biome/large_features/low_canyons
+- #tfc:feature/boulders
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- tfc:random_empty_hot_spring
+
+#tfc:in_biome/surface_decoration/plains
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/rolling_hills
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/rolling_hills
+- #tfc:feature/boulders
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- tfc:random_empty_hot_spring
+
+#tfc:in_biome/surface_decoration/lowlands
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/river
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/old_mountain_lake
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/ocean_reef
+
+#tfc:feature/shore_decorations
+- tfc:driftwood_patch
+- tfc:clam_patch
+- tfc:mollusk_patch
+- tfc:mussel_patch
+- tfc:seaweed_patch
+- tfc:sticks_shore_patch
+- tfc:guano_patch
+
+#tfc:in_biome/surface_decoration/canyons
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/lake
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/surface_decoration/old_mountains
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/canyons
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/volcanic_mountains
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/old_mountains
+- #tfc:feature/soil_discs
+
+#tfc:feature/boulders
+- tfc:raw_boulder
+- tfc:cobble_boulder
+- tfc:mossy_boulder
+
+#tfc:in_biome/surface_decoration/oceanic_mountain_river
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/plateau_lake
+- #tfc:feature/soil_discs
+
+#tfc:feature/volcanoes
+- tfc:volcano_rivulet
+- tfc:volcano_caldera
+- tfc:random_volcano_fissure
+
+#tfc:in_biome/strongholds
+
+#tfc:feature/soil_discs
+- tfc:clay_disc_with_indicator
+- tfc:water_clay_disc_with_indicator
+- tfc:peat_disc
+- tfc:powder_snow
+
+#tfc:in_biome/underground_structures
+
+#tfc:in_biome/surface_decoration/plateau
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/volcanic_oceanic_mountain_river
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/mountain_river
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_decoration/volcanic_mountain_lake
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/volcanic_oceanic_mountain_lake
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/deep_ocean
+- #tfc:feature/icebergs
+
+#tfc:in_biome/soil_discs/plateau
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/surface_decoration/deep_ocean_trench
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+
+#tfc:in_biome/soil_discs/volcanic_mountain_lake
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/oceanic_mountain_river
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/hills
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/mountains
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/soil_discs/mountains
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/soil_discs/ocean
+
+#tfc:in_biome/large_features/plains
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:feature/icebergs
+- tfc:iceberg_packed
+- tfc:iceberg_blue
+- tfc:iceberg_packed_rare
+- tfc:iceberg_blue_rare
+
+#tfc:in_biome/large_features/volcanic_oceanic_mountain_river
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+
+#tfc:in_biome/surface_decoration/inverted_badlands
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/lowlands
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/large_features/old_mountains
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- tfc:random_active_hot_spring
+
+#tfc:in_biome/large_features/oceanic_mountains
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/veins
+- tfc:vein/gravel
+- tfc:vein/granite_dike
+- tfc:vein/diorite_dike
+- tfc:vein/gabbro_dike
+- tfc:vein/normal_native_copper
+- tfc:vein/surface_native_copper
+- tfc:vein/normal_native_gold
+- tfc:vein/deep_native_gold
+- tfc:vein/normal_native_silver
+- tfc:vein/poor_native_silver
+- tfc:vein/normal_hematite
+- tfc:vein/deep_hematite
+- tfc:vein/normal_cassiterite
+- tfc:vein/surface_cassiterite
+- tfc:vein/normal_bismuthinite
+- tfc:vein/surface_bismuthinite
+- tfc:vein/normal_garnierite
+- tfc:vein/poor_garnierite
+- tfc:vein/normal_malachite
+- tfc:vein/poor_malachite
+- tfc:vein/normal_magnetite
+- tfc:vein/deep_magnetite
+- tfc:vein/normal_limonite
+- tfc:vein/deep_limonite
+- tfc:vein/normal_sphalerite
+- tfc:vein/surface_sphalerite
+- tfc:vein/normal_tetrahedrite
+- tfc:vein/surface_tetrahedrite
+- tfc:vein/bituminous_coal
+- tfc:vein/lignite
+- tfc:vein/kaolinite
+- tfc:vein/graphite
+- tfc:vein/cinnabar
+- tfc:vein/cryolite
+- tfc:vein/saltpeter
+- tfc:vein/sulfur
+- tfc:vein/sylvite
+- tfc:vein/borax
+- tfc:vein/gypsum
+- tfc:vein/lapis_lazuli
+- tfc:vein/halite
+- tfc:vein/diamond
+- tfc:vein/emerald
+- tfc:vein/volcanic_sulfur
+- tfc:vein/amethyst
+- tfc:vein/opal
+- tfc:geode
+
+#tfc:in_biome/soil_discs/rolling_hills
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/hills
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/surface_decoration/mountains
+- #tfc:feature/land_plants
+
+#tfc:feature/ocean_plants
+- tfc:plant/manatee_grass_patch
+- tfc:plant/star_grass_patch
+- tfc:plant/badderlocks_patch
+- tfc:plant/laminaria_patch
+- tfc:plant/gutweed_patch
+- tfc:plant/sargassum_patch
+- tfc:plant/turtle_grass_patch
+
+#tfc:feature/crops
+- tfc:plant/wild_crop/barley_patch
+- tfc:plant/wild_crop/oat_patch
+- tfc:plant/wild_crop/rye_patch
+- tfc:plant/wild_crop/maize_patch
+- tfc:plant/wild_crop/wheat_patch
+- tfc:plant/wild_crop/rice_patch
+- tfc:plant/wild_crop/beet_patch
+- tfc:plant/wild_crop/cabbage_patch
+- tfc:plant/wild_crop/carrot_patch
+- tfc:plant/wild_crop/garlic_patch
+- tfc:plant/wild_crop/green_bean_patch
+- tfc:plant/wild_crop/melon_patch
+- tfc:plant/wild_crop/potato_patch
+- tfc:plant/wild_crop/pumpkin_patch
+- tfc:plant/wild_crop/onion_patch
+- tfc:plant/wild_crop/soybean_patch
+- tfc:plant/wild_crop/squash_patch
+- tfc:plant/wild_crop/sugarcane_patch
+- tfc:plant/wild_crop/tomato_patch
+- tfc:plant/wild_crop/jute_patch
+
+#tfc:in_biome/surface_decoration/shore
+- #tfc:feature/ocean_plants
+- #tfc:feature/shore_decorations
+
+#tfc:in_biome/large_features/mountain_lake
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/soil_discs/oceanic_mountain_lake
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/surface_decoration/oceanic_mountains
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- #tfc:feature/land_plants
+
+#tfc:in_biome/soil_discs/river
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/deep_ocean_trench
+- #tfc:feature/icebergs
+- tfc:lava_hot_spring
+
+#tfc:in_biome/soil_discs/lake
+- #tfc:feature/ore_deposits
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/surface_decoration/oceanic_mountain_lake
+- #tfc:feature/ocean_plants
+- #tfc:feature/ocean_decorations
+- tfc:plant/dry_phragmite
+- #tfc:feature/land_plants
+
+#tfc:in_biome/large_features/ocean
+- #tfc:feature/icebergs
+
+#tfc:in_biome/erosion
+- tfc:erosion
+
+#tfc:in_biome/soil_discs/volcanic_mountain_river
+- #tfc:feature/soil_discs
+
+#tfc:in_biome/large_features/plateau_lake
+- #tfc:feature/boulders
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+
+#tfc:in_biome/underground_lakes
+- tfc:underground_flood_fill_lake
+
+#tfc:in_biome/large_features/volcanic_mountains
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes
+- tfc:random_active_hot_spring
+
+#tfc:feature/fruit_trees
+- tfc:plant/banana
+- tfc:plant/cherry
+- tfc:plant/green_apple
+- tfc:plant/lemon
+- tfc:plant/olive
+- tfc:plant/orange
+- tfc:plant/peach
+- tfc:plant/plum
+- tfc:plant/red_apple
+
+#tfc:in_biome/surface_decoration/volcanic_mountains
+- #tfc:feature/land_plants
+
+#tfc:in_biome/surface_structures
+
+#tfc:in_biome/large_features/volcanic_oceanic_mountain_lake
+- #tfc:feature/icebergs
+- tfc:forest
+- tfc:bamboo
+- tfc:cave_vegetation
+- #tfc:feature/volcanoes

@@ -1,0 +1,40 @@
+{
+	"name": "Trains & Remote Mining",
+	"category": "tfc:mechanics",
+	"icon": "create:track",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "As you advance through the technology tree, you may find yourself needing more resources. While you could continue to manually mine the various ore deposits scattered throughout the world, it would be majorly helpful if this process could be automated."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "create:track",
+		"title": "Remote Destination",
+		"link_recipes": false,
+		"text": "Trains will be crucial to any remote mining outpost, as they can travel through unloaded chunks without aid."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "chunkloaders:ultimate_chunk_loader",
+		"title": "Outpost 1",
+		"link_recipes": false,
+		"text": "Chunkloaders are available to ensure your mining outposts work even while you're away from them."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "create:mechanical_drill",
+		"title": "Mining",
+		"link_recipes": false,
+		"text": "Of course, a mining outpost needs some sort of mining appartatus. A relatively common and popular way is with a $(l:https://www.youtube.com/watch?v=5gVJhDUiPT0)Rotating Plunge Drill$()."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "immersiveengineering:excavator",
+		"title": "Greater Depths",
+		"link_recipes": false,
+		"text": "Still need more resources? Tired of having to move your mining outposts so often? Then try using an Excatator!"
+	}
+	],
+	"read_by_default": true
+}

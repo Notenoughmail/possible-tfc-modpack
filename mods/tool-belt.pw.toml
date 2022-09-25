@@ -1,0 +1,13 @@
+name = "Tool Belt"
+filename = "ToolBelt-1.18.2-1.18.8.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "a5617a481729f40f55710b821a18e4a3b354bd32"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3745784
+project-id = 260262

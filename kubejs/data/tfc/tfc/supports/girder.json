@@ -1,0 +1,6 @@
+{
+	"ingredient": "create:metal_girder",
+	"support_up": 2,
+	"support_down": 2,
+	"support_horizontal": 6
+}

@@ -1,0 +1,12 @@
+{
+	"tier": 1,
+	"fluid": "kubejs:lead",
+	"melt_temperature": 327,
+	"heat_capacity": 0.20,
+	"ingots": {
+		"tag": "forge:ingots/lead"
+	},
+	"sheets": {
+		"tag": "forge:sheets/lead"
+	}
+}

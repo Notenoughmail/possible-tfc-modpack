@@ -1,0 +1,13 @@
+name = "Uppers"
+filename = "Uppers-0.4.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "671d49ca8331a5da95e5d631eb0d5a2acac7bb59"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3735573
+project-id = 281274

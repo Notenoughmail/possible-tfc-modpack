@@ -1,0 +1,12 @@
+{
+    "ModSettings": {
+        "first_run": false
+    },
+    "LockedSlotsSettings": {
+        "locked_slots_allow_pickup_into_empty": true
+    },
+    "AutoRefillSettings": {
+        "refill_armor": false,
+        "refill_before_tool_break": false
+    }
+}

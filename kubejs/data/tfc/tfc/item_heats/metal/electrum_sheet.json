@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"tag": "forge:sheets/electrum"
+	},
+	"heat_capacity": 0.30,
+	"forging_temperature": 606,
+	"welding_temperature": 808
+}

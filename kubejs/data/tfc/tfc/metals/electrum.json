@@ -1,0 +1,11 @@
+{
+	"fluid": "kubejs:electrum",
+	"melt_temperature": 1010,
+	"heat_capacity": 0.15,
+	"ingots": {
+		"tag": "forge:ingots/electrum"
+	},
+	"sheets": {
+		"tag": "forge:sheets/electrum"
+	}
+}

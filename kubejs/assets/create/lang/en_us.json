@@ -1,0 +1,35 @@
+{
+	"block.create.andesite_belt_funnel": "Composite Belt Funnel",
+	"block.create.andesite_casing": "Composite Casing",
+	"block.create.andesite_encased_cogwheel": "Composite Encased Cogwheel",
+	"block.create.andesite_encased_large_cogwheel": "Composite Encased Large Cogwheel",
+	"block.create.andesite_encased_shaft": "Composite Encased Shaft",
+	"block.create.andesite_funnel": "Composite Funnel",
+	"block.create.andesite_ladder": "Composite Ladder",
+	"block.create.andesite_tunnel": "Composite Tunnel",
+	"block.create.rose_quartz_block": "Block of Redstone Salt",
+	"block.create.rose_quartz_lamp": "Redstone Salt Lamp",
+	"block.create.rose_quartz_tiles": "Redstone Salt Tiles",
+	"block.create.small_rose_quartz_tiles": "Small Redstone Salt Tiles",
+	
+	"item.create.andesite_alloy": "Composite Material",
+	"item.create.electron_tube": "Redstone Salt Tube",
+	"item.create.rose_quartz": "Redstone Salt",
+	"item.create.polished_rose_quartz": "Polished Redstone Salt",
+	"item.create.wrench": "Engineer's Wrench",
+	
+	"advancement.create.andesite_alloy.desc": "Obtain some Composite Material, Create's most important resource",
+	"advancement.create.andesite_casing": "The Composite Age",
+	"advancement.create.andesite_casing.desc": "Apply Composite Material to a log, crafting a basic casing for your machines",
+	"advancement.create.rose_quartz.desc": "Polish some Redstone Salt",
+	
+	"create.ponder.andesite_tunnel_header": "Using Composite Tunnels",
+	"create.ponder.andesite_tunnel.text_1": "Composite Tunnels can be used to cover up your belts",
+	"create.ponder.andesite_tunnel.text_2": "Whenever a Composite Tunnel has connections to the sides...",
+	"create.ponder.belt_casing.text_1": "Brass or Composite Casing can be used to decorate Mechanical Belts",
+	"create.ponder.brass_funnel.text_1": "Composite Funnels can only ever extract single items.",
+	"create.ponder.cogwheel_casing.text_1": "Brass or Composite Casing can be used to decorate Cogwheels",
+	"create.ponder.shaft_casing.text_1": "Brass or Composite Casing can be used to decorate shafts",
+	"create.ponder.rose_quartz_lamp.header": "Redstone Salt Lamps",
+	"create.ponder.rose_quartz_lamp.text_1": "Redstone Salt Lamps activate on a redstone signal"
+}

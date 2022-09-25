@@ -1,0 +1,52 @@
+{
+	"name": "A Basic Introduction",
+	"category": "patchouli:machinery",
+	"icon": "immersiveengineering:toolbox",
+	"pages": [
+	{
+		"type": "text",
+		"text": "As you progress through the tech tree, you may find yourself wanting some means of automation, this chapter will guide you through all types of machinery just for that. But first, the basics of $(thing)Immersive Engineering$() and $(thing)Create$()."
+	},
+	{
+		"type": "text",
+		"text": "Immersive Engineering has three main tools, the $(thing)Engineer's Hammer$(); $(thing)Screwdriver$(); and $(thing)Wire Cutters$(), which are used for constructing, configuring, and wiring machinery. In addition the $(thing)Engineer's Multimeter$() is useful for power related information.%(br2)Create has 2 main utilities: the $(thing)Engineer's Wrench$(), which is useful for rotating, dismantling, and configuring components; and the $(thing)Engineer's Goggles$(), which are used for information about $(thing)Kinetic Networks$()."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/hammer_from_tfc",
+		"title": "Engineer's Hammer",
+		"text": "An Enginerr's Hammer is used to assemble multiblock structures, see JEI for how machines are built."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/screwdriver_from_tfc",
+		"title": "Engineer's Screwdriver",
+		"text": "An Engineer's Screwdriver is used for precise configuration on certain pieces of machinery, for example $(thing)Redstone Input$() on the $(thing)Diesel Generator$() or configuring the $(thing)Modes$() of a $(thing)Redstone Wire Connector$()."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/wirecutters_from_tfc",
+		"title": "Engineer's Wire Cutters",
+		"text": "The Engineer's Wire Cutters are used to remove a single wire connection between $(thing)Wire Connectors$() or $(thing)Relays$(), or to remove all connections a connector or relay has without breaking it."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "immersiveengineering:crafting/voltmeter",
+		"title": "Engineer's Multimeter",
+		"text": "An Engineer's Multimeter is used to measure connections. Looking at or right clicking any energy storage will read its current storage. Sneak + right click two connectors to find the loss between them. It can also read redstone levels."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/wrench_from_tfc",
+		"title": "Engineer's Wrench",
+		"text": "Right clicking components with an Engineer's Wrench will rotate them, and when sneaking will put the component directly in your $(thing)inventory$(). The Engineer's Wrench can also be used to configure certain kinetic components with the scroll wheel."
+	},
+	{
+		"type": "patchouli:crafting",
+		"recipe": "kubejs:shaped_crafting/goggles_from_tfc",
+		"title": "Engineer's Goggles",
+		"text": "When worn, addition information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometer$(), $(thing)Stressometer$(), and fluid containers."
+	}
+	],
+	"read_by_default": true
+}

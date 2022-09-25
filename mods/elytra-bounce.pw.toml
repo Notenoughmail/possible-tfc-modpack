@@ -1,0 +1,13 @@
+name = "Elytra Bounce"
+filename = "elytrabounce-1.18.2-1.0.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3ccd4ad7fc72f8847d298f0156c79c069075fc3e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3972790
+project-id = 658644
