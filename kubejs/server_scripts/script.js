@@ -375,8 +375,8 @@ onEvent('recipes', e => {
 			"result": { "item": out, "count": count }
 		}).id('kubejs:weld/' + id)
 	}
-	tfc_welding_tag("tfc:metal/ingot/cast_iron", "forge:cobblestone", 1, "create:andesite_alloy", 15, 'composite_compound_from_cast_iron')
-	tfc_welding_tag("tfc:metal/ingot/zinc", "forge:cobblestone", 1, "create:andesite_alloy", 10, 'composite_compound_from_zinc')
+	tfc_welding_tag("tfc:metal/ingot/cast_iron", "forge:cobblestone/normal", 1, "create:andesite_alloy", 15, 'composite_compound_from_cast_iron')
+	tfc_welding_tag("tfc:metal/ingot/zinc", "forge:cobblestone/normal", 1, "create:andesite_alloy", 10, 'composite_compound_from_zinc')
 	tfc_welding_tag("tfc:metal/helmet/copper", "forge:glass", 2, "create:diving_helmet", 1, 'diving_helmet_from_tfc_copper_helmet')
 	tfc_welding_item("tfc:metal/sheet/copper", "tfc:metal/rod/copper", 1, "create:fluid_pipe", 6, 'fluid_pipe_from_tfc_coppers')
 	tfc_welding_item("tfc:fire_bricks", "tfc:metal/double_sheet/steel", 4, "immersiveengineering:alloybrick", 1, 'alloy_bricks_from_tfc')

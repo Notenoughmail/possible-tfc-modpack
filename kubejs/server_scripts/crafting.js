@@ -4,6 +4,8 @@ console.info('Loading TFC crafting recipes')
 
 let wire_metals = ['copper', 'lead', 'steel', 'electrum', 'aluminum']
 
+let partial_metal = ['copper', 'gold', 'silver', 'nickel']
+
 onEvent('recipes', e => {
 	//shapeless
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', 'tfc:metal/chain/wrought_iron', 'tfc:metal/chain/wrought_iron']).id('kubejs:shapeless_crafting/chain_drive_from_chains');
@@ -34,6 +36,52 @@ onEvent('recipes', e => {
 		e.shapeless('1x immersiveengineering:wire_' + metal, [['tfc:metal/rod/' + metal, 'immersiveengineering:stick_' + metal, 'immersiveposts:stick_' + metal], 'immersiveengineering:wirecutter']).id('kubejs:shapeless_crafting/cut_rod_to_wire_' + metal)
 	})
 	//shaped
+	partial_metal.forEach(metal => {
+		e.shaped('6x immersiveposts:fence_' + metal, [
+		'SAS',
+		'SAS'
+		], {
+			S: 'tfc:metal/ingot/' + metal,
+			A: 'tfc:metal/rod/' + metal,
+		}).id('kubejs:shaped_crafting/' + metal + '_fence_from_tfc')
+	})
+	
+	e.shaped('6x immersiveposts:fence_iron', [
+	'SAS',
+	'SAS'
+	], {
+		S: 'tfc:metal/ingot/wrought_iron',
+		A: 'tfc:metal/rod/wrought_iron'
+	}).id('kubejs:shaped_crafting/iron_fence_from_tfc');
+	e.shaped('6x immersiveposts:fence_lead', [
+	'SAS',
+	'SAS'
+	], {
+		S: 'immersiveengineering:ingot_lead',
+		A: 'immersiveposts:stick_lead'
+	}).id('kubejs:shaped_crafting/lead_fence_from_tfc');
+	e.shaped('6x immersiveposts:fence_constantan', [
+	'SAS',
+	'SAS'
+	], {
+		S: 'immersiveengineering:ingot_constantan',
+		A: 'immersiveposts:stick_constantan'
+	}).id('kubejs:shaped_crafting/constantan_fence_from_tfc');
+	e.shaped('6x immersiveposts:fence_electrum', [
+	'SAS',
+	'SAS'
+	], {
+		S: 'immersiveengineering:ingot_electrum',
+		A: 'immersiveposts:stick_electrum'
+	}).id('kubejs:shaped_crafting/electrum_fence_from_tfc');
+	e.shaped('6x immersiveposts:postbase', [
+	'S S',
+	'SAS',
+	'SAS',
+	], {
+		S: '#forge:stone_bricks',
+		A: '#forge:cobblestone/normal'
+	}).id('kubejs:shaped_crafting/post_base_from_tags');
 	e.shaped('1x immersiveengineering:electric_lantern', [
 	' S ',
 	'ABA',
@@ -234,7 +282,7 @@ onEvent('recipes', e => {
 	'AAA'
 	], {
 		S: 'tfc:metal/sheet/wrought_iron',
-		A: '#forge:cobblestone',
+		A: '#forge:cobblestone/normal',
 		B: 'minecraft:redstone'
 	}).id('kubejs:shaped_crafting/redstone_contact_from_tfc');
 	e.shaped('1x create:mechanical_harvester', [
@@ -612,7 +660,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'tfc:glue',
-		B: '#forge:cobblestone',
+		B: '#forge:cobblestone/normal',
 		C: 'minecraft:redstone'
 	}).id('kubejs:shaped_crafting/sticker_from_tfc');
 	e.shaped('create:sticky_mechanical_piston', [
