@@ -570,4 +570,64 @@ onEvent('recipes', e => {
 			"item": "kubejs:leather_pouch"
 		}
 	}).id('kubejs:leather_knapping/leather_pouch');
+	e.custom({
+		"type": "immersiveengineering:mixer",
+		"inputs": [
+		{
+			"tag": "forge:sand",
+			"count": 2
+		},
+		{
+			"tag": "forge:gravel"
+		},
+		{
+			"item": "minecraft:clay_ball"
+		}
+		],
+		"result": {
+			"fluid": "immersiveengineering:concrete",
+			"amount": 250
+		},
+		"fluid": {
+			"tag": "forge:true_water",
+			"amount": 250
+		},
+		"energy": 3200
+	}).id('kubejs:mixer/concrete');
+	e.custom({
+		"type": "immersiveengineering:mixer",
+		"inputs": [
+		{
+			"item": "minecraft:redstone"
+		}
+		],
+		"result": {
+			"fluid": "immersiveengineering:redstone_acid",
+			"amount": 250
+		},
+		"fluid": {
+			"tag": "forge:true_water",
+			"amount": 250
+		},
+		"energy": 1600
+	}).id('kubejs:mixer/redstone_acid');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:concrete",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "immersiveengineering:concrete",
+			"amount": 250
+		}
+	}).id('kubejs:bottling/concrete');
 })

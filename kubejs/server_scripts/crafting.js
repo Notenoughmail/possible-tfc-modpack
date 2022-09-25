@@ -46,6 +46,13 @@ onEvent('recipes', e => {
 		}).id('kubejs:shaped_crafting/' + metal + '_fence_from_tfc')
 	})
 	
+	e.shaped('2x immersiveengineering:conveyor_basic', [
+	'S',
+	'A'
+	], {
+		S: 'create:belt_connector',
+		A: 'tfc:metal/sheet/steel'
+	}).id('kubejs:shaped_crafting/conveyor_from_tfc');
 	e.shaped('6x immersiveengineering:steel_fence', [
 	'SAS',
 	'SAS'
@@ -365,8 +372,8 @@ onEvent('recipes', e => {
 	'SSS',
 	'SSS'
 	], {
-		S: '#tfc:kelp'
-	}).id('kubejs:shaped_crafting/belt_from_kelp');
+		S: ['#tfc:kelp', '#forge:leather']
+	}).id('kubejs:shaped_crafting/belt_from_kelp_or_leather');
 	e.shaped('1x create:mechanical_plough', [
 	'S',
 	'A',

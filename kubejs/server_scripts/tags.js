@@ -89,4 +89,8 @@ onEvent('tags.fluids', e => {
 	e.add('tfc:constantan', 'kubejs:flowing_constantan')
 	e.add('tfc:lead', 'kubejs:lead')
 	e.add('tfc:lead', 'kubejs:flowing_lead')
+	e.add('forge:true_water', 'minecraft:water')/*IE why do you require fluid tags for your inputs*/
+	e.add('forge:true_water', 'minecraft:flowing_water')/*a normal fluid would be fine*/
+	e.add('immersiveengineering:concrete', 'immersiveengineering:concrete')
+	e.add('immersiveengineering:concrete', 'immersiveengineering:concrete_flowing')
 })
