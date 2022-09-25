@@ -15,7 +15,7 @@
 		"type": "patchouli:crafting",
 		"recipe": "kubejs:shaped_crafting/hammer_from_tfc",
 		"title": "Engineer's Hammer",
-		"text": "An Enginerr's Hammer is used to assemble multiblock structures, see JEI for how machines are built."
+		"text": "An Engineer's Hammer is used to assemble multiblock structures, see JEI for how machines are built."
 	},
 	{
 		"type": "patchouli:crafting",
@@ -45,7 +45,7 @@
 		"type": "patchouli:crafting",
 		"recipe": "kubejs:shaped_crafting/goggles_from_tfc",
 		"title": "Engineer's Goggles",
-		"text": "When worn, addition information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometer$(), $(thing)Stressometer$(), and fluid containers."
+		"text": "When worn, additional information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometer$(), $(thing)Stressometer$(), and fluid containers."
 	}
 	],
 	"read_by_default": true

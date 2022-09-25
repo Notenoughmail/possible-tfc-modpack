@@ -1,6 +1,6 @@
 {
 	"name": "Trains & Remote Mining",
-	"category": "tfc:mechanics",
+	"category": "patchouli:machinery",
 	"icon": "create:track",
 	"pages": [
 	{
