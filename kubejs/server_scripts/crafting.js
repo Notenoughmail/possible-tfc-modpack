@@ -46,6 +46,13 @@ onEvent('recipes', e => {
 		}).id('kubejs:shaped_crafting/' + metal + '_fence_from_tfc')
 	})
 	
+	e.shaped('6x immersiveengineering:steel_fence', [
+	'SAS',
+	'SAS'
+	], {
+		S: 'tfc:metal/ingot/steel',
+		S: 'tfc:metal/rod/steel'
+	}).id('kubejs:shaped_crafting/steel_fence_from_tfc');
 	e.shaped('6x immersiveposts:fence_iron', [
 	'SAS',
 	'SAS'
