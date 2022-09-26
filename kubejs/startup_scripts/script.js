@@ -11,7 +11,6 @@ onEvent('item.registry', e => {
 		e.create('ore/' + type +'_lead')
 	})
 	e.create('leather_pouch')
-	e.create('ore/small_lead')
 })
 
 onEvent('item.modification', e => {
