@@ -1,2 +1,0 @@
-The tress are stolen from https://www.curseforge.com/minecraft/customization/tfc-grander-canopies, please yell at me if these are still here when(if) I release this pack. 
-They are only here because I do not feel like downloading openloader for a single datapck, if there is a way to do the same thing with just kubejs and not lowcoding it, please contact me.
