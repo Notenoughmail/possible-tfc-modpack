@@ -62,5 +62,6 @@
 	"item.kubejs.ore.normal_lead": "Normal Lead",
 	"item.kubejs.ore.poor_lead": "Poor Lead",
 	"item.kubejs.ore.rich_lead": "Rich Lead",
-	"block.kubejs.ore.small_lead": "Small Lead"
+	"block.kubejs.ore.small_lead": "Small Lead",
+	"item.kubejs.ore.small_lead": "Small Lead"
 }

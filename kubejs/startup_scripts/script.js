@@ -1,6 +1,6 @@
 // priority: 0
 
-console.info('Hello, World! (You will only see this line once in console, during startup)')
+console.info('Custom items, blocks, and liquids inbound!')
 
 let types = ['normal', 'poor', 'rich']
 
@@ -11,6 +11,7 @@ onEvent('item.registry', e => {
 		e.create('ore/' + type +'_lead')
 	})
 	e.create('leather_pouch')
+	e.create('ore/small_lead')
 })
 
 onEvent('item.modification', e => {
@@ -44,7 +45,16 @@ onEvent('block.registry', e => {
 				.tagBlock('forge:ores/lead')
 		})
 	})
-	e.create('ore/small_lead').parentmodel("kubejs:block/ore/small_lead")
+	e.create('ore/small_lead')
+		.model("kubejs:block/ore/small_lead")
+		.noCollision()
+		.item(e => { e.create('ore/small_lead_item')})
+		.renderType('cutout')
+		.box(5, 0, 5, 11, 2, 11, true)
+		.tagBlock('tfc:can_be_snow_piled')
+		.material('stone')
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('immersiveengineering:mineable/drill')
 })
 
 onEvent('fluid.registry', e => {

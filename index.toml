@@ -232,7 +232,7 @@ metafile = true
 
 [[files]]
 file = "mods/water-flasks.pw.toml"
-hash = "bb9a43f2b2a1ab7f984c9db9799000d38051d32f4aa5be045b56caf3f272697f"
+hash = "6459915e601abd9664037c08fa343528086156b156344c3f33903f05d9c69950"
 metafile = true
 
 [[files]]
