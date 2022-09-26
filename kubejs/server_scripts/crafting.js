@@ -15,8 +15,6 @@ onEvent('recipes', e => {
 	e.shapeless('1x create:super_glue', ['tfc:glue', 'tfc:metal/tuyere/wrought_iron']).id('kubejs:shapeless_crafting/super_glue_from_tuyere');
 	e.shapeless('2x create:train_door', ['#minecraft:wooden_doors', 'tfc:metal/sheet/brass', '#minecraft:wooden_doors']).id('kubejs:shapeless_crafting/train_door_from_tfc');
 	e.shapeless('2x create:train_trapdoor', ['#minecraft:wooden_trapdoors', 'tfc:metal/sheet/brass', '#minecraft:wooden_trapdoors']).id('kubejs:shapeless_crafting/train_trapdoor_from_tfc');
-	e.shapeless('32x gunswithoutroses:iron_bullet', ['minecraft:gunpowder', 'kubejs:unfilled_wrought_iron_shots']).id('kubejs:shapeless_crafting/wrought_iron_shots_filling');
-	e.shapeless('32x gunswithoutroses:blaze_bullet', ['minecraft:gunpowder', 'kubejs:unfilled_steel_shots']).id('kubejs:shapeless_crafting/steel_shots_filling');
 	e.shapeless('32x gunswithoutroses:flint_bullet', ['minecraft:gunpowder', '4x minecraft:flint']).id('kubejs:shapeless_crafting/flint_shot_crafting');
 	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:shapeless_crafting/single_chunk_loader_crafting');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:shapeless_crafting/sand_paper_from_sand');
@@ -531,36 +529,6 @@ onEvent('recipes', e => {
 		B: 'minecraft:flint',
 		C: '#tfc:rocks/loose'
 	}).id('kubejs:shaped_crafting/gwr_bismuth_bronze_rifle');
-	e.shaped('1x gunswithoutroses:diamond_shotgun', [
-	' SA',
-	'SBS',
-	' SC'
-	], {
-		S: 'tfc:metal/tuyere/steel',
-		A: 'minecraft:flint_and_steel',
-		B: 'tfc:metal/rod/steel',
-		C: '#minecraft:logs'
-	}).id('kubejs:shaped_crafting/gwr_steel_shotgun');
-	e.shaped('1x gunswithoutroses:diamond_sniper', [
-	'SA ',
-	'BSC',
-	' BS'
-	], {
-		S: 'tfc:metal/tuyere/black_steel',
-		A: '#forge:glass',
-		B: 'minecraft:stick',
-		C: 'minecraft:flint_and_steel'
-	}).id('kubejs:shaped_crafting/gwr_black_steel_sniper');
-	e.shaped('1x gunswithoutroses:diamond_gatling', [
-	'SSA',
-	'SSB',
-	'  C'
-	], {
-		S: 'tfc:metal/tuyere/blue_steel',
-		A: 'minecraft:flint_and_steel',
-		B: 'tfc:metal/double_ingot/black_steel',
-		C: '#minecraft:logs'
-	}).id('kubejs:shaped_crafting/gwr_blue_steel_gatling');
 	e.shaped('1x uppers:upper', [
 	' S ',
 	'A A'

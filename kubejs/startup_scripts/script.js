@@ -5,8 +5,6 @@ console.info('Custom items, blocks, and liquids inbound!')
 let types = ['normal', 'poor', 'rich']
 
 onEvent('item.registry', e => {
-	e.create('unfilled_wrought_iron_shots')
-	e.create('unfilled_steel_shots')
 	types.forEach(type => {
 		e.create('ore/' + type +'_lead')
 	})
@@ -22,6 +20,9 @@ onEvent('item.modification', e => {
 	})
 	e.modify('create:diving_boots', item => {
 		item.maxDamage = 197
+	})
+	e.modify('#minecraft:boats', item => {
+		item.maxStackSize = 1
 	})
 })
 
@@ -53,6 +54,8 @@ onEvent('block.registry', e => {
 		.material('stone')
 		.tagBlock('minecraft:mineable/pickaxe')
 		.tagBlock('immersiveengineering:mineable/drill')
+		.tagItem('tfc:small_ore_pieces')
+		.tagItem('tfc:nuggets')
 })
 
 onEvent('fluid.registry', e => {

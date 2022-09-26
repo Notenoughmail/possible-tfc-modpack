@@ -1,18 +1,11 @@
 {
 	"item.gunswithoutroses.iron_gun": "Wrought Iron Rifle",
 	"item.gunswithoutroses.gold_gun": "Bismuth Bronze Rifle",
-	"item.gunswithoutroses.diamond_shotgun": "Steel Shotgun",
-	"item.gunswithoutroses.diamond_sniper": "Black Steel Sniper",
-	"item.gunswithoutroses.diamond_gatling": "Blue Steel Gatling",
 	
 	"item.gunswithoutroses.flint_bullet": "Flint Shot",
-	"item.gunswithoutroses.iron_bullet": "Wrought Iron Shot",
-	"item.gunswithoutroses.blaze_bullet": "Steel Shot",
 	
 	"tooltip.gunswithoutroses.shift": "§7Hold [§fShift§7] for summary§r",
-	
-	"tooltip.gunswithoutroses.blaze_bullet": "Caution! Causes fires!",
-	
+		
 	"entity.gunswithoutroses.bullet": "Shot",
 	
 	"subtitles.gunswithoutroses.item.gun.shoot": "Rifle fired"

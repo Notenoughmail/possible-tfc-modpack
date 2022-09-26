@@ -396,8 +396,6 @@ onEvent('recipes', e => {
 	}
 	tfc_anvil("tfc:metal/rod/brass", "create:brass_ladder", 3, 2, "draw", "bend", "draw", 'brass_ladder_working')
 	tfc_anvil("tfc:metal/rod/copper", "create:copper_ladder", 3, 1, "draw", "bend", "draw", 'copper_ladder_working')
-	tfc_anvil("tfc:metal/tuyere/wrought_iron", "kubejs:unfilled_wrought_iron_shots", 1, 2, "punch", "draw", "draw", 'wrought_iron_shots_working')
-	tfc_anvil("tfc:metal/tuyere/steel", "kubejs:unfilled_steel_shots", 1, 4, "punch", "draw", "draw", 'steel_shots_working')
 	tfc_anvil("immersiveengineering:nugget_electrum", "immersiveengineering:plate_electrum", 1, 3, "hit", "hit", "hit", 'electrum_sheet_working')
 	tfc_anvil("immersiveengineering:nugget_constantan", "immersiveengineering:plate_constantan", 1, 2, "hit", "hit", "hit", 'constantan_sheet_working')
 	tfc_anvil("immersiveengineering:nugget_lead", "immersiveengineering:plate_lead", 1, 1, "hit", "hit", "hit", 'lead_sheet_working')

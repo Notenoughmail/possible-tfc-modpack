@@ -70,13 +70,8 @@ onEvent('tags.items', e => {
 	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:chemthrower')
 	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:railgun')
 	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:skyhook')
-	e.add('tfc:usable_on_tool_rack', 'create:potato_cannon')
 	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:iron_gun')
 	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:gold_gun')
-	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:diamond_shotgun')
-	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:diamond_sniper')
-	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:diamond_gatling')
-	e.add('create:blaze_burner_fuel/special', 'create:experience_nugget')
 })
 
 onEvent('tags.fluids', e => {
