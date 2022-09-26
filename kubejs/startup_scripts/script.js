@@ -47,7 +47,6 @@ onEvent('block.registry', e => {
 	e.create('ore/small_lead')
 		.model("kubejs:block/ore/small_lead")
 		.noCollision()
-		.item(e => { e.create('ore/small_lead_item')})
 		.renderType('cutout')
 		.box(5, 0, 5, 11, 2, 11, true)
 		.tagBlock('tfc:can_be_snow_piled')
