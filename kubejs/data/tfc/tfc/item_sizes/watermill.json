@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"item": "minecraft:boats"
+		"item": "immersiveengineering:watermill"
 	},
 	"size": "huge",
 	"weight": "very_heavy"

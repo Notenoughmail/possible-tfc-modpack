@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"item": "create:cart_contraption"
+		"item": "create:minecart_contraption"
 	},
 	"size": "huge",
 	"weight": "very_heavy"

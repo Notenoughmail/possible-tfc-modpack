@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"item": "minecraft:boats"
+		"item": "create:item_vault"
 	},
 	"weight": "medium"
 }
