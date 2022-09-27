@@ -47,7 +47,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:blueprint/mold_gear', 'immersiveengineering:blueprint/mold_rod', 
 	'immersiveengineering:blueprint/mold_bullet_casing', 'immersiveengineering:blueprint/mold_wire', 
 	'immersiveengineering:blueprint/mold_packing_4', 'immersiveengineering:blueprint/mold_packing_9', 
-	'immersiveengineering:blueprint/mold_unpacking'
+	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch'
 	]
 
 onEvent('recipes', e => {
