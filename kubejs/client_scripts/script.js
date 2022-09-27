@@ -19,4 +19,5 @@ onEvent('jei.hide.items', e => {
 	e.hide('createaddition:gold_wire')
 	e.hide('createaddition:copper_spool')
 	e.hide('createaddition:gold_spool')
+	e.hide('minecraft:chest_minecart')
 })
