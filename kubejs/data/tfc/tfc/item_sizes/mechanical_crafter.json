@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"tag": "kubejs:utility/weight_heavy"
+		"item": "create:mechanical_crafter"
 	},
 	"weight": "heavy"
 }

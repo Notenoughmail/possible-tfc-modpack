@@ -1,6 +1,7 @@
 {
 	"ingredient": {
-		"tag": "kubejs:utility/weight_very_heavy"
+		"item": "minecraft:boats"
 	},
+	"size": "huge",
 	"weight": "very_heavy"
 }

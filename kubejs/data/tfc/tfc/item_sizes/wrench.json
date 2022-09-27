@@ -1,6 +1,7 @@
 {
 	"ingredient": {
-		"tag": "kubejs:utility/weight_light"
+		"item": "create:wrench"
 	},
+	"size": "normal",
 	"weight": "light"
 }

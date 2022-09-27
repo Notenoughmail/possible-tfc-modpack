@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"tag": "kubejs:utility/size_large"
+		"item": "create:crafting_blueprint"
 	},
 	"size": "large"
 }
