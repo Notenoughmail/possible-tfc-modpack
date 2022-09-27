@@ -104,6 +104,19 @@ onEvent('tags.items', e => {
 	e.add('kubejs:utility/weight_light', 'immersiveengineering:screwdriver')
 	e.add('kubejs:utility/weight_light', 'toolbelt:pouch')
 	e.add('kubejs:utility/weight_heavy', 'toolbelt:belt')
+	e.add('kubejs:utility/weight_medium', 'immersiveengineering:connector_lv')
+	e.add('kubejs:utility/weight_medium', 'immersiveengineering:connector_lv_relay')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:wirecoil_copper')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:wirecoil_copper_ins')
+	e.add('kubejs:utility/weight_medium', 'immersiveengineering:connector_mv')
+	e.add('kubejs:utility/weight_medium', 'immersiveengineering:connector_mv_relay')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:wirecoil_electrum')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:wirecoil_electrum_ins')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:connector_hv')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:connector_hv_relay')
+	e.add('kubejs:utility/weight_heavy', 'immersiveengineering:wirecoil_steel')
+	e.add('kubejs:utility/weight_medium', 'immersiveengineering:connector_redstone')
+	e.add('kubejs:utility/weight_light', 'immersiveengineering:wirecoil_redstone')//todo: connector_probe & connector_bundled
 	//sizes, available sizes => tiny, very_small, small, normal, large, very_large, huge
 	e.add('kubejs:utility/size_large', 'create:flywheel')
 	e.add('kubejs:utility/size_large', 'create:crushing_wheel')
@@ -129,6 +142,12 @@ onEvent('tags.items', e => {
 	e.add('kubejs:utility/size_small', 'immersiveengineering:screwdriver')
 	e.add('kubejs:utility/size_normal', 'toolbelt:pouch')
 	e.add('kubejs:utility/size_very_large', 'toolbelt:belt')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_copper')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_copper_ins')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_electrum')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_electrum_ins')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_steel')
+	e.add('kubejs:utility/size_small', 'immersiveengineering:wirecoil_redstone')//todo: connector_probe & connector_bundled
 })
 
 onEvent('tags.fluids', e => {

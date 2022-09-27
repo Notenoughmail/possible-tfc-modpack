@@ -503,7 +503,7 @@ onEvent('recipes', e => {
 			"type": "immersiveengineering:blueprint",
 			"inputs": [
 			{
-				"item": input_1,
+				"tag": input_1,
 				"count": count_1
 			},
 			{
@@ -533,7 +533,8 @@ onEvent('recipes', e => {
 	*/
 	IE_blueprint_2("tfc:metal/sheet/wrought_iron", 2, "forge:ingots/copper", 1, "components", "immersiveengineering:component_iron", 1, "iron_component_from_wrought_iron_sheets")
 	IE_blueprint_2("tfc:metal/sheet/steel", 2, "forge:ingots/copper", 1, "components", "immersiveengineering:component_steel", 1, "steel_component_from_steel_sheets")
-	IE_blueprint_4("immersiveengineering:wire_copper", 1, "forge:glass/colorless", 1, "tfc:metal/rod/nickel", 1, "tfc:powder/graphite", 2, "components", "immersiveengineering:light_bulb", 1, "light_blub_from_tfc")
+	IE_blueprint_4("forge:wires/copper", 1, "forge:glass/colorless", 1, "tfc:metal/rod/nickel", 1, "tfc:powder/graphite", 2, "components", "immersiveengineering:light_bulb", 1, "light_blub_from_tfc")
+	IE_blueprint_4("forge:glass/colorless", 1, "forge:wires/copper", 1, "tfc:metal/sheet/nickel", 1, "minecraft:redstone", 1, "components", "immersiveengineering:electron_tube", 3, "vacuum_tube_from_tfc")
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').id('kubejs:metal_press/copper_wire');
 	

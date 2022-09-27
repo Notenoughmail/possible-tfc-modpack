@@ -32,7 +32,9 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'create:red_sand_paper', 'create:mechanical_pump', 'usclb:clipboardfolder', 'usclb:clipboard', 'toolbelt:pouch', 
 	'toolbelt:belt', 'immersiveengineering:glider', 'create:sticker', 'create:sticky_mechanical_piston', 
 	'immersiveengineering:light_bulb', 'immersiveengineering:pickaxe_steel', 'immersiveengineering:shovel_steel',
-	'immersiveengineering:axe_steel', 'immersiveengineering:hoe_steel', 'immersiveengineering:sword_steel'
+	'immersiveengineering:axe_steel', 'immersiveengineering:hoe_steel', 'immersiveengineering:sword_steel',
+	'createaddition:copper_wire', 'createaddition:iron_wire', 'createaddition:gold_wire', 'createaddition:copper_spool',
+	'createaddition:gold_spool', 'immersiveengineering:electron_tube'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
