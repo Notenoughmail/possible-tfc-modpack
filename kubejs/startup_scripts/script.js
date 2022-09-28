@@ -49,6 +49,7 @@ onEvent('block.registry', e => {
 		.model("kubejs:block/ore/small_lead")
 		.noCollision()
 		.renderType('cutout')
+		.waterlogged()
 		.box(5, 0, 5, 11, 2, 11, true)
 		.tagBlock('tfc:can_be_snow_piled')
 		.material('stone')

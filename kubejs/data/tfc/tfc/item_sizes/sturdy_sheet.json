@@ -1,6 +1,6 @@
 {
 	"ingredient": {
-		"item": "create:sturdy_sheets"
+		"item": "create:sturdy_sheet"
 	},
 	"size": "large",
 	"weight": "medium"
