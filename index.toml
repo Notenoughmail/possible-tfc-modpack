@@ -21,6 +21,16 @@ hash = "7a0f29c96b0596187c998b471c71bbd121ae49ac1ba82caf8f4db473d5af8eee"
 metafile = true
 
 [[files]]
+file = "mods/blaze-map.pw.toml"
+hash = "749ae23efc926d361508c153616199f3e777cc089e600d02cecd9de623de1c37"
+metafile = true
+
+[[files]]
+file = "mods/cartography.pw.toml"
+hash = "fb023cc613995637ec3541d58056bd451b3a36f19b86f01b4c7f9e36371a2edc"
+metafile = true
+
+[[files]]
 file = "mods/chunk-loaders.pw.toml"
 hash = "7c7301504c626b78f791eb968da055653f300f0ab4e9c04e92cfd4126b0e9b5e"
 metafile = true
@@ -37,7 +47,7 @@ metafile = true
 
 [[files]]
 file = "mods/create-crystal-clear.pw.toml"
-hash = "2a80aaa446ed5357832c4d2af71c41b952f9d23c99488d4a9878c0c4e9b2ec32"
+hash = "838236c345df41b53d50bc5da34ba575b79dcfbced35a117ce8543fc5bb571da"
 metafile = true
 
 [[files]]
@@ -92,7 +102,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "e26f9ead630042b83df476f88167dfad91d410e864cc469e469df4a20efd34e4"
+hash = "bb30a54444d55ff70b81fb17ffd81a49312d2d21a9cb3b4e64793ec2e337a79e"
 metafile = true
 
 [[files]]
@@ -113,11 +123,6 @@ metafile = true
 [[files]]
 file = "mods/jei.pw.toml"
 hash = "43bd658177949fbe857b5a50fc93fd9acf8cdbe04fedba41031e28f6d2b3a3e0"
-metafile = true
-
-[[files]]
-file = "mods/journeymap.pw.toml"
-hash = "f2491624aa308147b5c78cdbbe9e850430f2479a0bd0529a6b0261d2a082a45c"
 metafile = true
 
 [[files]]
@@ -232,7 +237,7 @@ metafile = true
 
 [[files]]
 file = "mods/water-flasks.pw.toml"
-hash = "6459915e601abd9664037c08fa343528086156b156344c3f33903f05d9c69950"
+hash = "20fd26cb5e08cd6a07d4164f134d9b2c2b1f3c50aa2d588233a61b3a91d6a4b8"
 metafile = true
 
 [[files]]
