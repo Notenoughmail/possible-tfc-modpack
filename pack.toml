@@ -1,12 +1,12 @@
-name = "TFC a New Age"
+name = "possible-tfc-pack"
 author = "Just Enough Mail"
-version = "0.0.1"
+version = "0.0.2"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "473ff25cfb049f6437a86d837c5f395f804cccabc1fd4b2ac86db50c8d263e5a"
+hash = "95bb2e2770d5e5a8bd41ee14f4da49b051ccc8e047942fc96673f6dc041fa7aa"
 
 [versions]
 forge = "40.1.80"

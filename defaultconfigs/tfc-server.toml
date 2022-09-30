@@ -284,7 +284,7 @@ farmlandMakesTheBestRaceTracks = false
 		foodDecayStackWindow = 6
 		#A multiplier for food decay, or expiration times. Larger values will result in naturally longer expiration times.
 		#Range: 0.0 ~ 1000.0
-		foodDecayModifier = 0.0
+		foodDecayModifier = 1.0
 		#Enables negative effects from carrying too many very heavy items, including potion effects.
 		enableOverburdening = true
 
