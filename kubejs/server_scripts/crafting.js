@@ -652,4 +652,13 @@ onEvent('recipes', e => {
 		S: 'tfc:glue',
 		A: 'create:mechanical_piston'
 	}).id('kubejs:shaped_crafting/sticky_mechanical_piston_from_tfc');
+	e.shaped('immersiveengineering:skyhook', [
+	'SS ',
+	'SA ',
+	' BB'
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'immersiveengineering:component_iron',
+		B: 'immersiveengineering:wooden_grip'
+	}).id('kubejs:shaped_crafting/skyhook_from_tfc');
 })
