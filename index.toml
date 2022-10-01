@@ -21,6 +21,11 @@ hash = "7a0f29c96b0596187c998b471c71bbd121ae49ac1ba82caf8f4db473d5af8eee"
 metafile = true
 
 [[files]]
+file = "mods/better-advancements.pw.toml"
+hash = "6280b2e15c30ff8ed504cae2a9dd9aa5bca660a9442e7f19517d2755155c37a9"
+metafile = true
+
+[[files]]
 file = "mods/blaze-map.pw.toml"
 hash = "749ae23efc926d361508c153616199f3e777cc089e600d02cecd9de623de1c37"
 metafile = true
