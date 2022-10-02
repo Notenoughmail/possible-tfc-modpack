@@ -454,89 +454,105 @@ onEvent('recipes', e => {
 	tfc_alloy("tfc:electrum", "tfc:gold", 0.4, 0.6, "tfc:silver", 0.4, 0.6, 'electrum_from_gold_silver')
 	tfc_alloy("tfc:constantan", "tfc:copper", 0.5, 0.6, "tfc:nickel", 0.4, 0.5, 'constantan_from_copper_nickel')
 	
-	let IE_blueprint_2 = (input_1, count_1, input_2, count_2, blueprint, result, count_out, id) => {
-		e.custom({
-			"type": "immersiveengineering:blueprint",
-			"inputs": [
-			{
-				"item": input_1,
-				"count": count_1
-			},
-			{
-				"tag": input_2,
-				"count": count_2
-			}
-			],
-			"category": blueprint,
-			"result": {
-				"item": result,
-				"count": count_out
-			}
-		}).id("kubejs:blueprint_" + blueprint + "/" + id)
-	}
-	let IE_blueprint_3 = (input_1, count_1, input_2, count_2, input_3, count_3, blueprint, result, count_out, id) => {
-		e.custom({
-			"type": "immersiveengineering:blueprint",
-			"inputs": [
-			{
-				"item": input_1,
-				"count": count_1
-			},
-			{
-				"tag": input_2,
-				"count": count_2
-			},
-			{
-				"item": input_3,
-				"count": count_3
-			}
-			],
-			"category": blueprint,
-			"result": {
-				"item": result,
-				"count": count_out
-			}
-		}).id("kubejs:blueprint_" + blueprint + "/" + id)
-	}
-	let IE_blueprint_4 = (input_1, count_1, input_2, count_2, input_3, count_3, input_4, count_4, blueprint, result, count_out, id) => {
-		e.custom({
-			"type": "immersiveengineering:blueprint",
-			"inputs": [
-			{
-				"tag": input_1,
-				"count": count_1
-			},
-			{
-				"tag": input_2,
-				"count": count_2
-			},
-			{
-				"item": input_3,
-				"count": count_3
-			},
-			{
-				"item": input_4,
-				"count": count_4
-			}
-			],
-			"category": blueprint,
-			"result": {
-				"item": result,
-				"count": count_out
-			}
-		}).id("kubejs:blueprint_" + blueprint + "/" + id)
-	}
-	/*IE_blueprint_n rules
-	* the tag|item section cannot be defined i nthe constructor for unknown reasons
-	* cannot use "minecraft:air" or "minecraft:empty" for reasons unknown, hence three constructors
-	* I would absoluely love have only one using some fancy JS magic, but, as with many of my dreams, I don't know how
-	*/
-	IE_blueprint_2("tfc:metal/sheet/wrought_iron", 2, "forge:ingots/copper", 1, "components", "immersiveengineering:component_iron", 1, "iron_component_from_wrought_iron_sheets")
-	IE_blueprint_2("tfc:metal/sheet/steel", 2, "forge:ingots/copper", 1, "components", "immersiveengineering:component_steel", 1, "steel_component_from_steel_sheets")
-	IE_blueprint_4("forge:wires/copper", 1, "forge:glass/colorless", 1, "tfc:metal/rod/nickel", 1, "tfc:powder/graphite", 2, "components", "immersiveengineering:light_bulb", 1, "light_blub_from_tfc")
-	IE_blueprint_4("forge:glass/colorless", 1, "forge:wires/copper", 1, "tfc:metal/sheet/nickel", 1, "minecraft:redstone", 1, "components", "immersiveengineering:electron_tube", 3, "vacuum_tube_from_tfc")
-	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').id('kubejs:metal_press/copper_wire');
+	
+	//blueprints
+	e.custom({
+		"type": "immersiveengineering:blueprint",
+		"inputs": [
+		{
+			"item": "tfc:metal/sheet/wrought_iron",
+			"count": 2
+		},
+		{
+			"item": "tfc:metal/ingot/copper",
+			"count": 1
+		},
+		{
+			"item": "create:cogwheel",
+			"count": 2
+		}
+		],
+		"category": "components",
+		"result": {
+			"item": "immersiveengineering:component_iron",
+			"count": 1
+		}
+		}).id('kubejs:blueprint_components/iron_component_from_wrought_iron_sheets');
+		e.custom({
+		"type": "immersiveengineering:blueprint",
+		"inputs": [
+		{
+			"item": "tfc:metal/sheet/steel",
+			"count": 2
+		},
+		{
+			"item": "tfc:metal/ingot/copper",
+			"count": 1
+		},
+		{
+			"item": "create:large_cogwheel",
+			"count": 2
+		}
+		],
+		"category": "components",
+		"result": {
+			"item": "immersiveengineering:component_steel",
+			"count": 1
+		}
+	}).id('kubejs:blueprint_components/steel_component_from_steel_sheets');
+	e.custom({
+		"type": "immersiveengineering:blueprint",
+		"inputs": [
+		{
+			"tag": "forge:glass/colorless",
+			"count": 1
+		},
+		{
+			"item": "immersiveengineering:wire_copper",
+			"count": 1
+		},
+		{
+			"item": "tfc:metal/sheet/nickel",
+			"count": 1
+		},
+		{
+			"item": "minecraft:redstone",
+			"count": 1
+		}
+		],
+		"category": "components",
+		"result": {
+			"item": "immersiveengineering:electron_tube",
+			"count": 3
+		}
+	}).id('kubejs:blueprint_components/vacuum_tube_from_tfc');
+	e.custom({
+		"type": "immersiveengineering:blueprint",
+		"inputs": [
+		{
+			"tag": "forge:glass/colorless",
+			"count": 1
+		},
+		{
+			"item": "immersiveengineering:wire_copper",
+			"count": 1
+		},
+		{
+			"item": "tfc:metal/rod/nickel",
+			"count": 1
+		},
+		{
+			"item": "tfc:powder/graphite",
+			"count": 2
+		}
+		],
+		"category": "components",
+		"result": {
+			"item": "immersiveengineering:light_bulb",
+			"count": 1
+		}
+	}).id('kubejs:blueprint_components/light_blub_from_tfc');
 	
 	e.custom({
 		"type": "tfc:barrel_sealed",
@@ -569,6 +585,8 @@ onEvent('recipes', e => {
 			"item": "kubejs:leather_pouch"
 		}
 	}).id('kubejs:leather_knapping/leather_pouch');
+	
+	//mixer
 	e.custom({
 		"type": "immersiveengineering:mixer",
 		"inputs": [
@@ -610,6 +628,8 @@ onEvent('recipes', e => {
 		},
 		"energy": 1600
 	}).id('kubejs:mixer/redstone_acid');
+	
+	//bottling
 	e.custom({
 		"type": "immersiveengineering:bottling_machine",
 		"results": [

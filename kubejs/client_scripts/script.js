@@ -28,6 +28,14 @@ onEvent('jei.hide.items', e => {
 	e.hide(/minecraft:.*_spawn_egg/)
 	e.hide(/tfc:spawn_egg.*/)
 	e.hide(/minecraft:.*candle/)
+	e.hide('minecraft:elytra')
+	e.hide('minecraft:oak_boats')
+	e.hide('minecraft:spruce_boat')
+	e.hide('minecraft:birch_boat')
+	e.hide('minecraft:jungle_boat')
+	e.hide('minecraft:acacia_boat')
+	e.hide('minecraft:dark_oak_boat')
+	e.hide('minecraft:furnace_minecart')
 })
 
 onEvent('jei.add.items', e => {
