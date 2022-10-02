@@ -330,8 +330,6 @@ onEvent('recipes', e => {
 	e.recipes.createItemApplication('create:mechanical_pump', ['create:fluid_pipe', 'create:cogwheel']).id('kubejs:item_application/mechanical_pump');
 	e.recipes.createItemApplication('create:smart_fluid_pipe', ['create:fluid_pipe', 'create:electron_tube']).id('kubejs:item_application/smart_fluid_pipe');
 	e.recipes.createItemApplication('create:fluid_valve', ['create:fluid_pipe', 'create:shaft']).id('kubejs:item_application/fluid_valve');
-	e.recipes.createItemApplication('create_crystal_clear:steel_tinted_glass_casing', ['create_crystal_clear:steel_glass_casing', 'tfc:gem/amethyst']).id('kubejs:item_application/steel_tinted_glass_casing');
-	e.recipes.createItemApplication('create_crystal_clear:steel_glass_casing', ['#forge:glass/colorless', 'tfc:metal/sheet/steel']).id('kubejs:item_application/steel_glass_casing');
 	
 	e.recipes.createSequencedAssembly(['create:sturdy_sheet'], 'tfc:metal/sheet/steel', [
 		e.recipes.createPressing('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet'),
@@ -376,7 +374,7 @@ onEvent('recipes', e => {
 		}).id('kubejs:weld/' + id)
 	}
 	tfc_welding_tag("tfc:metal/ingot/cast_iron", "forge:cobblestone/normal", 1, "create:andesite_alloy", 15, 'composite_compound_from_cast_iron')
-	tfc_welding_tag("tfc:metal/ingot/zinc", "forge:cobblestone/normal", 1, "create:andesite_alloy", 10, 'composite_compound_from_zinc')
+	tfc_welding_tag("tfc:metal/ingot/zinc", "forge:cobblestone/normal", 1, "create:andesite_alloy", 5, 'composite_compound_from_zinc')
 	tfc_welding_tag("tfc:metal/helmet/copper", "forge:glass", 2, "create:diving_helmet", 1, 'diving_helmet_from_tfc_copper_helmet')
 	tfc_welding_item("tfc:metal/sheet/copper", "tfc:metal/rod/copper", 1, "create:fluid_pipe", 6, 'fluid_pipe_from_tfc_coppers')
 	tfc_welding_item("tfc:fire_bricks", "tfc:metal/double_sheet/steel", 4, "immersiveengineering:alloybrick", 1, 'alloy_bricks_from_tfc')
@@ -632,6 +630,24 @@ onEvent('recipes', e => {
 		},
 		"energy": 1600
 	}).id('kubejs:mixer/redstone_acid');
+	e.custom({
+		"type": "immersiveengineering:mixer",
+		"inputs": [
+		{
+			"item": "tfc:jute_fiber",
+			"count": 3
+		}
+		],
+		"result": {
+			"fluid": "kubejs:jutecrete",
+			"amount": 250
+		},
+		"fluid": {
+			"tag": "immersiveengineering:concrete",
+			"amount": 250
+		},
+		"energy": 1600
+	}).id('kubejs:mixer/jutecrete');
 	
 	//bottling
 	e.custom({
@@ -649,4 +665,24 @@ onEvent('recipes', e => {
 			"amount": 250
 		}
 	}).id('kubejs:bottling/concrete');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:hempcrete",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "kubejs:jutecrete",
+			"amount": 250
+		}
+	}).id('kubejs:bottling/jutecrete');
+		
 })

@@ -25,6 +25,7 @@ onEvent('tags.items', e => {
 	e.add('tfc:kelp', 'tfc:plant/winged_kelp')
 	e.add('tfc:kelp', 'tfc:plant/leafy_kelp')
 	e.add('tfc:kelp', 'tfc:plant/giant_kelp_flower')
+	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:nugget_constantan')
@@ -111,4 +112,6 @@ onEvent('tags.fluids', e => {
 	e.add('forge:true_water', 'minecraft:flowing_water')/*a normal fluid would be fine*/
 	e.add('immersiveengineering:concrete', 'immersiveengineering:concrete')
 	e.add('immersiveengineering:concrete', 'immersiveengineering:concrete_flowing')
+	e.add('kubejs:jutecrete', 'kubejs:jutecrete')
+	e.add('kubejs:jutecrete', 'kubejs:flowing_jutecrete')
 })

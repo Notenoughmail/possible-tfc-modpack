@@ -16,7 +16,7 @@ onEvent('item.modification', e => {
 		item.maxDamage = 500
 	})
 	e.modify('create:diving_helmet', item => {
-		item.maxDamage = 153
+		item.maxDamage = 173
 	})
 	e.modify('create:diving_boots', item => {
 		item.maxDamage = 197
@@ -73,4 +73,9 @@ onEvent('fluid.registry', e => {
 		.thickTexture(0x4c5163)
 		.bucketColor(0x4c5163)
 		.displayName('Molten Lead')
+	e.create('jutecrete')
+		.thinTexture(0x34342f)
+		.bucketColor(0x34342f)
+		.displayName('Liquid Jutecrete')
+		.noBlock()
 })

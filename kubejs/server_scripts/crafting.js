@@ -753,8 +753,8 @@ onEvent('recipes', e => {
 		S: 'minecraft:redstone_torch',
 		A: 'minecraft:lever',
 		B: '#forge:smooth_stone'
-	});
-	e.shaped('create:powered_latch', [
+	}).id('kubejs:shaped_crafting/power_toggle_latch_from_tfc');
+	e.shaped('1x create:powered_latch', [
 	' S ',
 	'ABA',
 	'CCC'
@@ -763,5 +763,21 @@ onEvent('recipes', e => {
 		A: 'minecraft:redstone',
 		B: 'minecraft:lever',
 		C: '#forge:smooth_stone'
-	});
+	}).id('kubejs:shaped_crafting/powered_latch_from_tfc');
+	e.shaped('1x immersiveengineering:hemp_fabric', [
+	' SA',
+	'SAS',
+	'SA '
+	], {
+		S: 'tfc:jute_fiber',
+		A: '#forge:rods/wooden'
+	}).id('kubejs:shaped_crafting/tough_fabric_from_tfc');
+	e.shaped('2x immersiveengineering:wirecoil_structure_rope', [
+	' S ',
+	'SAS',
+	' S '
+	], {
+		S: 'tfc:jute_fiber',
+		A: '#forge:rods/wooden'
+	}).id('kubejs:shaped_crafting/jute_rope_coil_from_tfc');
 })

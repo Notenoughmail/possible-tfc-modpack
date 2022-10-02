@@ -5,12 +5,16 @@
 	"item.immersiveengineering.nugget_constantan": "Constantan Double Ingot",
 	"item.immersiveengineering.nugget_electrum": "Electrum Double Ingot",
 	"item.immersiveengineering.nugget_lead": "Lead Double Ingot",
+	"item.immersiveengineering.wirecoil_structure_rope": "Jute Rope Coil",
 	
 	"desc.immersiveengineering.info.blueprint.electrode": "Metal Working",
 	
 	"block.immersiveengineering.coil_lv": "Low-Voltage Coil",
 	"block.immersiveengineering.coil_mv": "Medium-Voltage Coil",
 	"block.immersiveengineering.coil_hv": "Hight-Voltage Coil",
+	"block.immersiveengineering.hempcrete": "Jutecrete",
+	"block.immersiveengineering.slab_hempcrete": "Jutecrete Slab",
+	"block.immersiveengineering.stairs_hempcrete": "Jutecrete Stairs",
 	
 	"fluid.immersiveengineering.concrete_flowing": "Liquid Concrete"
 }

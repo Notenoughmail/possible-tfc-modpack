@@ -39,7 +39,9 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'createaddition:accumulator', 'create:blaze_cake', 'create:blaze_cake_base', 'createaddition:spool',
 	/createaddition:.*_rod/, 'immersiveengineering:wirecoil_steel', 'immersiveengineering:wirecoil_redstone',
 	'immersiveengineering:coil_lv', 'immersiveengineering:coil_mv', 'immersiveengineering:coil_hv',
-	'create:powered_latch', 'create:powered_toggle_latch', /immersiveengineering:armor_steel_.*/
+	'create:powered_latch', 'create:powered_toggle_latch', /immersiveengineering:armor_steel_.*/,
+	/create:.*_sheet/, 'immersiveengineering:hemp_fabric', 'immersiveengineering:gunpowder_barrel',
+	'immersiveengineering:wirecoil_structure_rope'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -53,7 +55,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:blueprint/mold_bullet_casing', 'immersiveengineering:blueprint/mold_wire', 
 	'immersiveengineering:blueprint/mold_packing_4', 'immersiveengineering:blueprint/mold_packing_9', 
 	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch',
-	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum'
+	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum',
+	'create:milling/saddle', /immersiveengineering:crafting.*sheetmetal.*/, 'immersiveengineering:crafting/hempcrete'
 	]
 
 onEvent('recipes', e => {

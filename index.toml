@@ -236,6 +236,11 @@ hash = "1ea5457f97417e2231f4a5f2d9236499953afba1bab8ad9254dfa41b838ff79e"
 metafile = true
 
 [[files]]
+file = "mods/textrues-rubidium-options.pw.toml"
+hash = "d9502341fa600fa326bed44c420aef657638b15f1093caeeba6776301cf83f93"
+metafile = true
+
+[[files]]
 file = "mods/tool-belt.pw.toml"
 hash = "89146989947b537418d4a19f6735d5704080c38eebcc00fdd0890863b8cd8ae0"
 metafile = true
