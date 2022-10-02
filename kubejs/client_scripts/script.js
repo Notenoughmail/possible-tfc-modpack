@@ -36,6 +36,12 @@ onEvent('jei.hide.items', e => {
 	e.hide('minecraft:acacia_boat')
 	e.hide('minecraft:dark_oak_boat')
 	e.hide('minecraft:furnace_minecart')
+	e.hide('createaddition:redstone_relay')
+	e.hide('createaddition:connector')
+	e.hide(/createaddition:.*cake.*/)
+	e.hide('createaddition:zinc_sheet')
+	e.hide('createaddition:accumulator')
+	e.hide(/createaddition:.*_rod/)
 })
 
 onEvent('jei.add.items', e => {

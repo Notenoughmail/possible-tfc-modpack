@@ -454,7 +454,12 @@ onEvent('recipes', e => {
 	tfc_alloy("tfc:electrum", "tfc:gold", 0.4, 0.6, "tfc:silver", 0.4, 0.6, 'electrum_from_gold_silver')
 	tfc_alloy("tfc:constantan", "tfc:copper", 0.5, 0.6, "tfc:nickel", 0.4, 0.5, 'constantan_from_copper_nickel')
 	
-	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').id('kubejs:metal_press/copper_wire');
+	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
+	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
+	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_aluminum', '1x immersiveengineering:plate_aluminum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/aluminum_wire');
+	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_steel', '1x tfc:metal/sheet/steel', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/steel_wire');
+	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_lead', '1x immersiveengineering:plate_lead', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/lead_wire');
+	e.recipes.immersiveengineeringMetalPress('2x immersiveengineering:wire_electrum', '1x immersiveengineering:ingot_electrum', 'immersiveengineering:mold_wire').energy(2400).id('immersiveengineering:metalpress/wire_electrum');
 	
 	//blueprints
 	e.custom({

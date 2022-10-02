@@ -355,7 +355,7 @@ onEvent('recipes', e => {
 		S: 'minecraft:redstone_torch',
 		A: '#forge:dusts/redstone',
 		B: 'tfc:metal/sheet/brass',
-		C: '#forge:stone'
+		C: '#forge:smooth_stone'
 	}).id('kubejs:shaped_crafting/pulse_extender_from_tfc');
 	e.shaped('1x create:pulse_repeater', [
 	'SAB',
@@ -364,8 +364,8 @@ onEvent('recipes', e => {
 		S: '#forge:dusts/redstone',
 		A: 'tfc:metal/sheet/brass',
 		B: 'minecraft:redstone_torch',
-		C: '#forge:stone'
-	}).id('kubejs:shaped_crafting/pulse_extender_from_tfc');
+		C: '#forge:smooth_stone'
+	}).id('kubejs:shaped_crafting/pulse_repeater_from_tfc');
 	e.shaped('1x create:belt_connector', [
 	'SSS',
 	'SSS'
@@ -661,4 +661,107 @@ onEvent('recipes', e => {
 		A: 'immersiveengineering:component_iron',
 		B: 'immersiveengineering:wooden_grip'
 	}).id('kubejs:shaped_crafting/skyhook_from_tfc');
+	e.shaped('8x createaddition:spool', [
+	'S',
+	'A',
+	'S'
+	], {
+		S: ['#forge:treated_wood_slab', 'immersiveengineering:plate_duroplast'],
+		A: 'tfc:metal/rod/steel'
+	}).id('kubejs:shaped_crafting/spool_from_tfc');
+	e.shaped('1x immersiveengineering:wirecoil_copper', [
+	' S ',
+	'SAS',
+	' S '
+	], {
+		S: 'immersiveengineering:wire_copper',
+		A: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/lv_wire_coil');
+	e.shaped('1x immersiveengineering:wirecoil_electrum', [
+	' S ',
+	'SAS',
+	' S '
+	], {
+		S: 'immersiveengineering:wire_electrum',
+		A: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/mv_wire_coil');
+	e.shaped('1x immersiveengineering:wirecoil_steel', [
+	' S ',
+	'ABA',
+	' S '
+	], {
+		S: 'immersiveengineering:wire_steel',
+		A: 'immersiveengineering:wire_aluminum',
+		B: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/hv_wire_coil_standard');
+	e.shaped('1x immersiveengineering:wirecoil_steel', [
+	' S ',
+	'ABA',
+	' S '
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'immersiveengineering:wire_steel',
+		B: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/hv_wire_coil_rotated');
+	e.shaped('1x immersiveengineering:wirecoil_redstone', [
+	' S ',
+	'ABA',
+	' S '
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'minecraft:redstone',
+		B: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/redstone_wire_coil_standard');
+	e.shaped('1x immersiveengineering:wirecoil_redstone', [
+	' S ',
+	'ABA',
+	' S '
+	], {
+		S: 'minecraft:redstone',
+		A: 'immersiveengineering:wire_aluminum',
+		B: 'createaddition:spool'
+	}).id('kubejs:shaped_crafting/redstone_wire_coil_rotated');
+	e.shaped('1x immersiveengineering:coil_lv', [
+	'SSS',
+	'SAS',
+	'SSS'
+	], {
+		S: 'immersiveengineering:wirecoil_copper',
+		A: 'tfc:metal/tuyere/steel'
+	}).id('kubejs:shaped_crafting/lv_coil_from_tfc');
+	e.shaped('1x immersiveengineering:coil_mv', [
+	'SSS',
+	'SAS',
+	'SSS'
+	], {
+		S: 'immersiveengineering:wirecoil_electrum',
+		A: 'tfc:metal/tuyere/steel'
+	}).id('kubejs:shaped_crafting/mv_coil_from_tfc');
+	e.shaped('1x immersiveengineering:coil_hv', [
+	'SSS',
+	'SAS',
+	'SSS'
+	], {
+		S: 'immersiveengineering:wirecoil_steel',
+		A: 'tfc:metal/tuyere/steel'
+	}).id('kubejs:shaped_crafting/hv_coil_from_tfc');
+	e.shaped('1x create:powered_toggle_latch', [
+	' S ',
+	' A ',
+	'BBB'
+	], {
+		S: 'minecraft:redstone_torch',
+		A: 'minecraft:lever',
+		B: '#forge:smooth_stone'
+	});
+	e.shaped('create:powered_latch', [
+	' S ',
+	'ABA',
+	'CCC'
+	], {
+		S: 'minecraft:redstone_torch',
+		A: 'minecraft:redstone',
+		B: 'minecraft:lever',
+		C: '#forge:smooth_stone'
+	});
 })

@@ -34,7 +34,12 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:light_bulb', 'immersiveengineering:pickaxe_steel', 'immersiveengineering:shovel_steel',
 	'immersiveengineering:axe_steel', 'immersiveengineering:hoe_steel', 'immersiveengineering:sword_steel',
 	'createaddition:copper_wire', 'createaddition:iron_wire', 'createaddition:gold_wire', 'createaddition:copper_spool',
-	'createaddition:gold_spool', 'immersiveengineering:electron_tube', 'immersiveengineering:skyhook'
+	'createaddition:gold_spool', 'immersiveengineering:electron_tube', 'immersiveengineering:skyhook',
+	'createaddition:redstone_relay', 'createaddition:connector', 'createaddition:cake_base', 'createaddition:zinc_sheet',
+	'createaddition:accumulator', 'create:blaze_cake', 'create:blaze_cake_base', 'createaddition:spool',
+	/createaddition:.*_rod/, 'immersiveengineering:wirecoil_steel', 'immersiveengineering:wirecoil_redstone',
+	'immersiveengineering:coil_lv', 'immersiveengineering:coil_mv', 'immersiveengineering:coil_hv',
+	'create:powered_latch', 'create:powered_toggle_latch'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -47,7 +52,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:blueprint/mold_gear', 'immersiveengineering:blueprint/mold_rod', 
 	'immersiveengineering:blueprint/mold_bullet_casing', 'immersiveengineering:blueprint/mold_wire', 
 	'immersiveengineering:blueprint/mold_packing_4', 'immersiveengineering:blueprint/mold_packing_9', 
-	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch'
+	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch',
+	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum'
 	]
 
 onEvent('recipes', e => {
