@@ -1,0 +1,19 @@
+{
+	"ingredient": [
+	{
+		"item": "kubejs:ore/small_lead"
+	},
+	{
+		"item": "kubejs:ore/poor_lead"
+	},
+	{
+		"item": "kubejs:ore/normal_lead"
+	},
+	{
+		"item": "kubejs:ore/rich_lead"
+	}
+	],
+	"heat_capacity": 0.34,
+	"forging_temperature": 196.0,
+	"welding_temperature": 261.0
+}

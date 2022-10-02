@@ -2,7 +2,7 @@
 	"ingredient": {
 		"tag": "forge:ingots/lead"
 	},
-	"heat_capacity": 0.20,
+	"heat_capacity": 1.690,
 	"forging_temperature": 196.0,
 	"welding_temperature": 261.0
 }

@@ -634,15 +634,11 @@ onEvent('recipes', e => {
 		"type": "immersiveengineering:bottling_machine",
 		"results": [
 		{
-			"item": "immersiveengineering:concrete",
-			"count": 4
-		},
-		{
-			"item": "immersiveengineering:mold_packing_4"
+			"item": "immersiveengineering:concrete"
 		}
 		],
 		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+			"tag": "immersiveengineering:scaffoldings/steel"
 		},
 		"fluid": {
 			"tag": "immersiveengineering:concrete",

@@ -2,7 +2,7 @@
 	"ingredient": {
 		"tag": "forge:ingots/electrum"
 	},
-	"heat_capacity": 0.30,
+	"heat_capacity": 1.110,
 	"forging_temperature": 606,
 	"welding_temperature": 808
 }

@@ -2,7 +2,7 @@
 	"tier": 2,
 	"fluid": "kubejs:constantan",
 	"melt_temperature": 1266,
-	"heat_capacity": 0.30,
+	"specific_heat_capacity": 0.00370,
 	"ingots": {
 		"tag": "forge:ingots/constantan"
 	},
