@@ -39,7 +39,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'createaddition:accumulator', 'create:blaze_cake', 'create:blaze_cake_base', 'createaddition:spool',
 	/createaddition:.*_rod/, 'immersiveengineering:wirecoil_steel', 'immersiveengineering:wirecoil_redstone',
 	'immersiveengineering:coil_lv', 'immersiveengineering:coil_mv', 'immersiveengineering:coil_hv',
-	'create:powered_latch', 'create:powered_toggle_latch'
+	'create:powered_latch', 'create:powered_toggle_latch', /immersiveengineering:armor_steel_.*/
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 

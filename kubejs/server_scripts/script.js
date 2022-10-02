@@ -459,7 +459,6 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_aluminum', '1x immersiveengineering:plate_aluminum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/aluminum_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_steel', '1x tfc:metal/sheet/steel', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/steel_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_lead', '1x immersiveengineering:plate_lead', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/lead_wire');
-	e.recipes.immersiveengineeringMetalPress('2x immersiveengineering:wire_electrum', '1x immersiveengineering:ingot_electrum', 'immersiveengineering:mold_wire').energy(2400).id('immersiveengineering:metalpress/wire_electrum');
 	
 	//blueprints
 	e.custom({
