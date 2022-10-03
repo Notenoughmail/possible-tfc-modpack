@@ -4,14 +4,8 @@
 	"icon": "create:andesite_alloy",
 	"pages": [
 	{
-		"type": "tfc:welding_recipe",
-		"recipe": "kubejs:weld/composite_compound_from_cast_iron",
-		"text": "$(thing)Composite Material$() is a key component to progressing through Create. It can be made by $(l:mechanics/anvils#welding)Welding$() any cobblestone and either a $(thing)Cast Iron Ingot$() or..."
-	},
-	{
-		"type": "tfc:welding_recipe",
-		"recipe": "kubejs:weld/composite_compound_from_zinc",
-		"text": "...a $(thing)Zinc Ingot$(). Remember, Welding requires $(l:mechanics/flux)Flux$()."
+		"type": "patchouli:text",
+		"text": "$(thing)Composite Material$() is the most important component for progressing through Create. It can be made by $(l:mechanics/anvils#welding)Welding$() any cobblestone and a $(thing)Wrought Iron Ingot$() to make 15 or a $(thing)Zinc Ingot$() for jsut 5. Remember, Welding requires $(l:mechanics/flux)Flux$() to work."
 	}
 	],
 	"read_by_default": true

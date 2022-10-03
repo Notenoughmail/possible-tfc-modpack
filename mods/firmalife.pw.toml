@@ -1,0 +1,13 @@
+name = "FirmaLife"
+filename = "firmalife-1.1.10-beta.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "ab4090cd0909e03e10d3ad13b3c1f6cfd1c517a0"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4011893
+project-id = 453394

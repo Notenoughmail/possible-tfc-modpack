@@ -51,6 +51,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:gunpowder_barrel')
 	e.hide('immersiveengineering:hemp_fiber')
 	e.hide('immersiveengineering:seed')
+	e.hide(/create:crushed_.*/)
 })
 
 onEvent('jei.add.items', e => {

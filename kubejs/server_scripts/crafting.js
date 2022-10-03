@@ -396,7 +396,7 @@ onEvent('recipes', e => {
 	'A',
 	'S'
 	], {
-		S: 'tfc:metal/sheet/cast_iron',
+		S: 'tfc:metal/sheet/zinc',
 		A: '#tfc:barrels'
 	}).id('kubejs:shaped_crafting/item_vault_from_tfc'); //look back at this
 	e.shaped('1x create:propeller', [

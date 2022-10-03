@@ -86,6 +86,11 @@ hash = "5cc2822b0265c3f8202bf41f814e96fb6ff41c86159322bb05bb13d8babc0234"
 metafile = true
 
 [[files]]
+file = "mods/firmalife.pw.toml"
+hash = "02df0670e9ab268d98ccd46c6e892a03d5cd4d144ff1e58bb580ccd90f390e42"
+metafile = true
+
+[[files]]
 file = "mods/flywheel.pw.toml"
 hash = "83489107b570fe15f8e6dfb3993beb5241bc47ca4c2b8a6fe50d4b81697ca09c"
 metafile = true

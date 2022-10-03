@@ -1,0 +1,23 @@
+ {
+	"name": "Crusher",
+	"category": "patchouli:machinery",
+	"icon": "immersiveengineering:crusher",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "Crushing materials is an effective means of extracting $(thing)resources$() from them that would otherwise not be accessable. This industrial-sized $(thing)Crusher$() is a quick way of doing so. Power is supplied through the orange port on the top of the machine; the speed at which the machine works depends on how much power is supplied to it."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "immersiveengineering:crusher",
+		"title": "",
+		"link_recipes": false,
+		"text": "Applying a $(thing)redstone signal$() to the control panel at the front will halt the crusher's processing. This behavior can be inverted by using the $(thing)Engineer's Screwdriver$() on the same control panel"
+	},
+	{
+		"type": "patchouli:text",
+		"text": "The Crusher is formed by right clicking the central block of the side with $(thing)LV Accumulators$() and a $(thing)Redstone Engineering Block$() with a $(thing)Engineer's Hammer$().$(br2)$(br2)A $(thing)Schematic$() of the Crusher is avalable through the $(thing)Schematic Table$(). A material list can be found through the $(thing)Schematicannon$() or $(thing)JEI$()."
+	}			
+	],
+	"read_by_default": true
+}

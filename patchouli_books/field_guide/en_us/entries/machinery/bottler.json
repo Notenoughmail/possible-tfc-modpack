@@ -1,0 +1,27 @@
+{
+	"name": "Bottling Machine",
+	"category": "patchouli:machinery",
+	"icon": "immersiveengineering:bottling_machine",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "The $(thing)Bottling Machine$() fills fluids into containers. It can store up to 8 buckets of fluid, which is input through the blue ports on the metal tank."
+	},
+	{
+		"type": "patchouli:spotlight",
+		"item": "immersiveengineering:bottling_machine",
+		"title": "",
+		"link_recipes": false,
+		"text": "Generally, the Bottling Machine will be able to fill any fluid container with an available filled version. It will also accept other items that can store fluids, for instance the $(thing)Jerrycan$()."
+	},
+	{
+		"type": "patchouli:text",
+		"text": "The machine will hold onto any containers until it is completely full or the machine is no longer supplied with additional fluid. This can be disabled by sneak-right clicking the machine with an $(thing)Engineer's Hammer$()."
+	},
+	{
+		"type": "patchouli:text",
+		"text": "Additionally, the Bottling Machine can be used to create a variety of other items, such as $(thing)Duroplast$() and $(thing)Concrete Blocks$().$(br2)$(br2)A $(thing)Schematic$() of the Bottling Machine is avalable through the $(thing)Schematic Table$(). A material list can be found through the $(thing)Schematicannon$() or $(thing)JEI$()."
+	}
+	],
+	"read_by_default": true
+}
