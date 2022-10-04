@@ -425,6 +425,20 @@ onEvent('recipes', e => {
 	tfc_heating("kubejs:ore/poor_lead", "kubejs:lead", 15, 327, 'poor_lead_ore')
 	tfc_heating("kubejs:ore/rich_lead", "kubejs:lead", 35, 327, 'rich_lead_ore')
 	tfc_heating("kubejs:ore/small_lead", "kubejs:lead", 10, 327, 'small_lead_ore')
+	tfc_heating("firmalife:metal/ingot/chromium", "firmalife:metal/chromium", 100, 1907, 'chromium_ingot')
+	tfc_heating("firmalife:metal/sheet/chromium", "firmalife:metal/chromium", 200, 1907, 'chromium_sheet')
+	tfc_heating("firmalife:metal/double_ingot/chromium", "firmalife:metal/chromium", 200, 1907, 'chromium_double_ingot')
+	tfc_heating("firmalife:metal/double_sheet/chromium", "firmalife:metal/chromium", 400, 1907, 'chromium_double_sheet')
+	tfc_heating("firmalife:metal/rod/chromium", "firmalife:metal/chromium", 50, 1907, 'chromium_rod')
+	tfc_heating("firmalife:metal/ingot/stainless_steel", "firmalife:metal/stainless_steel", 100, 1540, 'stainless_steel_ingot')
+	tfc_heating("firmalife:metal/sheet/stainless_steel", "firmalife:metal/stainless_steel", 200, 1540, 'stainless_steel_sheet')
+	tfc_heating("firmalife:metal/double_ingot/stainless_steel", "firmalife:metal/stainless_steel", 200, 1540, 'stainless_steel_double_ingot')
+	tfc_heating("firmalife:metal/double_sheet/stainless_steel", "firmalife:metal/stainless_steel", 400, 1540, 'stainless_steel_double_sheet')
+	tfc_heating("firmalife:metal/rod/stainless_steel", "firmalife:metal/stainless_steel", 50, 1540, 'stainless_steel_rod')
+	tfc_heating("firmalife:ore/small_chromite", "firmalife:metal/chromium", 10, 1907, 'small_chromite')
+	tfc_heating("firmalife:ore/poor_chromite", "firmalife:metal/chromium", 15, 1907, 'poor_chromite')
+	tfc_heating("firmalife:ore/normal_chromite", "firmalife:metal/chromium", 25, 1907, 'normal_chromite')
+	tfc_heating("firmalife:ore/rich_chromite", "firmalife:metal/chromium", 35, 1907, 'rich_chromite')
 	
 	let tfc_casting = (input, amount, output, chance, id) => {
 		e.custom({

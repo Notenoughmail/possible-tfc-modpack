@@ -764,12 +764,12 @@ onEvent('recipes', e => {
 		B: 'minecraft:lever',
 		C: '#forge:smooth_stone'
 	}).id('kubejs:shaped_crafting/powered_latch_from_tfc');
-	e.shaped('1x immersiveengineering:hemp_fabric', [
+	e.shaped('4x immersiveengineering:hemp_fabric', [
 	' SA',
 	'SAS',
-	'SA '
+	'AS '
 	], {
-		S: 'tfc:jute_fiber',
+		S: 'tfc:burlap_cloth',
 		A: '#forge:rods/wooden'
 	}).id('kubejs:shaped_crafting/tough_fabric_from_tfc');
 	e.shaped('2x immersiveengineering:wirecoil_structure_rope', [

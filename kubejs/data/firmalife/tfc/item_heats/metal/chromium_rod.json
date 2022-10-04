@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"tag": "forge:rods/chromium"
+	},
+	"heat_capacity": 2.95,
+	"forging_temperature": 1144,
+	"welding_temperature": 1526
+}

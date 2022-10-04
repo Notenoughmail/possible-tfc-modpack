@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"tag": "forge:double_ingots/stainless_steel"
+	},
+	"heat_capacity": 13.133,
+	"forging_temperature": 924,
+	"welding_temperature": 1232
+}

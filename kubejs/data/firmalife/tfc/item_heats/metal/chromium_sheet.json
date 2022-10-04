@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"tag": "forge:sheets/chromium"
+	},
+	"heat_capacity": 11.8,
+	"forging_temperature": 1144,
+	"welding_temperature": 1526
+}
