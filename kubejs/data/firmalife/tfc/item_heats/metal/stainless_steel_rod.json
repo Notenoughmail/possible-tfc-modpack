@@ -2,7 +2,7 @@
 	"ingredient": {
 		"tag": "forge:rods/stainless_steel"
 	},
-	"heat_capacity": 3.283,
+	"heat_capacity": 1.263,
 	"forging_temperature": 924,
 	"welding_temperature": 1232
 }

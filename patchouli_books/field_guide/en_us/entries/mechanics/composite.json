@@ -5,7 +5,7 @@
 	"pages": [
 	{
 		"type": "patchouli:text",
-		"text": "$(thing)Composite Material$() is the most important component for progressing through Create. It can be made by $(l:mechanics/anvils#welding)Welding$() any cobblestone and a $(thing)Wrought Iron Ingot$() to make 15 or a $(thing)Zinc Ingot$() for jsut 5. Remember, Welding requires $(l:mechanics/flux)Flux$() to work."
+		"text": "$(thing)Composite Material$() is the most important component for progressing through Create. It can be made by $(l:mechanics/anvils#welding)Welding$() any cobblestone and a $(thing)Wrought Iron Ingot$() to make 15 or a $(thing)Zinc Ingot$() for just 5.$(br2)Remember, Welding requires $(l:mechanics/flux)Flux$() to work."
 	}
 	],
 	"read_by_default": true

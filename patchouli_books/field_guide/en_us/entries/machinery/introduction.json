@@ -45,7 +45,7 @@
 		"type": "patchouli:crafting",
 		"recipe": "kubejs:shaped_crafting/goggles_from_tfc",
 		"title": "Engineer's Goggles",
-		"text": "When worn, additional information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometer$(), $(thing)Stressometer$(), and fluid containers."
+		"text": "When wearing a pair of Engineer's Googles, additional information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometers$(), $(thing)Stressometers$(), and fluid containers."
 	}
 	],
 	"read_by_default": true

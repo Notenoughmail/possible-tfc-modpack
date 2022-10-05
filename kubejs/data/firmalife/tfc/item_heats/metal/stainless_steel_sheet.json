@@ -2,7 +2,7 @@
 	"ingredient": {
 		"tag": "forge:sheets/stainless_steel"
 	},
-	"heat_capacity": 13.133,
+	"heat_capacity": 5.0533,
 	"forging_temperature": 924,
 	"welding_temperature": 1232
 }

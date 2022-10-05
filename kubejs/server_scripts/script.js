@@ -472,6 +472,9 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_steel', '1x tfc:metal/sheet/steel', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/steel_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_lead', '1x immersiveengineering:plate_lead', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/lead_wire');
 	
+	e.recipes.immersiveengineeringCokeOven('2x immersiveengineering:coal_coke', '1x tfc:ore/bituminous_coal').creosote(250).time(9600).id('immersiveengineering:cokeoven/coke');
+	e.recipes.immersiveengineeringCokeOven('1x minecraft:charcoal', '2x #tfc:log_pile_logs').creosote(50).time(1200).id('immersiveengineering:cokeoven/charcoal');
+	
 	//blueprints
 	e.custom({
 		"type": "immersiveengineering:blueprint",
