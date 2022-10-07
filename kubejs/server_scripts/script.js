@@ -120,190 +120,139 @@ onEvent('recipes', e => {
 	], 'immersiveengineering:coal_coke').id('kubejs:crushing/coal_coke');
 	
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_copper').withChance(0.015),
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_hematite').withChance(0.015),
-	Item.of('tfc:ore/sulfur').withChance(0.007)
+	Item.of('tfc:rock/loose/rhyolite').withChance(0.45),
+	Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/rhyolite').id('kubejs:washing/rhyolite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_copper').withChance(0.015),
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_hematite').withChance(0.015),
-	Item.of('tfc:ore/sulfur').withChance(0.007)
+	Item.of('tfc:rock/loose/basalt').withChance(0.45),
+	Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/basalt').id('kubejs:washing/basalt');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_copper').withChance(0.015),
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_hematite').withChance(0.015),
-	Item.of('tfc:ore/sulfur').withChance(0.007)
+	Item.of('tfc:rock/loose/andesite').withChance(0.45),
+	Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/andesite').id('kubejs:washing/andesite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_copper').withChance(0.015),
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_hematite').withChance(0.015),
-	Item.of('tfc:ore/sulfur').withChance(0.007)
+	Item.of('tfc:ore/loose/dacite').withChance(0.45)
+	Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/dacite').id('kubejs:washing/dacite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.015),
-	Item.of('tfc:ore/small_cassiterite').withChance(0.015),
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/cryolite').withChance(0.01),
-	Item.of('tfc:ore/cinnabar').withChance(0.008),
-	Item.of('tfc:ore/sulfur').withChance(0.003),
-	Item.of('tfc:ore/topaz').withChance(0.003),
-	Item.of('tfc:ore/small_garnierite').withChance(0.002),
-	Item.of('tfc:ore/emerald').withChance(0.0002)
+	Item.of('tfc:rock/loose/granite').withChance(0.45)
+	Item.of('tfc:ore/cryolite').withChance(0.001),
+	Item.of('tfc:ore/cinnabar').withChance(0.0008),
+	Item.of('tfc:ore/sulfur').withChance(0.0003),
+	Item.of('tfc:ore/topaz').withChance(0.0003),
+	Item.of('tfc:ore/emerald').withChance(0.00002)
 	], 'tfc:rock/gravel/granite').id('kubejs:washing/granite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_cassiterite').withChance(0.015),
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/cinnabar').withChance(0.008),
-	Item.of('tfc:ore/sulfur').withChance(0.003),
-	Item.of('tfc:ore/small_garnierite').withChance(0.002),
-	Item.of('tfc:ore/emerald').withChance(0.0002)
+	Item.of('tfc:rock/loose/diorite').withChance(0.45)
+	Item.of('tfc:ore/cinnabar').withChance(0.0008),
+	Item.of('tfc:ore/sulfur').withChance(0.0003),
+	Item.of('tfc:ore/emerald').withChance(0.00002)
 	], 'tfc:rock/gravel/diorite').id('kubejs:washing/diorite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_gold').withChance(0.015),
-	Item.of('tfc:ore/small_cassiterite').withChance(0.015),
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_garnierite').withChance(0.015),
-	Item.of('tfc:ore/cinnabar').withChance(0.008),
-	Item.of('tfc:ore/sulfur').withChance(0.003),
-	Item.of('tfc:ore/emerald').withChance(0.0002),
-	Item.of('tfc:ore/diamond').withChance(0.0001)
+	Item.of('tfc:rock/loose/gabbro').withChance(0.45),
+	Item.of('tfc:ore/cinnabar').withChance(0.0008),
+	Item.of('tfc:ore/sulfur').withChance(0.0003),
+	Item.of('tfc:ore/emerald').withChance(0.00002),
+	Item.of('tfc:ore/diamond').withChance(0.00001)
 	], 'tfc:rock/gravel/gabbro').id('kubejs:washing/gabbro');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_native_silver').withChance(0.015),
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/graphite').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01)
+	Item.of('tfc:rock/loose/gneiss').withChance(0.45),
+	Item.of('tfc:ore/graphite').withChance(0.001),
+	Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/gneiss').id('kubejs:washing/gneiss');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.01),
-	Item.of('tfc:ore/graphite').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01),
-	Item.of('tfc:ore/cinnabar').withChance(0.008),
-	Item.of('tfc:ore/opal').withChance(0.0005)
+	Item.of('tfc:rock/loose/quartzite').withChance(0.45),
+	Item.of('tfc:ore/graphite').withChance(0.001),
+	Item.of('tfc:ore/gypsum').withChance(0.001),
+	Item.of('tfc:ore/cinnabar').withChance(0.0008),
+	Item.of('tfc:ore/opal').withChance(0.00005)
 	], 'tfc:rock/gravel/quartzite').id('kubejs:washing/quartzite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01)
+	Item.of('tfc:rock/loose/slate').withChance(0.45),
+	Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/slate').id('kubejs:washing/slate');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01),
-	Item.of('tfc:ore/small_malachite').withChance(0.005)
+	Item.of('tfc:rock/loose/phyllite').withChance(0.45),
+	Item.of('tfc:ore/gypsum').withChance(0.001),
 	], 'tfc:rock/gravel/phyllite').id('kubejs:washing/phyllite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.01),
-	Item.of('tfc:ore/graphite').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01)
+	Item.of('tfc:rock/loose/schist').withChance(0.45),
+	Item.of('tfc:ore/graphite').withChance(0.001),
+	Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/schist').id('kubejs:washing/schist');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_malachite').withChance(0.015),
-	Item.of('tfc:ore/small_sphalerite').withChance(0.015),
-	Item.of('tfc:ore/small_tetrahedrite').withChance(0.015),
-	Item.of('tfc:ore/small_native_silver').withChance(0.01),
-	Item.of('tfc:ore/graphite').withChance(0.01),
-	Item.of('tfc:ore/lapis_lazuli').withChance(0.01),
-	Item.of('tfc:ore/gypsum').withChance(0.01)
+	Item.of('tfc:rock/loose/marble').withChance(0.45),
+	Item.of('tfc:ore/graphite').withChance(0.001),
+	Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
+	Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/marble').id('kubejs:washing/marble');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/sylvite').withChance(0.01),
-	Item.of('tfc:ore/borax').withChance(0.01),
-	Item.of('tfc:ore/cinnabar').withChance(0.008),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002),
-	Item.of('tfc:ore/ruby').withChance(0.0005)
+	Item.of('tfc:rock/loose/shale').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/sylvite').withChance(0.001),
+	Item.of('tfc:ore/borax').withChance(0.001),
+	Item.of('tfc:ore/cinnabar').withChance(0.0008),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002),
+	Item.of('tfc:ore/ruby').withChance(0.00005)
 	], 'tfc:rock/gravel/shale').id('kubejs:washing/shale');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/sylvite').withChance(0.01),
-	Item.of('tfc:ore/borax').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002)
+	Item.of('tfc:rock/loose/claystone').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/sylvite').withChance(0.001),
+	Item.of('tfc:ore/borax').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/claystone').id('kubejs:washing/claystone');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_malachite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('kubejs:ore/small_lead').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/borax').withChance(0.01),
-	Item.of('tfc:ore/lapis_lazuli').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002),
-	Item.of('tfc:ore/gypsum').withChance(0.001),
-	Item.of('tfc:ore/ruby').withChance(0.0005)
+	Item.of('tfc:rock/loose/limestone').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/borax').withChance(0.001),
+	Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002),
+	Item.of('tfc:ore/gypsum').withChance(0.0001),
+	Item.of('tfc:ore/ruby').withChance(0.00005)
 	], 'tfc:rock/gravel/limestone').id('kubejs:washing/limestone');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002)
+	Item.of('tfc:rock/loose/conglomerate').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/conglomerate').id('kubejs:washing/conglomerate');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_malachite').withChance(0.005),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('kubejs:ore/small_lead').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002)
+	Item.of('tfc:rock/loose/dolomite').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/dolomite').id('kubejs:washing/dolomite');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/sylvite').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002)
+	Item.of('tfc:rock/loose/shert').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/sylvite').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/chert').id('kubejs:washing/chert');
 	e.recipes.createSplashing([
-	Item.of('tfc:ore/small_bismuthinite').withChance(0.015),
-	Item.of('tfc:ore/small_magnetite').withChance(0.015),
-	Item.of('tfc:ore/small_limonite').withChance(0.015),
-	Item.of('tfc:ore/kaolinite').withChance(0.01),
-	Item.of('tfc:ore/saltpeter').withChance(0.01),
-	Item.of('tfc:ore/halite').withChance(0.007),
-	Item.of('tfc:ore/small_malachite').withChance(0.005),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.004),
-	Item.of('tfc:ore/lignite').withChance(0.002)
+	Item.of('tfc:rock/loose/chalk').withChance(0.45),
+	Item.of('tfc:ore/kaolinite').withChance(0.001),
+	Item.of('tfc:ore/saltpeter').withChance(0.001),
+	Item.of('tfc:ore/halite').withChance(0.0007),
+	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/chalk').id('kubejs:washing/chalk');
 	
 	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot_from_tfc');
@@ -354,6 +303,8 @@ onEvent('recipes', e => {
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_steel'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel'])
 	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubes:sequenced_assembly/steel_component_from_steel_sheets');
+	
+	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	
 	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
 		e.custom({
