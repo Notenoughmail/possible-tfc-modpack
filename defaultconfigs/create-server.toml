@@ -314,7 +314,7 @@
 	#[in Buckets]
 	#The amount of liquid a tank can hold per block.
 	#Range: > 1
-	fluidTankCapacity = 8
+	fluidTankCapacity = 10
 	# 
 	#[in Blocks]
 	#The maximum height a fluid tank can reach.
