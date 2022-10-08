@@ -53,6 +53,10 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:seed')
 	e.hide(/create:crushed_.*/)
 	e.hide('%createbigcannons')
+	e.hide('createbigcannons:molten_bronze')
+	e.hide('createbigcannons:molten_cast_iron')
+	e.hide('createbigcannons:molten_nethersteel')
+	e.hide('createbigcannons:molten_steel')
 })
 
 onEvent('jei.add.items', e => {
