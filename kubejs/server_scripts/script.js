@@ -290,6 +290,15 @@ onEvent('recipes', e => {
 		A: 'immersiveengineering:insulating_glass',
 		B: 'create:electron_tube'
 	}).id('kubejs:mechanical_crafting/rs_engineering_from_tfc');
+	e.recipes.createMechanicalCrafting('3x immersiveengineering:blastbrick_reinforced', [
+	' SAS ',
+	'SBBBS',
+	' SAS '
+	], {
+		S: 'tfc:powder/coke',
+		A: 'immersiveengineering:sheetmetal_steel',
+		B: 'immersiveengineering:cokebrick'
+	}).id('kubejs:mechanical_crafting/blastbrick_from_tfc');
 	
 	e.recipes.createItemApplication('create:andesite_casing', ['#minecraft:logs', 'create:andesite_alloy']).id('kubejs:item_application/andesite_casing_from_tfc_logs');
 	e.recipes.createItemApplication('create:brass_casing', ['#minecraft:logs', 'tfc:metal/ingot/brass']).id('kubejs:item_application/brass_casing_from_tfc_logs');
@@ -597,6 +606,11 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:sawmill/electrum_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:sawmill/steel_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:sawmill/gold_sheetmetal');
+	
+	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
+	
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron').time(1200).id('kubejs:blastfurnace/steel_ingot');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_sheet/steel', 'tfc:metal/double_ingot/cast_iron').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
 	
 	//blueprints
 	e.custom({

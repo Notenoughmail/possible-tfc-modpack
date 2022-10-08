@@ -65,7 +65,9 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:crafting/storage_nickel_to_ingot_nickel', 'immersiveengineering:crafting/ingot_steel_to_storage_steel',
 	'immersiveengineering:crafting/storage_steel_to_ingot_steel', 'create:crafting/materials/brass_block_from_compacting',
 	'create:crafting/materials/zinc_block_from_compacting', 'create:crafting/materials/zinc_ingot_from_decompacting',
-	'minecraft:copper_block', 'minecraft:copper_ingot'
+	'minecraft:copper_block', 'minecraft:copper_ingot', 'immersiveengineering:alloysmelter/insulating_glass',
+	'immersiveengineering:arcfurnace/insulating_glass', 'immersiveengineering:crafting/blastbrick_reinforced',
+	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel'
 	]
 
 onEvent('recipes', e => {

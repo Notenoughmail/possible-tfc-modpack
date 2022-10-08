@@ -58,6 +58,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('createbigcannons:molten_nethersteel')
 	e.hide('createbigcannons:molten_steel')
 	e.hide('immersiveengineering:fluid_pump')
+	e.hide('minecraft:chorus_plant')
 })
 
 onEvent('jei.add.items', e => {

@@ -591,15 +591,6 @@ onEvent('recipes', e => {
 		A: 'minecraft:brick',
 		B: '#minecraft:coals'
 	}).id('kubejs:shaped_crafting/cokebrick');
-	e.shaped('1x immersiveengineering:blastbrick', [
-	'SAS',
-	'ABA',
-	'SAS'
-	], {
-		S: 'immersiveengineering:cokebrick',
-		A: 'tfc:powder/coke',
-		B: 'immersiveengineering:creosote_bucket'
-	}).id('kubejs:shaped_crafting/blastbrick');
 	e.shaped('1x usclb:clipboard', [
 	'S ',
 	'AB'
