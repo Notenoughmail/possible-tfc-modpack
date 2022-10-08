@@ -780,4 +780,19 @@ onEvent('recipes', e => {
 		S: 'tfc:jute_fiber',
 		A: '#forge:rods/wooden'
 	}).id('kubejs:shaped_crafting/jute_rope_coil_from_tfc');
+	e.shaped('1x create:basin', [
+	'S S',
+	'S S',
+	'ASA'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'tfc:metal/double_ingot/black_steel'
+	}).id('kubejs:shaped_crafting/basin_from_tfc');
+	e.shaped('1x createbigcannons:basin_foundry_lid', [
+	' S ',
+	'ASA'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'tfc:metal/ingot/black_steel'
+	}).id('kubejs:shaped_crafting/basin_foundry_lid_from_tfc');
 })

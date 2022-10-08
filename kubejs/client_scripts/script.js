@@ -52,7 +52,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:hemp_fiber')
 	e.hide('immersiveengineering:seed')
 	e.hide(/create:crushed_.*/)
-	e.hide(/createbigcannons:.*/)
+	e.hide('%createbigcannons')
 })
 
 onEvent('jei.add.items', e => {
