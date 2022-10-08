@@ -42,7 +42,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'create:powered_latch', 'create:powered_toggle_latch', /immersiveengineering:armor_steel_.*/,
 	/create:.*_sheet/, 'immersiveengineering:hemp_fabric', 'immersiveengineering:gunpowder_barrel',
 	'immersiveengineering:wirecoil_structure_rope', 'create:basin', 'immersiveengineering:light_engineering',
-	'immersiveengineering:rs_engineering', 'immersiveengineering:heavy_engineering'
+	'immersiveengineering:rs_engineering', 'immersiveengineering:heavy_engineering', 'immersiveengineering:fluid_pump',
+	'immersiveengineering:fluid_pipe'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
