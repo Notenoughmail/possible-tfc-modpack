@@ -806,5 +806,175 @@ onEvent('recipes', e => {
 			"amount": 250
 		}
 	}).id('kubejs:bottling/jutecrete');
-		
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "minecraft:gold_block",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:gold",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/gold_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_constantan",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:constantan",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/constantan_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "create:zinc_block",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:zinc",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/zinc_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "create:brass_block",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:brass",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/brass_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_electrum",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:electrum",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/electrum_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_steel",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:steel",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/steel_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_nickel",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:nickel",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/nickel_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_silver",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:silver",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/silver_block');
+	e.custom({
+		"type": "immersiveengineering:bottling_machine",
+		"results": [
+		{
+			"item": "immersiveengineering:storage_lead",
+			"count": 4
+		},
+		{
+			"item": "immersiveengineering:mold_packing_4"
+		}
+		],
+		"input": {
+			"item": "immersiveengineering:mold_packing_4"
+		},
+		"fluid": {
+			"tag": "tfc:lead",
+			"amount": 1000
+		}
+	}).id('kubejs:bottling/lead_block');
 })

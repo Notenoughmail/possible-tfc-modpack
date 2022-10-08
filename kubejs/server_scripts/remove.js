@@ -59,7 +59,12 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum',
 	'create:milling/saddle', /immersiveengineering:crafting.*sheetmetal.*/, 'immersiveengineering:crafting/hempcrete',
 	/firmalife:heating.*(ore|metal).*/, 'minecraft:charcoal', 'immersiveengineering:cokeoven/coke_block',
-	/createbigcannons:.*/
+	/createbigcannons:.*/, 'immersiveengineering:crafting/ingot_silver_to_storage_silver',
+	'immersiveengineering:craftng/storage_silver_to_ingot_silver', 'immersiveengineering:crafting/ingot_nickel_to_storage_nickel',
+	'immersiveengineering:crafting/storage_nickel_to_ingot_nickel', 'immersiveengineering:crafting/ingot_steel_to_storage_steel',
+	'immersiveengineering:crafting/storage_steel_to_ingot_steel', 'create:crafting/materials/brass_block_from_compacting',
+	'create:crafting/materials/zinc_block_from_compacting', 'create:crafting/materials/zinc_ingot_from_decompacting',
+	'minecraft:copper_block', 'minecraft:copper_ingot'
 	]
 
 onEvent('recipes', e => {
@@ -82,4 +87,6 @@ onEvent('recipes', e => {
 	e.remove({output: 'immersiveengineering:ingot_lead'});
 	e.remove({input: 'immersiveengineering:ingot_lead'});
 	e.remove({output: 'immersiveengineering:graphite_electrode', type: 'immersiveengineering:blueprint'});
+	e.remove({output: 'minecraft:gold_block'});
+	e.remove({input: 'minecraft:gold_block'});
 })
