@@ -272,6 +272,24 @@ onEvent('recipes', e => {
 		B: 'create:andesite_alloy',
 		C: 'tfc:metal/ingot/copper'
 	}).id('kubejs:mechanical_crafting/potato_cannon_from_tfc');
+	e.recipes.createMechanicalCrafting('2x immersiveengineering:light_engineering', [
+	'SAS',
+	'ABA',
+	'SAS'
+	], {
+		S: 'immersiveengineering:sheetmetal_steel',
+		A: 'immersiveengineering:component_iron',
+		B: 'create:gearbox'
+	}).id('kubejs:mechanical_crafting/light_engineering_from_tfc');
+	e.recipes.createMechanicalCrafting('2x immersiveengineering:rs_engineering', [
+	'SAS',
+	'ABA',
+	'SAS'
+	], {
+		S: 'tfc:metal/sheet/steel',
+		A: 'immersiveengineering:insulating_glass',
+		B: 'create:electron_tube'
+	}).id('kubejs:mechanical_crafting/rs_engineering_from_tfc');
 	
 	e.recipes.createItemApplication('create:andesite_casing', ['#minecraft:logs', 'create:andesite_alloy']).id('kubejs:item_application/andesite_casing_from_tfc_logs');
 	e.recipes.createItemApplication('create:brass_casing', ['#minecraft:logs', 'tfc:metal/ingot/brass']).id('kubejs:item_application/brass_casing_from_tfc_logs');
@@ -303,6 +321,11 @@ onEvent('recipes', e => {
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_steel'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel'])
 	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/steel_component_from_steel_sheets');
+	e.recipes.createSequencedAssembly(['immersiveengineering:heavy_engineering'], 'immersiveengineering:light_engineering', [
+		e.recipes.createFilling('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', Fluid.of('tfc:metal/black_steel', 100)]),
+		e.recipes.createDeploying('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', 'immersiveengineering:component_steel']),
+		e.recipes.createPressing('immersiveengineering:light_engineering', 'immersiveengineering:light_engineering')
+	]).transitionalItem('immersiveengineering:light_engineering').loops(4).id('kubejs:sequenced_assembly/heavy_engineering_from_black_steel');
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	
