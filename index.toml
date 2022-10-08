@@ -51,6 +51,11 @@ hash = "63f1ab59061fb126cdabf39d74329ca1831e761b798c8aed0a79816c3874c04c"
 metafile = true
 
 [[files]]
+file = "mods/create-big-cannons.pw.toml"
+hash = "a9173bf1468a8e8fa031a2a48a552583b4426a923c6d070255897e95273ce04c"
+metafile = true
+
+[[files]]
 file = "mods/create-crystal-clear.pw.toml"
 hash = "838236c345df41b53d50bc5da34ba575b79dcfbced35a117ce8543fc5bb571da"
 metafile = true
@@ -182,7 +187,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "2851510bf49ff6fbe45c8eece1864df1fb0f55b3b82ba3bb79f68d1c53577034"
+hash = "e173ab17f1383c80b4ec2fba5b7e7f9cd4503a097dff15eef13362644b3d47ee"
 metafile = true
 
 [[files]]

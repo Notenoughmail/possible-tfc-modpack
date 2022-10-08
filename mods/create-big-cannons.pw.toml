@@ -1,0 +1,13 @@
+name = "Create Big Cannons"
+filename = "createbigcannons-1.18.2-beta-0.4.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "cd5103f20f1b291f52286f0ac598ac203b5fd558"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4021234
+project-id = 646668

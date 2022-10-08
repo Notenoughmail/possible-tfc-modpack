@@ -52,6 +52,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:hemp_fiber')
 	e.hide('immersiveengineering:seed')
 	e.hide(/create:crushed_.*/)
+	e.hide(/createbigcannons:.*/)
 })
 
 onEvent('jei.add.items', e => {
@@ -75,6 +76,7 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:spider_eye')
 	e.add('minecraft:rotten_flesh')
 	e.add('minecraft:melon_slice')
+	e.add('createbigcannons:basin_foundry_lid')
 })
 
 onEvent('jei.remove.categories', e => {
@@ -98,4 +100,8 @@ onEvent('jei.remove.categories', e => {
 	e.remove('jeresources:dungeon')
 	e.remove('jeresources:enchantment')
 	e.remove('jeresources:villager')
+	e.remove('createbigcannons:incomplete_cannon_blocks')
+	e.remove('createbigcannons:cannon_casting')
+	e.remove('createbigcannons:cannon_boring')
+	e.remove('createbigcannons:built_up_heating')
 })

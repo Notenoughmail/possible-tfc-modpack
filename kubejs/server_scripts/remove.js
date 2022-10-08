@@ -57,7 +57,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch',
 	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum',
 	'create:milling/saddle', /immersiveengineering:crafting.*sheetmetal.*/, 'immersiveengineering:crafting/hempcrete',
-	/firmalife:heating.*(ore|metal).*/, 'minecraft:charcoal', 'immersiveengineering:cokeoven/coke_block'
+	/firmalife:heating.*(ore|metal).*/, 'minecraft:charcoal', 'immersiveengineering:cokeoven/coke_block',
+	/createbigcannons:.*/
 	]
 
 onEvent('recipes', e => {
