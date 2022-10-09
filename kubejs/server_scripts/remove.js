@@ -43,7 +43,9 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	/create:.*_sheet/, 'immersiveengineering:hemp_fabric', 'immersiveengineering:gunpowder_barrel',
 	'immersiveengineering:wirecoil_structure_rope', 'create:basin', 'immersiveengineering:light_engineering',
 	'immersiveengineering:rs_engineering', 'immersiveengineering:heavy_engineering', 'immersiveengineering:fluid_pump',
-	'immersiveengineering:fluid_pipe'
+	'immersiveengineering:fluid_pipe', 'immersiveengineering:dust_gold', 'immersiveengineering:dust_iron',
+	'immersiveengineering:dust_nickel', 'immersiveengineering:dust_silver', 'immersiveengineering:dust_lead',
+	'immersiveengineering:dust_copper', 'immersiveengineering:workbench'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -67,7 +69,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'create:crafting/materials/zinc_block_from_compacting', 'create:crafting/materials/zinc_ingot_from_decompacting',
 	'minecraft:copper_block', 'minecraft:copper_ingot', 'immersiveengineering:alloysmelter/insulating_glass',
 	'immersiveengineering:arcfurnace/insulating_glass', 'immersiveengineering:crafting/blastbrick_reinforced',
-	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel'
+	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel', 'immersiveengineering:blastfurnace/fuel_charcoal'
 	]
 
 onEvent('recipes', e => {
@@ -92,4 +94,5 @@ onEvent('recipes', e => {
 	e.remove({output: 'immersiveengineering:graphite_electrode', type: 'immersiveengineering:blueprint'});
 	e.remove({output: 'minecraft:gold_block'});
 	e.remove({input: 'minecraft:gold_block'});
+	e.remove({type: 'immersiveengineering:arcfurnace'});
 })

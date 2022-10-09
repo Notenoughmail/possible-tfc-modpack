@@ -13,7 +13,9 @@ let json_stones = ["granite", "diorite", "gabbro", "shale", "claystone", "limest
 
 let powders = ['amethyst', 'diamond', 'emerald', 'lapis_lazuli', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz', 'graphite', 'kaolinite', 'sylvite', 'sulfur', 'saltpeter']
 
-let metals = ['malachite', 'hematite', 'limonite']
+let coppers = ['native_copper', 'malachite', 'tetrahedrite']
+
+let irons = ['hematite', 'magnetite', 'limonite']
 
 let grains = ['barley', 'maize', 'oat', 'rye', 'rice', 'wheat']
 
@@ -32,12 +34,6 @@ onEvent('recipes', e => {
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
-	});
-	metals.forEach(metal => {
-		e.recipes.createCrushing(['2x tfc:powder/' + metal, Item.of('tfc:powder/' + metal).withChance(0.15)], 'tfc:ore/small_' + metal).id('kubejs:crushing/small_' + metal);
-		e.recipes.createCrushing(['3x tfc:powder/' + metal, Item.of('tfc:powder/' + metal).withChance(0.15)], 'tfc:ore/poor_' + metal).id('kubejs:crushing/poor_' + metal);
-		e.recipes.createCrushing(['5x tfc:powder/' + metal, Item.of('tfc:powder/' + metal).withChance(0.15)], 'tfc:ore/normal_' + metal).id('kubejs:crushing/normal_' + metal);
-		e.recipes.createCrushing(['7x tfc:powder/' + metal, Item.of('tfc:powder/' + metal).withChance(0.15)], 'tfc:ore/rich_' + metal).id('kubejs:crushing/rich_' + metal);
 	});
 	grains.forEach(grain => {
 		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
@@ -118,6 +114,94 @@ onEvent('recipes', e => {
 	'4x tfc:powder/coke',
 	Item.of('tfc:powder/coke').withChance(0.2)
 	], 'immersiveengineering:coal_coke').id('kubejs:crushing/coal_coke');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_gold').withChance(0.7)
+	], 'tfc:ore/rich_native_gold').id('kubejs:crushing/rich_gold_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_gold').withChance(0.5)
+	], 'tfc:ore/normal_native_gold').id('kubejs:crushing/normal_gold_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_gold').withChance(0.3)
+	], 'tfc:ore/poor_native_gold').id('kubejs:crushing/poor_gold_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_gold').withChance(0.2)
+	], 'tfc:ore/small_native_gold').id('kubejs:crushing/small_gold_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_nickel').withChance(0.7)
+	], 'tfc:ore/rich_garnierite').id('kubejs:crushing/rich_nickel_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_nickel').withChance(0.5)
+	], 'tfc:ore/normal_garnierite').id('kubejs:crushing/normal_nickel_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_nickel').withChance(0.3)
+	], 'tfc:ore/poor_garnierite').id('kubejs:crushing/poor_nickel_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_nickel').withChance(0.2)
+	], 'tfc:ore/small_garnierite').id('kubejs:crushing/small_nickel_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_silver').withChance(0.7)
+	], 'tfc:ore/rich_native_silver').id('kubejs:crushing/rich_silver_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_silver').withChance(0.5)
+	], 'tfc:ore/normal_native_silver').id('kubejs:crushing/normal_silver_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_silver').withChance(0.3)
+	], 'tfc:ore/poor_native_silver').id('kubejs:crushing/poor_silver_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_silver').withChance(0.2)
+	], 'tfc:ore/small_native_silver').id('kubejs:crushing/small_silver_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_lead').withChance(0.7)
+	], 'kubejs:ore/rich_lead').id('kubejs:crushing/rich_lead_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_lead').withChance(0.5)
+	], 'kubejs:ore/normal_lead').id('kubejs:crushing/normal_lead_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_lead').withChance(0.3)
+	], 'kubejs:ore/poor_lead').id('kubejs:crushing/poor_lead_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_lead').withChance(0.2)
+	], 'kubejs:ore/small_lead').id('kubejs:crushing/small_lead_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_iron').withChance(0.7)
+	], ['tfc:ore/rich_hematite', 'tfc:ore/rich_magnetite', 'tfc:ore/rich_limonite']).id('kubejs:crushing/rich_iron_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_iron').withChance(0.5)
+	], ['tfc:ore/normal_hematite', 'tfc:ore/normal_magnetite', 'tfc:ore/normal_limonite']).id('kubejs:crushing/normal_iron_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_iron').withChance(0.3)
+	], ['tfc:ore/poor_hematite', 'tfc:ore/poor_magnetite', 'tfc:ore/poor_limonite']).id('kubejs:crushing/poor_iron_dust');
+	e.recipes.createCrushing([
+	Item.of('immersiveengineering:dust_iron').withChance(0.2)
+	], ['tfc:ore/small_hematite', 'tfc:ore/small_magnetite', 'tfc:ore/small_limonite']).id('kubejs:crushing/small_iron_dust');
+	coppers.forEach(copper => {
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.7)
+		], 'tfc:ore/rich_' + copper).id('kubejs:crushing/rich_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.5)
+		], 'tfc:ore/normal_' + copper).id('kubejs:crushing/normal_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.3)
+		], 'tfc:ore/poor_' + copper).id('kubejs:crushing/poor_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.2)
+		], 'tfc:ore/small_' + copper).id('kubejs:crushing/small_copper_dust_' + copper);
+	})
+	irons.forEach(iron => {
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.7)
+		], 'tfc:ore/rich_' + iron).id('kubejs:crushing/rich_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.5)
+		], 'tfc:ore/normal_' + iron).id('kubejs:crushing/normal_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.3)
+		], 'tfc:ore/poor_' + iron).id('kubejs:crushing/poor_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.2)
+		], 'tfc:ore/small_' + iron).id('kubejs:crushing/small_iron_dust_' + iron);
+	})
 	
 	e.recipes.createSplashing([
 	Item.of('tfc:rock/loose/rhyolite').withChance(0.45),
@@ -610,7 +694,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
 	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron').time(1200).id('kubejs:blastfurnace/steel_ingot');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_sheet/steel', 'tfc:metal/double_ingot/cast_iron').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
 	
 	//blueprints
 	e.custom({

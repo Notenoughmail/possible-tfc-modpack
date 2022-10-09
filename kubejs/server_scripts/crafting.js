@@ -786,4 +786,13 @@ onEvent('recipes', e => {
 		S: 'create:andesite_alloy',
 		A: 'tfc:metal/ingot/black_steel'
 	}).id('kubejs:shaped_crafting/basin_foundry_lid_from_tfc');
+	e.shaped('1x immersiveengineering:workbench', [
+	'SAA',
+	'B C'
+	], {
+		S: 'tfc:metal/sheet/steel',
+		A: '#forge:treated_wood_slab',
+		B: 'immersiveengineering:craftingtable',
+		C: 'immersiveengineering:treated_fence'
+	}).id('kubejs:shaped_crafting/workbench_from_tfc');
 })
