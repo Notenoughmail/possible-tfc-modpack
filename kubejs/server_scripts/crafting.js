@@ -579,7 +579,7 @@ onEvent('recipes', e => {
 	'SAS',
 	' S '
 	], {
-		S: 'tfc:metal/sheet/cast_iron',
+		S: 'tfc:metal/sheet/black_steel',
 		A: 'tfc:thatch'
 	}).id('kubejs:shaped_crafting/empty_blaze_burner');
 	e.shaped('1x immersiveengineering:cokebrick', [
@@ -771,21 +771,12 @@ onEvent('recipes', e => {
 		S: 'tfc:jute_fiber',
 		A: '#forge:rods/wooden'
 	}).id('kubejs:shaped_crafting/jute_rope_coil_from_tfc');
-	e.shaped('1x create:basin', [
-	'S S',
-	'S S',
-	'ASA'
-	], {
-		S: 'create:andesite_alloy',
-		A: 'tfc:metal/double_ingot/black_steel'
-	}).id('kubejs:shaped_crafting/basin_from_tfc');
 	e.shaped('1x createbigcannons:basin_foundry_lid', [
 	' S ',
-	'ASA'
+	'SSS'
 	], {
-		S: 'create:andesite_alloy',
-		A: 'tfc:metal/ingot/black_steel'
-	}).id('kubejs:shaped_crafting/basin_foundry_lid_from_tfc');
+		S: 'create:andesite_alloy'
+	}).id('kubejs:shaped_crafting/basin_foundry_lid');
 	e.shaped('1x immersiveengineering:workbench', [
 	'SAA',
 	'B C'

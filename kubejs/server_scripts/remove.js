@@ -41,7 +41,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:coil_lv', 'immersiveengineering:coil_mv', 'immersiveengineering:coil_hv',
 	'create:powered_latch', 'create:powered_toggle_latch', /immersiveengineering:armor_steel_.*/,
 	/create:.*_sheet/, 'immersiveengineering:hemp_fabric', 'immersiveengineering:gunpowder_barrel',
-	'immersiveengineering:wirecoil_structure_rope', 'create:basin', 'immersiveengineering:light_engineering',
+	'immersiveengineering:wirecoil_structure_rope', 'immersiveengineering:light_engineering',
 	'immersiveengineering:rs_engineering', 'immersiveengineering:heavy_engineering', 'immersiveengineering:fluid_pump',
 	'immersiveengineering:fluid_pipe', 'immersiveengineering:dust_gold', 'immersiveengineering:dust_iron',
 	'immersiveengineering:dust_nickel', 'immersiveengineering:dust_silver', 'immersiveengineering:dust_lead',
@@ -94,5 +94,6 @@ onEvent('recipes', e => {
 	e.remove({output: 'immersiveengineering:graphite_electrode', type: 'immersiveengineering:blueprint'});
 	e.remove({output: 'minecraft:gold_block'});
 	e.remove({input: 'minecraft:gold_block'});
-	e.remove({type: 'immersiveengineering:arcfurnace'});
+	e.remove({type: 'immersiveengineering:arc_furnace'});
+	e.remove({type: 'immersiveengineering:crusher'});
 })

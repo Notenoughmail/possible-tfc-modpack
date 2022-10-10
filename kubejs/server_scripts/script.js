@@ -21,6 +21,8 @@ let grains = ['barley', 'maize', 'oat', 'rye', 'rice', 'wheat']
 
 let molds = ["plate", "gear", "rod", "bullet_casing", "wire", "packing_4", "packing_9", "unpacking"]
 
+let sands = ['brown', 'white', 'black', 'red', 'yellow', 'green', 'pink']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -30,7 +32,8 @@ onEvent('recipes', e => {
 		})
 	}
 	stones.forEach(rock => {
-		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock)
+		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
+		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
@@ -162,18 +165,6 @@ onEvent('recipes', e => {
 	e.recipes.createCrushing([
 	Item.of('immersiveengineering:dust_lead').withChance(0.2)
 	], 'kubejs:ore/small_lead').id('kubejs:crushing/small_lead_dust');
-	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_iron').withChance(0.7)
-	], ['tfc:ore/rich_hematite', 'tfc:ore/rich_magnetite', 'tfc:ore/rich_limonite']).id('kubejs:crushing/rich_iron_dust');
-	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_iron').withChance(0.5)
-	], ['tfc:ore/normal_hematite', 'tfc:ore/normal_magnetite', 'tfc:ore/normal_limonite']).id('kubejs:crushing/normal_iron_dust');
-	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_iron').withChance(0.3)
-	], ['tfc:ore/poor_hematite', 'tfc:ore/poor_magnetite', 'tfc:ore/poor_limonite']).id('kubejs:crushing/poor_iron_dust');
-	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_iron').withChance(0.2)
-	], ['tfc:ore/small_hematite', 'tfc:ore/small_magnetite', 'tfc:ore/small_limonite']).id('kubejs:crushing/small_iron_dust');
 	coppers.forEach(copper => {
 		e.recipes.createCrushing([
 		Item.of('immersiveengineering:dust_copper').withChance(0.7)
@@ -693,8 +684,22 @@ onEvent('recipes', e => {
 	
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron').time(1200).id('kubejs:blastfurnace/steel_ingot');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
+	
+	e.recipes.immersiveengineeringCrusher('3x minecraft:bone_meal', 'minecraft:bone'/*, [{chance: 0.35, output: 'minecraft:bone_meal'}]*/).id('kubejs:crusher/bone_meal');
+	e.recipes.immersiveengineeringCrusher('4x minecraft:clay_ball', 'minecraft:clay').id('immersiveengineering:crusher/clay');
+	e.recipes.immersiveengineeringCrusher('1x immersiveengineering:slag_gravel', 'immersiveengineering:slag').id('immersiveengineering:crusher/slag');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/white', 'tfc:rock/gravel/marble'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_white_from_marble');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/white', 'tfc:rock/gravel/chalk'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_white_from_chalk');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/brown', 'tfc:rock/gravel/conglomerate'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_brown_from_conglomerate');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/black', 'tfc:rock/gravel/basalt'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_black_from_basalt');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/red', 'tfc:rock/gravel/chert'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_red_from_chert');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/yellow', 'tfc:rock/gravel/limestone'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_yellow_from_limestone');
+	e.recipes.immersiveengineeringCrusher('1x tfc:sand/green', 'tfc:rock/gravel/schist'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_green_from_schist');
+	sands.forEach(sand => {
+		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
+	})//I don't know why the secondaries won't work, but they won't
 	
 	//blueprints
 	e.custom({

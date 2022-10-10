@@ -24,6 +24,9 @@ onEvent('item.modification', e => {
 	e.modify('#minecraft:boats', item => {
 		item.maxStackSize = 1
 	})
+	e.modify('minecraft:flint_and_steel', item => {
+		item.maxDamage = 537
+	})
 })
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
