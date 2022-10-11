@@ -23,6 +23,8 @@ let molds = ["plate", "gear", "rod", "bullet_casing", "wire", "packing_4", "pack
 
 let sands = ['brown', 'white', 'black', 'red', 'yellow', 'green', 'pink']
 
+let colors = ['black', 'red', 'green', 'brown', 'blue', 'purple', 'cyan', 'light_gray', 'gray', 'pink', 'lime', 'yellow', 'light_blue', 'magenta', 'orange', 'white']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -334,7 +336,7 @@ onEvent('recipes', e => {
 	
 	e.recipes.createDeploying('4x create:attribute_filter', ['tfc:silk_cloth', 'tfc:metal/ingot/brass']).id('kubejs:deploying/attribute_filter_from_tfc');
 	e.recipes.createDeploying('4x create:filter', ['tfc:silk_cloth', 'tfc:metal/ingot/wrought_iron']).id('kubejs:deploying/filter_from_tfc');
-	e.recipes.createDeploying('create:blaze_burner', ['create:empty_blaze_burner', '#minecraft:coals']).id('kubejs:deploying/blaze_burner_from_tfc');
+	e.recipes.createDeploying('create:blaze_burner', ['create:empty_blaze_burner', 'immersiveengineering:coal_coke']).id('kubejs:deploying/blaze_burner_from_tfc');
 	
 	e.recipes.createFilling('create:chocolate_glazed_berries', ['#tfc:foods/berries', Fluid.of('create:chocolate', 250)]).id('kubejs:filling/chocolate_berries_from_tfc_berries');
 	
@@ -664,6 +666,51 @@ onEvent('recipes', e => {
 	tfc_alloy("tfc:electrum", "tfc:gold", 0.4, 0.6, "tfc:silver", 0.4, 0.6, 'electrum_from_gold_silver')
 	tfc_alloy("tfc:constantan", "tfc:copper", 0.5, 0.6, "tfc:nickel", 0.4, 0.5, 'constantan_from_copper_nickel')
 	
+	let tfc_sealed_barrel_item = (input_item, input_fluid, amount, output, duration, id) => {
+		e.custom({
+			'type': 'tfc:barrel_sealed',
+			'input_item': {
+				'ingredient': {
+					'item': input_item
+				}
+			},
+			'input_fluid': {
+				'ingredient': {
+					'fluid': input_fluid
+				},
+				'amount': amount
+			},
+			'output_item': {
+				'item': output
+			},
+			'duration': duration
+		}).id('kubejs:barrel_sealed/' + id)
+	}
+	let tfc_sealed_barrel_tag = (input_tag, input_fluid, amount, output, duration, id) => {
+		e.custom({
+			'type': 'tfc:barrel_sealed',
+			'input_item': {
+				'ingredient': {
+					'tag': input_tag
+				}
+			},
+			'input_fluid': {
+				'ingredient': {
+					'fluid': input_fluid
+				},
+				'amount': amount
+			},
+			'output_item': {
+				'item': output
+			},
+			'duration': duration
+		}).id('kubejs:barrel_sealed/' + id)
+	}
+	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar');
+	colors.forEach(color => {
+		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
+	})
+	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_aluminum', '1x immersiveengineering:plate_aluminum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/aluminum_wire');
@@ -799,24 +846,6 @@ onEvent('recipes', e => {
 		}
 	}).id('kubejs:blueprint_components/light_blub_from_tfc');
 	
-	e.custom({
-		"type": "tfc:barrel_sealed",
-		"input_item": {
-			"ingredient": {
-				"item": "tfc:straw"
-			}
-		},
-		"input_fluid": {
-			"ingredient": {
-				"fluid": "tfc:vinegar"
-			},
-			"amount": 50
-		},
-		"output_item": {
-			"item": "minecraft:paper"
-		},
-		"duration": 1000
-	}).id('kubejs:sealed_barrel/paper_from_vinegar');
 	e.custom({
 		"type": "tfc:leather_knapping",
 		"pattern": [

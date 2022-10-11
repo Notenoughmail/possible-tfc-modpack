@@ -59,6 +59,14 @@ onEvent('jei.hide.items', e => {
 	e.hide('createbigcannons:molten_steel')
 	e.hide('immersiveengineering:fluid_pump')
 	e.hide('minecraft:chorus_plant')
+	e.hide('immersiveengineering:blastbrick')
+	e.hide('immersiveengineering:slab_blastbrick')
+	e.hide('immersiveengineering:blast_furnace')
+	e.hide('immersiveposts:stick_gold')
+	e.hide('immersiveposts:stick_copper')
+	e.hide('immersiveposts:stick_silver')
+	e.hide('immersiveposts:stick_nickel')
+	e.hide(/minecraft:.*_ore/)
 })
 
 onEvent('jei.add.items', e => {

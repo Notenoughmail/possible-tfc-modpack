@@ -6,6 +6,8 @@ let wire_metals = ['copper', 'lead', 'steel', 'electrum', 'aluminum']
 
 let partial_metal = ['copper', 'gold', 'silver', 'nickel']
 
+let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
+
 onEvent('recipes', e => {
 	//shapeless
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', 'tfc:metal/chain/wrought_iron', 'tfc:metal/chain/wrought_iron']).id('kubejs:shapeless_crafting/chain_drive_from_chains');
@@ -31,7 +33,7 @@ onEvent('recipes', e => {
 	blueprint('tfc:metal/tuyere/red_steel', Item.of('immersiveengineering:blueprint', '{blueprint:"electrode"}'), 'metal_working_blueprint')
 	
 	wire_metals.forEach(metal => {
-		e.shapeless('1x immersiveengineering:wire_' + metal, [['tfc:metal/rod/' + metal, 'immersiveengineering:stick_' + metal, 'immersiveposts:stick_' + metal], 'immersiveengineering:wirecutter']).id('kubejs:shapeless_crafting/cut_rod_to_wire_' + metal)
+		e.shapeless('2x immersiveengineering:wire_' + metal, [['tfc:metal/rod/' + metal, 'immersiveengineering:stick_' + metal, 'immersiveposts:stick_' + metal], 'immersiveengineering:wirecutter']).id('kubejs:shapeless_crafting/cut_rod_to_wire_' + metal)
 	})
 	//shaped
 	partial_metal.forEach(metal => {
@@ -42,6 +44,19 @@ onEvent('recipes', e => {
 			S: 'tfc:metal/ingot/' + metal,
 			A: 'tfc:metal/rod/' + metal,
 		}).id('kubejs:shaped_crafting/' + metal + '_fence_from_tfc')
+	})
+	sheetmetals.forEach(sheetmetal => {
+		e.shaped('6x immersiveengineering:slab_sheetmetal_' + sheetmetal, [
+		'SSS'
+		], {
+			S: 'immersiveengineering:sheetmetal_' + sheetmetal
+		}).id('immersiveengineering:sheetmetal_to_slab_' + sheetmetal);
+		e.shaped('1x immersiveengineering:sheetmetal_' + sheetmetal, [
+		'S',
+		'S'
+		], {
+			S: 'immersiveengineering:slab_sheetmetal_' + sheetmetal
+		}).id('immersiveengineering:slab_to_sheetmetal_' + sheetmetal);
 	})
 	
 	e.shaped('2x immersiveengineering:conveyor_basic', [
