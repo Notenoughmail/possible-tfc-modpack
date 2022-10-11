@@ -31,6 +31,11 @@ hash = "749ae23efc926d361508c153616199f3e777cc089e600d02cecd9de623de1c37"
 metafile = true
 
 [[files]]
+file = "mods/brb.pw.toml"
+hash = "f09c48274f679704f14eacebdba55e67b27d757a4ed8e072c2313574b0a389fc"
+metafile = true
+
+[[files]]
 file = "mods/cartography.pw.toml"
 hash = "fb023cc613995637ec3541d58056bd451b3a36f19b86f01b4c7f9e36371a2edc"
 metafile = true
@@ -38,6 +43,11 @@ metafile = true
 [[files]]
 file = "mods/chunk-loaders.pw.toml"
 hash = "7c7301504c626b78f791eb968da055653f300f0ab4e9c04e92cfd4126b0e9b5e"
+metafile = true
+
+[[files]]
+file = "mods/cloth-config.pw.toml"
+hash = "a57e921f872596ca19e411d726b7f6db272267f2dd712322a3168ce0f404fd44"
 metafile = true
 
 [[files]]
