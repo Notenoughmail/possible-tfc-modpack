@@ -9,8 +9,6 @@ console.info('Welcome to my personal hell!')
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
 
-let json_stones = ["granite", "diorite", "gabbro", "shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk", "rhyolite", "basalt", "andesite", "dacite", "quartzite", "slate", "phyllite", "schist", "gneiss", "marble"]
-
 let powders = ['amethyst', 'diamond', 'emerald', 'lapis_lazuli', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz', 'graphite', 'kaolinite', 'sylvite', 'sulfur', 'saltpeter']
 
 let coppers = ['native_copper', 'malachite', 'tetrahedrite']
@@ -19,7 +17,7 @@ let irons = ['hematite', 'magnetite', 'limonite']
 
 let grains = ['barley', 'maize', 'oat', 'rye', 'rice', 'wheat']
 
-let molds = ["plate", "gear", "rod", "bullet_casing", "wire", "packing_4", "packing_9", "unpacking"]
+let molds = ['plate', 'gear', 'rod', 'bullet_casing', 'wire', 'packing_4', 'packing_9', 'unpacking']
 
 let sands = ['brown', 'white', 'black', 'red', 'yellow', 'green', 'pink']
 
@@ -28,14 +26,17 @@ let colors = ['black', 'red', 'green', 'brown', 'blue', 'purple', 'cyan', 'light
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
-			"type": "tfc:collapse",
-			"ingredient": input,
-			"result": output
+			'type': 'tfc:collapse',
+			'ingredient': input,
+			'result': output
 		})
 	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
 		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
+		tfc_collapse('kubejs:ore/rich_lead/' + rock, 'kubejs:ore/normal_lead/' + rock)
+		tfc_collapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/poor_lead/' + rock)
+		tfc_collapse('kubejs:ore/poor_lead/' + rock, 'tfc:rock/cobble/' + rock)
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
@@ -43,26 +44,21 @@ onEvent('recipes', e => {
 	grains.forEach(grain => {
 		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
 	});
-	json_stones.forEach(stone => {
-		tfc_collapse("kubejs:ore/rich_lead/" + stone, "kubejs:ore/normal_lead/" + stone)
-		tfc_collapse("kubejs:ore/normal_lead/" + stone, "kubejs:ore/poor_lead/" + stone)
-		tfc_collapse("kubejs:ore/poor_lead/" + stone, "tfc:rock/cobble/" + stone)
-	})
 	
 	let mold_blueprint = (result) => {
 		e.custom({
-			"type": "immersiveengineering:blueprint",
-			"inputs": [
+			'type': 'immersiveengineering:blueprint',
+			'inputs': [
 			{
-				"item": "tfc:metal/double_sheet/black_steel"
+				'item': 'tfc:metal/double_sheet/black_steel'
 			},
 			{
-				"item": "immersiveengineering:wirecutter"
+				'item': 'immersiveengineering:wirecutter'
 			}
 			],
-			"category": "molds",
-			"result": {
-				"item": "immersiveengineering:mold_" + result
+			'category': 'molds',
+			'result': {
+				'item': 'immersiveengineering:mold_' + result
 			}
 		})
 	}
@@ -425,246 +421,246 @@ onEvent('recipes', e => {
 	
 	let cbc_melting = (input, output, amount, time, heat, id) => {
 		e.custom({
-			"type": "createbigcannons:melting",
-			"ingredients": [
+			'type': 'createbigcannons:melting',
+			'ingredients': [
 			{
-				"item": input
+				'item': input
 			}
 			],
-			"results": [
+			'results': [
 			{
-				"fluid": output,
-				"amount": amount
+				'fluid': output,
+				'amount': amount
 			}
 			],
-			"processingTime": time,
-			"heatRequirement": heat
+			'processingTime': time,
+			'heatRequirement': heat
 		}).id('kubejs:melting/' + id)
 	}//time = ((amount^1.003)*temp)/7 #divide by 1.5 when superheated
-	cbc_melting("kubejs:ore/rich_lead", "kubejs:lead", 35, 1653, "heated", 'rich_lead_heated')
-	cbc_melting("kubejs:ore/rich_lead", "kubejs:lead", 35, 1102, "superheated", 'rich_lead_superheated')
-	cbc_melting("kubejs:ore/poor_lead", "kubejs:lead", 15, 706, "heated", 'poor_lead_heated')
-	cbc_melting("kubejs:ore/poor_lead", "kubejs:lead", 15, 471, "superheated", 'poor_lead_superheated')
-	cbc_melting("kubejs:ore/normal_lead", "kubejs:lead", 25, 1179, "heated", 'normal_lead_heated')
-	cbc_melting("kubejs:ore/normal_lead", "kubejs:lead", 25, 786, "superheated", 'normal_lead_superheated')
-	cbc_melting("kubejs:ore/small_lead", "kubejs:lead", 10, 470, "heated", 'small_lead_heated')
-	cbc_melting("kubejs:ore/small_lead", "kubejs:lead", 10, 314, "superheated", 'small_lead_superheated')
-	cbc_melting("firmalife:ore/small_chromite", "firmalife:metal/chromium", 10, 2743, "heated", 'small_chromite_heated')
-	cbc_melting("firmalife:ore/small_chromite", "firmalife:metal/chromium", 10, 1829, "superheated", 'small_chromite_superheated')
-	cbc_melting("firmalife:ore/rich_chromite", "firmalife:metal/chromium", 35, 9637, "heated", 'rich_chromite_heated')
-	cbc_melting("firmalife:ore/rich_chromite", "firmalife:metal/chromium", 35, 6425, "superheated", 'rich_chromite_superheated')
-	cbc_melting("firmalife:ore/poor_chromite", "firmalife:metal/chromium", 15, 4120, "heated", 'poor_chromite_heated')
-	cbc_melting("firmalife:ore/poor_chromite", "firmalife:metal/chromium", 15, 2747, "superheated", 'poor_chromite_superheated')
-	cbc_melting("firmalife:ore/normal_chromite", "firmalife:metal/chromium", 25, 6877, "heated", 'normal_chromite_heated')
-	cbc_melting("firmalife:ore/normal_chromite", "firmalife:metal/chromium", 25, 4585, "superheated", 'normal_chromite_superheated')
-	cbc_melting("tfc:ore/small_tetrahedrite", "tfc:metal/copper", 10, 1554, "heated", 'small_tetrahedrite_heated')
-	cbc_melting("tfc:ore/small_tetrahedrite", "tfc:metal/copper", 10, 1036, "superheated", 'small_tetrahedrite_superheated')
-	cbc_melting("tfc:ore/rich_tetrahedrite", "tfc:metal/copper", 35, 5458, "heated", 'rich_tetrahedrite_heated')
-	cbc_melting("tfc:ore/rich_tetrahedrite", "tfc:metal/copper", 35, 3639, "superheated", 'rich_tetrahedrite_superheated')
-	cbc_melting("tfc:ore/poor_tetrahedrite", "tfc:metal/copper", 15, 2333, "heated", 'poor_tetrahedrite_heated')
-	cbc_melting("tfc:ore/poor_tetrahedrite", "tfc:metal/copper", 15, 1555, "superheated", 'poor_tetrahedrite_superheated')
-	cbc_melting("tfc:ore/normal_tetrahedrite", "tfc:metal/copper", 15, 3895, "heated", 'normal_tetrahedrite_heated')
-	cbc_melting("tfc:ore/normal_tetrahedrite", "tfc:metal/copper", 15, 2596, "superheated", 'normal_tetrahedrite_superheated')
-	cbc_melting("tfc:ore/small_malachite", "tfc:metal/copper", 10, 1554, "heated", 'small_malachite_heated')
-	cbc_melting("tfc:ore/small_malachite", "tfc:metal/copper", 10, 1036, "superheated", 'small_malachite_superheated')
-	cbc_melting("tfc:ore/rich_malachite", "tfc:metal/copper", 35, 5458, "heated", 'rich_malachite_heated')
-	cbc_melting("tfc:ore/rich_malachite", "tfc:metal/copper", 35, 3639, "superheated", 'rich_malachite_superheated')
-	cbc_melting("tfc:ore/poor_malachite", "tfc:metal/copper", 15, 2333, "heated", 'poor_malachite_heated')
-	cbc_melting("tfc:ore/poor_malachite", "tfc:metal/copper", 15, 1555, "superheated", 'poor_malachite_superheated')
-	cbc_melting("tfc:ore/normal_malachite", "tfc:metal/copper", 15, 3895, "heated", 'normal_malachite_heated')
-	cbc_melting("tfc:ore/normal_malachite", "tfc:metal/copper", 15, 2596, "superheated", 'normal_malachite_superheated')
-	cbc_melting("tfc:ore/small_native_copper", "tfc:metal/copper", 10, 1554, "heated", 'small_native_copper_heated')
-	cbc_melting("tfc:ore/small_native_copper", "tfc:metal/copper", 10, 1036, "superheated", 'small_native_copper_superheated')
-	cbc_melting("tfc:ore/rich_native_copper", "tfc:metal/copper", 35, 5458, "heated", 'rich_native_copper_heated')
-	cbc_melting("tfc:ore/rich_native_copper", "tfc:metal/copper", 35, 3639, "superheated", 'rich_native_copper_superheated')
-	cbc_melting("tfc:ore/poor_native_copper", "tfc:metal/copper", 15, 2333, "heated", 'poor_native_copper_heated')
-	cbc_melting("tfc:ore/poor_native_copper", "tfc:metal/copper", 15, 1555, "superheated", 'poor_native_copper_superheated')
-	cbc_melting("tfc:ore/normal_native_copper", "tfc:metal/copper", 15, 3895, "heated", 'normal_native_copper_heated')
-	cbc_melting("tfc:ore/normal_native_copper", "tfc:metal/copper", 15, 2596, "superheated", 'normal_native_copper_superheated')
-	cbc_melting("tfc:ore/small_sphalerite", "tfc:metal/zinc", 10, 604, "heated", 'small_sphalerite_heated')
-	cbc_melting("tfc:ore/small_sphalerite", "tfc:metal/zinc", 10, 403, "superheated", 'small_sphalerite_superheated')
-	cbc_melting("tfc:ore/rich_sphalerite", "tfc:metal/zinc", 35, 2123, "heated", 'rich_sphalerite_heated')
-	cbc_melting("tfc:ore/rich_sphalerite", "tfc:metal/zinc", 35, 1415, "superheated", 'rich_sphalerite_superheated')
-	cbc_melting("tfc:ore/poor_sphalerite", "tfc:metal/zinc", 15, 907, "heated", 'poor_sphalerite_heated')
-	cbc_melting("tfc:ore/poor_sphalerite", "tfc:metal/zinc", 15, 605, "superheated", 'poor_sphalerite_superheated')
-	cbc_melting("tfc:ore/normal_sphalerite", "tfc:metal/zinc", 15, 1515, "heated", 'normal_sphalerite_heated')
-	cbc_melting("tfc:ore/normal_sphalerite", "tfc:metal/zinc", 15, 1010, "superheated", 'normal_sphalerite_superheated')
-	cbc_melting("tfc:ore/small_limonite", "tfc:metal/cast_iron", 10, 2208, "heated", 'small_limonite_heated')
-	cbc_melting("tfc:ore/small_limonite", "tfc:metal/cast_iron", 10, 1472, "superheated", 'small_limonite_superheated')
-	cbc_melting("tfc:ore/rich_limonite", "tfc:metal/cast_iron", 35, 7757, "heated", 'rich_limonite_heated')
-	cbc_melting("tfc:ore/rich_limonite", "tfc:metal/cast_iron", 35, 5172, "superheated", 'rich_limonite_superheated')
-	cbc_melting("tfc:ore/poor_limonite", "tfc:metal/cast_iron", 15, 3316, "heated", 'poor_limonite_heated')
-	cbc_melting("tfc:ore/poor_limonite", "tfc:metal/cast_iron", 15, 2211, "superheated", 'poor_limonite_superheated')
-	cbc_melting("tfc:ore/normal_limonite", "tfc:metal/cast_iron", 15, 5535, "heated", 'normal_limonite_heated')
-	cbc_melting("tfc:ore/normal_limonite", "tfc:metal/cast_iron", 15, 3690, "superheated", 'normal_limonite_superheated')
-	cbc_melting("tfc:ore/small_magnetite", "tfc:metal/cast_iron", 10, 2208, "heated", 'small_magnetite_heated')
-	cbc_melting("tfc:ore/small_magnetite", "tfc:metal/cast_iron", 10, 1472, "superheated", 'small_magnetite_superheated')
-	cbc_melting("tfc:ore/rich_magnetite", "tfc:metal/cast_iron", 35, 7757, "heated", 'rich_magnetite_heated')
-	cbc_melting("tfc:ore/rich_magnetite", "tfc:metal/cast_iron", 35, 5172, "superheated", 'rich_magnetite_superheated')
-	cbc_melting("tfc:ore/poor_magnetite", "tfc:metal/cast_iron", 15, 3316, "heated", 'poor_magnetite_heated')
-	cbc_melting("tfc:ore/poor_magnetite", "tfc:metal/cast_iron", 15, 2211, "superheated", 'poor_magnetite_superheated')
-	cbc_melting("tfc:ore/normal_magnetite", "tfc:metal/cast_iron", 15, 5535, "heated", 'normal_magnetite_heated')
-	cbc_melting("tfc:ore/normal_magnetite", "tfc:metal/cast_iron", 15, 3690, "superheated", 'normal_magnetite_superheated')
-	cbc_melting("tfc:ore/small_hematite", "tfc:metal/cast_iron", 10, 2208, "heated", 'small_hematite_heated')
-	cbc_melting("tfc:ore/small_hematite", "tfc:metal/cast_iron", 10, 1472, "superheated", 'small_hematite_superheated')
-	cbc_melting("tfc:ore/rich_hematite", "tfc:metal/cast_iron", 35, 7757, "heated", 'rich_hematite_heated')
-	cbc_melting("tfc:ore/rich_hematite", "tfc:metal/cast_iron", 35, 5172, "superheated", 'rich_hematite_superheated')
-	cbc_melting("tfc:ore/poor_hematite", "tfc:metal/cast_iron", 15, 3316, "heated", 'poor_hematite_heated')
-	cbc_melting("tfc:ore/poor_hematite", "tfc:metal/cast_iron", 15, 2211, "superheated", 'poor_hematite_superheated')
-	cbc_melting("tfc:ore/normal_hematite", "tfc:metal/cast_iron", 15, 5535, "heated", 'normal_hematite_heated')
-	cbc_melting("tfc:ore/normal_hematite", "tfc:metal/cast_iron", 15, 3690, "superheated", 'normal_hematite_superheated')
-	cbc_melting("tfc:ore/small_garnierite", "tfc:metal/nickel", 10, 2090, "heated", 'small_garnierite_heated')
-	cbc_melting("tfc:ore/small_garnierite", "tfc:metal/nickel", 10, 1393, "superheated", 'small_garnierite_superheated')
-	cbc_melting("tfc:ore/rich_garnierite", "tfc:metal/nickel", 35, 7343, "heated", 'rich_garnierite_heated')
-	cbc_melting("tfc:ore/rich_garnierite", "tfc:metal/nickel", 35, 4895, "superheated", 'rich_garnierite_superheated')
-	cbc_melting("tfc:ore/poor_garnierite", "tfc:metal/nickel", 15, 3139, "heated", 'poor_garnierite_heated')
-	cbc_melting("tfc:ore/poor_garnierite", "tfc:metal/nickel", 15, 2093, "superheated", 'poor_garnierite_superheated')
-	cbc_melting("tfc:ore/normal_garnierite", "tfc:metal/nickel", 25, 5240, "heated", 'normal_garnierite_heated')
-	cbc_melting("tfc:ore/normal_garnierite", "tfc:metal/nickel", 25, 3493, "superheated", 'normal_garnierite_superheated')
-	cbc_melting("tfc:ore/small_bismuthinite", "tfc:metal/bismuth", 10, 388, "heated", 'small_bismuthinite_heated')
-	cbc_melting("tfc:ore/small_bismuthinite", "tfc:metal/bismuth", 10, 259, "superheated", 'small_bismuthinite_superheated')
-	cbc_melting("tfc:ore/rich_bismuthinite", "tfc:metal/bismuth", 35, 1364, "heated", 'rich_bismuthinite_heated')
-	cbc_melting("tfc:ore/rich_bismuthinite", "tfc:metal/bismuth", 35, 910, "superheated", 'rich_bismuthinite_superheated')
-	cbc_melting("tfc:ore/poor_bismuthinite", "tfc:metal/bismuth", 15, 583, "heated", 'poor_bismuthinite_heated')
-	cbc_melting("tfc:ore/poor_bismuthinite", "tfc:metal/bismuth", 15, 389, "superheated", 'poor_bismuthinite_superheated')
-	cbc_melting("tfc:ore/normal_bismuthinite", "tfc:metal/bismuth", 25, 974, "heated", 'normal_bismuthinite_heated')
-	cbc_melting("tfc:ore/normal_bismuthinite", "tfc:metal/bismuth", 25, 649, "superheated", 'normal_bismuthinite_superheated')
-	cbc_melting("tfc:ore/small_cassiterite", "tfc:metal/tin", 10, 331, "heated", 'small_cassiterite_heated')
-	cbc_melting("tfc:ore/small_cassiterite", "tfc:metal/tin", 10, 221, "superheated", 'small_cassiterite_superheated')
-	cbc_melting("tfc:ore/rich_cassiterite", "tfc:metal/tin", 35, 1162, "heated", 'rich_cassiterite_heated')
-	cbc_melting("tfc:ore/rich_cassiterite", "tfc:metal/tin", 35, 775, "superheated", 'rich_cassiterite_superheated')
-	cbc_melting("tfc:ore/poor_cassiterite", "tfc:metal/tin", 15, 497, "heated", 'poor_cassiterite_heated')
-	cbc_melting("tfc:ore/poor_cassiterite", "tfc:metal/tin", 15, 331, "superheated", 'poor_cassiterite_superheated')
-	cbc_melting("tfc:ore/normal_cassiterite", "tfc:metal/tin", 25, 829, "heated", 'normal_cassiterite_heated')
-	cbc_melting("tfc:ore/normal_cassiterite", "tfc:metal/tin", 25, 553, "superheated", 'normal_cassiterite_superheated')
-	cbc_melting("tfc:ore/small_native_silver", "tfc:metal/silver", 10, 1382, "heated", 'small_native_silver_heated')
-	cbc_melting("tfc:ore/small_native_silver", "tfc:metal/silver", 10, 922, "superheated", 'small_native_silver_superheated')
-	cbc_melting("tfc:ore/rich_native_silver", "tfc:metal/silver", 35, 4857, "heated", 'rich_native_silver_heated')
-	cbc_melting("tfc:ore/rich_native_silver", "tfc:metal/silver", 35, 3238, "superheated", 'rich_native_silver_superheated')
-	cbc_melting("tfc:ore/poor_native_silver", "tfc:metal/silver", 15, 2076, "heated", 'poor_native_silver_heated')
-	cbc_melting("tfc:ore/poor_native_silver", "tfc:metal/silver", 15, 1384, "superheated", 'poor_native_silver_superheated')
-	cbc_melting("tfc:ore/normal_native_silver", "tfc:metal/silver", 25, 3465, "heated", 'normal_native_silver_heated')
-	cbc_melting("tfc:ore/normal_native_silver", "tfc:metal/silver", 25, 2310, "superheated", 'normal_native_silver_superheated')
-	cbc_melting("tfc:ore/small_native_gold", "tfc:metal/gold", 10, 1525, "heated", 'small_native_gold_heated')
-	cbc_melting("tfc:ore/small_native_gold", "tfc:metal/gold", 10, 1017, "superheated", 'small_native_gold_superheated')
-	cbc_melting("tfc:ore/rich_native_gold", "tfc:metal/gold", 35, 5357, "heated", 'rich_native_gold_heated')
-	cbc_melting("tfc:ore/rich_native_gold", "tfc:metal/gold", 35, 3571, "superheated", 'rich_native_gold_superheated')
-	cbc_melting("tfc:ore/poor_native_gold", "tfc:metal/gold", 15, 2290, "heated", 'poor_native_gold_heated')
-	cbc_melting("tfc:ore/poor_native_gold", "tfc:metal/gold", 15, 1527, "superheated", 'poor_native_gold_superheated')
-	cbc_melting("tfc:ore/normal_native_gold", "tfc:metal/gold", 25, 3822, "heated", 'normal_native_gold_heated')
-	cbc_melting("tfc:ore/normal_native_gold", "tfc:metal/gold", 25, 2548, "superheated", 'normal_native_gold_superheated')
+	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1653, 'heated', 'rich_lead_heated')
+	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1102, 'superheated', 'rich_lead_superheated')
+	cbc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 706, 'heated', 'poor_lead_heated')
+	cbc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 471, 'superheated', 'poor_lead_superheated')
+	cbc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 1179, 'heated', 'normal_lead_heated')
+	cbc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 786, 'superheated', 'normal_lead_superheated')
+	cbc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 470, 'heated', 'small_lead_heated')
+	cbc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 314, 'superheated', 'small_lead_superheated')
+	cbc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 2743, 'heated', 'small_chromite_heated')
+	cbc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1829, 'superheated', 'small_chromite_superheated')
+	cbc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 9637, 'heated', 'rich_chromite_heated')
+	cbc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 6425, 'superheated', 'rich_chromite_superheated')
+	cbc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 4120, 'heated', 'poor_chromite_heated')
+	cbc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 2747, 'superheated', 'poor_chromite_superheated')
+	cbc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 6877, 'heated', 'normal_chromite_heated')
+	cbc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 4585, 'superheated', 'normal_chromite_superheated')
+	cbc_melting('tfc:ore/small_tetrahedrite', 'tfc:metal/copper', 10, 1554, 'heated', 'small_tetrahedrite_heated')
+	cbc_melting('tfc:ore/small_tetrahedrite', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_tetrahedrite_superheated')
+	cbc_melting('tfc:ore/rich_tetrahedrite', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_tetrahedrite_heated')
+	cbc_melting('tfc:ore/rich_tetrahedrite', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_tetrahedrite_superheated')
+	cbc_melting('tfc:ore/poor_tetrahedrite', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_tetrahedrite_heated')
+	cbc_melting('tfc:ore/poor_tetrahedrite', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_tetrahedrite_superheated')
+	cbc_melting('tfc:ore/normal_tetrahedrite', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_tetrahedrite_heated')
+	cbc_melting('tfc:ore/normal_tetrahedrite', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_tetrahedrite_superheated')
+	cbc_melting('tfc:ore/small_malachite', 'tfc:metal/copper', 10, 1554, 'heated', 'small_malachite_heated')
+	cbc_melting('tfc:ore/small_malachite', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_malachite_superheated')
+	cbc_melting('tfc:ore/rich_malachite', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_malachite_heated')
+	cbc_melting('tfc:ore/rich_malachite', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_malachite_superheated')
+	cbc_melting('tfc:ore/poor_malachite', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_malachite_heated')
+	cbc_melting('tfc:ore/poor_malachite', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_malachite_superheated')
+	cbc_melting('tfc:ore/normal_malachite', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_malachite_heated')
+	cbc_melting('tfc:ore/normal_malachite', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_malachite_superheated')
+	cbc_melting('tfc:ore/small_native_copper', 'tfc:metal/copper', 10, 1554, 'heated', 'small_native_copper_heated')
+	cbc_melting('tfc:ore/small_native_copper', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_native_copper_superheated')
+	cbc_melting('tfc:ore/rich_native_copper', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_native_copper_heated')
+	cbc_melting('tfc:ore/rich_native_copper', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_native_copper_superheated')
+	cbc_melting('tfc:ore/poor_native_copper', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_native_copper_heated')
+	cbc_melting('tfc:ore/poor_native_copper', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_native_copper_superheated')
+	cbc_melting('tfc:ore/normal_native_copper', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_native_copper_heated')
+	cbc_melting('tfc:ore/normal_native_copper', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_native_copper_superheated')
+	cbc_melting('tfc:ore/small_sphalerite', 'tfc:metal/zinc', 10, 604, 'heated', 'small_sphalerite_heated')
+	cbc_melting('tfc:ore/small_sphalerite', 'tfc:metal/zinc', 10, 403, 'superheated', 'small_sphalerite_superheated')
+	cbc_melting('tfc:ore/rich_sphalerite', 'tfc:metal/zinc', 35, 2123, 'heated', 'rich_sphalerite_heated')
+	cbc_melting('tfc:ore/rich_sphalerite', 'tfc:metal/zinc', 35, 1415, 'superheated', 'rich_sphalerite_superheated')
+	cbc_melting('tfc:ore/poor_sphalerite', 'tfc:metal/zinc', 15, 907, 'heated', 'poor_sphalerite_heated')
+	cbc_melting('tfc:ore/poor_sphalerite', 'tfc:metal/zinc', 15, 605, 'superheated', 'poor_sphalerite_superheated')
+	cbc_melting('tfc:ore/normal_sphalerite', 'tfc:metal/zinc', 15, 1515, 'heated', 'normal_sphalerite_heated')
+	cbc_melting('tfc:ore/normal_sphalerite', 'tfc:metal/zinc', 15, 1010, 'superheated', 'normal_sphalerite_superheated')
+	cbc_melting('tfc:ore/small_limonite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_limonite_heated')
+	cbc_melting('tfc:ore/small_limonite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_limonite_superheated')
+	cbc_melting('tfc:ore/rich_limonite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_limonite_heated')
+	cbc_melting('tfc:ore/rich_limonite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_limonite_superheated')
+	cbc_melting('tfc:ore/poor_limonite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_limonite_heated')
+	cbc_melting('tfc:ore/poor_limonite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_limonite_superheated')
+	cbc_melting('tfc:ore/normal_limonite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_limonite_heated')
+	cbc_melting('tfc:ore/normal_limonite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_limonite_superheated')
+	cbc_melting('tfc:ore/small_magnetite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_magnetite_heated')
+	cbc_melting('tfc:ore/small_magnetite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_magnetite_superheated')
+	cbc_melting('tfc:ore/rich_magnetite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_magnetite_heated')
+	cbc_melting('tfc:ore/rich_magnetite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_magnetite_superheated')
+	cbc_melting('tfc:ore/poor_magnetite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_magnetite_heated')
+	cbc_melting('tfc:ore/poor_magnetite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_magnetite_superheated')
+	cbc_melting('tfc:ore/normal_magnetite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_magnetite_heated')
+	cbc_melting('tfc:ore/normal_magnetite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_magnetite_superheated')
+	cbc_melting('tfc:ore/small_hematite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_hematite_heated')
+	cbc_melting('tfc:ore/small_hematite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_hematite_superheated')
+	cbc_melting('tfc:ore/rich_hematite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_hematite_heated')
+	cbc_melting('tfc:ore/rich_hematite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_hematite_superheated')
+	cbc_melting('tfc:ore/poor_hematite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_hematite_heated')
+	cbc_melting('tfc:ore/poor_hematite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_hematite_superheated')
+	cbc_melting('tfc:ore/normal_hematite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_hematite_heated')
+	cbc_melting('tfc:ore/normal_hematite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_hematite_superheated')
+	cbc_melting('tfc:ore/small_garnierite', 'tfc:metal/nickel', 10, 2090, 'heated', 'small_garnierite_heated')
+	cbc_melting('tfc:ore/small_garnierite', 'tfc:metal/nickel', 10, 1393, 'superheated', 'small_garnierite_superheated')
+	cbc_melting('tfc:ore/rich_garnierite', 'tfc:metal/nickel', 35, 7343, 'heated', 'rich_garnierite_heated')
+	cbc_melting('tfc:ore/rich_garnierite', 'tfc:metal/nickel', 35, 4895, 'superheated', 'rich_garnierite_superheated')
+	cbc_melting('tfc:ore/poor_garnierite', 'tfc:metal/nickel', 15, 3139, 'heated', 'poor_garnierite_heated')
+	cbc_melting('tfc:ore/poor_garnierite', 'tfc:metal/nickel', 15, 2093, 'superheated', 'poor_garnierite_superheated')
+	cbc_melting('tfc:ore/normal_garnierite', 'tfc:metal/nickel', 25, 5240, 'heated', 'normal_garnierite_heated')
+	cbc_melting('tfc:ore/normal_garnierite', 'tfc:metal/nickel', 25, 3493, 'superheated', 'normal_garnierite_superheated')
+	cbc_melting('tfc:ore/small_bismuthinite', 'tfc:metal/bismuth', 10, 388, 'heated', 'small_bismuthinite_heated')
+	cbc_melting('tfc:ore/small_bismuthinite', 'tfc:metal/bismuth', 10, 259, 'superheated', 'small_bismuthinite_superheated')
+	cbc_melting('tfc:ore/rich_bismuthinite', 'tfc:metal/bismuth', 35, 1364, 'heated', 'rich_bismuthinite_heated')
+	cbc_melting('tfc:ore/rich_bismuthinite', 'tfc:metal/bismuth', 35, 910, 'superheated', 'rich_bismuthinite_superheated')
+	cbc_melting('tfc:ore/poor_bismuthinite', 'tfc:metal/bismuth', 15, 583, 'heated', 'poor_bismuthinite_heated')
+	cbc_melting('tfc:ore/poor_bismuthinite', 'tfc:metal/bismuth', 15, 389, 'superheated', 'poor_bismuthinite_superheated')
+	cbc_melting('tfc:ore/normal_bismuthinite', 'tfc:metal/bismuth', 25, 974, 'heated', 'normal_bismuthinite_heated')
+	cbc_melting('tfc:ore/normal_bismuthinite', 'tfc:metal/bismuth', 25, 649, 'superheated', 'normal_bismuthinite_superheated')
+	cbc_melting('tfc:ore/small_cassiterite', 'tfc:metal/tin', 10, 331, 'heated', 'small_cassiterite_heated')
+	cbc_melting('tfc:ore/small_cassiterite', 'tfc:metal/tin', 10, 221, 'superheated', 'small_cassiterite_superheated')
+	cbc_melting('tfc:ore/rich_cassiterite', 'tfc:metal/tin', 35, 1162, 'heated', 'rich_cassiterite_heated')
+	cbc_melting('tfc:ore/rich_cassiterite', 'tfc:metal/tin', 35, 775, 'superheated', 'rich_cassiterite_superheated')
+	cbc_melting('tfc:ore/poor_cassiterite', 'tfc:metal/tin', 15, 497, 'heated', 'poor_cassiterite_heated')
+	cbc_melting('tfc:ore/poor_cassiterite', 'tfc:metal/tin', 15, 331, 'superheated', 'poor_cassiterite_superheated')
+	cbc_melting('tfc:ore/normal_cassiterite', 'tfc:metal/tin', 25, 829, 'heated', 'normal_cassiterite_heated')
+	cbc_melting('tfc:ore/normal_cassiterite', 'tfc:metal/tin', 25, 553, 'superheated', 'normal_cassiterite_superheated')
+	cbc_melting('tfc:ore/small_native_silver', 'tfc:metal/silver', 10, 1382, 'heated', 'small_native_silver_heated')
+	cbc_melting('tfc:ore/small_native_silver', 'tfc:metal/silver', 10, 922, 'superheated', 'small_native_silver_superheated')
+	cbc_melting('tfc:ore/rich_native_silver', 'tfc:metal/silver', 35, 4857, 'heated', 'rich_native_silver_heated')
+	cbc_melting('tfc:ore/rich_native_silver', 'tfc:metal/silver', 35, 3238, 'superheated', 'rich_native_silver_superheated')
+	cbc_melting('tfc:ore/poor_native_silver', 'tfc:metal/silver', 15, 2076, 'heated', 'poor_native_silver_heated')
+	cbc_melting('tfc:ore/poor_native_silver', 'tfc:metal/silver', 15, 1384, 'superheated', 'poor_native_silver_superheated')
+	cbc_melting('tfc:ore/normal_native_silver', 'tfc:metal/silver', 25, 3465, 'heated', 'normal_native_silver_heated')
+	cbc_melting('tfc:ore/normal_native_silver', 'tfc:metal/silver', 25, 2310, 'superheated', 'normal_native_silver_superheated')
+	cbc_melting('tfc:ore/small_native_gold', 'tfc:metal/gold', 10, 1525, 'heated', 'small_native_gold_heated')
+	cbc_melting('tfc:ore/small_native_gold', 'tfc:metal/gold', 10, 1017, 'superheated', 'small_native_gold_superheated')
+	cbc_melting('tfc:ore/rich_native_gold', 'tfc:metal/gold', 35, 5357, 'heated', 'rich_native_gold_heated')
+	cbc_melting('tfc:ore/rich_native_gold', 'tfc:metal/gold', 35, 3571, 'superheated', 'rich_native_gold_superheated')
+	cbc_melting('tfc:ore/poor_native_gold', 'tfc:metal/gold', 15, 2290, 'heated', 'poor_native_gold_heated')
+	cbc_melting('tfc:ore/poor_native_gold', 'tfc:metal/gold', 15, 1527, 'superheated', 'poor_native_gold_superheated')
+	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 3822, 'heated', 'normal_native_gold_heated')
+	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 2548, 'superheated', 'normal_native_gold_superheated')
 	
 	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
 		e.custom({
-			"type": "tfc:welding",
-			"first_input": { "item": in1 },
-			"second_input": { "tag": in2 },
-			"tier": tier,
-			"result": { "item": out, "count": count }
+			'type': 'tfc:welding',
+			'first_input': { 'item': in1 },
+			'second_input': { 'tag': in2 },
+			'tier': tier,
+			'result': { 'item': out, 'count': count }
 		}).id('kubejs:weld/' + id)
 	}
 	let tfc_welding_item = (in1, in2, tier, out, count, id) => {
 		e.custom({
-			"type": "tfc:welding",
-			"first_input": { "item": in1 },
-			"second_input": { "item": in2 },
-			"tier": tier,
-			"result": { "item": out, "count": count }
+			'type': 'tfc:welding',
+			'first_input': { 'item': in1 },
+			'second_input': { 'item': in2 },
+			'tier': tier,
+			'result': { 'item': out, 'count': count }
 		}).id('kubejs:weld/' + id)
 	}
-	tfc_welding_tag("tfc:metal/ingot/cast_iron", "forge:cobblestone/normal", 1, "create:andesite_alloy", 15, 'composite_compound_from_cast_iron')
-	tfc_welding_tag("tfc:metal/ingot/zinc", "forge:cobblestone/normal", 1, "create:andesite_alloy", 5, 'composite_compound_from_zinc')
-	tfc_welding_tag("tfc:metal/helmet/copper", "forge:glass", 2, "create:diving_helmet", 1, 'diving_helmet_from_tfc_copper_helmet')
-	tfc_welding_item("tfc:metal/sheet/copper", "tfc:metal/rod/copper", 1, "create:fluid_pipe", 6, 'fluid_pipe_from_tfc_coppers')
-	tfc_welding_item("tfc:fire_bricks", "tfc:metal/double_sheet/steel", 4, "immersiveengineering:alloybrick", 1, 'alloy_bricks_from_tfc')
-	tfc_welding_item("immersiveengineering:ingot_electrum", "immersiveengineering:ingot_electrum", 3, "immersiveengineering:nugget_electrum", 1, 'double_electrum_ingot')
-	tfc_welding_item("immersiveengineering:ingot_constantan", "immersiveengineering:ingot_constantan", 2, "immersiveengineering:nugget_constantan", 1, 'double_constantan_ingot')
-	tfc_welding_item("immersiveengineering:ingot_lead", "immersiveengineering:ingot_lead", 1, "immersiveengineering:nugget_lead", 1, 'double_lead_ingot')
-	tfc_welding_item("tfc:metal/boots/copper", "create:andesite_alloy", 2, "create:diving_boots", 1, 'diving_boots_from_tfc_copper_boots')
-	tfc_welding_item("firmalife:metal/sheet/stainless_steel", "firmalife:metal/rod/stainless_steel", 4, "immersiveengineering:fluid_pipe", 6, 'fluid_pipe_from_firmalife_stainless_steels')
+	tfc_welding_tag('tfc:metal/ingot/cast_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_compound_from_cast_iron')
+	tfc_welding_tag('tfc:metal/ingot/zinc', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 5, 'composite_compound_from_zinc')
+	tfc_welding_tag('tfc:metal/helmet/copper', 'forge:glass', 2, 'create:diving_helmet', 1, 'diving_helmet_from_tfc_copper_helmet')
+	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'fluid_pipe_from_tfc_coppers')
+	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks_from_tfc')
+	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'immersiveengineering:nugget_electrum', 1, 'double_electrum_ingot')
+	tfc_welding_item('immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan', 2, 'immersiveengineering:nugget_constantan', 1, 'double_constantan_ingot')
+	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'immersiveengineering:nugget_lead', 1, 'double_lead_ingot')
+	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots_from_tfc_copper_boots')
+	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'fluid_pipe_from_firmalife_stainless_steels')
 	
 	let tfc_anvil = (input, output, count, tier, rule_1, rule_2, rule_3, id) => {
 		e.custom({
-			"type": "tfc:anvil",
-			"input": { "item": input },
-			"result": { "item": output, "count": count },
-			"tier": tier,
-			"rules": [ rule_1 + "_last", rule_2 + "_second_last", rule_3 + "_third_last" ]
+			'type': 'tfc:anvil',
+			'input': { 'item': input },
+			'result': { 'item': output, 'count': count },
+			'tier': tier,
+			'rules': [ rule_1 + '_last', rule_2 + '_second_last', rule_3 + '_third_last' ]
 		}).id('kubejs:anvil/' + id)
 	}
-	tfc_anvil("tfc:metal/rod/brass", "create:brass_ladder", 3, 2, "draw", "bend", "draw", 'brass_ladder_working')
-	tfc_anvil("tfc:metal/rod/copper", "create:copper_ladder", 3, 1, "draw", "bend", "draw", 'copper_ladder_working')
-	tfc_anvil("immersiveengineering:nugget_electrum", "immersiveengineering:plate_electrum", 1, 3, "hit", "hit", "hit", 'electrum_sheet_working')
-	tfc_anvil("immersiveengineering:nugget_constantan", "immersiveengineering:plate_constantan", 1, 2, "hit", "hit", "hit", 'constantan_sheet_working')
-	tfc_anvil("immersiveengineering:nugget_lead", "immersiveengineering:plate_lead", 1, 1, "hit", "hit", "hit", 'lead_sheet_working')
-	tfc_anvil("immersiveengineering:ingot_electrum", "immersiveposts:stick_electrum", 2, 3, "bend", "draw", "draw", 'electrum_rod_working')
-	tfc_anvil("immersiveengineering:ingot_constantan", "immersiveposts:stick_constantan", 2, 2, "bend", "draw", "draw", 'constantan_rod_working')
-	tfc_anvil("immersiveengineering:ingot_lead", "immersiveposts:stick_lead", 2, 1, "bend", "draw", "draw", 'lead_rod_working')
+	tfc_anvil('tfc:metal/rod/brass', 'create:brass_ladder', 3, 2, 'draw', 'bend', 'draw', 'brass_ladder_working')
+	tfc_anvil('tfc:metal/rod/copper', 'create:copper_ladder', 3, 1, 'draw', 'bend', 'draw', 'copper_ladder_working')
+	tfc_anvil('immersiveengineering:nugget_electrum', 'immersiveengineering:plate_electrum', 1, 3, 'hit', 'hit', 'hit', 'electrum_sheet_working')
+	tfc_anvil('immersiveengineering:nugget_constantan', 'immersiveengineering:plate_constantan', 1, 2, 'hit', 'hit', 'hit', 'constantan_sheet_working')
+	tfc_anvil('immersiveengineering:nugget_lead', 'immersiveengineering:plate_lead', 1, 1, 'hit', 'hit', 'hit', 'lead_sheet_working')
+	tfc_anvil('immersiveengineering:ingot_electrum', 'immersiveposts:stick_electrum', 2, 3, 'bend', 'draw', 'draw', 'electrum_rod_working')
+	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
+	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
 	
 	let tfc_heating = (input, output, amount, temperature, id) => {
 		e.custom({
-			"type": "tfc:heating",
-			"ingredient": { "item": input },
-			"result_fluid": { "fluid": output, "amount": amount },
-			"temperature": temperature
+			'type': 'tfc:heating',
+			'ingredient': { 'item': input },
+			'result_fluid': { 'fluid': output, 'amount': amount },
+			'temperature': temperature
 		}).id('kubejs:heat/' + id)
 	}
-	tfc_heating("immersiveengineering:ingot_constantan", "kubejs:constantan", 100, 1266, 'constantan_ingot')
-	tfc_heating("immersiveengineering:ingot_electrum", "kubejs:electrum", 100, 1010, 'electrum_ingot')
-	tfc_heating("immersiveengineering:ingot_lead", "kubejs:lead", 100, 327, 'lead_ingot')
-	tfc_heating("immersiveengineering:nugget_constantan", "kubejs:constantan", 200, 1266, 'constantan_double_ingot')
-	tfc_heating("immersiveengineering:nugget_electrum", "kubejs:electrum", 200, 1010, 'electrum_double_ingot')
-	tfc_heating("immersiveengineering:nugget_lead", "kubejs:lead", 200, 327, 'lead_double_ingot')
-	tfc_heating("immersiveengineering:plate_constantan", "kubejs:constantan", 200, 1266, 'constantan_sheet')
-	tfc_heating("immersiveengineering:plate_electrum", "kubejs:electrum", 200, 1010, 'electrum_sheet')
-	tfc_heating("immersiveengineering:plate_lead", "kubejs:lead", 200, 327, 'lead_plate')
-	tfc_heating("immersiveposts:stick_constantan", "kubejs:constantan", 50, 1266, 'constantan_rod')
-	tfc_heating("immersiveposts:stick_electrum", "kubejs:electrum", 50, 1010, 'electrum_rod')
-	tfc_heating("immersiveposts:stick_lead", "kubejs:lead", 50, 327, 'lead_rod')
-	tfc_heating("kubejs:ore/normal_lead", "kubejs:lead", 25, 327, 'normal_lead_ore')
-	tfc_heating("kubejs:ore/poor_lead", "kubejs:lead", 15, 327, 'poor_lead_ore')
-	tfc_heating("kubejs:ore/rich_lead", "kubejs:lead", 35, 327, 'rich_lead_ore')
-	tfc_heating("kubejs:ore/small_lead", "kubejs:lead", 10, 327, 'small_lead_ore')
-	tfc_heating("firmalife:metal/ingot/chromium", "firmalife:metal/chromium", 100, 1907, 'chromium_ingot')
-	tfc_heating("firmalife:metal/sheet/chromium", "firmalife:metal/chromium", 200, 1907, 'chromium_sheet')
-	tfc_heating("firmalife:metal/double_ingot/chromium", "firmalife:metal/chromium", 200, 1907, 'chromium_double_ingot')
-	tfc_heating("firmalife:metal/double_sheet/chromium", "firmalife:metal/chromium", 400, 1907, 'chromium_double_sheet')
-	tfc_heating("firmalife:metal/rod/chromium", "firmalife:metal/chromium", 50, 1907, 'chromium_rod')
-	tfc_heating("firmalife:metal/ingot/stainless_steel", "firmalife:metal/stainless_steel", 100, 1540, 'stainless_steel_ingot')
-	tfc_heating("firmalife:metal/sheet/stainless_steel", "firmalife:metal/stainless_steel", 200, 1540, 'stainless_steel_sheet')
-	tfc_heating("firmalife:metal/double_ingot/stainless_steel", "firmalife:metal/stainless_steel", 200, 1540, 'stainless_steel_double_ingot')
-	tfc_heating("firmalife:metal/double_sheet/stainless_steel", "firmalife:metal/stainless_steel", 400, 1540, 'stainless_steel_double_sheet')
-	tfc_heating("firmalife:metal/rod/stainless_steel", "firmalife:metal/stainless_steel", 50, 1540, 'stainless_steel_rod')
-	tfc_heating("firmalife:ore/small_chromite", "firmalife:metal/chromium", 10, 1907, 'small_chromite')
-	tfc_heating("firmalife:ore/poor_chromite", "firmalife:metal/chromium", 15, 1907, 'poor_chromite')
-	tfc_heating("firmalife:ore/normal_chromite", "firmalife:metal/chromium", 25, 1907, 'normal_chromite')
-	tfc_heating("firmalife:ore/rich_chromite", "firmalife:metal/chromium", 35, 1907, 'rich_chromite')
+	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
+	tfc_heating('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
+	tfc_heating('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
+	tfc_heating('immersiveengineering:nugget_constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
+	tfc_heating('immersiveengineering:nugget_electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
+	tfc_heating('immersiveengineering:nugget_lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
+	tfc_heating('immersiveengineering:plate_constantan', 'kubejs:constantan', 200, 1266, 'constantan_sheet')
+	tfc_heating('immersiveengineering:plate_electrum', 'kubejs:electrum', 200, 1010, 'electrum_sheet')
+	tfc_heating('immersiveengineering:plate_lead', 'kubejs:lead', 200, 327, 'lead_plate')
+	tfc_heating('immersiveposts:stick_constantan', 'kubejs:constantan', 50, 1266, 'constantan_rod')
+	tfc_heating('immersiveposts:stick_electrum', 'kubejs:electrum', 50, 1010, 'electrum_rod')
+	tfc_heating('immersiveposts:stick_lead', 'kubejs:lead', 50, 327, 'lead_rod')
+	tfc_heating('kubejs:ore/normal_lead', 'kubejs:lead', 25, 327, 'normal_lead_ore')
+	tfc_heating('kubejs:ore/poor_lead', 'kubejs:lead', 15, 327, 'poor_lead_ore')
+	tfc_heating('kubejs:ore/rich_lead', 'kubejs:lead', 35, 327, 'rich_lead_ore')
+	tfc_heating('kubejs:ore/small_lead', 'kubejs:lead', 10, 327, 'small_lead_ore')
+	tfc_heating('firmalife:metal/ingot/chromium', 'firmalife:metal/chromium', 100, 1907, 'chromium_ingot')
+	tfc_heating('firmalife:metal/sheet/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_sheet')
+	tfc_heating('firmalife:metal/double_ingot/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_double_ingot')
+	tfc_heating('firmalife:metal/double_sheet/chromium', 'firmalife:metal/chromium', 400, 1907, 'chromium_double_sheet')
+	tfc_heating('firmalife:metal/rod/chromium', 'firmalife:metal/chromium', 50, 1907, 'chromium_rod')
+	tfc_heating('firmalife:metal/ingot/stainless_steel', 'firmalife:metal/stainless_steel', 100, 1540, 'stainless_steel_ingot')
+	tfc_heating('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_sheet')
+	tfc_heating('firmalife:metal/double_ingot/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_double_ingot')
+	tfc_heating('firmalife:metal/double_sheet/stainless_steel', 'firmalife:metal/stainless_steel', 400, 1540, 'stainless_steel_double_sheet')
+	tfc_heating('firmalife:metal/rod/stainless_steel', 'firmalife:metal/stainless_steel', 50, 1540, 'stainless_steel_rod')
+	tfc_heating('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1907, 'small_chromite')
+	tfc_heating('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 1907, 'poor_chromite')
+	tfc_heating('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 1907, 'normal_chromite')
+	tfc_heating('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 1907, 'rich_chromite')
 	
 	let tfc_casting = (input, amount, output, chance, id) => {
 		e.custom({
-			"type": "tfc:casting",
-			"mold": { "item": "tfc:ceramic/ingot_mold" },
-			"fluid": { "ingredient": input, "amount": amount },
-			"result": { "item": output },
-			"break_chance": chance
+			'type': 'tfc:casting',
+			'mold': { 'item': 'tfc:ceramic/ingot_mold' },
+			'fluid': { 'ingredient': input, 'amount': amount },
+			'result': { 'item': output },
+			'break_chance': chance
 		}).id('kubejs:casting/' + id)
 	}
-	tfc_casting("kubejs:electrum", 100, "immersiveengineering:ingot_electrum", 0.1, 'electrum_ingot')
-	tfc_casting("kubejs:constantan", 100, "immersiveengineering:ingot_constantan", 0.1, 'constantan_ingot')
-	tfc_casting("kubejs:lead", 100, "immersiveengineering:ingot_lead", 0.1, 'lead_ingot')
+	tfc_casting('kubejs:electrum', 100, 'immersiveengineering:ingot_electrum', 0.1, 'electrum_ingot')
+	tfc_casting('kubejs:constantan', 100, 'immersiveengineering:ingot_constantan', 0.1, 'constantan_ingot')
+	tfc_casting('kubejs:lead', 100, 'immersiveengineering:ingot_lead', 0.1, 'lead_ingot')
 	
 	let tfc_alloy = (output, input1, min1, max1, input2, min2, max2, id) => {
 		e.custom({
-			"type": "tfc:alloy",
-			"result": output,
-			"contents": [
-			{ "metal": input1, "min": min1, "max": max1 },
-			{ "metal": input2, "min": min2, "max": max2 }
+			'type': 'tfc:alloy',
+			'result': output,
+			'contents': [
+			{ 'metal': input1, 'min': min1, 'max': max1 },
+			{ 'metal': input2, 'min': min2, 'max': max2 }
 			]
 		}).id('kubejs:alloy/' + id)
 	}
-	tfc_alloy("tfc:electrum", "tfc:gold", 0.4, 0.6, "tfc:silver", 0.4, 0.6, 'electrum_from_gold_silver')
-	tfc_alloy("tfc:constantan", "tfc:copper", 0.5, 0.6, "tfc:nickel", 0.4, 0.5, 'constantan_from_copper_nickel')
+	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum_from_gold_silver')
+	tfc_alloy('tfc:constantan', 'tfc:copper', 0.5, 0.6, 'tfc:nickel', 0.4, 0.5, 'constantan_from_copper_nickel')
 	
 	let tfc_sealed_barrel_item = (input_item, input_fluid, amount, output, duration, id) => {
 		e.custom({
@@ -750,400 +746,400 @@ onEvent('recipes', e => {
 	
 	//blueprints
 	e.custom({
-		"type": "immersiveengineering:blueprint",
-		"inputs": [
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
 		{
-			"item": "tfc:metal/sheet/wrought_iron",
-			"count": 2
+			'item': 'tfc:metal/sheet/wrought_iron',
+			'count': 2
 		},
 		{
-			"item": "tfc:metal/ingot/copper",
-			"count": 1
+			'item': 'tfc:metal/ingot/copper',
+			'count': 1
 		},
 		{
-			"item": "create:cogwheel",
-			"count": 2
+			'item': 'create:cogwheel',
+			'count': 2
 		}
 		],
-		"category": "components",
-		"result": {
-			"item": "immersiveengineering:component_iron",
-			"count": 1
+		'category': 'components',
+		'result': {
+			'item': 'immersiveengineering:component_iron',
+			'count': 1
 		}
 		}).id('kubejs:blueprint_components/iron_component_from_wrought_iron_sheets');
 		e.custom({
-		"type": "immersiveengineering:blueprint",
-		"inputs": [
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
 		{
-			"item": "tfc:metal/sheet/steel",
-			"count": 2
+			'item': 'tfc:metal/sheet/steel',
+			'count': 2
 		},
 		{
-			"item": "tfc:metal/ingot/copper",
-			"count": 1
+			'item': 'tfc:metal/ingot/copper',
+			'count': 1
 		},
 		{
-			"item": "create:large_cogwheel",
-			"count": 2
+			'item': 'create:large_cogwheel',
+			'count': 2
 		}
 		],
-		"category": "components",
-		"result": {
-			"item": "immersiveengineering:component_steel",
-			"count": 1
+		'category': 'components',
+		'result': {
+			'item': 'immersiveengineering:component_steel',
+			'count': 1
 		}
 	}).id('kubejs:blueprint_components/steel_component_from_steel_sheets');
 	e.custom({
-		"type": "immersiveengineering:blueprint",
-		"inputs": [
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
 		{
-			"tag": "forge:glass/colorless",
-			"count": 1
+			'tag': 'forge:glass/colorless',
+			'count': 1
 		},
 		{
-			"item": "immersiveengineering:wire_copper",
-			"count": 1
+			'item': 'immersiveengineering:wire_copper',
+			'count': 1
 		},
 		{
-			"item": "tfc:metal/sheet/nickel",
-			"count": 1
+			'item': 'tfc:metal/sheet/nickel',
+			'count': 1
 		},
 		{
-			"item": "minecraft:redstone",
-			"count": 1
+			'item': 'minecraft:redstone',
+			'count': 1
 		}
 		],
-		"category": "components",
-		"result": {
-			"item": "immersiveengineering:electron_tube",
-			"count": 3
+		'category': 'components',
+		'result': {
+			'item': 'immersiveengineering:electron_tube',
+			'count': 3
 		}
 	}).id('kubejs:blueprint_components/vacuum_tube_from_tfc');
 	e.custom({
-		"type": "immersiveengineering:blueprint",
-		"inputs": [
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
 		{
-			"tag": "forge:glass/colorless",
-			"count": 1
+			'tag': 'forge:glass/colorless',
+			'count': 1
 		},
 		{
-			"item": "immersiveengineering:wire_copper",
-			"count": 1
+			'item': 'immersiveengineering:wire_copper',
+			'count': 1
 		},
 		{
-			"item": "tfc:metal/rod/nickel",
-			"count": 1
+			'item': 'tfc:metal/rod/nickel',
+			'count': 1
 		},
 		{
-			"item": "tfc:powder/graphite",
-			"count": 2
+			'item': 'tfc:powder/graphite',
+			'count': 2
 		}
 		],
-		"category": "components",
-		"result": {
-			"item": "immersiveengineering:light_bulb",
-			"count": 1
+		'category': 'components',
+		'result': {
+			'item': 'immersiveengineering:light_bulb',
+			'count': 1
 		}
 	}).id('kubejs:blueprint_components/light_blub_from_tfc');
 	
 	e.custom({
-		"type": "tfc:leather_knapping",
-		"pattern": [
-		"XX XX",
-		"X   X",
-		"X   X",
-		"X   X",
-		"XXXXX"
+		'type': 'tfc:leather_knapping',
+		'pattern': [
+		'XX XX',
+		'X   X',
+		'X   X',
+		'X   X',
+		'XXXXX'
 		],
-		"result": {
-			"item": "kubejs:leather_pouch"
+		'result': {
+			'item': 'kubejs:leather_pouch'
 		}
 	}).id('kubejs:leather_knapping/leather_pouch');
 	
 	//mixer
 	e.custom({
-		"type": "immersiveengineering:mixer",
-		"inputs": [
+		'type': 'immersiveengineering:mixer',
+		'inputs': [
 		{
-			"tag": "forge:sand",
-			"count": 2
+			'tag': 'forge:sand',
+			'count': 2
 		},
 		{
-			"tag": "forge:gravel"
+			'tag': 'forge:gravel'
 		},
 		{
-			"item": "minecraft:clay_ball"
+			'item': 'minecraft:clay_ball'
 		}
 		],
-		"result": {
-			"fluid": "immersiveengineering:concrete",
-			"amount": 250
+		'result': {
+			'fluid': 'immersiveengineering:concrete',
+			'amount': 250
 		},
-		"fluid": {
-			"tag": "forge:true_water",
-			"amount": 250
+		'fluid': {
+			'tag': 'forge:true_water',
+			'amount': 250
 		},
-		"energy": 3200
+		'energy': 3200
 	}).id('kubejs:mixer/concrete');
 	e.custom({
-		"type": "immersiveengineering:mixer",
-		"inputs": [
+		'type': 'immersiveengineering:mixer',
+		'inputs': [
 		{
-			"item": "minecraft:redstone"
+			'item': 'minecraft:redstone'
 		}
 		],
-		"result": {
-			"fluid": "immersiveengineering:redstone_acid",
-			"amount": 250
+		'result': {
+			'fluid': 'immersiveengineering:redstone_acid',
+			'amount': 250
 		},
-		"fluid": {
-			"tag": "forge:true_water",
-			"amount": 250
+		'fluid': {
+			'tag': 'forge:true_water',
+			'amount': 250
 		},
-		"energy": 1600
+		'energy': 1600
 	}).id('kubejs:mixer/redstone_acid');
 	e.custom({
-		"type": "immersiveengineering:mixer",
-		"inputs": [
+		'type': 'immersiveengineering:mixer',
+		'inputs': [
 		{
-			"item": "tfc:jute_fiber",
-			"count": 3
+			'item': 'tfc:jute_fiber',
+			'count': 3
 		}
 		],
-		"result": {
-			"fluid": "kubejs:jutecrete",
-			"amount": 250
+		'result': {
+			'fluid': 'kubejs:jutecrete',
+			'amount': 250
 		},
-		"fluid": {
-			"tag": "immersiveengineering:concrete",
-			"amount": 250
+		'fluid': {
+			'tag': 'immersiveengineering:concrete',
+			'amount': 250
 		},
-		"energy": 1600
+		'energy': 1600
 	}).id('kubejs:mixer/jutecrete');
 	
 	//bottling
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:concrete"
+			'item': 'immersiveengineering:concrete'
 		}
 		],
-		"input": {
-			"tag": "immersiveengineering:scaffoldings/steel"
+		'input': {
+			'tag': 'immersiveengineering:scaffoldings/steel'
 		},
-		"fluid": {
-			"tag": "immersiveengineering:concrete",
-			"amount": 250
+		'fluid': {
+			'tag': 'immersiveengineering:concrete',
+			'amount': 250
 		}
 	}).id('kubejs:bottling/concrete');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:hempcrete",
-			"count": 4
+			'item': 'immersiveengineering:hempcrete',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "kubejs:jutecrete",
-			"amount": 250
+		'fluid': {
+			'tag': 'kubejs:jutecrete',
+			'amount': 250
 		}
 	}).id('kubejs:bottling/jutecrete');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "minecraft:gold_block",
-			"count": 4
+			'item': 'minecraft:gold_block',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:gold",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:gold',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/gold_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_constantan",
-			"count": 4
+			'item': 'immersiveengineering:storage_constantan',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:constantan",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:constantan',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/constantan_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "create:zinc_block",
-			"count": 4
+			'item': 'create:zinc_block',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:zinc",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:zinc',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/zinc_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "create:brass_block",
-			"count": 4
+			'item': 'create:brass_block',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:brass",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:brass',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/brass_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_electrum",
-			"count": 4
+			'item': 'immersiveengineering:storage_electrum',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:electrum",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:electrum',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/electrum_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_steel",
-			"count": 4
+			'item': 'immersiveengineering:storage_steel',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:steel",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:steel',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/steel_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_nickel",
-			"count": 4
+			'item': 'immersiveengineering:storage_nickel',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:nickel",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:nickel',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/nickel_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_silver",
-			"count": 4
+			'item': 'immersiveengineering:storage_silver',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:silver",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:silver',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/silver_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "immersiveengineering:storage_lead",
-			"count": 4
+			'item': 'immersiveengineering:storage_lead',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:lead",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:lead',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/lead_block');
 	e.custom({
-		"type": "immersiveengineering:bottling_machine",
-		"results": [
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
 		{
-			"item": "minecraft:copper_block",
-			"count": 4
+			'item': 'minecraft:copper_block',
+			'count': 4
 		},
 		{
-			"item": "immersiveengineering:mold_packing_4"
+			'item': 'immersiveengineering:mold_packing_4'
 		}
 		],
-		"input": {
-			"item": "immersiveengineering:mold_packing_4"
+		'input': {
+			'item': 'immersiveengineering:mold_packing_4'
 		},
-		"fluid": {
-			"tag": "tfc:copper",
-			"amount": 1000
+		'fluid': {
+			'tag': 'tfc:copper',
+			'amount': 1000
 		}
 	}).id('kubejs:bottling/copper_block');
 })
