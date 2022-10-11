@@ -372,6 +372,30 @@ onEvent('recipes', e => {
 		A: 'immersiveengineering:sheetmetal_steel',
 		B: 'immersiveengineering:cokebrick'
 	}).id('kubejs:mechanical_crafting/blastbrick_from_tfc');
+	e.recipes.createMechanicalCrafting('1x createaddition:alternator', [
+	' S ',
+	'ABA',
+	'ACA',
+	'ADA'
+	], {
+		S: 'create:shaft',
+		A: 'tfc:metal/sheet/wrought_iron',
+		B: 'immersiveengineering:coil_lv',
+		C: 'tfc:metal/rod/wrought_iron',
+		D: 'immersiveengineering:wire_lead'
+	}).id('kubejs:mechanical_crafting/alternator_from_tfc');
+	e.recipes.createMechanicalCrafting('1x createaddition:electric_motor', [
+	' S ',
+	'ABA',
+	'ACA',
+	'ADA'
+	], {
+		S: 'create:shaft',
+		A: 'tfc:metal/sheet/brass',
+		B: 'immersiveengineering:coil_lv',
+		C: 'immersiveengineering:wire_lead',
+		D: 'tfc:metal/rod/wrought_iron'
+	}).id('kubejs:mechanical_crafting/electric_motor_from_tfc');
 	
 	e.recipes.createItemApplication('create:andesite_casing', ['#minecraft:logs', 'create:andesite_alloy']).id('kubejs:item_application/andesite_casing_from_tfc_logs');
 	e.recipes.createItemApplication('create:brass_casing', ['#minecraft:logs', 'tfc:metal/ingot/brass']).id('kubejs:item_application/brass_casing_from_tfc_logs');
@@ -418,6 +442,7 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:cutting/electrum_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:cutting/steel_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:cutting/gold_sheetmetal');
+	e.recipes.createCutting('6x create:shaft', 'create:andesite_alloy').id('create:cutting/andesite_alloy');
 	
 	let cbc_melting = (input, output, amount, time, heat, id) => {
 		e.custom({
@@ -727,8 +752,10 @@ onEvent('recipes', e => {
 	
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot_cast_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot_cast_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/wrought_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot_wrought_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/wrought_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot_wrought_iron');
 	
 	e.recipes.immersiveengineeringCrusher('3x minecraft:bone_meal', 'minecraft:bone'/*, [{chance: 0.35, output: 'minecraft:bone_meal'}]*/).id('kubejs:crusher/bone_meal');
 	e.recipes.immersiveengineeringCrusher('4x minecraft:clay_ball', 'minecraft:clay').id('immersiveengineering:crusher/clay');

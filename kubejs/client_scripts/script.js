@@ -67,6 +67,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveposts:stick_silver')
 	e.hide('immersiveposts:stick_nickel')
 	e.hide(/minecraft:.*_ore/)
+	e.hide('minecraft:stonecutter')
 })
 
 onEvent('jei.add.items', e => {
@@ -118,4 +119,5 @@ onEvent('jei.remove.categories', e => {
 	e.remove('createbigcannons:cannon_casting')
 	e.remove('createbigcannons:cannon_boring')
 	e.remove('createbigcannons:built_up_heating')
+	e.remove('minecraft:stonecutting')
 })
