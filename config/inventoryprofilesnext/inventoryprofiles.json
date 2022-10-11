@@ -3,10 +3,23 @@
         "first_run": false
     },
     "LockedSlotsSettings": {
-        "locked_slots_allow_pickup_into_empty": true
+        "locked_slots_allow_pickup_into_empty": {
+            "value": true
+        }
     },
     "AutoRefillSettings": {
-        "refill_armor": false,
-        "refill_before_tool_break": false
+        "refill_armor": {
+            "value": false
+        },
+        "refill_before_tool_break": {
+            "value": false
+        }
+    },
+    "Hotkeys": {
+        "sort_inventory": {
+            "main": {
+                "keys": "P"
+            }
+        }
     }
 }

@@ -660,6 +660,16 @@ onEvent('recipes', e => {
 	tfc_heating('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 1907, 'poor_chromite')
 	tfc_heating('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 1907, 'normal_chromite')
 	tfc_heating('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 1907, 'rich_chromite')
+	tfc_heating('create:zinc_block', 'tfc:metal/zinc', 250, 420, 'zinc_block')
+	tfc_heating('immersiveengineering:storage_electrum', 'kubejs:electrum', 250, 1010, 'electrum_block')
+	tfc_heating('create:brass_block', 'tfc:metal/brass', 250, 930, 'brass_block')
+	tfc_heating('immersiveengineering:storage_steel', 'tfc:metal/steel', 250, 1540, 'steel_block')
+	tfc_heating('immersiveengineering:storage_constantan', 'kubejs:constantan', 250, 1266, 'constantan_block')
+	tfc_heating('immersiveengineering:storage_nickel', 'tfc:metal/nickel', 250, 1453, 'nickel_block')
+	tfc_heating('immersiveengineering:storage_silver', 'tfc:metal/silver', 250, 961, 'silver_block')
+	tfc_heating('immersiveengineering:storage_lead', 'kubejs:lead', 250, 327, 'lead_block')
+	tfc_heating('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
+	tfc_heating('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
 	
 	let tfc_casting = (input, amount, output, chance, id) => {
 		e.custom({

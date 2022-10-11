@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"item": "immersiveengineering:storage_steel"
+	},
+	"heat_capacity": 7.145,
+	"forging_temperature": 924.0,
+	"welding_temperature": 1232.0
+}

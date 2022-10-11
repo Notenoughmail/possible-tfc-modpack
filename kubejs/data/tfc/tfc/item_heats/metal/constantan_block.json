@@ -1,0 +1,8 @@
+{
+	"ingredient": {
+		"item": "immersiveengineering:storage_constantan"
+	},
+	"heat_capacity": 3.08,
+	"forging_temperature": 760.0,
+	"welding_temperature": 1012.0
+}
