@@ -102,7 +102,7 @@ metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "02df0670e9ab268d98ccd46c6e892a03d5cd4d144ff1e58bb580ccd90f390e42"
+hash = "ecca222163216dd27bf67282f758261da07bead160fec9f74dae71cee54e18af"
 metafile = true
 
 [[files]]
@@ -187,7 +187,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs.pw.toml"
-hash = "30e8db81c915da9755c0ebe2563136dfc43c038ad87d9683da1689b1ee3ad0af"
+hash = "66256576f75f6b9af143f4777cb02114eaf1decc52fafbfc4153da757b9c63bd"
 metafile = true
 
 [[files]]
@@ -232,12 +232,12 @@ metafile = true
 
 [[files]]
 file = "mods/rhino.pw.toml"
-hash = "afc003a7bbb6e2398295b0795e8f186244a0f6524c636966f98800ba76951987"
+hash = "114ded78e7e461eb87ab652e01070b7f5d046acc2c4710dd34a43ace6a7c52b1"
 metafile = true
 
 [[files]]
 file = "mods/rubidium.pw.toml"
-hash = "c5e5b18c293c67a73a61dd5df46e8edc691ad7c53cbe4488cb99889c449719c1"
+hash = "dc1ace4b702d5953b4ff5aac59572a9fc03d077aee3c0d407db17a8f768f5268"
 metafile = true
 
 [[files]]
@@ -252,7 +252,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "1ea5457f97417e2231f4a5f2d9236499953afba1bab8ad9254dfa41b838ff79e"
+hash = "4634411779c04ce1dc8efdef7614564f50a8839334cf23d2fe7d666ad5273e2e"
 metafile = true
 
 [[files]]
