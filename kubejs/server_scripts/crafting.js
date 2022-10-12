@@ -8,6 +8,8 @@ let partial_metal = ['copper', 'gold', 'silver', 'nickel']
 
 let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
 
+let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
+
 onEvent('recipes', e => {
 	//shapeless
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', 'tfc:metal/chain/wrought_iron', 'tfc:metal/chain/wrought_iron']).id('kubejs:shapeless_crafting/chain_drive_from_chains');
@@ -57,6 +59,14 @@ onEvent('recipes', e => {
 		], {
 			S: 'immersiveengineering:slab_sheetmetal_' + sheetmetal
 		}).id('immersiveengineering:slab_to_sheetmetal_' + sheetmetal);
+	})
+	planks.forEach(plank => {
+		e.shaped('1x tfc:wood/planks/' + plank, [
+		'S',
+		'S'
+		], {
+			S: 'tfc:wood/planks/' + plank + '_slab'
+		}).id('kubejs:shaped_crafting/' + plank + '_slab_to_plank')
 	})
 	
 	e.shaped('2x immersiveengineering:conveyor_basic', [
@@ -597,7 +607,7 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/sheet/black_steel',
 		A: 'tfc:thatch'
 	}).id('kubejs:shaped_crafting/empty_blaze_burner');
-	e.shaped('1x immersiveengineering:cokebrick', [
+	e.shaped('3x immersiveengineering:cokebrick', [
 	'SAS',
 	'ABA',
 	'SAS'
