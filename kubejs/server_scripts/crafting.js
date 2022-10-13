@@ -607,15 +607,6 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/sheet/black_steel',
 		A: 'tfc:thatch'
 	}).id('kubejs:shaped_crafting/empty_blaze_burner');
-	e.shaped('3x immersiveengineering:cokebrick', [
-	'SAS',
-	'ABA',
-	'SAS'
-	], {
-		S: 'tfc:fire_bricks',
-		A: 'minecraft:brick',
-		B: '#minecraft:coals'
-	}).id('kubejs:shaped_crafting/cokebrick');
 	e.shaped('1x usclb:clipboard', [
 	'S ',
 	'AB'

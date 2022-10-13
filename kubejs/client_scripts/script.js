@@ -77,7 +77,6 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:bow')
 	e.add('minecraft:arrow')
 	e.add('minecraft:crossbow')
-	e.add(/tfc:.*shield.*/)
 	e.add('minecraft:lead')
 	e.add('minecraft:name_tag')
 	e.add(Item.of('toolbelt:belt', '{Size:5}'))
