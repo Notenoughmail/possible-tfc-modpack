@@ -802,4 +802,23 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:craftingtable',
 		C: 'immersiveengineering:treated_fence'
 	}).id('kubejs:shaped_crafting/workbench_from_tfc');
+	e.shaped('1x immersiveengineering:blastfurnace_preheater', [
+	'S ',
+	'A ',
+	'BA'
+	], {
+		S: 'immersiveengineering:furnace_heater',
+		A: 'immersiveengineering:sheetmetal_iron',
+		B: 'create:encased_fan'
+	}).id('kubejs:shaped_crafting/preheater_from_tfc');
+	e.shaped('1x immersiveengineering:furnace_heater', [
+	'SAS',
+	'ABA',
+	'SCS'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: 'tfc:metal/rod/copper',
+		B: 'immersiveengineering:coil_lv',
+		C: 'immersiveengineering:wire_lead'
+	}).id('kubejs:shaped_crafting/heater_from_tfc');
 })

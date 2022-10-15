@@ -91,6 +91,7 @@ onEvent('tags.items', e => {
 	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:skyhook')
 	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:iron_gun')
 	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:gold_gun')
+	e.add('tfc:usable_on_tool_rack', 'firmalife:watering_can')
 	//weight and szie
 	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv')
 	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv_relay')
