@@ -277,7 +277,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'tfc:metal/sheet/gold',
 		A: 'create:andesite_alloy',
-		B: 'tfc:metal/double_ingot/copper'
+		B: 'minecraft:copper_block'
 	}).id('kubejs:shaped_crafting/steam_engine_from_tfc');
 	e.shaped('4x create:steam_whistle', [
 	'S',

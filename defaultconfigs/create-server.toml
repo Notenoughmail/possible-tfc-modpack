@@ -103,7 +103,7 @@
 	# 
 	#multiplier used for calculating exhaustion from speed when a crank is turned.
 	#Range: 0.0 ~ 1.0
-	crankHungerMultiplier = 0.009999999776482582
+	crankHungerMultiplier = 0.09999999776482582
 	# 
 	#Amount of sail-type blocks required for a windmill to assemble successfully.
 	#Range: > 0

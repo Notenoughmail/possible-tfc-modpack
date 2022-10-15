@@ -23,6 +23,8 @@ let sands = ['brown', 'white', 'black', 'red', 'yellow', 'green', 'pink']
 
 let colors = ['black', 'red', 'green', 'brown', 'blue', 'purple', 'cyan', 'light_gray', 'gray', 'pink', 'lime', 'yellow', 'light_blue', 'magenta', 'orange', 'white']
 
+let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -746,6 +748,29 @@ onEvent('recipes', e => {
 	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar');
 	colors.forEach(color => {
 		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
+	})
+	
+	let tfc_chisel = (input, output, mode, id) => {
+		e.custom({
+			'type': 'tfc:chisel',
+			'ingredient': input,
+			'result': output,
+			'mode': mode
+		}).id('kubejs:chisel/' + id)
+	}
+	let tfc_chisel_extra = (input, output, mode, extra, id) => {
+		e.custom({
+			'type': 'tfc:chisel',
+			'ingredient': input,
+			'result': output,
+			'mode': mode,
+			'extra_drop': {
+				'item': extra
+			}
+		}).id('kubejs:chisel/' mode + '/' + id)
+	}
+	sheetmetals.forEach(sheetmetal => {
+		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
 	})
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');

@@ -71,7 +71,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'minecraft:copper_block', 'minecraft:copper_ingot', 'immersiveengineering:alloysmelter/insulating_glass',
 	'immersiveengineering:arcfurnace/insulating_glass', 'immersiveengineering:crafting/blastbrick_reinforced',
 	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel', 'immersiveengineering:blastfurnace/fuel_charcoal',
-	/create:cutting.*/
+	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:jei_bucket_.*/
 	]
 
 onEvent('recipes', e => {
