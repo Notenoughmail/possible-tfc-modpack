@@ -1,0 +1,41 @@
+{
+	"name": "Coke Oven",
+	"category": "patchouli:machinery",
+	"icon": "immersiveengineering:coke_oven",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "The $(thing)Coke Oven$() is the first important machine needed to progress through $(o)Immersive Engineering$(). It burns $(thing)Bituminous Coal$() in a low oxygen environment, cretaing a carbon rich fuel, $(thing)Coal Coke$(), or logs to make $(l:mechanics/charcoal_pit)Charcoal$().$(br2)$(br2)Additionally it produces $(thing)Creosote Oil$() as a byproduct, which can be used to stain wood."
+	},
+	{
+		"type": "patchouli:multiblock",
+		"multiblock": {
+			"pattern": [
+			[
+				"SSS",
+				"SSS",
+				"SSS"
+			],
+			[
+				"SSS",
+				"SSS",
+				"SSS"
+			],
+			[
+				"SSS",
+				"S0S",
+				"SSS"
+			]
+			],
+			"mapping": {
+				"S": "immersiveengineering:cokebrick",
+				"0": "immersiveengineering:cokebrick"
+			}
+		},
+		"name": "",
+		"text": "Click the center block of any face with an $(thing)Engineer's Hammer$() to assemble the multiblock.",
+		"enable_visualize": true
+	}
+	],
+	"read_by_default": true
+}

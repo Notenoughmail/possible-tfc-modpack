@@ -5,14 +5,14 @@
 	"pages": [
 	{
 		"type": "patchouli:text",
-		"text": "The $(thing)Improved Blast Furnace$() is an improved way of making $(l:mechanics/blast_furnace)Steel$(). Its in- and outputs can be automated and it can be equiped with $(thing)Preheaters$() to increase the processing speed through the use of hot air, however due to not using $(l:mechanics/flux)Flux$(), the it outputs a byproduct, $(thing)Slag$(), in addition to steel."
+		"text": "The $(thing)Improved Blast Furnace$() is an improved way of making $(l:mechanics/steel)Steel$(). Its in- and outputs can be automated and it can be equiped with $(thing)Preheaters$() to increase the processing speed through the use of hot air, however due to not using $(l:mechanics/flux)Flux$(), the it outputs a byproduct, $(thing)Slag$(), in addition to steel."
 	},
 	{
 		"type": "patchouli:spotlight",
 		"item": "immersiveengineering:advanced_blast_furnace",
 		"title": "",
 		"link_recipes": false,
-		"text": "Steel is output at the front, slag at the back, and the furnace will automatically output into connected inventories. Iron and $(l:mechanics/coal_coke)Coal Coke$() can be input from the top."
+		"text": "Steel is output at the front, slag at the back, and the furnace will automatically output into connected inventories. Iron and $(l:machinery/coke_oven)Coal Coke$() can be input from the top."
 	},
 	{
 		"type": "patchouli:crafting",
@@ -54,5 +54,6 @@
 		"text": "Click the center block on any face with an $(thing)Engineer's Hammer$() to assemble the multiblock.",
 		"enable_visualize": true
 	}
-	]
+	],
+	"read_by_default": true
 }
