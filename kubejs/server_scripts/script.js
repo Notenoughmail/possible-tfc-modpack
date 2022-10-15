@@ -767,7 +767,7 @@ onEvent('recipes', e => {
 			'extra_drop': {
 				'item': extra
 			}
-		}).id('kubejs:chisel/' mode + '/' + id)
+		}).id('kubejs:chisel/' + mode + '/' + id)
 	}
 	sheetmetals.forEach(sheetmetal => {
 		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
