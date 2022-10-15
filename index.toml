@@ -127,7 +127,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "bb30a54444d55ff70b81fb17ffd81a49312d2d21a9cb3b4e64793ec2e337a79e"
+hash = "6b1719dfd4196add3838fa5af8c14ac0dda1045bf608931060a74c1c56b655ed"
 metafile = true
 
 [[files]]
@@ -152,7 +152,7 @@ metafile = true
 
 [[files]]
 file = "mods/jei.pw.toml"
-hash = "43bd658177949fbe857b5a50fc93fd9acf8cdbe04fedba41031e28f6d2b3a3e0"
+hash = "05485e1432e59641ab99fd56355fcc79d373d607a94891b97247c02d1a51fa12"
 metafile = true
 
 [[files]]
@@ -197,7 +197,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "e173ab17f1383c80b4ec2fba5b7e7f9cd4503a097dff15eef13362644b3d47ee"
+hash = "86cacbea43386db552b71eaf1d39e8627163708cfb428d22b7839c5fa784b2c0"
 metafile = true
 
 [[files]]
@@ -252,7 +252,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "1ddbe2211ccd8d1e0c373efc7916643cef592ecb192e58d986b46a5838e670f0"
+hash = "d2f02803664f544a2432f09ae4ce9e43e50ea47666fe63c4ad45ab5c8aca1857"
 metafile = true
 
 [[files]]
