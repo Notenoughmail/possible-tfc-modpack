@@ -193,6 +193,10 @@ onEvent('recipes', e => {
 		Item.of('immersiveengineering:dust_iron').withChance(0.2)
 		], 'tfc:ore/small_' + iron).id('kubejs:crushing/small_iron_dust_' + iron);
 	})
+	e.recipes.createCrushing([
+	'8x minecraft:redstone',
+	Item.of('3x minecraft:redstone').withChance(0.1)
+	], 'tfc:ore/cinnabar').id('kubejs:crushing/cinnabar');
 	
 	e.recipes.createSplashing([
 	Item.of('tfc:rock/loose/rhyolite').withChance(0.45),
@@ -745,7 +749,7 @@ onEvent('recipes', e => {
 			'duration': duration
 		}).id('kubejs:barrel_sealed/' + id)
 	}
-	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar');
+	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar')
 	colors.forEach(color => {
 		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
 	})
@@ -756,7 +760,7 @@ onEvent('recipes', e => {
 			'ingredient': input,
 			'result': output,
 			'mode': mode
-		}).id('kubejs:chisel/' + id)
+		}).id('kubejs:chisel/' + mode + '/' + id)
 	}
 	let tfc_chisel_extra = (input, output, mode, extra, id) => {
 		e.custom({
@@ -772,6 +776,12 @@ onEvent('recipes', e => {
 	sheetmetals.forEach(sheetmetal => {
 		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
 	})
+	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
+	tfc_chisel('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:stairs_treated_wood_horizontal', 'stair', 'stained_wood_horizontal')
+	tfc_chisel_extra('immersiveengineering:treated_wood_vertical', 'immersiveengineering:slab_treated_wood_vertical', 'slab', 'immersiveengineering:slab_treated_wood_vertical', 'stained_wood_vertical')
+	tfc_chisel('immersiveengineering:treated_wood_vertical', 'immersiveengineering:stairs_treated_wood_vertical', 'stair', 'stained_wood_vertical')
+	tfc_chisel_extra('immersiveengineering:treated_wood_packaged', 'immersiveengineering:slab_treated_wood_packaged', 'slab', 'immersiveengineering:slab_treated_wood_packaged', 'stained_wood_packaged')
+	tfc_chisel('immersiveengineering:treated_wood_packaged', 'immersiveengineering:stairs_treated_wood_packaged', 'stair', 'stained_wood_packaged')
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -811,6 +821,7 @@ onEvent('recipes', e => {
 	sands.forEach(sand => {
 		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
 	})//I don't know why the secondaries won't work, but they won't
+	e.recipes.immersiveengineeringCrusher('4x tfc:fire_clay', 'tfc:fire_clay_block').id('kubejs:crusher/fire_clay_block');
 	
 	//blueprints
 	e.custom({

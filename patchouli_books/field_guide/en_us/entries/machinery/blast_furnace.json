@@ -5,7 +5,7 @@
 	"pages": [
 	{
 		"type": "patchouli:text",
-		"text": "The $(thing)Improved Blast Furnace$() is an improved way of making $(l:mechanics/steel)Steel$(). Its in- and outputs can be automated and it can be equiped with $(thing)Preheaters$() to increase the processing speed through the use of hot air, however due to not using $(l:mechanics/flux)Flux$(), the it outputs a byproduct, $(thing)Slag$(), in addition to steel."
+		"text": "The $(thing)Improved Blast Furnace$() is an upgraded way of making $(l:mechanics/steel)Steel$(). Its in- and out- puts can be simply automated and it can be equiped with $(thing)Preheaters$() to increase the processing speed through the use of hot air, however due to not using $(l:mechanics/flux)Flux$(), it outputs a byproduct, $(thing)Slag$(), in addition to steel."
 	},
 	{
 		"type": "patchouli:spotlight",
@@ -17,7 +17,7 @@
 	{
 		"type": "patchouli:crafting",
 		"recipe": "kubejs:shaped_crafting/preheater_from_tfc",
-		"text": "Blast furnace preheaters are used to heat up air and the nblow it into the furnace to speed up the refinement process of iron. Each furnace can have up to two preheaters connected, one for each side, and each take 32 rf/t to operate."
+		"text": "Preheaters are used to heat up air and then blow it into the furnace to speed up the refinement process of iron. Each furnace can have up to two preheaters connected, one for each side, and each take 32 rf/t to operate."
 	},
 	{
 		"type": "patchouli:multiblock",

@@ -5,11 +5,11 @@
 	"pages": [
 	{
 		"type": "patchouli:text",
-		"text": "As you progress through the tech tree, you may find yourself wanting some means of automation, this chapter will guide you through all types of machinery just for that. But first, the basics of $(thing)Immersive Engineering$() and $(thing)Create$()."
+		"text": "As you progress through the tech tree, you may find yourself wanting some means of automation, this chapter will guide you through all types of machinery just for that. But first, the basics of $(o)Immersive Engineering$() and $(o)Create$()."
 	},
 	{
 		"type": "patchouli:text",
-		"text": "Immersive Engineering has three main tools, the $(thing)Engineer's Hammer$(); $(thing)Screwdriver$(); and $(thing)Wire Cutters$(), which are used for constructing, configuring, and wiring machinery. In addition the $(thing)Engineer's Multimeter$() is useful for power related information.%(br2)Create has 2 main utilities: the $(thing)Engineer's Wrench$(), which is useful for rotating, dismantling, and configuring components; and the $(thing)Engineer's Goggles$(), which are used for information about $(thing)Kinetic Networks$()."
+		"text": "$(o)Immersive Engineering$() has three main tools, the $(thing)Engineer's Hammer$(); $(thing)Screwdriver$(); and $(thing)Wire Cutters$(), which are used for constructing, configuring, and wiring machinery. In addition the $(thing)Engineer's Multimeter$() is useful for power related information. $(0)Create$() has two main tools: the $(thing)Engineer's Wrench$(), which is useful for rotating, dismantling, and configuring components; and the $(thing)Engineer's Goggles$(), which are used for information about $(thing)Kinetic Networks$()."
 	},
 	{
 		"type": "patchouli:crafting",
