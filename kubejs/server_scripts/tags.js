@@ -39,6 +39,9 @@ onEvent('tags.items', e => {
 	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_steel')
 	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_iron')
 	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_gold')
+	e.add('tfc:pileable_ingots', /tfc:brick.*/)
+	e.add('tfc:pileable_ingots', 'minecraft:brick')
+	e.add('tfc:pileable_sheets', /kubejs:.*_panel/)
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:nugget_constantan')

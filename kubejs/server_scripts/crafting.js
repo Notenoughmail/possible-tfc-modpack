@@ -10,6 +10,8 @@ let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 
 
 let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
 
+let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
+
 onEvent('recipes', e => {
 	//shapeless
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', 'tfc:metal/chain/wrought_iron', 'tfc:metal/chain/wrought_iron']).id('kubejs:shapeless_crafting/chain_drive_from_chains');
@@ -66,7 +68,25 @@ onEvent('recipes', e => {
 		'S'
 		], {
 			S: 'tfc:wood/planks/' + plank + '_slab'
-		}).id('kubejs:shaped_crafting/' + plank + '_slab_to_plank')
+		}).id('kubejs:shaped_crafting/' + plank + '_slab_to_plank');
+		e.shaped('16x kubejs:' + plank + '_planks_panel', [
+		'SS'
+		], {
+			S: 'tfc:wood/planks/' + plank + '_slab'
+		}).id('kubejs:shaped_crafting/' + plank + '_slab_to_panel');
+	})
+	stones.forEach(stone => {
+		e.shaped('16x kubejs:' + stone + '_brick_panel', [
+		'SS'
+		], {
+			S: 'tfc:rock/bricks/' + stone + '_slab'
+		}).id('kubejs:shaped_crafting/' + stone + '_slab_to_panel');
+		e.shaped('1x tfc:rock/bricks/' + stone, [
+		'S',
+		'S'
+		], {
+			S: 'tfc:rock/bricks/' + stone + '_slab'
+		}).id('kubejs:shaped_crafting/' + stone + '_slab_to_brick');
 	})
 	
 	e.shaped('2x immersiveengineering:conveyor_basic', [
@@ -821,4 +841,24 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:coil_lv',
 		C: 'immersiveengineering:wire_lead'
 	}).id('kubejs:shaped_crafting/heater_from_tfc');
+	e.shaped('16x kubejs:stained_horizontal_wood_planks_panel', [
+	'SS'
+	], {
+		S: 'immersiveengineering:slab_treated_wood_horizontal'
+	}).id('kubejs:shaped_crafting/stained_wood_horizontal_slab_to_panel');
+	e.shaped('16x kubejs:stained_vertical_wood_planks_panel', [
+	'SS'
+	], {
+		S: 'immersiveengineering:slab_treated_wood_vertical'
+	}).id('kubejs:shaped_crafting/stained_wood_vertical_slab_to_panel');
+	e.shaped('16x kubejs:stained_packaged_wood_planks_panel', [
+	'SS'
+	], {
+		S: 'immersiveengineering:slab_treated_wood_packaged'
+	}).id('kubejs:shaped_crafting/stained_wood_packaged_slab_to_panel');
+	e.shaped('16x kubejs:brick_panel', [
+	'SS'
+	], {
+		S: 'minecraft:brick_slab'
+	}).id('kubejs:shaped_crafting/brick_slab_to_panel');
 })

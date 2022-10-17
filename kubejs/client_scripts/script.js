@@ -64,6 +64,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveposts:stick_nickel')
 	e.hide(/minecraft:.*_ore/)
 	e.hide('minecraft:stonecutter')
+	e.hide('kubejs:dummy')
 })
 
 onEvent('jei.add.items', e => {

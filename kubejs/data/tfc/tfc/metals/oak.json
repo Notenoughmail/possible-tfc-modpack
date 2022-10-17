@@ -1,0 +1,12 @@
+{
+	"tier": 0,
+	"fluid": "minecraft:water",
+	"melt_temperature": 1,
+	"specific_heat_capacity": 1,
+	"ingots": {
+		"item": "kubejs:dummy"
+	},
+	"sheets": {
+		"item": "kubejs:oak_planks_panel"
+	}
+}

@@ -4,11 +4,23 @@ console.info('Custom items, blocks, and liquids inbound!')
 
 let types = ['normal', 'poor', 'rich']
 
+let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
+
+let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow', 'stained_horizontal_wood', 'stained_vertical_wood', 'stained_packaged_wood']
+
 onEvent('item.registry', e => {
 	types.forEach(type => {
 		e.create('ore/' + type +'_lead')
 	})
 	e.create('leather_pouch')
+	stones.forEach(stone => {
+		e.create(stone + '_brick_panel')
+	})
+	planks.forEach(plank => {
+		e.create(plank + '_planks_panel')
+	})
+	e.create('brick_panel')
+	e.create('dummy')
 })
 
 onEvent('item.modification', e => {
@@ -28,9 +40,6 @@ onEvent('item.modification', e => {
 		item.maxDamage = 537
 	})
 })
-
-let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
-
 
 onEvent('block.registry', e => {
 	stones.forEach(rock => {
