@@ -25,6 +25,8 @@ let colors = ['black', 'red', 'green', 'brown', 'blue', 'purple', 'cyan', 'light
 
 let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
 
+let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -39,12 +41,18 @@ onEvent('recipes', e => {
 		tfc_collapse('kubejs:ore/rich_lead/' + rock, 'kubejs:ore/normal_lead/' + rock)
 		tfc_collapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/poor_lead/' + rock)
 		tfc_collapse('kubejs:ore/poor_lead/' + rock, 'tfc:rock/cobble/' + rock)
+		e.recipes.createCutting('8x kubejs:' + rock + '_brick_panel', 'tfc:rock/bricks/' + rock + '_slab').processingTime(100).id('kubejs:cutting/' + rock + '_slab_to_panel');
+		e.recipes.immersiveengineeringSawmill('8x kubejs:' + rock + '_brick_panel', 'tfc:roc/bricks/' + rock + '_slab').id('kubejs:sawmill/' + rock + '_slab_to_panel');
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
 	});
 	grains.forEach(grain => {
 		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
+	});
+	planks.forEach(plank => {
+		e.recipes.createCutting('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').processingTime(100).id('kubejs:cutting/' + plank + '_slab_to_panel');
+		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + 'planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
 	});
 	
 	let mold_blueprint = (result) => {
@@ -455,6 +463,10 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:cutting/steel_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:cutting/gold_sheetmetal');
 	e.recipes.createCutting('6x create:shaft', 'create:andesite_alloy').id('create:cutting/andesite_alloy');
+	e.recipes.createCutting('8x kubejs:stained_horizontal_wood_planks_panel', 'immersiveengineering:slab_treated_wood_horizontal').processingTime(100).id('kubejs:cutting/stained_wood_horizontal_slab_to_panel');
+	e.recipes.createCutting('8x kubejs:stained_vertical_wood_planks_panel', 'immersiveengineering:slab_treated_wood_vertical').processingTime(100).id('kubejs:cutting/stained_wood_vertical_slab_to_panel');
+	e.recipes.createCutting('8x kubejs:stained_packaged_wood_planks_panel', 'immersiveengineering:slab_treated_wood_packaged').processingTime(100).id('kubejs:cutting/stained_wood_packaged_slab_to_panel');
+	e.recipes.createCutting('8x kubejs:brick_panel', 'minecraft:brick_slab').processingTime(100).id('kubejs:cutting/brick_slab_to_panel');
 	
 	let cbc_melting = (input, output, amount, time, heat, id) => {
 		e.custom({
@@ -801,6 +813,10 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:sawmill/electrum_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:sawmill/steel_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:sawmill/gold_sheetmetal');
+	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_horizontal_wood_planks_panel', 'immersiveengineering:slab_treated_wood_horizontal').id('kubejs:sawmill/stained_wood_horizontal_slab_to_panel');
+	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_vertical_wood_planks_panel', 'immersiveengineering:slab_treated_wood_vertical').id('kubejs:sawmill/stained_wood_vertical_slab_to_panel');
+	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_packaged_wood_planks_panel', 'immersiveengineering:slab_treated_wood_packaged').id('kubejs:sawmill/stained_wood_packaged_slab_to_panel');
+	e.recipes.immersiveengineeringSawmill('8x kubejs:brick_panel', 'minecraft:brick_slab').id('kubejs:sawmill/brick_slab_to_panel');
 	
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
