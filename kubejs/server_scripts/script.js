@@ -35,6 +35,137 @@ onEvent('recipes', e => {
 			'result': output
 		})
 	}
+	let cbc_melting = (input, output, amount, time, heat, id) => {
+		e.custom({
+			'type': 'createbigcannons:melting',
+			'ingredients': [
+			{
+				'item': input
+			}
+			],
+			'results': [
+			{
+				'fluid': output,
+				'amount': amount
+			}
+			],
+			'processingTime': time,
+			'heatRequirement': heat
+		}).id('kubejs:melting/' + id)
+	}
+	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
+		e.custom({
+			'type': 'tfc:welding',
+			'first_input': { 'item': in1 },
+			'second_input': { 'tag': in2 },
+			'tier': tier,
+			'result': { 'item': out, 'count': count }
+		}).id('kubejs:weld/' + id)
+	}
+	let tfc_welding_item = (in1, in2, tier, out, count, id) => {
+		e.custom({
+			'type': 'tfc:welding',
+			'first_input': { 'item': in1 },
+			'second_input': { 'item': in2 },
+			'tier': tier,
+			'result': { 'item': out, 'count': count }
+		}).id('kubejs:weld/' + id)
+	}
+	let tfc_anvil = (input, output, count, tier, rule_1, rule_2, rule_3, id) => {
+		e.custom({
+			'type': 'tfc:anvil',
+			'input': { 'item': input },
+			'result': { 'item': output, 'count': count },
+			'tier': tier,
+			'rules': [ rule_1 + '_last', rule_2 + '_second_last', rule_3 + '_third_last' ]
+		}).id('kubejs:anvil/' + id)
+	}
+	let tfc_heating = (input, output, amount, temperature, id) => {
+		e.custom({
+			'type': 'tfc:heating',
+			'ingredient': { 'item': input },
+			'result_fluid': { 'fluid': output, 'amount': amount },
+			'temperature': temperature
+		}).id('kubejs:heat/' + id)
+	}
+	let tfc_casting = (input, amount, output, chance, id) => {
+		e.custom({
+			'type': 'tfc:casting',
+			'mold': { 'item': 'tfc:ceramic/ingot_mold' },
+			'fluid': { 'ingredient': input, 'amount': amount },
+			'result': { 'item': output },
+			'break_chance': chance
+		}).id('kubejs:casting/' + id)
+	}
+	let tfc_alloy = (output, input1, min1, max1, input2, min2, max2, id) => {
+		e.custom({
+			'type': 'tfc:alloy',
+			'result': output,
+			'contents': [
+			{ 'metal': input1, 'min': min1, 'max': max1 },
+			{ 'metal': input2, 'min': min2, 'max': max2 }
+			]
+		}).id('kubejs:alloy/' + id)
+	}
+	let tfc_sealed_barrel_item = (input_item, input_fluid, amount, output, duration, id) => {
+		e.custom({
+			'type': 'tfc:barrel_sealed',
+			'input_item': {
+				'ingredient': {
+					'item': input_item
+				}
+			},
+			'input_fluid': {
+				'ingredient': {
+					'fluid': input_fluid
+				},
+				'amount': amount
+			},
+			'output_item': {
+				'item': output
+			},
+			'duration': duration
+		}).id('kubejs:barrel_sealed/' + id)
+	}
+	let tfc_sealed_barrel_tag = (input_tag, input_fluid, amount, output, duration, id) => {
+		e.custom({
+			'type': 'tfc:barrel_sealed',
+			'input_item': {
+				'ingredient': {
+					'tag': input_tag
+				}
+			},
+			'input_fluid': {
+				'ingredient': {
+					'fluid': input_fluid
+				},
+				'amount': amount
+			},
+			'output_item': {
+				'item': output
+			},
+			'duration': duration
+		}).id('kubejs:barrel_sealed/' + id)
+	}
+	let tfc_chisel = (input, output, mode, id) => {
+		e.custom({
+			'type': 'tfc:chisel',
+			'ingredient': input,
+			'result': output,
+			'mode': mode
+		}).id('kubejs:chisel/' + mode + '/' + id)
+	}
+	let tfc_chisel_extra = (input, output, mode, extra, id) => {
+		e.custom({
+			'type': 'tfc:chisel',
+			'ingredient': input,
+			'result': output,
+			'mode': mode,
+			'extra_drop': {
+				'item': extra
+			}
+		}).id('kubejs:chisel/' + mode + '/' + id)
+	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
 		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
@@ -47,6 +178,34 @@ onEvent('recipes', e => {
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
 	});
+	coppers.forEach(copper => {
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.7)
+		], 'tfc:ore/rich_' + copper).id('kubejs:crushing/rich_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.5)
+		], 'tfc:ore/normal_' + copper).id('kubejs:crushing/normal_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.3)
+		], 'tfc:ore/poor_' + copper).id('kubejs:crushing/poor_copper_dust_' + copper);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_copper').withChance(0.2)
+		], 'tfc:ore/small_' + copper).id('kubejs:crushing/small_copper_dust_' + copper);
+	})
+	irons.forEach(iron => {
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.7)
+		], 'tfc:ore/rich_' + iron).id('kubejs:crushing/rich_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.5)
+		], 'tfc:ore/normal_' + iron).id('kubejs:crushing/normal_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.3)
+		], 'tfc:ore/poor_' + iron).id('kubejs:crushing/poor_iron_dust_' + iron);
+		e.recipes.createCrushing([
+		Item.of('immersiveengineering:dust_iron').withChance(0.2)
+		], 'tfc:ore/small_' + iron).id('kubejs:crushing/small_iron_dust_' + iron);
+	})
 	grains.forEach(grain => {
 		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
 	});
@@ -54,6 +213,16 @@ onEvent('recipes', e => {
 		e.recipes.createCutting('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').processingTime(100).id('kubejs:cutting/' + plank + '_slab_to_panel');
 		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + 'planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
 	});
+	colors.forEach(color => {
+		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
+		e.recipes.createSplashing(['minecraft:' + color + '_concrete_powder'], 'minecraft:' + color + '_concrete').id('create:splashing/' + color + '_concrete_powder');
+	});
+	sheetmetals.forEach(sheetmetal => {
+		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
+	});
+	sands.forEach(sand => {
+		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
+	});//I don't know why the secondaries won't work, but they won't
 	
 	let mold_blueprint = (result) => {
 		e.custom({
@@ -173,34 +342,6 @@ onEvent('recipes', e => {
 	e.recipes.createCrushing([
 	Item.of('immersiveengineering:dust_lead').withChance(0.2)
 	], 'kubejs:ore/small_lead').id('kubejs:crushing/small_lead_dust');
-	coppers.forEach(copper => {
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_copper').withChance(0.7)
-		], 'tfc:ore/rich_' + copper).id('kubejs:crushing/rich_copper_dust_' + copper);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_copper').withChance(0.5)
-		], 'tfc:ore/normal_' + copper).id('kubejs:crushing/normal_copper_dust_' + copper);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_copper').withChance(0.3)
-		], 'tfc:ore/poor_' + copper).id('kubejs:crushing/poor_copper_dust_' + copper);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_copper').withChance(0.2)
-		], 'tfc:ore/small_' + copper).id('kubejs:crushing/small_copper_dust_' + copper);
-	})
-	irons.forEach(iron => {
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_iron').withChance(0.7)
-		], 'tfc:ore/rich_' + iron).id('kubejs:crushing/rich_iron_dust_' + iron);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_iron').withChance(0.5)
-		], 'tfc:ore/normal_' + iron).id('kubejs:crushing/normal_iron_dust_' + iron);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_iron').withChance(0.3)
-		], 'tfc:ore/poor_' + iron).id('kubejs:crushing/poor_iron_dust_' + iron);
-		e.recipes.createCrushing([
-		Item.of('immersiveengineering:dust_iron').withChance(0.2)
-		], 'tfc:ore/small_' + iron).id('kubejs:crushing/small_iron_dust_' + iron);
-	})
 	e.recipes.createCrushing([
 	'8x minecraft:redstone',
 	Item.of('3x minecraft:redstone').withChance(0.1)
@@ -341,6 +482,7 @@ onEvent('recipes', e => {
 	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
 	Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/chalk').id('kubejs:washing/chalk');
+	e.recipes.createSplashing(['minecraft:white_wool'], '#tfc:colored_wool').id('create:splashing/wool');
 	
 	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot_from_tfc');
 	
@@ -468,24 +610,8 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('8x kubejs:stained_packaged_wood_planks_panel', 'immersiveengineering:slab_treated_wood_packaged').processingTime(100).id('kubejs:cutting/stained_wood_packaged_slab_to_panel');
 	e.recipes.createCutting('8x kubejs:brick_panel', 'minecraft:brick_slab').processingTime(100).id('kubejs:cutting/brick_slab_to_panel');
 	
-	let cbc_melting = (input, output, amount, time, heat, id) => {
-		e.custom({
-			'type': 'createbigcannons:melting',
-			'ingredients': [
-			{
-				'item': input
-			}
-			],
-			'results': [
-			{
-				'fluid': output,
-				'amount': amount
-			}
-			],
-			'processingTime': time,
-			'heatRequirement': heat
-		}).id('kubejs:melting/' + id)
-	}//time = ((amount^1.003)*temp)/7 #divide by 1.5 when superheated
+	//cbc_melting:order = input, output, amount, time, heat, id
+	//cbc_melting:time = ((amount^1.003)*temp)/7 #divide by 1.5 when superheated
 	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1653, 'heated', 'rich_lead_heated')
 	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1102, 'superheated', 'rich_lead_superheated')
 	cbc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 706, 'heated', 'poor_lead_heated')
@@ -599,27 +725,13 @@ onEvent('recipes', e => {
 	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 3822, 'heated', 'normal_native_gold_heated')
 	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 2548, 'superheated', 'normal_native_gold_superheated')
 	
-	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
-		e.custom({
-			'type': 'tfc:welding',
-			'first_input': { 'item': in1 },
-			'second_input': { 'tag': in2 },
-			'tier': tier,
-			'result': { 'item': out, 'count': count }
-		}).id('kubejs:weld/' + id)
-	}
-	let tfc_welding_item = (in1, in2, tier, out, count, id) => {
-		e.custom({
-			'type': 'tfc:welding',
-			'first_input': { 'item': in1 },
-			'second_input': { 'item': in2 },
-			'tier': tier,
-			'result': { 'item': out, 'count': count }
-		}).id('kubejs:weld/' + id)
-	}
+	//tfc_welding_tag:order = in1, in2, tier, out, count, id | in2 is a tag
 	tfc_welding_tag('tfc:metal/ingot/wrought_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_material_from_wrought_iron')
 	tfc_welding_tag('tfc:metal/ingot/zinc', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 5, 'composite_material_from_zinc')
 	tfc_welding_tag('tfc:metal/helmet/copper', 'forge:glass', 2, 'create:diving_helmet', 1, 'diving_helmet_from_tfc_copper_helmet')
+	tfc_welding_tag('tfc:metal/ingot/steel', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 25, 'composite_material_from_steel')
+	
+	//tfc_welding_item:order = in1, in2, tier, out, count, id
 	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'fluid_pipe_from_tfc_coppers')
 	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks_from_tfc')
 	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'immersiveengineering:nugget_electrum', 1, 'double_electrum_ingot')
@@ -627,17 +739,8 @@ onEvent('recipes', e => {
 	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'immersiveengineering:nugget_lead', 1, 'double_lead_ingot')
 	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots_from_tfc_copper_boots')
 	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'fluid_pipe_from_firmalife_stainless_steels')
-	tfc_welding_tag('tfc:metal/ingot/steel', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 25, 'composite_material_from_steel')
 	
-	let tfc_anvil = (input, output, count, tier, rule_1, rule_2, rule_3, id) => {
-		e.custom({
-			'type': 'tfc:anvil',
-			'input': { 'item': input },
-			'result': { 'item': output, 'count': count },
-			'tier': tier,
-			'rules': [ rule_1 + '_last', rule_2 + '_second_last', rule_3 + '_third_last' ]
-		}).id('kubejs:anvil/' + id)
-	}
+	//tfc_anvil:order = input, output, count, tier, rule_1, rule_2, rule_3, id | three rules needed
 	tfc_anvil('tfc:metal/rod/brass', 'create:brass_ladder', 3, 2, 'draw', 'bend', 'draw', 'brass_ladder_working')
 	tfc_anvil('tfc:metal/rod/copper', 'create:copper_ladder', 3, 1, 'draw', 'bend', 'draw', 'copper_ladder_working')
 	tfc_anvil('immersiveengineering:nugget_electrum', 'immersiveengineering:plate_electrum', 1, 3, 'hit', 'hit', 'hit', 'electrum_sheet_working')
@@ -647,14 +750,7 @@ onEvent('recipes', e => {
 	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
 	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
 	
-	let tfc_heating = (input, output, amount, temperature, id) => {
-		e.custom({
-			'type': 'tfc:heating',
-			'ingredient': { 'item': input },
-			'result_fluid': { 'fluid': output, 'amount': amount },
-			'temperature': temperature
-		}).id('kubejs:heat/' + id)
-	}
+	//tfc_heating:order = input, output, amount, temperature, id
 	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
 	tfc_heating('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
 	tfc_heating('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
@@ -696,105 +792,29 @@ onEvent('recipes', e => {
 	tfc_heating('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
 	tfc_heating('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
 	
-	let tfc_casting = (input, amount, output, chance, id) => {
-		e.custom({
-			'type': 'tfc:casting',
-			'mold': { 'item': 'tfc:ceramic/ingot_mold' },
-			'fluid': { 'ingredient': input, 'amount': amount },
-			'result': { 'item': output },
-			'break_chance': chance
-		}).id('kubejs:casting/' + id)
-	}
+	//tfc_casting:order = input, amount, output, chance, id | chance = chance to break
 	tfc_casting('kubejs:electrum', 100, 'immersiveengineering:ingot_electrum', 0.1, 'electrum_ingot')
 	tfc_casting('kubejs:constantan', 100, 'immersiveengineering:ingot_constantan', 0.1, 'constantan_ingot')
 	tfc_casting('kubejs:lead', 100, 'immersiveengineering:ingot_lead', 0.1, 'lead_ingot')
 	
-	let tfc_alloy = (output, input1, min1, max1, input2, min2, max2, id) => {
-		e.custom({
-			'type': 'tfc:alloy',
-			'result': output,
-			'contents': [
-			{ 'metal': input1, 'min': min1, 'max': max1 },
-			{ 'metal': input2, 'min': min2, 'max': max2 }
-			]
-		}).id('kubejs:alloy/' + id)
-	}
+	//tfc_alloy:order = output, input1, min1, max1, input2, min2, max2, id
 	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum_from_gold_silver')
 	tfc_alloy('tfc:constantan', 'tfc:copper', 0.5, 0.6, 'tfc:nickel', 0.4, 0.5, 'constantan_from_copper_nickel')
 	
-	let tfc_sealed_barrel_item = (input_item, input_fluid, amount, output, duration, id) => {
-		e.custom({
-			'type': 'tfc:barrel_sealed',
-			'input_item': {
-				'ingredient': {
-					'item': input_item
-				}
-			},
-			'input_fluid': {
-				'ingredient': {
-					'fluid': input_fluid
-				},
-				'amount': amount
-			},
-			'output_item': {
-				'item': output
-			},
-			'duration': duration
-		}).id('kubejs:barrel_sealed/' + id)
-	}
-	let tfc_sealed_barrel_tag = (input_tag, input_fluid, amount, output, duration, id) => {
-		e.custom({
-			'type': 'tfc:barrel_sealed',
-			'input_item': {
-				'ingredient': {
-					'tag': input_tag
-				}
-			},
-			'input_fluid': {
-				'ingredient': {
-					'fluid': input_fluid
-				},
-				'amount': amount
-			},
-			'output_item': {
-				'item': output
-			},
-			'duration': duration
-		}).id('kubejs:barrel_sealed/' + id)
-	}
+	//tfc_sealed_barrel_item:order = input_item, input_fluid, amount, output, duration, id
 	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar')
-	colors.forEach(color => {
-		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
-	})
 	
-	let tfc_chisel = (input, output, mode, id) => {
-		e.custom({
-			'type': 'tfc:chisel',
-			'ingredient': input,
-			'result': output,
-			'mode': mode
-		}).id('kubejs:chisel/' + mode + '/' + id)
-	}
-	let tfc_chisel_extra = (input, output, mode, extra, id) => {
-		e.custom({
-			'type': 'tfc:chisel',
-			'ingredient': input,
-			'result': output,
-			'mode': mode,
-			'extra_drop': {
-				'item': extra
-			}
-		}).id('kubejs:chisel/' + mode + '/' + id)
-	}
-	sheetmetals.forEach(sheetmetal => {
-		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
-	})
-	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
+	//tfc_sealed_barrel_tag:order = input_tag, input_fluid, amount, output, duration, id
+	
+	//tfc_chisel:order = input, output, mode, id
 	tfc_chisel('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:stairs_treated_wood_horizontal', 'stair', 'stained_wood_horizontal')
-	tfc_chisel_extra('immersiveengineering:treated_wood_vertical', 'immersiveengineering:slab_treated_wood_vertical', 'slab', 'immersiveengineering:slab_treated_wood_vertical', 'stained_wood_vertical')
 	tfc_chisel('immersiveengineering:treated_wood_vertical', 'immersiveengineering:stairs_treated_wood_vertical', 'stair', 'stained_wood_vertical')
-	tfc_chisel_extra('immersiveengineering:treated_wood_packaged', 'immersiveengineering:slab_treated_wood_packaged', 'slab', 'immersiveengineering:slab_treated_wood_packaged', 'stained_wood_packaged')
 	tfc_chisel('immersiveengineering:treated_wood_packaged', 'immersiveengineering:stairs_treated_wood_packaged', 'stair', 'stained_wood_packaged')
+	
+	//tfc_chisel_extra:order = input, output, mode, extra, id
+	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
+	tfc_chisel_extra('immersiveengineering:treated_wood_vertical', 'immersiveengineering:slab_treated_wood_vertical', 'slab', 'immersiveengineering:slab_treated_wood_vertical', 'stained_wood_vertical')
+	tfc_chisel_extra('immersiveengineering:treated_wood_packaged', 'immersiveengineering:slab_treated_wood_packaged', 'slab', 'immersiveengineering:slab_treated_wood_packaged', 'stained_wood_packaged')
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -835,10 +855,8 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringCrusher('1x tfc:sand/red', 'tfc:rock/gravel/chert'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_red_from_chert');
 	e.recipes.immersiveengineeringCrusher('1x tfc:sand/yellow', 'tfc:rock/gravel/limestone'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_yellow_from_limestone');
 	e.recipes.immersiveengineeringCrusher('1x tfc:sand/green', 'tfc:rock/gravel/schist'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_green_from_schist');
-	sands.forEach(sand => {
-		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
-	})//I don't know why the secondaries won't work, but they won't
 	e.recipes.immersiveengineeringCrusher('4x tfc:fire_clay', 'tfc:fire_clay_block').id('kubejs:crusher/fire_clay_block');
+	//I don't know why the secondaries won't work, but they won't
 	
 	//blueprints
 	e.custom({
@@ -1238,4 +1256,19 @@ onEvent('recipes', e => {
 			'amount': 1000
 		}
 	}).id('kubejs:bottling/copper_block');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:treated_wood_horizontal'
+		}
+		],
+		'input': {
+			'tag': 'minecraft:planks'
+		},
+		'fluid': {
+			'tag': 'forge:creosote',
+			'amount': 100
+		}
+	}).id('kubejs:bottling/stained_wood');
 })

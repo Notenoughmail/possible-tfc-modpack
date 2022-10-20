@@ -86,11 +86,6 @@ hash = "f1e831b83e7e2d9158db8392feb3c513aa3dd36606e937be508a15709f6f0010"
 metafile = true
 
 [[files]]
-file = "mods/dynamiclights-reforged.pw.toml"
-hash = "0943b652d4e0778622c99801b870208a39782c040a73413648ab93240fcd2088"
-metafile = true
-
-[[files]]
 file = "mods/elytra-bounce.pw.toml"
 hash = "bc652cc62b66b4bab056d362057bd11508aa576d0e5fa775d1852420c29f4787"
 metafile = true
@@ -252,7 +247,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "d2f02803664f544a2432f09ae4ce9e43e50ea47666fe63c4ad45ab5c8aca1857"
+hash = "e2bf764ff360c13dc3afaab872820daeff463d31b2da1f15b6b31aa1d5928f4f"
 metafile = true
 
 [[files]]

@@ -545,7 +545,7 @@ onEvent('recipes', e => {
 		B: '#forge:chests/wooden',
 		C: 'minecraft:leather'
 	}).id('kubejs:shaped_crafting/toolbox_from_tfc');
-	e.shaped('16x create:controller_rail', [
+	e.shaped('32x create:controller_rail', [
 	'SAS',
 	'SBS',
 	'SAS'

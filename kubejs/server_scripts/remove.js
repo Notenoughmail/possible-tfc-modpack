@@ -99,4 +99,5 @@ onEvent('recipes', e => {
 	e.remove({input: 'minecraft:gold_block'});
 	e.remove({type: 'immersiveengineering:arc_furnace'});
 	e.remove({type: 'immersiveengineering:crusher'});
+	e.remove({type: 'create:splashing'});
 })
