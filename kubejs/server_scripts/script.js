@@ -173,7 +173,7 @@ onEvent('recipes', e => {
 		tfc_collapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/poor_lead/' + rock)
 		tfc_collapse('kubejs:ore/poor_lead/' + rock, 'tfc:rock/cobble/' + rock)
 		e.recipes.createCutting('8x kubejs:' + rock + '_brick_panel', 'tfc:rock/bricks/' + rock + '_slab').processingTime(100).id('kubejs:cutting/' + rock + '_slab_to_panel');
-		e.recipes.immersiveengineeringSawmill('8x kubejs:' + rock + '_brick_panel', 'tfc:roc/bricks/' + rock + '_slab').id('kubejs:sawmill/' + rock + '_slab_to_panel');
+		e.recipes.immersiveengineeringSawmill('8x kubejs:' + rock + '_brick_panel', 'tfc:rock/bricks/' + rock + '_slab').id('kubejs:sawmill/' + rock + '_slab_to_panel');
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
@@ -211,7 +211,7 @@ onEvent('recipes', e => {
 	});
 	planks.forEach(plank => {
 		e.recipes.createCutting('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').processingTime(100).id('kubejs:cutting/' + plank + '_slab_to_panel');
-		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + 'planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
+		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
 	});
 	colors.forEach(color => {
 		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
@@ -507,7 +507,7 @@ onEvent('recipes', e => {
 	'ABA',
 	'SAS'
 	], {
-		S: 'immersiveengineering:sheetmetal_steel',
+		S: 'tfc:metal/sheet/steel',
 		A: 'immersiveengineering:component_iron',
 		B: 'create:gearbox'
 	}).id('kubejs:mechanical_crafting/light_engineering_from_tfc');

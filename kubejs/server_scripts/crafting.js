@@ -2,8 +2,6 @@
 
 console.info('Loading TFC crafting recipes')
 
-let wire_metals = ['copper', 'lead', 'steel', 'electrum', 'aluminum']
-
 let partial_metal = ['copper', 'gold', 'silver', 'nickel']
 
 let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
@@ -36,9 +34,29 @@ onEvent('recipes', e => {
 	blueprint('tfc:powderkeg', Item.of('immersiveengineering:blueprint', '{blueprint:"specialBullet"}'), 'special_bullet_blueprint')
 	blueprint('tfc:metal/tuyere/red_steel', Item.of('immersiveengineering:blueprint', '{blueprint:"electrode"}'), 'metal_working_blueprint')
 	
-	wire_metals.forEach(metal => {
-		e.shapeless('2x immersiveengineering:wire_' + metal, [['tfc:metal/rod/' + metal, 'immersiveengineering:stick_' + metal, 'immersiveposts:stick_' + metal], 'immersiveengineering:wirecutter']).id('kubejs:shapeless_crafting/cut_rod_to_wire_' + metal)
-	})
+	let tfc_damage_shapeless_inputs = (input_1, input_2, result, count, id) => {
+		e.custom({
+			'type': 'tfc:damage_inputs_shapeless_crafting',
+			'recipe': {
+				'type': 'minecraft:crafting_shapeless',
+				'ingredients': [{
+					'item': input_1
+				}, {
+					'item': input_2
+				}],
+				'result': {
+					'item': result,
+					'count': count
+				}
+			
+			}
+		}).id('kubejs:shapeless_crafting/' + id)
+	}
+	tfc_damage_shapeless_inputs('immersiveposts:stick_lead', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_lead', 2, 'cut_rod_to_wire_lead')
+	tfc_damage_shapeless_inputs('tfc:metal/rod/steel', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_steel', 2, 'cut_rod_to_wire_steel')
+	tfc_damage_shapeless_inputs('immersiveposts:stick_electrum', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_electrum', 2, 'cut_rod_to_wire_electrum')
+	tfc_damage_shapeless_inputs('tfc:metal/rod/copper', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_copper', 2, 'cut_rod_to_wire_sopper')
+	
 	//shaped
 	partial_metal.forEach(metal => {
 		e.shaped('6x immersiveposts:fence_' + metal, [
