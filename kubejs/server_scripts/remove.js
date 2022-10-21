@@ -47,7 +47,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:dust_nickel', 'immersiveengineering:dust_silver', 'immersiveengineering:dust_lead',
 	'immersiveengineering:dust_copper', 'immersiveengineering:workbench', 'createaddition:alternator',
 	'createaddition:electric_motor', 'immersiveengineering:blastfurnace_preheater', 'immersiveengineering:furnace_heater',
-	/create:crushed_.*/
+	/create:crushed_.*/, /immersiveengineering:connector_.*/
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 

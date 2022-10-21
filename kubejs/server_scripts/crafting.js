@@ -879,4 +879,52 @@ onEvent('recipes', e => {
 	], {
 		S: 'minecraft:brick_slab'
 	}).id('kubejs:shaped_crafting/brick_slab_to_panel');
+	e.shaped('8x immersiveengineering:connector_lv_relay', [
+	'S',
+	'A',
+	'B'
+	], {
+		S: 'immersiveengineering:wire_copper',
+		A: 'minecraft:terracotta',
+		B: 'create:andesite_alloy'
+	}).id('kubejs:shaped_crafting/lv_relay');
+	e.shaped('1x immersiveengineering:connector_lv', [
+	'S',
+	'A'
+	], {
+		S: 'immersiveengineering:connector_lv_relay',
+		A: 'immersiveengineering:wire_lead'
+	}).id('kubejs:shaped_crafting/lv_connector');
+	e.shaped('8x immersiveengineering:connector_mv_relay', [
+	'S',
+	'A',
+	'B'
+	], {
+		S: 'immersiveengineering:wire_electrum',
+		A: 'immersiveengineering:duroplast',
+		B: 'create:andesite_alloy'
+	}).id('kubejs:shaped_crafting/mv_relay');
+	e.shaped('1x immersiveengineering:connector_mv', [
+	'S',
+	'A'
+	], {
+		S: 'immersiveengineering:connector_mv_relay',
+		A: 'immersiveengineering:wire_lead'
+	}).id('kubejs:shaped_crafting/mv_connector');
+	e.shaped('8x immersiveengineering:connector_hv_relay', [
+	'S',
+	'A',
+	'B'
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'immersiveengineering:insulating_glass',
+		B: 'create:andesite_alloy'
+	}).id('kubejs:shaped_crafting/hv_relay');
+	e.shaped('1x immersiveengineering:connector_hv', [
+	'S',
+	'A'
+	], {
+		S: 'immersiveengineering:connector_hv',
+		A: 'immersiveengineering:wire_lead'
+	}).id('kubejs:shaped_crafting/hv_connector');
 })
