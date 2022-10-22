@@ -46,7 +46,7 @@ onEvent('block.registry', e => {
 		types.forEach(type => {
 			e.create('ore/' + type + '_lead/' + rock)
 				.material('stone')
-				.hardness(0.6)
+				.hardness(3)
 				.tagBlock('minecraft:mineable/pickaxe')
 				.tagBlock('tfc:prospectable')
 				.tagBlock('tfc:can_trigger_collapse')
@@ -60,6 +60,7 @@ onEvent('block.registry', e => {
 	})
 	e.create('ore/small_lead')
 		.model("kubejs:block/ore/small_lead")
+		.hardness(0.1)
 		.noCollision()
 		.renderType('cutout')
 		.waterlogged()
