@@ -12,7 +12,7 @@ metafile = true
 
 [[files]]
 file = "mods/architectury-api.pw.toml"
-hash = "a4b435f93d0a70d1d71359024fbf3d4eff8ec653f6f4e90acdfe9c6dce656634"
+hash = "d6f61a6e2ab8946261c17a593e178a32d880b933b46d680096916e9f163493d0"
 metafile = true
 
 [[files]]
@@ -127,7 +127,7 @@ metafile = true
 
 [[files]]
 file = "mods/iris-flywheel-compat.pw.toml"
-hash = "7e157d27936ade0d3bee3dc9a8a1c3b49f604ff4d8bcc2c3d7127d09e265479c"
+hash = "66ca417646b967bbcfbaf024de9e376b138f95d521ba7aaf0bd77f72cd28ed8f"
 metafile = true
 
 [[files]]
@@ -142,7 +142,7 @@ metafile = true
 
 [[files]]
 file = "mods/jade.pw.toml"
-hash = "8555571dfb1c023b48be6569674634176dcee83d07589296ee7d805e59c0f25f"
+hash = "6454a521978828300db038f5ef2a4f0ae49247cf03366192c0bf1b46020cedc1"
 metafile = true
 
 [[files]]
@@ -247,7 +247,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "e2bf764ff360c13dc3afaab872820daeff463d31b2da1f15b6b31aa1d5928f4f"
+hash = "d46976b5dabe40203262017767dc1c11128f081af4a3dfa43eb7e7b8080ee493"
 metafile = true
 
 [[files]]
