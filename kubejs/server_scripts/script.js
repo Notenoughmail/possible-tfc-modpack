@@ -212,6 +212,8 @@ onEvent('recipes', e => {
 	planks.forEach(plank => {
 		e.recipes.createCutting('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').processingTime(100).id('kubejs:cutting/' + plank + '_slab_to_panel');
 		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
+		e.recipes.createCutting('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).processingTime(150).id('kubejs:cutting/' + plank + '_stripping');
+		e.recipes.immersiveengineeringSawmill('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).id('kubejs:sawmill/' + plank + '_stripping');
 	});
 	colors.forEach(color => {
 		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
