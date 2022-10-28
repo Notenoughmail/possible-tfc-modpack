@@ -1,0 +1,16 @@
+{
+	"name": "I'm Sorry",
+	"category": "patchouli:machinery",
+	"icon": "immersiveengineering:manual",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "If, as is inevitable, this guide isn't quite up to the task of properly informing you of $(o)Immersive Engineering$() and its workings, click $(c:/trigger confusion set 1)Here$() to be given $(o)Immersive Engineering's$() $(thing)Manual$().$(br2)Be careful not to lose it as you won't be able to do this again until you relog!"
+	},
+	{
+		"type": "patchouli:text",
+		"text": "Please allow up to five seconds for your manual to appear."
+	}
+	],
+	"read_by_deafult": true
+}
