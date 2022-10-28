@@ -97,7 +97,7 @@ metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "8874fb3373a35e6d0b135de1d6bc2e92e9bf0f1b250c35c6b01d26e59a432125"
+hash = "c076eb820b45df08ab73a3672952f606396e31643458f9b97374479575f79864"
 metafile = true
 
 [[files]]
@@ -122,7 +122,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "6b1719dfd4196add3838fa5af8c14ac0dda1045bf608931060a74c1c56b655ed"
+hash = "cd14587d0a4a617623e6a8553becf580d8cc35cc766264e165b2cf5cbc2ceb03"
 metafile = true
 
 [[files]]
@@ -182,7 +182,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs.pw.toml"
-hash = "66256576f75f6b9af143f4777cb02114eaf1decc52fafbfc4153da757b9c63bd"
+hash = "7ee5b999c3fd2a290f7a2b2480a796741f40059d22fbc0db4513a04d29416292"
 metafile = true
 
 [[files]]
@@ -192,7 +192,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "86cacbea43386db552b71eaf1d39e8627163708cfb428d22b7839c5fa784b2c0"
+hash = "d774f8aa6d8db0da5e2b65c38a82f4ef680cd73e46cf94b921c0e67cef96a115"
 metafile = true
 
 [[files]]
