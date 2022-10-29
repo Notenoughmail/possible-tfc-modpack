@@ -972,7 +972,7 @@ onEvent('recipes', e => {
 	'S',
 	'A'
 	], {
-		S: 'immersiveengineering:connector_hv',
+		S: 'immersiveengineering:connector_hv_relay',
 		A: 'immersiveengineering:wire_lead'
 	}).id('kubejs:shaped_crafting/hv_connector');
 	e.shaped('1x immersiveengineering:capacitor_lv', [
