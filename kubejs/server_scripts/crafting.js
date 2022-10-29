@@ -975,4 +975,43 @@ onEvent('recipes', e => {
 		S: 'immersiveengineering:connector_hv',
 		A: 'immersiveengineering:wire_lead'
 	}).id('kubejs:shaped_crafting/hv_connector');
+	e.shaped('1x immersiveengineering:capacitor_lv', [
+	'SAS',
+	'BCB',
+	'SAS'
+	], {
+		S: '#forge:treated_wood_slab',
+		A: '#forge:sheets/lead',
+		B: 'tfc:metal/ingot/copper',
+		C: 'minecraft:redstone_block'
+	}).id('kubejs:shaped_crafting/lv_capacitor');
+	e.shaped('1x kubejs:frame/capacitor_mv', [
+	'S S',
+	'ABA',
+	'SCS'
+	], {
+		S: '#forge:treated_wood_slab',
+		A: 'immersiveengineering:ingot_electrum',
+		B: 'immersiveengineering:metal_barrel',
+		C: 'tfc:metal/sheet/wrought_iron'
+	}).id('kubejs:shaped_crafting/mv_capacitor_frame');
+	e.shaped('1x kubejs:frame/capacitor_hv', [
+	'S S',
+	'ABA',
+	'SCS'
+	], {
+		S: '#forge:treated_wood_slab',
+		A: 'immersiveengineering:ingot_aluminum',
+		B: 'immersiveengineering:metal_barrel',
+		C: 'immersiveengineering:ingot_hop_graphite'
+	}).id('kubejs:shaped_crafting/hv_capacitor_frame');
+	e.shaped('1x immersiveengineering:powerpack', [
+	'SAS',
+	'BCB'
+	], {
+		S: 'immersiveengineering:connector_lv',
+		A: 'immersiveengineering:capacitor_lv',
+		B: 'immersiveengineering:wirecoil_copper_ins',
+		C: 'minecraft:leather_chestplate'
+	}).id('kubejs:shaped_crafting/capacitor_backpack');
 })

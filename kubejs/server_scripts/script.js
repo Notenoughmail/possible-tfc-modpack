@@ -567,35 +567,47 @@ onEvent('recipes', e => {
 		e.recipes.createPressing('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet'),
 		e.recipes.createCutting('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet').processingTime(100),
 		e.recipes.createPressing('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet')
-	]).transitionalItem('create:unprocessed_obsidian_sheet').loops(1).id('kubejs:sequenced_assembly/sturdy_sheet_from_steel_sheet');
+	]).transitionalItem('create:unprocessed_obsidian_sheet').loops(1).id('kubejs:sequenced_assembly/sturdy_sheet');
 	e.recipes.createSequencedAssembly(['16x create:track'], '#create:sleepers', [
 		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
 		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
 		e.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
-	]).transitionalItem('create:incomplete_track').loops(1).id('kubejs:sequenced_assembly/track_from_steel_rods');
+	]).transitionalItem('create:incomplete_track').loops(1).id('kubejs:sequenced_assembly/track');
 	e.recipes.createSequencedAssembly(['create:precision_mechanism'], 'tfc:brass_mechanisms', [
 		e.recipes.createCutting('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism').processingTime(200),
 		e.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:electron_tube']),
 		e.recipes.createPressing('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism'),
 		e.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:cogwheel']),
 		e.recipes.createPressing('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism')
-	]).transitionalItem('create:incomplete_precision_mechanism').loops(3).id('kubejs:sequenced_assembly/precision_mechanism_from_brass_mechanisms');
+	]).transitionalItem('create:incomplete_precision_mechanism').loops(3).id('kubejs:sequenced_assembly/precision_mechanism');
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_iron'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/wrought_iron'])
-	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/iron_component_from_wrought_iron_sheets');
+	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/iron_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_steel'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel'])
-	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/steel_component_from_steel_sheets');
+	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/steel_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:heavy_engineering'], 'immersiveengineering:light_engineering', [
 		e.recipes.createFilling('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', Fluid.of('tfc:metal/black_steel', 100)]),
 		e.recipes.createDeploying('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', 'immersiveengineering:component_steel']),
 		e.recipes.createPressing('immersiveengineering:light_engineering', 'immersiveengineering:light_engineering')
-	]).transitionalItem('immersiveengineering:light_engineering').loops(4).id('kubejs:sequenced_assembly/heavy_engineering_from_black_steel');
+	]).transitionalItem('immersiveengineering:light_engineering').loops(4).id('kubejs:sequenced_assembly/heavy_engineering_block');
 	e.recipes.createSequencedAssembly(['immersiveengineering:cokebrick'], 'tfc:fire_bricks', [
 		e.recipes.createDeploying('tfc:fire_bricks', ['tfc:fire_bricks', 'minecraft:brick']),
 		e.recipes.createDeploying('tfc:fire_bricks', ['tfc:fire_bricks', 'tfc:ore/bituminous_coal']),
 		e.recipes.createFilling('tfc:fire_bricks', ['tfc:fire_bricks', Fluid.of('minecraft:water', 250)])
-	]).transitionalItem('tfc:fire_bricks').loops(2).id('kubejs:sequenced_assembly/coke_bricks_from_fire_bricks');
+	]).transitionalItem('tfc:fire_bricks').loops(2).id('kubejs:sequenced_assembly/coke_bricks');
+	e.recipes.createSequencedAssembly(['immersiveengineering:capacitor_mv'], 'kubejs:frame/capacitor_mv', [
+		e.recipes.createFilling('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
+		e.recipes.createDeploying('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', 'tfc:metal/sheet/nickel']),
+		e.recipes.createPressing('kubejs:frame/capacitor_mv', 'kubejs:frame/capacitor_mv')
+	]).loops(1).id('kubejs:sequenced_assembly/mv_capacitor');
+	e.recipes.createSequencedAssembly(['immersiveengineering:capacitor_hv'], 'kubejs:frame/capacitor_hv', [
+		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
+		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
+		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 500)]),
+		e.recipes.createDeploying('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', 'tfc:metal/sheet/steel']),
+		e.recipes.createPressing('kubejs:frame/capacitor_hv', 'kubejs:frame/capacitor_hv')
+	]).loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:cutting/copper_sheetmetal');

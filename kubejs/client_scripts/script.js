@@ -65,6 +65,7 @@ onEvent('jei.hide.items', e => {
 	e.hide(/minecraft:.*_ore/)
 	e.hide('minecraft:stonecutter')
 	e.hide('kubejs:dummy')
+	e.hide('createaddition:capacitor')
 })
 
 onEvent('jei.add.items', e => {

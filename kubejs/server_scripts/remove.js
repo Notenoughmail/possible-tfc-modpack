@@ -47,7 +47,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:dust_nickel', 'immersiveengineering:dust_silver', 'immersiveengineering:dust_lead',
 	'immersiveengineering:dust_copper', 'immersiveengineering:workbench', 'createaddition:alternator',
 	'createaddition:electric_motor', 'immersiveengineering:blastfurnace_preheater', 'immersiveengineering:furnace_heater',
-	/create:crushed_.*/, /immersiveengineering:connector_.*/
+	/create:crushed_.*/, /immersiveengineering:connector_.*/, 'immersiveengineering:powerpack',
+	'createaddition:capacitor'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -72,7 +73,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'minecraft:copper_block', 'minecraft:copper_ingot', 'immersiveengineering:alloysmelter/insulating_glass',
 	'immersiveengineering:arcfurnace/insulating_glass', 'immersiveengineering:crafting/blastbrick_reinforced',
 	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel', 'immersiveengineering:blastfurnace/fuel_charcoal',
-	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:jei_bucket_.*/
+	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:jei_bucket_.*/,
+	/immersiveengineering:crafting\/capacitor_.*/
 	]
 
 onEvent('recipes', e => {

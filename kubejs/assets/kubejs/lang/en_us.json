@@ -63,5 +63,7 @@
 	"item.kubejs.ore.poor_lead": "Poor Lead",
 	"item.kubejs.ore.rich_lead": "Rich Lead",
 	"block.kubejs.ore.small_lead": "Small Lead",
-	"item.kubejs.ore.small_lead": "Small Lead"
+	"item.kubejs.ore.small_lead": "Small Lead",
+	"item.kubejs.frame.capacitor_mv": "Medium-Voltage Capacitor Frame",
+	"item.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame"
 }

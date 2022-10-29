@@ -21,6 +21,8 @@ onEvent('item.registry', e => {
 	})
 	e.create('brick_panel')
 	e.create('dummy')
+	e.create('frame/capacitor_mv')//done this way to let the name be different in the lang file, as KubeJS's generated default overrides it
+	e.create('frame/capacitor_hv')//+ expandability for future frames if that's something that happens
 })
 
 onEvent('item.modification', e => {

@@ -28,6 +28,11 @@
 	"block.immersiveengineering.treated_fence": "Stained Wood Fence",
 	"block.immersiveengineering.treated_scaffold": "Stained Wood Scaffolding",
 	"block.immersiveengineering.concrete_quarter": "Concrete Plate",
+	"block.immersiveengineering.capacitor_lv": "Low-Voltage Capacitor",
+	"block.immersiveengineering.capacitor_mv": "Medium-Voltage Capacitor",
+	"block.immersiveengineering.capacitor_hv": "Hight-Voltage Capacitor",
+	
+	"item.immersiveengineering.powerpack": "Capacitor Backpack",
 	
 	"fluid.immersiveengineering.concrete_flowing": "Liquid Concrete",
 	
