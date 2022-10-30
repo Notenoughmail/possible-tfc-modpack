@@ -66,6 +66,8 @@ onEvent('jei.hide.items', e => {
 	e.hide('minecraft:stonecutter')
 	e.hide('kubejs:dummy')
 	e.hide('createaddition:capacitor')
+	e.hide('createaddition:diamond_grit')
+	e.hide('create:red_sand_paper')
 })
 
 onEvent('jei.add.items', e => {

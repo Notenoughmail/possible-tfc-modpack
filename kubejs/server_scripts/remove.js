@@ -48,7 +48,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:dust_copper', 'immersiveengineering:workbench', 'createaddition:alternator',
 	'createaddition:electric_motor', 'immersiveengineering:blastfurnace_preheater', 'immersiveengineering:furnace_heater',
 	/create:crushed_.*/, /immersiveengineering:connector_.*/, 'immersiveengineering:powerpack',
-	'createaddition:capacitor'
+	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -74,7 +74,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:arcfurnace/insulating_glass', 'immersiveengineering:crafting/blastbrick_reinforced',
 	'immersiveengineering:blastfurnace/steel_block', 'immersiveengineering:blastfurnace/steel', 'immersiveengineering:blastfurnace/fuel_charcoal',
 	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:jei_bucket_.*/,
-	/immersiveengineering:crafting\/capacitor_.*/
+	/immersiveengineering:crafting\/capacitor_.*/, /immersiveengineering:smelting\/ingot_.*_from_dust_from_blasting/
 	]
 
 onEvent('recipes', e => {

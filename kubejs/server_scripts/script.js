@@ -613,7 +613,7 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:cutting/copper_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_lead', 'immersiveengineering:storage_lead').id('kubejs:cutting/lead_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_silver', 'immersiveengineering:storage_silver').id('kubejs:cutting/silver_sheetmetal');
-	e.recipes.createCutting('4x immersiveengineering:sheetmetal_nickel', 'immersiveengineering:storage_nickel').id('kubeks:cutting/nickel_sheetmetal');
+	e.recipes.createCutting('4x immersiveengineering:sheetmetal_nickel', 'immersiveengineering:storage_nickel').id('kubejs:cutting/nickel_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_constantan', 'immersiveengineering:storage_constantan').id('kubejs:cutting/constantan_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:cutting/electrum_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:cutting/steel_sheetmetal');
@@ -842,7 +842,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:sawmill/copper_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_lead', 'immersiveengineering:storage_lead').id('kubejs:sawmill/lead_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_silver', 'immersiveengineering:storage_silver').id('kubejs:sawmill/silver_sheetmetal');
-	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_nickel', 'immersiveengineering:storage_nickel').id('kubeks:sawmill/nickel_sheetmetal');
+	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_nickel', 'immersiveengineering:storage_nickel').id('kubejs:sawmill/nickel_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_constantan', 'immersiveengineering:storage_constantan').id('kubejs:sawmill/constantan_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:sawmill/electrum_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:sawmill/steel_sheetmetal');
@@ -870,6 +870,18 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringCrusher('1x tfc:sand/yellow', 'tfc:rock/gravel/limestone'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_yellow_from_limestone');
 	e.recipes.immersiveengineeringCrusher('1x tfc:sand/green', 'tfc:rock/gravel/schist'/*, [{chance: 0.05, output: 'minecraft:flint'}]*/).id('kubejs:crusher/sand_green_from_schist');
 	e.recipes.immersiveengineeringCrusher('4x tfc:fire_clay', 'tfc:fire_clay_block').id('kubejs:crusher/fire_clay_block');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_copper', 'tfc:metal/ingot/copper').id('kubejs:crusher/copper_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_aluminum', 'immersiveengineering:ingot_aluminum').id('kubejs:crusher/aluminum_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_lead', 'immersiveengineering:ingot_lead').id('kubejs:crusher/lead_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_silver', 'tfc:metal/ingot/silver').id('kubejs:crusher/silver_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_nickel', 'tfc:metal/ingot/nickel').id('kubejs:crusher/nickel_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_uranium', 'immersiveengineering:ingot_uranium').id('kubejs:crusher/uranium_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_constantan', 'immersiveengineering:ingot_constantan').id('kubejs:crusher/constantan_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_electrum', 'immersiveengineering:ingot_electrum').id('kubejs:crusher/electrum_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_steel', 'tfc:metal/ingot/steel').id('kubejs:crusher/steel_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_iron', 'tfc:metal/ingot/cast_iron').id('kubejs:crusher/iron_grit/cast_iron');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_iron', 'tfc:metal/ingot/wrought_iron').id('kubejs:crusher/iron_grit/wrought_iron');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_gold', 'tfc:metal/ingot/gold').id('kubejs:crusher/gold_grit');
 	//I don't know why the secondaries won't work, but they won't
 	
 	//blueprints
@@ -1285,4 +1297,24 @@ onEvent('recipes', e => {
 			'amount': 100
 		}
 	}).id('kubejs:bottling/stained_wood');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'createaddition:diamond_grit_sandpaper'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'tfc:powder/diamond'
+		},
+		{
+			'item': 'immersiveengineering:plate_duroplast'
+		}
+		],
+		'fluid': {
+			'tag': 'forge:phenolic_resin',
+			'amount': 50
+		}
+	}).id('kubejs:bottling/high_durability_sandpaper');
 })
