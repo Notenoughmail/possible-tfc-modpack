@@ -59,11 +59,18 @@
 	"block.kubejs.ore.rich_lead.schist": "Rich Schist Lead",
 	"block.kubejs.ore.rich_lead.gneiss": "Rich Gneiss Lead",
 	"block.kubejs.ore.rich_lead.marble": "Rich Marble Lead",
+	
+	"block.kubejs.ore.small_lead": "Small Lead",
+	
+	"block.kubejs.frame.capacitor_mv": "Medium-Voltage Capacitor Frame",
+	"block.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame",
+	
 	"item.kubejs.ore.normal_lead": "Normal Lead",
 	"item.kubejs.ore.poor_lead": "Poor Lead",
 	"item.kubejs.ore.rich_lead": "Rich Lead",
-	"block.kubejs.ore.small_lead": "Small Lead",
 	"item.kubejs.ore.small_lead": "Small Lead",
-	"block.kubejs.frame.capacitor_mv": "Medium-Voltage Capacitor Frame",
-	"block.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame"
+	
+	"item.kubejs.mold.ingot": "Metal Mold: Ingot",
+	"item.kubejs.mold.double_ingot": "Metal Mold: Double Ingot",
+	"item.kubejs.mold.double_sheet": "Metal Mold: Double Sheet"
 }

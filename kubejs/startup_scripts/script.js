@@ -21,6 +21,9 @@ onEvent('item.registry', e => {
 	})
 	e.create('brick_panel')
 	e.create('dummy')
+	e.create('mold/ingot')
+	e.create('mold/double_ingot')
+	e.create('mold/double_sheet')
 })
 
 onEvent('item.modification', e => {

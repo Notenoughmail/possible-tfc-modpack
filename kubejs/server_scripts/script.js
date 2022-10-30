@@ -267,7 +267,10 @@ onEvent('recipes', e => {
 	tfc_metals.forEach(metal => {
 		ie_bottler_simple_mold('sheet', metal, 'immersiveengineering:mold_plate', 200)
 		ie_bottler_simple_mold('rod', metal, 'immersiveengineering:mold_rod', 50)
-		ie_bottler_bucket(metal)//this only fixes half of them for some reason but I'll keep it 
+		ie_bottler_bucket(metal)//this only fixes half of them for some reason but I'll keep it
+		ie_bottler_simple_mold('ingot', metal, 'kubejs:mold/ingot', 100)
+		ie_bottler_simple_mold('double_ingot', metal, 'kubejs:mold/double_ingot', 200)
+		ie_bottler_simple_mold('double_sheet', metal, 'kubejs:mold/double_sheet', 400)
 	});
 	
 	let mold_blueprint = (result) => {
