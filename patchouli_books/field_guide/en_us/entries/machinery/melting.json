@@ -1,0 +1,16 @@
+{
+	"name": "Melting in Basins",
+	"category": "patchouli:machinery",
+	"icon": "create:basin",
+	"pages": [
+	{
+		"type": "patchouli:text",
+		"text": "While the $(l:mechanics/crucible)Crucible$() is very capable, it requires constant oversight, thus making it a poor option for automating metal processing. Fortunately, the $(thing)Foundry Lid$() exists allowing the $(thing)Basin$() to act similar to a crucible but in a much more hands off way."
+	},
+	{
+		"type": "patchouli:text",
+		"text": "There are some other differences in behavior though, primarily in melting times. Due to the basin only having two $(thing)Heat States$(), both of which can melt most items, the amount of time to melt an item is directly related to its liquid amount and the temperature it must reach to melt, however this appears to be slightly inaccurate for higher temperatures. In addition, superheating takes roughly two thirds the time regular heating takes."
+	}
+	],
+	"read_by_default": true
+}

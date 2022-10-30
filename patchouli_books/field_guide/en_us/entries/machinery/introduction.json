@@ -9,7 +9,7 @@
 	},
 	{
 		"type": "patchouli:text",
-		"text": "$(o)Immersive Engineering$() has three main tools, the $(thing)Engineer's Hammer$(); $(thing)Screwdriver$(); and $(thing)Wire Cutters$(), which are used for constructing, configuring, and wiring machinery. In addition the $(thing)Engineer's Multimeter$() is useful for power related information. $(0)Create$() has two main tools: the $(thing)Engineer's Wrench$(), which is useful for rotating, dismantling, and configuring components; and the $(thing)Engineer's Goggles$(), which are used for information about $(thing)Kinetic Networks$()."
+		"text": "$(o)Immersive Engineering$() has three main tools, the $(thing)Engineer's Hammer$(); $(thing)Screwdriver$(); and $(thing)Wire Cutters$(), which are used for constructing, configuring, and wiring machinery. In addition the $(thing)Engineer's Multimeter$() is useful for power related information. $(o)Create$() has two main tools: the $(thing)Engineer's Wrench$(), which is useful for rotating, dismantling, and configuring components; and the $(thing)Engineer's Goggles$(), which are used for information about $(thing)Kinetic Networks$()."
 	},
 	{
 		"type": "patchouli:crafting",

@@ -12,7 +12,7 @@
 		"item": "immersiveengineering:advanced_blast_furnace",
 		"title": "",
 		"link_recipes": false,
-		"text": "Steel is output at the front, slag at the back, and the furnace will automatically output into connected inventories. Iron and $(l:machinery/coke_oven)Coal Coke$() can be input from the top."
+		"text": "Steel is output at the front, slag at the back, and the furnace will automatically output into connected inventories. Iron and $(l:patchouli:machinery/coke_oven)Coal Coke$() can be input from the top."
 	},
 	{
 		"type": "patchouli:crafting",
