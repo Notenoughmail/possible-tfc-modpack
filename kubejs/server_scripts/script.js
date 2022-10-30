@@ -27,6 +27,8 @@ let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 
 
 let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
 
+let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass', 'copper', 'gold', 'nickel', 'rose_gold', 'silver', 'tin', 'zinc', 'sterling_silver', 'cast_iron', 'steel', 'black_steel', 'blue_steel', 'red_steel']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -166,6 +168,43 @@ onEvent('recipes', e => {
 			}
 		}).id('kubejs:chisel/' + mode + '/' + id)
 	}
+	let ie_bottler_simple_mold = (type, metal, mold, amount) => {
+		e.custom({
+			'type': 'immersiveengineering:bottling_machine',
+			'results': [
+			{
+				'item': 'tfc:metal/' + type + '/' + metal
+			},
+			{
+				'item': mold
+			}
+			],
+			'input': {
+				'item': mold
+			},
+			'fluid': {
+				'tag': 'tfc:' + metal,
+				'amount': amount
+			}
+		}).id('kubejs:bottling/' + type + '_' + metal);
+	}
+	let ie_bottler_bucket = (metal) => {
+		e.custom({
+			'type': 'immersiveengineering:bottling_machine',
+			'results': [
+			{
+				'item': 'tfc:bucket/metal/' + metal
+			}
+			],
+			'input': {
+				'item': 'minecraft:bucket'
+			},
+			'fluid': {
+				'tag': 'tfc:' + metal,
+				'amount': 1000
+			}
+		}).id('immersiveengineering:jei_bucket_metal/' + metal);//this exists purely to fix IE grabbing a random tag from a fluid for filling buckets as removing the recipes does not seem to work
+	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
 		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
@@ -225,6 +264,11 @@ onEvent('recipes', e => {
 	sands.forEach(sand => {
 		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
 	});//I don't know why the secondaries won't work, but they won't
+	tfc_metals.forEach(metal => {
+		ie_bottler_simple_mold('sheet', metal, 'immersiveengineering:mold_plate', 200)
+		ie_bottler_simple_mold('rod', metal, 'immersiveengineering:mold_rod', 50)
+		ie_bottler_bucket(metal)//this only fixes half of them for some reason but I'll keep it 
+	});
 	
 	let mold_blueprint = (result) => {
 		e.custom({
