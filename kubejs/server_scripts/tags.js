@@ -42,6 +42,8 @@ onEvent('tags.items', e => {
 	e.add('tfc:pileable_ingots', /tfc:brick.*/)
 	e.add('tfc:pileable_ingots', 'minecraft:brick')
 	e.add('tfc:pileable_sheets', /kubejs:.*_panel/)
+	e.removeAllTagsFrom('immersiveengineering:dust_coke')
+	e.add('forge:dusts/coal_coke', 'tfc:powder/coke')//IE loves tags too much
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:nugget_constantan')
@@ -67,6 +69,8 @@ onEvent('tags.items', e => {
 	e.add('tfc:metal_item/lead', 'immersiveengineering:ingot_lead')
 	e.add('tfc:metal_item/lead', 'immersiveengineering:nugget_lead')
 	e.add('tfc:metal_item/lead', 'immersiveposts:stick_lead')
+	e.add('tfc:metal_item/graphite', 'immersiveengineering:ingot_hop_graphite')
+	e.add('tfc:metal_item/graphite', 'immersiveengineering:dust_hop_graphite')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_constantan')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_electrum')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_lead')
@@ -125,12 +129,15 @@ onEvent('tags.fluids', e => {
 	e.add('tfc:molten_metals', 'kubejs:lead')
 	e.add('tfc:molten_metals', 'firmalife:metal/stainless_steel')
 	e.add('tfc:molten_metals', 'firmalife:metal/chromium')
+	e.add('tfc:molten_metals', 'kubejs:graphite')
 	e.add('tfc:electrum', 'kubejs:electrum')
 	e.add('tfc:electrum', 'kubejs:flowing_electrum')
 	e.add('tfc:constantan', 'kubejs:constantan')
 	e.add('tfc:constantan', 'kubejs:flowing_constantan')
 	e.add('tfc:lead', 'kubejs:lead')
 	e.add('tfc:lead', 'kubejs:flowing_lead')
+	e.add('tfc:graphite', 'kubejs:graphite')
+	e.add('tfc:graphite', 'kubejs:flowing_graphite')
 	e.add('forge:true_water', 'minecraft:water')/*IE why do you require fluid tags for your inputs*/
 	e.add('forge:true_water', 'minecraft:flowing_water')/*a normal fluid would be fine*/
 	e.add('immersiveengineering:concrete', 'immersiveengineering:concrete')

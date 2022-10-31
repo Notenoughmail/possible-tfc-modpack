@@ -1,0 +1,12 @@
+{
+	"tier": 1,
+	"fluid": "kubejs:graphite",
+	"melt_temperature": 2574,
+	"specific_heat_capacity": 0.028,
+	"ingots": {
+		"item": "immersiveengineering:ingot_hop_graphite"
+	},
+	"sheets": {
+		"item": "kubejs:dummy"
+	}
+}

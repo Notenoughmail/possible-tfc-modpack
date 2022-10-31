@@ -68,6 +68,8 @@ onEvent('jei.hide.items', e => {
 	e.hide('createaddition:capacitor')
 	e.hide('createaddition:diamond_grit')
 	e.hide('create:red_sand_paper')
+	e.hide('immersiveengineering:stick_steel')
+	e.hide('immersiveengineering:stick_iron')
 })
 
 onEvent('jei.add.items', e => {
@@ -94,7 +96,7 @@ onEvent('jei.add.items', e => {
 })
 
 onEvent('jei.remove.categories', e => {
-	console.log(e.getCategoryIds())
+	//console.log(e.getCategoryIds())
 	e.remove('minecraft:anvil')
 	e.remove('minecraft:blasting')
 	e.remove('minecraft:brewing')
@@ -119,4 +121,6 @@ onEvent('jei.remove.categories', e => {
 	e.remove('createbigcannons:cannon_boring')
 	e.remove('createbigcannons:built_up_heating')
 	e.remove('minecraft:stonecutting')
+	e.remove('jeresources:worldgen')
+	e.remove('jeresources:plant')
 })

@@ -2,6 +2,8 @@
 	"metal.tfc.constantan": "Constantan",
 	"metal.tfc.electrum": "Electrum",
 	"metal.tfc.lead": "lead",
+	"metal.tfc.graphite": "Graphite",
+	
 	"block.kubejs.ore.poor_lead.granite.prospected": "Lead",
 	"block.kubejs.ore.normal_lead.granite.prospected": "Lead",
 	"block.kubejs.ore.rich_lead.granite.prospected": "Lead",

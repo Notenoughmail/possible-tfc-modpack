@@ -286,13 +286,16 @@ onEvent('recipes', e => {
 			],
 			'category': 'molds',
 			'result': {
-				'item': 'immersiveengineering:mold_' + result
+				'item': result
 			}
 		})
 	}
 	molds.forEach(mold => {
-		mold_blueprint(mold)
+		mold_blueprint('immersiveengineering:mold_' + mold)
 	})
+	mold_blueprint('kubejs:mold/ingot')
+	mold_blueprint('kubejs:mold/double_ingot')
+	mold_blueprint('kubejs:mold/double_sheet')
 	
 	e.recipes.createCrushing([
 	'1x tfc:sand/white'
@@ -785,6 +788,8 @@ onEvent('recipes', e => {
 	cbc_melting('tfc:ore/poor_native_gold', 'tfc:metal/gold', 15, 1527, 'superheated', 'poor_native_gold_superheated')
 	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 3822, 'heated', 'normal_native_gold_heated')
 	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 2548, 'superheated', 'normal_native_gold_superheated')
+	cbc_melting('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 27938, 'superheated', 'graphite_dust')
+	cbc_melting('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 37251, 'superheated', 'graphite_ingot')
 	
 	//tfc_welding_tag:order = in1, in2, tier, out, count, id | in2 is a tag
 	tfc_welding_tag('tfc:metal/ingot/wrought_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_material_from_wrought_iron')
@@ -852,11 +857,14 @@ onEvent('recipes', e => {
 	tfc_heating('immersiveengineering:storage_lead', 'kubejs:lead', 250, 327, 'lead_block')
 	tfc_heating('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
 	tfc_heating('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
+	tfc_heating('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 2574, 'graphite_dust')//the temperature is complete rubbish and is actually ~1000 degrees higher in real life but there is nothing that burns that hot (yet?)
+	tfc_heating('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 2574, 'graphite_ingot')
 	
 	//tfc_casting:order = input, amount, output, chance, id | chance = chance to break
 	tfc_casting('kubejs:electrum', 100, 'immersiveengineering:ingot_electrum', 0.1, 'electrum_ingot')
 	tfc_casting('kubejs:constantan', 100, 'immersiveengineering:ingot_constantan', 0.1, 'constantan_ingot')
 	tfc_casting('kubejs:lead', 100, 'immersiveengineering:ingot_lead', 0.1, 'lead_ingot')
+	tfc_casting('kubejs:graphite', 100, 'immersiveengineering:ingot_hop_graphite', 1, 'graphite')
 	
 	//tfc_alloy:order = output, input1, min1, max1, input2, min2, max2, id
 	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum_from_gold_silver')
@@ -930,6 +938,9 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_iron', 'tfc:metal/ingot/wrought_iron').id('kubejs:crusher/iron_grit/wrought_iron');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_gold', 'tfc:metal/ingot/gold').id('kubejs:crusher/gold_grit');
 	//I don't know why the secondaries won't work, but they won't
+	
+	//arc furnace - energy is total energy, not energy per tick
+	e.recipes.immersiveengineeringArcFurnace(['1x immersiveengineering:ingot_hop_graphite'], 'immersiveengineering:dust_hop_graphite').time(100).energy(51200).id('kubejs:arc_furnace/hopg_ingot');
 	
 	//blueprints
 	e.custom({
@@ -1364,4 +1375,23 @@ onEvent('recipes', e => {
 			'amount': 50
 		}
 	}).id('kubejs:bottling/high_durability_sandpaper');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:ingot_hop_graphite'
+		},
+		{
+			'item': 'kubejs:mold/ingot'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'kubejs:mold/ingot'
+		}
+		],
+		'fluid': {
+			'tag': 'tfc:graphite'
+		}
+	}).id('kubejs:bottling/graphite');
 })
