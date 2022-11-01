@@ -1019,7 +1019,7 @@ onEvent('recipes', e => {
 	'BCD',
 	'SEA'
 	], {
-		S: 'tfc:metl/sheet/silver',
+		S: 'tfc:metal/sheet/silver',
 		A: 'tfc:metal/ingot/steel',
 		B: '#forge:glass_panes/colorless',
 		C: 'immersiveengineering:light_bulb',
