@@ -55,7 +55,7 @@ onEvent('recipes', e => {
 	tfc_damage_shapeless_inputs('immersiveposts:stick_lead', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_lead', 2, 'cut_rod_to_wire_lead')
 	tfc_damage_shapeless_inputs('tfc:metal/rod/steel', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_steel', 2, 'cut_rod_to_wire_steel')
 	tfc_damage_shapeless_inputs('immersiveposts:stick_electrum', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_electrum', 2, 'cut_rod_to_wire_electrum')
-	tfc_damage_shapeless_inputs('tfc:metal/rod/copper', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_copper', 2, 'cut_rod_to_wire_sopper')
+	tfc_damage_shapeless_inputs('tfc:metal/rod/copper', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_copper', 2, 'cut_rod_to_wire_copper')
 	
 	e.custom({
 		'type': 'tfc:extra_products_shapeless_crafting',

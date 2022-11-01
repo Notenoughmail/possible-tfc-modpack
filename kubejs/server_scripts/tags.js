@@ -44,6 +44,9 @@ onEvent('tags.items', e => {
 	e.add('tfc:pileable_sheets', /kubejs:.*_panel/)
 	e.removeAllTagsFrom('immersiveengineering:dust_coke')
 	e.add('forge:dusts/coal_coke', 'tfc:powder/coke')//IE loves tags too much
+	e.add('tfc:ore_pieces', 'kubejs:ore/poor_lead')
+	e.add('tfc:ore_pieces', 'kubejs:ore/normal_lead')
+	e.add('tfc:ore_pieces', 'kubejs:ore/rich_lead')
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:nugget_constantan')
