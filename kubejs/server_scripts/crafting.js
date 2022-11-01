@@ -1014,4 +1014,16 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:wirecoil_copper_ins',
 		C: 'minecraft:leather_chestplate'
 	}).id('kubejs:shaped_crafting/capacitor_backpack');
+	e.shaped('1x immersiveengineering:floodlight', [
+	'SAA',
+	'BCD',
+	'SEA'
+	], {
+		S: 'tfc:metl/sheet/silver',
+		A: 'tfc:metal/ingot/steel',
+		B: '#forge:glass_panes/colorless',
+		C: 'immersiveengineering:light_bulb',
+		D: 'immersiveengineering:component_iron',
+		E: 'immersiveengineering:wire_copper'
+	}).id('kubejs:shaped_crafting/floodlight');
 })

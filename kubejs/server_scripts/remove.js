@@ -48,7 +48,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'immersiveengineering:dust_copper', 'immersiveengineering:workbench', 'createaddition:alternator',
 	'createaddition:electric_motor', 'immersiveengineering:blastfurnace_preheater', 'immersiveengineering:furnace_heater',
 	/create:crushed_.*/, /immersiveengineering:connector_.*/, 'immersiveengineering:powerpack',
-	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper'
+	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper',
+	'immersiveengineering:floodlight'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
