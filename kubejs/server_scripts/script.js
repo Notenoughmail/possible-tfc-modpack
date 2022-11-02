@@ -909,10 +909,9 @@ onEvent('recipes', e => {
 	
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/cast_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot_cast_iron');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/cast_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot_cast_iron');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/wrought_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/steel_ingot_wrought_iron');
-	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/double_ingot/steel', 'tfc:metal/double_ingot/wrought_iron', 'immersiveengineering:slag').time(2400).id('kubejs:blastfurnace/steel_double_ingot_wrought_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/pig_iron', 'tfc:metal/ingot/cast_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/pig_iron_ingot_cast_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/pig_iron', 'tfc:metal/ingot/wrought_iron', 'immersiveengineering:slag').time(1200).id('kubejs:blastfurnace/pig_iron_ingot_wrought_iron');
+	e.recipes.immersiveengineeringBlastFurnace('tfc:metal/ingot/steel', 'tfc:metal/ingot/pig_iron').time(1200).id('kubejs:blastfurnace/steel_ingot');
 	
 	e.recipes.immersiveengineeringCrusher('3x minecraft:bone_meal', 'minecraft:bone'/*, [{chance: 0.35, output: 'minecraft:bone_meal'}]*/).id('kubejs:crusher/bone_meal');
 	e.recipes.immersiveengineeringCrusher('4x minecraft:clay_ball', 'minecraft:clay').id('immersiveengineering:crusher/clay');
@@ -941,6 +940,9 @@ onEvent('recipes', e => {
 	
 	//arc furnace - energy is total energy, not energy per tick
 	e.recipes.immersiveengineeringArcFurnace(['1x immersiveengineering:ingot_hop_graphite'], 'immersiveengineering:dust_hop_graphite').time(100).energy(51200).id('kubejs:arc_furnace/hopg_ingot');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/black_steel'], 'tfc:metal/ingot/weak_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/black_steel');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/blue_steel'], 'tfc:metal/ingot/weak_blue_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/blue_steel');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/red_steel'], 'tfc:metal/ingot/weak_red_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/red_steel');
 	
 	//blueprints
 	e.custom({
