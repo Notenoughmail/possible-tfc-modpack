@@ -70,6 +70,11 @@ onEvent('jei.hide.items', e => {
 	e.hide('create:red_sand_paper')
 	e.hide('immersiveengineering:stick_steel')
 	e.hide('immersiveengineering:stick_iron')
+	e.hide('immersiveengineering:ingot_silver')
+	e.hide('immersiveengineering:ingot_nickel')
+	e.hide('immersiveengineering:ingot_steel')
+	e.hide('create:brass_ingot')
+	e.hide('zinc_ingot')
 })
 
 onEvent('jei.add.items', e => {
