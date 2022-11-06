@@ -182,7 +182,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs.pw.toml"
-hash = "7ee5b999c3fd2a290f7a2b2480a796741f40059d22fbc0db4513a04d29416292"
+hash = "1371b2f23c477b973bac9e2c0bb7d6e46eaa4016ebe902ddca998749c7495fc8"
 metafile = true
 
 [[files]]
@@ -227,7 +227,7 @@ metafile = true
 
 [[files]]
 file = "mods/rhino.pw.toml"
-hash = "114ded78e7e461eb87ab652e01070b7f5d046acc2c4710dd34a43ace6a7c52b1"
+hash = "43375678708cd812b22ab1ecbc3f5452bc0910bac6f544c69f9ccf8bd14d420f"
 metafile = true
 
 [[files]]
@@ -247,7 +247,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "d46976b5dabe40203262017767dc1c11128f081af4a3dfa43eb7e7b8080ee493"
+hash = "07aec7ff75e83800828806ed3c2f6d551f0cd658b7be6f2f916f8d6cd0cf9485"
 metafile = true
 
 [[files]]
