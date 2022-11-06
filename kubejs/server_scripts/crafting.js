@@ -720,15 +720,6 @@ onEvent('recipes', e => {
 		A: 'tfc:metal/sheet/nickel',
 		B: 'toolbelt:pouch'
 	}).id('kubejs:shaped_crafting/tool_belt');
-	e.shaped('immersiveengineering:glider', [
-	' S ',
-	'ABA',
-	'SAS'
-	], {
-		S: 'immersiveengineering:hemp_fabric',
-		A: 'tfc:metal/rod/steel',
-		B: 'minecraft:leather_chestplate'
-	}).id('kubejs:shaped_crafting/glider_from_tfc');
 	e.shaped('create:sticker', [
 	'SAS',
 	'BCB'

@@ -30,7 +30,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'create:track', 'create:precision_mechanism', 'create:brown_toolbox', 'create:controller_rail', 
 	'create:empty_blaze_burner', 'create:brass_ingot', 'create:chocolate_glazed_berries', 'create:sand_paper', 
 	'create:red_sand_paper', 'create:mechanical_pump', 'usclb:clipboardfolder', 'usclb:clipboard', 'toolbelt:pouch', 
-	'toolbelt:belt', 'immersiveengineering:glider', 'create:sticker', 'create:sticky_mechanical_piston', 
+	'toolbelt:belt', 'create:sticker', 'create:sticky_mechanical_piston', 
 	'immersiveengineering:light_bulb', 'immersiveengineering:pickaxe_steel', 'immersiveengineering:shovel_steel',
 	'immersiveengineering:axe_steel', 'immersiveengineering:hoe_steel', 'immersiveengineering:sword_steel',
 	'createaddition:copper_wire', 'createaddition:iron_wire', 'createaddition:gold_wire', 'createaddition:copper_spool',
@@ -78,6 +78,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	/immersiveengineering:smelting\/.*ingot.*/, 'immersiveengineering:bottling/sponge',
 	'minecraft:brick', /immersiveengineering:metalpress\/.*/
 	]
+
+//todo: consolidate ids & outputs, remove the ~230 recipes that produce warnings in the log due to TFC removing them in a way kubejs doesn't like (?)
 
 onEvent('recipes', e => {
 	outputs.forEach(output => {
