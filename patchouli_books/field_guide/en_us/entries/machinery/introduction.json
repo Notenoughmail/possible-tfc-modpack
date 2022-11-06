@@ -33,13 +33,13 @@
 		"type": "patchouli:crafting",
 		"recipe": "immersiveengineering:crafting/voltmeter",
 		"title": "Engineer's Multimeter",
-		"text": "The Engineer's Multimeter is used to measure connections. Looking at or right clicking any energy storage will read its current storage. Sneak + right click two connectors to find the loss between them. It can also read redstone levels."
+		"text": "The Engineer's Multimeter is used to measure connections. Looking at or using $(item)$(k:key.use)$() on any energy storage will read its current storage. Use $(item)$(k:key.sneak)$() and $(item)$(k:key.use)$() on two connectors to find the loss between them. It can also read redstone levels."
 	},
 	{
 		"type": "patchouli:crafting",
 		"recipe": "kubejs:shaped_crafting/wrench_from_tfc",
 		"title": "Engineer's Wrench",
-		"text": "Right clicking components with an Engineer's Wrench will rotate them, and when sneaking will put the component directly in your $(thing)inventory$(). The Engineer's Wrench can also be used to configure certain kinetic components with the scroll wheel."
+		"text": "Clicking components with $(item)$(k:key.use)$() with an Engineer's Wrench will rotate them; doing so while sneaking will put the component directly in your $(thing)inventory$(). The Engineer's Wrench can also be used to configure certain kinetic components with the scroll wheel."
 	},
 	{
 		"type": "patchouli:crafting",

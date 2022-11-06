@@ -51,7 +51,7 @@
 			}
 		},
 		"name": "",
-		"text": "Click the center block on any face with an $(thing)Engineer's Hammer$() to assemble the multiblock.",
+		"text": "Use $(item)$(k:key.use)$() on the center block on any face with an $(thing)Engineer's Hammer$() to assemble the multiblock.",
 		"enable_visualize": true
 	}
 	],

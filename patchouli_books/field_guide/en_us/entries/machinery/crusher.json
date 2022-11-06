@@ -16,7 +16,7 @@
 	},
 	{
 		"type": "patchouli:text",
-		"text": "The Crusher is formed by right clicking the central block of the side with $(thing)LV Accumulators$() and a $(thing)Redstone Engineering Block$() with a $(thing)Engineer's Hammer$().$(br2)$(br2)A $(thing)Schematic$() of the Crusher is avalable through the $(thing)Schematic Table$(). A material list can be found through the $(thing)Schematicannon$() or $(thing)JEI$()."
+		"text": "The Crusher is formed by using $(item)$(k:key.use)$() on the central block of the side with $(thing)LV Accumulators$() and a $(thing)Redstone Engineering Block$() with a $(thing)Engineer's Hammer$().$(br2)$(br2)A $(thing)Schematic$() of the Crusher is avalable through the $(thing)Schematic Table$(). A material list can be found through the $(thing)Schematicannon$() or $(thing)JEI$()."
 	}			
 	],
 	"read_by_default": true

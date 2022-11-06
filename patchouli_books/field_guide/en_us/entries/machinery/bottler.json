@@ -16,7 +16,7 @@
 	},
 	{
 		"type": "patchouli:text",
-		"text": "The machine will hold onto any containers until it is completely full or the machine is no longer supplied with additional fluid. This can be disabled by sneak-right clicking the machine with an $(thing)Engineer's Hammer$()."
+		"text": "The machine will hold onto any containers until it is completely full or the machine is no longer supplied with additional fluid. This can be disabled by using $(item)$(k:key.sneak)$() and $(item)$(k:key.use)$() on the machine with an $(thing)Engineer's Hammer$()."
 	},
 	{
 		"type": "patchouli:text",

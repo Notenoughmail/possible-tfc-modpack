@@ -9,7 +9,7 @@
 	},
 	{
 		"type": "patchouli:text",
-		"text": "Please allow up to five seconds for your manual to appear."
+		"text": "Please allow up to five seconds for your manual to appear.$(br2)Also note some of the information it provides may not be entirely accurate, as the pack does some extensive changes to the mod, but not its book."
 	}
 	],
 	"read_by_deafult": true
