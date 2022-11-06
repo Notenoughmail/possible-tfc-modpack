@@ -12,37 +12,8 @@
 		"text": "Note that when assembling the multiblock, the mechanical press may rotate several times before it actually assembles.$(br2)In addition, ensure that the belts are moving from the side with the $(thing)Light Engineering Block$() to the side with the $(thing)Steel Scaffolding$()."
 	},
 	{
-		"type": "patchouli:multiblock",
-		"multiblock": {
-			"pattern": [
-			[
-				"   ",
-				" S ",
-				"   "
-			],
-			[
-				"   ",
-				"ABA",
-				"   "
-			],
-			[
-				"   ",
-				"C0D",
-				"   "
-			]
-			],
-			"mapping": {
-				"S": "createaddition:electric_motor[facing=down]",
-				"A": "immersiveengineering:conveyor_basic",
-				"B": "create:mechanical_press",
-				"C": "immersiveengineering:light_engineering",
-				"0": "immersiveengineering:rs_engineering",
-				"D": "immersiveengineering:steel_scaffolding_standard"
-			}
-		},
-		"name": "",
-		"text": "Use $(item)$(k:key.use)$() on the mechanical press with an $(thing)Engineer's Hammer$() to assemble the multiblock.",
-		"enable_visualize": true
+		"type": "patchouli:text",
+		"text": "Use $(item)$(k:key.use)$() on the mechanical press with an $(thing)Engineer's Hammer$() to assemble the multiblock.$(br2)$(br2)A $(thing)Schematic$() of the Metal Press is avalable through the $(thing)Schematic Table$(). A material list can be found through the $(thing)Schematicannon$() or $(thing)JEI$()."
 	}
 	],
 	"read_by_default": true
