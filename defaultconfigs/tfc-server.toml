@@ -43,10 +43,16 @@ farmlandMakesTheBestRaceTracks = false
 		#Chance for a plant to grow each random tick, does not include crops. Lower = slower growth. Set to 0 to disable random plant growth.
 		#Range: 0.0 ~ 1.0
 		plantGrowthChance = 0.05
+		#A movement multiplier for players moving through plants. Individual plants will use a ratio of this value, and lower = slower.
+		#Range: 0.0 ~ 1.0
+		plantsMovementModifier = 0.2
 
 	[blocks.leaves]
-		#If leaves will slow entities passing through them and reduce fall damage.
-		enableLeavesSlowEntities = true
+		#If true, then leaves will decay slowly over time when disconnected from logs (vanilla behavior), as opposed to instantly (TFC behavior).
+		enableLeavesDecaySlowly = false
+		#A movement multiplier for players moving through leaves. Lower = slower.
+		#Range: 0.0 ~ 1.0
+		leavesMovementModifier = 0.4
 
 	[blocks.cobblestone]
 		#If mossy rock blocks will spread their moss to nearby rock blocks (bricks and cobble; stairs, slabs and walls thereof).
@@ -79,9 +85,9 @@ farmlandMakesTheBestRaceTracks = false
 		#Number of ticks required for a pit kiln to burn out. (1000 = 1 in game hour = 50 seconds), default is 8 hours.
 		#Range: > 20
 		pitKilnTicks = 8000
-		#The maximum temperature which a pit kiln reaches. (1200 = Yellow**, 1600 = Brilliant White, for reference).
+		#The maximum temperature which a pit kiln reaches.
 		#Range: > 0
-		pitKilnTemperature = 1600
+		pitKilnTemperature1 = 1400
 
 	[blocks.crucible]
 		#Tank capacity of a crucible (in mB).
@@ -90,6 +96,8 @@ farmlandMakesTheBestRaceTracks = false
 		#A modifier for how fast fluid containers empty into crucibles. Containers will empty 1 mB every (this) number of ticks.
 		#Range: > 1
 		cruciblePouringRate = 2
+		#If true, barrels will interact with in-world automation such as hoppers on a side-specific basis.
+		crucibleEnableAutomation = true
 
 	[blocks.anvil]
 		#The number of pixels that the anvil's result may be off by, but still count as recipe completion. By default this requires pixel perfect accuracy.
@@ -100,6 +108,8 @@ farmlandMakesTheBestRaceTracks = false
 		#Tank capacity of a barrel (in mB).
 		#Range: > 0
 		barrelCapacity = 10000
+		#If true, barrels will interact with in-world automation such as hoppers on a side-specific basis.
+		barrelEnableAutomation = true
 
 	[blocks.composter]
 		#Number of ticks required for a composter in normal conditions to complete. (24000 = 1 game day), default is 12 days.
@@ -146,6 +156,59 @@ farmlandMakesTheBestRaceTracks = false
 		#The maximum number of levels that can be built in a blast furnace multiblock, for added capacity.
 		#Range: > 1
 		blastFurnaceMaxChimneyHeight = 5
+		#If true, blast furnaces will interact with in-world automation such as hoppers on a side-specific basis.
+		blastFurnaceEnableAutomation = true
+
+	[blocks.thatchBed]
+		#If true, thatch beds can set the player's spawn.
+		enableThatchBedSpawnSetting = true
+		#If true, the player can sleep the night in a thatch bed
+		enableThatchBedSleeping = false
+		#If true, the player cannot sleep in thatch beds during thunderstorms.
+		thatchBedNoSleepInThunderstorms = true
+
+	[blocks.dryingBricks]
+		#Number of ticks required for mud bricks to dry (1000 = 1 in game hour = 50 seconds), default is 24 hours. Set to -1 to disable drying.
+		#Range: > -1
+		mudBricksTicks = 24000
+
+	[blocks.placedItems]
+		#The maximum size of items that can be placed as 4 items on the ground with V. If an item is larger than this, it could still be placed with the 'maxPlacedLargeItemSize' option.
+		#Allowed Values: TINY, VERY_SMALL, SMALL, NORMAL, LARGE, VERY_LARGE, HUGE
+		maxPlacedItemSize = "LARGE"
+		#The maximum size of items that can be placed as a single item on the ground with V. Items are checked to see if they're the right size to be placed in a group of 4 items first.
+		#Allowed Values: TINY, VERY_SMALL, SMALL, NORMAL, LARGE, VERY_LARGE, HUGE
+		maxPlacedLargeItemSize = "HUGE"
+		#If true, players can place items on the ground with V.
+		enablePlacingItems = true
+		#If true, the tag 'tfc:placed_item_whitelist' will be checked to allow items to be in placed items and will exclude everything else.
+		usePlacedItemWhitelist = false
+
+	[blocks.thatch]
+		#A movement multiplier for players moving through thatch. Lower = slower.
+		#Range: 0.0 ~ 1.0
+		thatchMovementMultiplier = 0.6
+
+	[blocks.charcoalForge]
+		#If true, charcoal forges will interact with in-world automation such as hoppers on a side-specific basis.
+		charcoalForgeEnableAutomation = true
+
+	[blocks.firePitEnableAutomation]
+		#If true, fire pits will interact with in-world automation such as hoppers on a side-specific basis.
+		firePitEnableAutomation = true
+
+	[blocks.nestBox]
+		#If true, nest boxes will interact with in-world automation such as hoppers on a side-specific basis.
+		nestBoxEnableAutomation = true
+
+	[blocks.powderKeg]
+		#If true, powder kegs will interact with in-world automation such as hoppers on a side-specific basis.
+		powderKegEnableAutomation = true
+
+	[blocks.hotWater]
+		#An amount that sitting in hot water will restore health, approximately twice per second.
+		#Range: 0.0 ~ 20.0
+		hotWaterHealAmount = 0.08
 
 [items]
 
@@ -156,6 +219,8 @@ farmlandMakesTheBestRaceTracks = false
 		#The largest (inclusive) size of an item that is allowed in a small vessel.
 		#Allowed Values: TINY, VERY_SMALL, SMALL, NORMAL, LARGE, VERY_LARGE, HUGE
 		smallVesselMaximumItemSize = "SMALL"
+		#If true, the vessel can be inserted and extracted from by clicking on it in the inventory. You may want to disable this if you have a inventory-tweaking mod
+		enableSmallVesselInventoryInteraction = true
 
 	[items.molds]
 		#Tank capacity of a Ingot mold (in mB).
@@ -219,7 +284,7 @@ farmlandMakesTheBestRaceTracks = false
 [mechanics]
 
 	[mechanics.heat]
-		#A multiplier for how fast items heat and cool. Higher = faster.
+		#A multiplier for how fast items heat in devices. Higher = faster.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		itemHeatingModifier = 1.0
 		#Should hot item entities cool off when in contact with blocks like water or snow?
@@ -227,6 +292,12 @@ farmlandMakesTheBestRaceTracks = false
 		#Ticks between each time an item loses temperature when sitting on a cold block. 20 ticks = 1 second.
 		#Range: > 1
 		ticksBeforeItemCool = 10
+		#A multiplier for how fast devices themselves heat up. Higher = faster.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		deviceHeatingModifier = 1.0
+		#A multiplier for how fast items cool. Higher = faster.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		itemCoolingModifier = 0.8
 
 	[mechanics.collapses]
 		#Enable rock collapsing when mining raw stone blocks
@@ -240,10 +311,10 @@ farmlandMakesTheBestRaceTracks = false
 		#Chance for a collapse to be triggered by mining a block.
 		#Range: 0.0 ~ 1.0
 		collapseTriggerChance = 0.1
-		#Chance for a block fo fall from mining collapse. Higher = mor likely.
+		#Chance for a block fo fall from mining collapse. Higher = more likely.
 		#Range: 0.0 ~ 1.0
 		collapsePropagateChance = 0.55
-		#Chance for a block to fall from an explosion triggered collapse. Higher = mor likely.
+		#Chance for a block to fall from an explosion triggered collapse. Higher = more likely.
 		#Range: 0.0 ~ 1.0
 		collapseExplosionPropagateChance = 0.3
 		#Minimum radius for a collapse
@@ -252,6 +323,9 @@ farmlandMakesTheBestRaceTracks = false
 		#Variance of the radius of a collapse. Total size is in [minRadius, minRadius + radiusVariance]
 		#Range: 1 ~ 32
 		collapseRadiusVariance = 16
+		#Chance for a collapse to be fake triggered by mining a block.
+		#Range: 0.0 ~ 1.0
+		collapseFakeTriggerChance = 0.35
 
 	[mechanics.player]
 		#If peaceful difficulty should still have vanilla-esque passive regeneration of health, food, and hunger
@@ -261,10 +335,6 @@ farmlandMakesTheBestRaceTracks = false
 		#1.0 = A full hunger bar's worth of exhaustion every 2.5 days. Set to zero to disable completely.
 		#Range: 0.0 ~ 100.0
 		passiveExhaustionMultiplier = 1.0
-		#A multiplier for how quickly the player gets thirsty.
-		#The player loses thirst in sync with when they lose hunger. This represents how much thirst they lose. 0 = None, 100 = the entire thirst bar.
-		#Range: 0.0 ~ 100.0
-		thirstModifier = 8.0
 		#Enables the player losing more thirst in hotter environments.
 		enableThirstOverheating = true
 		#How much thirst the player gains from drinking in the rain (standing outside in the rain and looking up) per tick.
@@ -280,13 +350,23 @@ farmlandMakesTheBestRaceTracks = false
 		nutritionRotationHungerWindow = 80
 		#How many hours should different foods ignore when trying to stack together automatically?
 		#Food made with different creation dates doesn't stack by default, unless it's within a specific window. This is the number of hours that different foods will try and stack together at the loss of a little extra expiry time.
-		#Range: 6 ~ 100
+		#Range: 1 ~ 100
 		foodDecayStackWindow = 6
 		#A multiplier for food decay, or expiration times. Larger values will result in naturally longer expiration times.
 		#Range: 0.0 ~ 1000.0
-		foodDecayModifier = 1.0
+		foodDecayModifier = 0.0
 		#Enables negative effects from carrying too many very heavy items, including potion effects.
 		enableOverburdening = true
+		#A multiplier for how quickly the player gets thirsty.
+		#The player loses thirst in sync with when they lose hunger. This represents how much thirst they lose. 0 = None, 100 = the entire thirst bar.
+		#Range: 0.0 ~ 100.0
+		thirstModifier1 = 5.0
+		#A multiplier for the minimum health that the player will obtain, based on their nutrition
+		#Range: 0.001 ~ 1000.0
+		nutritionMinimumHealthModifier = 0.2
+		#A multiplier for the maximum health that the player will obtain, based on their nutrition
+		#Range: 0.001 ~ 1000.0
+		nutritionMaximumHealthModifier = 3.0
 
 	[mechanics.vanillaChanges]
 		#If vanilla bonemeal's instant-growth effect should be enabled.
@@ -301,9 +381,9 @@ farmlandMakesTheBestRaceTracks = false
 		enableVanillaMobsSpawningWithVanillaEquipment = false
 		#If true, golems can be built
 		enableVanillaGolems = false
-		#If true, vanilla monsters will spawn everywhere. This overrides the 'enableVanillaMonstersOnSurface' config option.
+		#If true, vanilla monsters are able to spawn. If false, the 'enableVanillaMonstersOnSurface' config option is not used, and all spawns are denied.
 		enableVanillaMonsters = true
-		#If true, vanilla monsters will spawn on the surface instead of just underground.
+		#If true, vanilla monsters will spawn on the surface instead of just underground. If false, vanilla monsters will not spawn on the surface.
 		enableVanillaMonstersOnSurface = false
 		#If true, chicken jockies can spawn
 		enableChickenJockies = false
