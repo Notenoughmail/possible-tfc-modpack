@@ -835,6 +835,7 @@ onEvent('recipes', e => {
 	tfc_anvil('immersiveengineering:ingot_electrum', 'immersiveposts:stick_electrum', 2, 3, 'bend', 'draw', 'draw', 'electrum_rod_working')
 	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
 	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
+	tfc_anvil('tfc:metal/ingot/copper', 'create:copper_nugget', 15, 1, 'draw', 'bend', 'punch', 'copper_bullet')
 	
 	//tfc_heating:order = input, output, amount, temperature, id
 	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
@@ -1470,4 +1471,91 @@ onEvent('recipes', e => {
 			'amount': 100
 		}
 	}).id('kubejs:bottling/graphite');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:empty_shell',
+			'count': 4
+		},
+		{
+			'item': 'immersiveengineering:mold_bullet_casing'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'immersiveengineering:mold_bullet_casing'
+		},
+		{
+			'item': 'create:copper_nugget',
+			'count': 4
+		}
+		],
+		'fluid': {
+			'tag': 'forge:phenolic_resin',
+			'amount': 250
+		}
+	}).id('immersiveengineering:bottling/empty_shell');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:duroplast',
+			'count': 4
+		},
+		{
+			'item': 'immersiveengineering:mold_packing_4'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'immersiveengineering:mold_packing_4'
+		}
+		],
+		'fluid': {
+			'tag': 'forge:phenolic_resin',
+			'amount': 1000
+		}
+	}).id('immersiveengineering:bottling/duroplast_block');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:plate_duroplast'
+		},
+		{
+			'item': 'immersiveengineering:mold_plate'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'immersiveengineering:mold_plate'
+		}
+		],
+		'fluid': {
+			'tag': 'forge:phenolic_resin',
+			'amount': 200
+		}
+	}).id('immersiveengineering:bottling/duroplast_plate');
+	e.custom({
+		'type': 'immersiveengineering:bottling_machine',
+		'results': [
+		{
+			'item': 'immersiveengineering:empty_casing',
+			'count': 4
+		},
+		{
+			'item': 'immersiveengineering:mold_bullet_casing'
+		}
+		],
+		'inputs': [
+		{
+			'item': 'immersiveengineering:mold_bullet_casing'
+		}
+		],
+		'fluid': {
+			'tag': 'forge:phenolic_resin',
+			'amount': 250
+		}
+	}).id('kubejs:bottling/empty_casing');
 })

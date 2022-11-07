@@ -17,6 +17,7 @@
 	"item.create.rose_quartz": "Redstone Salt",
 	"item.create.polished_rose_quartz": "Polished Redstone Salt",
 	"item.create.wrench": "Engineer's Wrench",
+	"item.create.copper_nugget": "Copper Bullet",
 	
 	"advancement.create.andesite_alloy.desc": "Obtain some Composite Material, Create's most important resource",
 	"advancement.create.andesite_casing": "The Composite Age",

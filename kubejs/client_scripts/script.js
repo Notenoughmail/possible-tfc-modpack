@@ -77,6 +77,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('zinc_ingot')
 	e.hide('create:schematicannon')
 	e.hide('create:haunted_bell')
+	e.hide('forge:nuggets')
 })
 
 onEvent('jei.add.items', e => {

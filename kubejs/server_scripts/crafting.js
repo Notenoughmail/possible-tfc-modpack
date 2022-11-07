@@ -1007,4 +1007,12 @@ onEvent('recipes', e => {
 		D: 'immersiveengineering:component_iron',
 		E: 'immersiveengineering:wire_copper'
 	}).id('kubejs:shaped_crafting/floodlight');
+	e.shaped('1x immersiveengineering:wooden_grip', [
+	' SA',
+	'SA ',
+	'A  '
+	], {
+		S: 'tfc:metal/rod/copper',
+		A: '#tfc:lumber'
+	}).id('kubejs:shaped_crafting/wooden_grip');
 })

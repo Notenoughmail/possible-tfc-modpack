@@ -47,6 +47,7 @@ onEvent('tags.items', e => {
 	e.add('tfc:ore_pieces', 'kubejs:ore/poor_lead')
 	e.add('tfc:ore_pieces', 'kubejs:ore/normal_lead')
 	e.add('tfc:ore_pieces', 'kubejs:ore/rich_lead')
+	e.removeAllTagsFrom('create:copper_nugget')
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:nugget_constantan')
