@@ -42,6 +42,12 @@ onEvent('item.modification', e => {
 	e.modify('minecraft:flint_and_steel', item => {
 		item.maxDamage = 537
 	})
+	e.modify('gunswithoutroses:gold_gun', item => {
+		item.maxDamage = 900
+	})
+	e.modify('gunswithoutroses:iron_gun', item => {
+		item.maxDamage = 1650
+	})
 })
 
 onEvent('block.registry', e => {

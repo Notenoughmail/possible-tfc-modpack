@@ -75,6 +75,8 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:ingot_steel')
 	e.hide('create:brass_ingot')
 	e.hide('zinc_ingot')
+	e.hide('create:schematicannon')
+	e.hide('create:haunted_bell')
 })
 
 onEvent('jei.add.items', e => {

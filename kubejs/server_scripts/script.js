@@ -345,7 +345,7 @@ onEvent('recipes', e => {
 	e.recipes.createCrushing([
 	'1x tfc:ore/gypsum',
 	Item.of('tfc:ore/gypsum').withChance(0.05)
-	], 'tfc:rock/raw/limestone').id('kubejs:crushing/gypsum_from_raw_limestone');
+	], 'tfc:rock/raw/limestone').id('kubejs:crushing/raw_limestone');
 	e.recipes.createCrushing([
 	'8x minecraft:redstone',
 	Item.of('3x minecraft:redstone').withChance(0.1)
@@ -556,13 +556,13 @@ onEvent('recipes', e => {
 	], 'tfc:rock/gravel/chalk').id('kubejs:washing/chalk');
 	e.recipes.createSplashing(['minecraft:white_wool'], '#tfc:colored_wool').id('create:splashing/wool');
 	
-	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot_from_tfc');
+	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot');
 	
-	e.recipes.createDeploying('4x create:attribute_filter', ['tfc:silk_cloth', 'tfc:metal/ingot/brass']).id('kubejs:deploying/attribute_filter_from_tfc');
-	e.recipes.createDeploying('4x create:filter', ['tfc:silk_cloth', 'tfc:metal/ingot/wrought_iron']).id('kubejs:deploying/filter_from_tfc');
-	e.recipes.createDeploying('create:blaze_burner', ['create:empty_blaze_burner', 'immersiveengineering:coal_coke']).id('kubejs:deploying/blaze_burner_from_tfc');
+	e.recipes.createDeploying('4x create:attribute_filter', ['tfc:silk_cloth', 'tfc:metal/ingot/brass']).id('kubejs:deploying/attribute_filter');
+	e.recipes.createDeploying('4x create:filter', ['tfc:silk_cloth', 'tfc:metal/ingot/wrought_iron']).id('kubejs:deploying/filter');
+	e.recipes.createDeploying('create:blaze_burner', ['create:empty_blaze_burner', 'immersiveengineering:coal_coke']).id('kubejs:deploying/blaze_burner');
 	
-	e.recipes.createFilling('create:chocolate_glazed_berries', ['#tfc:foods/berries', Fluid.of('create:chocolate', 250)]).id('kubejs:filling/chocolate_berries_from_tfc_berries');
+	e.recipes.createFilling('create:chocolate_glazed_berries', ['#tfc:foods/berries', Fluid.of('create:chocolate', 250)]).id('kubejs:filling/chocolate_berries');
 	e.recipes.createFilling(Item.of('tfc:ceramic/jug', '{fluid:{Amount:100,FluidName:"minecraft:water"}}'), ['tfc:ceramic/jug', Fluid.of('minecraft:water', 100)]).id('kubejs:filling/jug_with_water');
 	
 	e.recipes.createMechanicalCrafting('create:potato_cannon', [
@@ -573,7 +573,7 @@ onEvent('recipes', e => {
 		A: 'create:precision_mechanism',
 		B: 'create:andesite_alloy',
 		C: 'tfc:metal/ingot/copper'
-	}).id('kubejs:mechanical_crafting/potato_cannon_from_tfc');
+	}).id('kubejs:mechanical_crafting/potato_cannon');
 	e.recipes.createMechanicalCrafting('2x immersiveengineering:light_engineering', [
 	'SAS',
 	'ABA',
@@ -582,7 +582,7 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/sheet/steel',
 		A: 'immersiveengineering:component_iron',
 		B: 'create:gearbox'
-	}).id('kubejs:mechanical_crafting/light_engineering_from_tfc');
+	}).id('kubejs:mechanical_crafting/light_engineering');
 	e.recipes.createMechanicalCrafting('2x immersiveengineering:rs_engineering', [
 	'SAS',
 	'ABA',
@@ -591,7 +591,7 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/sheet/steel',
 		A: 'immersiveengineering:insulating_glass',
 		B: 'create:electron_tube'
-	}).id('kubejs:mechanical_crafting/rs_engineering_from_tfc');
+	}).id('kubejs:mechanical_crafting/rs_engineering');
 	e.recipes.createMechanicalCrafting('3x immersiveengineering:blastbrick_reinforced', [
 	' SAS ',
 	'SBBBS',
@@ -600,7 +600,7 @@ onEvent('recipes', e => {
 		S: 'tfc:powder/coke',
 		A: 'immersiveengineering:sheetmetal_steel',
 		B: 'immersiveengineering:cokebrick'
-	}).id('kubejs:mechanical_crafting/blastbrick_from_tfc');
+	}).id('kubejs:mechanical_crafting/blastbrick');
 	e.recipes.createMechanicalCrafting('1x createaddition:alternator', [
 	' S ',
 	'ABA',
@@ -612,7 +612,7 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:coil_lv',
 		C: 'tfc:metal/rod/wrought_iron',
 		D: 'immersiveengineering:wire_lead'
-	}).id('kubejs:mechanical_crafting/alternator_from_tfc');
+	}).id('kubejs:mechanical_crafting/alternator');
 	e.recipes.createMechanicalCrafting('1x createaddition:electric_motor', [
 	' S ',
 	'ABA',
@@ -624,11 +624,11 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:coil_lv',
 		C: 'immersiveengineering:wire_lead',
 		D: 'tfc:metal/rod/wrought_iron'
-	}).id('kubejs:mechanical_crafting/electric_motor_from_tfc');
+	}).id('kubejs:mechanical_crafting/electric_motor');
 	
-	e.recipes.createItemApplication('create:andesite_casing', ['#minecraft:logs', 'create:andesite_alloy']).id('kubejs:item_application/andesite_casing_from_tfc_logs');
-	e.recipes.createItemApplication('create:brass_casing', ['#minecraft:logs', 'tfc:metal/ingot/brass']).id('kubejs:item_application/brass_casing_from_tfc_logs');
-	e.recipes.createItemApplication('create:copper_casing', ['#minecraft:logs', 'tfc:metal/ingot/copper']).id('kubejs:item_application/copper_casing_from_tfc_logs');
+	e.recipes.createItemApplication('create:andesite_casing', ['#minecraft:logs', 'create:andesite_alloy']).id('kubejs:item_application/andesite_casing');
+	e.recipes.createItemApplication('create:brass_casing', ['#minecraft:logs', 'tfc:metal/ingot/brass']).id('kubejs:item_application/brass_casing');
+	e.recipes.createItemApplication('create:copper_casing', ['#minecraft:logs', 'tfc:metal/ingot/copper']).id('kubejs:item_application/copper_casing');
 	e.recipes.createItemApplication('create:mechanical_pump', ['create:fluid_pipe', 'create:cogwheel']).id('kubejs:item_application/mechanical_pump');
 	e.recipes.createItemApplication('create:smart_fluid_pipe', ['create:fluid_pipe', 'create:electron_tube']).id('kubejs:item_application/smart_fluid_pipe');
 	e.recipes.createItemApplication('create:fluid_valve', ['create:fluid_pipe', 'create:shaft']).id('kubejs:item_application/fluid_valve');
@@ -814,17 +814,17 @@ onEvent('recipes', e => {
 	//tfc_welding_tag:order = in1, in2, tier, out, count, id | in2 is a tag
 	tfc_welding_tag('tfc:metal/ingot/wrought_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_material_from_wrought_iron')
 	tfc_welding_tag('tfc:metal/ingot/zinc', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 5, 'composite_material_from_zinc')
-	tfc_welding_tag('tfc:metal/helmet/copper', 'forge:glass', 2, 'create:diving_helmet', 1, 'diving_helmet_from_tfc_copper_helmet')
-	tfc_welding_tag('tfc:metal/ingot/steel', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 25, 'composite_material_from_steel')
+	tfc_welding_tag('tfc:metal/helmet/copper', 'forge:glass', 2, 'create:diving_helmet', 1, 'diving_helmet')
+	tfc_welding_tag('tfc:metal/ingot/steel', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 25, 'composite_material_from_steel')//remove /_from_.*/ when compsite matieral is redone, it stays for now
 	
 	//tfc_welding_item:order = in1, in2, tier, out, count, id
-	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'fluid_pipe_from_tfc_coppers')
-	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks_from_tfc')
+	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'copper_fluid_pipe')
+	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks')
 	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'immersiveengineering:nugget_electrum', 1, 'double_electrum_ingot')
 	tfc_welding_item('immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan', 2, 'immersiveengineering:nugget_constantan', 1, 'double_constantan_ingot')
 	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'immersiveengineering:nugget_lead', 1, 'double_lead_ingot')
-	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots_from_tfc_copper_boots')
-	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'fluid_pipe_from_firmalife_stainless_steels')
+	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots')
+	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'stainless_steel_fluid_pipe')
 	
 	//tfc_anvil:order = input, output, count, tier, rule_1, rule_2, rule_3, id | three rules needed
 	tfc_anvil('tfc:metal/rod/brass', 'create:brass_ladder', 3, 2, 'draw', 'bend', 'draw', 'brass_ladder_working')
@@ -887,11 +887,11 @@ onEvent('recipes', e => {
 	tfc_casting('kubejs:graphite', 100, 'immersiveengineering:ingot_hop_graphite', 1, 'graphite')
 	
 	//tfc_alloy:order = output, input1, min1, max1, input2, min2, max2, id
-	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum_from_gold_silver')
-	tfc_alloy('tfc:constantan', 'tfc:copper', 0.5, 0.6, 'tfc:nickel', 0.4, 0.5, 'constantan_from_copper_nickel')
+	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum')
+	tfc_alloy('tfc:constantan', 'tfc:copper', 0.5, 0.6, 'tfc:nickel', 0.4, 0.5, 'constantan')
 	
 	//tfc_sealed_barrel_item:order = input_item, input_fluid, amount, output, duration, id
-	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper_from_vinegar')
+	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper')
 	
 	//tfc_sealed_barrel_tag:order = input_tag, input_fluid, amount, output, duration, id
 	
@@ -1021,7 +1021,7 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:component_iron',
 			'count': 1
 		}
-		}).id('kubejs:blueprint_components/iron_component_from_wrought_iron_sheets');
+		}).id('kubejs:blueprint/iron_components');
 		e.custom({
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
@@ -1043,7 +1043,7 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:component_steel',
 			'count': 1
 		}
-	}).id('kubejs:blueprint_components/steel_component_from_steel_sheets');
+	}).id('kubejs:blueprint/steel_components');
 	e.custom({
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
@@ -1069,7 +1069,7 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:electron_tube',
 			'count': 3
 		}
-	}).id('kubejs:blueprint_components/vacuum_tube_from_tfc');
+	}).id('kubejs:blueprint/vacuum_tube');
 	e.custom({
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
@@ -1095,7 +1095,25 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:light_bulb',
 			'count': 1
 		}
-	}).id('kubejs:blueprint_components/light_blub_from_tfc');
+	}).id('kubejs:blueprint/light_blub');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+		{
+			'item': 'minecraft:paper',
+			'count': 1
+		},
+		{
+			'tag': 'forge:sheets',
+			'count': 1
+		}
+		],
+		'category': 'bannerpatterns',
+		'result': {
+			'item': 'immersiveengineering:bannerpattern_bevels',
+			'count': 1
+		}
+	}).id('immersiveengineering:blueprint/banner_bevels');
 	
 	e.custom({
 		'type': 'tfc:leather_knapping',
