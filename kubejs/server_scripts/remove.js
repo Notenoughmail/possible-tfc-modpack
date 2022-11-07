@@ -77,7 +77,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:crafting\/capacitor_.*/, 
 	/immersiveengineering:smelting\/.*ingot.*/, 'immersiveengineering:bottling/sponge',
 	'minecraft:brick', /immersiveengineering:metalpress\/.*/, /immersiveengineering:mineral\/.*/,
-	'immersiveengineering:crafting/empty_shell'
+	'immersiveengineering:crafting/empty_shell', 'create:crafting/materials/copper_nugget'
 	]
 
 //todo: consolidate ids & outputs, remove the ~230 recipes that produce warnings in the log due to TFC removing them in a way kubejs doesn't like (?)

@@ -1005,16 +1005,13 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'item': 'tfc:metal/sheet/wrought_iron',
-			'count': 2
+			'item': 'tfc:metal/sheet/wrought_iron'
 		},
 		{
-			'item': 'tfc:metal/ingot/copper',
-			'count': 1
+			'item': 'tfc:metal/ingot/copper'
 		},
 		{
-			'item': 'create:cogwheel',
-			'count': 2
+			'item': 'create:cogwheel'
 		}
 		],
 		'category': 'components',
@@ -1027,16 +1024,13 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'item': 'tfc:metal/sheet/steel',
-			'count': 2
+			'item': 'tfc:metal/sheet/steel'
 		},
 		{
-			'item': 'tfc:metal/ingot/copper',
-			'count': 1
+			'item': 'tfc:metal/ingot/copper'
 		},
 		{
-			'item': 'create:large_cogwheel',
-			'count': 2
+			'item': 'create:large_cogwheel'
 		}
 		],
 		'category': 'components',
@@ -1049,20 +1043,16 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'tag': 'forge:glass/colorless',
-			'count': 1
+			'tag': 'forge:glass/colorless'
 		},
 		{
-			'item': 'immersiveengineering:wire_copper',
-			'count': 1
+			'item': 'immersiveengineering:wire_copper'
 		},
 		{
-			'item': 'tfc:metal/sheet/nickel',
-			'count': 1
+			'item': 'tfc:metal/sheet/nickel'
 		},
 		{
-			'item': 'minecraft:redstone',
-			'count': 1
+			'item': 'minecraft:redstone'
 		}
 		],
 		'category': 'components',
@@ -1075,20 +1065,19 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'tag': 'forge:glass/colorless',
-			'count': 1
+			'tag': 'forge:glass/colorless'
 		},
 		{
-			'item': 'immersiveengineering:wire_copper',
-			'count': 1
+			'item': 'immersiveengineering:wire_copper'
 		},
 		{
-			'item': 'tfc:metal/rod/nickel',
-			'count': 1
+			'item': 'tfc:metal/rod/nickel'
 		},
 		{
-			'item': 'tfc:powder/graphite',
-			'count': 2
+			'count': 2,
+			'base_ingredient': {
+				'item': 'tfc:powder/graphite'
+			}
 		}
 		],
 		'category': 'components',
@@ -1101,12 +1090,10 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'item': 'minecraft:paper',
-			'count': 1
+			'item': 'minecraft:paper'
 		},
 		{
-			'tag': 'forge:sheets',
-			'count': 1
+			'tag': 'forge:sheets'
 		}
 		],
 		'category': 'bannerpatterns',
@@ -1487,8 +1474,10 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:mold_bullet_casing'
 		},
 		{
-			'item': 'create:copper_nugget',
-			'count': 4
+			'count': 4,
+			'base_ingredient': {
+				'item': 'create:copper_nugget'
+			}
 		}
 		],
 		'fluid': {
