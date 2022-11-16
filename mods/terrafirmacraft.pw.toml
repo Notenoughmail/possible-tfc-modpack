@@ -1,13 +1,13 @@
 name = "TerraFirmaCraft"
-filename = "TerraFirmaCraft-Forge-1.18.2-2.1.18-beta.jar"
+filename = "TerraFirmaCraft-Forge-1.18.2-2.1.21-beta.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "7236b3f7a605ee9aba0a8d8123c2dd4bf3475d8e"
+hash = "248cd52fe78dd845fd132104a743359fdbcf5bb7"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4064588
+file-id = 4085585
 project-id = 302973

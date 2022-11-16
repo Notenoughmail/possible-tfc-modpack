@@ -835,7 +835,7 @@ onEvent('recipes', e => {
 	tfc_anvil('immersiveengineering:ingot_electrum', 'immersiveposts:stick_electrum', 2, 3, 'bend', 'draw', 'draw', 'electrum_rod_working')
 	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
 	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
-	tfc_anvil('tfc:metal/ingot/copper', 'create:copper_nugget', 15, 1, 'draw', 'bend', 'punch', 'copper_bullet')
+	tfc_anvil('tfc:metal/ingot/copper', 'create:copper_nugget', 12, 1, 'draw', 'bend', 'punch', 'copper_bullet')
 	
 	//tfc_heating:order = input, output, amount, temperature, id
 	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')

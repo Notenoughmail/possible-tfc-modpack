@@ -1,0 +1,13 @@
+name = "Precision Prospecting"
+filename = "precisionprospecting-1.18.2-0.2.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3590b63c4e01ade7956a57ce17d56c7dd99e34c2"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4088909
+project-id = 700638

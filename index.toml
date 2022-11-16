@@ -92,12 +92,12 @@ metafile = true
 
 [[files]]
 file = "mods/ferritecore.pw.toml"
-hash = "5cc2822b0265c3f8202bf41f814e96fb6ff41c86159322bb05bb13d8babc0234"
+hash = "a6944c6e912ec3c1293b84cbed86ea1a0dbd8f1827435cb1bf2849d37b42a0dc"
 metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "40584bc392c0de764425d7b2514aba3afa84e1b1be0faed164d16becb2ea1dd5"
+hash = "2f7bfdbaeef1eea5be03f6ad8f95ba64e0e0b527df988281d611f61472b48859"
 metafile = true
 
 [[files]]
@@ -122,7 +122,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "cd14587d0a4a617623e6a8553becf580d8cc35cc766264e165b2cf5cbc2ceb03"
+hash = "653ae93edf9295bf768a329179373d0a7a05fcf2c8edde4c77f6b071dba2f0f1"
 metafile = true
 
 [[files]]
@@ -137,12 +137,12 @@ metafile = true
 
 [[files]]
 file = "mods/jade-addons.pw.toml"
-hash = "354d9fec7677e17d7ef5ada3167601a83b5a4e1d57314728c87134c8769a1d9a"
+hash = "95bb4e5153dc7c86dce16e067fbd8ff2c5d510cadc14b0fa641afc20bea1f405"
 metafile = true
 
 [[files]]
 file = "mods/jade.pw.toml"
-hash = "6454a521978828300db038f5ef2a4f0ae49247cf03366192c0bf1b46020cedc1"
+hash = "bfcaf25cd94492e855dfb7353dacb44ed1668b3f6d3d1705360e785ede84667a"
 metafile = true
 
 [[files]]
@@ -182,7 +182,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs.pw.toml"
-hash = "1371b2f23c477b973bac9e2c0bb7d6e46eaa4016ebe902ddca998749c7495fc8"
+hash = "86471b411ab0dec26f0eed62704fe59aacc68a7ffe4e5c46f0c263fe0c264f43"
 metafile = true
 
 [[files]]
@@ -192,7 +192,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "d774f8aa6d8db0da5e2b65c38a82f4ef680cd73e46cf94b921c0e67cef96a115"
+hash = "71be58624dd37711b2efcac8876ab0cdc430ff8cedf939f474600295f286e8c4"
 metafile = true
 
 [[files]]
@@ -213,6 +213,11 @@ metafile = true
 [[files]]
 file = "mods/patchouli.pw.toml"
 hash = "ae4c3617170709ac560c8113f1526193e79750735d12bbc2d5119f518b866799"
+metafile = true
+
+[[files]]
+file = "mods/precision-prospecting.pw.toml"
+hash = "03f74152d08b950b6f4e770df10fb7c5cc925d063c9f5487b009a15a19a0bd7a"
 metafile = true
 
 [[files]]
@@ -247,12 +252,17 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "07aec7ff75e83800828806ed3c2f6d551f0cd658b7be6f2f916f8d6cd0cf9485"
+hash = "d1d5683aba421ab927e3c4a35799813470163368f6e5c78f516b5b89dafe186c"
 metafile = true
 
 [[files]]
 file = "mods/textrues-rubidium-options.pw.toml"
 hash = "d9502341fa600fa326bed44c420aef657638b15f1093caeeba6776301cf83f93"
+metafile = true
+
+[[files]]
+file = "mods/tfc-item-barrels.pw.toml"
+hash = "17988ea6e9b15ff406880038000ca42d2721a39279e85425fa42b6215ac4d803"
 metafile = true
 
 [[files]]
