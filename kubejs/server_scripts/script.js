@@ -293,7 +293,7 @@ onEvent('recipes', e => {
 		ie_bottler_simple_mold('double_sheet', metal, 'kubejs:mold/double_sheet', 400)
 	});
 	
-	let mold_blueprint = (result) => {
+	let mold_blueprint = (result, id) => {
 		e.custom({
 			'type': 'immersiveengineering:blueprint',
 			'inputs': [
@@ -308,14 +308,14 @@ onEvent('recipes', e => {
 			'result': {
 				'item': result
 			}
-		})
+		}).id('kubejs:blueprint/mold_' + id)
 	}
 	molds.forEach(mold => {
-		mold_blueprint('immersiveengineering:mold_' + mold)
+		mold_blueprint('immersiveengineering:mold_' + mold, mold)
 	})
-	mold_blueprint('kubejs:mold/ingot')
-	mold_blueprint('kubejs:mold/double_ingot')
-	mold_blueprint('kubejs:mold/double_sheet')
+	mold_blueprint('kubejs:mold/ingot', 'ingot')
+	mold_blueprint('kubejs:mold/double_ingot', 'double_ingot')
+	mold_blueprint('kubejs:mold/double_sheet', 'double_sheet')
 	
 	e.recipes.createCrushing([
 	'1x tfc:sand/white'
@@ -965,6 +965,9 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/black_steel'], 'tfc:metal/ingot/weak_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/black_steel');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/blue_steel'], 'tfc:metal/ingot/weak_blue_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/blue_steel');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/red_steel'], 'tfc:metal/ingot/weak_red_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/red_steel');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/steel'], 'tfc:metal/ingot/pig_iron').time(100).energy(102400).id('kubejs:arc_furnace/steel');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/cast_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_cast_iron');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/wrought_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_wrought_iron');
 	
 	//bottling machine
 	//ie_bottler*:note - make sure everything is spelt correctly, else the game will crash while (re)loading the server
@@ -1102,6 +1105,65 @@ onEvent('recipes', e => {
 			'count': 1
 		}
 	}).id('immersiveengineering:blueprint/banner_bevels');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+		{
+			'item': 'immersiveengineering:wooden_grip'
+		},
+		{
+			'item': 'tfc:metal/tuyere/steel'
+		},
+		{
+			'item': 'immersiveengineering:component_steel'
+		},
+		{
+			'item': 'immersiveengineering:gunpart_drum'
+		},
+		{
+			'item': 'immersiveengineering:gunpart_hammer'
+		}
+		],
+		'category': 'electrode',
+		'result': {
+			'item': 'immersiveengineering:revolver',
+			'count': 1
+		}
+	}).id('kubejs:blueprint/revolver');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+		{
+			'item': 'immersiveengineering:wooden_grip'
+		},
+		{
+			'count': 2,
+			'base_ingredient': {
+				'item': 'immersiveengineering:coil_mv'
+			}
+		},
+		{
+			'item': 'immersiveengineering:capacitor_hv'
+		},
+		{
+			'item': 'immersiveengineering:component_electronic_adv'
+		},
+		{
+			'count': 2,
+			'base_ingredient': {
+				'item': 'tfc:metal/rod/steel'
+			}
+		},
+		{
+			'item': 'tfc:metal/ingot/steel'
+		}
+		],
+		'category': 'electrode',
+		'result': {
+			'item': 'immersiveengineering:railgun',
+			'count': 1
+		}
+	}).id('kubejs:blueprint/railgun');
 	
 	e.custom({
 		'type': 'tfc:leather_knapping',

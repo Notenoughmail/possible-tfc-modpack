@@ -32,7 +32,7 @@ onEvent('recipes', e => {
 	blueprint('minecraft:gunpowder', Item.of('immersiveengineering:blueprint', '{blueprint:"bullet"}'), 'basic_bullet_blueprint')
 	blueprint('#minecraft:banners', Item.of('immersiveengineering:blueprint', '{blueprint:"bannerpatterns"}'), 'banner_pattern_blueprint')
 	blueprint('tfc:powderkeg', Item.of('immersiveengineering:blueprint', '{blueprint:"specialBullet"}'), 'special_bullet_blueprint')
-	blueprint('tfc:metal/tuyere/red_steel', Item.of('immersiveengineering:blueprint', '{blueprint:"electrode"}'), 'advanced_tools_blueprint')
+	blueprint('immersiveengineering:wooden_grip', Item.of('immersiveengineering:blueprint', '{blueprint:"electrode"}'), 'advanced_tools_blueprint')
 	
 	let tfc_damage_shapeless_inputs = (input_1, input_2, result, count, id) => {
 		e.custom({
@@ -1015,4 +1015,20 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/rod/copper',
 		A: '#tfc:lumber'
 	}).id('kubejs:shaped_crafting/wooden_grip');
+	e.shaped('1x immersiveengineering:gunpart_drum', [
+	'SSS',
+	'SAS',
+	'SSS'
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'tfc:metal/rod/wrought_iron'
+	}).id('kubejs:shaped_crafting/gunpart_drum');
+	e.shaped('1x immersiveengineering:gunpart_hammer', [
+	'SAB',
+	' S '
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'tfc:metal/ingot/steel',
+		B: 'minecraft:flint_and_steel'
+	}).id('kubejs:shaped_crafting/gunpart_hammer');
 })
