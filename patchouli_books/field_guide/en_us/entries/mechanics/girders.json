@@ -9,7 +9,7 @@
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/metal_girder_from_tfc",
+		"recipe": "kubejs:crafting/metal_girder",
 		"text": "Metal Girders can be crafted with $(thing)Composite Material$() and $(thing)Cast Iron Sheets$()"
 	}
 	],

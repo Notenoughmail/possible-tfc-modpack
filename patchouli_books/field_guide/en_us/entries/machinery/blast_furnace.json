@@ -16,7 +16,7 @@
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/preheater_from_tfc",
+		"recipe": "kubejs:crafting/preheater",
 		"text": "Preheaters are used to heat up air and then blow it into the furnace to speed up the refinement process of iron. Each furnace can have up to two preheaters connected, one for each side, and each take 32 rf/t to operate."
 	},
 	{

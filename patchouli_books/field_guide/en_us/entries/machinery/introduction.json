@@ -13,37 +13,37 @@
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/hammer_from_tfc",
+		"recipe": "kubejs:crafting/hammer",
 		"title": "Engineer's Hammer",
 		"text": "The Engineer's Hammer is used to assemble multiblock structures, see $(thing)JEI$() or the $(thing)Schematic Table$() for how machines are built."
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/screwdriver_from_tfc",
+		"recipe": "kubejs:crafting/screwdriver",
 		"title": "Engineer's Screwdriver",
 		"text": "The Engineer's Screwdriver is used for precise configuration on certain pieces of machinery, for example $(thing)Redstone Input$() on the $(thing)Diesel Generator$() or configuring the $(thing)Modes$() of a $(thing)Redstone Wire Connector$()."
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/wirecutters_from_tfc",
+		"recipe": "kubejs:crafting/wirecutters",
 		"title": "Engineer's Wire Cutters",
 		"text": "The Engineer's Wire Cutters are used to remove a single wire connection between $(thing)Wire Connectors$() or $(thing)Relays$(), or to remove all connections a connector or relay has without breaking it."
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "immersiveengineering:crafting/voltmeter",
+		"recipe": "kubejs:crafting/multimeter",
 		"title": "Engineer's Multimeter",
 		"text": "The Engineer's Multimeter is used to measure connections. Looking at or using $(item)$(k:key.use)$() on any energy storage will read its current storage. Use $(item)$(k:key.sneak)$() and $(item)$(k:key.use)$() on two connectors to find the loss between them. It can also read redstone levels."
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/wrench_from_tfc",
+		"recipe": "kubejs:crafting/wrench",
 		"title": "Engineer's Wrench",
 		"text": "Clicking components with $(item)$(k:key.use)$() with an Engineer's Wrench will rotate them; doing so while sneaking will put the component directly in your $(thing)inventory$(). The Engineer's Wrench can also be used to configure certain kinetic components with the scroll wheel."
 	},
 	{
 		"type": "patchouli:crafting",
-		"recipe": "kubejs:shaped_crafting/goggles_from_tfc",
+		"recipe": "kubejs:crafting/goggles",
 		"title": "Engineer's Goggles",
 		"text": "When wearing a pair of Engineer's Googles, additional information about various kinetic appliances is shown, for instance the $(thing)Stress Impact$() and $(thing)Capacity$() of individul components. Also gives detailed information from $(thing)Speedometers$(), $(thing)Stressometers$(), and fluid containers."
 	}
