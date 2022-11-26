@@ -50,7 +50,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	/create:crushed_.*/, /immersiveengineering:connector_.*/, 'immersiveengineering:powerpack',
 	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper',
 	'immersiveengineering:floodlight', 'immersiveengineering:wooden_grip', 'immersiveengineering:empty_casing',
-	/immersiveengineering:gunpart_.*/, 'immersiveengineering:revolver', 'immersiveengineering:railgun'
+	/immersiveengineering:gunpart_.*/, 'immersiveengineering:revolver', 'immersiveengineering:railgun',
+	'create:track_station', 'immersiveengineering:voltmeter'
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -78,7 +79,8 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	/create:cutting.*/, 'create:mixing/lava_from_cobble', /immersiveengineering:crafting\/capacitor_.*/, 
 	/immersiveengineering:smelting\/.*ingot.*/, 'immersiveengineering:bottling/sponge',
 	'minecraft:brick', /immersiveengineering:metalpress\/.*/, /immersiveengineering:mineral\/.*/,
-	'immersiveengineering:crafting/empty_shell', 'create:crafting/materials/copper_nugget'
+	'immersiveengineering:crafting/empty_shell', 'create:crafting/materials/copper_nugget',
+	'create:crafting/kinetics/speedometer'
 	]
 
 //todo: consolidate ids & outputs, remove the ~230 recipes that produce warnings in the log due to TFC removing them in a way kubejs doesn't like (?)

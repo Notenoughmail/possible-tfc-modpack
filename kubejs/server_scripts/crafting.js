@@ -22,7 +22,8 @@ onEvent('recipes', e => {
 	e.shapeless('32x gunswithoutroses:flint_bullet', ['minecraft:gunpowder', '4x minecraft:flint']).id('kubejs:shapeless_crafting/flint_shot');
 	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:shapeless_crafting/single_chunk_loader');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:shapeless_crafting/sand_paper');
-	e.shapeless('1x usclb:clipboardfolder', ['minecraft:paper', ['#minecraft:wooden_pressure_plates', 'immersiveengineering:plate_duroplast']]).id('kubejs:shapeless_crafting/clipboard_frame')
+	e.shapeless('1x usclb:clipboardfolder', ['minecraft:paper', ['#minecraft:wooden_pressure_plates', 'immersiveengineering:plate_duroplast']]).id('kubejs:shapeless_crafting/clipboard_frame');
+	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:shapeless_crafting/train_station');
 	
 	let blueprint = (input, output, id) => {
 		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:shapeless_crafting/' + id)
@@ -1031,4 +1032,23 @@ onEvent('recipes', e => {
 		A: 'tfc:metal/ingot/steel',
 		B: 'minecraft:flint_and_steel'
 	}).id('kubejs:shaped_crafting/gunpart_hammer');
+	e.shaped('1x create:speedometer', [
+	'S',
+	'A',
+	'B'
+	], {
+		S: 'tfc:metal/rod/brass',
+		A: 'create:cogwheel',
+		B: 'create:andesite_casing'
+	}).id('kubejs:shaped_crafting/speedometer');
+	e.shaped('1x immersiveengineering:voltmeter', [
+	' S ',
+	' A ',
+	'BCB'
+	], {
+		S: 'tfc:metal/rod/brass',
+		A: 'immersiveengineering:wirecoil_copper',
+		B: '#forge:rods/wooden',
+		C: 'tfc:metal/ingot/copper'
+	}).id('kubejs:shaped_crafting/multimeter');
 })
