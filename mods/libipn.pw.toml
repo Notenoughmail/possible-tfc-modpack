@@ -1,13 +1,13 @@
 name = "libIPN"
-filename = "libIPN-forge-1.18.2-1.0.5.jar"
+filename = "libIPN-forge-1.18.2-1.0.6.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "f218f8659529e4b7865aa0a141c37baa17ec4b4b"
+hash = "f6e3b31726c7ce972855a19c21e2bef1c88f8190"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4076493
+file-id = 4096369
 project-id = 679177
