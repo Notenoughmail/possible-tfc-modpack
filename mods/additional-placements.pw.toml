@@ -1,0 +1,13 @@
+name = "Additional Placements (Formerly Dynamic Vertical Slabs and Stairs)"
+filename = "AdditionalPlacements-1.18.2-1.6.3.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "39e2fcd9f8818b579b6bde0fdc75b9563119a0d2"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4058558
+project-id = 674852

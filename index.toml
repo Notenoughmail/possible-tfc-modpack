@@ -1509,6 +1509,11 @@ file = "kubejs/startup_scripts/script.js"
 hash = "c0a35275af7b1e6291c0ce780d28d3d9a724aca15e4bfc5072c29119e05134e3"
 
 [[files]]
+file = "mods/additional-placements.pw.toml"
+hash = "c72bf4030539221fdf4d9e930b9855b50f2b79ae7c24b0c7bead9381b46d88cf"
+metafile = true
+
+[[files]]
 file = "mods/aileron.pw.toml"
 hash = "7cc13443026ed50260422397011dd06f18b73a715f8a2fe43af05b1f7aaf8d6e"
 metafile = true
@@ -1739,6 +1744,11 @@ hash = "050387e709dda272a06b5e3377fe33839f41194e5070be8fcf3e631089c4fe12"
 metafile = true
 
 [[files]]
+file = "mods/recipe-book-is-pain.pw.toml"
+hash = "53ff30f2a395b637d4649725b0d85079476d8a990df10c4be22b7e8af3388304"
+metafile = true
+
+[[files]]
 file = "mods/rhino.pw.toml"
 hash = "43375678708cd812b22ab1ecbc3f5452bc0910bac6f544c69f9ccf8bd14d420f"
 metafile = true
@@ -1771,6 +1781,11 @@ metafile = true
 [[files]]
 file = "mods/tfc-item-barrels.pw.toml"
 hash = "17988ea6e9b15ff406880038000ca42d2721a39279e85425fa42b6215ac4d803"
+metafile = true
+
+[[files]]
+file = "mods/tfc-tweaks-1-18-2.pw.toml"
+hash = "f2ccf1ab8f2fef426d8dcf4aca6963d512dcc1ce9605a7554e91d5794a4d6b51"
 metafile = true
 
 [[files]]
@@ -1849,6 +1864,11 @@ hash = "654b02ddf96ae61d21ded34574d584eb56e0076c5944030113c9741e8cd61a10"
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/mechanics/girders.json"
 hash = "088f21270c85baea1e753ef053ef031c8351469dca34585b5652d415bf39baac"
+
+[[files]]
+file = "resourcepacks/updated-engineering.pw.toml"
+hash = "78e9207574e02eb2910a3d3adaf7100232f40f5d212c4ef955c3cb52df18ed13"
+metafile = true
 
 [[files]]
 file = "schematics/Bottling Machine.nbt"

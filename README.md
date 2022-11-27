@@ -1,6 +1,8 @@
 # possible-tfc-modpack
  A modpack centered around TerraFirmaCraft, Create, Immersive Engineering, and a few others on 1.18.2
  
+ Immersive Engineering textures provided by [Updated Engineering](https://www.curseforge.com/minecraft/texture-packs/updated-engineering)
+ 
 # Images
  - Retextures of gunswithoutroses items are completely made by me
  - Double ingot textures are taken from IE, as are the lead, electrum, constantan, and treated woods in kubejs/assests/tfc/textures/block/metal/full
