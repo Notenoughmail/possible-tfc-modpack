@@ -72,5 +72,9 @@
 	
 	"item.kubejs.mold.ingot": "Metal Mold: Ingot",
 	"item.kubejs.mold.double_ingot": "Metal Mold: Double Ingot",
-	"item.kubejs.mold.double_sheet": "Metal Mold: Double Sheet"
+	"item.kubejs.mold.double_sheet": "Metal Mold: Double Sheet",
+	
+	"item.kubejs.metal.double_ingot.constantan": "Constantan Double Ingot",
+	"item.kubejs.metal.double_ingot.electrum": "Electrum Double Ingot",
+	"item.kubejs.metal.double_ingot.lead": "Lead Double Ingot"
 }

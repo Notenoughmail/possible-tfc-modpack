@@ -24,6 +24,9 @@ onEvent('item.registry', e => {
 	e.create('mold/ingot')
 	e.create('mold/double_ingot')
 	e.create('mold/double_sheet')
+	e.create('metal/double_ingot/constantan')
+	e.create('metal/double_ingot/electrum')
+	e.create('metal/double_ingot/lead')
 })
 
 onEvent('item.modification', e => {

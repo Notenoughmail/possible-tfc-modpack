@@ -820,18 +820,18 @@ onEvent('recipes', e => {
 	//tfc_welding_item:order = in1, in2, tier, out, count, id
 	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'copper_fluid_pipe')
 	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks')
-	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'immersiveengineering:nugget_electrum', 1, 'double_electrum_ingot')
-	tfc_welding_item('immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan', 2, 'immersiveengineering:nugget_constantan', 1, 'double_constantan_ingot')
-	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'immersiveengineering:nugget_lead', 1, 'double_lead_ingot')
+	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'kubejs:metal/double_ingot/electrum', 1, 'double_electrum_ingot')
+	tfc_welding_item('immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan', 2, 'kubejs:metal/double_ingot/constantan', 1, 'double_constantan_ingot')
+	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'kubejs:metal/double_ingot/lead', 1, 'double_lead_ingot')
 	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots')
 	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'stainless_steel_fluid_pipe')
 	
 	//tfc_anvil:order = input, output, count, tier, rule_1, rule_2, rule_3, id | three rules needed
 	tfc_anvil('tfc:metal/rod/brass', 'create:brass_ladder', 3, 2, 'draw', 'bend', 'draw', 'brass_ladder_working')
 	tfc_anvil('tfc:metal/rod/copper', 'create:copper_ladder', 3, 1, 'draw', 'bend', 'draw', 'copper_ladder_working')
-	tfc_anvil('immersiveengineering:nugget_electrum', 'immersiveengineering:plate_electrum', 1, 3, 'hit', 'hit', 'hit', 'electrum_sheet_working')
-	tfc_anvil('immersiveengineering:nugget_constantan', 'immersiveengineering:plate_constantan', 1, 2, 'hit', 'hit', 'hit', 'constantan_sheet_working')
-	tfc_anvil('immersiveengineering:nugget_lead', 'immersiveengineering:plate_lead', 1, 1, 'hit', 'hit', 'hit', 'lead_sheet_working')
+	tfc_anvil('kubejs:metal/double_ingot/electrum', 'immersiveengineering:plate_electrum', 1, 3, 'hit', 'hit', 'hit', 'electrum_sheet_working')
+	tfc_anvil('kubejs:metal/double_ingot/constantan', 'immersiveengineering:plate_constantan', 1, 2, 'hit', 'hit', 'hit', 'constantan_sheet_working')
+	tfc_anvil('kubejs:metal/double_ingot/lead', 'immersiveengineering:plate_lead', 1, 1, 'hit', 'hit', 'hit', 'lead_sheet_working')
 	tfc_anvil('immersiveengineering:ingot_electrum', 'immersiveposts:stick_electrum', 2, 3, 'bend', 'draw', 'draw', 'electrum_rod_working')
 	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
 	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
@@ -841,9 +841,9 @@ onEvent('recipes', e => {
 	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
 	tfc_heating('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
 	tfc_heating('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
-	tfc_heating('immersiveengineering:nugget_constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
-	tfc_heating('immersiveengineering:nugget_electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
-	tfc_heating('immersiveengineering:nugget_lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
+	tfc_heating('kubejs:metal/double_ingot/constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
+	tfc_heating('kubejs:metal/double_ingot/electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
+	tfc_heating('kubejs:metal/double_ingot/lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
 	tfc_heating('immersiveengineering:plate_constantan', 'kubejs:constantan', 200, 1266, 'constantan_sheet')
 	tfc_heating('immersiveengineering:plate_electrum', 'kubejs:electrum', 200, 1010, 'electrum_sheet')
 	tfc_heating('immersiveengineering:plate_lead', 'kubejs:lead', 200, 327, 'lead_plate')
@@ -900,6 +900,7 @@ onEvent('recipes', e => {
 	tfc_chisel('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:stairs_treated_wood_horizontal', 'stair', 'stained_wood_horizontal')
 	tfc_chisel('immersiveengineering:treated_wood_vertical', 'immersiveengineering:stairs_treated_wood_vertical', 'stair', 'stained_wood_vertical')
 	tfc_chisel('immersiveengineering:treated_wood_packaged', 'immersiveengineering:stairs_treated_wood_packaged', 'stair', 'stained_wood_packaged')
+	tfc_chisel('immersiveengineering:concrete', 'immersiveengineering:concrete_tile', 'smooth', 'concrete_tile')
 	
 	//tfc_chisel_extra:order = input, output, mode, extra, id
 	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
@@ -985,9 +986,9 @@ onEvent('recipes', e => {
 	ie_bottler_mold('tfc:metal/ingot/unknown', 'kubejs:mold/ingot', 'tfc:unknown', 100, 'ingot_unknown')
 	ie_bottler_mold('firmalife:metal/ingot/chromium', 'kubejs:mold/ingot', 'firmalife:chromium', 100, 'ingot_chromium')
 	ie_bottler_mold('firmalife:metal/ingot/stainless_steel', 'kubejs:mold/ingot', 'firmalife:stainless_steel', 100, 'ingot_stainless_steel')
-	ie_bottler_mold('immersiveengineering:nugget_lead', 'kubejs:mold/double_ingot', 'tfc:lead', 200, 'double_ingot_lead')
-	ie_bottler_mold('immersiveengineering:nugget_constantan', 'kubejs:mold/double_ingot', 'tfc:constantan', 200, 'double_ingot_constantan')
-	ie_bottler_mold('immersiveengineering:nugget_electrum', 'kubejs:mold/double_ingot', 'tfc:electrum', 200, 'double_ingot_electrum')
+	ie_bottler_mold('kubejs:metal/double_ingot/lead', 'kubejs:mold/double_ingot', 'tfc:lead', 200, 'double_ingot_lead')
+	ie_bottler_mold('kubejs:metal/double_ingot/constantan', 'kubejs:mold/double_ingot', 'tfc:constantan', 200, 'double_ingot_constantan')
+	ie_bottler_mold('kubejs:metal/double_ingot/electrum', 'kubejs:mold/double_ingot', 'tfc:electrum', 200, 'double_ingot_electrum')
 	ie_bottler_mold('firmalife:metal/double_ingot/chromium', 'kubejs:mold/double_ingot', 'firmalife:chromium', 200, 'double_ingot_chromium')
 	ie_bottler_mold('firmalife:metal/double_ingot/stainless_steel', 'kubejs:mold/double_ingot', 'firmalife:stainless_steel', 200, 'double_ingot_stainless_steel')
 	ie_bottler_mold('immersiveengineering:plate_lead', 'immersiveengineering:mold_plate', 'tfc:lead', 200, 'sheet_lead')
@@ -1165,6 +1166,7 @@ onEvent('recipes', e => {
 		}
 	}).id('kubejs:blueprint/railgun');
 	
+	//knapping
 	e.custom({
 		'type': 'tfc:leather_knapping',
 		'pattern': [
