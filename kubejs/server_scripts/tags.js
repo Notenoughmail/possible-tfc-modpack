@@ -13,6 +13,12 @@ let berries = ['cherry', 'wintergreen_berry', 'strawberry', 'snowberry', 'raspbe
 
 let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass', 'copper', 'gold', 'nickel', 'rose_gold', 'silver', 'tin', 'zinc', 'sterling_silver', 'wrought_iron', 'cast_iron', 'steel', 'black_steel', 'blue_steel', 'red_steel']
 
+let tool_rack = ['create:wrench', 'create:goggles', 'immersiveengineering:hammer', 'immersiveengineering:wirecutter', 'immersiveengineering:screwdriver', 'immersiveengineering:voltmeter', 'immersiveengineering:drill', 'immersiveengineering:buzzsaw', 'immersiveengineering:revolver', 'immersiveengineering:chemthrower', 'immersiveengineering:railgun', 'immersiveengineering:skyhook', 'gunswithoutroses:iron_gun', 'gunswithoutroses:gold_gun', 'firmalife:watering_can']
+
+let no_color_sheetmetal = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold']
+
+let molds = ['kubejs:mold/ingot', 'kubejs:mold/double_ingot', 'kubejs:mold/double_sheet', 'immersiveengineering:mold_plate', 'immersiveengineering:mold_gear', 'immersiveengineering:mold_rod', 'immersiveengineering:mold_bullet_casing', 'immersiveengineering:mold_wire', 'immersiveengineering:mold_packing_4', 'immersiveengineering:mold_packing_9' 'immersiveengineering:mold_unpacking']
+
 onEvent('tags.items', e => {
 	berries.forEach(berry => {
 		e.add('tfc:foods/berries', 'tfc:food/' + berry)
@@ -20,6 +26,17 @@ onEvent('tags.items', e => {
 	tfc_metals.forEach(metal => {
 		e.add('forge:rods/all_metal', 'tfc:metal/rod/' + metal)
 	})
+	tool_rack.forEach(tool => {
+		e.add('tfc:usable_on_tool_rack', tool)
+	})
+	no_color_sheetmetal.forEach(material => {
+		e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_' + material)
+	})
+	molds.forEach(mold => {
+		e.add('forge:molds/metal', mold)
+	})
+	
+	//general
 	e.add('create:sleepers', '#forge:smooth_stone_slab')
 	e.add('tfc:rocks/loose', '#tfc:rock_knapping')
 	e.add('tfc:kelp', 'tfc:plant/winged_kelp')
@@ -28,17 +45,6 @@ onEvent('tags.items', e => {
 	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
 	e.add('forge:cobblestone', /tfc:rock.*mossy_cobble.*/)
 	e.add('forge:cobblestone/mossy', /tfc:rock.*mossy_cobble.*/)
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_copper')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_aluminum')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_lead')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_silver')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_nickel')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_uranium')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_constantan')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_electrum')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_steel')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_iron')
-	e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_gold')
 	e.add('tfc:pileable_ingots', /tfc:brick.*/)
 	e.add('tfc:pileable_ingots', 'minecraft:brick')
 	e.add('tfc:pileable_sheets', /kubejs:.*_panel/)
@@ -48,6 +54,7 @@ onEvent('tags.items', e => {
 	e.add('tfc:ore_pieces', 'kubejs:ore/normal_lead')
 	e.add('tfc:ore_pieces', 'kubejs:ore/rich_lead')
 	e.removeAllTagsFrom('create:copper_nugget')
+	
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')
 	e.removeAllTagsFrom('immersiveengineering:plate_electrum')
@@ -84,22 +91,7 @@ onEvent('tags.items', e => {
 	e.add('forge:double_ingots/constantan', 'kubejs:metal/double_ingot/constantan')
 	e.add('forge:double_ingots/electrum', 'kubejs:metal/double_ingot/electrum')
 	e.add('forge:double_ingots/lead', 'kubejs:metal/double_ingot/lead')
-	//tool rack, may turn into an array
-	e.add('tfc:usable_on_tool_rack', 'create:wrench')
-	e.add('tfc:usable_on_tool_rack', 'create:goggles')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:hammer')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:wirecutter')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:screwdriver')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:voltmeter')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:drill')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:buzzsaw')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:revolver')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:chemthrower')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:railgun')
-	e.add('tfc:usable_on_tool_rack', 'immersiveengineering:skyhook')
-	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:iron_gun')
-	e.add('tfc:usable_on_tool_rack', 'gunswithoutroses:gold_gun')
-	e.add('tfc:usable_on_tool_rack', 'firmalife:watering_can')
+
 	//weight and szie
 	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv')
 	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv_relay')

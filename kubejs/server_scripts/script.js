@@ -29,6 +29,8 @@ let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'dougl
 
 let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass', 'copper', 'gold', 'nickel', 'rose_gold', 'silver', 'tin', 'zinc', 'sterling_silver', 'cast_iron', 'steel', 'black_steel', 'blue_steel', 'red_steel']
 
+let ie_metals = ['aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel']
+
 onEvent('recipes', e => {
 	let tfc_collapse = (input, output) => {
 		e.custom({
@@ -291,6 +293,9 @@ onEvent('recipes', e => {
 		ie_bottler_simple_mold('ingot', metal, 'kubejs:mold/ingot', 100)
 		ie_bottler_simple_mold('double_ingot', metal, 'kubejs:mold/double_ingot', 200)
 		ie_bottler_simple_mold('double_sheet', metal, 'kubejs:mold/double_sheet', 400)
+	});
+	ie_metals.forEach(metal => {
+		tfc_chisel_extra('immersiveengineering:storage_' + metal, 'immersiveengineering:slab_storage_' + metal, 'slab', 'immersiveengineering:slab_storage_' + metal, metal)
 	});
 	
 	let mold_blueprint = (result, id) => {
@@ -901,11 +906,38 @@ onEvent('recipes', e => {
 	tfc_chisel('immersiveengineering:treated_wood_vertical', 'immersiveengineering:stairs_treated_wood_vertical', 'stair', 'stained_wood_vertical')
 	tfc_chisel('immersiveengineering:treated_wood_packaged', 'immersiveengineering:stairs_treated_wood_packaged', 'stair', 'stained_wood_packaged')
 	tfc_chisel('immersiveengineering:concrete', 'immersiveengineering:concrete_tile', 'smooth', 'concrete_tile')
+	tfc_chisel('immersiveengineering:steel_scaffolding_standard', 'immersiveengineering:stairs_steel_scaffolding_standard', 'stair', 'standard_steel_scaffolding')
+	tfc_chisel('immersiveengineering:alu_scaffolding_standard', 'immersiveengineering:stairs_alu_scaffolding_standard', 'stair', 'standard_alu_scaffolding')
+	tfc_chisel('immersiveengineering:steel_scaffolding_grate_top', 'immersiveengineering:stairs_steel_scaffolding_grate_top', 'stair', 'grate_top_steel_scaffolding')
+	tfc_chisel('immersiveengineering:alu_scaffolding_grate_top', 'immersiveengineering:stairs_alu_scaffolding_grate_top', 'stair', 'grate_top_alu_scaffolding')
+	tfc_chisel('immersiveengineering:steel_scaffolding_wooden_top', 'immersiveengineering:stairs_steel_scaffolding_wooden_top', 'stair', 'wooden_top_steel_scaffolding')
+	tfc_chisel('immersiveengineering:alu_scaffolding_wooden_top', 'immersiveengineering:stairs_alu_scaffolding_wooden_top', 'stair', 'wooden_top_alu_scaffolding')
+	tfc_chisel('immersiveengineering:hempcrete', 'immersiveengineering:stairs_hempcrete', 'stair', 'jutecrete')
+	tfc_chisel('immersiveengineering:concrete', 'immersiveengineering:stairs_concrete', 'stair', 'concrete')
+	tfc_chisel('immersiveengineering:concrete_tile', 'immersiveengineering:stairs_concrete_tile', 'stair', 'concrete_tile')
+	tfc_chisel('minecraft:copper_block', 'minecraft:cut_copper', 'smooth', 'cut_copper')
+	tfc_chisel('minecraft:cut_copper', 'minecraft:cut_copper_stairs', 'stair', 'cut_copper')
 	
 	//tfc_chisel_extra:order = input, output, mode, extra, id
 	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
 	tfc_chisel_extra('immersiveengineering:treated_wood_vertical', 'immersiveengineering:slab_treated_wood_vertical', 'slab', 'immersiveengineering:slab_treated_wood_vertical', 'stained_wood_vertical')
 	tfc_chisel_extra('immersiveengineering:treated_wood_packaged', 'immersiveengineering:slab_treated_wood_packaged', 'slab', 'immersiveengineering:slab_treated_wood_packaged', 'stained_wood_packaged')
+	tfc_chisel_extra('immersiveengineering:steel_scaffolding_standard', 'immersiveengineering:slab_steel_scaffolding_standard', 'slab', 'immersiveengineering:slab_steel_scaffolding_standard', 'standard_steel_scaffolding')
+	tfc_chisel_extra('immersiveengineering:alu_scaffolding_standard', 'immersiveengineering:slab_alu_scaffolding_standard', 'slab', 'immersiveengineering:slab_alu_scaffolding_standard', 'standard_alu_scaffolding')
+	tfc_chisel_extra('immersiveengineering:steel_scaffolding_grate_top', 'immersiveengineering:slab_steel_scaffolding_grate_top', 'slab', 'immersiveengineering:slab_steel_scaffolding_grate_top', 'grate_top_steel_scaffolding')
+	tfc_chisel_extra('immersiveengineering:alu_scaffolding_grate_top', 'immersiveengineering:slab_alu_scaffolding_grate_top', 'slab', 'immersiveengineering:slab_alu_scaffolding_grate_top', 'grate_top_alu_scaffolding')
+	tfc_chisel_extra('immersiveengineering:steel_scaffolding_wooden_top', 'immersiveengineering:slab_steel_scaffolding_wooden_top', 'slab', 'immersiveengineering:slab_steel_scaffolding_wooden_top', 'wooden_top_steel_scaffolding')
+	tfc_chisel_extra('immersiveengineering:alu_scaffolding_wooden_top', 'immersiveengineering:slab_alu_scaffolding_wooden_top', 'slab', 'immersiveengineering:slab_alu_scaffolding_wooden_top', 'wooden_top_alu_scaffolding')
+	tfc_chisel_extra('immersiveengineering:cokebrick', 'immersiveengineering:slab_cokebrick', 'slab', 'immersiveengineering:slab_cokebrick', 'cokebrick')
+	tfc_chisel_extra('immersiveengineering:blastbrick_reinforced', 'immersiveengineering:slab_blastbrick_reinforced', 'slab', 'immersiveengineering:slab_blastbrick_reinforced', 'blastbrick')
+	tfc_chisel_extra('immersiveengineering:coke', 'immersiveengineering:slab_coke', 'slab', 'immersiveengineering:slab_coke', 'coal_coke')
+	tfc_chisel_extra('immersiveengineering:hempcrete', 'immersiveengineering:slab_hempcrete', 'slab', 'immersiveengineering:slab_hempcrete', 'jutecrete')
+	tfc_chisel_extra('immersiveengineering:concrete', 'immersiveengineering:slab_concrete', 'slab', 'immersiveengineering:slab_concrete', 'concrete')
+	tfc_chisel_extra('immersiveengineering:concrete_tile', 'immersiveengineering:slab_concrete_tile', 'slab', 'immersiveengineering:slab_concrete_tile', 'concrete_tile')
+	tfc_chisel_extra('immersiveengineering:insulating_glass', 'immersiveengineering:slab_insulating_glass', 'slab', 'immersiveengineering:slab_insulating_glass', 'insulating_glass')
+	tfc_chisel_extra('immersiveengineering:alloybrick', 'immersiveengineering:slab_alloybrick', 'slab', 'immersiveengineering:slab_alloybrick', 'kiln_brick')
+	tfc_chisel_extra('minecraft:cut_copper', 'minecraft:cut_copper_slab', 'slab', 'minecraft:cut_copper_slab', 'cut_copper')
+	
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -1165,6 +1197,22 @@ onEvent('recipes', e => {
 			'count': 1
 		}
 	}).id('kubejs:blueprint/railgun');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+		{
+			'item': 'immersiveengineering:palte_duroplast'
+		},
+		{
+			'item': 'tfc:metal/sheet/copper'
+		}
+		],
+		'category': 'components',
+		'result': {
+			'item': 'immersiveengineering:circuit_board',
+			'count': 1
+		}
+	}).id('immersiveengineering:blueprint/circuit_board');
 	
 	//knapping
 	e.custom({

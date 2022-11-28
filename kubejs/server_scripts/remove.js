@@ -110,4 +110,5 @@ onEvent('recipes', e => {
 	e.remove({type: 'immersiveengineering:arc_furnace'});
 	e.remove({type: 'immersiveengineering:crusher'});
 	e.remove({type: 'create:splashing'});
+	e.remove({type: 'minecraft:crafting_shapeless', input: 'immersiveengineering:hammer'});
 })

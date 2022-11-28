@@ -78,6 +78,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('create:schematicannon')
 	e.hide('create:haunted_bell')
 	e.hide('#forge:nuggets')
+	e.hide('#forge:plates')
 })
 
 onEvent('jei.add.items', e => {
