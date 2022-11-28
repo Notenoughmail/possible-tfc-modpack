@@ -1201,7 +1201,7 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
-			'item': 'immersiveengineering:palte_duroplast'
+			'item': 'immersiveengineering:plate_duroplast'
 		},
 		{
 			'item': 'tfc:metal/sheet/copper'

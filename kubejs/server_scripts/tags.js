@@ -17,7 +17,7 @@ let tool_rack = ['create:wrench', 'create:goggles', 'immersiveengineering:hammer
 
 let no_color_sheetmetal = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold']
 
-let molds = ['kubejs:mold/ingot', 'kubejs:mold/double_ingot', 'kubejs:mold/double_sheet', 'immersiveengineering:mold_plate', 'immersiveengineering:mold_gear', 'immersiveengineering:mold_rod', 'immersiveengineering:mold_bullet_casing', 'immersiveengineering:mold_wire', 'immersiveengineering:mold_packing_4', 'immersiveengineering:mold_packing_9' 'immersiveengineering:mold_unpacking']
+let tag_molds = ['kubejs:mold/ingot', 'kubejs:mold/double_ingot', 'kubejs:mold/double_sheet', 'immersiveengineering:mold_plate', 'immersiveengineering:mold_gear', 'immersiveengineering:mold_rod', 'immersiveengineering:mold_bullet_casing', 'immersiveengineering:mold_wire', 'immersiveengineering:mold_packing_4', 'immersiveengineering:mold_packing_9', 'immersiveengineering:mold_unpacking']
 
 onEvent('tags.items', e => {
 	berries.forEach(berry => {
@@ -32,7 +32,7 @@ onEvent('tags.items', e => {
 	no_color_sheetmetal.forEach(material => {
 		e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_' + material)
 	})
-	molds.forEach(mold => {
+	tag_molds.forEach(mold => {
 		e.add('forge:molds/metal', mold)
 	})
 	
