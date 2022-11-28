@@ -218,23 +218,35 @@ hash = "e2fd53018180c10c0867424d337016e7cb1f7661f3463524b8244589d2556c03"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/lang/en_us.json"
-hash = "a4144adbec816b3ade26c8c50ce17fde3f684f3805d0178f240a5233c3a46f6f"
+hash = "e2c1a60f4d7a1fae944093a8a60a8b2623ad83afe8069f8ff73cf63651a12329"
 
 [[files]]
-file = "kubejs/assets/immersiveengineering/textures/item/metal_nugget_constantan.png"
-hash = "f9f889920449049f1de7e8dca48f66abd21cbfccef05f0d2ffd9edf77265a62b"
+file = "kubejs/assets/immersiveengineering/textures/item/metal_ingot_constantan.png"
+hash = "595a9dec22c91ac27e052e11b95d021f2ea943c2459a3ad0bc8dcf84f69cbf55"
 
 [[files]]
-file = "kubejs/assets/immersiveengineering/textures/item/metal_nugget_electrum.png"
-hash = "d724f7e4f0bcbc9999df420c2516b3ed155c88ad1f1c9d5b2379ea72660e1296"
+file = "kubejs/assets/immersiveengineering/textures/item/metal_ingot_electrum.png"
+hash = "56e44e25a878d4b1d6439e44a259ff1dff992d69862020b71dc802abad109923"
 
 [[files]]
-file = "kubejs/assets/immersiveengineering/textures/item/metal_nugget_lead.png"
-hash = "f34cd73f83868c603646061f0969f684d44a16e73fab21a2f9bd93b6fe543f3f"
+file = "kubejs/assets/immersiveengineering/textures/item/metal_ingot_lead.png"
+hash = "af98040d79f24043099aad64967dc86c5ee767d9ec49a29d694b33ce7bc9ecbe"
+
+[[files]]
+file = "kubejs/assets/immersiveengineering/textures/item/metal_plate_constantan.png"
+hash = "d7a3a06210b0f881aa79ee04dffd0aff4db42e7a506f61aef07f543ea42cea36"
+
+[[files]]
+file = "kubejs/assets/immersiveengineering/textures/item/metal_plate_electrum.png"
+hash = "f6eda4207c7129cc543021bb44b188aff430cfc482a9b26525c94953bc6b146e"
+
+[[files]]
+file = "kubejs/assets/immersiveengineering/textures/item/metal_plate_lead.png"
+hash = "f1368f83f4568792eb41b444db648373677a1e32d0ac2ec8e6cfd8495738c715"
 
 [[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "6835c6fb2d20cddb21e970e0c5b1dc1b1d67b3df7a52d603f0b365f736a4fad2"
+hash = "fa9409c450adaa1499d7ea12c9f19af5ec63cfd2fa9efa4f49ba1e2a7783863d"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/frame/capacitor_hv.json"
@@ -701,6 +713,30 @@ file = "kubejs/assets/kubejs/textures/item/leather_pouch.png"
 hash = "053b5c899f219b43c7af93aa968c8d6a2c6f37a5e83571d6ad7d7dd34c68202d"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/metal/double_ingot/constantan.png"
+hash = "c317e83303c0ccdb18955bd5e6dbf437541472255825aad0dea476e7ec5f1020"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/metal/double_ingot/electrum.png"
+hash = "77dfe24c1079fd5118156ba351b0785984ef06919cf2926d099d20d7714b57d6"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/metal/double_ingot/lead.png"
+hash = "02fb0c607518211e3f1a502ac147bb5cc1c66dd33dc6255bf04826c3b62d82d2"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/mold/double_ingot.png"
+hash = "430854f704278092194ff0c9d5f805b4c9bcc399a853170650575d49fb126b9d"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/mold/double_sheet.png"
+hash = "4211ec7b6761af978b039962ce7ba8a35ac96e31c897a57148dc03b6c0003361"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/mold/ingot.png"
+hash = "92346eb1d72a25ec26f01194950544acbca22904c09319219c62e0e49b5f7fad"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/ore/normal_lead.png"
 hash = "66cbe8a31aebe0a3ce91f84e452e4525dca63e3b3f7c7f1748d1293bf2136773"
 
@@ -910,7 +946,7 @@ hash = "555eb95c076532c12a0e106094bc0901c04885bc8043ad93beb2f937d1d41186"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "aec07f1dd9e42ee73d276aae0546f29d252a0da628f7fd3152357bff13098b7b"
+hash = "3fe8b6781cf0dfd0fab62e10075593db0a303d384e16c595d074ce4d05efabbc"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -922,7 +958,7 @@ hash = "a27a5f04df3497d36ef707d822e0fd26e9203e1a0fb3c66daec16e2fe4048278"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
-hash = "1967f5731b8caa4b30be5f33e9a5315c0256e1ac34da719516eaa0e5cf6d356d"
+hash = "16a19d618872b9556d539b4ae62a7817f1ae89c57524892845f2e34f5c837645"
 
 [[files]]
 file = "kubejs/data/firmalife/tfc/item_heats/metal/chromium_double_ingot.json"
@@ -1482,7 +1518,7 @@ hash = "bae5d154410b0016dc8d97158dfa0103a19b4b57674faaaf324ea448fb7fe5fc"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "dc47ece66627f0003eb50d05b3c5513c22ee458c0bfb3ec04a92abd28a886817"
+hash = "1a420b3f881f2ffccc90f66d7b15867cd00991a95acd5081f0746d51d532a786"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1490,23 +1526,23 @@ hash = "f21dbb6bfa19ac7fa998c39b32bcdc0dbaf93675da39fb7477b713b071c4cdb4"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "7020079f509f459d1a0b5aeec7aa3c7b30452f5a76508a633d831011458e1c5f"
+hash = "ef27afebf45198c046a32c2d7dafd2c148faeb19a78517b651de7df03ac23d33"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "558438fba3d8e972465d442f981ef304e4b1853a4c26be37f354b12da3059722"
+hash = "021c0844ddf79132a66eacfc29544faa2703844837695fd15b74292fe24ca8cb"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "cce72c348cbf229407c39cc1479b3d7a1bbfe770a199c1d23e00c54ceb2404d7"
+hash = "31acfcf4e1202b5f511530e531d3947605b9cd0465fbd57498498100f5408401"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "aa778c47f7ba5bd7740c3b1b67da0124ade0a20ed1c915f39e16277b2fe3f236"
+hash = "ebf741d11f07deb500727d03b2a21c24f16b5926452b9293c8408b2cdd799f51"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "c0a35275af7b1e6291c0ce780d28d3d9a724aca15e4bfc5072c29119e05134e3"
+hash = "05ec22997d360fc5f8649905256e8da1fa97045aba9924626679b6090988d34d"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -1610,7 +1646,7 @@ metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "32028f3e73a60dabfd31491869331e0207f3199dc3f3fb3c75bc44b4d57a127f"
+hash = "7e042554947246023c764ed4ff2c913267dcb2894e598a0ee42b1b52af59c88d"
 metafile = true
 
 [[files]]
@@ -1695,7 +1731,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs.pw.toml"
-hash = "cf634ed8485dfd6bd5892fb506ef15c4d90f63bcf9a2518b93ec8b2d01362ae5"
+hash = "c782e8c10c9e55dd216e0c8893f02d622552bb53751f30165d5e3ffa038b0759"
 metafile = true
 
 [[files]]
@@ -1770,7 +1806,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "eec7e4c81c277d584220df86f83e15fe7ae828ffd814acde6e111256ca832719"
+hash = "1e0de22f31841389e1265379c1234afe5c09c7691fb638203b89b6e3d906d85e"
 metafile = true
 
 [[files]]
@@ -1823,7 +1859,7 @@ hash = "8a51c4484e4a0ff47ee5e21330501ce00b59296d935e720463d71bfed9d014fd"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/blast_furnace.json"
-hash = "2ef255a519511e789153368a9fb3a7f46b4f284e3da9470562b05bc9e0f503be"
+hash = "e6c5a220eefdcc540d19d2298169c77d4830b1c362e64858c3378d6b4326118d"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/bottler.json"
@@ -1839,7 +1875,7 @@ hash = "a7925b23f09bb5aca229736c6e96f38df129778a8b189b917dec4262a87a506b"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/introduction.json"
-hash = "91168659ea75151ab94932fc3ae5019fbe2afbee47b31486ec4e7d3ab3075402"
+hash = "3ed5fac4d86347cbec6f410fab84ef9e6d625cbae86238d83d349a8dea5cd75a"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/melting.json"
@@ -1863,7 +1899,7 @@ hash = "654b02ddf96ae61d21ded34574d584eb56e0076c5944030113c9741e8cd61a10"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/mechanics/girders.json"
-hash = "088f21270c85baea1e753ef053ef031c8351469dca34585b5652d415bf39baac"
+hash = "824f7ef5b70984f14519544c0bdf474115a7ed9a2a3bd3fca539fc07ee6fe7ed"
 
 [[files]]
 file = "resourcepacks/updated-engineering.pw.toml"
