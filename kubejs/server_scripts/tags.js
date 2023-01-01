@@ -35,7 +35,6 @@ onEvent('tags.items', e => {
 	})
 	
 	//general
-	e.add('create:sleepers', '#forge:smooth_stone_slab')
 	e.add('tfc:rocks/loose', '#tfc:rock_knapping')
 	e.add('tfc:kelp', 'tfc:plant/winged_kelp')
 	e.add('tfc:kelp', 'tfc:plant/leafy_kelp')
@@ -51,6 +50,7 @@ onEvent('tags.items', e => {
 	e.add('tfc:ore_pieces', 'kubejs:ore/normal_lead')
 	e.add('tfc:ore_pieces', 'kubejs:ore/rich_lead')
 	e.removeAllTagsFrom('create:copper_nugget')
+	e.removeAll('create:sleepers')
 	
 	//metal reorganization
 	e.removeAllTagsFrom('immersiveengineering:plate_constantan')

@@ -51,7 +51,7 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper',
 	'immersiveengineering:floodlight', 'immersiveengineering:wooden_grip', 'immersiveengineering:empty_casing',
 	/immersiveengineering:gunpart_.*/, 'immersiveengineering:revolver', 'immersiveengineering:railgun',
-	'create:track_station', 'immersiveengineering:voltmeter'
+	'create:track_station', 'immersiveengineering:voltmeter', 'railways:semaphore', /railways:track_.*/
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 

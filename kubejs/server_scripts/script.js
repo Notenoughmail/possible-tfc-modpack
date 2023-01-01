@@ -621,7 +621,7 @@ onEvent('recipes', e => {
 		e.recipes.createCutting('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet').processingTime(100),
 		e.recipes.createPressing('create:unprocessed_obsidian_sheet', 'create:unprocessed_obsidian_sheet')
 	]).transitionalItem('create:unprocessed_obsidian_sheet').loops(1).id('kubejs:sequenced_assembly/sturdy_sheet');
-	e.recipes.createSequencedAssembly(['16x create:track'], '#create:sleepers', [
+	e.recipes.createSequencedAssembly(['16x create:track'], ['immersiveengineering:slab_concrete', 'immersiveengineering:slab_concrete_tile'], [
 		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
 		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
 		e.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
@@ -653,14 +653,19 @@ onEvent('recipes', e => {
 		e.recipes.createFilling('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createDeploying('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', 'tfc:metal/sheet/nickel']),
 		e.recipes.createPressing('kubejs:frame/capacitor_mv', 'kubejs:frame/capacitor_mv')
-	]).loops(1).id('kubejs:sequenced_assembly/mv_capacitor');
+	]).transitionalItem('kubejs:frame/capacitor_mv').loops(1).id('kubejs:sequenced_assembly/mv_capacitor');
 	e.recipes.createSequencedAssembly(['immersiveengineering:capacitor_hv'], 'kubejs:frame/capacitor_hv', [
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 500)]),
 		e.recipes.createDeploying('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', 'tfc:metal/sheet/steel']),
 		e.recipes.createPressing('kubejs:frame/capacitor_hv', 'kubejs:frame/capacitor_hv')
-	]).loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
+	]).transitionalItem('kubejs:frame/capacitor_hv').loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
+	e.recipes.createSequencedAssembly(['16x railways:track_dark_oak'], '#forge:treated_wood_slab', [
+		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
+		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
+		e.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
+	]).transitionalItem('railways:track_incomplete_dark_oak').loops(1).id('kubejs:sequenced_assembly/treated_planks_track'); // Unfortunately, SnR doesn't have the ability to make rails from all of TFC's woods, so just one is here as irl creosote stained wood ties
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:cutting/copper_sheetmetal');

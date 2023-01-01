@@ -1015,4 +1015,23 @@ onEvent('recipes', e => {
 		B: '#forge:rods/wooden',
 		C: 'tfc:metal/ingot/copper'
 	}).id('kubejs:crafting/multimeter');
+	e.shaped('4x railways:semaphore', [
+	' S ',
+	'ABC',
+	' S '
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: '#minecraft:fences/wooden',
+		B: 'create:andesite_casing',
+		C: 'create:electron_tube'
+	}).id('kubejs:crafting/semaphore');
+	e.shaped('1x railways:track_coupler', [
+	'S',
+	'A',
+	'B'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: 'minecraft:redstone',
+		B: 'create:railway_casing'
+	}).id('kubejs:crafting/track_coupler');
 })

@@ -52,7 +52,6 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:hemp_fiber')
 	e.hide('immersiveengineering:seed')
 	e.hide(/create:crushed_.*/)
-	e.hide(/createbigcannons:.*/)
 	e.hide('immersiveengineering:fluid_pump')
 	e.hide('minecraft:chorus_plant')
 	e.hide('immersiveengineering:blastbrick')
@@ -79,6 +78,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('create:haunted_bell')
 	e.hide('#forge:nuggets')
 	e.hide('#forge:plates')
+	e.hide(/railways:track_.*/)
 })
 
 onEvent('jei.add.items', e => {
@@ -101,7 +101,8 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:spider_eye')
 	e.add('minecraft:rotten_flesh')
 	e.add('minecraft:melon_slice')
-	e.add('createbigcannons:basin_foundry_lid')
+	e.add('railways:track_coupler')
+	e.add('railways:track_dark_oak')
 })
 
 onEvent('jei.remove.categories', e => {
