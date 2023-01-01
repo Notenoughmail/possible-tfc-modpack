@@ -136,18 +136,8 @@ onEvent('recipes', e => {
 		], {
 			S: 'tfc:wood/planks/' + plank + '_slab'
 		}).id('kubejs:crafting/' + plank + '_slab_to_plank');
-		e.shaped('16x kubejs:' + plank + '_planks_panel', [
-		'SS'
-		], {
-			S: 'tfc:wood/planks/' + plank + '_slab'
-		}).id('kubejs:crafting/' + plank + '_slab_to_panel');
 	})
 	stones.forEach(stone => {
-		e.shaped('16x kubejs:' + stone + '_brick_panel', [
-		'SS'
-		], {
-			S: 'tfc:rock/bricks/' + stone + '_slab'
-		}).id('kubejs:crafting/' + stone + '_slab_to_panel');
 		e.shaped('1x tfc:rock/bricks/' + stone, [
 		'S',
 		'S'
@@ -855,12 +845,6 @@ onEvent('recipes', e => {
 		S: 'tfc:jute_fiber',
 		A: '#forge:rods/wooden'
 	}).id('kubejs:crafting/jute_rope_coil');
-	e.shaped('1x createbigcannons:basin_foundry_lid', [
-	' S ',
-	'SSS'
-	], {
-		S: 'create:andesite_alloy'
-	}).id('kubejs:crafting/basin_foundry_lid');
 	e.shaped('1x immersiveengineering:workbench', [
 	'SAA',
 	'B C'
@@ -889,26 +873,6 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:coil_lv',
 		C: 'immersiveengineering:wire_lead'
 	}).id('kubejs:crafting/heater');
-	e.shaped('16x kubejs:stained_horizontal_wood_planks_panel', [
-	'SS'
-	], {
-		S: 'immersiveengineering:slab_treated_wood_horizontal'
-	}).id('kubejs:crafting/stained_wood_horizontal_slab_to_panel');
-	e.shaped('16x kubejs:stained_vertical_wood_planks_panel', [
-	'SS'
-	], {
-		S: 'immersiveengineering:slab_treated_wood_vertical'
-	}).id('kubejs:crafting/stained_wood_vertical_slab_to_panel');
-	e.shaped('16x kubejs:stained_packaged_wood_planks_panel', [
-	'SS'
-	], {
-		S: 'immersiveengineering:slab_treated_wood_packaged'
-	}).id('kubejs:crafting/stained_wood_packaged_slab_to_panel');
-	e.shaped('16x kubejs:brick_panel', [
-	'SS'
-	], {
-		S: 'minecraft:brick_slab'
-	}).id('kubejs:crafting/brick_slab_to_panel');
 	e.shaped('8x immersiveengineering:connector_lv_relay', [
 	'S',
 	'A',

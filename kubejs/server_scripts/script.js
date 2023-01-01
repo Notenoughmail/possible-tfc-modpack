@@ -39,24 +39,6 @@ onEvent('recipes', e => {
 			'result': output
 		})
 	}
-	let cbc_melting = (input, output, amount, time, heat, id) => {
-		e.custom({
-			'type': 'createbigcannons:melting',
-			'ingredients': [
-			{
-				'item': input
-			}
-			],
-			'results': [
-			{
-				'fluid': output,
-				'amount': amount
-			}
-			],
-			'processingTime': time,
-			'heatRequirement': heat
-		}).id('kubejs:melting/' + id)
-	}
 	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
 		e.custom({
 			'type': 'tfc:welding',
@@ -233,8 +215,6 @@ onEvent('recipes', e => {
 		tfc_collapse('kubejs:ore/rich_lead/' + rock, 'kubejs:ore/normal_lead/' + rock)
 		tfc_collapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/poor_lead/' + rock)
 		tfc_collapse('kubejs:ore/poor_lead/' + rock, 'tfc:rock/cobble/' + rock)
-		e.recipes.createCutting('8x kubejs:' + rock + '_brick_panel', 'tfc:rock/bricks/' + rock + '_slab').processingTime(100).id('kubejs:cutting/' + rock + '_slab_to_panel');
-		e.recipes.immersiveengineeringSawmill('8x kubejs:' + rock + '_brick_panel', 'tfc:rock/bricks/' + rock + '_slab').id('kubejs:sawmill/' + rock + '_slab_to_panel');
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
@@ -271,8 +251,6 @@ onEvent('recipes', e => {
 		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
 	});
 	planks.forEach(plank => {
-		e.recipes.createCutting('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').processingTime(100).id('kubejs:cutting/' + plank + '_slab_to_panel');
-		e.recipes.immersiveengineeringSawmill('8x kubejs:' + plank + '_planks_panel', 'tfc:wood/planks/' + plank + '_slab').id('kubejs:sawmill/' + plank + '_slab_to_panel');
 		e.recipes.createCutting('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).processingTime(150).id('kubejs:cutting/' + plank + '_stripping');
 		e.recipes.immersiveengineeringSawmill('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).id('kubejs:sawmill/' + plank + '_stripping');
 	});
@@ -694,127 +672,6 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:cutting/steel_sheetmetal');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:cutting/gold_sheetmetal');
 	e.recipes.createCutting('6x create:shaft', 'create:andesite_alloy').id('create:cutting/andesite_alloy');
-	e.recipes.createCutting('8x kubejs:stained_horizontal_wood_planks_panel', 'immersiveengineering:slab_treated_wood_horizontal').processingTime(100).id('kubejs:cutting/stained_wood_horizontal_slab_to_panel');
-	e.recipes.createCutting('8x kubejs:stained_vertical_wood_planks_panel', 'immersiveengineering:slab_treated_wood_vertical').processingTime(100).id('kubejs:cutting/stained_wood_vertical_slab_to_panel');
-	e.recipes.createCutting('8x kubejs:stained_packaged_wood_planks_panel', 'immersiveengineering:slab_treated_wood_packaged').processingTime(100).id('kubejs:cutting/stained_wood_packaged_slab_to_panel');
-	e.recipes.createCutting('8x kubejs:brick_panel', 'minecraft:brick_slab').processingTime(100).id('kubejs:cutting/brick_slab_to_panel');
-	
-	//cbc_melting:order = input, output, amount, time, heat, id
-	//cbc_melting:time = ((amount^1.003)*temp)/7 #divide by 1.5 when superheated
-	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1653, 'heated', 'rich_lead_heated')
-	cbc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 1102, 'superheated', 'rich_lead_superheated')
-	cbc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 706, 'heated', 'poor_lead_heated')
-	cbc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 471, 'superheated', 'poor_lead_superheated')
-	cbc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 1179, 'heated', 'normal_lead_heated')
-	cbc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 786, 'superheated', 'normal_lead_superheated')
-	cbc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 470, 'heated', 'small_lead_heated')
-	cbc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 314, 'superheated', 'small_lead_superheated')
-	cbc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 2743, 'heated', 'small_chromite_heated')
-	cbc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1829, 'superheated', 'small_chromite_superheated')
-	cbc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 9637, 'heated', 'rich_chromite_heated')
-	cbc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 6425, 'superheated', 'rich_chromite_superheated')
-	cbc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 4120, 'heated', 'poor_chromite_heated')
-	cbc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 2747, 'superheated', 'poor_chromite_superheated')
-	cbc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 6877, 'heated', 'normal_chromite_heated')
-	cbc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 4585, 'superheated', 'normal_chromite_superheated')
-	cbc_melting('tfc:ore/small_tetrahedrite', 'tfc:metal/copper', 10, 1554, 'heated', 'small_tetrahedrite_heated')
-	cbc_melting('tfc:ore/small_tetrahedrite', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_tetrahedrite_superheated')
-	cbc_melting('tfc:ore/rich_tetrahedrite', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_tetrahedrite_heated')
-	cbc_melting('tfc:ore/rich_tetrahedrite', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_tetrahedrite_superheated')
-	cbc_melting('tfc:ore/poor_tetrahedrite', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_tetrahedrite_heated')
-	cbc_melting('tfc:ore/poor_tetrahedrite', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_tetrahedrite_superheated')
-	cbc_melting('tfc:ore/normal_tetrahedrite', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_tetrahedrite_heated')
-	cbc_melting('tfc:ore/normal_tetrahedrite', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_tetrahedrite_superheated')
-	cbc_melting('tfc:ore/small_malachite', 'tfc:metal/copper', 10, 1554, 'heated', 'small_malachite_heated')
-	cbc_melting('tfc:ore/small_malachite', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_malachite_superheated')
-	cbc_melting('tfc:ore/rich_malachite', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_malachite_heated')
-	cbc_melting('tfc:ore/rich_malachite', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_malachite_superheated')
-	cbc_melting('tfc:ore/poor_malachite', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_malachite_heated')
-	cbc_melting('tfc:ore/poor_malachite', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_malachite_superheated')
-	cbc_melting('tfc:ore/normal_malachite', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_malachite_heated')
-	cbc_melting('tfc:ore/normal_malachite', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_malachite_superheated')
-	cbc_melting('tfc:ore/small_native_copper', 'tfc:metal/copper', 10, 1554, 'heated', 'small_native_copper_heated')
-	cbc_melting('tfc:ore/small_native_copper', 'tfc:metal/copper', 10, 1036, 'superheated', 'small_native_copper_superheated')
-	cbc_melting('tfc:ore/rich_native_copper', 'tfc:metal/copper', 35, 5458, 'heated', 'rich_native_copper_heated')
-	cbc_melting('tfc:ore/rich_native_copper', 'tfc:metal/copper', 35, 3639, 'superheated', 'rich_native_copper_superheated')
-	cbc_melting('tfc:ore/poor_native_copper', 'tfc:metal/copper', 15, 2333, 'heated', 'poor_native_copper_heated')
-	cbc_melting('tfc:ore/poor_native_copper', 'tfc:metal/copper', 15, 1555, 'superheated', 'poor_native_copper_superheated')
-	cbc_melting('tfc:ore/normal_native_copper', 'tfc:metal/copper', 15, 3895, 'heated', 'normal_native_copper_heated')
-	cbc_melting('tfc:ore/normal_native_copper', 'tfc:metal/copper', 15, 2596, 'superheated', 'normal_native_copper_superheated')
-	cbc_melting('tfc:ore/small_sphalerite', 'tfc:metal/zinc', 10, 604, 'heated', 'small_sphalerite_heated')
-	cbc_melting('tfc:ore/small_sphalerite', 'tfc:metal/zinc', 10, 403, 'superheated', 'small_sphalerite_superheated')
-	cbc_melting('tfc:ore/rich_sphalerite', 'tfc:metal/zinc', 35, 2123, 'heated', 'rich_sphalerite_heated')
-	cbc_melting('tfc:ore/rich_sphalerite', 'tfc:metal/zinc', 35, 1415, 'superheated', 'rich_sphalerite_superheated')
-	cbc_melting('tfc:ore/poor_sphalerite', 'tfc:metal/zinc', 15, 907, 'heated', 'poor_sphalerite_heated')
-	cbc_melting('tfc:ore/poor_sphalerite', 'tfc:metal/zinc', 15, 605, 'superheated', 'poor_sphalerite_superheated')
-	cbc_melting('tfc:ore/normal_sphalerite', 'tfc:metal/zinc', 15, 1515, 'heated', 'normal_sphalerite_heated')
-	cbc_melting('tfc:ore/normal_sphalerite', 'tfc:metal/zinc', 15, 1010, 'superheated', 'normal_sphalerite_superheated')
-	cbc_melting('tfc:ore/small_limonite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_limonite_heated')
-	cbc_melting('tfc:ore/small_limonite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_limonite_superheated')
-	cbc_melting('tfc:ore/rich_limonite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_limonite_heated')
-	cbc_melting('tfc:ore/rich_limonite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_limonite_superheated')
-	cbc_melting('tfc:ore/poor_limonite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_limonite_heated')
-	cbc_melting('tfc:ore/poor_limonite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_limonite_superheated')
-	cbc_melting('tfc:ore/normal_limonite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_limonite_heated')
-	cbc_melting('tfc:ore/normal_limonite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_limonite_superheated')
-	cbc_melting('tfc:ore/small_magnetite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_magnetite_heated')
-	cbc_melting('tfc:ore/small_magnetite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_magnetite_superheated')
-	cbc_melting('tfc:ore/rich_magnetite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_magnetite_heated')
-	cbc_melting('tfc:ore/rich_magnetite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_magnetite_superheated')
-	cbc_melting('tfc:ore/poor_magnetite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_magnetite_heated')
-	cbc_melting('tfc:ore/poor_magnetite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_magnetite_superheated')
-	cbc_melting('tfc:ore/normal_magnetite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_magnetite_heated')
-	cbc_melting('tfc:ore/normal_magnetite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_magnetite_superheated')
-	cbc_melting('tfc:ore/small_hematite', 'tfc:metal/cast_iron', 10, 2208, 'heated', 'small_hematite_heated')
-	cbc_melting('tfc:ore/small_hematite', 'tfc:metal/cast_iron', 10, 1472, 'superheated', 'small_hematite_superheated')
-	cbc_melting('tfc:ore/rich_hematite', 'tfc:metal/cast_iron', 35, 7757, 'heated', 'rich_hematite_heated')
-	cbc_melting('tfc:ore/rich_hematite', 'tfc:metal/cast_iron', 35, 5172, 'superheated', 'rich_hematite_superheated')
-	cbc_melting('tfc:ore/poor_hematite', 'tfc:metal/cast_iron', 15, 3316, 'heated', 'poor_hematite_heated')
-	cbc_melting('tfc:ore/poor_hematite', 'tfc:metal/cast_iron', 15, 2211, 'superheated', 'poor_hematite_superheated')
-	cbc_melting('tfc:ore/normal_hematite', 'tfc:metal/cast_iron', 15, 5535, 'heated', 'normal_hematite_heated')
-	cbc_melting('tfc:ore/normal_hematite', 'tfc:metal/cast_iron', 15, 3690, 'superheated', 'normal_hematite_superheated')
-	cbc_melting('tfc:ore/small_garnierite', 'tfc:metal/nickel', 10, 2090, 'heated', 'small_garnierite_heated')
-	cbc_melting('tfc:ore/small_garnierite', 'tfc:metal/nickel', 10, 1393, 'superheated', 'small_garnierite_superheated')
-	cbc_melting('tfc:ore/rich_garnierite', 'tfc:metal/nickel', 35, 7343, 'heated', 'rich_garnierite_heated')
-	cbc_melting('tfc:ore/rich_garnierite', 'tfc:metal/nickel', 35, 4895, 'superheated', 'rich_garnierite_superheated')
-	cbc_melting('tfc:ore/poor_garnierite', 'tfc:metal/nickel', 15, 3139, 'heated', 'poor_garnierite_heated')
-	cbc_melting('tfc:ore/poor_garnierite', 'tfc:metal/nickel', 15, 2093, 'superheated', 'poor_garnierite_superheated')
-	cbc_melting('tfc:ore/normal_garnierite', 'tfc:metal/nickel', 25, 5240, 'heated', 'normal_garnierite_heated')
-	cbc_melting('tfc:ore/normal_garnierite', 'tfc:metal/nickel', 25, 3493, 'superheated', 'normal_garnierite_superheated')
-	cbc_melting('tfc:ore/small_bismuthinite', 'tfc:metal/bismuth', 10, 388, 'heated', 'small_bismuthinite_heated')
-	cbc_melting('tfc:ore/small_bismuthinite', 'tfc:metal/bismuth', 10, 259, 'superheated', 'small_bismuthinite_superheated')
-	cbc_melting('tfc:ore/rich_bismuthinite', 'tfc:metal/bismuth', 35, 1364, 'heated', 'rich_bismuthinite_heated')
-	cbc_melting('tfc:ore/rich_bismuthinite', 'tfc:metal/bismuth', 35, 910, 'superheated', 'rich_bismuthinite_superheated')
-	cbc_melting('tfc:ore/poor_bismuthinite', 'tfc:metal/bismuth', 15, 583, 'heated', 'poor_bismuthinite_heated')
-	cbc_melting('tfc:ore/poor_bismuthinite', 'tfc:metal/bismuth', 15, 389, 'superheated', 'poor_bismuthinite_superheated')
-	cbc_melting('tfc:ore/normal_bismuthinite', 'tfc:metal/bismuth', 25, 974, 'heated', 'normal_bismuthinite_heated')
-	cbc_melting('tfc:ore/normal_bismuthinite', 'tfc:metal/bismuth', 25, 649, 'superheated', 'normal_bismuthinite_superheated')
-	cbc_melting('tfc:ore/small_cassiterite', 'tfc:metal/tin', 10, 331, 'heated', 'small_cassiterite_heated')
-	cbc_melting('tfc:ore/small_cassiterite', 'tfc:metal/tin', 10, 221, 'superheated', 'small_cassiterite_superheated')
-	cbc_melting('tfc:ore/rich_cassiterite', 'tfc:metal/tin', 35, 1162, 'heated', 'rich_cassiterite_heated')
-	cbc_melting('tfc:ore/rich_cassiterite', 'tfc:metal/tin', 35, 775, 'superheated', 'rich_cassiterite_superheated')
-	cbc_melting('tfc:ore/poor_cassiterite', 'tfc:metal/tin', 15, 497, 'heated', 'poor_cassiterite_heated')
-	cbc_melting('tfc:ore/poor_cassiterite', 'tfc:metal/tin', 15, 331, 'superheated', 'poor_cassiterite_superheated')
-	cbc_melting('tfc:ore/normal_cassiterite', 'tfc:metal/tin', 25, 829, 'heated', 'normal_cassiterite_heated')
-	cbc_melting('tfc:ore/normal_cassiterite', 'tfc:metal/tin', 25, 553, 'superheated', 'normal_cassiterite_superheated')
-	cbc_melting('tfc:ore/small_native_silver', 'tfc:metal/silver', 10, 1382, 'heated', 'small_native_silver_heated')
-	cbc_melting('tfc:ore/small_native_silver', 'tfc:metal/silver', 10, 922, 'superheated', 'small_native_silver_superheated')
-	cbc_melting('tfc:ore/rich_native_silver', 'tfc:metal/silver', 35, 4857, 'heated', 'rich_native_silver_heated')
-	cbc_melting('tfc:ore/rich_native_silver', 'tfc:metal/silver', 35, 3238, 'superheated', 'rich_native_silver_superheated')
-	cbc_melting('tfc:ore/poor_native_silver', 'tfc:metal/silver', 15, 2076, 'heated', 'poor_native_silver_heated')
-	cbc_melting('tfc:ore/poor_native_silver', 'tfc:metal/silver', 15, 1384, 'superheated', 'poor_native_silver_superheated')
-	cbc_melting('tfc:ore/normal_native_silver', 'tfc:metal/silver', 25, 3465, 'heated', 'normal_native_silver_heated')
-	cbc_melting('tfc:ore/normal_native_silver', 'tfc:metal/silver', 25, 2310, 'superheated', 'normal_native_silver_superheated')
-	cbc_melting('tfc:ore/small_native_gold', 'tfc:metal/gold', 10, 1525, 'heated', 'small_native_gold_heated')
-	cbc_melting('tfc:ore/small_native_gold', 'tfc:metal/gold', 10, 1017, 'superheated', 'small_native_gold_superheated')
-	cbc_melting('tfc:ore/rich_native_gold', 'tfc:metal/gold', 35, 5357, 'heated', 'rich_native_gold_heated')
-	cbc_melting('tfc:ore/rich_native_gold', 'tfc:metal/gold', 35, 3571, 'superheated', 'rich_native_gold_superheated')
-	cbc_melting('tfc:ore/poor_native_gold', 'tfc:metal/gold', 15, 2290, 'heated', 'poor_native_gold_heated')
-	cbc_melting('tfc:ore/poor_native_gold', 'tfc:metal/gold', 15, 1527, 'superheated', 'poor_native_gold_superheated')
-	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 3822, 'heated', 'normal_native_gold_heated')
-	cbc_melting('tfc:ore/normal_native_gold', 'tfc:metal/gold', 25, 2548, 'superheated', 'normal_native_gold_superheated')
-	cbc_melting('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 27938, 'superheated', 'graphite_dust')
-	cbc_melting('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 37251, 'superheated', 'graphite_ingot')
 	
 	//tfc_welding_tag:order = in1, in2, tier, out, count, id | in2 is a tag
 	tfc_welding_tag('tfc:metal/ingot/wrought_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_material_from_wrought_iron')
@@ -938,7 +795,6 @@ onEvent('recipes', e => {
 	tfc_chisel_extra('immersiveengineering:alloybrick', 'immersiveengineering:slab_alloybrick', 'slab', 'immersiveengineering:slab_alloybrick', 'kiln_brick')
 	tfc_chisel_extra('minecraft:cut_copper', 'minecraft:cut_copper_slab', 'slab', 'minecraft:cut_copper_slab', 'cut_copper')
 	
-	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_aluminum', '1x immersiveengineering:plate_aluminum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/aluminum_wire');
@@ -957,10 +813,6 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_electrum', 'immersiveengineering:storage_electrum').id('kubejs:sawmill/electrum_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_steel', 'immersiveengineering:storage_steel').id('kubejs:sawmill/steel_sheetmetal');
 	e.recipes.immersiveengineeringSawmill('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:sawmill/gold_sheetmetal');
-	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_horizontal_wood_planks_panel', 'immersiveengineering:slab_treated_wood_horizontal').id('kubejs:sawmill/stained_wood_horizontal_slab_to_panel');
-	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_vertical_wood_planks_panel', 'immersiveengineering:slab_treated_wood_vertical').id('kubejs:sawmill/stained_wood_vertical_slab_to_panel');
-	e.recipes.immersiveengineeringSawmill('8x kubejs:stained_packaged_wood_planks_panel', 'immersiveengineering:slab_treated_wood_packaged').id('kubejs:sawmill/stained_wood_packaged_slab_to_panel');
-	e.recipes.immersiveengineeringSawmill('8x kubejs:brick_panel', 'minecraft:brick_slab').id('kubejs:sawmill/brick_slab_to_panel');
 	
 	e.recipes.immersiveengineeringAlloy('2x immersiveengineering:insulating_glass', '2x #forge:glass', 'immersiveengineering:dust_copper').id('kubejs:kiln/insulating_glass');
 	
@@ -1055,7 +907,7 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:component_iron',
 			'count': 1
 		}
-		}).id('kubejs:blueprint/iron_components');
+	}).id('kubejs:blueprint/iron_components');
 		e.custom({
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [

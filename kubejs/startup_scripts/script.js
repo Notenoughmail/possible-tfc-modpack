@@ -6,20 +6,11 @@ let types = ['normal', 'poor', 'rich']
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
 
-let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow', 'stained_horizontal_wood', 'stained_vertical_wood', 'stained_packaged_wood']
-
 onEvent('item.registry', e => {
 	types.forEach(type => {
 		e.create('ore/' + type +'_lead')
 	})
 	e.create('leather_pouch')
-	stones.forEach(stone => {
-		e.create(stone + '_brick_panel')
-	})
-	planks.forEach(plank => {
-		e.create(plank + '_planks_panel')
-	})
-	e.create('brick_panel')
 	e.create('dummy')
 	e.create('mold/ingot')
 	e.create('mold/double_ingot')
@@ -81,6 +72,7 @@ onEvent('block.registry', e => {
 		.material('stone')
 		.tagBlock('minecraft:mineable/pickaxe')
 		.tagBlock('immersiveengineering:mineable/drill')
+		.tagBlock('tfc:breaks_when_isolated')
 		.tagItem('tfc:small_ore_pieces')
 		.tagItem('tfc:nuggets')
 	e.create('frame/capacitor_mv')//done this way to let the name be different in the lang file, as KubeJS's generated default overrides it

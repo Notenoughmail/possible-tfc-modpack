@@ -1,13 +1,13 @@
 name = "Precision Prospecting"
-filename = "precisionprospecting-1.18.2-0.2.2.jar"
+filename = "precisionprospecting-1.18.2-0.3.1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "3590b63c4e01ade7956a57ce17d56c7dd99e34c2"
+hash = "691c547d19ee8485d14450332bd9dd8220eb5a38"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4088909
+file-id = 4159583
 project-id = 700638

@@ -1,13 +1,13 @@
 name = "TFC Tweaks"
-filename = "tfctweaks-1.1.jar"
+filename = "tfctweaks-1.4.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "03bb342d9b478db3359290fa44bdd93afe278fad"
+hash = "db62e449f32bc9ebc9e11d182bdd9b0b67143a8f"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4119799
+file-id = 4223911
 project-id = 714159

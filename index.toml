@@ -77,6 +77,14 @@ file = "config/inventoryprofilesnext/integrationHints/exampleIntegrationHints.js
 hash = "ca413dea02cce69c69dccdc525fb0ec013236876eff2d142772c68db3d772d3a"
 
 [[files]]
+file = "config/inventoryprofilesnext/integrationHints/immersiveengineering.json"
+hash = "f70bc54b5f8bb19cf018c41b6f74ba0180df1649a85f1e32a2750f5a55d8de6a"
+
+[[files]]
+file = "config/inventoryprofilesnext/integrationHints/player-defined.json"
+hash = "3ba041e6088119303c593eaab9fa370cc1e62607bec4f63d734792c067b6fd20"
+
+[[files]]
 file = "config/inventoryprofilesnext/inventoryprofiles.json"
 hash = "da75e0c30b26229210e8065041fd05268dadf8c5411588fa36f4a0c7c4a25330"
 
@@ -201,10 +209,6 @@ file = "kubejs/assets/createaddition/lang/en_us.json"
 hash = "a7ad37b45ef4f0d15be20ea6e8f44569138a05f7005047dd60cf7caedfc3c09d"
 
 [[files]]
-file = "kubejs/assets/createbigcannons/lang/en_us.json"
-hash = "5e01825c090cb4115f6107535f0120b7adcae4e8a8604a5e10b58a20060f6e9e"
-
-[[files]]
 file = "kubejs/assets/gunswithoutroses/lang/en_us.json"
 hash = "93a37b6c19b3a611c0f5f470656d5d6f360a1c5f1af07548909ebb77602f96ab"
 
@@ -245,6 +249,18 @@ file = "kubejs/assets/immersiveengineering/textures/item/metal_plate_lead.png"
 hash = "f1368f83f4568792eb41b444db648373677a1e32d0ac2ec8e6cfd8495738c715"
 
 [[files]]
+file = "kubejs/assets/immersiveposts/textures/items/stick_constantan.png"
+hash = "a73a0e16030d26a0a7fb215c933de6804b9fab20874606e1701054c4c772efbf"
+
+[[files]]
+file = "kubejs/assets/immersiveposts/textures/items/stick_electrum.png"
+hash = "181782d8049f71f947609f59002fb2859af0350a7dac7e806425e70cce5228ea"
+
+[[files]]
+file = "kubejs/assets/immersiveposts/textures/items/stick_lead.png"
+hash = "fd6c3c79a17807e8537f9c0be343ba02bee5cdebfba1c42268c2eb661e3c869f"
+
+[[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
 hash = "fa9409c450adaa1499d7ea12c9f19af5ec63cfd2fa9efa4f49ba1e2a7783863d"
 
@@ -261,74 +277,6 @@ file = "kubejs/assets/kubejs/models/block/ore/small_lead.json"
 hash = "4790ffc5468cc52b1d6b78b26338ee0f191336222b23aa83d19f27d84cbbde9a"
 
 [[files]]
-file = "kubejs/assets/kubejs/models/item/acacia_planks_panel.json"
-hash = "ca327cf7079ace3d473fcf778405722395f84989f129a124ca8750b91f6451e0"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/andesite_brick_panel.json"
-hash = "d899e005ef140ad5a05ed3ff7937ae6a47fea9270f793b2d217a176ab543033c"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/ash_planks_panel.json"
-hash = "750ed9a5406a8754911c9e30f7e9fe39dfe183e5225b2ce2249de8f79d206c3c"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/aspen_planks_panel.json"
-hash = "6fc5c5ae24289822fdd0f1eaa92ceacce35f384f2b7695a345123dd4db6febbe"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/basalt_brick_panel.json"
-hash = "cd6b74d7b3dd97d53be24088c3ad58bdf629383df48080748de42c97e1fdfe27"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/birch_planks_panel.json"
-hash = "5109401c6a034cb72afbc8898a925d3f4c4c5e3f6a33df3858dd75bfecfca28a"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/blackwood_planks_panel.json"
-hash = "8135e4319f4f4ac8e6b206c2c5b91b8cc4bc90791f22caccf5aa3876ecf29a18"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/brick_panel.json"
-hash = "ed765e5712d9f79fc0bc240749e6d50c4851f07fec57bfa91e26cfca82e59a29"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/chalk_brick_panel.json"
-hash = "1f6b6508edc9f231141207a112951ae794e464cc3d4a9c8deda441b28f68b757"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/chert_brick_panel.json"
-hash = "1732152de6c5a6bcde02c827891b455278a02e8c61609324eeed878e8d293182"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/chestnut_planks_panel.json"
-hash = "caa8362c3c8f9b86d11f2e99dc053c650755ac9d94f4850d048f7bfc462bc6cc"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/claystone_brick_panel.json"
-hash = "85e22b2d3124db4ef49f5dd1b8a404cd6bbf0ec36a3dd8fdf3bf09f7ce8c627d"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/conglomerate_brick_panel.json"
-hash = "30c99f49e266e2daa20c5e82760bb9b8ad6e56ac766eb2319b4e65e2c10c3860"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/dacite_brick_panel.json"
-hash = "dd189048c1b026f3d2f4ba1e4a7fdfea07baee3beb76715a85c4b24d7b9b5535"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/diorite_brick_panel.json"
-hash = "59c2e5aad4179361538a1d035e21dace139015288dda663601069f2f0a011550"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/dolomite_brick_panel.json"
-hash = "9133dd2df705385554dc27c7dfef7726f057d7c133a5920cf5aa70eecbf4bdf0"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/douglas_fir_planks_panel.json"
-hash = "ddd66c2387caf35d47a37fc8aec296dbf76124ecaa4657f2f2aeb9ba5b87f404"
-
-[[files]]
 file = "kubejs/assets/kubejs/models/item/frame/capacitor_hv.json"
 hash = "b45dc27b5cb131c97081301068fd0605fdbc20a0c0eced283fdc1c7f8e192eb8"
 
@@ -337,112 +285,8 @@ file = "kubejs/assets/kubejs/models/item/frame/capacitor_mv.json"
 hash = "359d0cc81a48d6159d60d9837f8f4565013e8b2b75d3e6fac16408fd972903aa"
 
 [[files]]
-file = "kubejs/assets/kubejs/models/item/gabbro_brick_panel.json"
-hash = "1deaf73731adecf8cb32497414921ceca3d0f8025aa6b5d296d219413d058d29"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/gneiss_brick_panel.json"
-hash = "d638c7dc063ce6912c5cf69da48430683cac5924d93428580fc09fc5fa2a4d85"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/granite_brick_panel.json"
-hash = "e444385b4f1da6487a1b94d43c119cf68aefcd2317944c3c4f72b3cd2d5b22c8"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/hickory_planks_panel.json"
-hash = "08728b92fe84cabca2bc482d6d46ae36065a8c2b415aab6f2627fa5123225efb"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/kapok_planks_panel.json"
-hash = "529908abedc13c5713a8305568c206e753e633fa1d306cecf44f83cae26ef8a4"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/limestone_brick_panel.json"
-hash = "e944c536b95371803db0db55d68a4a5e26ab21c69f45f5c6523fd85777161b21"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/maple_planks_panel.json"
-hash = "64941aac74374265499c15edf0fe4eeab95cb6641e44acc9842e1fe6e02bffc5"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/marble_brick_panel.json"
-hash = "0d2202ad9761727f40960fe67832e7ffd57ff91e4a1b90efa31d7a0050faf11a"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/oak_planks_panel.json"
-hash = "a8f47d3d5ea9695d4ae2c4f27ceb169c0ea4122e71ff9d36ce7b418fee8782c0"
-
-[[files]]
 file = "kubejs/assets/kubejs/models/item/ore/small_lead.json"
 hash = "a640671184eba1acf9ce99ecc0b5bc55d2db1625058a2aef68d9d7c5461af035"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/palm_planks_panel.json"
-hash = "768c840581148a1869546892417608027f8488b3ead0db909bb9f54eb98387b2"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/phyllite_brick_panel.json"
-hash = "09feb8736cf2dafe0790d064fe2643dd666fc8e35151da88995e71d2ff1b44c5"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/pine_planks_panel.json"
-hash = "017c535d39cc96ff8044ea1b9ba0523e03985fdc884a1893b72ea5b64976721e"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/quartzite_brick_panel.json"
-hash = "094ccd2f61b63bb208a0c4e669b3345225699e9766240e02f682c85c8bfb0bea"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/rhyolite_brick_panel.json"
-hash = "91fba6dcadca6b8c822207b2045f00a93089cf940135988c3431424b52a5959a"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/rosewood_planks_panel.json"
-hash = "2329f3f93f93679dfbf1a2ace6b9843c4d29b250f353900a6684b255bf40646e"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/schist_brick_panel.json"
-hash = "03b03bb2e6f37d6006f7bde6109906bb1b94bfdf885c85843b6770fa8b6d5656"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/sequoia_planks_panel.json"
-hash = "07822191665370b0c514411496f4b157dc20615cbea9d5e89c3558e4e681c13d"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/shale_brick_panel.json"
-hash = "e3cb9c1ef4a28b847fde1ecb46072d5a132fe1dc37c73fa173a234a5000768c6"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/slate_brick_panel.json"
-hash = "66a873b18edd7d7338cdea98cbed1e59baed8132cf7058763688ea0166c6f8f5"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/spruce_planks_panel.json"
-hash = "cf14db178eed372a58f7b1cdf498e7d4d37e9cbdbe35271062f34bb58281b216"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/stained_horizontal_wood_planks_panel.json"
-hash = "05536e9c0325a6d490e475ab2d13e323bdbaea5df6cca6a9fa88604d0c8b9dfa"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/stained_packaged_wood_planks_panel.json"
-hash = "986359be294f3ec976ef585a819cbee212498a6228a51ebe77d7c05f78a2df5e"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/stained_vertical_wood_planks_panel.json"
-hash = "3c20525ce176848f19b068b72eb677453d09df956255c38ff917552f0018835b"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/sycamore_planks_panel.json"
-hash = "1b392bc6c946273b7ddbe5c7e1e20dc2b3bdc452cd9c60c4aad93c16c3dfba30"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/white_cedar_planks_panel.json"
-hash = "ea3ea4113e359dfb51579e04732f0bbbe29e2a00d5e9f207084eddbb2bc48859"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/willow_planks_panel.json"
-hash = "da66fdb60dddea508bccdd618ef263aaae1bd1de210240c105482f91f71bf3a3"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/frame/capacitor_hv_top.png"
@@ -757,188 +601,16 @@ file = "kubejs/assets/tfc/lang/en_us.json"
 hash = "f8f67b6cc33ebfecb0d58d51f342644edc258b4b6a229a5431a3779573a955a2"
 
 [[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/acacia.png"
-hash = "c60fa42a5f4649b57b4cea1135a140e2f69d578dde455794a954789fa9336b8c"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/andesite.png"
-hash = "9f88274d65c092a167d96ad23e07c7f82e329decebec7aefaabc45516144fcfb"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/ash.png"
-hash = "e62d91de68b9a1eda9c16470263a76b0b6f982db02cc82c796f945fdf2e57dee"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/aspen.png"
-hash = "fb19d8b560667af9deb033ca40e5f5209a83b02f0339a6cfdcf8e07265dbfa5d"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/basalt.png"
-hash = "198d3139e439c71e2847c1f0fcb8b92801e9cf76a3fef7e5f31a44259b92c401"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/birch.png"
-hash = "20fa4f7a314893bedee83d0e47bd77cf8bd71f712afe1bf9283006890a0f02de"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/blackwood.png"
-hash = "f16571a27c7367954d3c119271101c8b2593e5bd68fad1c631a2b8be0602c82a"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/brick.png"
-hash = "f23ef4c69e3598cab98a71b6a4b0c2855497bce1c88830aaa74689104ea89655"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/chalk.png"
-hash = "5a8048103808a7b532bd444a7e16117bf17353f55e68e77314408364bc965943"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/chert.png"
-hash = "c191d97623c4852cb3bb4c2eeb964751c639ba96837a3dd3a749e0b955e338fe"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/chestnut.png"
-hash = "fb11d9a14ec7057be31a1f44c9bff3f42b89e89235a9c55eed3a2ed2cd15d6e9"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/claystone.png"
-hash = "fa33d7a90423a942c8e44fc119e879655646ad676194095ff76f46c6f522d4bd"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/conglomerate.png"
-hash = "748ce5ba10f716e94055886387420fc45cbe70c70546a26ad502eb66c942ed46"
-
-[[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/constantan.png"
 hash = "0be40aa7e02f6038f55e0bb33d23973bab634938d41ba970c8e8e117f44d65dc"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/dacite.png"
-hash = "ec7abf0a7b00fda09079c39ec14134c3fd51de202d2f402700c56ff0f807cf13"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/diorite.png"
-hash = "be1509e03bb2d379370caeb9438d8cc151c2f819f3563db14448f6401cf4fe6a"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/dolomite.png"
-hash = "46bd6daf565dc8de2c57925f9a09993ef928ab0ad19b29db7514eb208b4cb0c5"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/douglas_fir.png"
-hash = "17f812542450e38a0df2cb95ce93e750de1de7fb89a10660347d4b5b9d755087"
 
 [[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/electrum.png"
 hash = "05a24de6f249bea8f353ad84bf1fe0c32888fe42a04371e81ea01665c9e58752"
 
 [[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/gabbro.png"
-hash = "23b953de8ee8c4548f6120eb9518fb46ca497642b3bcce968ac9b2b97127e937"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/gneiss.png"
-hash = "7f2ccd06c1d41bf5cc7a260ecd063a119847ba466d01f36e191d280183aa6240"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/granite.png"
-hash = "8054f228ec91abba9172cc5fc4a8eb063f3fca247e7b35ebcd9e341db4c17936"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/hickory.png"
-hash = "2067d9e3195cc326f1963f285d17373e44a2796d1f76f9528faa6fed954dc4cb"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/horizontal.png"
-hash = "fcb747da46e5d57c6877af1a275c95af58c6fc564f980af96440e6116c47c8f5"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/kapok.png"
-hash = "5706d7b92631c5ff1a13d958cb145fdbc6a8f5ccd376a70bc5e1dc820d195f88"
-
-[[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/lead.png"
 hash = "0a99fd0b518fa06b76e65108f112800c322ea9eb2d8eac0e9bbfcb68ba543e3e"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/limestone.png"
-hash = "d6e5c4c4b25da65ec068d503a482b204dc9f84ce864ff0b868e2a6b7b27f5063"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/maple.png"
-hash = "e82d25d8747122ba15f20721c43d551ddc603035a9c1056c5a47a7191159252a"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/marble.png"
-hash = "e3b0b6a448926a3023ca5cfc0c1ffd0cb81feaaf9a7e38f2ace47c9aa5c00411"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/oak.png"
-hash = "3b00412fec87bd07b83825b86de49bcb6c186ca7799f41721a36b04e5d8ed161"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/packaged.png"
-hash = "7b8df8da7532f45fa9aac92234363459af2b173fee1acb8eb54bde90510ac96c"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/palm.png"
-hash = "16f706ac77c9c8935364f99759ecb717d25dad50db83531f38a8c3d89e368520"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/phyllite.png"
-hash = "dbdfcf8979713d3a8ed403159f7f020f9752f3d7c0cc200c44da4ce8f290230c"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/pine.png"
-hash = "55d9c7f1945ec6fd465b01062ed94e576f2ba4d6ccc0eddc922f655664823708"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/quartzite.png"
-hash = "d5c763394d0dd78428940a7df80e9a7e5cabf5e924470f9e5a757e7666359f0b"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/rhyolite.png"
-hash = "0d5860930dbdb2ad1dd11fe7843986b0ab7fb992a7989749e1c7c8e8749e768f"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/rosewood.png"
-hash = "0a297b5d2357743f6b67fe9c42fae17284b92cd58b7bc368e25ad1767708861e"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/schist.png"
-hash = "d30e20f7d7603f05ee03588fe2ecb588c8d993583e5d285eba6b86d4c6583797"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/sequoia.png"
-hash = "625b5ccbc4bef210c2b4919089380501c23a5c0016b066702acb7321e94bb028"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/shale.png"
-hash = "6f3d7058d7fd0fec6af1391e6b5e8d5a9231f43f6fac5948d72de829bb3df775"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/slate.png"
-hash = "9e96bc1d5b6693b75b6fba5825310faf65ec2d7d4dde1cea7163d931517587a6"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/spruce.png"
-hash = "ebca89e94fd35f9af734da2888ef06e5df40639ec98c3371fb9041a229c191fa"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/sycamore.png"
-hash = "1fb4d62bc79998e4dfa2ad2bb22adfba5a631139777d433c7c8a9c5912fc8fca"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/vertical.png"
-hash = "773739bd3084d7b83371cbb79d7b5fa01a30284073c542b9e5f6ed36d0c93244"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/white_cedar.png"
-hash = "d835b549ed556caca9dda453379ee709095e1823b816f32ea907dff423759740"
-
-[[files]]
-file = "kubejs/assets/tfc/textures/block/metal/full/willow.png"
-hash = "c3f6c2d93639fca2587627571b957976e623613748a10ad11b04fe4ee6e60af6"
 
 [[files]]
 file = "kubejs/client_scripts/nbt.js"
@@ -1305,188 +977,20 @@ file = "kubejs/data/tfc/tfc/item_sizes/wrench.json"
 hash = "065beacf96c76226f23a336bfd8f8c8c620c1350481ebb4f3786c1d3776c8309"
 
 [[files]]
-file = "kubejs/data/tfc/tfc/metals/acacia.json"
-hash = "f0f821d5226a1f0bdbd47dc362598fc8ed5c36333cfc855df6d01e4a875ab4d6"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/andesite.json"
-hash = "d43a44016cf5cf662c43e480dae4c4724fc2d8f6c43ad6d66d1785d936b4a5e3"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/ash.json"
-hash = "63615e4307c406dc4de20b04ca2ae127d151d2518f349ca279ec95ed57ce8f07"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/aspen.json"
-hash = "a1c2259f552096f58f2acfa6f77d4d8fbe1e4f865baf4861f5c22f25588564e5"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/basalt.json"
-hash = "ffcefa17662171c5eb414e71e9ec13db928e04fffebe9196071863a8f74eb556"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/birch.json"
-hash = "3a56a98ba15970a2441a45e79732c897af51bf5a86b49d81ddb5a37b0c5012b0"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/blackwood.json"
-hash = "bd22b612cc4642c2e1d2c54a97b82db693f01607cc2bb6aadca272c5065c625f"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/brick.json"
-hash = "5b84c26901ee081be79080a0e61eb12944f7f4cc4ed8e0d85f652e6fdf5b172d"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/chalk.json"
-hash = "52e3ad7468903d811c45b5fda9fde7146487e71491c40e69203327c218fd5a66"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/chert.json"
-hash = "a856cf28ee346dc05860af03741a3a9f0fa8f2ba93922fc0e75d57ec1b84236d"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/chestnut.json"
-hash = "1ff76da931f762616dc56bbda15b369ed483e8ea93ddb5e4afdcccb891a701d4"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/claystone.json"
-hash = "4693da044b881529e92240774a8eebe3517b2f7c44e143b686a6ce154fc1b058"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/conglomerate.json"
-hash = "427a1afa603458a3bd0f602416a39766888685c7be35e05b5828c1dae0cca618"
-
-[[files]]
 file = "kubejs/data/tfc/tfc/metals/constantan.json"
 hash = "37700eac8dc6cf98424c1a82207a9ea3414efc1371ee6da6e26d93acb73026d1"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/dacite.json"
-hash = "23e4ba6e2b31de3bc5172cb7741ebef1031936287b55fdd5bc99d70666c3e8e1"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/diorite.json"
-hash = "dac7e00cc14bc9d705dbc39964d5071bf5d5662f8568129b0124a7c9e5ffcf23"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/dolomite.json"
-hash = "8a531686df32335f2e58dbf2b95f2898fc90054ea8d1f74abc4ecf56f1467262"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/douglas_fir.json"
-hash = "73b94c9b6a1c7ee8495af6d65bfbba46dcdb187007b89768304db1f97205d86b"
 
 [[files]]
 file = "kubejs/data/tfc/tfc/metals/electrum.json"
 hash = "5f1056e5cb8e431fb38c7f021bd8f28c6d60abaf693880fb828e31b9b267b847"
 
 [[files]]
-file = "kubejs/data/tfc/tfc/metals/gabbro.json"
-hash = "0b209ae96581cf1461103626e9c32e2a6379290f6a81cc064da2f6a5b2b1fb9e"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/gneiss.json"
-hash = "a34582f5eeaa79451ce7bc3c6bb9af5b9f33ff74ef4e76fe2681b802e482c122"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/granite.json"
-hash = "3c09db0ff2db5901295fa5ce126f2369bd6a00e81fca37ecd0e4cf51796749da"
-
-[[files]]
 file = "kubejs/data/tfc/tfc/metals/graphite.json"
 hash = "1a3561d915cebb867b1215dcf28a9c0410a0b24533083816a78b89bbabf04365"
 
 [[files]]
-file = "kubejs/data/tfc/tfc/metals/hickory.json"
-hash = "463a31afd237b753f8541f5a4ab089b855479a1a4cd357f8fbde2c95c488f634"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/horizontal.json"
-hash = "745faab3cc84247d7e47d56a0ea2dab4bcd38352dd34d17902115f251a598e89"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/kapok.json"
-hash = "b5d9d69ef62492386ab9dad7ff4c139fc257895ee4166f36fc8725e95029674a"
-
-[[files]]
 file = "kubejs/data/tfc/tfc/metals/lead.json"
 hash = "debf45873bded3c3629629f27e80fd1da018b6f023886e1a2535ca545d65289b"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/maple.json"
-hash = "e0ec804ffb9bb335075565ef7c4ab300e050d063de91a36efebafbe152b660ad"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/marble.json"
-hash = "20ddc05fce52430e3a50d6107389688e7aca7d271a8d9d603310a5333b9e5d66"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/oak.json"
-hash = "0b895c2c18dabe6b690a858600fab2ee7a015c10ae7030ca873db326a63afa7a"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/packaged.json"
-hash = "ca96d2627cfa31ab4ba0bd59ce5d8008aae0bb30366081aa15a6d04943852c7e"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/palm.json"
-hash = "c2346f21d6930f197a36ffdd2c94269838d5d349e01c73b94d94a0554c81e011"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/phyllite.json"
-hash = "bb085e47bcfbd856e1ab79adabc05f79f3efa830d869309e662b1705cffbcd00"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/pine.json"
-hash = "9c5103eb0f1191bf4fbb749ffc04f2848b6d386a27a6eed9405939f72f9fa09c"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/quartzite.json"
-hash = "7fc5269a636df7bc3fc7b6e686ad0f6486dc405c97f64af32da13c53eeef46b5"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/rhyolite.json"
-hash = "695ddced0b99b31858c8d3b96c6376a81f92adf698426897c9d1ea3c906738fa"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/rosewood.json"
-hash = "16f5a37302e8432f4b54d264eddc98f865707ed9b8b696f5c52977040ff10987"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/schist.json"
-hash = "1edc4b45f03a607874bb4363f494219de23f41c30a294928352ebd817879a7ab"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/sequoia.json"
-hash = "bdc9cb43a98fd82e38e1054c65152290fe6920ccea90e5f3c4b284370b7343df"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/shale.json"
-hash = "d24aa26bd26936068e05b1e1a605ec61fb3ecf91f4e60313a6e292511538bc2c"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/slate.json"
-hash = "7a0fb676df00297dfd477ac6e02f3410fa5735e448a1aeaf147def02fc6522e6"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/spruce.json"
-hash = "d4f0c993af50dbc2f7be1d71f02c17d540d96a0d7056d45a4ea7e17f9ee3bb01"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/sycamore.json"
-hash = "0bf148afd8a09377750efc2d3daa30fd52e3b86c90686a850123b8c9726e549e"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/vertical.json"
-hash = "5f1243cb7828c044dc6fe502f21188fde098a97a1f7b2b0ccdc353a6f645bc9c"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/white_cedar.json"
-hash = "b53085db1c7c3146f2988e03746c66d7c5482f960f641bd84d7e5e5cfbb4fcfb"
-
-[[files]]
-file = "kubejs/data/tfc/tfc/metals/willow.json"
-hash = "4c4ee7706f1f681a00616277963700fa849f5ffbc80f070829d4a0184eaa3c20"
 
 [[files]]
 file = "kubejs/data/tfc/tfc/supports/girder.json"
@@ -1518,7 +1022,7 @@ hash = "bae5d154410b0016dc8d97158dfa0103a19b4b57674faaaf324ea448fb7fe5fc"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "1a420b3f881f2ffccc90f66d7b15867cd00991a95acd5081f0746d51d532a786"
+hash = "ac0f752acc6b67e9b129225a2a46bc8282eddd325e4f0532dac7efa154594b0d"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1526,7 +1030,7 @@ hash = "f21dbb6bfa19ac7fa998c39b32bcdc0dbaf93675da39fb7477b713b071c4cdb4"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "ef27afebf45198c046a32c2d7dafd2c148faeb19a78517b651de7df03ac23d33"
+hash = "014b2b71d57abb694209793ac505a9525850a65e2308067d9ab9e50a73525520"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
@@ -1534,15 +1038,15 @@ hash = "021c0844ddf79132a66eacfc29544faa2703844837695fd15b74292fe24ca8cb"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "31acfcf4e1202b5f511530e531d3947605b9cd0465fbd57498498100f5408401"
+hash = "e54c62d220ffc1c3862dda7e55faf41a8eb42236e5d185f3267bb215b238dc94"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "ebf741d11f07deb500727d03b2a21c24f16b5926452b9293c8408b2cdd799f51"
+hash = "4b4cf497fc220ff911cb9112fe95dd197289175e525c0e0a163536f0c8ebdab5"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "05ec22997d360fc5f8649905256e8da1fa97045aba9924626679b6090988d34d"
+hash = "1dd38e9862d8d65fd1bd2458156338d9e53b0fd316bafafab23cb6b75b5c522c"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -1561,7 +1065,7 @@ metafile = true
 
 [[files]]
 file = "mods/architectury-api.pw.toml"
-hash = "d6f61a6e2ab8946261c17a593e178a32d880b933b46d680096916e9f163493d0"
+hash = "72c817cd5696a46324adcfbbd61cabe296ff941629991d212df790ccab6d1112"
 metafile = true
 
 [[files]]
@@ -1571,7 +1075,7 @@ metafile = true
 
 [[files]]
 file = "mods/better-advancements.pw.toml"
-hash = "2ec63e2f94674013c1605f6231a2e7a46c86068264b22c6762c2f55a1161e8ed"
+hash = "2525c4774e1b6f182cfb549a622653e7fd8457473dd9a0c97fe1090d8a61a1cb"
 metafile = true
 
 [[files]]
@@ -1610,23 +1114,23 @@ hash = "63f1ab59061fb126cdabf39d74329ca1831e761b798c8aed0a79816c3874c04c"
 metafile = true
 
 [[files]]
-file = "mods/create-big-cannons.pw.toml"
-hash = "a9173bf1468a8e8fa031a2a48a552583b4426a923c6d070255897e95273ce04c"
+file = "mods/create-crystal-clear.pw.toml"
+hash = "0586f6749e58dd39411b4bb131c417b83a0080f77be4cb3b83dfc4f9d04fe19e"
 metafile = true
 
 [[files]]
-file = "mods/create-crystal-clear.pw.toml"
-hash = "838236c345df41b53d50bc5da34ba575b79dcfbced35a117ce8543fc5bb571da"
+file = "mods/create-steam-n-rails.pw.toml"
+hash = "c7e1cf0e3d378489669085c58960dd79b8736bfd9b30f4a7cb730413b74f2261"
 metafile = true
 
 [[files]]
 file = "mods/create.pw.toml"
-hash = "49d95a50bd61162db6c7882fc0a2fdac118ead6e7bc592c243d1db29b560db17"
+hash = "550373c6cde926832ea77f0d5e6fda708e37323468caca5a32d8ae9b88baeea7"
 metafile = true
 
 [[files]]
 file = "mods/createaddition.pw.toml"
-hash = "34c84af29ce8728c7b09857979eb47c0284e798e560d9c12cc1910ff2aeef483"
+hash = "9dbcda8ffbaedfdf3dcecf7af271a19e1fa886c27516bec6fda4606a36518a42"
 metafile = true
 
 [[files]]
@@ -1646,12 +1150,12 @@ metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "7e042554947246023c764ed4ff2c913267dcb2894e598a0ee42b1b52af59c88d"
+hash = "6fad722e1546b69210a25352aadd415d3b57e78e5cc2a2b0ed05401dec1a4a67"
 metafile = true
 
 [[files]]
 file = "mods/flywheel.pw.toml"
-hash = "83489107b570fe15f8e6dfb3993beb5241bc47ca4c2b8a6fe50d4b81697ca09c"
+hash = "9e0ad54ad0766fce2609aebb53f9f4e3a4b67dab325990fb498ef178e933b7a5"
 metafile = true
 
 [[files]]
@@ -1661,7 +1165,7 @@ metafile = true
 
 [[files]]
 file = "mods/immersive-engineering.pw.toml"
-hash = "56d54fdf30c9a679203b4c3fec19780ee2378aef4a722ad7d239bc221364be01"
+hash = "e8564864efe79477ffef4e646d8c1ba5e4f365d28d63547c7712f7a0b6d9c3b7"
 metafile = true
 
 [[files]]
@@ -1671,12 +1175,12 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "653ae93edf9295bf768a329179373d0a7a05fcf2c8edde4c77f6b071dba2f0f1"
+hash = "630709e457bd526b914cd14f4a16a8b5c85c7e48ecb99ee976af09ce9ed336f3"
 metafile = true
 
 [[files]]
 file = "mods/iris-flywheel-compat.pw.toml"
-hash = "66ca417646b967bbcfbaf024de9e376b138f95d521ba7aaf0bd77f72cd28ed8f"
+hash = "8b8f7f9f18270cbf648dd79c0447cc3ee382269ab90913e329acbe6eb59fe3c3"
 metafile = true
 
 [[files]]
@@ -1711,7 +1215,7 @@ metafile = true
 
 [[files]]
 file = "mods/kotlin-for-forge.pw.toml"
-hash = "01a67fa4a98251ec827e59a7f03c4002b953c66f5da51f3e9aae8b30c523ecd4"
+hash = "d673098f8970c1882fba317165683a616400e53145fe619d5944af8fdeb9976b"
 metafile = true
 
 [[files]]
@@ -1741,7 +1245,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "f1e367d492719d31db82e31b3ef93d5d09cc4b7256bb415f6faaabb8de4470bb"
+hash = "af553891edb574cf2a1ccabd21923104f14711f9054d893129744d4d69d590d1"
 metafile = true
 
 [[files]]
@@ -1766,7 +1270,7 @@ metafile = true
 
 [[files]]
 file = "mods/precision-prospecting.pw.toml"
-hash = "03f74152d08b950b6f4e770df10fb7c5cc925d063c9f5487b009a15a19a0bd7a"
+hash = "b0a9d98d9627af22f85a016fbc61485ac0006ebb2f88204c084577cc44f5543f"
 metafile = true
 
 [[files]]
@@ -1806,7 +1310,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "1e0de22f31841389e1265379c1234afe5c09c7691fb638203b89b6e3d906d85e"
+hash = "09221cb7896fbe29eec8c780587939b3f75a245ca71c825252d465f7ed6d4eca"
 metafile = true
 
 [[files]]
@@ -1816,17 +1320,17 @@ metafile = true
 
 [[files]]
 file = "mods/tfc-item-barrels.pw.toml"
-hash = "17988ea6e9b15ff406880038000ca42d2721a39279e85425fa42b6215ac4d803"
+hash = "7dcd0866ea38f5986c0ca4977ad06b70e6b6f27c6bb39f02dade5fe7d6296a3e"
 metafile = true
 
 [[files]]
 file = "mods/tfc-tweaks-1-18-2.pw.toml"
-hash = "f2ccf1ab8f2fef426d8dcf4aca6963d512dcc1ce9605a7554e91d5794a4d6b51"
+hash = "a6536d9e4e7e48b30afd7639722c03b8a405e6ba182a38b7ca44de58457b373b"
 metafile = true
 
 [[files]]
 file = "mods/tool-belt.pw.toml"
-hash = "89146989947b537418d4a19f6735d5704080c38eebcc00fdd0890863b8cd8ae0"
+hash = "ee1bc72c980997a48a8bc00aad6de353fa0b913c13266076bab03a0fdc025180"
 metafile = true
 
 [[files]]
@@ -1876,10 +1380,6 @@ hash = "a7925b23f09bb5aca229736c6e96f38df129778a8b189b917dec4262a87a506b"
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/introduction.json"
 hash = "3ed5fac4d86347cbec6f410fab84ef9e6d625cbae86238d83d349a8dea5cd75a"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/melting.json"
-hash = "2a41ccf4b3da86782cddab4b103778ae7b29e68bc7e026d3765e9682c78b3e18"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/metal_press.json"

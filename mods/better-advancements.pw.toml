@@ -1,13 +1,13 @@
 name = "Better Advancements"
-filename = "BetterAdvancements-1.18.2-0.2.1.132.jar"
+filename = "BetterAdvancements-1.18.2-0.2.0.146.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "2539ac57507e5af3a640041edebbe0f389aed911"
+hash = "0f87f86483c8a7a433c3bfd1ceccbb15c1d2305b"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 3848850
+file-id = 4111314
 project-id = 272515

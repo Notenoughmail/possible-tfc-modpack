@@ -5,8 +5,6 @@ console.info('Loading tag scripts')
 onEvent('tags.blocks', e => {
 	e.add('tfc:support_beam', 'create:metal_girder')
 	e.add('create:passive_boiler_heaters', 'tfc:firepit')
-	e.removeAllTagsFrom('create_crystal_clear:steel_glass_casing')
-	e.removeAllTagsFrom('create_crystal_clear:steel_tinted_glass_casing')
 });
 
 let berries = ['cherry', 'wintergreen_berry', 'strawberry', 'snowberry', 'raspberry', 'gooseberry', 'elderberry', 'cranberry', 'cloudberry', 'bunchberry', 'blueberry', 'blackberry']
@@ -47,7 +45,6 @@ onEvent('tags.items', e => {
 	e.add('forge:cobblestone/mossy', /tfc:rock.*mossy_cobble.*/)
 	e.add('tfc:pileable_ingots', /tfc:brick.*/)
 	e.add('tfc:pileable_ingots', 'minecraft:brick')
-	e.add('tfc:pileable_sheets', /kubejs:.*_panel/)
 	e.removeAllTagsFrom('immersiveengineering:dust_coke')
 	e.add('forge:dusts/coal_coke', 'tfc:powder/coke')//IE loves tags too much
 	e.add('tfc:ore_pieces', 'kubejs:ore/poor_lead')

@@ -1,0 +1,61 @@
+{
+    "com.simibubi.create.content.schematics.block.SchematicannonScreen": {
+        "playerSideOnly": true,
+        "buttonHints": {
+            "SORT": {
+                "horizontalOffset": 8,
+                "bottom": 8
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 8,
+                "bottom": 8
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 8,
+                "bottom": 8
+            }
+        }
+    },
+    "com.simibubi.create.content.schematics.block.SchematicTableScreen": {
+        "playerSideOnly": true,
+        "buttonHints": {
+            "SORT": {
+                "horizontalOffset": 9,
+                "bottom": 8
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 9,
+                "bottom": 8
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 9,
+                "bottom": 8
+            },
+            "SHOW_EDITOR": {
+                "horizontalOffset": -1,
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "com.simibubi.create.content.curiosities.tools.BlueprintScreen": {
+        "playerSideOnly": true,
+        "buttonHints": {
+            "SORT": {
+                "horizontalOffset": 4,
+                "bottom": 7
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 4,
+                "bottom": 7
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 4,
+                "bottom": 7
+            }
+        }
+    }
+}

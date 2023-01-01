@@ -1,13 +1,13 @@
 name = "TFC Item Barrels"
-filename = "tfcbarrels-1.0.jar"
+filename = "tfcbarrels-1.2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "7d8e0c037c19756e02e31db9d299863accc637a3"
+hash = "d84ea8588e42b700a517add5c4bb55ebfe2afe06"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4072567
+file-id = 4126987
 project-id = 699529
