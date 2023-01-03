@@ -1,0 +1,29 @@
+{
+	"ingredient": [
+	{
+		"item": "create:framed_glass"
+	},
+	{
+		"item": "create:framed_glass_pane"
+	},
+	{
+		"item": "create:horizontal_framed_glass"
+	},
+	{
+		"item": "create:horizontal_framed_glass_pane"
+	},
+	{
+		"item": "create:tiled_glass"
+	},
+	{
+		"item": "create:tiled_glass_pane"
+	},
+	{
+		"item": "create:vertical_framed_glass"
+	},
+	{
+		"item": "create:vertical_framed_glass_pane"
+	}
+	],
+	"heat_capacity": 0.3
+}

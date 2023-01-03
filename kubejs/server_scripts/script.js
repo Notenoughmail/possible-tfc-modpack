@@ -66,7 +66,7 @@ onEvent('recipes', e => {
 			'rules': [ rule_1 + '_last', rule_2 + '_second_last', rule_3 + '_third_last' ]
 		}).id('kubejs:anvil/' + id)
 	}
-	let tfc_heating = (input, output, amount, temperature, id) => {
+	let tfc_melting = (input, output, amount, temperature, id) => {
 		e.custom({
 			'type': 'tfc:heating',
 			'ingredient': { 'item': input },
@@ -208,6 +208,23 @@ onEvent('recipes', e => {
 				'amount': amount
 			}
 		}).id('kubejs:bottling/' + id);
+	}
+	let tfc_heating = (input, tag, output, temperature, id) => {
+		if (tag) {
+			e.custom({
+				'type': 'tfc:heating',
+				'ingredient': { 'tag': input },
+				'result_item': { 'item': output },
+				'temperature': temperature
+			}).id('kubejs:heat/' + id)
+		} else {
+			e.custom({
+				'type': 'tfc:heating',
+				'ingredient': { 'item': input },
+				'result_item': { 'item': output },
+				'temperature': temperature
+			}).id('kubejs:heat/' + id)
+		}
 	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
@@ -704,49 +721,60 @@ onEvent('recipes', e => {
 	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
 	tfc_anvil('tfc:metal/ingot/copper', 'create:copper_nugget', 12, 1, 'draw', 'bend', 'punch', 'copper_bullet')
 	
-	//tfc_heating:order = input, output, amount, temperature, id
-	tfc_heating('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
-	tfc_heating('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
-	tfc_heating('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
-	tfc_heating('kubejs:metal/double_ingot/constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
-	tfc_heating('kubejs:metal/double_ingot/electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
-	tfc_heating('kubejs:metal/double_ingot/lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
-	tfc_heating('immersiveengineering:plate_constantan', 'kubejs:constantan', 200, 1266, 'constantan_sheet')
-	tfc_heating('immersiveengineering:plate_electrum', 'kubejs:electrum', 200, 1010, 'electrum_sheet')
-	tfc_heating('immersiveengineering:plate_lead', 'kubejs:lead', 200, 327, 'lead_plate')
-	tfc_heating('immersiveposts:stick_constantan', 'kubejs:constantan', 50, 1266, 'constantan_rod')
-	tfc_heating('immersiveposts:stick_electrum', 'kubejs:electrum', 50, 1010, 'electrum_rod')
-	tfc_heating('immersiveposts:stick_lead', 'kubejs:lead', 50, 327, 'lead_rod')
-	tfc_heating('kubejs:ore/normal_lead', 'kubejs:lead', 25, 327, 'normal_lead_ore')
-	tfc_heating('kubejs:ore/poor_lead', 'kubejs:lead', 15, 327, 'poor_lead_ore')
-	tfc_heating('kubejs:ore/rich_lead', 'kubejs:lead', 35, 327, 'rich_lead_ore')
-	tfc_heating('kubejs:ore/small_lead', 'kubejs:lead', 10, 327, 'small_lead_ore')
-	tfc_heating('firmalife:metal/ingot/chromium', 'firmalife:metal/chromium', 100, 1907, 'chromium_ingot')
-	tfc_heating('firmalife:metal/sheet/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_sheet')
-	tfc_heating('firmalife:metal/double_ingot/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_double_ingot')
-	tfc_heating('firmalife:metal/double_sheet/chromium', 'firmalife:metal/chromium', 400, 1907, 'chromium_double_sheet')
-	tfc_heating('firmalife:metal/rod/chromium', 'firmalife:metal/chromium', 50, 1907, 'chromium_rod')
-	tfc_heating('firmalife:metal/ingot/stainless_steel', 'firmalife:metal/stainless_steel', 100, 1540, 'stainless_steel_ingot')
-	tfc_heating('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_sheet')
-	tfc_heating('firmalife:metal/double_ingot/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_double_ingot')
-	tfc_heating('firmalife:metal/double_sheet/stainless_steel', 'firmalife:metal/stainless_steel', 400, 1540, 'stainless_steel_double_sheet')
-	tfc_heating('firmalife:metal/rod/stainless_steel', 'firmalife:metal/stainless_steel', 50, 1540, 'stainless_steel_rod')
-	tfc_heating('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1907, 'small_chromite')
-	tfc_heating('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 1907, 'poor_chromite')
-	tfc_heating('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 1907, 'normal_chromite')
-	tfc_heating('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 1907, 'rich_chromite')
-	tfc_heating('create:zinc_block', 'tfc:metal/zinc', 250, 420, 'zinc_block')
-	tfc_heating('immersiveengineering:storage_electrum', 'kubejs:electrum', 250, 1010, 'electrum_block')
-	tfc_heating('create:brass_block', 'tfc:metal/brass', 250, 930, 'brass_block')
-	tfc_heating('immersiveengineering:storage_steel', 'tfc:metal/steel', 250, 1540, 'steel_block')
-	tfc_heating('immersiveengineering:storage_constantan', 'kubejs:constantan', 250, 1266, 'constantan_block')
-	tfc_heating('immersiveengineering:storage_nickel', 'tfc:metal/nickel', 250, 1453, 'nickel_block')
-	tfc_heating('immersiveengineering:storage_silver', 'tfc:metal/silver', 250, 961, 'silver_block')
-	tfc_heating('immersiveengineering:storage_lead', 'kubejs:lead', 250, 327, 'lead_block')
-	tfc_heating('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
-	tfc_heating('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
-	tfc_heating('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 2574, 'graphite_dust')//the temperature is complete rubbish and is actually ~1000 degrees higher in real life but there is nothing that burns that hot (yet?)
-	tfc_heating('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 2574, 'graphite_ingot')
+	//tfc_melting:order = input, output, amount, temperature, id
+	tfc_melting('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
+	tfc_melting('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
+	tfc_melting('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
+	tfc_melting('kubejs:metal/double_ingot/constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
+	tfc_melting('kubejs:metal/double_ingot/electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
+	tfc_melting('kubejs:metal/double_ingot/lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
+	tfc_melting('immersiveengineering:plate_constantan', 'kubejs:constantan', 200, 1266, 'constantan_sheet')
+	tfc_melting('immersiveengineering:plate_electrum', 'kubejs:electrum', 200, 1010, 'electrum_sheet')
+	tfc_melting('immersiveengineering:plate_lead', 'kubejs:lead', 200, 327, 'lead_plate')
+	tfc_melting('immersiveposts:stick_constantan', 'kubejs:constantan', 50, 1266, 'constantan_rod')
+	tfc_melting('immersiveposts:stick_electrum', 'kubejs:electrum', 50, 1010, 'electrum_rod')
+	tfc_melting('immersiveposts:stick_lead', 'kubejs:lead', 50, 327, 'lead_rod')
+	tfc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 327, 'normal_lead_ore')
+	tfc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 327, 'poor_lead_ore')
+	tfc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 327, 'rich_lead_ore')
+	tfc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 327, 'small_lead_ore')
+	tfc_melting('firmalife:metal/ingot/chromium', 'firmalife:metal/chromium', 100, 1907, 'chromium_ingot')
+	tfc_melting('firmalife:metal/sheet/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_sheet')
+	tfc_melting('firmalife:metal/double_ingot/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_double_ingot')
+	tfc_melting('firmalife:metal/double_sheet/chromium', 'firmalife:metal/chromium', 400, 1907, 'chromium_double_sheet')
+	tfc_melting('firmalife:metal/rod/chromium', 'firmalife:metal/chromium', 50, 1907, 'chromium_rod')
+	tfc_melting('firmalife:metal/ingot/stainless_steel', 'firmalife:metal/stainless_steel', 100, 1540, 'stainless_steel_ingot')
+	tfc_melting('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_sheet')
+	tfc_melting('firmalife:metal/double_ingot/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_double_ingot')
+	tfc_melting('firmalife:metal/double_sheet/stainless_steel', 'firmalife:metal/stainless_steel', 400, 1540, 'stainless_steel_double_sheet')
+	tfc_melting('firmalife:metal/rod/stainless_steel', 'firmalife:metal/stainless_steel', 50, 1540, 'stainless_steel_rod')
+	tfc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1907, 'small_chromite')
+	tfc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 1907, 'poor_chromite')
+	tfc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 1907, 'normal_chromite')
+	tfc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 1907, 'rich_chromite')
+	tfc_melting('create:zinc_block', 'tfc:metal/zinc', 250, 420, 'zinc_block')
+	tfc_melting('immersiveengineering:storage_electrum', 'kubejs:electrum', 250, 1010, 'electrum_block')
+	tfc_melting('create:brass_block', 'tfc:metal/brass', 250, 930, 'brass_block')
+	tfc_melting('immersiveengineering:storage_steel', 'tfc:metal/steel', 250, 1540, 'steel_block')
+	tfc_melting('immersiveengineering:storage_constantan', 'kubejs:constantan', 250, 1266, 'constantan_block')
+	tfc_melting('immersiveengineering:storage_nickel', 'tfc:metal/nickel', 250, 1453, 'nickel_block')
+	tfc_melting('immersiveengineering:storage_silver', 'tfc:metal/silver', 250, 961, 'silver_block')
+	tfc_melting('immersiveengineering:storage_lead', 'kubejs:lead', 250, 327, 'lead_block')
+	tfc_melting('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
+	tfc_melting('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
+	tfc_melting('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 2574, 'graphite_dust')//the temperature is complete rubbish and is actually ~1000 degrees higher in real life but there is nothing that burns that hot (yet?)
+	tfc_melting('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 2574, 'graphite_ingot')
+	
+	//tfc_heating:order = input, tag, output, temperature, id | tag, is a boolean
+	tfc_heating('create:tiled_glass', false, 'minecraft:glass', 350, 'tiled_glass')
+	tfc_heating('create:vertical_framed_glass', false, 'minecraft:glass', 350, 'vertical_framed_glass')
+	tfc_heating('create:framed_glass', false, 'minecraft:glass', 350, 'framed_glass')
+	tfc_heating('create:horizontal_framed_glass', false, 'minecraft:glass', 350, 'horizontal_framed_glass')
+	tfc_heating('create:tiled_glass_pane', false, 'minecraft:glass_pane', 350, 'tiled_glass_pane')
+	tfc_heating('create:vertical_framed_glass_pane', false, 'minecraft:glass_pane', 350, 'vertical_framed_glass_pane')
+	tfc_heating('create:framed_glass_pane', false, 'minecraft:glass_pane', 350, 'framed_glass_pane')
+	tfc_heating('create:horizontal_framed_glass_pane', false, 'minecraft:glass_pane', 350, 'horizontal_framed_glass_pane')
+	tfc_heating('forge:slag', true, 'immersiveengineering:slag_glass', 650, 'slag_glass')
 	
 	//tfc_casting:order = input, amount, output, chance, id | chance = chance to break
 	tfc_casting('kubejs:electrum', 100, 'immersiveengineering:ingot_electrum', 0.1, 'electrum_ingot')

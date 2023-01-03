@@ -51,7 +51,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	'createaddition:capacitor', 'createaddition:diamond_grit', 'createaddition:diamond_grit_sandpaper',
 	'immersiveengineering:floodlight', 'immersiveengineering:wooden_grip', 'immersiveengineering:empty_casing',
 	/immersiveengineering:gunpart_.*/, 'immersiveengineering:revolver', 'immersiveengineering:railgun',
-	'create:track_station', 'immersiveengineering:voltmeter', 'railways:semaphore', /railways:track_.*/
+	'create:track_station', 'immersiveengineering:voltmeter', 'railways:semaphore', /railways:track_.*/,
+	/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/, /create:.*window/
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 
@@ -67,7 +68,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	'immersiveengineering:blueprint/mold_unpacking', 'immersiveengineering:crafting/torch',
 	'immersiveengineering:crafting/wirecoil_copper', 'immersiveengineering:crafting/wirecoil_electrum',
 	'create:milling/saddle', /immersiveengineering:crafting.*sheetmetal.*/, 'immersiveengineering:crafting/hempcrete',
-	/firmalife:heating.*(ore|metal).*/, 'minecraft:charcoal', 'immersiveengineering:cokeoven/coke_block',
+	/firmalife:heating.*(?:ore|metal).*/, 'minecraft:charcoal', 'immersiveengineering:cokeoven/coke_block',
 	/createbigcannons:.*/, 'immersiveengineering:crafting/ingot_silver_to_storage_silver',
 	'immersiveengineering:craftng/storage_silver_to_ingot_silver', 'immersiveengineering:crafting/ingot_nickel_to_storage_nickel',
 	'immersiveengineering:crafting/storage_nickel_to_ingot_nickel', 'immersiveengineering:crafting/ingot_steel_to_storage_steel',
@@ -80,7 +81,7 @@ let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting
 	/immersiveengineering:smelting\/.*ingot.*/, 'immersiveengineering:bottling/sponge',
 	'minecraft:brick', /immersiveengineering:metalpress\/.*/, /immersiveengineering:mineral\/.*/,
 	'immersiveengineering:crafting/empty_shell', 'create:crafting/materials/copper_nugget',
-	'create:crafting/kinetics/speedometer'
+	'create:crafting/kinetics/speedometer', 'create:milling/calcite', 'create:crushing/tuff'
 	]
 
 //todo: consolidate ids & outputs, remove the ~230 recipes that produce warnings in the log due to TFC removing them in a way kubejs doesn't like (?)
@@ -111,4 +112,6 @@ onEvent('recipes', e => {
 	e.remove({type: 'immersiveengineering:crusher'});
 	e.remove({type: 'create:splashing'});
 	e.remove({type: 'minecraft:crafting_shapeless', input: 'immersiveengineering:hammer'});
+	e.remove({type: 'minecraft:smelting'});
+	e.remove({type: 'minecraft:blasting'});
 })

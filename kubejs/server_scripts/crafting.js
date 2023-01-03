@@ -1021,7 +1021,7 @@ onEvent('recipes', e => {
 	' S '
 	], {
 		S: 'tfc:metal/sheet/wrought_iron',
-		A: '#minecraft:fences/wooden',
+		A: '#forge:fences/wooden',
 		B: 'create:andesite_casing',
 		C: 'create:electron_tube'
 	}).id('kubejs:crafting/semaphore');
@@ -1034,4 +1034,76 @@ onEvent('recipes', e => {
 		A: 'minecraft:redstone',
 		B: 'create:railway_casing'
 	}).id('kubejs:crafting/track_coupler');
+	e.shaped('6x create:ornate_iron_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/wrought_iron',
+		B: 'tfc:metal/rod/wrought_iron'
+	}).id('kubejs:wrought_iron_window');
+	e.shaped('6x create:oak_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/brass',
+		B: 'tfc:metal/rod/brass'
+	}).id('kubejs:crafting/brass_window');
+	e.shaped('6x create:spruce_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/bronze',
+		B: 'tfc:metal/rod/bronze'
+	}).id('kubejs:crafting/bronze_window');
+	e.shaped('6x create:birch_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/sterling_silver',
+		B: 'tfc:metal/rod/sterling_silver'
+	}).id('kubejs:crafting/sterling_silver_window');
+	e.shaped('6x create:jungle_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'immersiveengineering:plate_electrum',
+		B: 'immersiveposts:stick_electrum'
+	}).id('kubejs:crafting/electrum_window');
+	e.shaped('6x create:acacia_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'immersiveengineering:plate_constantan',
+		B: 'immersiveposts:stick_constantan'
+	}).id('kubejs:crafting/constantan_window');
+	e.shaped('6x create:dark_oak_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/black_bronze',
+		B: 'tfc:metal/rod/black_bronze'
+	}).id('kubejs:crafting/black_bronze_window');
+	e.shaped('6x create:crimson_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/rose_gold',
+		B: 'tfc:metal/rod/rose_gold'
+	}).id('kubejs:crafting/rose_gold_window');
+	e.shaped('6x create:warped_window', [
+	'SAS',
+	'BSB'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/sheet/bismuth_bronze',
+		B: 'tfc:metal/rod/bismuth_bronze'
+	}).id('kubejs:crafting/bismuth_bronze_window');
 })

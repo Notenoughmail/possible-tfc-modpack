@@ -79,6 +79,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('#forge:nuggets')
 	e.hide('#forge:plates')
 	e.hide(/railways:track_.*/)
+	e.hide(/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/)
 })
 
 onEvent('jei.add.items', e => {
