@@ -1106,4 +1106,58 @@ onEvent('recipes', e => {
 		A: 'tfc:metal/sheet/bismuth_bronze',
 		B: 'tfc:metal/rod/bismuth_bronze'
 	}).id('kubejs:crafting/bismuth_bronze_window');
+	e.shaped('16x create:ornate_iron_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:ornate_iron_window'
+	}).id('kubejs:crafting/wrought_iron_window_pane');
+	e.shaped('16x create:oak_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:oak_window'
+	}).id('kubejs:crafting/brass_window_pane');
+	e.shaped('16x create:spruce_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:spruce_window'
+	}).id('kubejs:crafting/bronze_window_pane');
+	e.shaped('16x create:birch_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:birch_window'
+	}).id('kubejs:crafting/sterling_silver_window_pane');
+	e.shaped('16x create:jungle_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:jungle_window'
+	}).id('kubejs:crafting/electrum_window_pane');
+	e.shaped('16x create:acacia_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:acacia_window'
+	}).id('kubejs:crafting/constantan_window_pane');
+	e.shaped('16x create:dark_oak_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:dark_oak_window'
+	}).id('kubejs:crafting/black_bronze_window_pane');
+	e.shaped('16x create:crimson_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:crimson_window'
+	}).id('kubejs:crafting/rose_gold_window_pane');
+	e.shaped('16x create:warped_window_pane', [
+	'SSS',
+	'SSS'
+	], {
+		S: 'create:warped_window'
+	}).id('kubejs:crafting/bismuth_bronze_window_pane');
 })

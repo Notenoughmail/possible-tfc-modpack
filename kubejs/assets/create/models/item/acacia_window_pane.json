@@ -1,0 +1,7 @@
+{
+  "parent": "create:item/pane",
+  "textures": {
+    "pane": "create:block/palettes/acacia_window",
+    "edge": "tfc:block/metal/full/constantan"
+  }
+}

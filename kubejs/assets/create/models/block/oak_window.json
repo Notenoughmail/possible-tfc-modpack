@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"side": "create:block/palettes/oak_window",
+		"end": "create:block/palettes/oak_window_end"
+	}
+}

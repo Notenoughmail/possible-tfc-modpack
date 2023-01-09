@@ -1,0 +1,7 @@
+{
+  "parent": "create:item/pane",
+  "textures": {
+    "pane": "create:block/palettes/birch_window",
+    "edge": "tfc:block/metal/full/sterling_silver"
+  }
+}
