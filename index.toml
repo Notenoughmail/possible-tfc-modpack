@@ -73,6 +73,10 @@ file = "config/immersiveengineering-common.toml"
 hash = "289a81412fea2fc6c49884fc5f65390a2085db1775c37517aa916979b182ff86"
 
 [[files]]
+file = "config/inventoryprofilesnext/integrationHints/create.json"
+hash = "ef3e53d5b06d17738b76f62283340398bcaaeaa3619d982db2f0a266b13727d8"
+
+[[files]]
 file = "config/inventoryprofilesnext/integrationHints/exampleIntegrationHints.json"
 hash = "ca413dea02cce69c69dccdc525fb0ec013236876eff2d142772c68db3d772d3a"
 
@@ -106,7 +110,7 @@ hash = "f3f154efc2fdf6ae5447072bfe4bae790e768e0b23df1a0ec955b875c2c82968"
 
 [[files]]
 file = "config/jei/ingredient-list-mod-sort-order.ini"
-hash = "39b2e89bf4ce7ba0db29362ed981f7b61e96cc97ade754e1ba2847c95d2cecbb"
+hash = "538831e88dc5b5c4abaa3da0d89139dc430d0a31d76bbac3d65496effb033623"
 
 [[files]]
 file = "config/jei/ingredient-list-type-sort-order.ini"
@@ -158,7 +162,7 @@ hash = "6c634e88bd390e585a98ee2059439ada90cfaab29f99fcef0aa71f3a09584722"
 
 [[files]]
 file = "config/tfc-client.toml"
-hash = "d9674af820237a0cd7057451de145337c3eeba40fef143cc8502241c86c454b8"
+hash = "870201f8b434b244ccecce39c01080ab22cf7576e62a277c07e9271968b4287a"
 
 [[files]]
 file = "config/tfc-common.toml"
@@ -194,11 +198,347 @@ hash = "dc7347a82e530c09fd3ce53ed967e8d7a9fcd4fde5d5bc6e61718f414b54a0c3"
 
 [[files]]
 file = "kubejs/assets/create/lang/en_us.json"
-hash = "b73bf2f1461b18dc75f6df2d1d4e19b8e0dc2a9692cec29669851a7a46764f70"
+hash = "f118b07d73134e941e69131e1faf7a5af03db3e2de5b6c749d2806d2fa595023"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window.json"
+hash = "2fa0175e42a83d010829bfee3d3350381f9adedb921c6cac6fba83787ada98bc"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window_pane_noside.json"
+hash = "18b9daa16a457df380c48676a5225bca2824789a21a7634f0318a4f47ff66ba7"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window_pane_noside_alt.json"
+hash = "3cf2a6274975df65ebc07acfd71f4b3fbaaeccd84b1d6e5eef47fdb88a00ddd6"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window_pane_post.json"
+hash = "1795bae5e320fd35065bf4bd3ed6d5d03a046f6b03da79c171970581583acaae"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window_pane_side.json"
+hash = "a743e4ab34498ff7c441b6486d74cd23795ec15c8fec1fba0969830a01e1605e"
+
+[[files]]
+file = "kubejs/assets/create/models/block/acacia_window_pane_side_alt.json"
+hash = "9782e2569c062c83432d971ffc67ec9c9416fd550a64950d4bf35c2aee1b59ce"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window.json"
+hash = "c599ff2f7dd076c7d42f36a818a53a1deb7483cc39a56a9ff2b0f026c8cfb3fd"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window_pane_noside.json"
+hash = "7a50f861c09cfd91a83b7e33891e998ae25b1b8d38b737dbb5d8fb948a4f0c25"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window_pane_noside_alt.json"
+hash = "c01a7d9395b9b34a0c9d63cef7c66b01d4a9f2da04510223eac436980c048e1c"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window_pane_post.json"
+hash = "8aefe80a4a71c9c8d004727836a70ba11c312ab44fc29d77b30685d00d235b04"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window_pane_side.json"
+hash = "e5d7de8af1478193082e2daf254dbaffef6dbdd077727389fae031b76bca5bfd"
+
+[[files]]
+file = "kubejs/assets/create/models/block/birch_window_pane_side_alt.json"
+hash = "27ecbdc216684155917be62bdf59d7940da31957f737a29ad1398a952d1f6055"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window.json"
+hash = "79795751f4975b1a59b54cc1a4c64cc4fd1e0a3454a6d00da2bc094eb822a0d0"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window_pane_noside.json"
+hash = "c25b97f411af55060ba9c05371d63845bb7b97e6202d2abd7697e2c5066e6776"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window_pane_noside_alt.json"
+hash = "1f337b1f423e2703b4a09c14469c7e90019c4adb8acec5dca91cb38d5a8f65d6"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window_pane_post.json"
+hash = "060528e7ec1fde46cd870009b476f96607981755fb900ffed07523ad0d3d0e6b"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window_pane_side.json"
+hash = "19362b18db12d14ce7b42119377d412517880b87dae805e48b3e20349479f2b4"
+
+[[files]]
+file = "kubejs/assets/create/models/block/crimson_window_pane_side_alt.json"
+hash = "7b7c5514ee03ce3be155a752aa97f2dd3b58219c8b7fd788c62c17c57e0b98fe"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window.json"
+hash = "aec8f72b8d16f7ccd2f7cca3f8089ed4822fa0f53f3d0e5aeee5b8258900d35c"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window_pane_noside.json"
+hash = "cd884176595daaad0b79db2a225a6414f2f8a60796b363288153b5fd5b6d1881"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window_pane_noside_alt.json"
+hash = "7e1387828cb4514731f39f25cb04c016e70d09ca349064bf92ed2b5ea4b30e4a"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window_pane_post.json"
+hash = "8f2cf86a297a497900d1ecdc46a49818ac5192942f463d3ae091bd816732e3ff"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window_pane_side.json"
+hash = "a070e453a0c927aa3949a70098d062744fc73a2518b848b23552c99071aadfd2"
+
+[[files]]
+file = "kubejs/assets/create/models/block/dark_oak_window_pane_side_alt.json"
+hash = "5ed031bacc05e97bb34229965b33825f46761383c209cce14b2ebc9c47d02154"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window.json"
+hash = "c8f01a81b91f5bd9c67e28652f410226db8b60117b48d43f2555d97ce33cc2c7"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window_pane_noside.json"
+hash = "fb7a535bf3b7c6044759f95ef1c4764a44f8ecf0f8952d463f5bd1b31b2430f1"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window_pane_noside_alt.json"
+hash = "d8af05a6ffcbe8dbe131b976513e42473d286ef35a78050c0b1e5ffade06e3c3"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window_pane_post.json"
+hash = "2a0dba7fa717ad22856dba3462a2a7812272fdfc8ba01d5eb7412f64e06b1f71"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window_pane_side.json"
+hash = "2b2c2358e6170dd99837dc7a84c5cbe713fb83ab6bb156f7431a5606530e580f"
+
+[[files]]
+file = "kubejs/assets/create/models/block/jungle_window_pane_side_alt.json"
+hash = "b9204ef87b5e27cd8b6e480c9a2bdfa7ecb2fb5971f2077169ca0ee22d11e581"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window.json"
+hash = "3cd4e776aba2be3fb7d92d9bdbbaf55a6128d74d2f2e85aefdf08328861219af"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window_pane_noside.json"
+hash = "70ca18851bcc01a491ac5be88d2289222517fe3cce63f096723b4ef0be2dee23"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window_pane_noside_alt.json"
+hash = "402e5229475317f0cfbeb6e9696c2b77ae96b088c9943831d659775d753263fa"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window_pane_post.json"
+hash = "3f887661bd9066c228b647c1513ebe1463417ef4d12bd6a4ca1d3a8d936e7208"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window_pane_side.json"
+hash = "d6c2437db6e2c778b8f007061c3320f18992a21af54cf67beba22d1ee38b7515"
+
+[[files]]
+file = "kubejs/assets/create/models/block/oak_window_pane_side_alt.json"
+hash = "51028b0e3abd4742e146150b42eba6467fd1531f25237e351860740a59ade619"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window.json"
+hash = "cceed9e57d0060acd715066f5691c3899289de2c9e07921f41bf8db8a36d17e4"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window_pane_noside.json"
+hash = "ead340ffd9105da449861febad3aeb6c230ac91bca046daad95a3a1c5168fb6e"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window_pane_noside_alt.json"
+hash = "675ca14d5942bee5baf7ddf4471585a72e9975ec5f2437b171c58858be96648c"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window_pane_post.json"
+hash = "11c53191a9f50ca5006ec2ab690575e545651c546f98d201bacb006bc2d5ce11"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window_pane_side.json"
+hash = "52af0e14b4f01a5dca005eb219abdc3ef46180520090cbd4d5aeefc45854a669"
+
+[[files]]
+file = "kubejs/assets/create/models/block/spruce_window_pane_side_alt.json"
+hash = "3757a3ace6d484e3f6efaa82ff71b103b2a0d53a509bae95b071bd5ea57087c5"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window.json"
+hash = "e21f7b7e24d9858e00cf634e3accd8aa39bdf718e22781734d2e481b017e23eb"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window_pane_noside.json"
+hash = "63c6655f134176d75973e825df9ae84959475fa8eab9a287b3af8ed8f864956a"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window_pane_noside_alt.json"
+hash = "b79715dc75bbce03d56498f7c2f311e8b727e3dc7b381bd17bd1450959dcf503"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window_pane_post.json"
+hash = "1de05aeb64c02eadb933837ebba6360b06953d623539c473bde49ee31d5697d5"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window_pane_side.json"
+hash = "a57eacd120181128593d1ef61ca491ef23c79696f745fe1ef1750149834ad245"
+
+[[files]]
+file = "kubejs/assets/create/models/block/warped_window_pane_side_alt.json"
+hash = "d777c00ae91fb2164a878a74cde87bf50fc88324dc3b7c1b2697a9425a9ae672"
+
+[[files]]
+file = "kubejs/assets/create/models/item/acacia_window_pane.json"
+hash = "cb6b3bc921caad6be43bc06dddfe9469060770a04e344f277523c8fb5f592bb4"
+
+[[files]]
+file = "kubejs/assets/create/models/item/birch_window_pane.json"
+hash = "d242dde0017f8db9f96d9623df1c8d6efe2545b25fe0e35943b7a863b26738c8"
+
+[[files]]
+file = "kubejs/assets/create/models/item/crimson_window_pane.json"
+hash = "0ce7e07fb7f7ca1c4718db450ec819cba46dde71538328de3898d9f92e6d9f2f"
+
+[[files]]
+file = "kubejs/assets/create/models/item/dark_oak_window_pane.json"
+hash = "5382f0c1becd365750279dc532d307b9ab11b4519ad6e06bb9f70e3a6ab72900"
+
+[[files]]
+file = "kubejs/assets/create/models/item/jungle_window_pane.json"
+hash = "352dcbb44aef36bdda7c06c0df68c2045d14dc8e33a12cf175749cb510047c0e"
+
+[[files]]
+file = "kubejs/assets/create/models/item/oak_window_pane.json"
+hash = "4577c3197e53cf234230a34dc7219711e6333756fd184cb81135fe63d02e5d10"
+
+[[files]]
+file = "kubejs/assets/create/models/item/spruce_window_pane.json"
+hash = "a931ad04be61afbe03d86d230e2045d29e327ebce5a2e752d8c280ce2764e9b3"
+
+[[files]]
+file = "kubejs/assets/create/models/item/warped_window_pane.json"
+hash = "6deefeb0d85ced53fbbbe9bb3b5a34f357073b80ecdbdd24d41e6e0fed5accaf"
 
 [[files]]
 file = "kubejs/assets/create/textures/block/blaze_heater_brazier.png"
 hash = "a2566ec6ec51e3f2e2f457ce9b62e760f5851b05439f398dad22106c1e2e57d2"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/acacia_window.png"
+hash = "2c5111e7f26edd473fadbd8cd9c45f03eb40ff6077407fd139ab1f42dcd70b7f"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/acacia_window_connected.png"
+hash = "615689af694a72de3e3aaadbb1a07844115673bf8a65dfabd29f3e9f3d1a05da"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/acacia_window_end.png"
+hash = "f74a933e6384657a73794164a691f78a5e84bd988521493247f40e2aa6c209d4"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/birch_window.png"
+hash = "7d8b19bda9cff5e732d0745d8c39656f0f5ca278943cb6de94168c5807d554ad"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/birch_window_connected.png"
+hash = "780225b0963770c74c28d621a667837c99fb672d3f3c103af34283aa5822f45e"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/birch_window_end.png"
+hash = "bed8eb8e2cb479c9b32d4f067a681ac3285143936806349c76881e5d4d7dce1e"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/crimson_window.png"
+hash = "9ddec05fe1112e50197f7c48c3ddaa15683e6c48201a481c6a591cba75218e6a"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/crimson_window_connected.png"
+hash = "4ac011740e986544c4e974e6e6468263a283f5759783bd4fe0c117e36f844c7f"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/crimson_window_end.png"
+hash = "2c27fecfff4f51cfa20cbdb5081430c21e8ec197036eabb7fbdff5af86a2f32b"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/dark_oak_window.png"
+hash = "c6d7963e2b311e6ea675651be0efe5c4ced484e171be8a3b7669c610a2959f4a"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/dark_oak_window_connected.png"
+hash = "ccb075bbcf815cfe5e202e8255d0f0de981554d92e1d20d6f9fff7d657d9ff03"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/jungle_window.png"
+hash = "b9625874bf186f8855e8c68a2cb2fffebef86419563733c3f4ba798bca476932"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/jungle_window_connected.png"
+hash = "176e506168ec24af9890843f26f089b95fe540d9dd9d882aaaedff4e449beb98"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/jungle_window_top.png"
+hash = "03ee836c499d5dbf8bc1999556e4a60ccd7d7f5b0110fc89bef53138e0e8f574"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/oak_window.png"
+hash = "282728133c32360f3f50a0138e2acdf50f92944903841b65c5bb123fe4c19d5c"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/oak_window_connected.png"
+hash = "af59d9a9a002796ea37352166ea8aa04c2fd7824bbfdec959156f202358ef220"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/oak_window_end.png"
+hash = "3d3bd4a39690a9904f13473f4d5d46f23dc048650d5cd2747fff52d6facd8e13"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/spruce_window.png"
+hash = "d909cc6083dd42c9a5d413c202a7cfdb9b6287505884bcf132a9355c26a0ec08"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/spruce_window_connected.png"
+hash = "60256f969776dc79156c52ce1666e8a7fbde10490aa616806b5135a40109faae"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/spruce_window_end.png"
+hash = "68889712eb1942022d12047c1e53bcec9d4ecd023ca4231db67134af8e0d3d55"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/warped_window.png"
+hash = "a43beb440ea9874e2078cbcd3b9b2e468d4f507196bff722fa92f435271acf57"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/warped_window_connected.png"
+hash = "a6f8e365e867d69446716e90c106d8398f6dcf8f1fc6646c102b3daca88ae88a"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/palettes/warped_window_end.png"
+hash = "c31dc759f0dd6cb3deaaf7509dba6755831b02725fdc51c7759b7db2170bf097"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/standard_track.png"
+hash = "765ed5e6a68e56ef98348ca6103dddaaab7e8fa4819409d4dfa93a134c82a6a3"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/standard_track_crossing.png"
+hash = "78f03e622f80b36602ba2b10c867b0cedfe664173238a9808f7b945f1f58a94e"
+
+[[files]]
+file = "kubejs/assets/create/textures/block/standard_track_mip.png"
+hash = "47fad3bb10a1cab08210c193be95d8d5f141ed078498b56dd1905e24027d65e5"
+
+[[files]]
+file = "kubejs/assets/create/textures/item/incomplete_track.png"
+hash = "0902b3d740a1496d18bd0fe2eddbcf627d8dadeb03d9278105c6e48dc90675df"
+
+[[files]]
+file = "kubejs/assets/create/textures/item/track.png"
+hash = "c3e1c6e632f1322b0132ff2ca0511be62f0efd8e68ec9cd12d9c26a3489583f3"
 
 [[files]]
 file = "kubejs/assets/create_crystal_clear/lang/en_us.json"
@@ -597,20 +937,44 @@ file = "kubejs/assets/kubejs/textures/item/ore/small_lead.png"
 hash = "e8760f5b94a8d5c581bcc61cb280f97595f9d4fa9a88d1823d2afe613a97c702"
 
 [[files]]
+file = "kubejs/assets/railways/lang/en_us.json"
+hash = "2e14d1afcf462851905f15fcd296b46efa34ca8bdc382ec80b9d8f67f4404996"
+
+[[files]]
+file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_crossing_dark_oak.png"
+hash = "77d18d2a4ecd665649495334d27654eb00034268f06c15d5c8a4775c85b8941e"
+
+[[files]]
+file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_dark_oak.png"
+hash = "429dfa99c359d257b5557ffddc4137930e3ce1b9867748b5e24c5562341fd1a7"
+
+[[files]]
+file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_mip_dark_oak.png"
+hash = "d3b02f5a61aa1893d8a3ba4e42c22886c8674de4fc480032a7a8570aa6d82e4f"
+
+[[files]]
+file = "kubejs/assets/railways/textures/item/track/track_dark_oak.png"
+hash = "95988f7fb4a4fc16f2bdae4dcab8a4ceb4025bbbb14fabf25919b86a3ba99d20"
+
+[[files]]
+file = "kubejs/assets/railways/textures/item/track_incomplete/track_incomplete_dark_oak.png"
+hash = "2f8717681a83b1db9bc0b91d22091a3d80f4dc9340a207e401f855a37387afa7"
+
+[[files]]
 file = "kubejs/assets/tfc/lang/en_us.json"
 hash = "f8f67b6cc33ebfecb0d58d51f342644edc258b4b6a229a5431a3779573a955a2"
 
 [[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/constantan.png"
-hash = "0be40aa7e02f6038f55e0bb33d23973bab634938d41ba970c8e8e117f44d65dc"
+hash = "d017b8efa2d7345ca526dc2a6dc4c168e81f657b8b22666e6b712b2f9b17c6ab"
 
 [[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/electrum.png"
-hash = "05a24de6f249bea8f353ad84bf1fe0c32888fe42a04371e81ea01665c9e58752"
+hash = "111a5a1bd53541ea3164370ef6eecd35de3893944f9ef8c284f9d8e9c5bd4854"
 
 [[files]]
 file = "kubejs/assets/tfc/textures/block/metal/full/lead.png"
-hash = "0a99fd0b518fa06b76e65108f112800c322ea9eb2d8eac0e9bbfcb68ba543e3e"
+hash = "40dae16df51701c378e76da452199a1f143d17b073da34e63cbf41ab24244e74"
 
 [[files]]
 file = "kubejs/client_scripts/nbt.js"
@@ -618,7 +982,7 @@ hash = "555eb95c076532c12a0e106094bc0901c04885bc8043ad93beb2f937d1d41186"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "3fe8b6781cf0dfd0fab62e10075593db0a303d384e16c595d074ce4d05efabbc"
+hash = "adcb019fb2a183198c2a9620e6c1573c4eefbaf2239d77b5f21930e0bc0351c4"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -723,6 +1087,10 @@ hash = "bbdb38866d740422256cc44099ead5198b11b76811625d44bfbf7ce6eabf5a13"
 [[files]]
 file = "kubejs/data/tfc/tfc/fuels/coal_coke.json"
 hash = "34cc33413818b68aca1f3b9542bc805175a6d0d322565ed6b4e3a02d73c7df07"
+
+[[files]]
+file = "kubejs/data/tfc/tfc/item_heats/glasses.json"
+hash = "13676dd792e24b4f551d6d29a85aa8a9a5054190907d7e005bc035397b388268"
 
 [[files]]
 file = "kubejs/data/tfc/tfc/item_heats/graphite.json"
@@ -1022,7 +1390,7 @@ hash = "bae5d154410b0016dc8d97158dfa0103a19b4b57674faaaf324ea448fb7fe5fc"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "ac0f752acc6b67e9b129225a2a46bc8282eddd325e4f0532dac7efa154594b0d"
+hash = "f4f00fbe7dfaf95ae83e22294c1437dea04f200ce15360b0d5c79cc302f9730d"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1030,19 +1398,19 @@ hash = "f21dbb6bfa19ac7fa998c39b32bcdc0dbaf93675da39fb7477b713b071c4cdb4"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "014b2b71d57abb694209793ac505a9525850a65e2308067d9ab9e50a73525520"
+hash = "2e20be76346ccc6c59a0bf5b3aa5a6f84f8738ece24a9fb34237bffc60996a75"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "021c0844ddf79132a66eacfc29544faa2703844837695fd15b74292fe24ca8cb"
+hash = "2a85ca52f84b21726517aa0e97574116fb3a064223bcaaf8c86375c7c75aec1e"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "e54c62d220ffc1c3862dda7e55faf41a8eb42236e5d185f3267bb215b238dc94"
+hash = "401268c821c5372741b74b76f1f895faf42868d7429d795a3439455374410b6c"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "4b4cf497fc220ff911cb9112fe95dd197289175e525c0e0a163536f0c8ebdab5"
+hash = "1768ab48da6c6a8f697bc171b21907ac6f7df2529b02bf874b6fb3fafd31d7e8"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
@@ -1095,7 +1463,7 @@ metafile = true
 
 [[files]]
 file = "mods/chunk-loaders.pw.toml"
-hash = "7c7301504c626b78f791eb968da055653f300f0ab4e9c04e92cfd4126b0e9b5e"
+hash = "5e4e94fdf50f2c4422eed1b35390d535d99439fe9a78dd3e49dd142fcdbc85d8"
 metafile = true
 
 [[files]]
@@ -1120,7 +1488,7 @@ metafile = true
 
 [[files]]
 file = "mods/create-steam-n-rails.pw.toml"
-hash = "c7e1cf0e3d378489669085c58960dd79b8736bfd9b30f4a7cb730413b74f2261"
+hash = "c88d050362a9c39f47d5532ba08d464a88ec148167f1dec13b1c1a81b372cd0c"
 metafile = true
 
 [[files]]
@@ -1215,7 +1583,7 @@ metafile = true
 
 [[files]]
 file = "mods/kotlin-for-forge.pw.toml"
-hash = "d673098f8970c1882fba317165683a616400e53145fe619d5944af8fdeb9976b"
+hash = "2a1c65d868c9128a653a26e3dcde386b855152272dc3a962570f20bd59c2185f"
 metafile = true
 
 [[files]]
@@ -1305,7 +1673,7 @@ metafile = true
 
 [[files]]
 file = "mods/supermartijn642s-core-lib.pw.toml"
-hash = "d74b966074318c02ac233f1ef9ab85ab59058866459c4bb0b6226f621590c08e"
+hash = "7682ee8020b690676c256df301dedc20797ed3f12d8dc42fabe488a47386a56e"
 metafile = true
 
 [[files]]
@@ -1315,7 +1683,7 @@ metafile = true
 
 [[files]]
 file = "mods/textrues-rubidium-options.pw.toml"
-hash = "d9502341fa600fa326bed44c420aef657638b15f1093caeeba6776301cf83f93"
+hash = "52ee1ced2362cd096a31167f55c77034a4f207201e180a73d107de1ce7933864"
 metafile = true
 
 [[files]]
