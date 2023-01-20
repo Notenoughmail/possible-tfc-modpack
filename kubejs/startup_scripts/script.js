@@ -59,6 +59,7 @@ onEvent('block.registry', e => {
 				.tagBlock('minecraft:needs_stone_tool')
 				.tagBlock('forge:ores/lead')
 				.tagBlock('tfc:ore/lead/' + type)
+				.renderType('cutout')
 		})
 	})
 	e.create('ore/small_lead')

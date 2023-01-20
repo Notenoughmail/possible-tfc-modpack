@@ -1,0 +1,8 @@
+{
+	"parent": "tfc:block/ore",
+	"textures": {
+		"all": "tfc:block/rock/raw/phyllite",
+		"particle": "tfc:block/rock/raw/phyllite",
+		"overlay": "kubejs:block/ore/rich_lead"
+	}
+}

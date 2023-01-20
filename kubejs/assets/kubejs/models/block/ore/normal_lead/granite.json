@@ -1,0 +1,8 @@
+{
+	"parent": "tfc:block/ore",
+	"textures": {
+		"all": "tfc:block/rock/raw/granite",
+		"particle": "tfc:block/rock/raw/granite",
+		"overlay": "kubejs:block/ore/normal_lead"
+	}
+}

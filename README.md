@@ -15,4 +15,5 @@
  - In the track retextures, the ties are based off of IE's concrete and treated wood blocks/items and the rails use VV's steel palette
  
  \* The hope is to have VV shipped with the pack [just like UE](https://github.com/Notenoughmail/possible-tfc-modpack/blob/main/resourcepacks/updated-engineering.pw.toml) but the CF page doesn't mention it like UE's and I've been putting off reaching out about it ¯\\\_(ツ)\_/¯
+ 
  \*\* UE's colors were not used as it does not touch the block, and blocks and items tend to have somewhat different coloring

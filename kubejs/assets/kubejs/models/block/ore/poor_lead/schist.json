@@ -1,0 +1,8 @@
+{
+	"parent": "tfc:block/ore",
+	"textures": {
+		"all": "tfc:block/rock/raw/schist",
+		"particle": "tfc:block/rock/raw/schist",
+		"overlay": "kubejs:block/ore/poor_lead"
+	}
+}
