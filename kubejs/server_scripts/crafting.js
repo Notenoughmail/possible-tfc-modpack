@@ -22,7 +22,6 @@ onEvent('recipes', e => {
 	e.shapeless('32x gunswithoutroses:flint_bullet', ['minecraft:gunpowder', '4x minecraft:flint']).id('kubejs:crafting/flint_shot');
 	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:crafting/single_chunk_loader');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:crafting/sand_paper');
-	e.shapeless('1x usclb:clipboardfolder', ['minecraft:paper', ['#minecraft:wooden_pressure_plates', 'immersiveengineering:plate_duroplast']]).id('kubejs:crafting/clipboard_frame');
 	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:crafting/train_station');
 	
 	let blueprint = (input, output, id) => {
@@ -35,76 +34,32 @@ onEvent('recipes', e => {
 	blueprint('tfc:powderkeg', Item.of('immersiveengineering:blueprint', '{blueprint:"specialBullet"}'), 'special_bullet_blueprint')
 	blueprint('immersiveengineering:wooden_grip', Item.of('immersiveengineering:blueprint', '{blueprint:"electrode"}'), 'advanced_tools_blueprint')
 	
-	let tfc_damage_shapeless_inputs = (input_1, input_2, result, count, id) => {
-		e.custom({
-			'type': 'tfc:damage_inputs_shapeless_crafting',
-			'recipe': {
-				'type': 'minecraft:crafting_shapeless',
-				'ingredients': [{
-					'item': input_1
-				}, {
-					'item': input_2
-				}],
-				'result': {
-					'item': result,
-					'count': count
-				}
-			
-			}
-		}).id('kubejs:crafting/' + id)
-	}
-	tfc_damage_shapeless_inputs('immersiveposts:stick_lead', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_lead', 2, 'cut_rod_to_wire_lead')
-	tfc_damage_shapeless_inputs('tfc:metal/rod/steel', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_steel', 2, 'cut_rod_to_wire_steel')
-	tfc_damage_shapeless_inputs('immersiveposts:stick_electrum', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_electrum', 2, 'cut_rod_to_wire_electrum')
-	tfc_damage_shapeless_inputs('tfc:metal/rod/copper', 'immersiveengineering:wirecutter', 'immersiveengineering:wire_copper', 2, 'cut_rod_to_wire_copper')
+	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_lead', [
+		'immersiveposts:stick_lead',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/lead_wire');
+	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_steel', [
+		'tfc:metal/rod/steel',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/steel_wire');
+	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_electrum', [
+		'immersiveposts:stick_electrum',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/electrum_wire');
+	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_copper', [
+		'tfc:metal/rod/copper',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/copper_wire');
+	e.recipes.tfcDamageInputsShapelessCrafting('create:pulse_extender', [
+		'create:pulse_extender',
+		'minecraft:redstone_torch',
+		Item.of('create:super_glue').ignoreNBT()
+	]).id('kubejs:crafting/pulse_repeater_to_pulse_extender');
 	
-	e.custom({
-		'type': 'tfc:extra_products_shapeless_crafting',
-		'extra_products': [
-		{
-			'item': 'minecraft:redstone_torch'
-		}
-		],
-		'recipe': {
-			'type': 'tfc:damage_inputs_shapeless_crafting',
-			'recipe': {
-				'type': 'minecraft:crafting_shapeless',
-				'ingredients': [
-				{
-					'item': 'create:pulse_extender'
-				},
-				{
-					'item': 'immersiveengineering:wirecutter'
-				}
-				],
-				'result': {
-					'item': 'create:pulse_repeater',
-					'count': 1
-				}
-			}
-		}
-	}).id('kubejs:crafting/pulse_extender_to_pulse_repeater');
-	e.custom({
-		'type': 'tfc:damage_inputs_shapeless_crafting',
-		'recipe': {
-			'type': 'minecraft:crafting_shapeless',
-			'ingredients': [
-			{
-				'item': 'create:pulse_repeater'
-			},
-			{
-				'item': 'minecraft:redstone_torch'
-			},
-			{
-				'item': 'create:super_glue'
-			}
-			],
-			'result': {
-				'item': 'create:pulse_extender',
-				'count': 1
-			}
-		}
-	}).id('kubejs:crafting/pulse_repeater_to_pulse_extender');
+	e.recipes.tfcExtraProductsShapelessCrafting('minecraft:redstone_torch', e.recipes.tfcDamageInputsShapelessCrafting('create:pulse_repeater', [
+		'create:pulse_extender',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	])).id('kubejs:crafting/pulse_extender_to_pulse_repeater');
 	
 	//shaped
 	partial_metal.forEach(metal => {
@@ -674,15 +629,6 @@ onEvent('recipes', e => {
 		S: 'tfc:metal/sheet/black_steel',
 		A: 'tfc:thatch'
 	}).id('kubejs:crafting/empty_blaze_burner');
-	e.shaped('1x usclb:clipboard', [
-	'S ',
-	'AB'
-	], {
-		S: 'tfc:metal/rod/wrought_iron',
-		A: 'usclb:clipboardfolder',
-		B: 'usclb:inkandquill'
-	}
-	).id('kubejs:crafting/clipboard');
 	e.shaped('1x toolbelt:pouch', [
 	' S ',
 	'A A',

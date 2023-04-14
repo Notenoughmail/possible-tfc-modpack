@@ -1,13 +1,13 @@
 name = "Aileron"
-filename = "aileron-1.18.2-forge-1.0.0.jar"
+filename = "aileron-1.18.2-forge-1.0.2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "31eb231426bd6acadb2590ea888663ca08379c4d"
+hash = "3d6bee1c7574abbbf2f31dd714c7f0a6aefb6aa9"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 3908988
+file-id = 4376420
 project-id = 649925

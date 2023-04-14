@@ -1,7 +1,7 @@
 // priority: 0
 
-settings.logAddedRecipes = true
-settings.logRemovedRecipes = true
+settings.logAddedRecipes = false
+settings.logRemovedRecipes = false
 settings.logSkippedRecipes = false
 settings.logErroringRecipes = true
 
@@ -32,126 +32,6 @@ let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass'
 let ie_metals = ['aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel']
 
 onEvent('recipes', e => {
-	let tfc_collapse = (input, output) => {
-		e.custom({
-			'type': 'tfc:collapse',
-			'ingredient': input,
-			'result': output
-		})
-	}
-	let tfc_welding_tag = (in1, in2, tier, out, count, id) => {
-		e.custom({
-			'type': 'tfc:welding',
-			'first_input': { 'item': in1 },
-			'second_input': { 'tag': in2 },
-			'tier': tier,
-			'result': { 'item': out, 'count': count }
-		}).id('kubejs:weld/' + id)
-	}
-	let tfc_welding_item = (in1, in2, tier, out, count, id) => {
-		e.custom({
-			'type': 'tfc:welding',
-			'first_input': { 'item': in1 },
-			'second_input': { 'item': in2 },
-			'tier': tier,
-			'result': { 'item': out, 'count': count }
-		}).id('kubejs:weld/' + id)
-	}
-	let tfc_anvil = (input, output, count, tier, rule_1, rule_2, rule_3, id) => {
-		e.custom({
-			'type': 'tfc:anvil',
-			'input': { 'item': input },
-			'result': { 'item': output, 'count': count },
-			'tier': tier,
-			'rules': [ rule_1 + '_last', rule_2 + '_second_last', rule_3 + '_third_last' ]
-		}).id('kubejs:anvil/' + id)
-	}
-	let tfc_melting = (input, output, amount, temperature, id) => {
-		e.custom({
-			'type': 'tfc:heating',
-			'ingredient': { 'item': input },
-			'result_fluid': { 'fluid': output, 'amount': amount },
-			'temperature': temperature
-		}).id('kubejs:heat/' + id)
-	}
-	let tfc_casting = (input, amount, output, chance, id) => {
-		e.custom({
-			'type': 'tfc:casting',
-			'mold': { 'item': 'tfc:ceramic/ingot_mold' },
-			'fluid': { 'ingredient': input, 'amount': amount },
-			'result': { 'item': output },
-			'break_chance': chance
-		}).id('kubejs:casting/' + id)
-	}
-	let tfc_alloy = (output, input1, min1, max1, input2, min2, max2, id) => {
-		e.custom({
-			'type': 'tfc:alloy',
-			'result': output,
-			'contents': [
-			{ 'metal': input1, 'min': min1, 'max': max1 },
-			{ 'metal': input2, 'min': min2, 'max': max2 }
-			]
-		}).id('kubejs:alloy/' + id)
-	}
-	let tfc_sealed_barrel_item = (input_item, input_fluid, amount, output, duration, id) => {
-		e.custom({
-			'type': 'tfc:barrel_sealed',
-			'input_item': {
-				'ingredient': {
-					'item': input_item
-				}
-			},
-			'input_fluid': {
-				'ingredient': {
-					'fluid': input_fluid
-				},
-				'amount': amount
-			},
-			'output_item': {
-				'item': output
-			},
-			'duration': duration
-		}).id('kubejs:barrel_sealed/' + id)
-	}
-	let tfc_sealed_barrel_tag = (input_tag, input_fluid, amount, output, duration, id) => {
-		e.custom({
-			'type': 'tfc:barrel_sealed',
-			'input_item': {
-				'ingredient': {
-					'tag': input_tag
-				}
-			},
-			'input_fluid': {
-				'ingredient': {
-					'fluid': input_fluid
-				},
-				'amount': amount
-			},
-			'output_item': {
-				'item': output
-			},
-			'duration': duration
-		}).id('kubejs:barrel_sealed/' + id)
-	}
-	let tfc_chisel = (input, output, mode, id) => {
-		e.custom({
-			'type': 'tfc:chisel',
-			'ingredient': input,
-			'result': output,
-			'mode': mode
-		}).id('kubejs:chisel/' + mode + '/' + id)
-	}
-	let tfc_chisel_extra = (input, output, mode, extra, id) => {
-		e.custom({
-			'type': 'tfc:chisel',
-			'ingredient': input,
-			'result': output,
-			'mode': mode,
-			'extra_drop': {
-				'item': extra
-			}
-		}).id('kubejs:chisel/' + mode + '/' + id)
-	}
 	let ie_bottler_simple_mold = (type, metal, mold, amount) => {
 		e.custom({
 			'type': 'immersiveengineering:bottling_machine',
@@ -209,29 +89,12 @@ onEvent('recipes', e => {
 			}
 		}).id('kubejs:bottling/' + id);
 	}
-	let tfc_heating = (input, tag, output, temperature, id) => {
-		if (tag) {
-			e.custom({
-				'type': 'tfc:heating',
-				'ingredient': { 'tag': input },
-				'result_item': { 'item': output },
-				'temperature': temperature
-			}).id('kubejs:heat/' + id)
-		} else {
-			e.custom({
-				'type': 'tfc:heating',
-				'ingredient': { 'item': input },
-				'result_item': { 'item': output },
-				'temperature': temperature
-			}).id('kubejs:heat/' + id)
-		}
-	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
 		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
-		tfc_collapse('kubejs:ore/rich_lead/' + rock, 'kubejs:ore/normal_lead/' + rock)
-		tfc_collapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/poor_lead/' + rock)
-		tfc_collapse('kubejs:ore/poor_lead/' + rock, 'tfc:rock/cobble/' + rock)
+		e.recipes.tfcCollapse('kubejs:ore/normal_lead/' + rock, 'kubejs:ore/rich_lead/' + rock);
+		e.recipes.tfcCollapse('kubejs:ore/poor_lead/' + rock, 'kubejs:ore/normal_lead/' + rock);
+		e.recipes.tfcCollapse('tfc:rock/cobble/' + rock, 'kubejs:ore/poor_lead/' + rock);
 	});
 	powders.forEach(powder => {
 		e.recipes.createCrushing(['4x tfc:powder/' + powder, Item.of('tfc:powder/' + powder).withChance(0.35)], 'tfc:ore/' + powder).id('kubejs:crushing/' + powder)
@@ -272,11 +135,11 @@ onEvent('recipes', e => {
 		e.recipes.immersiveengineeringSawmill('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).id('kubejs:sawmill/' + plank + '_stripping');
 	});
 	colors.forEach(color => {
-		tfc_sealed_barrel_tag('forge:sheetmetal/colorless', 'tfc:' + color + '_dye', 125, 'immersiveengineering:sheetmetal_colored_' + color, 1000, color + '_sheetmetal')
+		e.recipes.tfcBarrelSealed('immersiveengineering:sheetmetal_colored_' + color, ['#forge:sheetmetal/colorless', Fluid.of('tfc:' + color + '_dye', 125)], 1000).id('kubejs:sealed_barrel/' + color + '_sheetmetal');
 		e.recipes.createSplashing(['minecraft:' + color + '_concrete_powder'], 'minecraft:' + color + '_concrete').id('create:splashing/' + color + '_concrete_powder');
 	});
 	sheetmetals.forEach(sheetmetal => {
-		tfc_chisel_extra('immersiveengineering:sheetmetal_' + sheetmetal, 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'slab', 'immersiveengineering:slab_sheetmetal_' + sheetmetal, 'sheetmetal_' + sheetmetal)
+		e.recipes.tfcChisel('immersiveengineering:slab_sheetmetal_' + sheetmetal, 'immersiveengineering:sheetmetal_' + sheetmetal, 'slab').extraDrop('immersiveengineering:slab_sheetmetal_' + sheetmetal).id('kubejs:chisel/slab/sheetmetal_' + sheetmetal);
 	});
 	sands.forEach(sand => {
 		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
@@ -290,7 +153,7 @@ onEvent('recipes', e => {
 		ie_bottler_simple_mold('double_sheet', metal, 'kubejs:mold/double_sheet', 400)
 	});
 	ie_metals.forEach(metal => {
-		tfc_chisel_extra('immersiveengineering:storage_' + metal, 'immersiveengineering:slab_storage_' + metal, 'slab', 'immersiveengineering:slab_storage_' + metal, metal)
+		e.recipes.tfcChisel('immersiveengineering:slab_storage_' + metal, 'immersiveengineering:storage_' + metal, 'slab').extraDrop('immersiveengineering:slab_storage_' + metal).id('kubejs:chisel/slab/' + metal);
 	});
 	
 	let mold_blueprint = (result, id) => {
@@ -679,9 +542,9 @@ onEvent('recipes', e => {
 		e.recipes.createPressing('kubejs:frame/capacitor_hv', 'kubejs:frame/capacitor_hv')
 	]).transitionalItem('kubejs:frame/capacitor_hv').loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
 	e.recipes.createSequencedAssembly(['16x railways:track_dark_oak'], '#forge:treated_wood_slab', [
-		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
-		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
-		e.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
+		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
+		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
+		e.recipes.createPressing('railways:track_incomplete_dark_oak', 'railways:track_incomplete_dark_oak')
 	]).transitionalItem('railways:track_incomplete_dark_oak').loops(1).id('kubejs:sequenced_assembly/treated_planks_track'); // Unfortunately, SnR doesn't have the ability to make rails from all of TFC's woods, so just one is here as irl creosote stained wood ties
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
@@ -695,138 +558,126 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_gold', 'minecraft:gold_block').id('kubejs:cutting/gold_sheetmetal');
 	e.recipes.createCutting('6x create:shaft', 'create:andesite_alloy').id('create:cutting/andesite_alloy');
 	
-	//tfc_welding_tag:order = in1, in2, tier, out, count, id | in2 is a tag
-	tfc_welding_tag('tfc:metal/ingot/wrought_iron', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 15, 'composite_material_from_wrought_iron')
-	tfc_welding_tag('tfc:metal/ingot/zinc', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 5, 'composite_material_from_zinc')
-	tfc_welding_tag('tfc:metal/helmet/copper', 'forge:glass', 2, 'create:diving_helmet', 1, 'diving_helmet')
-	tfc_welding_tag('tfc:metal/ingot/steel', 'forge:cobblestone/normal', 1, 'create:andesite_alloy', 25, 'composite_material_from_steel')//remove /_from_.*/ when compsite matieral is redone, it stays for now
+	e.recipes.tfcWelding('create:diving_helmet', ['tfc:metal/helmet/copper', '#forge:glass']).tier(2).id('kubejs:welding/diving_helmet');
+	e.recipes.tfcWelding('6x create:fluid_pipe', ['tfc:metal/sheet/copper', 'tfc:metal/rod/copper']).tier(1).id('kubejs:welding/copper_fluid_pipe');
+	e.recipes.tfcWelding('immersiveengineering:alloybrick', ['tfc:fire_bricks', 'tfc:metal/double_sheet/steel']).tier(4).id('kubejs:welding/alloy_bricks');
+	e.recipes.tfcWelding('kubejs:metal/double_ingot/electrum', ['immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum']).tier(3).id('kubejs:welding/double_electrum_ingot');
+	e.recipes.tfcWelding('kubejs:metal/double_ingot/constantan', ['immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan']).tier(2).id('kubejs:welding/double_constantan_ingot');
+	e.recipes.tfcWelding('kubejs:metal/double_ingot/lead', ['immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead']).tier(1).id('kubejs:welding/double_lead_ingot');
+	e.recipes.tfcWelding('create:diving_boots', ['tfc:metal/boots/copper', 'create:andesite_alloy']).tier(2).id('kubejs:welding/diving_boots');
+	e.recipes.tfcWelding('6x immersiveengineering:fluid_pipe', ['firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel']).tier(4).id('kubejs:welding/stainless_steel_fluid_pipe');
 	
-	//tfc_welding_item:order = in1, in2, tier, out, count, id
-	tfc_welding_item('tfc:metal/sheet/copper', 'tfc:metal/rod/copper', 1, 'create:fluid_pipe', 6, 'copper_fluid_pipe')
-	tfc_welding_item('tfc:fire_bricks', 'tfc:metal/double_sheet/steel', 4, 'immersiveengineering:alloybrick', 1, 'alloy_bricks')
-	tfc_welding_item('immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum', 3, 'kubejs:metal/double_ingot/electrum', 1, 'double_electrum_ingot')
-	tfc_welding_item('immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan', 2, 'kubejs:metal/double_ingot/constantan', 1, 'double_constantan_ingot')
-	tfc_welding_item('immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead', 1, 'kubejs:metal/double_ingot/lead', 1, 'double_lead_ingot')
-	tfc_welding_item('tfc:metal/boots/copper', 'create:andesite_alloy', 2, 'create:diving_boots', 1, 'diving_boots')
-	tfc_welding_item('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel', 4, 'immersiveengineering:fluid_pipe', 6, 'stainless_steel_fluid_pipe')
+	e.recipes.tfcAnvil('3x create:brass_ladder', 'tfc:metal/rod/brass', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(2).id('kubejs:anvil/brass_ladder');
+	e.recipes.tfcAnvil('3x create:copper_ladder', 'tfc:metal/rod/copper', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(1).id('kubejs:anvil/copper_ladder');
+	e.recipes.tfcAnvil('immersiveengineering:plate_electrum', 'kubejs:metal/double_ingot/electrum', ['hit_any', 'hit_any', 'hit_any']).tier(3).id('kubejs:anvil/electrum_sheet');
+	e.recipes.tfcAnvil('immersiveengineering:plate_constantan', 'kubejs:metal/double_ingot/constantan', ['hit_any', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/constantan_sheet');
+	e.recipes.tfcAnvil('immersiveengineering:plate_lead', 'kubejs:metal/double_ingot/lead', ['hit_any', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/lead_sheet');
+	e.recipes.tfcAnvil('2x immersiveposts:stick_electrum', 'immersiveengineering:ingot_electrum', ['bend_last', 'draw_not_last']).tier(3).id('kubejs:anvil/electrum_rod');
+	e.recipes.tfcAnvil('2x immersiveposts:stick_constantan', 'immersiveengineering:ingot_constantan', ['bend_last', 'draw_not_last']).tier(2).id('kubejs:anvil/constantan_rod');
+	e.recipes.tfcAnvil('2x immersiveposts:stick_lead', 'immersiveengineering:ingot_lead', ['bend_last', 'draw_not_last']).tier(1).id('kubejs:anvil/lead_rod');
+	e.recipes.tfcAnvil('12x create:copper_nugget', 'tfc:metal/ingot/copper', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(1).id('kubejs:anvil/copper_bullet');
+	e.recipes.tfcAnvil('railways:conductor_whistle', 'tfc:metal/tuyere/double_sheet/brass', ['bend_last', 'draw_not_last', 'hit_any']).tier(2).id('kubejs:anvil/whistle');
 	
-	//tfc_anvil:order = input, output, count, tier, rule_1, rule_2, rule_3, id | three rules needed
-	tfc_anvil('tfc:metal/rod/brass', 'create:brass_ladder', 3, 2, 'draw', 'bend', 'draw', 'brass_ladder_working')
-	tfc_anvil('tfc:metal/rod/copper', 'create:copper_ladder', 3, 1, 'draw', 'bend', 'draw', 'copper_ladder_working')
-	tfc_anvil('kubejs:metal/double_ingot/electrum', 'immersiveengineering:plate_electrum', 1, 3, 'hit', 'hit', 'hit', 'electrum_sheet_working')
-	tfc_anvil('kubejs:metal/double_ingot/constantan', 'immersiveengineering:plate_constantan', 1, 2, 'hit', 'hit', 'hit', 'constantan_sheet_working')
-	tfc_anvil('kubejs:metal/double_ingot/lead', 'immersiveengineering:plate_lead', 1, 1, 'hit', 'hit', 'hit', 'lead_sheet_working')
-	tfc_anvil('immersiveengineering:ingot_electrum', 'immersiveposts:stick_electrum', 2, 3, 'bend', 'draw', 'draw', 'electrum_rod_working')
-	tfc_anvil('immersiveengineering:ingot_constantan', 'immersiveposts:stick_constantan', 2, 2, 'bend', 'draw', 'draw', 'constantan_rod_working')
-	tfc_anvil('immersiveengineering:ingot_lead', 'immersiveposts:stick_lead', 2, 1, 'bend', 'draw', 'draw', 'lead_rod_working')
-	tfc_anvil('tfc:metal/ingot/copper', 'create:copper_nugget', 12, 1, 'draw', 'bend', 'punch', 'copper_bullet')
+	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 100), 'immersiveengineering:ingot_constantan', 1266).id('kubejs:heating/constantan_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 100), 'immersiveengineering:ingot_electrum', 1010).id('kubejs:heating/electrum_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 100), 'immersiveengineering:ingot_lead', 327).id('kubejs:heating/lead_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 200), 'kubejs:metal/double_ingot/constantan', 1266).id('kubejs:heating/constantan_double_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 200), 'kubejs:metal/double_ingot/electrum', 1010).id('kubejs:heating/electrum_double_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 200), 'kubejs:metal/double_ingot/lead', 327).id('kubejs:heating/lead_double_ingot');
+	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 200), 'immersiveengineering:plate_constantan', 1266).id('kubejs:heating/constantan_sheet');
+	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 200), 'immersiveengineering:plate_electrum', 1010).id('kubejs:heating/electrum_sheet');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 200), 'immersiveengineering:plate_lead', 327).id('kubejs:heating/lead_plate');
+	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 50), 'immersiveposts:stick_constantan', 1266).id('kubejs:heating/constantan_rod');
+	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 50), 'immersiveposts:stick_electrum', 1010).id('kubejs:heating/electrum_rod');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 50), 'immersiveposts:stick_lead', 327).id('kubejs:heating/lead_rod');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 25), 'kubejs:ore/normal_lead', 327).id('kubejs:heating/normal_lead_ore');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 15), 'kubejs:ore/poor_lead', 327).id('kubejs:heating/poor_lead_ore');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 35), 'kubejs:ore/rich_lead', 327).id('kubejs:heating/rich_lead_ore');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 10), 'kubejs:ore/small_lead', 327).id('kubejs:heating/small_lead_ore');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 100), 'firmalife:metal/ingot/chromium', 1907).id('kubejs:heating/chromium_ingot');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 200), 'firmalife:metal/sheet/chromium', 1907).id('kubejs:heating/chromium_sheet');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 200), 'firmalife:metal/double_ingot/chromium', 1907).id('kubejs:heating/chromium_double_ingot');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 400), 'firmalife:metal/double_sheet/chromium', 1907).id('kubejs:heating/chromium_double_sheet');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 50), 'firmalife:metal/rod/chromium', 1907).id('kubejs:heating/chromium_rod');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/stainless_steel', 100), 'firmalife:metal/ingot/stainless_steel', 1540).id('kubejs:heating/stainless_steel_ingot');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/stainless_steel', 200), 'firmalife:metal/sheet/stainless_steel', 1540).id('kubejs:heating/stainless_steel_sheet');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/stainless_steel', 200), 'firmalife:metal/double_ingot/stainless_steel', 1540).id('kubejs:heating/stainless_steel_double_ingot');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/stainless_steel', 400), 'firmalife:metal/double_sheet/stainless_steel', 1540).id('kubejs:heating/stainless_steel_double_sheet');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/stainless_steel', 50), 'firmalife:metal/rod/stainless_steel', 1540).id('kubejs:heating/stainless_steel_rod');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 10), 'firmalife:ore/small_chromite', 1907).id('kubejs:heating/small_chromite');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 15), 'firmalife:ore/poor_chromite', 1907).id('kubejs:heating/poor_chromite');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 25), 'firmalife:ore/normal_chromite', 1907).id('kubejs:heating/poor_chromite');
+	e.recipes.tfcHeating(Fluid.of('firmalife:metal/chromium', 35), 'firmalife:ore/rich_chromite', 1907).id('kubejs:heating/rich_chromite');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/zinc', 250), 'create:zinc_block', 420).id('kubejs:heating/zinc_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/brass', 250), 'create:brass_block', 930).id('kubejs:heating/brass_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/steel', 250), 'immersiveengineering:storage_steel', 1540).id('kubejs:heating/steel_block');
+	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 250), 'immersiveengineering:storage_constantan', 1266).id('kubejs:heating/cosntantan_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/nickel', 250), 'immersiveengineering:storage_nickel', 1453).id('kubejs:heating/nickel_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/silver', 250), 'immersiveengineering:storage_silver', 961).id('kubejs:heating/silver_block');
+	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 250), 'immersiveengineering:storage_lead', 327).id('kubejs:heating/lead_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/gold', 250), 'minecraft:gold_block', 1060).id('kubejs:heating/gold_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 250), 'minecraft:copper_block', 1080).id('kubejs:heating/copper_block');
+	e.recipes.tfcHeating(Fluid.of('kubejs:graphite', 75), 'immersiveengineering:dust_hop_graphite', 2574).id('kubejs:heating/graphite_dust'); // Change the temperature once higher temp fuels added
+	e.recipes.tfcHeating(Fluid.of('kubejs:graphite', 100), 'immersiveengineering:ingot_hop_graphite', 2574).id('kubejs:heating/graphite_ingot');
+	e.recipes.tfcHeating('minecraft:glass', ['create:tiled_glass', 'create:vertical_framed_glass', 'create:framed_glass', 'create:horizontal_framed_glass'], 350).id('kubejs:heating/create_glass');
+	e.recipes.tfcHeating('minecraft:glass_pane', ['create:tiled_glass_pane', 'create:vertical_framed_glass_pane', 'create:framed_glass_pane', 'create:horizontal_framed_glass_pane'], 350).id('kubejs:heating/create_glass_panes');
+	e.recipes.tfcHeating('immersiveengineering:slag_glass', '#forge:slag', 650).id('kubejs:heating/slag_glass');
 	
-	//tfc_melting:order = input, output, amount, temperature, id
-	tfc_melting('immersiveengineering:ingot_constantan', 'kubejs:constantan', 100, 1266, 'constantan_ingot')
-	tfc_melting('immersiveengineering:ingot_electrum', 'kubejs:electrum', 100, 1010, 'electrum_ingot')
-	tfc_melting('immersiveengineering:ingot_lead', 'kubejs:lead', 100, 327, 'lead_ingot')
-	tfc_melting('kubejs:metal/double_ingot/constantan', 'kubejs:constantan', 200, 1266, 'constantan_double_ingot')
-	tfc_melting('kubejs:metal/double_ingot/electrum', 'kubejs:electrum', 200, 1010, 'electrum_double_ingot')
-	tfc_melting('kubejs:metal/double_ingot/lead', 'kubejs:lead', 200, 327, 'lead_double_ingot')
-	tfc_melting('immersiveengineering:plate_constantan', 'kubejs:constantan', 200, 1266, 'constantan_sheet')
-	tfc_melting('immersiveengineering:plate_electrum', 'kubejs:electrum', 200, 1010, 'electrum_sheet')
-	tfc_melting('immersiveengineering:plate_lead', 'kubejs:lead', 200, 327, 'lead_plate')
-	tfc_melting('immersiveposts:stick_constantan', 'kubejs:constantan', 50, 1266, 'constantan_rod')
-	tfc_melting('immersiveposts:stick_electrum', 'kubejs:electrum', 50, 1010, 'electrum_rod')
-	tfc_melting('immersiveposts:stick_lead', 'kubejs:lead', 50, 327, 'lead_rod')
-	tfc_melting('kubejs:ore/normal_lead', 'kubejs:lead', 25, 327, 'normal_lead_ore')
-	tfc_melting('kubejs:ore/poor_lead', 'kubejs:lead', 15, 327, 'poor_lead_ore')
-	tfc_melting('kubejs:ore/rich_lead', 'kubejs:lead', 35, 327, 'rich_lead_ore')
-	tfc_melting('kubejs:ore/small_lead', 'kubejs:lead', 10, 327, 'small_lead_ore')
-	tfc_melting('firmalife:metal/ingot/chromium', 'firmalife:metal/chromium', 100, 1907, 'chromium_ingot')
-	tfc_melting('firmalife:metal/sheet/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_sheet')
-	tfc_melting('firmalife:metal/double_ingot/chromium', 'firmalife:metal/chromium', 200, 1907, 'chromium_double_ingot')
-	tfc_melting('firmalife:metal/double_sheet/chromium', 'firmalife:metal/chromium', 400, 1907, 'chromium_double_sheet')
-	tfc_melting('firmalife:metal/rod/chromium', 'firmalife:metal/chromium', 50, 1907, 'chromium_rod')
-	tfc_melting('firmalife:metal/ingot/stainless_steel', 'firmalife:metal/stainless_steel', 100, 1540, 'stainless_steel_ingot')
-	tfc_melting('firmalife:metal/sheet/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_sheet')
-	tfc_melting('firmalife:metal/double_ingot/stainless_steel', 'firmalife:metal/stainless_steel', 200, 1540, 'stainless_steel_double_ingot')
-	tfc_melting('firmalife:metal/double_sheet/stainless_steel', 'firmalife:metal/stainless_steel', 400, 1540, 'stainless_steel_double_sheet')
-	tfc_melting('firmalife:metal/rod/stainless_steel', 'firmalife:metal/stainless_steel', 50, 1540, 'stainless_steel_rod')
-	tfc_melting('firmalife:ore/small_chromite', 'firmalife:metal/chromium', 10, 1907, 'small_chromite')
-	tfc_melting('firmalife:ore/poor_chromite', 'firmalife:metal/chromium', 15, 1907, 'poor_chromite')
-	tfc_melting('firmalife:ore/normal_chromite', 'firmalife:metal/chromium', 25, 1907, 'normal_chromite')
-	tfc_melting('firmalife:ore/rich_chromite', 'firmalife:metal/chromium', 35, 1907, 'rich_chromite')
-	tfc_melting('create:zinc_block', 'tfc:metal/zinc', 250, 420, 'zinc_block')
-	tfc_melting('immersiveengineering:storage_electrum', 'kubejs:electrum', 250, 1010, 'electrum_block')
-	tfc_melting('create:brass_block', 'tfc:metal/brass', 250, 930, 'brass_block')
-	tfc_melting('immersiveengineering:storage_steel', 'tfc:metal/steel', 250, 1540, 'steel_block')
-	tfc_melting('immersiveengineering:storage_constantan', 'kubejs:constantan', 250, 1266, 'constantan_block')
-	tfc_melting('immersiveengineering:storage_nickel', 'tfc:metal/nickel', 250, 1453, 'nickel_block')
-	tfc_melting('immersiveengineering:storage_silver', 'tfc:metal/silver', 250, 961, 'silver_block')
-	tfc_melting('immersiveengineering:storage_lead', 'kubejs:lead', 250, 327, 'lead_block')
-	tfc_melting('minecraft:gold_block', 'tfc:metal/gold', 250, 1060, 'gold_block')
-	tfc_melting('minecraft:copper_block', 'tfc:metal/copper', 250, 1080, 'copper_block')
-	tfc_melting('immersiveengineering:dust_hop_graphite', 'kubejs:graphite', 75, 2574, 'graphite_dust')//the temperature is complete rubbish and is actually ~1000 degrees higher in real life but there is nothing that burns that hot (yet?)
-	tfc_melting('immersiveengineering:ingot_hop_graphite', 'kubejs:graphite', 100, 2574, 'graphite_ingot')
+	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:electrum', 100), 0.1).id('kubejs:casting/electrum_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_constantan', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:constantan', 100), 0.1).id('kubejs:casting/constantan_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_lead', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:lead', 100), 0.1).id('kubejs:casting/lead_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_hop_graphite', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:graphite', 100), 0.1).id('kubejs:casting/graphite');
 	
-	//tfc_heating:order = input, tag, output, temperature, id | tag, is a boolean
-	tfc_heating('create:tiled_glass', false, 'minecraft:glass', 350, 'tiled_glass')
-	tfc_heating('create:vertical_framed_glass', false, 'minecraft:glass', 350, 'vertical_framed_glass')
-	tfc_heating('create:framed_glass', false, 'minecraft:glass', 350, 'framed_glass')
-	tfc_heating('create:horizontal_framed_glass', false, 'minecraft:glass', 350, 'horizontal_framed_glass')
-	tfc_heating('create:tiled_glass_pane', false, 'minecraft:glass_pane', 350, 'tiled_glass_pane')
-	tfc_heating('create:vertical_framed_glass_pane', false, 'minecraft:glass_pane', 350, 'vertical_framed_glass_pane')
-	tfc_heating('create:framed_glass_pane', false, 'minecraft:glass_pane', 350, 'framed_glass_pane')
-	tfc_heating('create:horizontal_framed_glass_pane', false, 'minecraft:glass_pane', 350, 'horizontal_framed_glass_pane')
-	tfc_heating('forge:slag', true, 'immersiveengineering:slag_glass', 650, 'slag_glass')
+	e.recipes.tfcAlloy('tfc:electrum', [
+		['tfc:gold', 0.4, 0.6],
+		['tfc:silver', 0.4, 0.6]
+	]).id('kubejs:electrum');
+	e.recipes.tfcAlloy('tfc:constantan', [
+		['tfc:copper', 0.5, 0.6],
+		['tfc:nickel', 0.4, 0.5]
+	]).id('kubejs:constantan');
 	
-	//tfc_casting:order = input, amount, output, chance, id | chance = chance to break
-	tfc_casting('kubejs:electrum', 100, 'immersiveengineering:ingot_electrum', 0.1, 'electrum_ingot')
-	tfc_casting('kubejs:constantan', 100, 'immersiveengineering:ingot_constantan', 0.1, 'constantan_ingot')
-	tfc_casting('kubejs:lead', 100, 'immersiveengineering:ingot_lead', 0.1, 'lead_ingot')
-	tfc_casting('kubejs:graphite', 100, 'immersiveengineering:ingot_hop_graphite', 1, 'graphite')
+	e.recipes.tfcChisel('immersiveengineering:concrete_tile', 'immersiveengineering:concrete', 'smooth').id('kubejs:chisel/smooth/concrete_tile');
+	e.recipes.tfcChisel('immersiveengineering:stairs_concrete', 'immersiveengineering:concrete', 'stair').id('kubejs:chisel/stair/concrete');
+	e.recipes.tfcChisel('immersiveengineering:stairs_concrete_tile', 'immersiveengineering:concrete_tile', 'stair').id('kubejs:chisel/stair/concrete_tile');
+	e.recipes.tfcChisel('immersiveengineering:stairs_hempcrete', 'immersiveengineering:hempcrete', 'stair').id('kubejs:chisel/stair/jutecrete');
+	e.recipes.tfcChisel('minecraft:cut_copper', 'minecraft:copper_block', 'smooth').id('kubejs:chisel/smooth/cut_copper');
+	e.recipes.tfcChisel('minecraft:cut_copper_stairs', 'minecraft:cut_copper', 'stair').id('kubejs:chisel/stair/cut_copper');
+	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_horizontal', 'immersiveengineering:treated_wood_horizontal', 'stair').id('kubejs:chisel/stair/stained_wood_horizontal');
+	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_vertical', 'immersiveengineering:treated_wood_vertical', 'stair').id('kubejs:chisel/stair/stained_wood_vertical');
+	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_packaged', 'immersiveengineering:treated_wood_packaged', 'stair').id('kubejs:chisel/stair/stained_wood_packaged');
+	e.recipes.tfcChisel('immersiveengineering:stairs_steel_scaffolding_standard', 'immersiveengineering:steel_scaffolding_standard', 'stair').id('kubejs:chisel/stair/standard_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:stairs_steel_scaffolding_grate_top', 'immersiveengineering:steel_scaffolding_grate_top', 'stair').id('kubejs:chisel/stair/grate_top_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:stairs_steel_scaffolding_wooden_top', 'immersiveengineering:steel_scaffolding_wooden_top', 'stair').id('kubejs:chisel/stair/wooden_top_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:stairs_alu_scaffolding_standard', 'immersiveengineering:alu_scaffolding_standard', 'stair').id('kubejs:chisel/stair/standard_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:stairs_alu_scaffolding_grate_top', 'immersiveengineering:alu_scaffolding_grate_top', 'stair').id('kubejs:chisel/stair/grate_top_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:stairs_alu_scaffolding_wooden_top', 'immersiveengineering:alu_scaffolding_wooden_top', 'stair').id('kubejs:chisel/stair/wooden_top_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_treated_wood_horizontal', 'immersiveengineering:treated_wood_horizontal', 'slab').extraDrop('immersiveengineering:slab_treated_wood_horizontal').id('kubejs:chisel/slab/stained_wood_horizontal');
+	e.recipes.tfcChisel('immersiveengineering:slab_treated_wood_vertical', 'immersiveengineering:treated_wood_vertical', 'slab').extraDrop('immersiveengineering:slab_treated_wood_vertical').id('kubejs:chisel/slab/stained_wood_vertical');
+	e.recipes.tfcChisel('immersiveengineering:slab_treated_wood_packaged', 'immersiveengineering:treated_wood_packaged', 'slab').extraDrop('immersiveengineering:slab_treated_wood_packaged').id('kubejs:chisel/slab/stained_wood_packaged');
+	e.recipes.tfcChisel('immersiveengineering:slab_steel_scaffolding_standard', 'immersiveengineering:steel_scaffolding_standard', 'slab').extraDrop('immersiveengineering:slab_steel_scaffolding_standard').id('kubejs:chisel/slab/standard_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_steel_scaffolding_grate_top', 'immersiveengineering:steel_scaffolding_grate_top', 'slab').extraDrop('immersiveengineering:slab_steel_scaffolding_grate_top').id('kubejs:chisel/slab/grate_top_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_steel_scaffolding_wooden_top', 'immersiveengineering:steel_scaffolding_wooden_top', 'slab').extraDrop('immersiveengineering:slab_steel_scaffolding_wooden_top').id('kubejs:chisel/slab/wooden_top_steel_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_alu_scaffolding_standard', 'immersiveengineering:alu_scaffolding_standard', 'slab').extraDrop('immersiveengineering:slab_alu_scaffolding_standard').id('kubejs:chisel/slab/standard_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_alu_scaffolding_grate_top', 'immersiveengineering:alu_scaffolding_grate_top', 'slab').extraDrop('immersiveengineering:slab_alu_scaffolding_grate_top').id('kubejs:chisel/slab/grate_top_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_alu_scaffolding_wooden_top', 'immersiveengineering:alu_scaffolding_wooden_top', 'slab').extraDrop('immersiveengineering:slab_alu_scaffolding_wooden_top').id('kubejs:chisel/slab/wooden_top_alu_scaffolding');
+	e.recipes.tfcChisel('immersiveengineering:slab_cokebrick', 'immersiveengineering:cokebrick', 'slab').extraDrop('immersiveengineering:slab_cokebrick').id('kubejs:chisel/slab/cokebrick');
+	e.recipes.tfcChisel('immersiveengineering:slab_blastbrick_reinforced', 'immersiveengineering:blastbrick_reinforced', 'slab').extraDrop('immersiveengineering:slab_blastbrick_reinforced').id('kubejs:chisel/slab/blastbrick');
+	e.recipes.tfcChisel('immersiveengineering:slab_coke', 'immersiveengineering:coke', 'slab').extraDrop('immersiveengineering:slab_coke').id('kubejs:chisel/slab/coal_coke');
+	e.recipes.tfcChisel('immersiveengineering:slab_hempcrete', 'immersiveengineering:hempcrete', 'slab').extraDrop('immersiveengineering:slab_hempcrete').id('kubejs:chisel/slab/jutecrete');
+	e.recipes.tfcChisel('immersiveengineering:slab_concrete', 'immersiveengineering:concrete', 'slab').extraDrop('immersiveengineering:slab_concrete').id('kubejs:chisel/slab/concrete');
+	e.recipes.tfcChisel('immersiveengineering:slab_concrete_tile', 'immersiveengineering:concrete_tile', 'slab').extraDrop('immersiveengineering:slab_concrete_tile').id('kubejs:chisel/slab/concrete_tile');
+	e.recipes.tfcChisel('immersiveengineering:slab_insulating_glass', 'immersiveengineering:insulating_glass', 'slab').extraDrop('immersiveengineering:slab_insulating_glass').id('kubejs:chisel/slab/insulating_glass');
+	e.recipes.tfcChisel('immersiveengineering:slab_alloybrick', 'immersiveengineering:alloybrick', 'slab').extraDrop('immersiveengineering:slab_alloybrick').id('kubejs:chisel/slab/kiln_brick');
+	e.recipes.tfcChisel('minecraft:cut_copper_slab', 'minecraft:cut_copper', 'slab').extraDrop('minecraft:cut_copper_slab').id('kubejs:chisel/slab/cut_copper');
 	
-	//tfc_alloy:order = output, input1, min1, max1, input2, min2, max2, id
-	tfc_alloy('tfc:electrum', 'tfc:gold', 0.4, 0.6, 'tfc:silver', 0.4, 0.6, 'electrum')
-	tfc_alloy('tfc:constantan', 'tfc:copper', 0.5, 0.6, 'tfc:nickel', 0.4, 0.5, 'constantan')
-	
-	//tfc_sealed_barrel_item:order = input_item, input_fluid, amount, output, duration, id
-	tfc_sealed_barrel_item('tfc:straw', 'tfc:vinegar', 50, 'minecraft:paper', 1000, 'paper')
-	
-	//tfc_sealed_barrel_tag:order = input_tag, input_fluid, amount, output, duration, id
-	
-	//tfc_chisel:order = input, output, mode, id
-	tfc_chisel('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:stairs_treated_wood_horizontal', 'stair', 'stained_wood_horizontal')
-	tfc_chisel('immersiveengineering:treated_wood_vertical', 'immersiveengineering:stairs_treated_wood_vertical', 'stair', 'stained_wood_vertical')
-	tfc_chisel('immersiveengineering:treated_wood_packaged', 'immersiveengineering:stairs_treated_wood_packaged', 'stair', 'stained_wood_packaged')
-	tfc_chisel('immersiveengineering:concrete', 'immersiveengineering:concrete_tile', 'smooth', 'concrete_tile')
-	tfc_chisel('immersiveengineering:steel_scaffolding_standard', 'immersiveengineering:stairs_steel_scaffolding_standard', 'stair', 'standard_steel_scaffolding')
-	tfc_chisel('immersiveengineering:alu_scaffolding_standard', 'immersiveengineering:stairs_alu_scaffolding_standard', 'stair', 'standard_alu_scaffolding')
-	tfc_chisel('immersiveengineering:steel_scaffolding_grate_top', 'immersiveengineering:stairs_steel_scaffolding_grate_top', 'stair', 'grate_top_steel_scaffolding')
-	tfc_chisel('immersiveengineering:alu_scaffolding_grate_top', 'immersiveengineering:stairs_alu_scaffolding_grate_top', 'stair', 'grate_top_alu_scaffolding')
-	tfc_chisel('immersiveengineering:steel_scaffolding_wooden_top', 'immersiveengineering:stairs_steel_scaffolding_wooden_top', 'stair', 'wooden_top_steel_scaffolding')
-	tfc_chisel('immersiveengineering:alu_scaffolding_wooden_top', 'immersiveengineering:stairs_alu_scaffolding_wooden_top', 'stair', 'wooden_top_alu_scaffolding')
-	tfc_chisel('immersiveengineering:hempcrete', 'immersiveengineering:stairs_hempcrete', 'stair', 'jutecrete')
-	tfc_chisel('immersiveengineering:concrete', 'immersiveengineering:stairs_concrete', 'stair', 'concrete')
-	tfc_chisel('immersiveengineering:concrete_tile', 'immersiveengineering:stairs_concrete_tile', 'stair', 'concrete_tile')
-	tfc_chisel('minecraft:copper_block', 'minecraft:cut_copper', 'smooth', 'cut_copper')
-	tfc_chisel('minecraft:cut_copper', 'minecraft:cut_copper_stairs', 'stair', 'cut_copper')
-	
-	//tfc_chisel_extra:order = input, output, mode, extra, id
-	tfc_chisel_extra('immersiveengineering:treated_wood_horizontal', 'immersiveengineering:slab_treated_wood_horizontal', 'slab', 'immersiveengineering:slab_treated_wood_horizontal', 'stained_wood_horizontal')
-	tfc_chisel_extra('immersiveengineering:treated_wood_vertical', 'immersiveengineering:slab_treated_wood_vertical', 'slab', 'immersiveengineering:slab_treated_wood_vertical', 'stained_wood_vertical')
-	tfc_chisel_extra('immersiveengineering:treated_wood_packaged', 'immersiveengineering:slab_treated_wood_packaged', 'slab', 'immersiveengineering:slab_treated_wood_packaged', 'stained_wood_packaged')
-	tfc_chisel_extra('immersiveengineering:steel_scaffolding_standard', 'immersiveengineering:slab_steel_scaffolding_standard', 'slab', 'immersiveengineering:slab_steel_scaffolding_standard', 'standard_steel_scaffolding')
-	tfc_chisel_extra('immersiveengineering:alu_scaffolding_standard', 'immersiveengineering:slab_alu_scaffolding_standard', 'slab', 'immersiveengineering:slab_alu_scaffolding_standard', 'standard_alu_scaffolding')
-	tfc_chisel_extra('immersiveengineering:steel_scaffolding_grate_top', 'immersiveengineering:slab_steel_scaffolding_grate_top', 'slab', 'immersiveengineering:slab_steel_scaffolding_grate_top', 'grate_top_steel_scaffolding')
-	tfc_chisel_extra('immersiveengineering:alu_scaffolding_grate_top', 'immersiveengineering:slab_alu_scaffolding_grate_top', 'slab', 'immersiveengineering:slab_alu_scaffolding_grate_top', 'grate_top_alu_scaffolding')
-	tfc_chisel_extra('immersiveengineering:steel_scaffolding_wooden_top', 'immersiveengineering:slab_steel_scaffolding_wooden_top', 'slab', 'immersiveengineering:slab_steel_scaffolding_wooden_top', 'wooden_top_steel_scaffolding')
-	tfc_chisel_extra('immersiveengineering:alu_scaffolding_wooden_top', 'immersiveengineering:slab_alu_scaffolding_wooden_top', 'slab', 'immersiveengineering:slab_alu_scaffolding_wooden_top', 'wooden_top_alu_scaffolding')
-	tfc_chisel_extra('immersiveengineering:cokebrick', 'immersiveengineering:slab_cokebrick', 'slab', 'immersiveengineering:slab_cokebrick', 'cokebrick')
-	tfc_chisel_extra('immersiveengineering:blastbrick_reinforced', 'immersiveengineering:slab_blastbrick_reinforced', 'slab', 'immersiveengineering:slab_blastbrick_reinforced', 'blastbrick')
-	tfc_chisel_extra('immersiveengineering:coke', 'immersiveengineering:slab_coke', 'slab', 'immersiveengineering:slab_coke', 'coal_coke')
-	tfc_chisel_extra('immersiveengineering:hempcrete', 'immersiveengineering:slab_hempcrete', 'slab', 'immersiveengineering:slab_hempcrete', 'jutecrete')
-	tfc_chisel_extra('immersiveengineering:concrete', 'immersiveengineering:slab_concrete', 'slab', 'immersiveengineering:slab_concrete', 'concrete')
-	tfc_chisel_extra('immersiveengineering:concrete_tile', 'immersiveengineering:slab_concrete_tile', 'slab', 'immersiveengineering:slab_concrete_tile', 'concrete_tile')
-	tfc_chisel_extra('immersiveengineering:insulating_glass', 'immersiveengineering:slab_insulating_glass', 'slab', 'immersiveengineering:slab_insulating_glass', 'insulating_glass')
-	tfc_chisel_extra('immersiveengineering:alloybrick', 'immersiveengineering:slab_alloybrick', 'slab', 'immersiveengineering:slab_alloybrick', 'kiln_brick')
-	tfc_chisel_extra('minecraft:cut_copper', 'minecraft:cut_copper_slab', 'slab', 'minecraft:cut_copper_slab', 'cut_copper')
+	e.recipes.tfcLeatherKnapping('kubejs:leather_pouch', [
+		'XX XX',
+		'X   X',
+		'X   X',
+		'X   X',
+		'XXXXX'
+	]).id('kubejs:leather_knapping/leather_pouch');
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -1098,21 +949,6 @@ onEvent('recipes', e => {
 			'count': 1
 		}
 	}).id('immersiveengineering:blueprint/circuit_board');
-	
-	//knapping
-	e.custom({
-		'type': 'tfc:leather_knapping',
-		'pattern': [
-		'XX XX',
-		'X   X',
-		'X   X',
-		'X   X',
-		'XXXXX'
-		],
-		'result': {
-			'item': 'kubejs:leather_pouch'
-		}
-	}).id('kubejs:leather_knapping/leather_pouch');
 	
 	//mixer
 	e.custom({

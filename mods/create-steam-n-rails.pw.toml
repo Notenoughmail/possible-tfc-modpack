@@ -1,13 +1,13 @@
-name = "Create: Steam 'n Rails"
-filename = "Steam_Rails-1.18.2-1.0.6.jar"
+name = "Create: Steam 'n' Rails"
+filename = "Steam_Rails-1.2.0+forge-mc1.18.2-build.7.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "33c32206f320a381f00a40728eee34533a571f8e"
+hash = "e227bf719e2946c9eea0230678476d3e3e337451"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4285171
+file-id = 4465845
 project-id = 688231
