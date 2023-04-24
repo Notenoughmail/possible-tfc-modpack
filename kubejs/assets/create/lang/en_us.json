@@ -30,6 +30,9 @@
 	"block.create.warped_window_pane": "Bismuth Bronze Window Pane",
 	"block.create.ornate_iron_window": "Wrought Iron Window",
 	"block.create.ornate_iron_window_pane": "Wrought Iron Window Pane",
+	"block.create.fluid_pipe": "Copper Fluid Pipe",
+	"block.create.smart_fluid_pipe": "Filtered Copper Fluid Pipe",
+	"block.create.fluid_valve": "Copper Fluid Valve",
 	
 	"item.create.andesite_alloy": "Composite Material",
 	"item.create.electron_tube": "Redstone Salt Tube",

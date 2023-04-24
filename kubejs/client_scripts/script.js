@@ -79,8 +79,11 @@ onEvent('jei.hide.items', e => {
 	e.hide('#forge:nuggets')
 	e.hide('#forge:plates')
 	e.hide(/railways:track_.*/)
-	e.hide(/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/)
+	e.hide(/(?:minecraft|create):.*(?:diorite|granite|dripstone|limestone|deespslate).*/)
 	e.hide('createaddition:festive_spool')
+	e.hide(/minecraft:infested_.+/)
+	// e.hide(/minecraft:(?:polished_)?andesite(?:_(?:stairs|slab|wall))?$/)
+	// e.hide(/create:(?:(?:cut|polished|small)_){0,2}andesite(?:_brick)?(?:_(?:stairs|slab|wall))?$/)
 })
 
 onEvent('jei.add.items', e => {
@@ -105,7 +108,7 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:melon_slice')
 	e.add('railways:track_coupler')
 	e.add('railways:track_dark_oak')
-	e.add(/create:andesite_(?:casing|encased_cogwheel|encased_large_cogwheel|encased_shaft|funnel|ladder|tunnel|alloy)/)
+	e.add('railways:track_monorail')
 })
 
 onEvent('jei.remove.categories', e => {

@@ -16,7 +16,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('#forge:ingots/constantan', 1.233, 760, 1012)
 	e.addTFCHeat('#forge:rods/constantan', 0.616, 760, 1012)
 	e.addTFCHeat('#forge:sheets/constantan', 2.166, 760, 1012)
-	e.addTFCHeat('minecraft:copepr_block', 7.145)
+	e.addTFCHeat([/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper$/, /minecraft:(?:waxed_)?copper_block/], 7.145)
 	e.addTFCHeat('immersiveengineering:storage_electrum', 2.775)
 	e.addTFCHeat('#forge:double_ingots/electrum', 2.219, 606, 808)
 	e.addTFCHeat('#forge:ingots/electrum', 1.11, 606, 808)
@@ -33,8 +33,9 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('immersiveengineering:storage_steel', 7.145)
 	e.addTFCHeat('create:zinc_block', 11.905)
 	e.addTFCHeat(['kubejs:ore/small_lead', 'kubejs:ore/poor_lead', 'kubejs:ore/normal_lead', 'kubejs:ore/rich_lead'], 0.34)
+	e.addTFCHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573)
 	
-	e.addTFCItemSize('chunkloaders:advanced_chunck_loader', 's=large, w=heavy')
+	e.addTFCItemSize('chunkloaders:advanced_chunk_loader', 's=large, w=heavy')
 	e.addTFCItemSize('chunkloaders:basic_chunk_loader', 's=normal, w=medium')
 	e.addTFCItemSize('toolbelt:belt', 's=very_large, w=heavy')
 	e.addTFCItemSize('immersiveengineering:coal_coke', 's=small, w=medium')
@@ -70,6 +71,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemSize('immersiveengineering:wirecutter', 's=small, w=light')
 	e.addTFCItemSize(/immersiveengineering:wirecoil_(?:copper|electrum|steel)(?:_ins)?/, 's=small, w=heavy')
 	e.addTFCItemSize('create:wrench', 's=normal, w=light')
+	e.addTFCItemSize('#create:toolboxes', 's=very_large, w=heavy')
 	
 	e.addTFCMetal('kubejs:constantan', 1266, 0.0037, '#forge:ingots/constantan', '#forge:sheets/constantan', 2)
 	e.addTFCMetal('kubejs:electrum', 1010, 0.00333, '#forge:ingots/electrum', '#forge:sheets/electrum')

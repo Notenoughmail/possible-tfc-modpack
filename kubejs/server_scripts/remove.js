@@ -53,7 +53,8 @@ let outputs = ['immersiveengineering:conveyor_basic', 'immersiveengineering:stee
 	/immersiveengineering:gunpart_.*/, 'immersiveengineering:revolver', 'immersiveengineering:railgun',
 	'create:track_station', 'immersiveengineering:voltmeter', 'railways:semaphore', /railways:track_.*/,
 	/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/, /create:.*window/,
-	'railways:conductor_whistle', 'createaddition:modular_accumulator'
+	'railways:conductor_whistle', 'createaddition:modular_accumulator', /(?:create|minecraft):waxed_.+/,
+	/create:copper_(?:tiles|shingles)/
 	]
 
 let ids = ['immersiveengineering:mixer/concrete', 'immersiveengineering:crafting/concrete', 

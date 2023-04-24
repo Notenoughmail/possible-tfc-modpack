@@ -16,7 +16,7 @@ onEvent('recipes', e => {
 	e.shapeless('1x create:placard', ['minecraft:item_frame', 'tfc:metal/sheet/brass']).id('kubejs:crafting/placard');
 	e.shapeless('1x create:rose_quartz', ['tfc:ore/halite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_halite');
 	e.shapeless('1x create:rose_quartz', ['tfc:ore/sylvite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_sylvite');
-	e.shapeless('1x create:super_glue', ['tfc:glue', 'tfc:metal/tuyere/wrought_iron']).id('kubejs:crafting/super_glue');
+	e.recipes.tfcAdvancedShapelessCrafting(ItemProvider.of('1x create:super_glue').copyForgingBonus(), [Item.of('tfc:metal/tuyere/wrought_iron').ignoreNBT(), 'tfc:glue']).id('kubejs:crafting/super_glue');
 	e.shapeless('2x create:train_door', ['#minecraft:wooden_doors', 'tfc:metal/sheet/brass', '#minecraft:wooden_doors']).id('kubejs:crafting/train_door');
 	e.shapeless('2x create:train_trapdoor', ['#minecraft:wooden_trapdoors', 'tfc:metal/sheet/brass', '#minecraft:wooden_trapdoors']).id('kubejs:crafting/train_trapdoor');
 	e.shapeless('32x gunswithoutroses:flint_bullet', ['minecraft:gunpowder', '4x minecraft:flint']).id('kubejs:crafting/flint_shot');
@@ -503,7 +503,7 @@ onEvent('recipes', e => {
 	'S  '
 	], {
 		S: 'create:andesite_alloy',
-		A: 'tfc:metal/sheet/cast_iron'
+		A: 'tfc:metal/rod/cast_iron'
 	}).id('kubejs:crafting/coupling');
 	e.shaped('1x create:copper_backtank', [
 	'SAS',
@@ -740,7 +740,7 @@ onEvent('recipes', e => {
 	'SSS'
 	], {
 		S: 'immersiveengineering:wirecoil_copper',
-		A: 'tfc:metal/tuyere/steel'
+		A: Item.of('tfc:metal/tuyere/steel').ignoreNBT()
 	}).id('kubejs:crafting/lv_coil');
 	e.shaped('1x immersiveengineering:coil_mv', [
 	'SSS',
@@ -748,7 +748,7 @@ onEvent('recipes', e => {
 	'SSS'
 	], {
 		S: 'immersiveengineering:wirecoil_electrum',
-		A: 'tfc:metal/tuyere/steel'
+		A: Item.of('tfc:metal/tuyere/steel').ignoreNBT()
 	}).id('kubejs:crafting/mv_coil');
 	e.shaped('1x immersiveengineering:coil_hv', [
 	'SSS',
@@ -756,7 +756,7 @@ onEvent('recipes', e => {
 	'SSS'
 	], {
 		S: 'immersiveengineering:wirecoil_steel',
-		A: 'tfc:metal/tuyere/steel'
+		A: Item.of('tfc:metal/tuyere/steel').ignoreNBT()
 	}).id('kubejs:crafting/hv_coil');
 	e.shaped('1x create:powered_toggle_latch', [
 	' S ',

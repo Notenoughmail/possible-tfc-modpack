@@ -50,6 +50,7 @@
 	"block.immersiveengineering.connector_hv": "High-Voltage Wire Connector",
 	"block.immersiveengineering.connector_hv_relay": "High-Voltage Wire Relay",
 	"block.immersiveengineering.transformer_hv": "High-Voltage Transformer",
+	"block.immersiveengineering.fluid_pipe": "Stainless Steel Fluid Pipe",
 	
 	"fluid.immersiveengineering.concrete_flowing": "Liquid Concrete",
 	

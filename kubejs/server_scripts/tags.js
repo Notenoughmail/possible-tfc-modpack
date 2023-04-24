@@ -58,6 +58,7 @@ onEvent('tags.items', e => {
 	e.add('forge:sheets', 'immersiveengineering:plate_constantan')
 	e.add('forge:sheets', 'immersiveengineering:plate_electrum')
 	e.add('forge:sheets', 'immersiveengineering:plate_lead')
+	e.add('forge:sheets', 'kubejs:sheet/graphite')
 	e.add('forge:sheets/constantan', 'immersiveengineering:plate_constantan')
 	e.add('forge:sheets/electrum', 'immersiveengineering:plate_electrum')
 	e.add('forge:sheets/lead', 'immersiveengineering:plate_lead')

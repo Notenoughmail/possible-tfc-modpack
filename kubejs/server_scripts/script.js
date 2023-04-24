@@ -548,6 +548,11 @@ onEvent('recipes', e => {
 		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
 		e.recipes.createPressing('railways:track_incomplete_dark_oak', 'railways:track_incomplete_dark_oak')
 	]).transitionalItem('railways:track_incomplete_dark_oak').loops(1).id('kubejs:sequenced_assembly/treated_planks_track'); // Unfortunately, SnR doesn't have the ability to make rails from all of TFC's woods, so just one is here as irl creosote stained wood ties
+	e.recipes.createSequencedAssembly(['16x railways:track_monorail'], '#forge:sheets/steel', [
+		e.recipes.createDeploying('railways:track_incomplete_monorail', ['railways:track_incomplete_monorail', 'kubejs:sheet/graphite']),
+		e.recipes.createDeploying('railways:track_incomplete_monorail', ['railways:track_incomplete_monorail', '#forge:sheets/steel']),
+		e.recipes.createPressing('railways:track_incomplete_monorail', 'railways:track_incomplete_monorail')
+	]).transitionalItem('railways:track_incomplete_monorail').loops(1).id('kubejs:sequenced_assembly/monorail');
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:cutting/copper_sheetmetal');
@@ -567,7 +572,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/constantan', ['immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan']).tier(2).id('kubejs:welding/double_constantan_ingot');
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/lead', ['immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead']).tier(1).id('kubejs:welding/double_lead_ingot');
 	e.recipes.tfcWelding('create:diving_boots', ['tfc:metal/boots/copper', 'create:andesite_alloy']).tier(2).id('kubejs:welding/diving_boots');
-	e.recipes.tfcWelding('6x immersiveengineering:fluid_pipe', ['firmalife:metal/sheet/stainless_steel', 'firmalife:metal/rod/stainless_steel']).tier(4).id('kubejs:welding/stainless_steel_fluid_pipe');
+	e.recipes.tfcWelding('4x immersiveengineering:fluid_pipe', ['firmalife:metal/sheet/stainless_steel', 'create:fluid_pipe']).tier(4).id('kubejs:welding/stainless_steel_fluid_pipe');
 	
 	e.recipes.tfcAnvil('3x create:brass_ladder', 'tfc:metal/rod/brass', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(2).id('kubejs:anvil/brass_ladder');
 	e.recipes.tfcAnvil('3x create:copper_ladder', 'tfc:metal/rod/copper', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(1).id('kubejs:anvil/copper_ladder');
@@ -627,7 +632,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/silver', 250), 'immersiveengineering:storage_silver', 961).id('kubejs:heating/silver_block');
 	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 250), 'immersiveengineering:storage_lead', 327).id('kubejs:heating/lead_block');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/gold', 250), 'minecraft:gold_block', 1060).id('kubejs:heating/gold_block');
-	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 250), 'minecraft:copper_block', 1080).id('kubejs:heating/copper_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 250), [/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper$/, /minecraft:(?:waxed_)?copper_block/], 1080).id('kubejs:heating/copper_block');
 	e.recipes.tfcHeating(Fluid.of('kubejs:graphite', 75), 'immersiveengineering:dust_hop_graphite', 2574).id('kubejs:heating/graphite_dust'); // Change the temperature once higher temp fuels added
 	e.recipes.tfcHeating(Fluid.of('kubejs:graphite', 100), 'immersiveengineering:ingot_hop_graphite', 2574).id('kubejs:heating/graphite_ingot');
 	e.recipes.tfcHeating('minecraft:glass', ['create:tiled_glass', 'create:vertical_framed_glass', 'create:framed_glass', 'create:horizontal_framed_glass'], 350).id('kubejs:heating/create_glass');
@@ -635,15 +640,16 @@ onEvent('recipes', e => {
 	e.recipes.tfcHeating('immersiveengineering:slag_glass', '#forge:slag', 650).id('kubejs:heating/slag_glass');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/bismuth_bronze', 800), Item.of('gunswithoutroses:gold_gun').ignoreNBT(), 985).useDurability().id('kubejs:heating/bismuth_bronze_rifle');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 800), Item.of('gunswithoutroses:iron_gun').ignoreNBT(), 1535).useDurability().id('kubejs:heating/wrought_iron_rifle');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 125), /minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab$/, 1080).id('kubejs:heating/copper_block_slab');
 	
 	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:electrum', 100), 0.1).id('kubejs:casting/electrum_ingot');
-	// e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:electrum', 100), 0.01).id('kubejs:casting/electrum_fire_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:electrum', 100), 0.01).id('kubejs:casting/electrum_fire_ingot');
 	e.recipes.tfcCasting('immersiveengineering:ingot_constantan', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:constantan', 100), 0.1).id('kubejs:casting/constantan_ingot');
-	// e.recipes.tfcCasting('immersiveengineering:ingot_constantan', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:constantan', 100), 0.01).id('kubejs:casting/constantan_fire_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_constantan', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:constantan', 100), 0.01).id('kubejs:casting/constantan_fire_ingot');
 	e.recipes.tfcCasting('immersiveengineering:ingot_lead', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:lead', 100), 0.1).id('kubejs:casting/lead_ingot');
-	// e.recipes.tfcCasting('immersiveengineering:ingot_lead', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:lead', 100), 0.01).id('kubejs:casting/lead_fire_ingot');
+	e.recipes.tfcCasting('immersiveengineering:ingot_lead', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:lead', 100), 0.01).id('kubejs:casting/lead_fire_ingot');
 	e.recipes.tfcCasting('immersiveengineering:ingot_hop_graphite', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:graphite', 100), 0.1).id('kubejs:casting/graphite');
-	// e.recipes.tfcCasting('immersiveengineering:ingot_hop_graphite', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:graphite', 100), 0.01).id('kubejs:casting/graphite_fire');
+	e.recipes.tfcCasting('immersiveengineering:ingot_hop_graphite', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:graphite', 100), 0.01).id('kubejs:casting/graphite_fire');
 	
 	e.recipes.tfcAlloy('kubejs_tfc:kubejs_electrum', [
 		['tfc:gold', 0.4, 0.6],
@@ -658,8 +664,6 @@ onEvent('recipes', e => {
 	e.recipes.tfcChisel('immersiveengineering:stairs_concrete', 'immersiveengineering:concrete', 'stair').id('kubejs:chisel/stair/concrete');
 	e.recipes.tfcChisel('immersiveengineering:stairs_concrete_tile', 'immersiveengineering:concrete_tile', 'stair').id('kubejs:chisel/stair/concrete_tile');
 	e.recipes.tfcChisel('immersiveengineering:stairs_hempcrete', 'immersiveengineering:hempcrete', 'stair').id('kubejs:chisel/stair/jutecrete');
-	e.recipes.tfcChisel('minecraft:cut_copper', 'minecraft:copper_block', 'smooth').id('kubejs:chisel/smooth/cut_copper');
-	e.recipes.tfcChisel('minecraft:cut_copper_stairs', 'minecraft:cut_copper', 'stair').id('kubejs:chisel/stair/cut_copper');
 	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_horizontal', 'immersiveengineering:treated_wood_horizontal', 'stair').id('kubejs:chisel/stair/stained_wood_horizontal');
 	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_vertical', 'immersiveengineering:treated_wood_vertical', 'stair').id('kubejs:chisel/stair/stained_wood_vertical');
 	e.recipes.tfcChisel('immersiveengineering:stairs_treated_wood_packaged', 'immersiveengineering:treated_wood_packaged', 'stair').id('kubejs:chisel/stair/stained_wood_packaged');
@@ -686,7 +690,30 @@ onEvent('recipes', e => {
 	e.recipes.tfcChisel('immersiveengineering:slab_concrete_tile', 'immersiveengineering:concrete_tile', 'slab').extraDrop('immersiveengineering:slab_concrete_tile').id('kubejs:chisel/slab/concrete_tile');
 	e.recipes.tfcChisel('immersiveengineering:slab_insulating_glass', 'immersiveengineering:insulating_glass', 'slab').extraDrop('immersiveengineering:slab_insulating_glass').id('kubejs:chisel/slab/insulating_glass');
 	e.recipes.tfcChisel('immersiveengineering:slab_alloybrick', 'immersiveengineering:alloybrick', 'slab').extraDrop('immersiveengineering:slab_alloybrick').id('kubejs:chisel/slab/kiln_brick');
+	e.recipes.tfcChisel('minecraft:cut_copper', 'minecraft:copper_block', 'smooth').id('kubejs:chisel/smooth/cut_copper');
+	e.recipes.tfcChisel('minecraft:cut_copper_stairs', 'minecraft:cut_copper', 'stair').id('kubejs:chisel/stair/cut_copper');
 	e.recipes.tfcChisel('minecraft:cut_copper_slab', 'minecraft:cut_copper', 'slab').extraDrop('minecraft:cut_copper_slab').id('kubejs:chisel/slab/cut_copper');
+	e.recipes.tfcChisel('minecraft:exposed_cut_copper', 'minecraft:exposed_copper', 'smooth').id('kubejs:chisel/smooth/exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:exposed_cut_copper_stairs', 'minecraft:exposed_cut_copper', 'stair').id('kubejs:chisel/stair/exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:exposed_cut_copper_slab', 'minecraft:exposed_cut_copper', 'slab').extraDrop('minecraft:exposed_cut_copper_slab').id('kubejs:chisel/slab/exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:weathered_cut_copper', 'minecraft:weathered_copper', 'smooth').id('kubejs:chisel/smooth/weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:weathered_cut_copper_stairs', 'minecraft:weathered_cut_copper', 'stair').id('kubejs:chisel/stair/weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:weathered_cut_copper_slab', 'minecraft:weathered_cut_copper', 'slab').extraDrop('minecraft:weathered_cut_copper_slab').id('kubejs:chisel/slab/weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:oxidized_cut_copper', 'minecraft:oxidized_copper', 'smooth').id('kubejs:chisel/smooth/oxidized_cut_copper');
+	e.recipes.tfcChisel('minecraft:oxidized_cut_copper_stairs', 'minecraft:oxidized_cut_copper', 'stair').id('kubejs:chisel/stair/oxidized_cut_copper');
+	e.recipes.tfcChisel('minecraft:oxidized_cut_copper_slab', 'minecraft:oxidized_cut_copper', 'slab').extraDrop('minecraft:oxidized_cut_copper_slab').id('kubejs:chisel/slab/oxidized_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_cut_copper', 'minecraft:waxed_copper_block', 'smooth').id('kubejs:chisel/smooth/waxed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_cut_copper_stairs', 'minecraft:waxed_cut_copper', 'stair').id('kubejs:chisel/stair/waxed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_cut_copper_slab', 'minecraft:waxed_cut_copper', 'slab').extraDrop('minecraft:waxed_cut_copper_slab').id('kubejs:chisel/slab/waxed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_exposed_cut_copper', 'minecraft:waxed_exposed_copper', 'smooth').id('kubejs:chisel/smooth/waxed_exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_exposed_cut_copper_stairs', 'minecraft:waxed_exposed_cut_copper', 'stair').id('kubejs:chisel/stair/waxed_exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_exposed_cut_copper_slab', 'minecraft:waxed_exposed_cut_copper', 'slab').extraDrop('minecraft:waxed_exposed_cut_copper_slab').id('kubejs:chisel/slab/waxed_exposed_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_weathered_cut_copper', 'minecraft:waxed_weathered_copper', 'smooth').id('kubejs:chisel/smooth/waxed_weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_weathered_cut_copper_stairs', 'minecraft:waxed_weathered_cut_copper', 'stair').id('kubejs:chisel/stair/waxed_weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_weathered_cut_copper_slab', 'minecraft:waxed_weathered_cut_copper', 'slab').extraDrop('minecraft:waxed_weathered_cut_copper_slab').id('kubejs:chisel/slab/waxed_weathered_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper', 'minecraft:waxed_oxidized_copper', 'smooth').id('kubejs:chisel/smooth/waxed_oxidized_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper_stairs', 'minecraft:waxed_oxidized_cut_copper', 'stair').id('kubejs:chisel/stair/waxed_oxidized_cut_copper');
+	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper_slab', 'minecraft:waxed_oxidized_cut_copper', 'slab').extraDrop('minecraft:waxed_oxidized_cut_copper_slab').id('kubejs:chisel/slab/waxed_oxidized_cut_copper');
 	
 	e.recipes.tfcLeatherKnapping('kubejs:leather_pouch', [
 		'XX XX',
