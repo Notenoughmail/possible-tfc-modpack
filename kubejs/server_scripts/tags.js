@@ -5,6 +5,7 @@ console.info('Loading tag scripts')
 onEvent('tags.blocks', e => {
 	e.add('tfc:support_beam', 'create:metal_girder')
 	e.add('create:passive_boiler_heaters', 'tfc:firepit')
+	e.add('create:passive_boiler_heaters', 'immersiveengineering:storage_uranium')
 });
 
 let berries = ['cherry', 'wintergreen_berry', 'strawberry', 'snowberry', 'raspberry', 'gooseberry', 'elderberry', 'cranberry', 'cloudberry', 'bunchberry', 'blueberry', 'blackberry']
@@ -42,8 +43,6 @@ onEvent('tags.items', e => {
 	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
 	e.add('forge:cobblestone', /tfc:rock.*mossy_cobble.*/)
 	e.add('forge:cobblestone/mossy', /tfc:rock.*mossy_cobble.*/)
-	e.add('tfc:pileable_ingots', /tfc:brick.*/)
-	e.add('tfc:pileable_ingots', 'minecraft:brick')
 	e.removeAllTagsFrom('immersiveengineering:dust_coke')
 	e.add('forge:dusts/coal_coke', 'tfc:powder/coke')//IE loves tags too much
 	e.add('tfc:ore_pieces', 'kubejs:ore/poor_lead')
@@ -76,12 +75,15 @@ onEvent('tags.items', e => {
 	e.add('tfc:metal_item/lead', 'immersiveposts:stick_lead')
 	e.add('tfc:metal_item/graphite', 'immersiveengineering:ingot_hop_graphite')
 	e.add('tfc:metal_item/graphite', 'immersiveengineering:dust_hop_graphite')
+	e.add('tfc:metal_item/graphite', 'kubejs:sheet/graphite')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_constantan')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_electrum')
 	e.add('tfc:pileable_sheets', 'immersiveengineering:plate_lead')
+	e.add('tfc:pileable_sheets', 'kubejs:sheet/graphite')
 	e.add('tfc:pileable_ingots', 'immersiveengineering:ingot_constantan')
 	e.add('tfc:pileable_ingots', 'immersiveengineering:ingot_electrum')
 	e.add('tfc:pileable_ingots', 'immersiveengineering:ingot_lead')
+	e.add('tfc:pileable_ingots', 'immersiveengineering:ingot_hop_graphite')
 	e.add('forge:double_ingots', 'kubejs:metal/double_ingot/constantan')
 	e.add('forge:double_ingots', 'kubejs:metal/double_ingot/electrum')
 	e.add('forge:double_ingots', 'kubejs:metal/double_ingot/lead')
@@ -90,15 +92,6 @@ onEvent('tags.items', e => {
 	e.add('forge:double_ingots/lead', 'kubejs:metal/double_ingot/lead')
 
 	//weight and szie
-	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv')
-	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_lv_relay')
-	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_mv')
-	e.add('kubejs:medium_wire_connectors', 'immersiveengineering:connector_mv_relay')
-	e.add('kubejs:power_wire_coils', 'immersiveengineering:wirecoil_copper')
-	e.add('kubejs:power_wire_coils', 'immersiveengineering:wirecoil_copper_ins')
-	e.add('kubejs:power_wire_coils', 'immersiveengineering:wirecoil_electrum')
-	e.add('kubejs:power_wire_coils', 'immersiveengineering:wirecoil_electrum_ins')
-	e.add('kubejs:power_wire_coils', 'immersiveengineering:wirecoil_steel')
 	e.add('tfc:minecarts', 'immersiveengineering:minecart_woodencrate')
 	e.add('tfc:minecarts', 'immersiveengineering:minecart_reinforcedcrate')
 	e.add('tfc:minecarts', 'immersiveengineering:minecart_woodenbarrel')
@@ -107,6 +100,8 @@ onEvent('tags.items', e => {
 	e.add('tfc:minecarts', 'minecraft:furnace_minecart')
 	e.add('tfc:minecarts', 'minecraft:tnt_minecart')
 	e.add('tfc:minecarts', 'minecraft:hopper_minecart')
+	e.add('tfc:minecarts', 'railways:benchcart')
+	e.add('tfc:minecarts', 'railways:jukeboxcart')
 })
 
 onEvent('tags.fluids', e => {

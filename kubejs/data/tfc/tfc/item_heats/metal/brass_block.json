@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"item": "create:brass_block"
-	},
-	"heat_capacity": 7.145,
-	"forging_temperature": 558.0,
-	"welding_temperature": 744.0
-}

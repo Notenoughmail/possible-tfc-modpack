@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"tag": "forge:rods/constantan"
-	},
-	"heat_capacity": 0.616,
-	"forging_temperature": 760.0,
-	"welding_temperature": 1012.0
-}

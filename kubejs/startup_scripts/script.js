@@ -18,6 +18,7 @@ onEvent('item.registry', e => {
 	e.create('metal/double_ingot/constantan')
 	e.create('metal/double_ingot/electrum')
 	e.create('metal/double_ingot/lead')
+	e.create('sheet/graphite')
 })
 
 onEvent('item.modification', e => {
@@ -62,13 +63,10 @@ onEvent('block.registry', e => {
 				.renderType('cutout')
 		})
 	})
-	e.create('ore/small_lead')
+	e.create('ore/small_lead', 'tfc_groundcover')
+		.ore()
 		.model("kubejs:block/ore/small_lead")
 		.hardness(0.1)
-		.noCollision()
-		.renderType('cutout')
-		.waterlogged()
-		.box(5, 0, 5, 11, 2, 11, true)
 		.tagBlock('tfc:can_be_snow_piled')
 		.material('stone')
 		.tagBlock('minecraft:mineable/pickaxe')

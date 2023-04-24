@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"item": "minecraft:copper_block"
-	},
-	"heat_capacity": 7.145,
-	"forging_temperature": 648.0,
-	"welding_temperature": 864.0
-}

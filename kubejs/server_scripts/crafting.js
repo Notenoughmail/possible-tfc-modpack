@@ -23,6 +23,8 @@ onEvent('recipes', e => {
 	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:crafting/single_chunk_loader');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:crafting/sand_paper');
 	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:crafting/train_station');
+	e.shapeless('1x railways:benchcart', ['minecraft:minecart', ['minecraft:crafting_table', '#tfc:workbenches']]).id('railways:benchcart');
+	e.shapeless('4x createaddition:portable_energy_interface', ['create:brass_casing', 'create:chute', 'immersiveengineering:coil_lv']).id('createaddition:crafting/portable_energy_interface');
 	
 	let blueprint = (input, output, id) => {
 		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:crafting/' + id)
@@ -556,26 +558,26 @@ onEvent('recipes', e => {
 		A: 'minecraft:stick',
 		B: 'create:electron_tube'
 	}).id('kubejs:crafting/controller_rail');
-	e.shaped('1x gunswithoutroses:iron_gun', [
+	e.recipes.tfcAdvancedShapedCrafting(ItemProvider.of('gunswithoutroses:iron_gun').copyForgingBonus(), [
 	'S  ',
 	'ASB',
 	' AC'
 	], {
-		S: 'tfc:metal/tuyere/wrought_iron',
+		S: Item.of('tfc:metal/tuyere/wrought_iron').ignoreNBT(),
 		A: 'minecraft:stick',
 		B: 'minecraft:flint',
 		C: '#tfc:rocks/loose'
-	}).id('kubejs:crafting/wrought_iron_rifle');
-	e.shaped('1x gunswithoutroses:gold_gun', [
+	}, 1, 1).id('kubejs:crafting/wrought_iron_rifle');
+	e.recipes.tfcAdvancedShapedCrafting(ItemProvider.of('gunswithoutroses:gold_gun').copyForgingBonus(), [
 	'S  ',
 	'ASB',
 	' AC'
 	], {
-		S: 'tfc:metal/tuyere/bismuth_bronze',
+		S: Item.of('tfc:metal/tuyere/bismuth_bronze').ignoreNBT(),
 		A: 'minecraft:stick',
 		B: 'minecraft:flint',
 		C: '#tfc:rocks/loose'
-	}).id('kubejs:crafting/bismuth_bronze_rifle');
+	}, 1, 1).id('kubejs:crafting/bismuth_bronze_rifle');
 	e.shaped('1x uppers:upper', [
 	' S ',
 	'A A'
@@ -1106,4 +1108,75 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:warped_window'
 	}).id('kubejs:crafting/bismuth_bronze_window_pane');
+	e.shaped('1x createaddition:rolling_mill', [
+	'SAS',
+	'BAB',
+	'BCB'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: 'create:shaft',
+		B: 'create:andesite_alloy',
+		C: 'create:andesite_casing'
+	}).id('createaddition:crafting/rolling_mill');
+	e.shaped('8x createaddition:barbed_wire', [
+	' S ',
+	'S S',
+	' S '
+	], {
+		S: 'tfc:metal/rod/wrought_iron'
+	}).id('createaddition:crafting/barbed_wire');
+	e.shaped('1x createaddition:modular_accumulator', [
+	'SAS',
+	'BCB',
+	'SDS'
+	], {
+		S: 'tfc:metal/rod/gold',
+		A: 'tfc:metal/sheet/copper',
+		B: 'immersiveengineering:wirecoil_electrum',
+		C: 'immersiveengineering:capacitor_hv',
+		D: 'create:brass_casing'
+	}).id('kubejs:crafting/modular_accumulator');
+	e.shaped('2x railways:smokestack_caboosestyle', [
+	'S',
+	'A'
+	], {
+		S: 'tfc:metal/sheet/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_caboosestyle');
+	e.shaped('8x railways:smokestack_coalburner', [
+	'S S',
+	'S S',
+	'SAS',
+	], {
+		S: 'tfc:metal/sheet/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_coalburner');
+	e.shaped('6x railways:smokestack_oilburner', [
+	'S S',
+	'SAS'
+	], {
+		S: 'tfc:metal/sheet/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_oilburner');
+	e.shaped('2x railways:smokestack_streamlined', [
+	'SAS'
+	], {
+		S: 'tfc:metal/sheet/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_streamlined');
+	e.shaped('4x railways:smokestack_woodburner', [
+	' S ',
+	'SAS'
+	], {
+		S: 'tfc:metal/sheet/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_woodburner');
+	e.shaped('4x railways:smokestack_diesel', [
+	'SAS',
+	' B '
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: 'create:propeller',
+		B: 'tfc:soot'
+	}).id('railways:crafting/smokestack_diesel');
 })

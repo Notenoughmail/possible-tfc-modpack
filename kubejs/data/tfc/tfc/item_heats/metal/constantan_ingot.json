@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"tag": "forge:ingots/constantan"
-	},
-	"heat_capacity": 1.233,
-	"forging_temperature": 760.0,
-	"welding_temperature": 1012.0
-}

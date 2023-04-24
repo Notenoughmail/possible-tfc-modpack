@@ -80,6 +80,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('#forge:plates')
 	e.hide(/railways:track_.*/)
 	e.hide(/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/)
+	e.hide('createaddition:festive_spool')
 })
 
 onEvent('jei.add.items', e => {
@@ -104,6 +105,7 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:melon_slice')
 	e.add('railways:track_coupler')
 	e.add('railways:track_dark_oak')
+	e.add(/create:andesite_(?:casing|encased_cogwheel|encased_large_cogwheel|encased_shaft|funnel|ladder|tunnel|alloy)/)
 })
 
 onEvent('jei.remove.categories', e => {
@@ -127,10 +129,6 @@ onEvent('jei.remove.categories', e => {
 	e.remove('jeresources:dungeon')
 	e.remove('jeresources:enchantment')
 	e.remove('jeresources:villager')
-	e.remove('createbigcannons:incomplete_cannon_blocks')
-	e.remove('createbigcannons:cannon_casting')
-	e.remove('createbigcannons:cannon_boring')
-	e.remove('createbigcannons:built_up_heating')
 	e.remove('minecraft:stonecutting')
 	e.remove('jeresources:worldgen')
 	e.remove('jeresources:plant')

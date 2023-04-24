@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"item": "immersiveengineering:storage_electrum"
-	},
-	"heat_capacity": 2.775,
-	"forging_temperature": 606,
-	"welding_temperature": 808
-}
