@@ -1,8 +1,0 @@
-{
-	"replace": false,
-	"values": [
-		"tfc:vein/normal_lead",
-		"tfc:vein/deep_lead",
-		"tfc:vein/poor_lead"
-	]
-}

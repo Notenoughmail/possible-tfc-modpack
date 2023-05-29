@@ -22,7 +22,7 @@ hash = "939db6cfafe2eec5f91f3993c4c8f78b72605e8b8c169d790d346580f338b3fb"
 
 [[files]]
 file = "config/cobblegenrandomizer-common.toml"
-hash = "4f32fd8053286f035463d47a8afb01e05d9a47c792f09c4d9b6e625ea4776805"
+hash = "697aa07e6faae9adcbdba61946cba58a134a06eba32675b7b31c48e863c98947"
 
 [[files]]
 file = "config/create-client.toml"
@@ -86,7 +86,7 @@ hash = "f70bc54b5f8bb19cf018c41b6f74ba0180df1649a85f1e32a2750f5a55d8de6a"
 
 [[files]]
 file = "config/inventoryprofilesnext/integrationHints/player-defined.json"
-hash = "3ba041e6088119303c593eaab9fa370cc1e62607bec4f63d734792c067b6fd20"
+hash = "dc80e131fbb540edbed62c7b9e8ef835ef11b3da62a0241b6ed559ac0c8d248d"
 
 [[files]]
 file = "config/inventoryprofilesnext/inventoryprofiles.json"
@@ -162,7 +162,7 @@ hash = "6c634e88bd390e585a98ee2059439ada90cfaab29f99fcef0aa71f3a09584722"
 
 [[files]]
 file = "config/tfc-client.toml"
-hash = "307f734d9453cb8e19f9ac4a147c104101b1d04917f934d45bd07d4f57911f19"
+hash = "a42ace3f046d314897a891925b764ba08551d77174739a64e8fe3fe98afa5dea"
 
 [[files]]
 file = "config/tfc-common.toml"
@@ -182,7 +182,7 @@ hash = "a29e6684e399c4cb0c8ec7255eeca52fb91105c1547b58ef667d84e43f65bde4"
 
 [[files]]
 file = "defaultconfigs/create-server.toml"
-hash = "15173e8c896a66a6cb668989343f5c11fb61722647e3d3d7eff4a4bd1981a4c3"
+hash = "d3cc56bfb22d27ee5e8076f852848dce06a60ba9a80731e2ea90ecc19baf386b"
 
 [[files]]
 file = "defaultconfigs/immersiveengineering-server.toml"
@@ -198,7 +198,7 @@ hash = "dc7347a82e530c09fd3ce53ed967e8d7a9fcd4fde5d5bc6e61718f414b54a0c3"
 
 [[files]]
 file = "kubejs/assets/create/lang/en_us.json"
-hash = "f118b07d73134e941e69131e1faf7a5af03db3e2de5b6c749d2806d2fa595023"
+hash = "fb5ae1dc0808fd24fc1a149fc4e9a8214042368bcdbd571eda20497b728e84ee"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window.json"
@@ -206,23 +206,23 @@ hash = "2fa0175e42a83d010829bfee3d3350381f9adedb921c6cac6fba83787ada98bc"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window_pane_noside.json"
-hash = "18b9daa16a457df380c48676a5225bca2824789a21a7634f0318a4f47ff66ba7"
+hash = "45cf8966e9be0376f5ca7137cec5d412d344139a8209230bb1b1f0f274222343"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window_pane_noside_alt.json"
-hash = "3cf2a6274975df65ebc07acfd71f4b3fbaaeccd84b1d6e5eef47fdb88a00ddd6"
+hash = "a775f5bf19a5d86146e35dbfc3329cecb094278fbeb195e0304706ca4905ace6"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window_pane_post.json"
-hash = "1795bae5e320fd35065bf4bd3ed6d5d03a046f6b03da79c171970581583acaae"
+hash = "caed19e926fc2a9c151e7f61d0796888085a0c1e759d9d13f5a9ebaf01cfe839"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window_pane_side.json"
-hash = "a743e4ab34498ff7c441b6486d74cd23795ec15c8fec1fba0969830a01e1605e"
+hash = "88b402017644916f03d485f72ccc35c234588ef5900f88ad20630eb3bba61227"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window_pane_side_alt.json"
-hash = "9782e2569c062c83432d971ffc67ec9c9416fd550a64950d4bf35c2aee1b59ce"
+hash = "4c654ce8369af176dbbc4567fb4ca5d2994213bb31c35661825ace716e1c5ab7"
 
 [[files]]
 file = "kubejs/assets/create/models/block/birch_window.json"
@@ -306,19 +306,19 @@ hash = "fb7a535bf3b7c6044759f95ef1c4764a44f8ecf0f8952d463f5bd1b31b2430f1"
 
 [[files]]
 file = "kubejs/assets/create/models/block/jungle_window_pane_noside_alt.json"
-hash = "d8af05a6ffcbe8dbe131b976513e42473d286ef35a78050c0b1e5ffade06e3c3"
+hash = "b2745a8659bf67011d195dd290e8cf9ad6d98dca889d34b18a631132c6012896"
 
 [[files]]
 file = "kubejs/assets/create/models/block/jungle_window_pane_post.json"
-hash = "2a0dba7fa717ad22856dba3462a2a7812272fdfc8ba01d5eb7412f64e06b1f71"
+hash = "ebe14453848f7358b9042d0aeb51c713e1861e2f9ef87db0f11cce0a8f8a05c1"
 
 [[files]]
 file = "kubejs/assets/create/models/block/jungle_window_pane_side.json"
-hash = "2b2c2358e6170dd99837dc7a84c5cbe713fb83ab6bb156f7431a5606530e580f"
+hash = "a2a5ed729251c2ea3e31eff44cdcd86714753f5c59daaa031930bc94dcdc8f56"
 
 [[files]]
 file = "kubejs/assets/create/models/block/jungle_window_pane_side_alt.json"
-hash = "b9204ef87b5e27cd8b6e480c9a2bdfa7ecb2fb5971f2077169ca0ee22d11e581"
+hash = "33865dbd29c68129136105decd45d0f0f6b9f450cd68837ab676dcfb05bd69f3"
 
 [[files]]
 file = "kubejs/assets/create/models/block/oak_window.json"
@@ -562,7 +562,7 @@ hash = "e2fd53018180c10c0867424d337016e7cb1f7661f3463524b8244589d2556c03"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/lang/en_us.json"
-hash = "e2c1a60f4d7a1fae944093a8a60a8b2623ad83afe8069f8ff73cf63651a12329"
+hash = "6822a630711a88038982bee486ba8abf5056009b9bbb415651138f78d17310b3"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/textures/item/metal_ingot_constantan.png"
@@ -602,7 +602,7 @@ hash = "fd6c3c79a17807e8537f9c0be343ba02bee5cdebfba1c42268c2eb661e3c869f"
 
 [[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "cb97dc3c617b0c5ee268c7f9918dfe8bc13f20baa0eac707f7f488dda3f42f63"
+hash = "7d117cf8bebd4d9aef7b8c2df7322893a4d4b8b8242704b7ab6e80c60855874d"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/frame/capacitor_hv.json"
@@ -937,12 +937,20 @@ file = "kubejs/assets/kubejs/textures/item/ore/small_lead.png"
 hash = "e8760f5b94a8d5c581bcc61cb280f97595f9d4fa9a88d1823d2afe613a97c702"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/sheet/graphite.png"
+hash = "4aa04eea36427392551090826996787b9d01318cd11e66bebe058a00e76e4fe1"
+
+[[files]]
 file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_constantan.png"
 hash = "d017b8efa2d7345ca526dc2a6dc4c168e81f657b8b22666e6b712b2f9b17c6ab"
 
 [[files]]
 file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_electrum.png"
 hash = "111a5a1bd53541ea3164370ef6eecd35de3893944f9ef8c284f9d8e9c5bd4854"
+
+[[files]]
+file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_graphite.png"
+hash = "43626092415ce23486412a3d23a8dc3d5c6384502430997d2d0135a9a322381d"
 
 [[files]]
 file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_lead.png"
@@ -974,19 +982,19 @@ hash = "2f8717681a83b1db9bc0b91d22091a3d80f4dc9340a207e401f855a37387afa7"
 
 [[files]]
 file = "kubejs/assets/tfc/lang/en_us.json"
-hash = "fc9c2e601ff6bf1ddc9f71e15d70c93b2594ede54e37bd0c44a9974b4c6b4218"
+hash = "139f911d95df4fce13928423cbeed9c85ecff7b21c5f1f3c429a47e6e7737b8f"
 
 [[files]]
 file = "kubejs/assets/tfc/textures/gui/icons/overlay.png"
 hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
-file = "kubejs/client_scripts/nbt.js"
-hash = "555eb95c076532c12a0e106094bc0901c04885bc8043ad93beb2f937d1d41186"
+file = "kubejs/client_scripts/script.js"
+hash = "a76f046d348db597c9e9e236908e0761fb6d9af36eb553fba1986fb81cf5e479"
 
 [[files]]
-file = "kubejs/client_scripts/script.js"
-hash = "a7d5617c1c55d281c674fac9ad76815c8850b5f7c87a8689c054a5fcaee62343"
+file = "kubejs/client_scripts/tooltips.js"
+hash = "53dcd9118b59e3c479b2600d99367d0e81bf7964fe88cff9549e015f40cfae0f"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -994,7 +1002,7 @@ hash = "a137fccaf8ed2409e6d5b7e0b8e1e0707c0888c6a81ea9d99287ff8654772c9a"
 
 [[files]]
 file = "kubejs/config/common.properties"
-hash = "a27a5f04df3497d36ef707d822e0fd26e9203e1a0fb3c66daec16e2fe4048278"
+hash = "156d802762503660d818a952c46d94b3daa625e935f5ed28d572604d560cc750"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
@@ -1073,40 +1081,12 @@ file = "kubejs/data/immersiveengineering/structures/multiblocks/metal_press.nbt"
 hash = "c1edb6b9233d0fcba17278cd1534fa224ef93a1a67c69bfcbb768af0b94f7ad0"
 
 [[files]]
-file = "kubejs/data/tfc/tags/worldgen/placed_feature/in_biome/veins.json"
-hash = "e83f3ad85a930e00dfc92150de4247a259106c8e4302f6c917e650d07694b070"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/configured_feature/vein/deep_lead.json"
-hash = "548c0c02f08e0e6d5e842ad244f5910a61e11d4eff71ce7e72c7f6988e8ee7ab"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/configured_feature/vein/normal_lead.json"
-hash = "61ecf09b842c8ef9c15bef98775616c6472bede166e0c924458db9a0befa4a7d"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/configured_feature/vein/poor_lead.json"
-hash = "0e632ccf12529ea614423b501bf3596d30cf3561f41fc3e7f354b9ae13b2371d"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/placed_feature/vein/deep_lead.json"
-hash = "caecea3d995e1772361b2e76d57c49170350b18c049c3ed8f2d1d65a4c034322"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/placed_feature/vein/normal_lead.json"
-hash = "5f979e4fde2a90098fa70eef07c4503d7466209195c93027596cb102137cc1a7"
-
-[[files]]
-file = "kubejs/data/tfc/worldgen/placed_feature/vein/poor_lead.json"
-hash = "bae5d154410b0016dc8d97158dfa0103a19b4b57674faaaf324ea448fb7fe5fc"
-
-[[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "2bbdab6a53c167745241d60e78c1da95bc53466553b4c6dc39a7ede843321054"
+hash = "b0c3f2ee626e81054aac2591405aafdbc0ceae1a0e0fe8d837deab7bc64edc21"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "a59f88867eb31a105d8627a990fc71048fc8aee8fc61eeb321ac6da240e1d0f8"
+hash = "356d477883a2e6f6f9d236cac0f8eef7df37a9f5d3f5c15aeeaf7df7ff6e7140"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1118,19 +1098,23 @@ hash = "9ea1a6f4563d76c8d1096461bce41d79ec609edc294e6b8b55e24edb1cc5bb0b"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "9bb84441e6cef8e8b43fc9b397026040366614a039ec77ed5f501170188bb014"
+hash = "2d57250bafbf9870fea9e0870ddc15bce647a41d7191ed8b3ce8f1bb84b4d30f"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "913922acccb199bf30993d430773f9e51bf0b0da065bfd647a9f5f2f5033c08b"
+hash = "7760becab56c457b0e1bd25a3de237a9911431e80dedfa901c35386209b374ab"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "0f7a771ed9eef77a9aaf95787b7a14dc1097bf700013ca23da304146ca064daf"
+hash = "309bbb2dfbac436767fffa8dc1b722acd574ac7239c64148ddd4a5c13e3996a6"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "5f499ac23948d7eea2fa03be600257acb906be2aec55203e6b0dabd14012a9d1"
+hash = "dff19577cfb3cd308d27a1d6d38921ef77028b2d553bba157aaf52587d58786b"
+
+[[files]]
+file = "kubejs/startup_scripts/special.js"
+hash = "80c48a1edaa478f625fab7c0e8d68e0d5143854ab7b0dffd0e3150f68e9461ae"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -1149,12 +1133,12 @@ metafile = true
 
 [[files]]
 file = "mods/architectury-api.pw.toml"
-hash = "4bd5faaed950ea0b84dc2c3665541367b411a6544c4f8d94a98ecb79b21cf4b4"
+hash = "6d3d349f02c4ffd6a8252db88e6168f9037601660a73fd282c4203a199e9997e"
 metafile = true
 
 [[files]]
 file = "mods/astikor-carts-tfc.pw.toml"
-hash = "ed84178984d5651675f60db5272e7b7d7baafea8f3043ab26b34d71fbdf9e23f"
+hash = "38cf2ae8658070ae63872df8d0b761e55abf4ba0c36d6f305b5b7cf9c2e8ce90"
 metafile = true
 
 [[files]]
@@ -1199,7 +1183,7 @@ metafile = true
 
 [[files]]
 file = "mods/controlling.pw.toml"
-hash = "63f1ab59061fb126cdabf39d74329ca1831e761b798c8aed0a79816c3874c04c"
+hash = "e4d2d558f3a44c059788554b6394c126d2993be30c8649da92fabb8fd2e4623f"
 metafile = true
 
 [[files]]
@@ -1208,8 +1192,13 @@ hash = "0586f6749e58dd39411b4bb131c417b83a0080f77be4cb3b83dfc4f9d04fe19e"
 metafile = true
 
 [[files]]
+file = "mods/create-deco.pw.toml"
+hash = "cfc1c30591c37dc6997800a0261e924d6991b9c60f1e4d892e4ffaf0f5716b01"
+metafile = true
+
+[[files]]
 file = "mods/create-steam-n-rails.pw.toml"
-hash = "d92a4fd66f219db8def4cc910c80399ca039faf169ffada0944e2a789eb7c7ba"
+hash = "3a667f6decadc3dc183623918df62216285fb181af9f53396dfeaf63b8a13c52"
 metafile = true
 
 [[files]]
@@ -1219,7 +1208,7 @@ metafile = true
 
 [[files]]
 file = "mods/createaddition.pw.toml"
-hash = "f68960c9fbf060475113eca1bbe8158d92530f75bfcc25399331d947560aa1c0"
+hash = "3bad491224e4a972591b3898b419e7d8995ab1816f1fc7962793d36445d3ae7e"
 metafile = true
 
 [[files]]
@@ -1239,7 +1228,7 @@ metafile = true
 
 [[files]]
 file = "mods/firmalife.pw.toml"
-hash = "1145a7815d0b3a6ff809e5a19409b8bd1fb216ee18b4e6633b38d1e0883a8cce"
+hash = "7913fcc6e6af2859776faec6bd1e4cf5410d41cb01e8a6916e8061201f70494c"
 metafile = true
 
 [[files]]
@@ -1264,7 +1253,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "6773046af0ba41593f547fe3654608b238ae936e716f4beeecea17a36abd42a0"
+hash = "fc6d930d9e3b60938001f6072c5a113c7744b80c7f629b220cca0bf7165980c7"
 metafile = true
 
 [[files]]
@@ -1279,7 +1268,7 @@ metafile = true
 
 [[files]]
 file = "mods/jade-addons.pw.toml"
-hash = "95bb4e5153dc7c86dce16e067fbd8ff2c5d510cadc14b0fa641afc20bea1f405"
+hash = "aa0cb222f2497eb5f0788f83c2a9c88611748e82101fef9192801e817d7d6919"
 metafile = true
 
 [[files]]
@@ -1304,7 +1293,7 @@ metafile = true
 
 [[files]]
 file = "mods/kotlin-for-forge.pw.toml"
-hash = "ee1ee7a327ab99accfd09c935272f85188fee63aa0e77807b9dea39067f5a3dc"
+hash = "8fd61b13a6da4b7f5cdf69ab6241c296b3019846a1635a2cbb427fbbb21635b2"
 metafile = true
 
 [[files]]
@@ -1324,7 +1313,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs-tfc.pw.toml"
-hash = "d360b115e5f3602b21bcf7fc91b3661788ec2896a22e172456c72c250397b5f4"
+hash = "172471363aa69d8c3b34b1e57ce45ef3d2c93641eb566d97c8418f76011339c6"
 metafile = true
 
 [[files]]
@@ -1339,7 +1328,7 @@ metafile = true
 
 [[files]]
 file = "mods/libipn.pw.toml"
-hash = "eabac4938c4056f934234f5dd209b95d7fa51e25a3627c58aaf265714af722c8"
+hash = "c4a42f0c24c3ea138a6de872683f38bab4bcfe378327eaa0126dc93143fb51ef"
 metafile = true
 
 [[files]]
@@ -1399,17 +1388,17 @@ metafile = true
 
 [[files]]
 file = "mods/supermartijn642s-core-lib.pw.toml"
-hash = "1c300c6bb92a6105eed15fc487309c4511e40d9238a57cae1a0b42154b3d2082"
+hash = "90d3f1e87c6e206a996910691e9f016d9c4ecdbaebebfcd76bb251498d221c3c"
 metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "ada32a798823b771137a35daea60b6da007ca9afa81c3964062a0fc960a403b1"
+hash = "0ba1124132a5663563064a27c6c1bacc95ca47d6bb5d5a375f59a58bf35475e5"
 metafile = true
 
 [[files]]
 file = "mods/textrues-rubidium-options.pw.toml"
-hash = "52ee1ced2362cd096a31167f55c77034a4f207201e180a73d107de1ce7933864"
+hash = "4216e196eff2f3e569417ec0fd3ffb5ba0d5e4a6818837d9eba6eb9c82d21691"
 metafile = true
 
 [[files]]

@@ -3,3 +3,4 @@
 
 # Exclude exported Modrinth modpacks
 *.mrpack
+kubejs/probe

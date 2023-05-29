@@ -84,6 +84,14 @@ onEvent('jei.hide.items', e => {
 	e.hide(/minecraft:infested_.+/)
 	// e.hide(/minecraft:(?:polished_)?andesite(?:_(?:stairs|slab|wall))?$/)
 	// e.hide(/create:(?:(?:cut|polished|small)_){0,2}andesite(?:_brick)?(?:_(?:stairs|slab|wall))?$/)
+	e.hide('firmalife:embedded_pipe')
+	e.hide('firmalife:squirt_moisture_transducer')
+	e.hide('immersiveengineering:dust_hop_graphite')
+	e.hide('immersiveengineering:metal_ladder_none')
+	e.hide('tfc:pan/filled')
+	e.hide('tfc:snow_pile')
+	e.hide('tfc:ice_pile')
+	e.hide(/createdeco:.*_vert/)
 })
 
 onEvent('jei.add.items', e => {
@@ -109,6 +117,14 @@ onEvent('jei.add.items', e => {
 	e.add('railways:track_coupler')
 	e.add('railways:track_dark_oak')
 	e.add('railways:track_monorail')
+	e.add('minecraft:leather_boots')
+	e.add('minecraft:leather_chestplate')
+	e.add('minecraft:leather_helmet')
+	e.add('minecraft:leather_leggings')
+})
+
+onEvent('jei.add.fluids', e => {
+	e.add('create:tea')
 })
 
 onEvent('jei.remove.categories', e => {

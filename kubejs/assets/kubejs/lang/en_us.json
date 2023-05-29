@@ -78,5 +78,7 @@
 	"item.kubejs.metal.double_ingot.electrum": "Electrum Double Ingot",
 	"item.kubejs.metal.double_ingot.lead": "Lead Double Ingot",
 	
-	"item.kubejs.sheet.graphite": "Graphite Sheet"
+	"item.kubejs.sheet.graphite": "Graphite Sheet",
+
+	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch"
 }

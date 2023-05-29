@@ -12,7 +12,7 @@ let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone',
 
 onEvent('recipes', e => {
 	//shapeless
-	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', 'tfc:metal/chain/wrought_iron', 'tfc:metal/chain/wrought_iron']).id('kubejs:crafting/chain_drive');
+	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', '2x tfc:metal/chain/wrought_iron']).id('kubejs:crafting/chain_drive');
 	e.shapeless('1x create:placard', ['minecraft:item_frame', 'tfc:metal/sheet/brass']).id('kubejs:crafting/placard');
 	e.shapeless('1x create:rose_quartz', ['tfc:ore/halite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_halite');
 	e.shapeless('1x create:rose_quartz', ['tfc:ore/sylvite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_sylvite');
@@ -25,6 +25,7 @@ onEvent('recipes', e => {
 	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:crafting/train_station');
 	e.shapeless('1x railways:benchcart', ['minecraft:minecart', ['minecraft:crafting_table', '#tfc:workbenches']]).id('railways:benchcart');
 	e.shapeless('4x createaddition:portable_energy_interface', ['create:brass_casing', 'create:chute', 'immersiveengineering:coil_lv']).id('createaddition:crafting/portable_energy_interface');
+	e.shapeless('1x kubejs:composite_catalyst', ['4x #tfc:igneous_rock', '#tfc:forge_fuel']).id('kubejs:crafting/composite_catalyst');
 	
 	let blueprint = (input, output, id) => {
 		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:crafting/' + id)
@@ -57,6 +58,7 @@ onEvent('recipes', e => {
 		'minecraft:redstone_torch',
 		Item.of('create:super_glue').ignoreNBT()
 	]).id('kubejs:crafting/pulse_repeater_to_pulse_extender');
+	e.recipes.tfcDamageInputsShapelessCrafting(e.recipes.tfcAdvancedShapelessCrafting('minecraft:dropper', ['minecraft:dispenser', Item.of('immersiveengineering:wirecutter').ignoreNBT()])).id('kubejs:crafting/dispenser_to_dropper');
 	
 	e.recipes.tfcExtraProductsShapelessCrafting('minecraft:redstone_torch', e.recipes.tfcDamageInputsShapelessCrafting('create:pulse_repeater', [
 		'create:pulse_extender',
@@ -456,8 +458,8 @@ onEvent('recipes', e => {
 	'S'
 	], {
 		S: 'tfc:metal/sheet/zinc',
-		A: '#tfc:barrels'
-	}).id('kubejs:crafting/item_vault'); //look back at this - why?
+		A: '#tfcbarrels:barrels'
+	}).id('kubejs:crafting/item_vault');
 	e.shaped('1x create:propeller', [
 	' S ',
 	'SAS',
@@ -512,9 +514,9 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'create:shaft',
-		B: 'tfc:metal/ingot/copper',
-		C: 'tfc:metal/double_ingot/copper'
-	}).id('kubejs:crafting/backtank');
+		B: 'tfc:metal/double_ingot/copper',
+		C: 'minecraft:copper_block'
+	}).id('kubejs:crafting/copper_backtank');
 	e.shaped('1x create:peculiar_bell', [
 	'S',
 	'A'
@@ -1179,4 +1181,94 @@ onEvent('recipes', e => {
 		A: 'create:propeller',
 		B: 'tfc:soot'
 	}).id('railways:crafting/smokestack_diesel');
+	e.shaped('1x immersiveengineering:fluid_placer', [
+	'SAS',
+	'A A',
+	'SAS'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: ['tfc:red_steel_bars', 'tfc:blue_steel_bars']
+	}).id('immersiveengineering:crafting/fluid_placer');
+	e.shaped('6x createdeco:cast_iron_catwalk', [
+	' S ',
+	'SAS',
+	' S '
+	], {
+		S: 'tfc:metal/rod/cast_iron',
+		A: 'tfc:metal/sheet/cast_iron'
+	}).id('createdeco:cast_iron_catwalk');
+	e.shaped('2x createdeco:cast_iron_catwalk_stair', [
+	' S',
+	'SA'
+	], {
+		S: 'createdeco:cast_iron_catwalk',
+		A: 'tfc:metal/rod/cast_iron'
+	}).id('createdeco:cast_iron_catwalk_stair');
+	e.shaped('3x immersiveengineering:metal_ladder_alu', [
+	'S',
+	'A'
+	], {
+		S: '#immersiveengineering:scaffoldings/aluminum',
+		A: '#forge:ladders/metal'
+	}).id('immersiveengineering:crafting/metal_ladder_alu');
+	e.shaped('3x immersiveengineering:metal_ladder_steel', [
+	'S',
+	'A'
+	], {
+		S: '#immersiveengineering:scaffoldings/steel',
+		A: '#forge:ladders/metal'
+	}).id('immersiveengineering:crafting/metal_ladder_steel');
+	e.shaped('16x create:andesite_ladder', [
+	'S S',
+	'S S',
+	'S S'
+	], {
+		S: 'create:andesite_alloy'
+	}).id('kubejs:crafting/composite_ladder');
+	e.shaped('8x immersiveengineering:connector_redstone', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'minecraft:redstone',
+		B: 'create:andesite_alloy'
+	}).id('kubejs:crafting/redstone_connector');
+	e.shaped('8x immersiveengineering:connector_probe', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'immersiveengineering:component_electronic',
+		B: 'create:andesite_alloy'
+	}).id('kubejs:crafting/redstone_probe');
+	e.shaped('8x immersiveengineering:connector_bundled', [
+		'S',
+		'A',
+		'S'
+	], {
+		S: 'immersiveengineering:wire_aluminum',
+		A: 'create:andesite_alloy'
+	}).id('kubejs:crafting/restone_interface');
+	e.shaped('1x immersiveengineering:item_batcher', [
+		'SAS',
+		'BCB',
+		'SDS'
+	], {
+		S: '#forge:treated_wood',
+		A: 'minecraft:redstone',
+		B: 'tfc:metal/rod/wrought_iron',
+		C: 'immersiveengineering:component_iron',
+		D: 'immersiveengineering:component_electronic'
+	}).id('kubejs:crafting/item_batcher');
+	e.shaped('1x immersiveengineering:redstone_breaker', [
+		'SAS',
+		'BCB'
+	], {
+		S: 'immersiveengineering:connector_hv',
+		A: 'minecraft:repeater',
+		B: 'tfc:metal/sheet/wrought_iron',
+		C: 'immersiveengineering:component_electronic'
+	}).id('immersiveengineering:crafting/redstone_breaker');
 })

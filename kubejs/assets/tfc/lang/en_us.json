@@ -3,6 +3,7 @@
 	"metal.kubejs_tfc.kubejs_electrum": "Electrum",
 	"metal.kubejs_tfc.kubejs_lead": "lead",
 	"metal.kubejs_tfc.kubejs_graphite": "Graphite",
+	"metal.kubejs_tfc.kubejs_unrefined_graphite": "Unrefined Graphite",
 	
 	"block.kubejs.ore.poor_lead.granite.prospected": "Lead",
 	"block.kubejs.ore.normal_lead.granite.prospected": "Lead",

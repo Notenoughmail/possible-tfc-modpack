@@ -2,14 +2,29 @@ settings.dataPackOutput = true
 
 onEvent('server.datapack.first', e => {
 	
-	e.addTFCFoodItem(FoodItemData.of('create:bar_of_chocolate').hunger(2).saturation(3).decayModifier(0.03).dairy(2))
-	e.addTFCFoodItem(FoodItemData.of('create:chocolate_glazed_berries').hunger(4).saturation(5).water(2).decayModifier(0.4).fruit(0.75).dairy(2))
-	e.addTFCFoodItem(FoodItemData.of('create:builders_tea').hunger(4).saturation(0.5).water(3).decayModifier(0.2).vegetables(0.5))
+	e.addTFCFoodItem('create:chocolate_glazed_berries', food => {
+		food.hunger(4)
+		food.saturation(5)
+		food.water(2)
+		food.decayModifier(0.4)
+		food.fruit(0.75)
+		food.dairy(2)
+	})
+	
+	e.addTFCDrinkable(FluidIngredient.of('#forge:tea'), drink => {
+		drink.consumeChance(1)
+		drink.thirst(3)
+		drink.effect('minecraft:haste', effect => {
+			effect.duration(200)
+		})
+	})
 	
 	e.addTFCFuel('immersiveengineering:coal_coke', 2385, 1466)
 	
+	e.addTFCLampFuel('immersiveengineering:ethanol', '#tfc:lamps', 300)
+	
 	e.addTFCHeat(['create:framed_glass', 'create:framed_glass_pane', 'create:horizontal_framed_glass', 'create:horizontal_framed_glass_pane', 'create:tiled_glass', 'create:tiled_glass_pane', 'create:vertical_framed_glass', 'create:vertical_framed_glass_pane'], 0.3)
-	e.addTFCHeat(['immersiveengineering:dust_hop_graphite', 'immersiveengineering:ingot_hop_graphite'], 8.6, 1544, 2059)
+	e.addTFCHeat('immersiveengineering:ingot_hop_graphite', 8.6, 1544, 2059)
 	e.addTFCHeat('create:brass_block', 7.145)
 	e.addTFCHeat('immersiveengineering:storage_constantan', 3.08)
 	e.addTFCHeat('#forge:double_ingots/constantan', 2.466, 760, 1012)
@@ -34,6 +49,8 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('create:zinc_block', 11.905)
 	e.addTFCHeat(['kubejs:ore/small_lead', 'kubejs:ore/poor_lead', 'kubejs:ore/normal_lead', 'kubejs:ore/rich_lead'], 0.34)
 	e.addTFCHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573)
+	e.addTFCHeat('createdeco:cast_iron_block', 7.145)
+	e.addTFCHeat('tfc:powder/coke', 7.31)
 	
 	e.addTFCItemSize('chunkloaders:advanced_chunk_loader', 's=large, w=heavy')
 	e.addTFCItemSize('chunkloaders:basic_chunk_loader', 's=normal, w=medium')
@@ -73,10 +90,69 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemSize('create:wrench', 's=normal, w=light')
 	e.addTFCItemSize('#create:toolboxes', 's=very_large, w=heavy')
 	
-	e.addTFCMetal('kubejs:constantan', 1266, 0.0037, '#forge:ingots/constantan', '#forge:sheets/constantan', 2)
-	e.addTFCMetal('kubejs:electrum', 1010, 0.00333, '#forge:ingots/electrum', '#forge:sheets/electrum')
-	e.addTFCMetal('kubejs:graphite', 2574, 0.0218, 'immersiveengineering:ingot_hop_graphite', 'kubejs:sheet/graphite', 1) // Change the temperature once higher temp fuels added
-	e.addTFCMetal('kubejs:lead', 327, 0.00507, '#forge:ingots/lead', '#forge:sheets/lead', 1)
+	e.addTFCMetal('kubejs:constantan', 1266, 0.0037, '#forge:ingots/constantan', '#forge:sheets/constantan', 1)
+	e.addTFCMetal('kubejs:electrum', 1010, 0.00333, '#forge:ingots/electrum', '#forge:sheets/electrum', 1)
+	e.addTFCMetal('kubejs:graphite', 2574, 0.0218, 'immersiveengineering:ingot_hop_graphite', 'kubejs:sheet/graphite', 2) // Change the temperature once higher temp fuels added
+	e.addTFCMetal('kubejs:lead', 327, 0.00507, '#forge:ingots/lead', '#forge:sheets/lead')
+	e.addTFCMetal('kubejs:unrefined_graphite', 2135, 0.00728, 'tfc:powder/coke', 'kubejs:dummy')
 	
 	e.addTFCSupport('create:metal_girder', 2, 2, 6)
+	
+	e.buildTFCVein('vein/poor_lead', vein => {
+		vein.rarity(75)
+		vein.minY(20)
+		vein.maxY(70)
+		vein.size(14)
+		vein.density(0.27)
+		vein.replacementMap(map => {
+			map.replace('tfc:rock/raw/granite').with('100 kubejs:ore/poor_lead/granite', '25 kubejs:ore/normal_lead/granite', '5 kubejs:ore/rich_lead/granite')
+			map.replace('tfc:rock/raw/quartzite').with('100 kubejs:ore/poor_lead/quartzite', '25 kubejs:ore/normal_lead/quartzite', '5 kubejs:ore/rich_lead/quartzite')
+			map.replace('tfc:rock/raw/slate').with('100 kubejs:ore/poor_lead/slate', '25 kubejs:ore/normal_lead/slate', '5 kubejs:ore/rich_lead/slate')
+			map.replace('tfc:rock/raw/phyllite').with('100 kubejs:ore/poor_lead/phyllite', '25 kubejs:ore/normal_lead/phyllite', '5 kubejs:ore/rich_lead/phyllite')
+			map.replace('tfc:rock/raw/schist').with('100 kubejs:ore/poor_lead/schist', '25 kubejs:ore/normal_lead/schist', '5 kubejs:ore/rich_lead/schist')
+			map.replace('tfc:rock/raw/gneiss').with('100 kubejs:ore/poor_lead/gneiss', '25 kubejs:ore/normal_lead/gneiss', '5 kubejs:ore/rich_lead/gneiss')
+			map.replace('tfc:rock/raw/marble').with('100 kubejs:ore/poor_lead/marble', '25 kubejs:ore/normal_lead/marble', '5 kubejs:ore/rich_lead/marble')
+		})
+		vein.indicator(indicator => {
+			indicator.rarity(12)
+			indicator.indicators('kubejs:ore/small_lead')
+		})
+	})
+	e.buildTFCVein('vein/normal_lead', vein => {
+		vein.rarity(75)
+		vein.minY(-16)
+		vein.maxY(60)
+		vein.size(16)
+		vein.density(0.5)
+		vein.replacementMap(map => {
+			map.replace('tfc:rock/raw/granite').with('30 kubejs:ore/poor_lead/granite', '80 kubejs:ore/normal_lead/granite', '15 kubejs:ore/rich_lead/granite')
+			map.replace('tfc:rock/raw/quartzite').with('30 kubejs:ore/poor_lead/quartzite', '80 kubejs:ore/normal_lead/quartzite', '15 kubejs:ore/rich_lead/quartzite')
+			map.replace('tfc:rock/raw/slate').with('30 kubejs:ore/poor_lead/slate', '80 kubejs:ore/normal_lead/slate', '15 kubejs:ore/rich_lead/slate')
+			map.replace('tfc:rock/raw/phyllite').with('30 kubejs:ore/poor_lead/phyllite', '80 kubejs:ore/normal_lead/phyllite', '15 kubejs:ore/rich_lead/phyllite')
+			map.replace('tfc:rock/raw/schist').with('30 kubejs:ore/poor_lead/schist', '80 kubejs:ore/normal_lead/schist', '15 kubejs:ore/rich_lead/schist')
+			map.replace('tfc:rock/raw/gneiss').with('30 kubejs:ore/poor_lead/gneiss', '80 kubejs:ore/normal_lead/gneiss', '15 kubejs:ore/rich_lead/gneiss')
+			map.replace('tfc:rock/raw/marble').with('30 kubejs:ore/poor_lead/marble', '80 kubejs:ore/normal_lead/marble', '15 kubejs:ore/rich_lead/marble')
+		})
+		vein.indicator(indicator => {
+			indicator.rarity(10)
+			indicator.indicators('kubejs:ore/small_lead')
+		})
+	})
+	e.buildTFCVein('vein/deep_lead', vein => {
+		vein.rarity(120)
+		vein.minY(-60)
+		vein.maxY(5)
+		vein.size(12)
+		vein.density(0.76)
+		vein.replacementMap(map => {
+			map.replace('tfc:rock/raw/granite').with('10 kubejs:ore/poor_lead/granite', '35 kubejs:ore/normal_lead/granite', '65 kubejs:ore/rich_lead/granite')
+			map.replace('tfc:rock/raw/quartzite').with('10 kubejs:ore/poor_lead/quartzite', '35 kubejs:ore/normal_lead/quartzite', '65 kubejs:ore/rich_lead/quartzite')
+			map.replace('tfc:rock/raw/slate').with('10 kubejs:ore/poor_lead/slate', '35 kubejs:ore/normal_lead/slate', '65 kubejs:ore/rich_lead/slate')
+			map.replace('tfc:rock/raw/phyllite').with('10 kubejs:ore/poor_lead/phyllite', '35 kubejs:ore/normal_lead/phyllite', '65 kubejs:ore/rich_lead/phyllite')
+			map.replace('tfc:rock/raw/schist').with('10 kubejs:ore/poor_lead/schist', '35 kubejs:ore/normal_lead/schist', '65 kubejs:ore/rich_lead/schist')
+			map.replace('tfc:rock/raw/gneiss').with('10 kubejs:ore/poor_lead/gneiss', '35 kubejs:ore/normal_lead/gneiss', '65 kubejs:ore/rich_lead/gneiss')
+			map.replace('tfc:rock/raw/marble').with('10 kubejs:ore/poor_lead/marble', '35 kubejs:ore/normal_lead/marble', '65 kubejs:ore/rich_lead/marble')
+		})
+	})
+	 e.addFeaturesToTFCWorld('in_biome/veins', 'kubejs_tfc:vein/poor_lead', 'kubejs_tfc:vein/normal_lead', 'kubejs_tfc:vein/deep_lead')
 })

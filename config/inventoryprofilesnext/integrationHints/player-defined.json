@@ -55,6 +55,22 @@
             "SETTINGS": {
                 "horizontalOffset": -10,
                 "top": -25
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 11,
+                "top": 78
+            },
+            "SORT": {
+                "horizontalOffset": 8,
+                "top": 78
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 9,
+                "top": 78
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 10,
+                "top": 78
             }
         }
     },

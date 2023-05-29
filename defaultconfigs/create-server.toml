@@ -345,7 +345,7 @@
 	bottomlessFluidMode = "DENY_ALL"
 	# 
 	#Whether open-ended pipes and hose pulleys should be allowed to place fluid sources.
-	placeFluidSourceBlocks = true
+	placeFluidSourceBlocks = false
 
 # 
 #Tweaks for logistical components
