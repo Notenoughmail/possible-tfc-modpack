@@ -10,6 +10,8 @@ let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'dougl
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
 
+let deco_metals = ['gold', 'brass', 'cast_iron', 'copper', 'zinc']
+
 onEvent('recipes', e => {
 	//shapeless
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', '2x tfc:metal/chain/wrought_iron']).id('kubejs:crafting/chain_drive');
@@ -103,6 +105,44 @@ onEvent('recipes', e => {
 		], {
 			S: 'tfc:rock/bricks/' + stone + '_slab'
 		}).id('kubejs:crafting/' + stone + '_slab_to_brick');
+	})
+	deco_metals.forEach(metal => {
+		e.shaped('1x createdeco:yellow_' + metal + '_lamp', [
+			'S',
+			'A',
+			'B'
+		], {
+			S: 'tfc:metal/rod/' + metal,
+			A: 'immersiveengineering:light_bulb',
+			B: 'tfc:metal/sheet/' + metal
+		}).id('kuebjs:crafting/yellow_' + metal + '_lamp');
+		e.shaped('1x createdeco:red_' + metal + '_lamp', [
+			'S',
+			'A',
+			'B'
+		], {
+			S: 'tfc:metal/rod/' + metal,
+			A: 'kubejs:red_tinted_light_bulb',
+			B: 'tfc:metal/sheet/' + metal
+		}).id('kuebjs:crafting/red_' + metal + '_lamp');
+		e.shaped('1x createdeco:blue_' + metal + '_lamp', [
+			'S',
+			'A',
+			'B'
+		], {
+			S: 'tfc:metal/rod/' + metal,
+			A: 'kubejs:blue_tinted_light_bulb',
+			B: 'tfc:metal/sheet/' + metal
+		}).id('kuebjs:crafting/blue_' + metal + '_lamp');
+		e.shaped('1x createdeco:green_' + metal + '_lamp', [
+			'S',
+			'A',
+			'B'
+		], {
+			S: 'tfc:metal/rod/' + metal,
+			A: 'kubejs:green_tinted_light_bulb',
+			B: 'tfc:metal/sheet/' + metal
+		}).id('kuebjs:crafting/green_' + metal + '_lamp');
 	})
 	
 	e.shaped('2x immersiveengineering:conveyor_basic', [
@@ -1271,4 +1311,72 @@ onEvent('recipes', e => {
 		B: 'tfc:metal/sheet/wrought_iron',
 		C: 'immersiveengineering:component_electronic'
 	}).id('immersiveengineering:crafting/redstone_breaker');
+	e.shaped('1x createdeco:yellow_andesite_lamp', [
+		'S',
+		'A',
+		'S'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'immersiveengineering:light_bulb'
+	}).id('kuebjs:crafting/yellow_composite_compund_lamp');
+	e.shaped('1x createdeco:red_andesite_lamp', [
+		'S',
+		'A',
+		'S'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'kubejs:red_tinted_light_bulb'
+	}).id('kuebjs:crafting/red_composite_compound_lamp');
+	e.shaped('1x createdeco:blue_andesite_lamp', [
+		'S',
+		'A',
+		'S'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'kubejs:blue_tinted_light_bulb'
+	}).id('kuebjs:crafting/blue_composite_compound_lamp');
+	e.shaped('1x createdeco:green_andesite_lamp', [
+		'S',
+		'A',
+		'S'
+	], {
+		S: 'create:andesite_alloy',
+		A: 'kubejs:green_tinted_light_bulb'
+	}).id('kuebjs:crafting/green_composite_compound_lamp');
+	e.shaped('1x createdeco:yellow_iron_lamp', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'immersiveengineering:light_bulb',
+		B: 'tfc:metal/sheet/wrought_iron'
+	}).id('kuebjs:crafting/yellow_wrought_iron_lamp');
+	e.shaped('1x createdeco:red_iron_lamp', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'kubejs:red_tinted_light_bulb',
+		B: 'tfc:metal/sheet/wrought_iron'
+	}).id('kuebjs:crafting/red_wrought_iron_lamp');
+	e.shaped('1x createdeco:blue_iron_lamp', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'kubejs:blue_tinted_light_bulb',
+		B: 'tfc:metal/sheet/wrought_iron'
+	}).id('kuebjs:crafting/blue_wrought_iron_lamp');
+	e.shaped('1x createdeco:green_iron_lamp', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'kubejs:green_tinted_light_bulb',
+		B: 'tfc:metal/sheet/wrought_iron'
+	}).id('kuebjs:crafting/green_wrought_iron_lamp');
 })

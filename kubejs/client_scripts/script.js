@@ -91,7 +91,10 @@ onEvent('jei.hide.items', e => {
 	e.hide('tfc:pan/filled')
 	e.hide('tfc:snow_pile')
 	e.hide('tfc:ice_pile')
-	e.hide(/createdeco:.*_vert/)
+	e.hide(/createdeco:.*brick.+/)
+	e.hide('minecraft:dirt_path')
+	e.hide('minecraft:enchanted_book')
+	e.hide(/minecraft:brick.+/)
 })
 
 onEvent('jei.add.items', e => {
@@ -121,6 +124,12 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:leather_chestplate')
 	e.add('minecraft:leather_helmet')
 	e.add('minecraft:leather_leggings')
+	e.add('createdeco:worn_brick')
+	e.add('createdeco:dusk_brick')
+	e.add('createdeco:scarlet_brick')
+	e.add('createdeco:blue_brick')
+	e.add('createdeco:pearl_brick')
+	e.add('createdeco:dean_brick')
 })
 
 onEvent('jei.add.fluids', e => {

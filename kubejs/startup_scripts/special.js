@@ -27,28 +27,40 @@ onEvent('create.boiler.heater', e => {
 	e.registerHeater('tfc:firepit', (block) => {
 		let pit = block.getEntity();
 		if (pit instanceof FirePit) {
-			return (pit.getTemperature() / 500) - 1;
+			if (pit.getTemperature() < 100) {
+				return -1;
+			}
+			return (pit.getTemperature() / 500);
 		}
 		return -1;
 	})
 	e.registerHeater('tfc:pot', (block) => {
 		let pot = block.getEntity();
 		if (pot instanceof FirePit) {
-			return (pot.getTemperature() / 500) -1;
+			if (pot.getTemperature() < 100) {
+				return -1;
+			}
+			return (pot.getTemperature() / 500);
 		}
 		return -1;
 	})
 	e.registerHeater('tfc:grill', (block) => {
 		let grill = block.getEntity();
 		if (grill instanceof FirePit) {
-			return (grill.getTemperature() / 500) - 1;
+			if (grill.getTemperature() < 100) {
+				return -1;
+			}
+			return (grill.getTemperature() / 500);
 		}
 		return -1;
 	})
 	e.registerHeater('tfc:charcoal_forge', (block) => {
 		let forge = block.getEntity();
 		if (forge instanceof CharcoalForge) {
-			return (forge.getTemperature() / 500) - 1;
+			if (forge.getTemperature() < 100) {
+				return -1;
+			}
+			return (forge.getTemperature() / 500);
 		}
 		return -1;
 	})

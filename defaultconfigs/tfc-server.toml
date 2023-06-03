@@ -14,6 +14,19 @@ farmlandMakesTheBestRaceTracks = false
 	#Base probability for a firestarter to start a fire. May change based on circumstances
 	#Range: 0.0 ~ 1.0
 	fireStarterChance = 0.5
+	#If true, knapping with rocks will only work when one rock is held in each hand (main hand and off hand)
+	#If false, knapping with rocks will work either with main and off hand, or by holding at least two rocks in the main hand
+	requireOffhandForRockKnapping = false
+	#Enable rat infestations for improperly stored food.
+	enableInfestations = true
+	#Enables TFC setting the moon phase based on the progress of the month. The etymology of the English word 'month' is in fact related to the word 'moon'.
+	enableCalendarSensitiveMoonPhases = true
+	#If false, vanilla lightning will not strike.
+	enableLightning = true
+	#If true, lightning has a chance of stripping bark off of trees.
+	enableLightningStrippingLogs = true
+	#If true, the gamerule 'doDaylightCycle' will be set to 'true' when no players are online on a server. This means that the calendar stops progressing when nobody is online. Disable this if you want the calendar to run whenever the server is online.
+	enableTimeStopWhenServerEmpty = true
 
 [blocks]
 
@@ -46,6 +59,12 @@ farmlandMakesTheBestRaceTracks = false
 		#A movement multiplier for players moving through plants. Individual plants will use a ratio of this value, and lower = slower.
 		#Range: 0.0 ~ 1.0
 		plantsMovementModifier = 0.2
+		#Chance for a twisting/weeping/kelp plant to grow each random tick, does not include crops. Lower = slower growth. Set to 0 to disable random plant growth.
+		#Range: 0.0 ~ 1.0
+		plantLongGrowthChance = 0.03
+		#Chance for a plant to spread each random tick, does not include crops. Lower = slower growth. Set to 0 to disable random plant spreading.
+		#Range: 0.0 ~ 1.0
+		plantSpreadChance = 0.001
 
 	[blocks.leaves]
 		#If true, then leaves will decay slowly over time when disconnected from logs (vanilla behavior), as opposed to instantly (TFC behavior).
@@ -98,11 +117,35 @@ farmlandMakesTheBestRaceTracks = false
 		cruciblePouringRate = 2
 		#If true, barrels will interact with in-world automation such as hoppers on a side-specific basis.
 		crucibleEnableAutomation = true
+		#A modifier for how fast fluid containers empty into crucibles when shift is held. Containers will empty 1 mB every (this) number of ticks.
+		#Range: > 1
+		crucibleFastPouringRate = 4
 
 	[blocks.anvil]
 		#The number of pixels that the anvil's result may be off by, but still count as recipe completion. By default this requires pixel perfect accuracy.
 		#Range: 0 ~ 150
 		anvilAcceptableWorkRange = 0
+		#The minimum efficiency (ratio of number of steps taken / minimum number of steps required) that must be passed for a item to be considered 'Poorly Forged'.
+		#Range: 1.0 ~ 1.7976931348623157E308
+		anvilPoorlyForgedThreshold = 10.0
+		#The minimum efficiency (ratio of number of steps taken / minimum number of steps required) that must be passed for a item to be considered 'Well Forged'.
+		#Range: 1.0 ~ 1.7976931348623157E308
+		anvilWellForgedThreshold = 5.0
+		#The minimum efficiency (ratio of number of steps taken / minimum number of steps required) that must be passed for a item to be considered 'Expertly Forged'.
+		#Range: 1.0 ~ 1.7976931348623157E308
+		anvilExpertForgedThreshold = 2.0
+		#The minimum efficiency (ratio of number of steps taken / minimum number of steps required) that must be passed for a item to be considered 'Perfectly Forged'.
+		#Range: 1.0 ~ 1.7976931348623157E308
+		anvilPerfectlyForgedThreshold = 1.5
+		#The multiplier to efficiency (mining speed) that is applied to a 'Perfectly Forged' tool.
+		#Range: 1.0 ~ 1000.0
+		anvilMaxEfficiencyMultiplier = 1.8
+		#The bonus to durability (probability to ignore a point of damage) that is applied to a 'Perfectly Forged' tool. Note that 1 ~ infinite durability, and 0 ~ no bonus.
+		#Range: 0.0 ~ 1.0
+		anvilMaxDurabilityMultiplier = 0.5
+		#The boost to attack damage that is applied to a 'Perfectly Forged' tool.
+		#Range: 1.0 ~ 1000.0
+		anvilMaxDamageMultiplier = 1.5
 
 	[blocks.barrel]
 		#Tank capacity of a barrel (in mB).
@@ -110,6 +153,8 @@ farmlandMakesTheBestRaceTracks = false
 		barrelCapacity = 10000
 		#If true, barrels will interact with in-world automation such as hoppers on a side-specific basis.
 		barrelEnableAutomation = true
+		#If true, barrels will seal and unseal on redstone signal.
+		barrelEnableRedstoneSeal = true
 
 	[blocks.composter]
 		#Number of ticks required for a composter in normal conditions to complete. (24000 = 1 game day), default is 12 days.
@@ -210,6 +255,121 @@ farmlandMakesTheBestRaceTracks = false
 		#Range: 0.0 ~ 20.0
 		hotWaterHealAmount = 0.08
 
+	[blocks.saplings]
+		#Modifier applied to the growth time of every (non-fruit) sapling. The modifier multiplies the ticks it takes to grow, so larger values cause longer growth times. For example, a value of 2 doubles the growth time.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		globalSaplingGrowthModifier = 1.0
+		#Modifier applied to the growth time of every fruit tree sapling. The modifier multiplies the ticks it takes to grow, so larger values cause longer growth times. For example, a value of 2 doubles the growth time.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		globalFruitSaplingGrowthModifier = 1.0
+		#Days for a acacia tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		acaciaSaplingGrowthDays = 11
+		#Days for a ash tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		ashSaplingGrowthDays = 7
+		#Days for a aspen tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		aspenSaplingGrowthDays = 8
+		#Days for a birch tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		birchSaplingGrowthDays = 7
+		#Days for a blackwood tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		blackwoodSaplingGrowthDays = 8
+		#Days for a chestnut tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		chestnutSaplingGrowthDays = 7
+		#Days for a douglas_fir tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		douglas_firSaplingGrowthDays = 7
+		#Days for a hickory tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		hickorySaplingGrowthDays = 10
+		#Days for a kapok tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		kapokSaplingGrowthDays = 7
+		#Days for a maple tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		mapleSaplingGrowthDays = 7
+		#Days for a oak tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		oakSaplingGrowthDays = 10
+		#Days for a palm tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		palmSaplingGrowthDays = 7
+		#Days for a pine tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		pineSaplingGrowthDays = 7
+		#Days for a rosewood tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		rosewoodSaplingGrowthDays = 8
+		#Days for a sequoia tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		sequoiaSaplingGrowthDays = 18
+		#Days for a spruce tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		spruceSaplingGrowthDays = 7
+		#Days for a sycamore tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		sycamoreSaplingGrowthDays = 8
+		#Days for a white_cedar tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		white_cedarSaplingGrowthDays = 7
+		#Days for a willow tree sapling to be ready to grow into a full tree.
+		#Range: > 0
+		willowSaplingGrowthDays = 11
+		#Days for a banana tree sapling to be eligible to grow
+		#Range: > 0
+		bananaSaplingGrowthDays = 6
+		#Days for a cherry tree sapling to be eligible to grow
+		#Range: > 0
+		cherrySaplingGrowthDays1 = 8
+		#Days for a green_apple tree sapling to be eligible to grow
+		#Range: > 0
+		green_appleSaplingGrowthDays1 = 10
+		#Days for a lemon tree sapling to be eligible to grow
+		#Range: > 0
+		lemonSaplingGrowthDays1 = 8
+		#Days for a olive tree sapling to be eligible to grow
+		#Range: > 0
+		oliveSaplingGrowthDays1 = 12
+		#Days for a orange tree sapling to be eligible to grow
+		#Range: > 0
+		orangeSaplingGrowthDays1 = 7
+		#Days for a peach tree sapling to be eligible to grow
+		#Range: > 0
+		peachSaplingGrowthDays1 = 11
+		#Days for a plum tree sapling to be eligible to grow
+		#Range: > 0
+		plumSaplingGrowthDays1 = 8
+		#Days for a red_apple tree sapling to be eligible to grow
+		#Range: > 0
+		red_appleSaplingGrowthDays1 = 10
+
+	[blocks.crops]
+		#Modifier applied to the growth time of every crop. The modifier multiplies the ticks it takes to grow, so larger values cause longer growth times. For example, a value of 2 doubles the growth time.
+		#Range: 0.001 ~ 1000.0
+		cropGrowthModifier = 1.0
+		#Modifier applied to the expiry time of every crop. The modifier multiplies the ticks it takes to grow, so larger values cause longer growth times. For example, a value of 2 doubles the growth time.
+		#Range: 0.001 ~ 1000.0
+		cropExpiryModifier = 1.0
+
+	[blocks.largeVessel]
+		#If true, large vessels will seal and unseal on redstone signal.
+		largeVesselEnableRedstoneSeal = true
+		#If true, large vessels will interact with in-world automation such as hoppers on a side-specific basis.
+		largeVesselEnableAutomation = true
+
+	[blocks.grass]
+		#The chance that when grass that freezes and thaws it will have a loose rock rise to the surface, provided some conditions are met. Set to 0 to disable.
+		#Range: 0.0 ~ 1.0
+		grassSpawningRocksChance = 0.01
+
+	[blocks.loom]
+		#If true, looms will interact with in-world automation such as hoppers on a side-specific basis.
+		loomEnableAutomation = true
+
 [items]
 
 	[items.smallVessel]
@@ -223,7 +383,7 @@ farmlandMakesTheBestRaceTracks = false
 		enableSmallVesselInventoryInteraction = true
 
 	[items.molds]
-		#Tank capacity of a Ingot mold (in mB).
+		#Tank capacity of a Fire Ingot mold (in mB).
 		#Range: 0 ~ 2147483645
 		moldIngotCapacity = 100
 		#Tank capacity of a Pickaxe Head mold (in mB).
@@ -262,7 +422,7 @@ farmlandMakesTheBestRaceTracks = false
 		#Tank capacity of a Knife Blade mold (in mB).
 		#Range: 0 ~ 2147483645
 		moldKnifeBladeCapacity = 100
-		#Tank capacity of a Scythe Blade mold (in mB).
+		#Tank capacity of a Bell mold (in mB).
 		#Range: 0 ~ 2147483645
 		moldScytheBladeCapacity = 100
 
@@ -278,8 +438,6 @@ farmlandMakesTheBestRaceTracks = false
 		#Tank capacity of a wooden bucket (in mB).
 		#Range: 0 ~ 2147483645
 		woodenBucketCapacity = 1000
-		#Should the wooden bucket place source blocks?
-		enableSourcesFromWoodenBucket = false
 
 [mechanics]
 
@@ -314,7 +472,7 @@ farmlandMakesTheBestRaceTracks = false
 		#Chance for a block fo fall from mining collapse. Higher = more likely.
 		#Range: 0.0 ~ 1.0
 		collapsePropagateChance = 0.55
-		#Chance for a block to fall from an explosion triggered collapse. Higher = more likely.
+		#Chance for a block to fall from an explosion triggered collapse. Higher = mor likely.
 		#Range: 0.0 ~ 1.0
 		collapseExplosionPropagateChance = 0.3
 		#Minimum radius for a collapse
@@ -352,9 +510,11 @@ farmlandMakesTheBestRaceTracks = false
 		#Food made with different creation dates doesn't stack by default, unless it's within a specific window. This is the number of hours that different foods will try and stack together at the loss of a little extra expiry time.
 		#Range: 1 ~ 100
 		foodDecayStackWindow = 6
-		#A multiplier for food decay, or expiration times. Larger values will result in naturally longer expiration times.
+		# A multiplier for food decay, or expiration times. Larger values will result in naturally shorter expiration times.
+		# Setting this to zero will cause decay not to apply.
+		# Note that if you set this to zero **food items will lose their creation dates!!**. This is not reversible!
 		#Range: 0.0 ~ 1000.0
-		foodDecayModifier = 0.0
+		foodDecayModifier = 1.0
 		#Enables negative effects from carrying too many very heavy items, including potion effects.
 		enableOverburdening = true
 		#A multiplier for how quickly the player gets thirsty.
@@ -367,6 +527,11 @@ farmlandMakesTheBestRaceTracks = false
 		#A multiplier for the maximum health that the player will obtain, based on their nutrition
 		#Range: 0.001 ~ 1000.0
 		nutritionMaximumHealthModifier = 3.0
+		#A multiplier for the default health that the player will have (this is at a average nutrition of 40%, aka the starting nutrition.
+		#Nutrition above this value will linearly scale to the maximum multiplier.
+		#Nutrition below this value will linearly scale to the minimum multiplier.
+		#Range: 0.001 ~ 1000.0
+		nutritionDefaultHealthModifier = 0.85
 
 	[mechanics.vanillaChanges]
 		#If vanilla bonemeal's instant-growth effect should be enabled.
@@ -573,27 +738,27 @@ farmlandMakesTheBestRaceTracks = false
 		[mechanics.animals.sheep]
 			#Max familiarity an adult may reach
 			#Range: 0.0 ~ 1.0
-			alpacaFamiliarityCap = 0.35
+			sheepFamiliarityCap = 0.35
 			#Days until animal reaches adulthood
 			#Range: > 0
-			alpacaAdulthoodDays = 56
+			sheepAdulthoodDays = 56
 			#Uses before animal becomes old and can no longer be used
 			#Range: > 0
-			alpacaUses = 60
+			sheepUses = 60
 			#Does the animal eat rotten food?
-			alpacaEatsRottenFood = false
+			sheepEatsRottenFood = false
 			#Length of pregnancy in days
 			#Range: > 0
-			alpacaGestationDays = 32
+			sheepGestationDays = 32
 			#Max number of children born
 			#Range: 0 ~ 100
-			alpacaChildCount = 2
+			sheepChildCount = 2
 			#Ticks until produce is ready
 			#Range: > 0
-			alpacaProduceTicks = 168000
+			sheepProduceTicks = 168000
 			#Minimum familiarity [0-1] needed for produce. Set above 1 to disable produce.
 			#Range: 0.0 ~ 3.4028234663852886E38
-			alpacaMinProduceFamiliarity = 0.15
+			sheepMinProduceFamiliarity = 0.15
 
 		[mechanics.animals.muskOx]
 			#Max familiarity an adult may reach
@@ -685,4 +850,46 @@ farmlandMakesTheBestRaceTracks = false
 			#Ticks until egg is ready to hatch
 			#Range: > 0
 			quailHatchDays = 8
+
+		[mechanics.animals.cat]
+			#Max familiarity an adult may reach
+			#Range: 0.0 ~ 1.0
+			catFamiliarityCap = 0.35
+			#Days until animal reaches adulthood
+			#Range: > 0
+			catAdulthoodDays = 50
+			#Uses before animal becomes old and can no longer be used
+			#Range: > 0
+			catUses = 60
+			#Does the animal eat rotten food?
+			catEatsRottenFood = false
+			#Length of pregnancy in days
+			#Range: > 0
+			catGestationDays = 19
+			#Max number of children born
+			#Range: 0 ~ 100
+			catChildCount = 6
+
+		[mechanics.animals.dog]
+			#Max familiarity an adult may reach
+			#Range: 0.0 ~ 1.0
+			dogFamiliarityCap = 0.35
+			#Days until animal reaches adulthood
+			#Range: > 0
+			dogAdulthoodDays = 50
+			#Uses before animal becomes old and can no longer be used
+			#Range: > 0
+			dogUses = 60
+			#Does the animal eat rotten food?
+			dogEatsRottenFood = true
+			#Length of pregnancy in days
+			#Range: > 0
+			dogGestationDays = 19
+			#Max number of children born
+			#Range: 0 ~ 100
+			dogChildCount = 2
+
+	[mechanics.fluids]
+		#If true, TFC buckets that naturally place sources (colored steel) will place sources. If false, this behavior is disabled.
+		enableBucketsPlacingSources = false
 

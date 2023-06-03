@@ -194,7 +194,7 @@ hash = "a054f80224b67104da66c43cc2ee71ef27ce1554ac2b3290d1125b4d679af134"
 
 [[files]]
 file = "defaultconfigs/tfc-server.toml"
-hash = "dc7347a82e530c09fd3ce53ed967e8d7a9fcd4fde5d5bc6e61718f414b54a0c3"
+hash = "478ee16efa21a629179436ce52d2490619f48b6fb2b141cfe11f18694209f4b2"
 
 [[files]]
 file = "kubejs/assets/create/lang/en_us.json"
@@ -990,7 +990,7 @@ hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "a76f046d348db597c9e9e236908e0761fb6d9af36eb553fba1986fb81cf5e479"
+hash = "3594f6fc05721bb3f3d235efe13cf4f86131badcd055afe17a53d532844ef42f"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
@@ -1002,7 +1002,7 @@ hash = "a137fccaf8ed2409e6d5b7e0b8e1e0707c0888c6a81ea9d99287ff8654772c9a"
 
 [[files]]
 file = "kubejs/config/common.properties"
-hash = "156d802762503660d818a952c46d94b3daa625e935f5ed28d572604d560cc750"
+hash = "a27a5f04df3497d36ef707d822e0fd26e9203e1a0fb3c66daec16e2fe4048278"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
@@ -1081,12 +1081,16 @@ file = "kubejs/data/immersiveengineering/structures/multiblocks/metal_press.nbt"
 hash = "c1edb6b9233d0fcba17278cd1534fa224ef93a1a67c69bfcbb768af0b94f7ad0"
 
 [[files]]
+file = "kubejs/server_scripts/bricks.js"
+hash = "0acfc1931620a5294c662c2450418325071c9052b8f7b267e469e82735578691"
+
+[[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "b0c3f2ee626e81054aac2591405aafdbc0ceae1a0e0fe8d837deab7bc64edc21"
+hash = "243badab7910ba2911843fab365d5abb5ff62447c7ce9eb29b7f9f1e93516514"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "356d477883a2e6f6f9d236cac0f8eef7df37a9f5d3f5c15aeeaf7df7ff6e7140"
+hash = "0821e93af28ce5ec269059eabe7615cd06aa16bfa53a64063a08faad4c9f8ff1"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1098,27 +1102,31 @@ hash = "9ea1a6f4563d76c8d1096461bce41d79ec609edc294e6b8b55e24edb1cc5bb0b"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "2d57250bafbf9870fea9e0870ddc15bce647a41d7191ed8b3ce8f1bb84b4d30f"
+hash = "706373600fe7f2e8621bc8634122f9ed53d0002d71ea782826701647f395f468"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "7760becab56c457b0e1bd25a3de237a9911431e80dedfa901c35386209b374ab"
+hash = "acf897be486d47fe11b61bb5b1a222cafa3e2e6d67e729b948ac84dba7fce8b9"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "309bbb2dfbac436767fffa8dc1b722acd574ac7239c64148ddd4a5c13e3996a6"
+hash = "4751ceebb58617e5b14f41ce891896d6cf65fc982f56ce833e937d6592164ade"
+
+[[files]]
+file = "kubejs/startup_scripts/bricks.js"
+hash = "9f12a39813e7a9d16d585a38b98123c70ea096c00ef8aa9871f1c58cc4377dac"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "dff19577cfb3cd308d27a1d6d38921ef77028b2d553bba157aaf52587d58786b"
+hash = "0403b0e0954cc604bd7fbbc98b61fa684647e550f553aab95e8fd2ba454b8140"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "80c48a1edaa478f625fab7c0e8d68e0d5143854ab7b0dffd0e3150f68e9461ae"
+hash = "41db4b871142ba2e0a2fa297558bbfef87044bb9c2fe8ec0f7ec658b9b71709f"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
-hash = "4479331246593d4de58c131f468b68fba0424f375347e3dd794da87c4a206bab"
+hash = "c0317b8633aab062439f0ec72d1a7fed38fa79048c3d257008222fda7db6e744"
 metafile = true
 
 [[files]]
@@ -1313,7 +1321,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs-tfc.pw.toml"
-hash = "172471363aa69d8c3b34b1e57ce45ef3d2c93641eb566d97c8418f76011339c6"
+hash = "47e6ae645b5efa5ef772418d2d52d537aefad465086a70dd1e164681a56c1539"
 metafile = true
 
 [[files]]

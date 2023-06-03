@@ -68,7 +68,12 @@ let ids = [
 	/createaddition:compat\/immersiveengineering\/crushing\/(?:coke_block|coal_coke)/,
 	'minecraft:iron_block',
 	/immersiveengineering:jei_bucket.+/,
-	'create:crushing/leather_horse_armor'
+	'create:crushing/leather_horse_armor',
+	'minecraft:paper',
+	'immersiveengineering:crafting/paper_from_sawdust',
+	'create:pressing/sugar_cane',
+	'immersiveengineering:crafting/gunpowder_from_dusts',
+	'create:potions'
 ]
 
 onEvent('recipes', e => {
@@ -251,7 +256,12 @@ onEvent('recipes', e => {
 		/.*netherite.*/,
 		'createaddition:straw',
 		'immersiveengineering:item_batcher',
-		'immersiveengineering:component_electronic'
+		'immersiveengineering:component_electronic',
+		'minecraft:bucket',
+		'minecraft:glass_bottle',
+		'create:cinder_flour',
+		'createdeco:polished_iron_bars',
+		/minecraft:brick.+/
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})
@@ -280,6 +290,13 @@ onEvent('recipes', e => {
 	e.remove({type: 'immersiveengineering:squeezer'});
 	e.remove({type: 'immersiveengineering:fermenter'});
 	e.remove({type: 'createaddition:liquid_burning'});
-	e.remove({type: ['minecraft:crafting_shaped', 'minecraft:crafting_shapeless'], output: 'minecreaft:paper'});
 	e.remove({mod: 'createdeco'})
+	e.remove({input: 'minecraft:bucket'})
+	e.remove({output: 'minecraft:bucket'})
+	e.remove({output: 'minecraft:glass_bottle'})
+	e.remove({output: 'create:cinder_flour'})
+	e.remove({type: 'immersiveengineering:bottling_machine'})
+	e.remove({type: 'create:filling'})
+	e.remove({type: 'create:emptying'})
+	e.remove({type: 'create:pressing'})
 })

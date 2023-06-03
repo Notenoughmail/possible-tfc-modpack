@@ -4,3 +4,7 @@
 # Exclude exported Modrinth modpacks
 *.mrpack
 kubejs/probe
+kubejs/exported
+kubejs/README.txt
+jsconfig.json
+probejs.json

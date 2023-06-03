@@ -90,6 +90,15 @@ onEvent('block.registry', e => {
 	e.create('frame/capacitor_hv')//+ expandability for future frames if that's something that happens
 })
 
+onEvent('block.modification', e => {
+	// A hilarious consequence of the recently added methods
+	BlockIngredient.of(/createdeco:.+lamp/).asJavaObject().validBlocks.forEach(block => {
+		e.modify(block, modify => {
+			modify.lightEmission = 5
+		})
+	})
+})
+
 onEvent('fluid.registry', e => {
 	e.create('constantan')
 		.thickTexture(0xfc8d6f)
