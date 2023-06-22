@@ -1,0 +1,13 @@
+name = "Firma: Civilization"
+filename = "FirmaCivilization-0.0.32-alpha-1.18.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "c3e62ed077774cd0563d38ac5ed91f6efeda57a8"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4599200
+project-id = 714158
