@@ -7,30 +7,6 @@ settings.logErroringRecipes = true
 
 console.info('Welcome to my personal hell!')
 
-let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
-
-let powders = ['amethyst', 'diamond', 'emerald', 'lapis_lazuli', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz', 'graphite', 'kaolinite', 'sylvite', 'sulfur', 'saltpeter']
-
-let coppers = ['native_copper', 'malachite', 'tetrahedrite']
-
-let irons = ['hematite', 'magnetite', 'limonite']
-
-let grains = ['barley', 'maize', 'oat', 'rye', 'rice', 'wheat']
-
-let molds = ['plate', 'gear', 'rod', 'bullet_casing', 'wire', 'packing_4', 'packing_9', 'unpacking']
-
-let sands = ['brown', 'white', 'black', 'red', 'yellow', 'green', 'pink']
-
-let colors = ['black', 'red', 'green', 'brown', 'blue', 'purple', 'cyan', 'light_gray', 'gray', 'pink', 'lime', 'yellow', 'light_blue', 'magenta', 'orange', 'white']
-
-let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
-
-let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
-
-let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass', 'copper', 'gold', 'nickel', 'rose_gold', 'silver', 'tin', 'zinc', 'sterling_silver', 'cast_iron', 'steel', 'black_steel', 'blue_steel', 'red_steel']
-
-let ie_metals = ['aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel']
-
 onEvent('recipes', e => {
 	let ie_bottler_simple_mold = (type, metal, mold, amount) => {
 		e.custom({
@@ -137,8 +113,12 @@ onEvent('recipes', e => {
 		e.recipes.immersiveengineeringSawmill('8x tfc:wood/lumber/' + plank, 'tfc:wood/stripped_log/' + plank).id('kubejs:sawmill/' + plank + '_lumber');
 	});
 	colors.forEach(color => {
+		if (color != 'white') {
+			e.recipes.tfcBarrelInstant('createdeco:' + color + '_placard', '#createdeco:placards', Fluid.of('tfc:' + color + '_dye', 25)).id('kubejs:instant_barrel/' + color + '_decal');
+		}
 		e.recipes.tfcBarrelSealed('immersiveengineering:sheetmetal_colored_' + color, ['#forge:sheetmetal/colorless', Fluid.of('tfc:' + color + '_dye', 25)], 1000).id('kubejs:sealed_barrel/' + color + '_sheetmetal');
-		e.recipes.createSplashing(['minecraft:' + color + '_concrete_powder'], 'minecraft:' + color + '_concrete').id('create:splashing/' + color + '_concrete_powder');
+		e.recipes.createSplashing(['minecraft:' + color + '_concrete'], 'minecraft:' + color + '_concrete_powder').id('create:splashing/' + color + '_concrete_powder');
+		e.recipes.tfcBarrelInstant('createdeco:' + color + '_decal', '#createdeco:decals', Fluid.of('tfc:' + color + '_dye', 25)).id('kubejs:instant_barrel/' + color + '_decal');
 	});
 	sheetmetals.forEach(sheetmetal => {
 		e.recipes.tfcChisel('immersiveengineering:slab_sheetmetal_' + sheetmetal, 'immersiveengineering:sheetmetal_' + sheetmetal, 'slab').extraDrop('immersiveengineering:slab_sheetmetal_' + sheetmetal).id('kubejs:chisel/slab/sheetmetal_' + sheetmetal);
@@ -153,6 +133,7 @@ onEvent('recipes', e => {
 		ie_bottler_simple_mold('ingot', metal, 'kubejs:mold/ingot', 100)
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_ingot/' + metal], 'tfc:metal/ingot/' + metal, ['tfc:metal/ingot/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_ingot');
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/' + metal], 'tfc:metal/sheet/' + metal, ['tfc:metal/sheet/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_sheet');
+		e.recipes.immersiveengineeringMetalPress('1x tfc:metal/sheet/' + metal, 'tfc:metal/double_ingot/' + metal, 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/' + metal + '_sheet');
 	});
 	ie_metals.forEach(metal => {
 		e.recipes.tfcChisel('immersiveengineering:slab_storage_' + metal, 'immersiveengineering:storage_' + metal, 'slab').extraDrop('immersiveengineering:slab_storage_' + metal).id('kubejs:chisel/slab/' + metal);
@@ -202,221 +183,223 @@ onEvent('recipes', e => {
 	e.recipes.createCrushing(['1x tfc:sand/white'], 'tfc:rock/gravel/marble').id('kubejs:crushing/marble_sand');
 	e.recipes.createCrushing([
 	'4x tfc:powder/salt',
-	Item.of('tfc:powder/salt').withChance(0.15)
+		Item.of('tfc:powder/salt').withChance(0.15)
 	], 'tfc:ore/halite').id('kubejs:crushing/halite');
 	e.recipes.createCrushing([
 	'1x tfc:ore/gypsum',
-	Item.of('tfc:ore/gypsum').withChance(0.05)
+		Item.of('tfc:ore/gypsum').withChance(0.05)
 	], 'tfc:rock/raw/limestone').id('kubejs:crushing/raw_limestone');
 	e.recipes.createCrushing([
 	'8x minecraft:redstone',
-	Item.of('3x minecraft:redstone').withChance(0.1)
+		Item.of('3x minecraft:redstone').withChance(0.1)
 	], 'tfc:ore/cryolite').id('kubejs:crushing/cryolite');
 	e.recipes.createCrushing([
 	'4x tfc:powder/charcoal',
-	Item.of('tfc:powder/charcoal').withChance(0.35)
+		Item.of('tfc:powder/charcoal').withChance(0.35)
 	], 'minecraft:charcoal').id('kubejs:crushing/charcoal');
 	e.recipes.createCrushing([
 	'6x tfc:powder/flux',
-	Item.of('tfc:powder/flux').withChance(0.75)
+		Item.of('tfc:powder/flux').withChance(0.75)
 	], 'tfc:ore/borax').id('kubejs:crushing/borax');
 	e.recipes.createCrushing([
 	'2x tfc:powder/flux',
-	Item.of('tfc:powder/flux').withChance(0.65)
+		Item.of('tfc:powder/flux').withChance(0.65)
 	], '#tfc:fluxstone').id('kubejs:crushing/fluxstone');
 	e.recipes.createCrushing([
 	'4x tfc:powder/coke',
-	Item.of('tfc:powder/coke').withChance(0.2)
+		Item.of('tfc:powder/coke').withChance(0.2)
 	], 'immersiveengineering:coal_coke').id('kubejs:crushing/coal_coke');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_gold').withChance(0.7)
+		Item.of('immersiveengineering:dust_gold').withChance(0.7)
 	], 'tfc:ore/rich_native_gold').id('kubejs:crushing/rich_gold_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_gold').withChance(0.5)
+		Item.of('immersiveengineering:dust_gold').withChance(0.5)
 	], 'tfc:ore/normal_native_gold').id('kubejs:crushing/normal_gold_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_gold').withChance(0.3)
+		Item.of('immersiveengineering:dust_gold').withChance(0.3)
 	], 'tfc:ore/poor_native_gold').id('kubejs:crushing/poor_gold_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_gold').withChance(0.2)
+		Item.of('immersiveengineering:dust_gold').withChance(0.2)
 	], 'tfc:ore/small_native_gold').id('kubejs:crushing/small_gold_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_nickel').withChance(0.7)
+		Item.of('immersiveengineering:dust_nickel').withChance(0.7)
 	], 'tfc:ore/rich_garnierite').id('kubejs:crushing/rich_nickel_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_nickel').withChance(0.5)
+		Item.of('immersiveengineering:dust_nickel').withChance(0.5)
 	], 'tfc:ore/normal_garnierite').id('kubejs:crushing/normal_nickel_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_nickel').withChance(0.3)
+		Item.of('immersiveengineering:dust_nickel').withChance(0.3)
 	], 'tfc:ore/poor_garnierite').id('kubejs:crushing/poor_nickel_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_nickel').withChance(0.2)
+		Item.of('immersiveengineering:dust_nickel').withChance(0.2)
 	], 'tfc:ore/small_garnierite').id('kubejs:crushing/small_nickel_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_silver').withChance(0.7)
+		Item.of('immersiveengineering:dust_silver').withChance(0.7)
 	], 'tfc:ore/rich_native_silver').id('kubejs:crushing/rich_silver_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_silver').withChance(0.5)
+		Item.of('immersiveengineering:dust_silver').withChance(0.5)
 	], 'tfc:ore/normal_native_silver').id('kubejs:crushing/normal_silver_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_silver').withChance(0.3)
+		Item.of('immersiveengineering:dust_silver').withChance(0.3)
 	], 'tfc:ore/poor_native_silver').id('kubejs:crushing/poor_silver_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_silver').withChance(0.2)
+		Item.of('immersiveengineering:dust_silver').withChance(0.2)
 	], 'tfc:ore/small_native_silver').id('kubejs:crushing/small_silver_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_lead').withChance(0.7)
+		Item.of('immersiveengineering:dust_lead').withChance(0.7)
 	], 'kubejs:ore/rich_lead').id('kubejs:crushing/rich_lead_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_lead').withChance(0.5)
+		Item.of('immersiveengineering:dust_lead').withChance(0.5)
 	], 'kubejs:ore/normal_lead').id('kubejs:crushing/normal_lead_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_lead').withChance(0.3)
+		Item.of('immersiveengineering:dust_lead').withChance(0.3)
 	], 'kubejs:ore/poor_lead').id('kubejs:crushing/poor_lead_dust');
 	e.recipes.createCrushing([
-	Item.of('immersiveengineering:dust_lead').withChance(0.2)
+		Item.of('immersiveengineering:dust_lead').withChance(0.2)
 	], 'kubejs:ore/small_lead').id('kubejs:crushing/small_lead_dust');
 	e.recipes.createCrushing([
 	'8x minecraft:redstone',
-	Item.of('3x minecraft:redstone').withChance(0.1)
+		Item.of('3x minecraft:redstone').withChance(0.1)
 	], 'tfc:ore/cinnabar').id('kubejs:crushing/cinnabar');
 	
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/rhyolite').withChance(0.45),
-	Item.of('tfc:ore/sulfur').withChance(0.0007)
+		Item.of('tfc:rock/loose/rhyolite').withChance(0.45),
+		Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/rhyolite').id('kubejs:washing/rhyolite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/basalt').withChance(0.45),
-	Item.of('tfc:ore/sulfur').withChance(0.0007)
+		Item.of('tfc:rock/loose/basalt').withChance(0.45),
+		Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/basalt').id('kubejs:washing/basalt');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/andesite').withChance(0.45),
-	Item.of('tfc:ore/sulfur').withChance(0.0007)
+		Item.of('tfc:rock/loose/andesite').withChance(0.45),
+		Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/andesite').id('kubejs:washing/andesite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/dacite').withChance(0.45),
-	Item.of('tfc:ore/sulfur').withChance(0.0007)
+		Item.of('tfc:rock/loose/dacite').withChance(0.45),
+		Item.of('tfc:ore/sulfur').withChance(0.0007)
 	], 'tfc:rock/gravel/dacite').id('kubejs:washing/dacite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/granite').withChance(0.45),
-	Item.of('tfc:ore/cryolite').withChance(0.001),
-	Item.of('tfc:ore/cinnabar').withChance(0.0008),
-	Item.of('tfc:ore/sulfur').withChance(0.0003),
-	Item.of('tfc:ore/topaz').withChance(0.0003),
-	Item.of('tfc:ore/emerald').withChance(0.00002)
+		Item.of('tfc:rock/loose/granite').withChance(0.45),
+		Item.of('tfc:ore/cryolite').withChance(0.001),
+		Item.of('tfc:ore/cinnabar').withChance(0.0008),
+		Item.of('tfc:ore/sulfur').withChance(0.0003),
+		Item.of('tfc:ore/topaz').withChance(0.0003),
+		Item.of('tfc:ore/emerald').withChance(0.00002)
 	], 'tfc:rock/gravel/granite').id('kubejs:washing/granite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/diorite').withChance(0.45),
-	Item.of('tfc:ore/cinnabar').withChance(0.0008),
-	Item.of('tfc:ore/sulfur').withChance(0.0003),
-	Item.of('tfc:ore/emerald').withChance(0.00002)
+		Item.of('tfc:rock/loose/diorite').withChance(0.45),
+		Item.of('tfc:ore/cinnabar').withChance(0.0008),
+		Item.of('tfc:ore/sulfur').withChance(0.0003),
+		Item.of('tfc:ore/emerald').withChance(0.00002)
 	], 'tfc:rock/gravel/diorite').id('kubejs:washing/diorite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/gabbro').withChance(0.45),
-	Item.of('tfc:ore/cinnabar').withChance(0.0008),
-	Item.of('tfc:ore/sulfur').withChance(0.0003),
-	Item.of('tfc:ore/emerald').withChance(0.00002),
-	Item.of('tfc:ore/diamond').withChance(0.00001)
+		Item.of('tfc:rock/loose/gabbro').withChance(0.45),
+		Item.of('tfc:ore/cinnabar').withChance(0.0008),
+		Item.of('tfc:ore/sulfur').withChance(0.0003),
+		Item.of('tfc:ore/emerald').withChance(0.00002),
+		Item.of('tfc:ore/diamond').withChance(0.00001)
 	], 'tfc:rock/gravel/gabbro').id('kubejs:washing/gabbro');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/gneiss').withChance(0.45),
-	Item.of('tfc:ore/graphite').withChance(0.001),
-	Item.of('tfc:ore/gypsum').withChance(0.001)
+		Item.of('tfc:rock/loose/gneiss').withChance(0.45),
+		Item.of('tfc:ore/graphite').withChance(0.001),
+		Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/gneiss').id('kubejs:washing/gneiss');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/quartzite').withChance(0.45),
-	Item.of('tfc:ore/graphite').withChance(0.001),
-	Item.of('tfc:ore/gypsum').withChance(0.001),
-	Item.of('tfc:ore/cinnabar').withChance(0.0008),
-	Item.of('tfc:ore/opal').withChance(0.00005)
+		Item.of('tfc:rock/loose/quartzite').withChance(0.45),
+		Item.of('tfc:ore/graphite').withChance(0.001),
+		Item.of('tfc:ore/gypsum').withChance(0.001),
+		Item.of('tfc:ore/cinnabar').withChance(0.0008),
+		Item.of('tfc:ore/opal').withChance(0.00005)
 	], 'tfc:rock/gravel/quartzite').id('kubejs:washing/quartzite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/slate').withChance(0.45),
-	Item.of('tfc:ore/gypsum').withChance(0.001)
+		Item.of('tfc:rock/loose/slate').withChance(0.45),
+		Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/slate').id('kubejs:washing/slate');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/phyllite').withChance(0.45),
-	Item.of('tfc:ore/gypsum').withChance(0.001)
+		Item.of('tfc:rock/loose/phyllite').withChance(0.45),
+		Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/phyllite').id('kubejs:washing/phyllite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/schist').withChance(0.45),
-	Item.of('tfc:ore/graphite').withChance(0.001),
-	Item.of('tfc:ore/gypsum').withChance(0.001)
+		Item.of('tfc:rock/loose/schist').withChance(0.45),
+		Item.of('tfc:ore/graphite').withChance(0.001),
+		Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/schist').id('kubejs:washing/schist');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/marble').withChance(0.45),
-	Item.of('tfc:ore/graphite').withChance(0.001),
-	Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
-	Item.of('tfc:ore/gypsum').withChance(0.001)
+		Item.of('tfc:rock/loose/marble').withChance(0.45),
+		Item.of('tfc:ore/graphite').withChance(0.001),
+		Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
+		Item.of('tfc:ore/gypsum').withChance(0.001)
 	], 'tfc:rock/gravel/marble').id('kubejs:washing/marble');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/shale').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/sylvite').withChance(0.001),
-	Item.of('tfc:ore/borax').withChance(0.001),
-	Item.of('tfc:ore/cinnabar').withChance(0.0008),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002),
-	Item.of('tfc:ore/ruby').withChance(0.00005)
+		Item.of('tfc:rock/loose/shale').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/sylvite').withChance(0.001),
+		Item.of('tfc:ore/borax').withChance(0.001),
+		Item.of('tfc:ore/cinnabar').withChance(0.0008),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002),
+		Item.of('tfc:ore/ruby').withChance(0.00005)
 	], 'tfc:rock/gravel/shale').id('kubejs:washing/shale');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/claystone').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/sylvite').withChance(0.001),
-	Item.of('tfc:ore/borax').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002)
+		Item.of('tfc:rock/loose/claystone').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/sylvite').withChance(0.001),
+		Item.of('tfc:ore/borax').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/claystone').id('kubejs:washing/claystone');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/limestone').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/borax').withChance(0.001),
-	Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002),
-	Item.of('tfc:ore/gypsum').withChance(0.0001),
-	Item.of('tfc:ore/ruby').withChance(0.00005)
+		Item.of('tfc:rock/loose/limestone').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/borax').withChance(0.001),
+		Item.of('tfc:ore/lapis_lazuli').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002),
+		Item.of('tfc:ore/gypsum').withChance(0.0001),
+		Item.of('tfc:ore/ruby').withChance(0.00005)
 	], 'tfc:rock/gravel/limestone').id('kubejs:washing/limestone');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/conglomerate').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002)
+		Item.of('tfc:rock/loose/conglomerate').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/conglomerate').id('kubejs:washing/conglomerate');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/dolomite').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002)
+		Item.of('tfc:rock/loose/dolomite').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/dolomite').id('kubejs:washing/dolomite');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/chert').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/sylvite').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002)
+		Item.of('tfc:rock/loose/chert').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/sylvite').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/chert').id('kubejs:washing/chert');
 	e.recipes.createSplashing([
-	Item.of('tfc:rock/loose/chalk').withChance(0.45),
-	Item.of('tfc:ore/kaolinite').withChance(0.001),
-	Item.of('tfc:ore/saltpeter').withChance(0.001),
-	Item.of('tfc:ore/halite').withChance(0.0007),
-	Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
-	Item.of('tfc:ore/lignite').withChance(0.0002)
+		Item.of('tfc:rock/loose/chalk').withChance(0.45),
+		Item.of('tfc:ore/kaolinite').withChance(0.001),
+		Item.of('tfc:ore/saltpeter').withChance(0.001),
+		Item.of('tfc:ore/halite').withChance(0.0007),
+		Item.of('tfc:ore/bituminous_coal').withChance(0.0004),
+		Item.of('tfc:ore/lignite').withChance(0.0002)
 	], 'tfc:rock/gravel/chalk').id('kubejs:washing/chalk');
 	e.recipes.createSplashing(['minecraft:white_wool'], '#tfc:colored_wool').id('create:splashing/wool');
+
+	e.recipes.createMixing(Fluid.of('create:tea', 500), [Fluid.of('kubejs:diluted_milk', 500), '4x firmalife:fruit_leaf', 'firmalife:spice/vanilla']).id('createmixing/tea');
 	
 	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot');
 	e.recipes.createPressing('tfc:grass_path/silt', 'tfc:dirt/silt').id('kubejs:pressing/silt_path');
@@ -509,41 +492,43 @@ onEvent('recipes', e => {
 		e.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'tfc:metal/rod/steel']),
 		e.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
 	]).transitionalItem('create:incomplete_track').loops(1).id('kubejs:sequenced_assembly/track');
-	e.recipes.createSequencedAssembly(['create:precision_mechanism'], 'tfc:brass_mechanisms', [
+	e.recipes.createSequencedAssembly(['2x create:precision_mechanism'], 'immersiveengineering:plate_duroplast', [
 		e.recipes.createCutting('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism').processingTime(200),
 		e.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:electron_tube']),
-		e.recipes.createPressing('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism'),
+		e.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'tfc:brass_mechanisms']),
 		e.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:cogwheel']),
 		e.recipes.createPressing('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism')
 	]).transitionalItem('create:incomplete_precision_mechanism').loops(3).id('kubejs:sequenced_assembly/precision_mechanism');
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_iron'], 'tfc:metal/ingot/copper', [
-		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/wrought_iron'])
-	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/iron_component');
+		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/wrought_iron']),
+		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'create:cogwheel'])
+	]).transitionalItem('kubejs:sequence/light_component').loops(4).id('kubejs:sequenced_assembly/iron_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_steel'], 'tfc:metal/ingot/copper', [
-		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel'])
-	]).transitionalItem('tfc:metal/ingot/copper').loops(4).id('kubejs:sequenced_assembly/steel_component');
+		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel']),
+		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'create:large_cogwheel'])
+	]).transitionalItem('kubejs:sequence/heavy_component').loops(4).id('kubejs:sequenced_assembly/steel_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:heavy_engineering'], 'immersiveengineering:light_engineering', [
 		e.recipes.createFilling('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', Fluid.of('tfc:metal/black_steel', 100)]),
 		e.recipes.createDeploying('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', 'immersiveengineering:component_steel']),
 		e.recipes.createPressing('immersiveengineering:light_engineering', 'immersiveengineering:light_engineering')
-	]).transitionalItem('immersiveengineering:light_engineering').loops(4).id('kubejs:sequenced_assembly/heavy_engineering_block');
+	]).transitionalItem('kubejs:sequence/heavy_engineering').loops(4).id('kubejs:sequenced_assembly/heavy_engineering_block');
 	e.recipes.createSequencedAssembly(['immersiveengineering:cokebrick'], 'tfc:fire_bricks', [
 		e.recipes.createDeploying('tfc:fire_bricks', ['tfc:fire_bricks', 'minecraft:brick']),
 		e.recipes.createDeploying('tfc:fire_bricks', ['tfc:fire_bricks', 'tfc:ore/bituminous_coal']),
 		e.recipes.createFilling('tfc:fire_bricks', ['tfc:fire_bricks', Fluid.of('minecraft:water', 250)])
-	]).transitionalItem('tfc:fire_bricks').loops(2).id('kubejs:sequenced_assembly/coke_bricks');
+	]).transitionalItem('kubejs:sequence/coke_brick').loops(2).id('kubejs:sequenced_assembly/coke_bricks');
 	e.recipes.createSequencedAssembly(['immersiveengineering:capacitor_mv'], 'kubejs:frame/capacitor_mv', [
 		e.recipes.createFilling('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createDeploying('kubejs:frame/capacitor_mv', ['kubejs:frame/capacitor_mv', 'tfc:metal/sheet/nickel']),
 		e.recipes.createPressing('kubejs:frame/capacitor_mv', 'kubejs:frame/capacitor_mv')
-	]).transitionalItem('kubejs:frame/capacitor_mv').loops(1).id('kubejs:sequenced_assembly/mv_capacitor');
+	]).transitionalItem('kubejs:sequence/mv_capacitor').loops(1).id('kubejs:sequenced_assembly/mv_capacitor');
 	e.recipes.createSequencedAssembly(['immersiveengineering:capacitor_hv'], 'kubejs:frame/capacitor_hv', [
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 1000)]),
 		e.recipes.createFilling('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', Fluid.of('immersiveengineering:redstone_acid', 500)]),
 		e.recipes.createDeploying('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', 'tfc:metal/sheet/steel']),
 		e.recipes.createPressing('kubejs:frame/capacitor_hv', 'kubejs:frame/capacitor_hv')
-	]).transitionalItem('kubejs:frame/capacitor_hv').loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
+	]).transitionalItem('kubejs:sequence/hv_capacitor').loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
 	e.recipes.createSequencedAssembly(['16x railways:track_dark_oak'], '#forge:treated_wood_slab', [
 		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
 		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
@@ -589,7 +574,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcAnvil('2x immersiveposts:stick_electrum', 'immersiveengineering:ingot_electrum', ['bend_last', 'draw_not_last']).tier(3).id('kubejs:anvil/electrum_rod');
 	e.recipes.tfcAnvil('2x immersiveposts:stick_constantan', 'immersiveengineering:ingot_constantan', ['bend_last', 'draw_not_last']).tier(2).id('kubejs:anvil/constantan_rod');
 	e.recipes.tfcAnvil('2x immersiveposts:stick_lead', 'immersiveengineering:ingot_lead', ['bend_last', 'draw_not_last']).tier(1).id('kubejs:anvil/lead_rod');
-	e.recipes.tfcAnvil('12x create:copper_nugget', 'tfc:metal/ingot/copper', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(1).id('kubejs:anvil/copper_bullet');
+	e.recipes.tfcAnvil('12x create:copper_nugget', 'tfc:metal/ingot/copper', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(1).id('kubejs:anvil/copper_sheel_end');
 	e.recipes.tfcAnvil('railways:conductor_whistle', 'tfc:metal/double_sheet/brass', ['bend_last', 'draw_not_last', 'hit_any']).tier(2).id('kubejs:anvil/whistle');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last']).applyBonus().tier(2).id('tfc:anvil/bismuth_bronze_tuyere');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/black_bronze', '#forge:double_sheets/black_bronze', ['bend_last', 'bend_second_last']).applyBonus().tier(2).id('tfc:anvil/black_bronze_tuyere');
@@ -600,7 +585,21 @@ onEvent('recipes', e => {
 	e.recipes.tfcAnvil('tfc:metal/tuyere/red_steel', '#forge:double_sheets/red_steel', ['bend_last', 'bend_not_last']).applyBonus().tier(6).id('tfc:anvil/red_steel_tuyere');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/steel', '#forge:double_sheets/steel', ['bend_last', 'bend_not_last']).applyBonus().tier(4).id('tfc:anvil/steel_tuyere');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/wrought_iron', '#forge:double_sheets/wrought_iron', ['bend_last', 'bend_not_last']).applyBonus().tier(3).id('tfc:anvil/wrought_iron_tuyere');
-		
+	e.recipes.tfcAnvil('3x createdeco:cast_iron_sheet_metal', '#forge:sheets/cast_iron', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/cast_iron_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_iron', '#forge:sheets/wrought_iron', ['bend_last', 'hit_any', 'hit_any']).tier(3).id('kubejs:anvil/wrought_iron_sheet_metal');
+	e.recipes.tfcAnvil('12x immersiveengineering:nugget_lead', 'immersiveengineering:ingot_lead', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(1).id('kubejs:anvil/lead_pellet');
+	e.recipes.tfcAnvil('12x immersiveengineering:nugget_steel', 'tfc:metal/ingot/steel', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(4).id('kubejs:anvil/steel_pellet');
+	e.recipes.tfcAnvil('12x immersiveengineering:nugget_silver', 'tfc:metal/ingot/silver', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(2).id('kubejs:anvil/silver_pellet');
+	e.recipes.tfcAnvil('12x immersiveengineering:nugget_constantan', 'immersiveengineering:ingot_constantan', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(2).id('kubejs:anvil/constantan_pellet');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_nickel', '#forge:sheets/nickel', ['bend_last', 'hit_any', 'hit_any']).tier(3).id('kubejs:anvil/nickel_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_silver', '#forge:sheets/silver', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/silver_sheet_metal');
+	e.recipes.tfcAnvil('3x immerisveengineering:sheetmetal_lead', '#forge:sheets/lead', ['bend_last', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/lead_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_copper', '#forge:sheets/copper', ['bend_last', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/copper_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_steel', '#forge:sheets/steel', ['bend_last', 'hit_any', 'hit_any']).tier(4).id('kubejs:anvil/steel_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_gold', '#forge:sheets/gold', ['bend_last', 'hit_any', 'hit_any']).id('kubejs:anvil/gold_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_electrum', '#forge:sheets/electrum', ['bend_last', 'hit_any', 'hit_any']).tier(3).id('kubeks:anvil/electrum_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_constantan', '#forge:sheets/constantan', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/constantan_sheet_metal');
+
 	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 100), 'immersiveengineering:ingot_constantan', 1266).id('kubejs:heating/constantan_ingot');
 	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 100), 'immersiveengineering:ingot_electrum', 1010).id('kubejs:heating/electrum_ingot');
 	e.recipes.tfcHeating(Fluid.of('kubejs:lead', 100), 'immersiveengineering:ingot_lead', 327).id('kubejs:heating/lead_ingot');
@@ -647,7 +646,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/bismuth_bronze', 800), Item.of('gunswithoutroses:gold_gun').ignoreNBT(), 985).useDurability().id('kubejs:heating/bismuth_bronze_rifle');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 800), Item.of('gunswithoutroses:iron_gun').ignoreNBT(), 1535).useDurability().id('kubejs:heating/wrought_iron_rifle');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 125), /minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab$/, 1080).id('kubejs:heating/copper_block_slab');
-	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 250), 'createdeco:cast_iron_block', 1535).id('kubejs:heating/cast_iron_block');
+	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 250), ['createdeco:cast_iron_block', 'minecraft:iron_block'], 1535).id('kubejs:heating/iron_block');
 	e.recipes.tfcHeating(Fluid.of('kubejs:unrefined_graphite', 10), 'tfc:powder/coke', 2135).id('kubejs:heating/coke_powder');
 	
 	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:electrum', 100), 0.1).id('kubejs:casting/electrum_ingot');
@@ -731,9 +730,9 @@ onEvent('recipes', e => {
 		'XXXXX'
 	]).id('kubejs:leather_knapping/leather_pouch');
 	
-	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/zinc', 40), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/zinc_composite_compound');
-	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/silver', 32), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/silver_composite_compund');
-	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/nickel', 64), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/nickel_composite_compund');
+	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/zinc', 40), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/zinc_composite_material');
+	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/silver', 32), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/silver_composite_material');
+	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/nickel', 64), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/nickel_composite_material');
 	
 	e.recipes.tfcBlastFurnace(Fluid.of('kubejs:graphite', 1), Fluid.of('kubejs:unrefined_graphite', 1), 'tfc:powder/graphite').id('kubejs:blast_furnace/graphite_refinement');
 
@@ -745,6 +744,11 @@ onEvent('recipes', e => {
 	e.recipes.tfcBarrelInstant('8x createdeco:blue_brick', '8x minecraft:brick', Fluid.of('tfc:light_blue_dye', 25)).id('kubejs:instant_barrel/blue_brick');
 	e.recipes.tfcBarrelInstant('8x createdeco:pearl_brick', '8x minecraft:brick', Fluid.of('tfc:light_gray_dye', 25)).id('kubejs:instant_barrel/pearl_brick');
 	e.recipes.tfcBarrelInstant('8x createdeco:dean_brick', '8x minecraft:brick', Fluid.of('tfc:yellow_dye', 25)).id('kubejs:instant_barrel/dean_brick');
+	e.recipes.tfcBarrelInstant('create:placard', '#createdeco:placards', Fluid.of('tfc:white_dye', 25)).id('kubejs:instant_barrel/white_placard');
+
+	e.recipes.tfcBarrelInstantFluid(Fluid.of('kubejs:diluted_milk', 8), Fluid.water(3), FluidIngredient.of('#tfc:milks', 5)).id('kubejs:fluid_barrel/diluted_milk');
+
+	e.recipes.firmalifeMixingBowl(Fluid.of('create:tea', 500), [Fluid.of('kubejs:diluted_milk', 500), '4x firmalife:fruit_leaf', 'firmalife:spice/vanilla']).id('kubejs:mixing_bowl/tea');
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -753,6 +757,12 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_lead', '1x immersiveengineering:plate_lead', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/lead_wire');
 	e.recipes.immersiveengineeringMetalPress('1x immersiveengineering:graphite_electrode', '4x immersiveengineering:ingot_hop_graphite', 'immersiveengineering:mold_rod').energy(9600).id('immersiveengineering:metalpress/electrode');
 	e.recipes.immersiveengineeringMetalPress('1x kubejs:sheet/graphite', '1x immersiveengineering:ingot_hop_graphite', 'immersiveengineering:mold_plate').energy(5000).id('kubejs:metal_press/graphite_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x tfc:metal/sheet/wrought_iron', 'tfc:metal/double_ingot/wrought_iron', 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/wrought_iron_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x firmalife:metal/sheet/chromium', 'firmalife:metal/double_ingot/chromium', 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/chromium_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x firmalife:metal/sheet/stainless_steel', 'firmalife:metal/double_ingot/stainless_steel', 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/stainless_steel_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x immersiveengineering:plate_lead', 'kubejs:metal/double_ingot/lead', 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/lead_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x immersiveengineering:plate_constantan', 'kubejs:metal/double_ingot/constantan', 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/constantan_sheet');
+	e.recipes.immersiveengineeringMetalPress('1x immersiveengineering:plate_electrum', 'kubejs:metal/double_ingot/electrum', 'immersiveengineering:mold_plate').energy(10000).id('kuebjs:metal_press/electrum_sheet');
 	
 	e.recipes.immersiveengineeringCokeOven('2x immersiveengineering:coal_coke', '1x tfc:ore/bituminous_coal').creosote(250).time(9600).id('immersiveengineering:cokeoven/coke');
 	e.recipes.immersiveengineeringCokeOven('1x minecraft:charcoal', '2x #tfc:log_pile_logs').creosote(50).time(1200).id('immersiveengineering:cokeoven/charcoal');
@@ -869,16 +879,21 @@ onEvent('recipes', e => {
 			'item': 'tfc:metal/sheet/wrought_iron'
 		},
 		{
-			'item': 'tfc:metal/ingot/copper'
+			'count': 4,
+			'base_ingredient': {
+				'item': 'tfc:metal/ingot/copper'
+			}
 		},
 		{
-			'item': 'create:cogwheel'
+			'count': 2,
+			'base_ingredient': {
+				'item': 'create:cogwheel'
+			}
 		}
 		],
 		'category': 'components',
 		'result': {
-			'item': 'immersiveengineering:component_iron',
-			'count': 1
+			'item': 'immersiveengineering:component_iron'
 		}
 	}).id('kubejs:blueprint/iron_components');
 		e.custom({
@@ -888,16 +903,21 @@ onEvent('recipes', e => {
 			'item': 'tfc:metal/sheet/steel'
 		},
 		{
-			'item': 'tfc:metal/ingot/copper'
+			'count': 4,
+			'base_ingredient': {
+				'item': 'tfc:metal/ingot/copper'
+			}
 		},
 		{
-			'item': 'create:large_cogwheel'
+			'count': 2,
+			'base_ingredient': {
+				'item': 'create:large_cogwheel'
+			}
 		}
 		],
 		'category': 'components',
 		'result': {
-			'item': 'immersiveengineering:component_steel',
-			'count': 1
+			'item': 'immersiveengineering:component_steel'
 		}
 	}).id('kubejs:blueprint/steel_components');
 	e.custom({
@@ -943,8 +963,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'components',
 		'result': {
-			'item': 'immersiveengineering:light_bulb',
-			'count': 1
+			'item': 'immersiveengineering:light_bulb'
 		}
 	}).id('kubejs:blueprint/light_blub');
 	e.custom({
@@ -968,8 +987,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'components',
 		'result': {
-			'item': 'kubejs:blue_tinted_light_bulb',
-			'count': 1
+			'item': 'kubejs:blue_tinted_light_bulb'
 		}
 	}).id('kubejs:blueprint/blue_light_bulb');
 	e.custom({
@@ -993,8 +1011,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'components',
 		'result': {
-			'item': 'kubejs:red_tinted_light_bulb',
-			'count': 1
+			'item': 'kubejs:red_tinted_light_bulb'
 		}
 	}).id('kubejs:blueprint/red_light_bulb');
 	e.custom({
@@ -1018,8 +1035,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'components',
 		'result': {
-			'item': 'kubejs:green_tinted_light_bulb',
-			'count': 1
+			'item': 'kubejs:green_tinted_light_bulb'
 		}
 	}).id('kubejs:blueprint/green_light_bulb');
 	e.custom({
@@ -1034,8 +1050,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'bannerpatterns',
 		'result': {
-			'item': 'immersiveengineering:bannerpattern_bevels',
-			'count': 1
+			'item': 'immersiveengineering:bannerpattern_bevels'
 		}
 	}).id('immersiveengineering:blueprint/banner_bevels');
 	e.custom({
@@ -1059,8 +1074,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'electrode',
 		'result': {
-			'item': 'immersiveengineering:revolver',
-			'count': 1
+			'item': 'immersiveengineering:revolver'
 		}
 	}).id('kubejs:blueprint/revolver');
 	e.custom({
@@ -1093,8 +1107,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'electrode',
 		'result': {
-			'item': 'immersiveengineering:railgun',
-			'count': 1
+			'item': 'immersiveengineering:railgun'
 		}
 	}).id('kubejs:blueprint/railgun');
 	e.custom({
@@ -1109,8 +1122,7 @@ onEvent('recipes', e => {
 		],
 		'category': 'components',
 		'result': {
-			'item': 'immersiveengineering:circuit_board',
-			'count': 1
+			'item': 'immersiveengineering:circuit_board'
 		}
 	}).id('immersiveengineering:blueprint/circuit_board');
 	e.custom({
@@ -1135,6 +1147,99 @@ onEvent('recipes', e => {
 			'count': 2
 		}
 	}).id('kubejs:blueprint/electronic_component');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+			{
+				'item': 'immersiveengineering:empty_casing'
+			},
+			{
+				'item': 'tfc:powderkeg'
+			},
+			{
+				'count': 25,
+				'base_ingredient': {
+					'tag': 'forge:gunpowder'
+				}
+			}
+		],
+		'category': 'specialBullet',
+		'result': {
+			'item': 'immersiveengineering:he',
+		}
+	}).id('immersiveengineering:blueprint/bullet_explosive');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+			{
+				'item': 'immersiveengineering:empty_casing'
+			},
+			{
+				'tag': 'forge:gunpowder'
+			},
+			{
+				'count': 2,
+				'base_ingredient': {
+					'item': 'immersiveengineering:nugget_lead'
+				}
+			}
+		],
+		'category': 'bullet',
+		'result': {
+			'item': 'immersiveengineering:casull'
+		}
+	}).id('immersiveengineering:blueprint/bullet_casull');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+			{
+				'item': 'immersiveengineering:empty_casing'
+			},
+			{
+				'tag': 'forge:gunpowder'
+			},
+			{
+				'count': 2,
+				'base_ingredient': {
+					'item': 'immersiveengineering:nugget_steel'
+				}
+			},
+			{
+				'count': 2,
+				'base_ingredient': {
+					'item': 'immersiveengineering:nugget_constantan'
+				}
+			}
+		],
+		'category': 'bullet',
+		'result': {
+			'item': 'immersiveengineering:armor_piercing'
+		}
+	}).id('immersiveengineering:blueprint/bullet_armorpiercing');
+	e.custom({
+		'type': 'immersiveengineering:blueprint',
+		'inputs': [
+			{
+				'item': 'immersiveengineering:empty_casing'
+			},
+			{
+				'tag': 'forge:gunpowder'
+			},
+			{
+				'count': 2,
+				'base_ingredient': {
+					'item': 'immersiveengineering:nugget_lead'
+				}
+			},
+			{
+				'item': 'immersiveengineering:nugget_silver'
+			}
+		],
+		'category': 'bullet',
+		'result': {
+			'item': 'immersiveengineering:silver'
+		}
+	}).id('immersiveengineering:blueprint/bullet_silver');
 	
 	//mixer
 	e.custom({
@@ -1180,10 +1285,10 @@ onEvent('recipes', e => {
 			'count': 3
 		}
 		],
-		'result': Fluid.of('kubejs:jutecrete', 250).toJson(),
+		'result': Fluid.of('kubejs:jutecrete', 500).toJson(),
 		'fluid': {
 			'tag': 'immersiveengineering:concrete',
-			'amount': 250
+			'amount': 500
 		},
 		'energy': 1600
 	}).id('kubejs:mixer/jutecrete');
@@ -1191,12 +1296,10 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:mixer',
 		'inputs': [
 			{
-				'tag': 'firmalife:sweetener',
-				'count': 1
+				'tag': 'firmalife:sweetener'
 			}, 
 			{
-				'tag': 'firmalife:foods/chocolate',
-				'count': 1
+				'tag': 'firmalife:foods/chocolate'
 			}
 		],
 		'result': Fluid.of('firmalife:chocolate', 1000).toJson(),

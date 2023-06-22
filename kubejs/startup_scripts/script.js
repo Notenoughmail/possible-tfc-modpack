@@ -34,6 +34,12 @@ onEvent('item.registry', e => {
 	e.create('red_tinted_light_bulb')
 	e.create('green_tinted_light_bulb')
 	e.create('blue_tinted_light_bulb')
+	e.create('sequence/light_component', 'create:sequenced_assembly')
+	e.create('sequence/heavy_component', 'create:sequenced_assembly')
+	e.create('sequence/heavy_engineering', 'create:sequenced_assembly').parentModel('immersiveengineering:item/light_engineering')
+	e.create('sequence/coke_brick', 'create:sequenced_assembly').parentModel('tfc:item/fire_bricks')
+	e.create('sequence/mv_capacitor', 'create:sequenced_assembly').parentModel('kubejs:item/frame/capacitor_mv')
+	e.create('sequence/hv_capacitor', 'create:sequenced_assembly').parentModel('kubejs:item/frame/capacitor_hv')
 })
 
 onEvent('item.modification', e => {
@@ -94,7 +100,7 @@ onEvent('block.modification', e => {
 	// A hilarious consequence of the recently added methods
 	BlockIngredient.of(/createdeco:.+lamp/).asJavaObject().validBlocks.forEach(block => {
 		e.modify(block, modify => {
-			modify.lightEmission = 5
+			modify.lightEmission = 7
 		})
 	})
 })
@@ -138,4 +144,12 @@ onEvent('fluid.registry', e => {
 		.noBlock()
 		.tag('tfc:molten_metals')
 		.tag('tfc:unrefined_graphite')
+	e.create('diluted_milk')
+		.thinTexture(0xc3ccdb)
+		.bucketColor(0xc3ccdb)
+		.displayName('Diluted Milk')
+		.noBlock()
+		.noBucket()
+		.tag('tfc:usable_in_wooden_bucket')
+		.tag('tfc:usable_in_barrel')
 })

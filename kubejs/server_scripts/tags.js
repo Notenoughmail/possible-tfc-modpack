@@ -32,34 +32,85 @@ onEvent('tags.blocks', e => {
 	)
 });
 
-let berries = ['wintergreen_berry', 'strawberry', 'snowberry', 'raspberry', 'gooseberry', 'elderberry', 'cranberry', 'cloudberry', 'bunchberry', 'blueberry', 'blackberry']
-
-let tfc_metals = ['bismuth', 'bismuth_bronze', 'black_bronze', 'bronze', 'brass', 'copper', 'gold', 'nickel', 'rose_gold', 'silver', 'tin', 'zinc', 'sterling_silver', 'wrought_iron', 'cast_iron', 'steel', 'black_steel', 'blue_steel', 'red_steel']
-
-let tool_rack = ['create:wrench', 'create:goggles', 'immersiveengineering:hammer', 'immersiveengineering:wirecutter', 'immersiveengineering:screwdriver', 'immersiveengineering:voltmeter', 'immersiveengineering:drill', 'immersiveengineering:buzzsaw', 'immersiveengineering:revolver', 'immersiveengineering:chemthrower', 'immersiveengineering:railgun', 'immersiveengineering:skyhook', 'gunswithoutroses:iron_gun', 'gunswithoutroses:gold_gun', 'firmalife:watering_can']
-
-let no_color_sheetmetal = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold']
-
-let tag_molds = ['kubejs:mold/ingot', 'immersiveengineering:mold_plate', 'immersiveengineering:mold_gear', 'immersiveengineering:mold_rod', 'immersiveengineering:mold_bullet_casing', 'immersiveengineering:mold_wire', 'immersiveengineering:mold_packing_4', 'immersiveengineering:mold_packing_9', 'immersiveengineering:mold_unpacking']
-
 onEvent('tags.items', e => {
-	berries.forEach(berry => {
-		e.add('tfc:foods/berries', 'tfc:food/' + berry)
-	})
-	tfc_metals.forEach(metal => {
-		e.add('forge:rods/all_metal', 'tfc:metal/rod/' + metal)
-	})
-	tool_rack.forEach(tool => {
-		e.add('tfc:usable_on_tool_rack', tool)
-	})
-	no_color_sheetmetal.forEach(material => {
-		e.add('forge:sheetmetal/colorless', 'immersiveengineering:sheetmetal_' + material)
-	})
-	tag_molds.forEach(mold => {
-		e.add('forge:molds/metal', mold)
-	})
+
+	// Removal
+	e.removeAllTagsFrom(
+		'immersiveengineering:plate_constantan',
+		'immersiveengineering:plate_electrum',
+		'immersiveengineering:plate_lead',
+		'immersiveengineering:nugget_lead',
+		'immersiveengineering:nugget_steel',
+		'immersiveengineering:nugget_constantan',
+		'immersiveengineering:nugget_silver',
+		'create:copper_nugget',
+		'immersiveengineering:dust_coke'
+	)
 	
 	//general
+	e.add('forge:rods/all_metal',
+		'tfc:metal/rod/bismuth',
+		'tfc:metal/rod/bismuth_bronze',
+		'tfc:metal/rod/black_bronze',
+		'tfc:metal/rod/bronze',
+		'tfc:metal/rod/brass',
+		'tfc:metal/rod/copper',
+		'tfc:metal/rod/gold',
+		'tfc:metal/rod/nickel',
+		'tfc:metal/rod/rose_gold',
+		'tfc:metal/rod/silver',
+		'tfc:metal/rod/tin',
+		'tfc:metal/rod/zinc',
+		'tfc:metal/rod/sterling_silver',
+		'tfc:metal/rod/wrought_iron',
+		'tfc:metal/rod/cast_iron',
+		'tfc:metal/rod/steel',
+		'tfc:metal/rod/black_steel',
+		'tfc:metal/rod/blue_steel',
+		'tfc:metal/rod/red_steel'
+	)
+	e.add('tfc:usable_on_tool_rack',
+		'create:wrench',
+		'create:goggles',
+		'immersiveengineering:hammer',
+		'immersiveengineering:wirecutter',
+		'immersiveengineering:screwdriver',
+		'immersiveengineering:voltmeter',
+		'immersiveengineering:drill',
+		'immersiveengineering:buzzsaw',
+		'immersiveengineering:revolver',
+		'immersiveengineering:chemthrower',
+		'immersiveengineering:railgun',
+		'immersiveengineering:skyhook',
+		'gunswithoutroses:iron_gun',
+		'gunswithoutroses:gold_gun',
+		'firmalife:watering_can'
+	)
+	e.add('forge:sheetmetal/colorless',
+		'immersiveengineering:sheetmetal_copper',
+		'immersiveengineering:sheetmetal_aluminum',
+		'immersiveengineering:sheetmetal_lead',
+		'immersiveengineering:sheetmetal_silver',
+		'immersiveengineering:sheetmetal_nickel',
+		'immersiveengineering:sheetmetal_uranium',
+		'immersiveengineering:sheetmetal_constantan',
+		'immersiveengineering:sheetmetal_electrum',
+		'immersiveengineering:sheetmetal_steel',
+		'immersiveengineering:sheetmetal_iron',
+		'immersiveengineering:sheetmetal_gold',
+		'createdeco:cast_iron_sheet_metal'
+	)
+	e.add('forge:molds/metal',
+		'kubejs:mold/ingot',
+		'immersiveengineering:mold_plate',
+		'immersiveengineering:mold_gear',
+		'immersiveengineering:mold_rod',
+		'immersiveengineering:mold_bullet_casing',
+		'immersiveengineering:mold_wire',
+		'immersiveengineering:mold_packing_4',
+		'immersiveengineering:mold_packing_9',
+		'immersiveengineering:mold_unpacking'
+	)
 	e.add('tfc:rocks/loose',
 		'#tfc:rock_knapping'
 	)
@@ -75,11 +126,9 @@ onEvent('tags.items', e => {
 	e.add('forge:cobblestone/mossy',
 		/tfc:rock.*mossy_cobble.*/
 	)
-	e.removeAllTagsFrom('immersiveengineering:dust_coke')
 	e.add('forge:dusts/coal_coke',
 		'tfc:powder/coke'//IE loves tags too much
 	)
-	e.removeAllTagsFrom('create:copper_nugget')
 	e.removeAll('create:sleepers')
 	e.add('tfc:blast_furnace_fuel',
 		'immersiveengineering:coal_coke'
@@ -91,9 +140,21 @@ onEvent('tags.items', e => {
 		'#tfc:igneous_intrusive_rock',
 		'#tfc:igneous_extrusive_rock'
 	)
+	e.add('tfc:foods/berries',
+		'tfc:food/blackberry',
+		'tfc:food/blueberry',
+		'tfc:food/bunchberry',
+		'tfc:food/cloudberry',
+		'tfc:food/cranberry',
+		'tfc:food/elderberry',
+		'tfc:food/gooseberry',
+		'tfc:food/raspberry',
+		'tfc:food/snowberry',
+		'tfc:food/strawberry',
+		'tfc:food/wintergreen_berry'
+	)
 	
 	//metal reorganization
-	e.removeAllTagsFrom('immersiveengineering:plate_constantan', 'immersiveengineering:plate_electrum', 'immersiveengineering:plate_lead')
 	e.add('forge:sheets',
 		'immersiveengineering:plate_constantan',
 		'immersiveengineering:plate_electrum',
@@ -131,10 +192,15 @@ onEvent('tags.items', e => {
 		'immersiveengineering:plate_constantan',
 		'immersiveengineering:plate_electrum',
 		'immersiveengineering:plate_lead',
+	)
+	e.add('tfc:pileable_ingots', 
 		'immersiveengineering:ingot_constantan',
 		'immersiveengineering:ingot_electrum',
 		'immersiveengineering:ingot_lead',
 		'immersiveengineering:ingot_hop_graphite'
+	)
+	e.add('createdeco:decals',
+		/createdeco:.+_decal/
 	)
 
 	//weight and szie
@@ -153,6 +219,9 @@ onEvent('tags.items', e => {
 })
 
 onEvent('tags.fluids', e => {
+
+	e.removeAll('forge:plantoil')
+
 	e.add('tfc:molten_metals',
 		'firmalife:metal/stainless_steel',
 		'firmalife:metal/chromium'
@@ -172,9 +241,22 @@ onEvent('tags.fluids', e => {
 	e.add('tfc:usable_in_jug',
 		'#forge:tea'
 	)
-	e.removeAll('forge:plantoil')
 	e.add('forge:plantoil',
 		'immersiveengineering:plantoil'
+	)
+	e.add('tfc:usable_in_red_steel_bucket',
+		'#forge:plantoil',
+		'#kubejs:jutecrete',
+		'#immersiveengineering:concrete',
+		'#forge:creosote',
+		'#forge:ethanol'
+	)
+	e.add('tfc:usable_in_blue_steel_bucket',
+		'#forge:plantoil',
+		'#kubejs:jutecrete',
+		'#immersiveengineering:concrete',
+		'#forge:creosote',
+		'#forge:ethanol'
 	)
 })
 

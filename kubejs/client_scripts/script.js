@@ -95,6 +95,17 @@ onEvent('jei.hide.items', e => {
 	e.hide('minecraft:dirt_path')
 	e.hide('minecraft:enchanted_book')
 	e.hide(/minecraft:brick.+/)
+	e.hide('immersiveengineering:potion')
+	e.hide('immersiveengineering:homing')
+	e.hide('immersiveengineering:wolfpack')
+	e.hide(/createdeco:.+_(?:nugget|sheet|ingot)/)
+	e.hide(/minecraft:.*(?:log|wood|planks|stem|hyphae|purpur|nether|sapling|leaves|sign|fence|prismarine).*/)
+	e.hide(/.*netherite.*/)
+	e.hide(/tfc:wood\/boat\/.+/)
+	e.hide(/.*slab_vert.*/)
+	e.hide(/createdeco:.*(?:iron|copper|gold)_sheet.*/)
+	e.hide(/immersiveengienering:shader_bag.+/)
+	e.hide('immersiveengineering:coke_dust')
 })
 
 onEvent('jei.add.items', e => {
@@ -130,6 +141,10 @@ onEvent('jei.add.items', e => {
 	e.add('createdeco:blue_brick')
 	e.add('createdeco:pearl_brick')
 	e.add('createdeco:dean_brick')
+	e.add('immersiveengineering:nugget_lead')
+	e.add('immerisveengineering:nugget_steel')
+	e.add('immersiveengineering:nugget_silver')
+	e.add('immersiveengineering:nugget_constantan')
 })
 
 onEvent('jei.add.fluids', e => {

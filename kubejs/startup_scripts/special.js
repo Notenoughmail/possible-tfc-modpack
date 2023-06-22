@@ -2,7 +2,6 @@
 
 // There's no method to check/get the living enity so had to resort to this
 const LivingEntity = java("net.minecraft.world.entity.LivingEntity")
-// Class filter needs to be disabled
 const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
 const FirePit = java("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
 
@@ -63,5 +62,34 @@ onEvent('create.boiler.heater', e => {
 			return (forge.getTemperature() / 500);
 		}
 		return -1;
+	})
+})
+
+// And they say you can't have nbt based textures!
+onEvent('item.model_properties', e => {
+	e.register('immersiveengineering:blueprint', 'kubejs:blueprint', (stackJS, levelJS, entityJS, idInt) => {
+		let NBT = stackJS.nbt;
+		if (NBT.contains('blueprint')) {
+			let value = NBT.get('blueprint').asString;
+			if (value.localeCompare('molds') === 0) {
+				return 0.1;
+			}
+			if (value.localeCompare('components') === 0) {
+				return 0.2;
+			}
+			if (value.localeCompare('bullet') === 0) {
+				return 0.3;
+			}
+			if (value.localeCompare('bannerpatterns') === 0) {
+				return 0.4;
+			}
+			if (value.localeCompare('specialBullet') === 0) {
+				return 0.5;
+			}
+			if (value.localeCompare('electrode') === 0) {
+				return 0.6;
+			}
+		}
+		return 0;
 	})
 })

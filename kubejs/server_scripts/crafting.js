@@ -2,18 +2,15 @@
 
 console.info('Loading TFC crafting recipes')
 
-let partial_metal = ['copper', 'gold', 'silver', 'nickel']
-
-let sheetmetals = ['copper', 'aluminum', 'lead', 'silver', 'nickel', 'uranium', 'constantan', 'electrum', 'steel', 'iron', 'gold', 'colored_white', 'colored_orange', 'colored_magenta', 'colored_light_blue', 'colored_yellow', 'colored_lime', 'colored_pink', 'colored_gray', 'colored_light_gray', 'colored_cyan', 'colored_purple', 'colored_blue', 'colored_brown', 'colored_green', 'colored_red', 'colored_black']
-
-let planks = ['acacia', 'ash', 'aspen', 'birch', 'blackwood', 'chestnut', 'douglas_fir', 'hickory', 'kapok', 'maple', 'oak', 'palm', 'pine', 'rosewood', 'sequoia', 'spruce', 'sycamore', 'white_cedar', 'willow']
-
-let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
-
-let deco_metals = ['gold', 'brass', 'cast_iron', 'copper', 'zinc']
-
 onEvent('recipes', e => {
 	//shapeless
+	colors.forEach(color => {
+		if (color != 'white') {
+			e.shapeless('createdeco:' + color + '_placard', ['create:placard', '#forge:dyes/' + color]).id('kubejs:crafting/' + color + '_placard');
+		}
+		e.shapeless('createdeco:' + color + '_decal', ['#forge:sheets', '#forge:dyes/' + color]).id('kubejs:crafting/' + color + '_decal');
+	})
+
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', '2x tfc:metal/chain/wrought_iron']).id('kubejs:crafting/chain_drive');
 	e.shapeless('1x create:placard', ['minecraft:item_frame', 'tfc:metal/sheet/brass']).id('kubejs:crafting/placard');
 	e.shapeless('1x create:rose_quartz', ['tfc:ore/halite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_halite');
@@ -283,13 +280,13 @@ onEvent('recipes', e => {
 		A: 'create:depot',
 		B: 'create:cogwheel'
 	}).id('kubejs:crafting/weighted_ejector');
-	e.shaped('8x create:chute', [
+	e.shaped('4x create:chute', [
 	'S',
 	'A',
 	'S'
 	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:metal/ingot/cast_iron'
+		S: 'create:andesite_alloy',
+		A: 'tfc:metal/sheet/cast_iron'
 	}).id('kubejs:crafting/chute');
 	e.shaped('1x create:smart_chute', [
 	'S',
@@ -1318,7 +1315,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'immersiveengineering:light_bulb'
-	}).id('kuebjs:crafting/yellow_composite_compund_lamp');
+	}).id('kuebjs:crafting/yellow_composite_material_lamp');
 	e.shaped('1x createdeco:red_andesite_lamp', [
 		'S',
 		'A',
@@ -1326,7 +1323,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'kubejs:red_tinted_light_bulb'
-	}).id('kuebjs:crafting/red_composite_compound_lamp');
+	}).id('kuebjs:crafting/red_composite_material_lamp');
 	e.shaped('1x createdeco:blue_andesite_lamp', [
 		'S',
 		'A',
@@ -1334,7 +1331,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'kubejs:blue_tinted_light_bulb'
-	}).id('kuebjs:crafting/blue_composite_compound_lamp');
+	}).id('kuebjs:crafting/blue_composite_material_lamp');
 	e.shaped('1x createdeco:green_andesite_lamp', [
 		'S',
 		'A',
@@ -1342,7 +1339,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:andesite_alloy',
 		A: 'kubejs:green_tinted_light_bulb'
-	}).id('kuebjs:crafting/green_composite_compound_lamp');
+	}).id('kuebjs:crafting/green_composite_material_lamp');
 	e.shaped('1x createdeco:yellow_iron_lamp', [
 		'S',
 		'A',
@@ -1379,4 +1376,104 @@ onEvent('recipes', e => {
 		A: 'kubejs:green_tinted_light_bulb',
 		B: 'tfc:metal/sheet/wrought_iron'
 	}).id('kuebjs:crafting/green_wrought_iron_lamp');
+	e.shaped('1x immersiveengineering:toolupgrade_drill_waterproof', [
+		'SA ',
+		'ASA',
+		' AB'
+	], {
+		S: '#forge:dyes/blue',
+		A: 'tfc:metal/sheet/wrought_iron',
+		B: 'immersiveengineering:fluid_pipe'
+	}).id('immersiveengineering:crafting/toolupgrade_drill_waterproof');
+	e.shaped('1x immersiveengineering:toolupgrade_drill_lube', [
+		' S ',
+		'SAS',
+		' SB'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: FluidIngredient.of('#forge:plantoil', 1000).asItemIngredient(),
+		B: 'immersiveengineering:fluid_pipe'
+	}).id('immersiveengineering:crafting/toolupgrade_drill_lube');
+	e.shaped('1x immersiveengineering:toolupgrade_drill_capacity', [
+		'SA ',
+		'ABA',
+		' AB'
+	], {
+		S: 'immersiveengineering:fluid_pipe',
+		A: 'tfc:metal/sheet/steel',
+		B: '#forge:dyes/red'
+	}).id('immersiveengineering:crafting/toolupgrade_drill_capacity');
+	e.shaped('1x immersiveengineering:toolupgrade_revolver_bayonet', [
+		'SA',
+		'BS'
+	], {
+		S: 'immersiveengineering:wire_copper',
+		A: 'tfc:metal/sword_blade/steel',
+		B: 'tfc:metal/rod/steel'
+	}).id('immersiveengineering:crafting/toolupgrade_revolver_bayonet');
+	e.shaped('1x immersiveengineering:toolupgrade_revolver_magazine', [
+		' SA',
+		'SAS',
+		'BS '
+	], {
+		S: 'immersiveengineering:wire_copper',
+		A: 'tfc:metal/sheet/steel',
+		B: 'immersiveengineering:component_iron'
+	}).id('immersiveengineering:crafting/toolupgrade_revolver_magazine');
+	e.shaped('1x immersiveengineering:toolupgrade_chemthrower_focus', [
+		'S  ',
+		' SA',
+		' AB'
+	], {
+		S: 'immersiveengineering:fluid_pipe',
+		A: 'tfc:metal/sheet/steel',
+		B: 'immersiveengineering:component_iron'
+	}).id('immersiveengineering:crafting/toolupgrade_chemthrower_focus');
+	e.shaped('1x immersiveengineering:toolupgrade_railgun_capacitors', [
+		'SA ',
+		' SA',
+		'  S'
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: '#forge:sheets/constantan'
+	}).id('immersiveengineering:crafting/toolupgrade_railgun_capacitors');
+	e.shaped('1x immersiveengineering:toolupgrade_shield_flash', [
+		' S ',
+		'SAS'
+	], {
+		S: 'tfc:metal/sheet/silver',
+		A: 'immersiveengineering:light_bulb'
+	}).id('immersiveengineering:crafting/toolupgrade_shield_flash');
+	e.shaped('1x immersiveengineering:toolupgrade_shield_shock', [
+		'SAS',
+		'SAS',
+		'SAS'
+	], {
+		S: 'immersiveengineering:connector_lv',
+		A: 'tfc:metal/rod/wrought_iron'
+	}).id('immersiveengineering:crafting/toolupgrade_shield_shock');
+	e.shaped('1x immersiveengineering:toolupgrade_shield_magnet', [
+		'  S',
+		'SA ',
+		'SBS'
+	], {
+		S: '#forge:leather',
+		A: 'immersiveengineering:coil_lv',
+		B: 'tfc:metal/ingot/wrought_iron'
+	}).id('immersiveengineering:crafting/toolupgrade_shield_magnet');
+	e.shaped('1x immersiveengineering:toolupgrade_buzzsaw_spareblades', [
+		'SAB',
+		'SB '
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'tfc:burlap_cloth',
+		B: '#forge:treated_wood'
+	}).id('immersiveengineering:crafting/toolupgrade_buzzsaw_spareblades');
+	e.shaped('1x immersiveengineering:speedloader', [
+		'SAB'
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'immersiveengineering:gunpart_drum',
+		B: 'immersiveengineering:component_iron'
+	}).id('immersiveengineering:crafting/speedloader');
 })

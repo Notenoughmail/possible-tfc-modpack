@@ -18,6 +18,11 @@
 	"item.immersiveengineering.wirecoil_electrum": "Medium-Voltage Wire Coil",
 	"item.immersiveengineering.wirecoil_electrum_ins": "Insulated Medium-Voltage Wire Coil",
 	"item.immersiveengineering.wirecoil_steel": "High-Voltage Wire Coil",
+	"item.immersiveengineering.nugget_lead": "Lead Pellet",
+	"item.immersiveengineering.nugget_constantan": "Constantan Pellet",
+	"item.immersiveengineering.nugget_silver": "Silver Pellet",
+	"item.immersiveengineering.nugget_steel": "Steel Pellet",
+	"item.immersiveengineering.component_iron": "Wrought Iron Mechanical Component",
 	
 	"desc.immersiveengineering.info.blueprint.electrode": "Advanced Tools",
 	"desc.immersiveengineering.info.blueprint.molds": "Molds",

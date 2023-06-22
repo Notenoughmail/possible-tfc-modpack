@@ -13,7 +13,7 @@ onEvent('server.datapack.first', e => {
 	
 	e.addTFCDrinkable(FluidIngredient.of('#forge:tea'), drink => {
 		drink.consumeChance(1)
-		drink.thirst(3)
+		drink.thirst(5)
 		drink.effect('minecraft:haste', effect => {
 			effect.duration(200)
 		})
@@ -49,7 +49,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('create:zinc_block', 11.905)
 	e.addTFCHeat(/kubejs:ore\/.+_lead/, 0.34)
 	e.addTFCHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573)
-	e.addTFCHeat('createdeco:cast_iron_block', 7.145)
+	e.addTFCHeat(['createdeco:cast_iron_block', 'minecraft:iron_block'], 7.145)
 	e.addTFCHeat('tfc:powder/coke', 7.31)
 	
 	e.addTFCItemSize('chunkloaders:advanced_chunk_loader', 's=large, w=heavy')
@@ -89,6 +89,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemSize(/immersiveengineering:wirecoil_(?:copper|electrum|steel)(?:_ins)?/, 's=small, w=heavy')
 	e.addTFCItemSize('create:wrench', 's=normal, w=light')
 	e.addTFCItemSize('#create:toolboxes', 's=very_large, w=heavy')
+	e.addTFCItemSize('immersiveengineering:heavy_engineering', 's=large, w=heavy')
 	
 	e.addTFCMetal('kubejs:constantan', 1266, 0.0037, '#forge:ingots/constantan', '#forge:sheets/constantan', 1)
 	e.addTFCMetal('kubejs:electrum', 1010, 0.00333, '#forge:ingots/electrum', '#forge:sheets/electrum', 1)

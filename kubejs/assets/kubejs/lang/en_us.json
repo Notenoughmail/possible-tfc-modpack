@@ -78,6 +78,13 @@
 	"item.kubejs.metal.double_ingot.electrum": "Electrum Double Ingot",
 	"item.kubejs.metal.double_ingot.lead": "Lead Double Ingot",
 	
+	"item.kubejs.sequence.coke_brick": "Incomplete Coke Brick",
+	"item.kubejs.sequence.heavy_component": "Incomplete Steel Mechanical Component",
+	"item.kubejs.sequence.heavy_engineering": "Incomplete Heavy Engineering Block",
+	"item.kubejs.sequence.hv_capacitor": "Incomplete High-Voltage Capacitor",
+	"item.kubejs.sequence.light_component": "Incomplete Wrought Iron Mechanical Component",
+	"item.kubejs.sequence.mv_capacitor": "Incomplete Medium-Voltage Capacitor",
+	
 	"item.kubejs.sheet.graphite": "Graphite Sheet",
 
 	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch"

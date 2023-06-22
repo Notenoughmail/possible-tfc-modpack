@@ -73,7 +73,12 @@ let ids = [
 	'immersiveengineering:crafting/paper_from_sawdust',
 	'create:pressing/sugar_cane',
 	'immersiveengineering:crafting/gunpowder_from_dusts',
-	'create:potions'
+	'create:potions',
+	'immersiveengineering:blueprint/bullet_potion',
+	'immersiveengineering:blueprint/bullet_homing',
+	'immersiveengineering:blueprint/bullet_wolfpack',
+	'immersiveengineering:crafting/nugget_steel_to_ingot_steel',
+	'immersiveengineering:crafting/nugget_silver_to_ingot_silver'
 ]
 
 onEvent('recipes', e => {
@@ -261,7 +266,11 @@ onEvent('recipes', e => {
 		'minecraft:glass_bottle',
 		'create:cinder_flour',
 		'createdeco:polished_iron_bars',
-		/minecraft:brick.+/
+		/minecraft:brick.+/,
+		/tfc:metal\/bucket\/(?:red|blue)_steel/,
+		/immersiveengineering:nugget.+/,
+		/immersiveengienering:.+_(?:post|slope)/,
+		'immersiveengineering:lantern'
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})

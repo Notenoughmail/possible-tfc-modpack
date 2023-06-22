@@ -275,8 +275,8 @@
     "com.simibubi.create.content.curiosities.toolbox.ToolboxScreen": {
         "buttonHints": {
             "SORT": {
-                "horizontalOffset": 4,
-                "top": -2
+                "horizontalOffset": 5,
+                "top": 13
             },
             "SETTINGS": {
                 "horizontalOffset": -10,
@@ -287,16 +287,16 @@
                 "bottom": 9
             },
             "MOVE_TO_PLAYER": {
-                "horizontalOffset": 5,
-                "top": -2
+                "horizontalOffset": 6,
+                "top": 13
             },
             "SORT_COLUMNS": {
-                "horizontalOffset": 5,
-                "top": -2
+                "horizontalOffset": 6,
+                "top": 13
             },
             "SORT_ROWS": {
-                "horizontalOffset": 5,
-                "top": -2
+                "horizontalOffset": 6,
+                "top": 13
             },
             "SHOW_EDITOR": {
                 "horizontalOffset": -1,
@@ -372,6 +372,79 @@
         "buttonHints": {
             "SHOW_EDITOR": {
                 "horizontalOffset": -1,
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "net.dries007.tfc.client.screen.ScribingTableScreen": {
+        "buttonHints": {
+            "SHOW_EDITOR": {
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "blusunrize.immersiveengineering.client.gui.MixerScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 112,
+                "bottom": 7
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 122,
+                "top": -17
+            },
+            "SORT": {
+                "horizontalOffset": 122,
+                "top": -17
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 122,
+                "top": -17
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 122,
+                "top": -17
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "blusunrize.immersiveengineering.client.gui.SqueezerScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 60,
+                "bottom": 30
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 60,
+                "top": 12
+            },
+            "SORT": {
+                "horizontalOffset": 36,
+                "top": 2
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 36,
+                "top": 2
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 60,
+                "top": 12
+            },
+            "SHOW_EDITOR": {
                 "top": -10
             },
             "SETTINGS": {
