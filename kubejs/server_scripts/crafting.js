@@ -25,6 +25,8 @@ onEvent('recipes', e => {
 	e.shapeless('1x railways:benchcart', ['minecraft:minecart', ['minecraft:crafting_table', '#tfc:workbenches']]).id('railways:benchcart');
 	e.shapeless('4x createaddition:portable_energy_interface', ['create:brass_casing', 'create:chute', 'immersiveengineering:coil_lv']).id('createaddition:crafting/portable_energy_interface');
 	e.shapeless('1x kubejs:composite_catalyst', ['4x #tfc:igneous_rock', '#tfc:forge_fuel']).id('kubejs:crafting/composite_catalyst');
+	e.shapeless('1x create:andesite_door', ['#minecraft:wooden_doors', 'create:andesite_casing']).id('create:crafting/kinetics/composite_door');
+	e.shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block']).id('create:crafting/materials/composite_material_from_block');
 	
 	let blueprint = (input, output, id) => {
 		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:crafting/' + id)
@@ -552,7 +554,7 @@ onEvent('recipes', e => {
 		S: 'create:andesite_alloy',
 		A: 'create:shaft',
 		B: 'tfc:metal/double_ingot/copper',
-		C: 'minecraft:copper_block'
+		C: 'tfc:metal/chestplate/copper'
 	}).id('kubejs:crafting/copper_backtank');
 	e.shaped('1x create:peculiar_bell', [
 	'S',
@@ -1476,4 +1478,36 @@ onEvent('recipes', e => {
 		A: 'immersiveengineering:gunpart_drum',
 		B: 'immersiveengineering:component_iron'
 	}).id('immersiveengineering:crafting/speedloader');
+	e.shaped('1x create:andesite_alloy_block', [
+		'SSS',
+		'SSS',
+		'SSS'
+	], {
+		S: 'create:andesite_alloy'
+	}).id('create:crafting/materials/composite_block');
+	e.shaped('1x create:elevator_pulley', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'create:brass_casing',
+		A: '#tfc:kelp',
+		B: 'tfc:metal/sheet/wrought_iron'
+	}).id('create:crafting/kinetics/elevator_pulley');
+	e.shaped('2x railways:smokestack_long', [
+		'SAS'
+	], {
+		S: 'tfc:metal/ingot/cast_iron',
+		A: 'tfc:soot'
+	}).id('railways:crafting/smokestack_long');
+	e.shaped('1x create:netherite_backtank', [
+		'SAS',
+		'BCB',
+		' B '
+	], {
+		S: 'create:andesite_alloy',
+		A: 'create:shaft',
+		B: 'tfc:metal/double_ingot/blue_steel',
+		C: 'tfc:metal/chestplate/blue_steel'
+	}).id('kubejs:crafting/blue_steel_backtank');
 })

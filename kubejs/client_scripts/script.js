@@ -104,8 +104,10 @@ onEvent('jei.hide.items', e => {
 	e.hide(/tfc:wood\/boat\/.+/)
 	e.hide(/.*slab_vert.*/)
 	e.hide(/createdeco:.*(?:iron|copper|gold)_sheet.*/)
-	e.hide(/immersiveengienering:shader_bag.+/)
+	e.hide(/immersiveengineering:shader_bag.+/)
 	e.hide('immersiveengineering:coke_dust')
+	e.hide('create:experience_block')
+	e.hide('minecraft:smoker')
 })
 
 onEvent('jei.add.items', e => {
@@ -145,6 +147,10 @@ onEvent('jei.add.items', e => {
 	e.add('immerisveengineering:nugget_steel')
 	e.add('immersiveengineering:nugget_silver')
 	e.add('immersiveengineering:nugget_constantan')
+	e.add('create:netherite_diving_helmet')
+	e.add('create:netherite_diving_boots')
+	e.add('create:netherite_backtank')
+	e.add('minecraft:netherite_leggings')
 })
 
 onEvent('jei.add.fluids', e => {

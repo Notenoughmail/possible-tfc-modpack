@@ -7,14 +7,17 @@ onEvent('tags.blocks', e => {
 		'create:metal_girder'
 	)
 	e.add('firmalife:all_copper_greenhouse',
-		'create:encased_fluid_pipe'
+		'create:encased_fluid_pipe',
+		'create:copper_door'
 	)
 	e.add('firmalife:greenhouse',
 		'create:encased_fluid_pipe',
-		'create:ornate_iron_window'
+		'create:ornate_iron_window',
+		'create:copper_door'
 	)
 	e.add('firmalife:copper_greenhouse',
-		'create:encased_fluid_pipe'
+		'create:encased_fluid_pipe',
+		'create:copper_door'
 	)
 	e.add('firmalife:all_iron_greenhouse',
 		'create:ornate_iron_window'
@@ -46,6 +49,9 @@ onEvent('tags.items', e => {
 		'create:copper_nugget',
 		'immersiveengineering:dust_coke'
 	)
+	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
+	e.remove('forge:storage_blocks/andesite_alloy', 'create:andesite_alloy_block')
+	e.removeAll('create:sleepers')
 	
 	//general
 	e.add('forge:rods/all_metal',
@@ -119,7 +125,6 @@ onEvent('tags.items', e => {
 		'tfc:plant/leafy_kelp',
 		'tfc:plant/giant_kelp_flower'
 	)
-	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
 	e.add('forge:cobblestone',
 		/tfc:rock.*mossy_cobble.*/
 	)
@@ -129,7 +134,6 @@ onEvent('tags.items', e => {
 	e.add('forge:dusts/coal_coke',
 		'tfc:powder/coke'//IE loves tags too much
 	)
-	e.removeAll('create:sleepers')
 	e.add('tfc:blast_furnace_fuel',
 		'immersiveengineering:coal_coke'
 	)
@@ -152,6 +156,20 @@ onEvent('tags.items', e => {
 		'tfc:food/snowberry',
 		'tfc:food/strawberry',
 		'tfc:food/wintergreen_berry'
+	)
+	e.add('forge:storage_blocks/composite_material', 
+		'create:andesite_alloy_block'
+	)
+	e.add('create:diving_equipment/copper',
+		'create:copper_diving_helmet',
+		'create:copper_diving_boots',
+		'create:copper_backtank'
+	)
+	e.add('create:diving_equipment/blue_steel',
+		'create:netherite_diving_helmet',
+		'create:netherite_diving_boots',
+		'create:netherite_backtank',
+		'minecraft:netherite_leggings'
 	)
 	
 	//metal reorganization

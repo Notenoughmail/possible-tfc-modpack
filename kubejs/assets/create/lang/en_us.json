@@ -33,6 +33,11 @@
 	"block.create.fluid_pipe": "Copper Fluid Pipe",
 	"block.create.smart_fluid_pipe": "Filtered Copper Fluid Pipe",
 	"block.create.fluid_valve": "Copper Fluid Valve",
+	"block.create.andesite_door": "Composite Door",
+	"block.create.andesite_alloy_block": "Composite Material Block",
+	"block.create.andesite_bars": "Composite Bars",
+	"block.create.andesite_scaffolding": "Composite Scaffolding",
+	"block.create.netherite_backtank": "Blue Steel Backtank",
 	
 	"item.create.andesite_alloy": "Composite Material",
 	"item.create.electron_tube": "Redstone Salt Tube",
@@ -40,6 +45,9 @@
 	"item.create.polished_rose_quartz": "Polished Redstone Salt",
 	"item.create.wrench": "Engineer's Wrench",
 	"item.create.copper_nugget": "Copper Shell End",
+	"item.create.netherite_diving_boots": "Blue Steel Diving Boots",
+	"item.create.netherite_diving_helmet": "Blue Steel Diving Helmet",
+	"item.create.netherite_backtank": "Blue Steel Backtank",
 	
 	"advancement.create.andesite_alloy.desc": "Obtain some Composite Material, Create's most important resource",
 	"advancement.create.andesite_casing": "The Composite Age",

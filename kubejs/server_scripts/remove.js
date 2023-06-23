@@ -270,7 +270,8 @@ onEvent('recipes', e => {
 		/tfc:metal\/bucket\/(?:red|blue)_steel/,
 		/immersiveengineering:nugget.+/,
 		/immersiveengienering:.+_(?:post|slope)/,
-		'immersiveengineering:lantern'
+		'immersiveengineering:lantern',
+		'create:industrial_iron_block'
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})

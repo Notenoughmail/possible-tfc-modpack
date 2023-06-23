@@ -18,6 +18,9 @@ onEvent('server.datapack.first', e => {
 			effect.duration(200)
 		})
 	})
+
+	e.addTFCItemDamageResistance('#create:diving_equipment/copper', 's=2, p=2, c=2')
+	e.addTFCItemDamageResistance('#create:diving_equipment/blue_steel', 's=12, p=12, c=14')
 	
 	e.addTFCFuel('immersiveengineering:coal_coke', 2385, 1466)
 	

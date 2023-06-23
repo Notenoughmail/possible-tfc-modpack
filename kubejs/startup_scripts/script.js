@@ -46,7 +46,7 @@ onEvent('item.modification', e => {
 	e.modify('immersiveengineering:glider', item => {
 		item.maxDamage = 500
 	})
-	e.modify('create:diving_helmet', item => {
+	e.modify('create:copper_diving_helmet', item => {
 		item.maxDamage = 173
 	})
 	e.modify('create:diving_boots', item => {

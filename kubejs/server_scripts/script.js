@@ -553,14 +553,17 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_iron', 'minecraft:iron_block').id('kubejs:cutting/iron_sheetmetal');
 	e.recipes.createCutting('4x createdeco:cast_iron_sheet_metal', 'createdeco:cast_iron_block').id('kubejs:cutting/cast_iron_sheetmetal');
 	
-	e.recipes.tfcWelding('create:diving_helmet', ['tfc:metal/helmet/copper', '#forge:glass']).tier(2).id('kubejs:welding/diving_helmet');
+	e.recipes.tfcWelding('create:copper_diving_helmet', ['tfc:metal/helmet/copper', '#forge:glass']).tier(2).id('kubejs:welding/copper_diving_helmet');
 	e.recipes.tfcWelding('6x create:fluid_pipe', ['tfc:metal/sheet/copper', 'tfc:metal/rod/copper']).tier(1).id('kubejs:welding/copper_fluid_pipe');
 	e.recipes.tfcWelding('immersiveengineering:alloybrick', ['tfc:fire_bricks', 'tfc:metal/double_sheet/steel']).tier(4).id('kubejs:welding/alloy_bricks');
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/electrum', ['immersiveengineering:ingot_electrum', 'immersiveengineering:ingot_electrum']).tier(3).id('kubejs:welding/double_electrum_ingot');
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/constantan', ['immersiveengineering:ingot_constantan', 'immersiveengineering:ingot_constantan']).tier(2).id('kubejs:welding/double_constantan_ingot');
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/lead', ['immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead']).tier(1).id('kubejs:welding/double_lead_ingot');
-	e.recipes.tfcWelding('create:diving_boots', ['tfc:metal/boots/copper', 'create:andesite_alloy']).tier(2).id('kubejs:welding/diving_boots');
+	e.recipes.tfcWelding('create:copper_diving_boots', ['tfc:metal/boots/copper', 'create:andesite_alloy_block']).tier(2).id('kubejs:welding/copper_diving_boots');
 	e.recipes.tfcWelding('4x immersiveengineering:fluid_pipe', ['firmalife:metal/sheet/stainless_steel', 'create:fluid_pipe']).tier(4).id('kubejs:welding/stainless_steel_fluid_pipe');
+	e.recipes.tfcWelding('create:netherite_diving_helmet', ['tfc:metal/helmet/blue_steel', '#forge:glass']).tier(6).id('kubejs:welding/blue_steel_diving_helmet');
+	e.recipes.tfcWelding('create:netherite_diving_boots', ['tfc:metal/boots/blue_steel', 'create:andesite_alloy_block']).tier(6).id('kubejs:welding/blue_steel_diving_boots');
+	e.recipes.tfcWelding('minecraft:netherite_leggings', ['tfc:metal/greaves/blue_steel', 'create:andesite_alloy']).tier(6).id('kubejs:welding/blue_steel_diving_greaves');
 	
 	e.recipes.tfcAnvil('3x create:brass_ladder', 'tfc:metal/rod/brass', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(2).id('kubejs:anvil/brass_ladder');
 	e.recipes.tfcAnvil('3x create:copper_ladder', 'tfc:metal/rod/copper', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(1).id('kubejs:anvil/copper_ladder');
@@ -593,12 +596,13 @@ onEvent('recipes', e => {
 	e.recipes.tfcAnvil('12x immersiveengineering:nugget_constantan', 'immersiveengineering:ingot_constantan', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(2).id('kubejs:anvil/constantan_pellet');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_nickel', '#forge:sheets/nickel', ['bend_last', 'hit_any', 'hit_any']).tier(3).id('kubejs:anvil/nickel_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_silver', '#forge:sheets/silver', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/silver_sheet_metal');
-	e.recipes.tfcAnvil('3x immerisveengineering:sheetmetal_lead', '#forge:sheets/lead', ['bend_last', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/lead_sheet_metal');
+	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_lead', '#forge:sheets/lead', ['bend_last', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/lead_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_copper', '#forge:sheets/copper', ['bend_last', 'hit_any', 'hit_any']).tier(1).id('kubejs:anvil/copper_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_steel', '#forge:sheets/steel', ['bend_last', 'hit_any', 'hit_any']).tier(4).id('kubejs:anvil/steel_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_gold', '#forge:sheets/gold', ['bend_last', 'hit_any', 'hit_any']).id('kubejs:anvil/gold_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_electrum', '#forge:sheets/electrum', ['bend_last', 'hit_any', 'hit_any']).tier(3).id('kubeks:anvil/electrum_sheet_metal');
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_constantan', '#forge:sheets/constantan', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/constantan_sheet_metal');
+	e.recipes.tfcAnvil('4x create:industrial_iron_block', 'tfc:metal/ingot/cast_iron', ['hit_any', 'punch_last']).tier(2).id('kubejs:anvil/industrial_iron');
 
 	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 100), 'immersiveengineering:ingot_constantan', 1266).id('kubejs:heating/constantan_ingot');
 	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 100), 'immersiveengineering:ingot_electrum', 1010).id('kubejs:heating/electrum_ingot');
