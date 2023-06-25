@@ -49,6 +49,8 @@
 	"item.create.netherite_diving_helmet": "Blue Steel Diving Helmet",
 	"item.create.netherite_backtank": "Blue Steel Backtank",
 	
+	"item.create.netherite_diving_helmet.tooltip.summary": "Together with a _Blue Steel Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Blue Steel diving equipment_, too.",
+	
 	"advancement.create.andesite_alloy.desc": "Obtain some Composite Material, Create's most important resource",
 	"advancement.create.andesite_casing": "The Composite Age",
 	"advancement.create.andesite_casing.desc": "Apply Composite Material to a log, crafting a basic casing for your machines",

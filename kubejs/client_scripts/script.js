@@ -108,6 +108,8 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:coke_dust')
 	e.hide('create:experience_block')
 	e.hide('minecraft:smoker')
+	e.hide('immersivepetroleum:speedboat')
+	e.hide(/immerisvepetroleum:upgrade.+/)
 })
 
 onEvent('jei.add.items', e => {

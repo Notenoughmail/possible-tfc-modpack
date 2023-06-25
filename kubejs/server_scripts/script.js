@@ -160,6 +160,9 @@ onEvent('recipes', e => {
 		mold_blueprint('immersiveengineering:mold_' + mold, mold)
 	})
 	mold_blueprint('kubejs:mold/ingot', 'ingot')
+
+	e.stonecutting('4x create:andesite_bars', 'create:andesite_alloy');
+	e.stonecutting('2x create:andesite_scaffolding', 'create:andesite_alloy');
 	
 	e.recipes.createCrushing(['1x tfc:sand/brown'], 'tfc:rock/gravel/granite').id('kubejs:crushing/granite_sand');
 	e.recipes.createCrushing(['1x tfc:sand/white'], 'tfc:rock/gravel/diorite').id('kubejs:crushing/diorite_sand');
@@ -561,7 +564,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcWelding('kubejs:metal/double_ingot/lead', ['immersiveengineering:ingot_lead', 'immersiveengineering:ingot_lead']).tier(1).id('kubejs:welding/double_lead_ingot');
 	e.recipes.tfcWelding('create:copper_diving_boots', ['tfc:metal/boots/copper', 'create:andesite_alloy_block']).tier(2).id('kubejs:welding/copper_diving_boots');
 	e.recipes.tfcWelding('4x immersiveengineering:fluid_pipe', ['firmalife:metal/sheet/stainless_steel', 'create:fluid_pipe']).tier(4).id('kubejs:welding/stainless_steel_fluid_pipe');
-	e.recipes.tfcWelding('create:netherite_diving_helmet', ['tfc:metal/helmet/blue_steel', '#forge:glass']).tier(6).id('kubejs:welding/blue_steel_diving_helmet');
+	e.recipes.tfcWelding('create:netherite_diving_helmet', ['tfc:metal/helmet/blue_steel', 'minecraft:tinted_glass']).tier(6).id('kubejs:welding/blue_steel_diving_helmet');
 	e.recipes.tfcWelding('create:netherite_diving_boots', ['tfc:metal/boots/blue_steel', 'create:andesite_alloy_block']).tier(6).id('kubejs:welding/blue_steel_diving_boots');
 	e.recipes.tfcWelding('minecraft:netherite_leggings', ['tfc:metal/greaves/blue_steel', 'create:andesite_alloy']).tier(6).id('kubejs:welding/blue_steel_diving_greaves');
 	

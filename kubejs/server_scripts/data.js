@@ -50,7 +50,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('immersiveengineering:storage_silver', 5.21)
 	e.addTFCHeat('immersiveengineering:storage_steel', 7.145)
 	e.addTFCHeat('create:zinc_block', 11.905)
-	e.addTFCHeat(/kubejs:ore\/.+_lead/, 0.34)
+	e.addTFCHeat(/kubejs:ore\/.+_lead$/, 0.34)
 	e.addTFCHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573)
 	e.addTFCHeat(['createdeco:cast_iron_block', 'minecraft:iron_block'], 7.145)
 	e.addTFCHeat('tfc:powder/coke', 7.31)

@@ -1510,4 +1510,14 @@ onEvent('recipes', e => {
 		B: 'tfc:metal/double_ingot/blue_steel',
 		C: 'tfc:metal/chestplate/blue_steel'
 	}).id('kubejs:crafting/blue_steel_backtank');
+	e.shaped('immersiveengineering:toolupgrade_drill_fortune', [
+		'SA ',
+		'ASA',
+		'BBC'
+	], {
+		S: FluidIngredient.of('immersiveengineering:redstone_acid', 1000).asItemIngredient(),
+		A: 'tfc:metal/sheet/steel',
+		B: 'immersiveengineering:fluid_pipe',
+		C: 'immersiveengineering:component_steel'
+	}).id('immersiveengineering:crafting/toolupgrade_drill_fortune');
 })

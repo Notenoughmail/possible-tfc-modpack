@@ -271,7 +271,10 @@ onEvent('recipes', e => {
 		/immersiveengineering:nugget.+/,
 		/immersiveengienering:.+_(?:post|slope)/,
 		'immersiveengineering:lantern',
-		'create:industrial_iron_block'
+		'create:industrial_iron_block',
+		'minecraft:candle',
+		'immersivepetroleum:speedboat',
+		/immersivepetroleum:upgrade.+/
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})

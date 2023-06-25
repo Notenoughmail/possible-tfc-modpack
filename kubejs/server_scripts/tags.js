@@ -171,6 +171,15 @@ onEvent('tags.items', e => {
 		'create:netherite_backtank',
 		'minecraft:netherite_leggings'
 	)
+	e.add('tfc:magma_blocks',
+		'tfc:rock/magma/granite',
+		'tfc:rock/magma/diorite',
+		'tfc:rock/magma/gabbro',
+		'tfc:rock/magma/rhyolite',
+		'tfc:rock/magma/basalt',
+		'tfc:rock/magma/andesite',
+		'tfc:rock/magma/dacite'
+	)
 	
 	//metal reorganization
 	e.add('forge:sheets',
@@ -267,14 +276,16 @@ onEvent('tags.fluids', e => {
 		'#kubejs:jutecrete',
 		'#immersiveengineering:concrete',
 		'#forge:creosote',
-		'#forge:ethanol'
+		'#forge:ethanol',
+		'immersiveengineering:redstone_acid'
 	)
 	e.add('tfc:usable_in_blue_steel_bucket',
 		'#forge:plantoil',
 		'#kubejs:jutecrete',
 		'#immersiveengineering:concrete',
 		'#forge:creosote',
-		'#forge:ethanol'
+		'#forge:ethanol',
+		'immersiveengineering:redstone_acid'
 	)
 })
 
