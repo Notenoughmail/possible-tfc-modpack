@@ -1505,7 +1505,7 @@ onEvent('recipes', e => {
 		'BCB',
 		' B '
 	], {
-		S: 'create:andesite_alloy',
+		S: 'tfc:metal/rod/red_steel',
 		A: 'create:shaft',
 		B: 'tfc:metal/double_ingot/blue_steel',
 		C: 'tfc:metal/chestplate/blue_steel'
