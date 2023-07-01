@@ -35,12 +35,6 @@ let ids = [
 	'minecraft:charcoal',
 	'immersiveengineering:cokeoven/coke_block',
 	/createbigcannons:.*/,
-	'immersiveengineering:crafting/ingot_silver_to_storage_silver',
-	'immersiveengineering:craftng/storage_silver_to_ingot_silver',
-	'immersiveengineering:crafting/ingot_nickel_to_storage_nickel',
-	'immersiveengineering:crafting/storage_nickel_to_ingot_nickel',
-	'immersiveengineering:crafting/ingot_steel_to_storage_steel',
-	'immersiveengineering:crafting/storage_steel_to_ingot_steel',
 	'create:crafting/materials/brass_block_from_compacting',
 	'create:crafting/materials/zinc_block_from_compacting',
 	'create:crafting/materials/zinc_ingot_from_decompacting',
@@ -78,7 +72,9 @@ let ids = [
 	'immersiveengineering:blueprint/bullet_homing',
 	'immersiveengineering:blueprint/bullet_wolfpack',
 	'immersiveengineering:crafting/nugget_steel_to_ingot_steel',
-	'immersiveengineering:crafting/nugget_silver_to_ingot_silver'
+	'immersiveengineering:crafting/nugget_silver_to_ingot_silver',
+	'immersiveengienering:crafting/treated_wood_horizontal',
+	/immerisveineginering:.*(?:hammer|nugget|storage|raw).*/
 ]
 
 onEvent('recipes', e => {
@@ -312,4 +308,7 @@ onEvent('recipes', e => {
 	e.remove({type: 'create:filling'})
 	e.remove({type: 'create:emptying'})
 	e.remove({type: 'create:pressing'})
+	e.remove({type: 'immersiveengineering:mineral_mix'})
+	e.remove({type: 'immersivepetroleum:reservoirs'})
+	e.replaceInput('firmalife:beeswax', '#kubejs:light_wax')
 })

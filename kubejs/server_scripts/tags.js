@@ -33,6 +33,39 @@ onEvent('tags.blocks', e => {
 		'tfc:molten',
 		'tfc:bloom'
 	)
+	e.add('create:non_movable',
+		'tfc:burning_log_pile',
+		'tfc:molten',
+		'tfc:bloom'
+	)
+	e.add('tfc:toughness_3',
+		'immersiveengineering:excavator',
+		'immersiveengineering:bucket_wheel',
+		'immersiveengineering:crusher',
+		'immersiveengineering:advanced_blast_furnace',
+		'immersiveengineering:bottling_machine',
+		'immersiveengineering:metal_press',
+		'immersiveengineering:arc_furnace',
+		'immersiveengineering:fermenter',
+		'immersiveengineering:alloy_smelter',
+		'immersiveengineering:assembler',
+		'immersiveengineering:auto_workbench',
+		'immersiveengineering:coke_oven',
+		'immersivepetroleum:coker_unit',
+		'immersivepetroleum:derrick',
+		'immersiveengineering:diesel_generator',
+		'immersivepetroleum:distillation_tower',
+		'immersiveengineering:tank',
+		'immersivepetroleum:hydrotreater',
+		'immersiveengineering:squeezer',
+		'immersiveengineering:silo',
+		'immersiveengineering:lightning_rod',
+		'immersiveengineering:mixer',
+		'immersivepetroleum:oiltank',
+		'immersivepetroleum:pumpjack',
+		'immersiveengineering:refinery',
+		'immersiveengineering:sawmill'
+	)
 });
 
 onEvent('tags.items', e => {
@@ -228,6 +261,10 @@ onEvent('tags.items', e => {
 	)
 	e.add('createdeco:decals',
 		/createdeco:.+_decal/
+	)
+	e.add('kubejs:light_wax',
+		'firmalife:beeswax',
+		'immersivepetroleum:paraffin_wax'
 	)
 
 	//weight and szie

@@ -322,12 +322,12 @@ onEvent('recipes', e => {
 		A: 'create:andesite_alloy'
 	}).id('kubejs:crafting/valve_handle');
 	e.shaped('2x create:fluid_tank', [
-	'S',
-	'A',
-	'S'
+	'SAS',
+	'S S',
+	'SSS'
 	], {
-		S: 'tfc:metal/sheet/copper',
-		A: '#tfc:barrels'
+		S: '#tfc:lumber',
+		A: 'tfc:metal/sheet/copper'
 	}).id('kubejs:crafting/fluid_tank');
 	e.shaped('1x create:hose_pulley', [
 	'S',
@@ -1520,4 +1520,15 @@ onEvent('recipes', e => {
 		B: 'immersiveengineering:fluid_pipe',
 		C: 'immersiveengineering:component_steel'
 	}).id('immersiveengineering:crafting/toolupgrade_drill_fortune');
+	e.shaped('immersivepetroleum:seismic_survey', [
+		'SAB',
+		'SAS',
+		'CDC'
+	], {
+		S: '#immersiveengineering:scaffoldings/steel',
+		A: 'tfc:metal/tuyere/steel',
+		B: 'immersiveengineering:gunpart_hammer',
+		C: 'immersiveengineering:component_iron',
+		D: 'immersiveengineering:light_engineering'
+	}).id('immersivepetroleum:seismic_survey_tool');
 })

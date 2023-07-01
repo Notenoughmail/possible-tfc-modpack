@@ -49,17 +49,23 @@ onEvent('item.modification', e => {
 	e.modify('create:copper_diving_helmet', item => {
 		item.maxDamage = 173
 	})
-	e.modify('create:diving_boots', item => {
+	e.modify('create:copper_diving_boots', item => {
 		item.maxDamage = 197
-	})
-	e.modify('#minecraft:boats', item => {
-		item.maxStackSize = 1
 	})
 	e.modify('gunswithoutroses:gold_gun', item => {
 		item.maxDamage = 900
 	})
 	e.modify('gunswithoutroses:iron_gun', item => {
 		item.maxDamage = 1650
+	})
+	e.modify('create:netherite_diving_helmet', item => {
+		item.maxDamage = 748
+	})
+	e.modify('minecraft:netherite_leggings', item => {
+		item.maxDamage = 960
+	})
+	e,modify('create:netherote_diving_boots', item => {
+		item.maxDamage = 860
 	})
 })
 

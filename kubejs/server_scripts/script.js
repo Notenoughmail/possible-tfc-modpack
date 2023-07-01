@@ -161,8 +161,12 @@ onEvent('recipes', e => {
 	})
 	mold_blueprint('kubejs:mold/ingot', 'ingot')
 
-	e.stonecutting('4x create:andesite_bars', 'create:andesite_alloy');
-	e.stonecutting('2x create:andesite_scaffolding', 'create:andesite_alloy');
+	e.stonecutting('4x create:andesite_bars', 'create:andesite_casing');
+	e.stonecutting('2x create:andesite_scaffolding', 'create:andesite_casing');
+	e.stonecutting('4x create:copper_bars', 'create:copper_casing').id('create:copper_bars_from_ingots_copper_stonecutting');
+	e.stonecutting('2x create:copper_scaffolding', 'create:copper_casing').id('create:copper_scaffolding_from_ingots_copper_stonecutting');
+	e.stonecutting('4x create:brass_bars', 'create:brass_casing').id('create:brass_bars_from_ingots_brass_stonecutting');
+	e.stonecutting('2x create:brass_scaffolding', 'create:brass_casing').id('create:brass_scaffolding_from_ingots_brass_stonecutting');
 	
 	e.recipes.createCrushing(['1x tfc:sand/brown'], 'tfc:rock/gravel/granite').id('kubejs:crushing/granite_sand');
 	e.recipes.createCrushing(['1x tfc:sand/white'], 'tfc:rock/gravel/diorite').id('kubejs:crushing/diorite_sand');
@@ -417,15 +421,6 @@ onEvent('recipes', e => {
 	e.recipes.createFilling('create:chocolate_glazed_berries', [Ingredient.notRotten('#tfc:foods/berries'), Fluid.of('firmalife:chocolate', 250)]).id('kubejs:filling/chocolate_berries');
 	e.recipes.createFilling('immersiveengineering:treated_wood_horizontal', ['#minecraft:planks', Fluid.of('immersiveengineering:creosote', 25)]).id('kubejs:filling/stained_wood');
 	
-	e.recipes.createMechanicalCrafting('create:potato_cannon', [
-	'SSSAB',
-	'   CC'
-	], {
-		S: 'create:fluid_pipe',
-		A: 'create:precision_mechanism',
-		B: 'create:andesite_alloy',
-		C: 'tfc:metal/ingot/copper'
-	}).id('kubejs:mechanical_crafting/potato_cannon');
 	e.recipes.createMechanicalCrafting('2x immersiveengineering:light_engineering', [
 	'SAS',
 	'ABA',
@@ -903,7 +898,7 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:component_iron'
 		}
 	}).id('kubejs:blueprint/iron_components');
-		e.custom({
+	e.custom({
 		'type': 'immersiveengineering:blueprint',
 		'inputs': [
 		{
@@ -1832,6 +1827,18 @@ onEvent('recipes', e => {
 		},
 		'result': Fluid.of('immersiveengineering:biodiesel', 16).toJson()
 	}).id('immersiveengineering:refinery/biodiesel')
+	e.custom({
+		type: 'immersiveengineering:refinery',
+		catalyst: {
+			item: 'tfc:metal/sheet/copper'
+		} ,
+		energy: 150,
+		input0: {
+			amount: 8,
+			tag: 'forge:ethylene'
+		},
+		result: Fluid.of('immersiveengineering:acetaldehyde', 8).toJson()
+	}).id('immersivepetroleum:refinery/acetaldehyde');
 	
 	// Fermenter
 	e.custom({
@@ -1866,4 +1873,1292 @@ onEvent('recipes', e => {
 		'input': Ingredient.notRotten('#tfc:foods/grains').toJson(),
 		'energy': 6400
 	}).id('kubejs:fermenter/grain');
+	
+	// Coker
+	e.custom({
+		type: 'immersivepetroleum:coker',
+		result: {
+			item: 'immersivepetroleum:petcoke',
+			count: 2
+		},
+		resultfluid: {
+			tag: 'forge:diesel_sulfur',
+			amount: 27
+		},
+		input: {
+			count: 2,
+			base_ingredient: {
+				item: 'immersivepetroleum:bitumen'
+			}
+		},
+		inputfluid: {
+			tag: 'forge:true_water',
+			amount: 125
+		},
+		time: 30,
+		energy: 15360
+	}).id('immersivepetroleum:coking/petcoke');
+
+	// Hydrotreater
+	e.custom({
+		type: 'immersivepetroleum:hydrotreater',
+		time: 5,
+		energy: 2560,
+		result: {
+			fluid: 'immersivepetroleum:lubricant_cracked',
+			amount: 24
+		},
+		input: {
+			tag: 'forge:lubricant',
+			amount: 24
+		},
+		secondary_input: {
+			tag: 'forge:true_water',
+			amount: 5
+		},
+		secondary_result: {
+			item: 'immersivepetroleum:paraffin_wax',
+			chance: 0.048
+		}
+	}).id('immersivepetroleum:hydrotreater/lubricant_cracking');
+	e.custom({
+		type: 'immersivepetroleum:hydrotreater',
+		time: 5,
+		energy: 2560,
+		result: {
+			fluid: 'immersivepetroleum:naphtha_cracked',
+			amount: 20
+		},
+		input: {
+			tag: 'forge:naphtha',
+			amount: 20
+		},
+		secondary_input: {
+			tag: 'forge:true_water',
+			amount: 5
+		}
+	}).id('immersivepetroleum:hydrotreater/naphtha_cracking');
+	e.custom({
+		type: 'immersivepetroleum:hydrotreater',
+		time: 1,
+		energy: 80,
+		result: {
+			fluid: 'immersivepetroleum:diesel',
+			amount: 10
+		},
+		input: {
+			tag: 'forge:diesel_sulfur',
+			amount: 10
+		},
+		secondary_input: {
+			tag: 'forge:true_water',
+			amount: 5
+		},
+		secondary_result: {
+			item: 'tfc:powder/sulfur',
+			chance: 0.07
+		}
+	}).id('immersivepetroleum:hydrotreater/sulfur_recovery')
+
+	// Mineral
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		ores: [
+			{
+				chance: 0.8,
+				output: {
+					item: 'tfc:ore/bituminous_coal'
+				}
+			},
+			{
+				chance: 0.2,
+				output: {
+					item: 'tfc:ore/sulfur'
+				}
+			},
+			{
+				chance: 0.05,
+				output: {
+					item: 'tfc:pure_phosphorus'
+				}
+			}
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		weight: 15,
+		fail_chance: 0.05
+	}).id('kubejs:mineral_mix/bituminous_coal');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		ores: [
+			{
+				chance: 0.9,
+				output: {
+					item: 'tfc:ore/lignite'
+				}
+			},
+			{
+				chance: 0.2,
+				output: {
+					item: 'tfc:ore/sulfur'
+				}
+			},
+			{
+				chance: 0.05,
+				output: {
+					item: 'tfc:pure_phosphorus'
+				}
+			}
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		weight: 20,
+		fail_chance: 0.05
+	}).id('kubejs:mineral_mix/lignite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		ores: [
+			{
+				chance: 0.85,
+				output: {
+					item: 'tfc:ore/kaolinite'
+				}
+			},
+			{
+				chance: 0.15,
+				output: {
+					item: 'minecraft:clay_ball'
+				}
+			}
+		],
+		weight: 5,
+		fail_chance: 0.1
+	}).id('kubejs:mineral_mix/kaolinite');
+	e.custom({
+		dimensions: [
+			'minecraft:overworld'
+		],
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav,
+			quartzite_loose,
+			quartzite_grav,
+			schist_loose,
+			schist_grav
+		],
+		ores: [
+			{
+				chance: 0.95,
+				output: {
+					item: 'tfc:ore/graphite'
+				}
+			},
+			{
+				chance: 0.05,
+				output: {
+					item: 'tfc:ore/diamond'
+				}
+			}
+		],
+		weight: 7,
+		fail_chance: 0.1
+	}).id('kubejs:mineral_mix/graphite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			quartzite_loose,
+			quartzite_grav,
+			slate_loose,
+			slate_grav,
+			phyllite_loose,
+			phyllite_grav,
+			schist_loose,
+			schist_grav,
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		ores: [
+			{
+				chance: 0.8,
+				output: {
+					item: 'tfc:ore/gypsum'
+				}
+			},
+			{
+				chance: 0.15,
+				output: {
+					item: 'tfc:rock/loose/limestone'
+				}
+			}
+		],
+		weight: 18,
+		fail_chance: 0.15
+	}).id('kubejs:mineral_mix/gypsum');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_grav,
+			dacite_loose,
+			dacite_grav,
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/sulfur'
+				}
+			}
+		],
+		weight: 16,
+		fail_chance: 0.18
+	}).id('kubejs:mineral_mix/sulfur');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_loose,
+			dacite_loose,
+			dacite_grav,
+			quartzite_loose,
+			quartzite_grav,
+			shale_loose,
+			shale_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		ores: [
+			{
+				chance: 0.98,
+				output: {
+					item: 'tfc:ore/cinnabar'
+				}
+			},
+			{
+				chance: 0.013,
+				output: {
+					item: 'tfc:ore/opal'
+				}
+			}
+		],
+		weight: 19,
+		fail_chance: 0.23
+	}).id('kubejs:mineral_mix/cinnabar');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		spoils: [
+			granite_loose,
+			granite_grav
+		],
+		dimensions: [
+			'minecraft:overworld'
+		],
+		ores: [
+			{
+				chance: 0.94,
+				output: {
+					item: 'tfc:ore/cryolite'
+				}
+			}
+		],
+		weight: 17,
+		fail_chance: 0.24
+	}).id('kubejs:mineral_mix/cryolite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.93,
+				output: {
+					item: 'tfc:ore/saltpeter'
+				}
+			},
+			{
+				chance: 0.2,
+				output: {
+					item: 'tfc:ore/gypsum'
+				}
+			}
+		],
+		weight: 32,
+		fail_chance: 0.21
+	}).id('kubejs:mineral_mix/saltpeter');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			chert_loose,
+			chert_grav
+		],
+		ores: [
+			{
+				 chance: 1.0,
+				 output: {
+					item: 'tfc:ore/sylvite'
+				 }
+			}
+		],
+		weight: 14,
+		fail_chance: 0.26
+	}).id('kubejs:mineral_mix/sylvite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			shale_loose,
+			shale_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/borax'
+				}
+			}
+		],
+		weight: 34,
+		fail_chance: 0.27
+	}).id('kubejs:mineral_mix/borax');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/halite'
+				}
+			}
+		],
+		weight: 26,
+		fail_chance: 0.34
+	}).id('kubejs:mineral_mix/halite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			gabbro_loose,
+			gabbro_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/diamond'
+				}
+			}
+		],
+		weight: 2,
+		fail_chance: 0.45
+	}).id('kubejs:mineral_mix/kimberlite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/emerald'
+				}
+			}
+		],
+		weight: 3,
+		fail_chance: 0.47
+	}).id('kubejs:mineral_mix/emerald');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			limestone_loose,
+			limestone_grav,
+			marble_loose,
+			marble_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/lapis_lazuli'
+				}
+			}
+		],
+		weight: 9,
+		fail_chance: 0.32
+	}).id('kubejs:mineral_mix/lapis_lazuli');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_grav,
+			dacite_loose,
+			dacite_grav
+		],
+		ores: [
+			{
+				chance: 0.34,
+				output: {
+					item: 'tfc:ore/poor_native_copper'
+				}
+			},
+			{
+				chance: 0.76,
+				output: {
+					item: 'tfc:ore/normal_native_copper'
+				}
+			},
+			{
+				chance: 0.65,
+				output: {
+					item: 'tfc:ore/rich_native_copper'
+				}
+			}
+		],
+		weight: 73,
+		fail_chance: 0.16
+	}).id('kubejs:mineral_mix/native_copper');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_grav,
+			dacite_loose,
+			dacite_grav,
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav
+		],
+		ores: [
+			{
+				chance: 0.46,
+				output: {
+					item: 'tfc:ore/poor_native_gold'
+				}
+			},
+			{
+				chance: 0.54,
+				output: {
+					item: 'tfc:ore/normal_native_gold'
+				}
+			},
+			{
+				chance: 0.56,
+				output: {
+					item: 'tfc:ore/rich_native_gold'
+				}
+			}
+		],
+		weight: 64,
+		fail_chance: 0.21
+	}).id('kubejs:mineral_mix/native_gold');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_grav,
+			dacite_loose,
+			dacite_grav,
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav
+		],
+		ores: [
+			{
+				chance: 1.0,
+				output: {
+					item: 'tfc:ore/pyrite'
+				}
+			}
+		],
+		weight: 43,
+		fail_chance: 0.31
+	}).id('kubejs:mineral_mix/pyrite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			rhyolite_loose,
+			rhyolite_grav,
+			basalt_loose,
+			basalt_grav,
+			andesite_loose,
+			andesite_grav,
+			dacite_loose,
+			dacite_grav
+		],
+		ores: [
+			{
+				chance: 0.35,
+				output: {
+					item: 'tfc:ore/poor_hematite'
+				}
+			},
+			{
+				chance: 0.36,
+				output: {
+					item: 'tfc:ore/normal_hematite'
+				}
+			},
+			{
+				chance: 0.56,
+				output: {
+					item: 'tfc:ore/rich_hematite'
+				}
+			}
+		],
+		weight: 65,
+		fail_chance: 0.18
+	}).id('kubejs:mineral_mix/hematite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			quartzite_loose,
+			quartzite_grav,
+			slate_loose,
+			slate_grav,
+			phyllite_loose,
+			phyllite_grav,
+			schist_loose,
+			schist_grav,
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav
+		],
+		ores: [
+			{
+				chance: 0.23,
+				output: {
+					item: 'tfc:ore/poor_native_silver'
+				}
+			},
+			{
+				chance: 0.63,
+				output: {
+					item: 'tfc:ore/normal_native_silver'
+				}
+			},
+			{
+				chance: 0.64,
+				output: {
+					item: 'tfc:ore/rich_native_silver'
+				}
+			}
+		],
+		weight: 53,
+		fail_chance: 0.31
+	}).id('kubejs:mineral_mix/native_silver');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav
+		],
+		ores: [
+			{
+				chance: 0.16,
+				output: {
+					item: 'tfc:ore/poor_cassiterite'
+				}
+			},
+			{
+				chance: 0.34,
+				output: {
+					item: 'tfc:ore/normal_cassiterite'
+				}
+			},
+			{
+				chance: 0.49,
+				output: {
+					item: 'tfc:ore/rich_cassiterite'
+				}
+			},
+			{
+				chance: 0.013,
+				output: {
+					item: 'tfc:ore/topaz'
+				}
+			}
+		],
+		weight: 58,
+		fail_chance: 0.29
+	}).id('kubejs:mineral_mix/cassiterite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav,
+			gabbro_loose,
+			gabbro_grav,
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.21,
+				output: {
+					item: 'tfc:ore/poor_bismuthinite'
+				} 
+			},
+			{
+				chance: 0.34,
+				output: {
+					item: 'tfc:ore/normal_bismuthinite'
+				}
+			},
+			{
+				chance: 0.49,
+				output: {
+					item: 'tfc:ore/rich_bismuthinite'
+				}
+			}
+		],
+		weight: 64,
+		fail_chance: 0.16
+	}).id('kubejs:mineral_mix/bismuthinite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			gabbro_loose,
+			gabbro_loose,
+			gabbro_loose,
+			gabbro_loose,
+			gabbro_grav,
+			gabbro_grav,
+			gabbro_grav,
+			gabbro_grav,
+			granite_loose,
+			granite_grav,
+			diorite_loose,
+			diorite_grav
+		],
+		ores: [
+			{
+				chance: 0.13,
+				output: {
+					item: 'tfc:ore/poor_garnierite'
+				}
+			},
+			{
+				chance: 0.26,
+				output: {
+					item: 'tfc:ore/normal_garnierite'
+				}
+			},
+			{
+				chance: 0.49,
+				output: {
+					item: 'tfc:ore/rich_garnierite'
+				}
+			}
+		],
+		weight: 64,
+		fail_chance: 0.31
+	}).id('kubejs:mineral_mix/garnierite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			{
+				chance: 0.52,
+				output: {
+					item: 'tfc:rock/loose/marble'
+				}
+			},
+			{
+				chance: 1.04,
+				output: {
+					item: 'tfc:rock/gravel/marble'
+				}
+			},
+			{
+				chance: 0.52,
+				output: {
+					item: 'tfc:rock/loose/limestone'
+				}
+			},
+			{
+				chance: 1.04,
+				output: {
+					item: 'tfc:rock/gravel/limestone'
+				}
+			},
+			phyllite_loose,
+			phyllite_grav,
+			chalk_loose,
+			chalk_grav,
+			dolomite_loose,
+			dolomite_grav
+		],
+		ores: [
+			{
+				chance: 0.23,
+				output: {
+					item: 'tfc:ore/poor_malachite'
+				}
+			},
+			{
+				chance: 0.34,
+				output: {
+					item: 'tfc:ore/normal_malachite'
+				}
+			},
+			{
+				chance: 0.54,
+				output: {
+					item: 'tfc:ore/rich_malachite'
+				}
+			},
+			{
+				chance: 0.08,
+				output: {
+					item: 'tfc:ore/gypsum'
+				}
+			}
+		],
+		weight: 74,
+		fail_chance: 0.24
+	}).id('kubejs:mineral_mix/malachite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.23,
+				output: {
+					item: 'tfc:ore/poor_magnetite'
+				}
+			},
+			{
+				chance: 0.45,
+				output: {
+					item: 'tfc:ore/normal_magnetite'
+				}
+			},
+			{
+				chance: 0.56,
+				output: {
+					item: 'tfc:ore/rich_magnetite'
+				}
+			}
+		],
+		weight: 63,
+		fail_chance: 0.26
+	}).id('kubejs:mineral_mix/magnetite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.23,
+				output: {
+					item: 'tfc:ore/poor_limonite'
+				}
+			},
+			{
+				chance: 0.34,
+				output: {
+					item: 'tfc:ore/normal_limonite'
+				}
+			},
+			{
+				chance: 0.64,
+				output: {
+					item: 'tfc:ore/rich_limonite'
+				}
+			},
+			{
+				chance: 0.064,
+				output: {
+					item: 'tfc:ore/ruby'
+				}
+			}
+		],
+		weight: 76,
+		fail_chance: 0.21
+	}).id('kubejs:mineral_mix/limonite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			quartzite_loose,
+			quartzite_grav,
+			slate_loose,
+			slate_grav,
+			phyllite_loose,
+			phyllite_grav,
+			schist_loose,
+			schist_grav,
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav
+		],
+		ores: [
+			{
+				chance: 0.24,
+				output: {
+					item: 'tfc:ore/poor_sphalerite'
+				}
+			},
+			{
+				chance: 0.46,
+				output: {
+					item: 'tfc:ore/normal_sphalerite'
+				}
+			},
+			{
+				chance: 0.74,
+				output: {
+					item: 'tfc:ore/rich_sphalerite'
+				}
+			}
+		],
+		weight: 68,
+		fail_chance: 0.24
+	}).id('kubejs:mineral_mix/sphalerite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			quartzite_loose,
+			quartzite_grav,
+			slate_loose,
+			slate_grav,
+			phyllite_loose,
+			phyllite_grav,
+			schist_loose,
+			schist_grav,
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav
+		],
+		ores: [
+			{
+				chance: 0.21,
+				output: {
+					item: 'tfc:ore/poor_tetrahedrite'
+				}
+			},
+			{
+				chance: 0.49,
+				output: {
+					item: 'tfc:ore/normal_tetrahedrite'
+				}
+			},
+			{
+				chance: 0.67,
+				output: {
+					item: 'tfc:ore/rich_tetrahedrite'
+				}
+			}
+		],
+		weight: 75,
+		fail_chance: 0.16
+	}).id('kubejs:mineral_mix/tetrahedrite');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			granite_loose,
+			granite_grav,
+			quartzite_loose,
+			quartzite_grav,
+			slate_loose,
+			slate_grav,
+			phyllite_loose,
+			phyllite_grav,
+			schist_loose,
+			schist_grav,
+			gneiss_loose,
+			gneiss_grav,
+			marble_loose,
+			marble_grav
+		],
+		ores: [
+			{
+				chance: 0.31,
+				output: {
+					item: 'kubejs:ore/poor_lead'
+				}
+			},
+			{
+				chance: 0.64,
+				output: {
+					item: 'kubejs:ore/normal_lead'
+				}
+			},
+			{
+				chance: 0.81,
+				output: {
+					item: 'kubejs:ore/rich_lead'
+				}
+			}
+		],
+		weight: 72,
+		fail_chance: 0.26
+	}).id('kubejs:mineral_mix/native_lead');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.94,
+				output: {
+					item: 'immersiveengineering:raw_uranium'
+				}
+			},
+			{
+				chance: 0.08,
+				output: {
+					item: 'kubejs:ore/small_lead'
+				}
+			}
+		],
+		weight: 67,
+		fail_chance: 0.46
+	}).id('kubejs:mineral_mix/uranium');
+	e.custom({
+		type: 'immersiveengineering:mineral_mix',
+		dimensions: [
+			'minecraft:overworld'
+		],
+		spoils: [
+			shale_loose,
+			shale_grav,
+			claystone_loose,
+			claystone_grav,
+			limestone_loose,
+			limestone_grav,
+			conglomerate_loose,
+			conglomerate_grav,
+			dolomite_loose,
+			dolomite_grav,
+			chert_loose,
+			chert_grav,
+			chalk_loose,
+			chalk_grav
+		],
+		ores: [
+			{
+				chance: 0.97,
+				output: {
+					item: 'immersiveengineering:raw_aluminum'
+				}
+			},
+			{
+				chance: 0.06,
+				output: {
+					item: 'tfc:ore/sapphire'
+				}
+			}
+		],
+		weight: 68,
+		fail_chance: 0.34
+	}).id('kubejs:mineral_mix/bauxite');
+
+	// Reservoir
+	e.custom({
+		type: 'immersivepetroleum:reservoirs',
+		fluid: 'minecraft:water',
+		fluidminimum: 705000000,
+		fluidcapacity: 1410000000,
+		fluidtrace: 1,
+		weight: 92,
+		equilibrium: 20000000,
+		dimensions: {
+			isBlacklist: false,
+			list: [
+				'minecraft:overworld'
+			]
+		},
+		biomes: {
+			isBlacklist: false,
+			list: []
+		},
+		name: 'aquifer'
+	}).id('kubejs:reservior/aquifer');
+	e.custom({
+		type: 'immersivepetroleum:reservoirs',
+		fluid: 'immersivepetroleum:crudeoil',
+		fluidminimum: 953000000,
+		fluidcapacity: 2120000000,
+		fluidtrace: 0,
+		weight: 15,
+		equilibrium: 0,
+		dimensions: {
+			isBlacklist: false,
+			list: [
+				'minecraft:overworld'
+			]
+		},
+		biomes: {
+			isBlacklist: false,
+			list: []
+		},
+		name: 'oil'
+	}).id('kubejs:reservior/oil');
 })

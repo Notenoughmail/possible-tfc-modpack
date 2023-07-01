@@ -65,10 +65,10 @@
 	"block.kubejs.frame.capacitor_mv": "Medium-Voltage Capacitor Frame",
 	"block.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame",
 	
-	"item.kubejs.ore.normal_lead": "Normal Lead",
-	"item.kubejs.ore.poor_lead": "Poor Lead",
-	"item.kubejs.ore.rich_lead": "Rich Lead",
-	"item.kubejs.ore.small_lead": "Small Lead",
+	"item.kubejs.ore.normal_lead": "Normal Native Lead",
+	"item.kubejs.ore.poor_lead": "Poor Native Lead",
+	"item.kubejs.ore.rich_lead": "Rich Native Lead",
+	"item.kubejs.ore.small_lead": "Small Native Lead",
 	
 	"item.kubejs.mold.ingot": "Metal Mold: Ingot",
 	"item.kubejs.mold.double_ingot": "Metal Mold: Double Ingot",

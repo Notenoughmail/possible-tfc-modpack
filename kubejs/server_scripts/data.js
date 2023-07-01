@@ -23,6 +23,7 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemDamageResistance('#create:diving_equipment/blue_steel', 's=12, p=12, c=14')
 	
 	e.addTFCFuel('immersiveengineering:coal_coke', 2385, 1466)
+	e.addTFCFuel('immersivepetroleum:petcoke', 702, 2384) // This suff is kinda awful see: https://pubs.acs.org/doi/10.1021/acsomega.0c02250 Table 3, assuming there are some Copper-Hydrocarbons as this comes from oil
 	
 	e.addTFCLampFuel('immersiveengineering:ethanol', '#tfc:lamps', 300)
 	

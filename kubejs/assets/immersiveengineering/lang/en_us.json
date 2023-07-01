@@ -59,5 +59,36 @@
 	
 	"fluid.immersiveengineering.concrete_flowing": "Liquid Concrete",
 	
-	"material.treatedwood.name": "Stained Wood"
+	"material.treatedwood.name": "Stained Wood",
+	
+	"desc.immersiveengineering.info.mineral.lignite": "Lignite",
+	"desc.immersiveengineering.info.mineral.kaolinite": "Kaolinite",
+	"desc.immersiveengineering.info.mineral.graphite": "Graphite",
+	"desc.immersiveengineering.info.mineral.gypsum": "Gypsum",
+	"desc.immersiveengineering.info.mineral.sulfur": "Sulfur",
+	"desc.immersiveengineering.info.mineral.cinnabar": "Cinnabar",
+	"desc.immersiveengineering.info.mineral.cryolite": "Cryolite",
+	"desc.immersiveengineering.info.mineral.saltpeter": "Saltpeter",
+	"desc.immersiveengineering.info.mineral.sylvite": "Sylvite",
+	"desc.immersiveengineering.info.mineral.borax": "Borax",
+	"desc.immersiveengineering.info.mineral.halite": "Halite",
+	"desc.immersiveengineering.info.mineral.kimberlite": "Kimberlite",
+	"desc.immersiveengineering.info.mineral.emerald": "Emerald",
+	"desc.immersiveengineering.info.mineral.lapis_lazuli": "Lapis Lazuli",
+	"desc.immersiveengineering.info.mineral.native_copper": "Native Copper",
+	"desc.immersiveengineering.info.mineral.native_gold": "Native Gold",
+	"desc.immersiveengineering.info.mineral.pyrite": "Gold",
+	"desc.immersiveengineering.info.mineral.hematite": "Hematite",
+	"desc.immersiveengineering.info.mineral.native_silver": "Native Silver",
+	"desc.immersiveengineering.info.mineral.cassiterite": "Cassiterite",
+	"desc.immersiveengineering.info.mineral.bismuthinite": "Bismuthinite",
+	"desc.immersiveengineering.info.mineral.garnierite": "Garnierite",
+	"desc.immersiveengineering.info.mineral.malachite": "Malachite",
+	"desc.immersiveengineering.info.mineral.magnetite": "Magnetite",
+	"desc.immersiveengineering.info.mineral.limonite": "Limonite",
+	"desc.immersiveengineering.info.mineral.sphalerite": "Sphalerite",
+	"desc.immersiveengineering.info.mineral.tetrahedrite": "Tetrahedrite",
+	"desc.immersiveengineering.info.mineral.native_lead": "Native Lead",
+	"desc.immersiveengineering.info.mineral.uranium": "Uraninite",
+	"desc.immersiveengineering.info.mineral.bauxite": "Bauxite"
 }
