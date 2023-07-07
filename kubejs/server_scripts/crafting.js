@@ -1531,4 +1531,33 @@ onEvent('recipes', e => {
 		C: 'immersiveengineering:component_iron',
 		D: 'immersiveengineering:light_engineering'
 	}).id('immersivepetroleum:seismic_survey_tool');
+	e.shaped('immersivepetroleum:projector', [
+		'S  ',
+		'AB ',
+		' AC'
+	], {
+		S: '#forge:glass/colorless',
+		A: 'tfc:metal/rod/wrought_iron',
+		B: 'tfc:metal/sheet/brass',
+		C: '#forge:treated_wood'
+	}).id('immersivepetroleum:projector');
+	e.shaped('immersiveengineering:survey_tools', [
+		'SAB',
+		'CCC'
+	], {
+		S: Item.of('minecraft:writable_book').ignoreNBT(),
+		A: '#forge:glass/colorless',
+		B: Item.of('immersiveengineering:hammer').ignoreNBT(),
+		C: '#forge:fabric_hemp'
+	}).id('immersiveengineering:crafting/survey_tools');
+	e.shaped('immersiveengineering:current_transformer', [
+		' S ',
+		' A ',
+		'BCB'
+	], {
+		S: 'immersiveengineering:voltmeter',
+		A: 'immersiveengineering:duroplast',
+		B: 'tfc:metal/rod/steel',
+		C: 'immersiveengineering:component_electronic'
+	}).id('immersiveengineering:crafting/current_transformer');
 })

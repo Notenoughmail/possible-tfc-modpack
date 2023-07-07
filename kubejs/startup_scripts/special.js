@@ -4,6 +4,8 @@
 const LivingEntity = java("net.minecraft.world.entity.LivingEntity")
 const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
 const FirePit = java("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
+const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
+const FirePitBlock = java("net.dries007.tfc.common.blocks.devices.FirepitBlock");
 
 onEvent('create.pipe.fluid_effect', e => {
 	e.addFluidHandler(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
@@ -24,6 +26,9 @@ onEvent('create.boiler.heater', e => {
 		return 0;
 	})
 	e.registerHeater('tfc:firepit', (block) => {
+		if (!block.blockState.getValue(FirePitBlock.LIT)) {
+			return -1;
+		}
 		let pit = block.getEntity();
 		if (pit instanceof FirePit) {
 			if (pit.getTemperature() < 100) {
@@ -34,6 +39,9 @@ onEvent('create.boiler.heater', e => {
 		return -1;
 	})
 	e.registerHeater('tfc:pot', (block) => {
+		if (!block.blockState.getValue(FirePitBlock.LIT)) {
+			return -1;
+		}
 		let pot = block.getEntity();
 		if (pot instanceof FirePit) {
 			if (pot.getTemperature() < 100) {
@@ -44,6 +52,9 @@ onEvent('create.boiler.heater', e => {
 		return -1;
 	})
 	e.registerHeater('tfc:grill', (block) => {
+		if (!block.blockState.getValue(FirePitBlock.LIT)) {
+			return -1;
+		}
 		let grill = block.getEntity();
 		if (grill instanceof FirePit) {
 			if (grill.getTemperature() < 100) {
@@ -54,11 +65,11 @@ onEvent('create.boiler.heater', e => {
 		return -1;
 	})
 	e.registerHeater('tfc:charcoal_forge', (block) => {
+		if (block.blockState.getValue(CharcoalForgeBlock.HEAT) < 2) {
+			return -1;
+		}
 		let forge = block.getEntity();
 		if (forge instanceof CharcoalForge) {
-			if (forge.getTemperature() < 100) {
-				return -1;
-			}
 			return (forge.getTemperature() / 500);
 		}
 		return -1;
@@ -92,4 +103,22 @@ onEvent('item.model_properties', e => {
 		}
 		return 0;
 	})
+})
+
+onEvent('morejs.potion_brewing.register', e => {
+	e.removeByPotion(null, null, null)
+})
+
+onForgeEvent('net.dries007.tfc.util.events.StartFireEvent', e => {
+	let level = e.getLevel();
+	let pos = e.getPos();
+	let state = e.getState();
+	let block = state.getBlock();
+
+	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below()) && e.isStrong()) {
+		let be = level.getBlockEntity(pos.below());
+		if (be instanceof CharcoalForge && be.light(level.getBlockState(pos.below()))) {
+			e.canceled = true;
+		}
+	}
 })

@@ -111,6 +111,9 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersivepetroleum:speedboat')
 	e.hide(/immersivepetroleum:upgrade.+/)
 	e.hide('immersiveengineering:dust_sulfur')
+	e.hide('minecraft:experience_bottle')
+	e.hide('create:potato_cannon')
+	e.hide(/(?:create|immersiveengineering):.*raw.*/)
 })
 
 onEvent('jei.add.items', e => {
@@ -147,13 +150,15 @@ onEvent('jei.add.items', e => {
 	e.add('createdeco:pearl_brick')
 	e.add('createdeco:dean_brick')
 	e.add('immersiveengineering:nugget_lead')
-	e.add('immerisveengineering:nugget_steel')
+	e.add('immersiveengineering:nugget_steel')
 	e.add('immersiveengineering:nugget_silver')
 	e.add('immersiveengineering:nugget_constantan')
 	e.add('create:netherite_diving_helmet')
 	e.add('create:netherite_diving_boots')
 	e.add('create:netherite_backtank')
 	e.add('minecraft:netherite_leggings')
+	e.add('immersiveengineering:raw_uranium')
+	e.add('immersiveengineering:raw_aluminum')
 })
 
 onEvent('jei.add.fluids', e => {

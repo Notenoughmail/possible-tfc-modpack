@@ -110,7 +110,7 @@ hash = "f3f154efc2fdf6ae5447072bfe4bae790e768e0b23df1a0ec955b875c2c82968"
 
 [[files]]
 file = "config/jei/ingredient-list-mod-sort-order.ini"
-hash = "3ff5b7223340528be602a4ccb438a52471eb8b0149bf5ce2db432fab3f6d6da5"
+hash = "6c990149be798c86b87f188d591033f053f496ee9d2c8ce57cd5e4cc21329001"
 
 [[files]]
 file = "config/jei/ingredient-list-type-sort-order.ini"
@@ -118,7 +118,7 @@ hash = "394008bf216efb4c05a2c4398edbf8f3178e026a28285de3d962eac0800a3cfc"
 
 [[files]]
 file = "config/jei/recipe-category-sort-order.ini"
-hash = "4eb70453ecd81f438da9e2233c7ef5771dbdbb98bcc327d58b054ffafd349917"
+hash = "837cb703945d0a17ac205fcd94b5af2b54a22ea995a1a6dbad07325ad0363556"
 
 [[files]]
 file = "config/jeresources-common.toml"
@@ -433,6 +433,10 @@ file = "kubejs/assets/create/textures/block/blaze_heater_brazier.png"
 hash = "a2566ec6ec51e3f2e2f457ce9b62e760f5851b05439f398dad22106c1e2e57d2"
 
 [[files]]
+file = "kubejs/assets/create/textures/block/netherite_backtank.png"
+hash = "7a54c9940cddc71d13982555539f2b778b179bfad4c58152b365973f8517540f"
+
+[[files]]
 file = "kubejs/assets/create/textures/block/palettes/acacia_window.png"
 hash = "2c5111e7f26edd473fadbd8cd9c45f03eb40ff6077407fd139ab1f42dcd70b7f"
 
@@ -541,8 +545,28 @@ file = "kubejs/assets/create/textures/item/incomplete_track.png"
 hash = "0902b3d740a1496d18bd0fe2eddbcf627d8dadeb03d9278105c6e48dc90675df"
 
 [[files]]
+file = "kubejs/assets/create/textures/item/netherite_diving_boots.png"
+hash = "32ae73c1edafae8ae37ff7698f957bf20b721d8216076fd94ef93c231584f7f1"
+
+[[files]]
+file = "kubejs/assets/create/textures/item/netherite_diving_helmet.png"
+hash = "ef4a4bee645b2f353cce75e0b1363c068f45bda4a9f09a648f536c4361051519"
+
+[[files]]
 file = "kubejs/assets/create/textures/item/track.png"
 hash = "c3e1c6e632f1322b0132ff2ca0511be62f0efd8e68ec9cd12d9c26a3489583f3"
+
+[[files]]
+file = "kubejs/assets/create/textures/models/armor/netherite_diving_arm.png"
+hash = "6badcf4c86a70e7fce15dac0f4ac65f53c9f75f04706cdf89507cecd1335a5a5"
+
+[[files]]
+file = "kubejs/assets/create/textures/models/armor/netherite_diving_layer_1.png"
+hash = "20161bf4eea46a174f82be56d96da11e61ac0d81eb10ef50454dd87f3a56a9e4"
+
+[[files]]
+file = "kubejs/assets/create/textures/models/armor/netherite_diving_layer_2.png"
+hash = "eaa6dc35aef5e453d2b25630027d78e06118c2e2e56d3558a0eed67ecf74f886"
 
 [[files]]
 file = "kubejs/assets/create_crystal_clear/lang/en_us.json"
@@ -570,7 +594,7 @@ hash = "e2fd53018180c10c0867424d337016e7cb1f7661f3463524b8244589d2556c03"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/lang/en_us.json"
-hash = "71b1375965c39d8e1858ed0fcb37b38b1ad7a3eb1cb6eeff8599a0d3ecfa4e9c"
+hash = "68c233bee563fd93f533c3ca3d434f0ebd5c2d4cd5576f17016ceaf24924b504"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/models/item/blueprint.json"
@@ -601,6 +625,10 @@ file = "kubejs/assets/immersiveengineering/textures/item/metal_plate_lead.png"
 hash = "f1368f83f4568792eb41b444db648373677a1e32d0ac2ec8e6cfd8495738c715"
 
 [[files]]
+file = "kubejs/assets/immersivepetroleum/lang/en_us.json"
+hash = "098e5f96c25da142fb2067ebb6b8136bf902132786592520b0fa5d2fb3693a7e"
+
+[[files]]
 file = "kubejs/assets/immersiveposts/textures/items/stick_constantan.png"
 hash = "a73a0e16030d26a0a7fb215c933de6804b9fab20874606e1701054c4c772efbf"
 
@@ -614,7 +642,7 @@ hash = "fd6c3c79a17807e8537f9c0be343ba02bee5cdebfba1c42268c2eb661e3c869f"
 
 [[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "f0881ada022de9247f124bcf28190aefae9f958b510f8db2ab65d6b72ec89fe7"
+hash = "21fe88603d733cd412388899a1657ce498c0bf6c545d7a3f81c2dec50ab4ef2e"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/frame/capacitor_hv.json"
@@ -925,6 +953,126 @@ file = "kubejs/assets/kubejs/textures/block/ore/rich_lead.png"
 hash = "00bab0b33b66def129a6f3249c588c575a73c85a177bf4e0ae4f911f75f0dc10"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/bauxite.png"
+hash = "ab35813c3ac65d733872744e33eecbee157862af2707b8d815b6d28f52915dd0"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/bismuthinite.png"
+hash = "684c1bb7457d0065edeaecf11f50662a8912258611073650f58a7907a684965f"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/bituminous_coal.png"
+hash = "3ed53ab885e6b675979dc8b624c7022ed679c092578ae447dccc12558c19e698"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/borax.png"
+hash = "9da20e701e818a81f07d65b332c645781f640239a1262f9dee7e7f1ef6add79a"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/cassiterite.png"
+hash = "cb0b33c41e9a8c36e2e126aec1bb5fcc424734ca33f407108af627c5c6258a46"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/cinnabar.png"
+hash = "7c0f603e4f8770e8664c2c95e250271d08baf1159a0a670aa2ce6560a0794404"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/copper.png"
+hash = "f884ea3d399a7452bad813bc6323ca46d6a7795eb721298e3f6e980b2340e1f5"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/cryolite.png"
+hash = "93325d97c4974053e3dc8c7d9bb08fa919cd2dc490e455d9d6716fdd1687ec30"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/emerald.png"
+hash = "36a6b568586f96c107d74f126da42eed3a54cdd5cffa5e1335895348b4cb3e73"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/garnierite.png"
+hash = "251af2fbc1d8f0791e54a4ffc4cdabe49ddee5aaa36be26946540e5d07e817e7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/gold.png"
+hash = "93a6931533d6b3efc521899d6c94deed48ab98e6a6359a80a0f0f043da64a9f7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/graphite.png"
+hash = "48714e42402297e53baf21754416ccdbb17781cbaa4640507cb2998dc007f83b"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/gypsum.png"
+hash = "f961119cbf3755235f8a4a5fff98fb3f7c05fb8c238a4b923873fa31e9781b01"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/halite.png"
+hash = "151e401830b378e6663eb408626f9698036be888278481a9bddc5d9cb940f020"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/hematite.png"
+hash = "a5821021539b2ee5d96fdb1a1af026a4d549aef7c7c20dfcdb0018e5e82d7b5e"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/kaolinite.png"
+hash = "ec4f60135068ef938f2fb296e6c0df2b7e328c1dfa364fc4552893191603ee76"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/kimberlite.png"
+hash = "2fb3f2d418efca624c11e8e8020bcdf70ab736501ef3396632fb711a051bee59"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/lapis.png"
+hash = "ec70203eed6094dbc0e03f8db9cc76c01b7f17526c0b6327a8c2f4c7fefc41d8"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/lead.png"
+hash = "cd5022d0001373c5b327f3cdebc0bc2648e47d8d29f90af4271843982c463427"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/lignite.png"
+hash = "54b267c279a33e385bc509fc63cb399d300acb530e49feeaf38f6d4c68225aac"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/limonite.png"
+hash = "9681a24df931efe981209e6067fa7f240cc9647e61b6074a343e2311f115b630"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/magnetite.png"
+hash = "75dc1d7ba9554fb700c1407513b3474e3069b8d46ba693427f46b302a1449111"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/malachite.png"
+hash = "cd2d21e5adcdffded7b876d251bc2dc7e5f808d945cd7628f0f3f616e2e43767"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/saltpeter.png"
+hash = "16f4244efdc862b62bfce6736d9110cc4874ed19a702513059e928deca2aa359"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/silver.png"
+hash = "cc5f9c4fc88ed7281e27de729b3096a49f6788b61ea6623e23356522eefc8b71"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/sphalerite.png"
+hash = "20dc9820047f0c45de90e19da275c233e59959dbd139f4b739448e9a766135cd"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/sulfur.png"
+hash = "2077dc15851bf163f880e8446edad4534884c93d483a62bf02f623c249fcb7b3"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/sylvite.png"
+hash = "98d77842f9b4a395cee7511b7b51cf0dfc1512adddf6ea90a1197c16f10aba12"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/tetrahedrite.png"
+hash = "8acbc57e42ec35c2e9fe60b9ee02a1c800e4c5c92b8d623fbd6827afe9903bf7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/sample_ore/uranium.png"
+hash = "9aca7dc3ae205943f111bbee6912e7dc3d6c30b0cc9a6545fb80756c6aa58f1c"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/block/small_lead.png"
 hash = "7cd6baf177a63a9cfd7d37cbe8702816bf0b053da220e9d4aef41de11926df28"
 
@@ -1021,6 +1169,14 @@ file = "kubejs/assets/minecraft/lang/en_us.json"
 hash = "0d1369cf2aef609fa34764d60e086269529d47e993d747e577e3b115a0b1fc86"
 
 [[files]]
+file = "kubejs/assets/minecraft/textures/item/netherite_leggings.png"
+hash = "e4d58bf1560063fb8582501e604cc4571cfeb79bae465ffc84ca4cd3ccdad04b"
+
+[[files]]
+file = "kubejs/assets/minecraft/textures/models/armor/netherite_layer_2.png"
+hash = "5b8a832b6b36a8be0a0520504643de727e5ea11df0dcf5243f7f78268c321b39"
+
+[[files]]
 file = "kubejs/assets/railways/lang/en_us.json"
 hash = "2e14d1afcf462851905f15fcd296b46efa34ca8bdc382ec80b9d8f67f4404996"
 
@@ -1054,7 +1210,7 @@ hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "d2630d9a51702d9133d144fb84e636d7a7db1984e0c4e7a3db64490a95faee18"
+hash = "f02d378c753f2bfa5a6380353a3244c82bd96132a76fe0a2b8fcd77d28509e14"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
@@ -1130,11 +1286,15 @@ hash = "bb256396f7456088c5d43f3bdf9ea40eb9e6fa7290152ce10ab5e5385086b935"
 
 [[files]]
 file = "kubejs/data/immersiveengineering/structures/multiblocks/bottling_machine.nbt"
-hash = "abd6505c4634c4c9e3a60edb1fb42939305c91beb1bf7a3537b18ca24f9cecb4"
+hash = "223e4fcc5c8f0bed876c22c8fdb6e23e3a055f457d4d013b68e83b0cca7fa24c"
 
 [[files]]
 file = "kubejs/data/immersiveengineering/structures/multiblocks/crusher.nbt"
 hash = "297562bbb396bb6f7606419a409ba87c05ad19a48149fddcea6b27c4b5622744"
+
+[[files]]
+file = "kubejs/data/immersiveengineering/structures/multiblocks/fermenter.nbt"
+hash = "2a90cf9e3fa149602a796edb232caa074102acd7b29805ad94cd0702dd6d1d8c"
 
 [[files]]
 file = "kubejs/data/immersiveengineering/structures/multiblocks/improved_blast_furnace.nbt"
@@ -1150,11 +1310,11 @@ hash = "0acfc1931620a5294c662c2450418325071c9052b8f7b267e469e82735578691"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "3a9d232907005c2b019dea705009b177f52d02ec54ef1ced27256cc6f77cf13b"
+hash = "861d8a0a122bd23cca8b75fa40b3b9870f0250d2cddbc1e347220a7e68bf7d10"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "a2b4a791d6edaba5485b24ece26b9dda9c3ad12528eb29ed17efd62c66dcb763"
+hash = "34d2ed514df801ecbd74f32224eaf9e60320f22c158ad0c3a9f60b017d8fcf45"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1162,19 +1322,19 @@ hash = "d78e471ec8d7324f1c2fe5f451b70d816fb27c848d4be47bdfff829565984ce9"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "9ea1a6f4563d76c8d1096461bce41d79ec609edc294e6b8b55e24edb1cc5bb0b"
+hash = "0345f87f68d413891d6df600b7dd8468462098c55edca6a8d1346af29891ff06"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "9cf57ebe51e05e3ca59aa52d3e7112e421ea29d377af66d1eb70bf772fb701a5"
+hash = "ae802f241ee1ebbc62677c34ccb94e878d3fbfa0e34246c950c42772ce36fa97"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "59416468fc1011579590cdcca30ffc0e95a0b17b5bbd6b25590c17d1158c0bb3"
+hash = "f8722b30446731401c9512be1cdb6997856db9f37ce925faa3f40e83fa57f358"
 
 [[files]]
 file = "kubejs/server_scripts/server_constants.js"
-hash = "3846d9df7eecf03be1a1d4f90aae39f300a978cc4056be59a1dbeac73eccd0e3"
+hash = "750aa8a5555d583db7cc36906e31c4f5e3865a5daae26158ad5c36548529e076"
 
 [[files]]
 file = "kubejs/server_scripts/shaders.js"
@@ -1182,7 +1342,7 @@ hash = "26f05923d4cef60ea12100bba38ab1a0b92836669bb16544026c2bac7a8e6c90"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "07940ff3068ea758e2e757c7d5d3313c78f16d497a0965c75f14561cf837dc6c"
+hash = "fe7473dbd11f8755ca061189af1892f44d0983bc5da1fb6e971e7209c8140de3"
 
 [[files]]
 file = "kubejs/startup_scripts/bricks.js"
@@ -1190,11 +1350,11 @@ hash = "9f12a39813e7a9d16d585a38b98123c70ea096c00ef8aa9871f1c58cc4377dac"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "34fc3c8d48b17ef0ad4fa71b869bbad4909a3f600ea0189fd2241d652b38d21c"
+hash = "2c5eb74d8b53aa02191bff4a7ba7f2da94522a5152bdb3f5d72b3be08b838c5a"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "efa6e9c926f82cac0a4717b4b737d400075b52ca0f4c7e0862542f51b5e3b7bd"
+hash = "1a082a75f88179ea9c8d7b51560b78710a749aaf17cd3734046ac5c99a4706fa"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -1248,7 +1408,7 @@ metafile = true
 
 [[files]]
 file = "mods/chunk-loaders.pw.toml"
-hash = "5e4e94fdf50f2c4422eed1b35390d535d99439fe9a78dd3e49dd142fcdbc85d8"
+hash = "be31047d9c8ea166c6cdd9249a5d94a379180a29f9069bcf822836f0d4c3e3cf"
 metafile = true
 
 [[files]]
@@ -1308,7 +1468,7 @@ metafile = true
 
 [[files]]
 file = "mods/firma-civilization.pw.toml"
-hash = "5d9e47f3f18ad221edede720270d3cf0cfc9e530d183c17a3492ba2129a697ab"
+hash = "12bec8c6cc3af5702a9cf0681f902fc03cfc48fa8471c6428b8292c7e561a3d0"
 metafile = true
 
 [[files]]
@@ -1338,7 +1498,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "3002edbc4fe8197832151ac9e0eb150f25ce5a30a0863183984dc563a6a6be59"
+hash = "88a69dec7e83b69c2d314d74d9df5fcde3d92ee1c4233ff2ce203c81550e0681"
 metafile = true
 
 [[files]]
@@ -1422,6 +1582,11 @@ hash = "fe906b3f4de4fe6c7313609f5c7cc44e733cd0e82cf74b6dbce52440bc7beccc"
 metafile = true
 
 [[files]]
+file = "mods/morejs.pw.toml"
+hash = "bb7caadc47e1f7b1a6647a3afdb67a76c81a495fe3c86bfcc310e3be1547f5f0"
+metafile = true
+
+[[files]]
 file = "mods/oculus.pw.toml"
 hash = "fad0e1c59d0548afbcbe2e34d25fbf97cf4c6effe40b3f7e2b93dd5c546ee601"
 metafile = true
@@ -1478,7 +1643,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "771761172e002da182ca7f15a6bb05509921a04016cb7d48abc4f18dc0cd72b7"
+hash = "3b8f0027883c7364fad14edee34f8f0daeb5a98c15713b56c2d5cf1fb8ff6d78"
 metafile = true
 
 [[files]]
@@ -1566,7 +1731,7 @@ hash = "824f7ef5b70984f14519544c0bdf474115a7ed9a2a3bd3fca539fc07ee6fe7ed"
 
 [[files]]
 file = "resourcepacks/updated-engineering.pw.toml"
-hash = "78e9207574e02eb2910a3d3adaf7100232f40f5d212c4ef955c3cb52df18ed13"
+hash = "5cfcf0df944c1aa8f45a5d0ffb372a5e54de306285a6c46ddfdbe8cce5a6b6ba"
 metafile = true
 
 [[files]]

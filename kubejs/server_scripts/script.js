@@ -124,8 +124,8 @@ onEvent('recipes', e => {
 		e.recipes.tfcChisel('immersiveengineering:slab_sheetmetal_' + sheetmetal, 'immersiveengineering:sheetmetal_' + sheetmetal, 'slab').extraDrop('immersiveengineering:slab_sheetmetal_' + sheetmetal).id('kubejs:chisel/slab/sheetmetal_' + sheetmetal);
 	});
 	sands.forEach(sand => {
-		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand/*, [{chance:0.5, output: 'immersiveengineering:dust_saltpeter'}]*/).id('kubejs:crusher/' + sand)
-	});//I don't know why the secondaries won't work, but they won't
+		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand, [Item.of('tfc:powder/saltpeter').withChance(0.13)]).id('kubejs:crusher/' + sand)
+	});
 	tfc_metals.forEach(metal => {
 		ie_bottler_simple_mold('sheet', metal, 'immersiveengineering:mold_plate', 200)
 		ie_bottler_simple_mold('rod', metal, 'immersiveengineering:mold_rod', 50)
@@ -562,6 +562,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcWelding('create:netherite_diving_helmet', ['tfc:metal/helmet/blue_steel', 'minecraft:tinted_glass']).tier(6).id('kubejs:welding/blue_steel_diving_helmet');
 	e.recipes.tfcWelding('create:netherite_diving_boots', ['tfc:metal/boots/blue_steel', 'create:andesite_alloy_block']).tier(6).id('kubejs:welding/blue_steel_diving_boots');
 	e.recipes.tfcWelding('minecraft:netherite_leggings', ['tfc:metal/greaves/blue_steel', 'create:andesite_alloy']).tier(6).id('kubejs:welding/blue_steel_diving_greaves');
+	e.recipes.tfcWelding('immersiveengineering:manual', ['kubejs:metal/double_ingot/constantan', 'minecraft:writable_book']).id('kubejs:welding/ie_manual');
 	
 	e.recipes.tfcAnvil('3x create:brass_ladder', 'tfc:metal/rod/brass', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(2).id('kubejs:anvil/brass_ladder');
 	e.recipes.tfcAnvil('3x create:copper_ladder', 'tfc:metal/rod/copper', ['draw_last', 'bend_second_last', 'draw_third_last']).tier(1).id('kubejs:anvil/copper_ladder');
@@ -650,6 +651,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 125), /minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab$/, 1080).id('kubejs:heating/copper_block_slab');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 250), ['createdeco:cast_iron_block', 'minecraft:iron_block'], 1535).id('kubejs:heating/iron_block');
 	e.recipes.tfcHeating(Fluid.of('kubejs:unrefined_graphite', 10), 'tfc:powder/coke', 2135).id('kubejs:heating/coke_powder');
+	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 250), 'immersiveengineering:storage_electrum', 1010).id('kubejs:heating/electrum_block');
 	
 	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:electrum', 100), 0.1).id('kubejs:casting/electrum_ingot');
 	e.recipes.tfcCasting('immersiveengineering:ingot_electrum', 'tfc:ceramic/fire_ingot_mold', Fluid.of('kubejs:electrum', 100), 0.01).id('kubejs:casting/electrum_fire_ingot');
@@ -831,7 +833,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/cast_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_cast_iron');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/wrought_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_wrought_iron');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_ingot/wrought_iron'], 'tfc:metal/ingot/wrought_iron', ['tfc:metal/ingot/wrought_iron']).time(500).energy(25600).id('kubejs:arc_furnace/wrought_iron_double_ingot');
-	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/wrought_iron'], 'tfc:metal/sheet/wrought_iron', ['tfc:metal/ingot/wrought_iron']).time(500).energy(25600).id('kubejs:arc_furnace/wrought_iron_double_sheet');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/wrought_iron'], 'tfc:metal/sheet/wrought_iron', ['tfc:metal/sheet/wrought_iron']).time(500).energy(25600).id('kubejs:arc_furnace/wrought_iron_double_sheet');
 	e.recipes.immersiveengineeringArcFurnace(['1x firmalife:metal/double_ingot/chromium'], 'firmalife:metal/ingot/chromium', ['firmalife:metal/ingot/chromium']).time(500).energy(25600).id('kubejs:arc_furnace/chromium_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x firmalife:metal/double_sheet/chromium'], 'firmalife:metal/sheet/chromium', ['firmalife:metal/sheet/chromium']).time(500).energy(25600).id('kubejs:arc_furnace/chromium_double_sheet');
 	e.recipes.immersiveengineeringArcFurnace(['1x firmalife:metal/double_ingot/stainless_steel'], 'firmalife:metal/ingot/stainless_steel', ['firmalife:metal/ingot/stainless_steel']).time(500).energy(25600).id('kubejs:arc_furnace/stainless_steel_double_ingot');
@@ -840,7 +842,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x kubejs:metal/double_ingot/electrum'], 'immersiveengineering:ingot_electrum', ['immersiveengineering:ingot_electrum']).time(500).energy(25600).id('kubejs:arc_furnace/electrum_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x kubejs:metal/double_ingot/lead'], 'immersiveengineering:ingot_lead', ['immersiveengineering:ingot_lead']).time(500).energy(25600).id('kubejs:arc_furnace/lead_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x minecraft:iron_block'], 'createdeco:cast_iron_block').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_block');
-	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/wrought_iron'], 'tfc:metal/ingot/cast_iron').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_ingot');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/wrought_iron'], 'tfc:metal/ingot/pig_iron').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_ingot');
 	
 	e.recipes.immersiveengineeringSqueezer(Fluid.of('immersiveengineering:plantoil', 60), '#tfc:seeds').energy(6400).id('kubejs:squeezing/plant_oil');
 	
@@ -1242,6 +1244,96 @@ onEvent('recipes', e => {
 			'item': 'immersiveengineering:silver'
 		}
 	}).id('immersiveengineering:blueprint/bullet_silver');
+	e.custom({
+		type: 'immersiveengineering:blueprint',
+		inputs: [
+			{
+				item: 'minecraft:paper'
+			},
+			{
+				item: 'immersiveengineering:hammer'
+			}
+		],
+		category: 'bannerpatterns',
+		result: {
+			item: 'immersiveengineering:bannerpattern_hammer'
+		}
+	}).id('immersiveengineering:blueprint/banner_hammer');
+	e.custom({
+		type: 'immersiveengineering:blueprint',
+		inputs: [
+			{
+				item: 'immersiveengineering:heavy_engineering'
+			},
+			{
+				item: 'immersiveengineering:component_iron'
+			},
+			{
+				item: 'immersiveengineering:capacitor_lv'
+			},
+			{
+				count: 2,
+				base_ingredient: {
+					item: 'immersiveengineering:wooden_grip'
+				}
+			}
+		],
+		category: 'electrode',
+		result: {
+			item: 'immersiveengineering:drill'
+		}
+	}).id('kubejs:blueprint/drill');
+	e.custom({
+		type: 'immersiveengineering:blueprint',
+		inputs: [
+			{
+				item: 'immersiveengineering:heavy_engineering'
+			},
+			{
+				count: 2,
+				base_ingredient: {
+					item: 'tfc:metal/rod/steel'
+				}
+			},
+			{
+				item: 'immersiveengineering:capacitor_lv'
+			},
+			{
+				count: 2,
+				base_ingredient: {
+					item: 'immersiveengineering:wooden_grip'
+				}
+			}
+		],
+		category: 'electrode',
+		result: {
+			item: 'immersiveengineering:buzzsaw'
+		}
+	}).id('kubejs:blueprint/buzzsaw');
+	e.custom({
+		type: 'immersiveengineering:blueprint',
+		inputs: [
+			{
+				item: 'tfc:metal/tuyere/steel'
+			},
+			{
+				item: 'immersiveengineering:metal_barrel'
+			},
+			{
+				item: 'immersiveengineering:heavy_engineering'
+			},
+			{
+				count: 2,
+				base_ingredient: {
+					item: 'immersiveengineering:wooden_grip'
+				}
+			}
+		],
+		category: 'electrode',
+		result: {
+			item: 'immersiveengineering:chemthrower'
+		}
+	}).id('kubejs:blueprint/chemthrower');
 	
 	//mixer
 	e.custom({
@@ -1961,6 +2053,9 @@ onEvent('recipes', e => {
 	}).id('immersivepetroleum:hydrotreater/sulfur_recovery')
 
 	// Mineral
+	// Notes:
+	//   Do not use outputs which have a block
+	//   Background blocks which use the cutout render type do not work
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
 		ores: [
@@ -2003,7 +2098,8 @@ onEvent('recipes', e => {
 			'minecraft:overworld'
 		],
 		weight: 15,
-		fail_chance: 0.05
+		fail_chance: 0.05,
+		sample_background: 'kubejs:sample_ore/bituminous_coal'
 	}).id('kubejs:mineral_mix/bituminous_coal');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2047,7 +2143,8 @@ onEvent('recipes', e => {
 			'minecraft:overworld'
 		],
 		weight: 20,
-		fail_chance: 0.05
+		fail_chance: 0.05,
+		sample_background: 'kubejs:sample_ore/lignite'
 	}).id('kubejs:mineral_mix/lignite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2085,7 +2182,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 5,
-		fail_chance: 0.1
+		fail_chance: 0.1,
+		sample_background: 'kubejs:sample_ore/kaolinite'
 	}).id('kubejs:mineral_mix/kaolinite');
 	e.custom({
 		dimensions: [
@@ -2117,7 +2215,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 7,
-		fail_chance: 0.1
+		fail_chance: 0.1,
+		sample_background: 'kubejs:sample_ore/graphite'
 	}).id('kubejs:mineral_mix/graphite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2144,16 +2243,11 @@ onEvent('recipes', e => {
 				output: {
 					item: 'tfc:ore/gypsum'
 				}
-			},
-			{
-				chance: 0.15,
-				output: {
-					item: 'tfc:rock/loose/limestone'
-				}
 			}
 		],
 		weight: 18,
-		fail_chance: 0.15
+		fail_chance: 0.15,
+		sample_background: 'kubejs:sample_ore/gypsum'
 	}).id('kubejs:mineral_mix/gypsum');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2185,7 +2279,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 16,
-		fail_chance: 0.18
+		fail_chance: 0.18,
+		sample_background: 'kubejs:sample_ore/sulfur'
 	}).id('kubejs:mineral_mix/sulfur');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2221,7 +2316,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 19,
-		fail_chance: 0.23
+		fail_chance: 0.23,
+		sample_background: 'kubejs:sample_ore/cinnabar'
 	}).id('kubejs:mineral_mix/cinnabar');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2241,7 +2337,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 17,
-		fail_chance: 0.24
+		fail_chance: 0.24,
+		sample_background: 'kubejs:sample_ore/cryolite'
 	}).id('kubejs:mineral_mix/cryolite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2279,7 +2376,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 32,
-		fail_chance: 0.21
+		fail_chance: 0.21,
+		sample_background: 'kubejs:sample_ore/saltpeter'
 	}).id('kubejs:mineral_mix/saltpeter');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2303,7 +2401,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 14,
-		fail_chance: 0.26
+		fail_chance: 0.26,
+		sample_background: 'kubejs:sample_ore/sylvite'
 	}).id('kubejs:mineral_mix/sylvite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2327,7 +2426,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 34,
-		fail_chance: 0.27
+		fail_chance: 0.27,
+		sample_background: 'kubejs:sample_ore/borax'
 	}).id('kubejs:mineral_mix/borax');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2359,7 +2459,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 26,
-		fail_chance: 0.34
+		fail_chance: 0.34,
+		sample_background: 'kubejs:sample_ore/halite'
 	}).id('kubejs:mineral_mix/halite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2379,7 +2480,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 2,
-		fail_chance: 0.45
+		fail_chance: 0.45,
+		sample_background: 'kubejs:sample_ore/kimberlite'
 	}).id('kubejs:mineral_mix/kimberlite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2403,7 +2505,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 3,
-		fail_chance: 0.47
+		fail_chance: 0.47,
+		sample_background: 'kubejs:sample_ore/emerald'
 	}).id('kubejs:mineral_mix/emerald');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2425,7 +2528,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 9,
-		fail_chance: 0.32
+		fail_chance: 0.32,
+		sample_background: 'kubejs:sample_ore/lapis'
 	}).id('kubejs:mineral_mix/lapis_lazuli');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2463,7 +2567,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 73,
-		fail_chance: 0.16
+		fail_chance: 0.16,
+		sample_background: 'kubejs:sample_ore/copper'
 	}).id('kubejs:mineral_mix/native_copper');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2507,7 +2612,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 64,
-		fail_chance: 0.21
+		fail_chance: 0.21,
+		sample_background: 'kubejs:sample_ore/gold'
 	}).id('kubejs:mineral_mix/native_gold');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2539,7 +2645,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 43,
-		fail_chance: 0.31
+		fail_chance: 0.31,
+		sample_background: 'kubejs:sample_ore/gold'
 	}).id('kubejs:mineral_mix/pyrite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2577,7 +2684,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 65,
-		fail_chance: 0.18
+		fail_chance: 0.18,
+		sample_background: 'kubejs:sample_ore/hematite'
 	}).id('kubejs:mineral_mix/hematite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2619,7 +2727,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 53,
-		fail_chance: 0.31
+		fail_chance: 0.31,
+		sample_background: 'kubejs:sample_ore/silver'
 	}).id('kubejs:mineral_mix/native_silver');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2661,7 +2770,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 58,
-		fail_chance: 0.29
+		fail_chance: 0.29,
+		sample_background: 'kubejs:sample_ore/cassiterite'
 	}).id('kubejs:mineral_mix/cassiterite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2711,7 +2821,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 64,
-		fail_chance: 0.16
+		fail_chance: 0.16,
+		sample_background: 'kubejs:sample_ore/bismuthinite'
 	}).id('kubejs:mineral_mix/bismuthinite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2753,7 +2864,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 64,
-		fail_chance: 0.31
+		fail_chance: 0.31,
+		sample_background: 'kubejs:sample_ore/garnierite'
 	}).id('kubejs:mineral_mix/garnierite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2819,7 +2931,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 74,
-		fail_chance: 0.24
+		fail_chance: 0.24,
+		sample_background: 'kubejs:sample_ore/malachite'
 	}).id('kubejs:mineral_mix/malachite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2863,7 +2976,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 63,
-		fail_chance: 0.26
+		fail_chance: 0.26,
+		sample_background: 'kubejs:sample_ore/magnetite'
 	}).id('kubejs:mineral_mix/magnetite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2913,7 +3027,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 76,
-		fail_chance: 0.21
+		fail_chance: 0.21,
+		sample_background: 'kubejs:sample_ore/limonite'
 	}).id('kubejs:mineral_mix/limonite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2955,7 +3070,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 68,
-		fail_chance: 0.24
+		fail_chance: 0.24,
+		sample_background: 'kubejs:sample_ore/sphalerite'
 	}).id('kubejs:mineral_mix/sphalerite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -2997,7 +3113,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 75,
-		fail_chance: 0.16
+		fail_chance: 0.16,
+		sample_background: 'kubejs:sample_ore/tetrahedrite'
 	}).id('kubejs:mineral_mix/tetrahedrite');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -3041,7 +3158,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 72,
-		fail_chance: 0.26
+		fail_chance: 0.26,
+		sample_background: 'kubejs:sample_ore/lead'
 	}).id('kubejs:mineral_mix/native_lead');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -3072,14 +3190,15 @@ onEvent('recipes', e => {
 				}
 			},
 			{
-				chance: 0.08,
+				chance: 0.05,
 				output: {
-					item: 'kubejs:ore/small_lead'
+					item: 'kubejs:ore/poor_lead'
 				}
 			}
 		],
 		weight: 67,
-		fail_chance: 0.46
+		fail_chance: 0.46,
+		sample_background: 'kubejs:sample_ore/uranium'
 	}).id('kubejs:mineral_mix/uranium');
 	e.custom({
 		type: 'immersiveengineering:mineral_mix',
@@ -3117,7 +3236,8 @@ onEvent('recipes', e => {
 			}
 		],
 		weight: 68,
-		fail_chance: 0.34
+		fail_chance: 0.34,
+		sample_background: 'kubejs:sample_ore/bauxite'
 	}).id('kubejs:mineral_mix/bauxite');
 
 	// Reservoir

@@ -1,10 +1,14 @@
 // priority: 0
 
+const BlockStateProperties = java('net.minecraft.world.level.block.state.properties.BlockStateProperties')
+
 console.info('Custom items, blocks, and liquids inbound!')
 
 let types = ['normal', 'poor', 'rich']
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
+
+let sample_ores = ['bituminous_coal', 'lignite', 'kaolinite', 'graphite', 'gypsum', 'sulfur', 'cinnabar', 'cryolite', 'saltpeter', 'sylvite', 'borax', 'halite', 'kimberlite', 'emerald', 'lapis', 'copper', 'gold', 'hematite', 'silver', 'cassiterite', 'bismuthinite', 'garnierite', 'malachite', 'magnetite', 'limonite', 'sphalerite', 'tetrahedrite', 'lead', 'uranium', 'bauxite']
 
 onEvent('item.registry', e => {
 	types.forEach(type => {
@@ -64,7 +68,7 @@ onEvent('item.modification', e => {
 	e.modify('minecraft:netherite_leggings', item => {
 		item.maxDamage = 960
 	})
-	e,modify('create:netherote_diving_boots', item => {
+	e.modify('create:netherite_diving_boots', item => {
 		item.maxDamage = 860
 	})
 })
@@ -87,6 +91,10 @@ onEvent('block.registry', e => {
 				.renderType('cutout')
 		})
 	})
+	sample_ores.forEach(ore => {
+		e.create('sample_ore/' + ore)
+			.noItem()
+	})
 	e.create('ore/small_lead', 'tfc_groundcover')
 		.ore()
 		.model("kubejs:block/ore/small_lead")
@@ -105,7 +113,8 @@ onEvent('block.registry', e => {
 onEvent('block.modification', e => {
 	// A hilarious consequence of the recently added methods
 	BlockIngredient.of(/createdeco:.+lamp/).asJavaObject().validBlocks.forEach(block => {
-		e.modify(block, modify => {
+		// Fixme
+		e.modify(block.id + '[lit=true]', modify => {
 			modify.lightEmission = 7
 		})
 	})

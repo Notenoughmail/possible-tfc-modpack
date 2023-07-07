@@ -73,8 +73,11 @@ let ids = [
 	'immersiveengineering:blueprint/bullet_wolfpack',
 	'immersiveengineering:crafting/nugget_steel_to_ingot_steel',
 	'immersiveengineering:crafting/nugget_silver_to_ingot_silver',
-	'immersiveengienering:crafting/treated_wood_horizontal',
-	/immerisveineginering:.*(?:hammer|nugget|storage|raw).*/
+	'immersiveengineering:crafting/treated_wood_horizontal',
+	/immersiveengineering:.*(?:hammer|nugget|storage|raw).*/,
+	'createaddition:mixing/netherrack',
+	'immersiveengineering:crafting/drill',
+	'immersiveengineering:crafting/buzzsaw'
 ]
 
 onEvent('recipes', e => {
@@ -265,7 +268,7 @@ onEvent('recipes', e => {
 		/minecraft:brick.+/,
 		/tfc:metal\/bucket\/(?:red|blue)_steel/,
 		/immersiveengineering:nugget.+/,
-		/immersiveengienering:.+_(?:post|slope)/,
+		/immersiveengineering:.+_(?:post|slope)/,
 		'immersiveengineering:lantern',
 		'create:industrial_iron_block',
 		'minecraft:candle',
