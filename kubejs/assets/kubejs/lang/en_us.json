@@ -87,5 +87,10 @@
 	
 	"item.kubejs.sheet.graphite": "Graphite Sheet",
 
-	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch"
+	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch",
+	"tooltip.kubejs.part_of_set": "Part of a set!",
+	
+	"tfc.recipe.barrel.kubejs.sealed_barrel.paper": "Unrefined Paper",
+	"tfc.recipe.barrel.kubejs.sealed_barrel.worn_brick": "Worn Brick",
+	"tfc.recipe.barrel.kubejs.sealed_barrel.alumina_powder": "Alumina Powder"
 }

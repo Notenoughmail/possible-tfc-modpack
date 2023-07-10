@@ -36,7 +36,7 @@ ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:true
-resourcePacks:["vanilla","mod_resources","builtin/firmalife_data","file/Updated_Engineering_v1.6.zip","precisionprospecting:vexxed_items"]
+resourcePacks:["vanilla","mod_resources","builtin/firmalife_data","file/Updated_Engineering_v1.7.zip","precisionprospecting:vexxed_items","file/Tool+Belt+Retextured+1.18.x.zip","file/Vexxed_Visuals_TFCTNG_v1.0.3.zip"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:en_us

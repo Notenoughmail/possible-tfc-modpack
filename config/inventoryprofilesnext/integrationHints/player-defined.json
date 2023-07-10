@@ -452,5 +452,174 @@
                 "top": -25
             }
         }
+    },
+    "flaxbeard.immersivepetroleum.client.gui.DerrickScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 71,
+                "bottom": 7
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": -1,
+                "top": 110
+            },
+            "SORT": {
+                "horizontalOffset": -37,
+                "top": 74
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": -25,
+                "top": 86
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": -13,
+                "top": 98
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "net.minecraft.client.gui.screens.inventory.HorseInventoryScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "bottom": -1
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            }
+        }
+    },
+    "com.simibubi.create.content.equipment.toolbox.ToolboxScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 40,
+                "bottom": 8
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 52,
+                "top": 147
+            },
+            "SORT": {
+                "horizontalOffset": 52,
+                "top": 147
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 52,
+                "top": 147
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 52,
+                "top": 147
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            }
+        }
+    },
+    "com.simibubi.create.content.schematics.table.SchematicTableScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 6,
+                "bottom": 8
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 4,
+                "top": -4
+            },
+            "SORT": {
+                "horizontalOffset": 1,
+                "top": -4
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 2,
+                "top": -4
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 3,
+                "top": -4
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            }
+        }
+    },
+    "blusunrize.immersiveengineering.client.gui.RefineryScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 99,
+                "bottom": 12
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 118,
+                "top": 2
+            },
+            "SORT": {
+                "horizontalOffset": 115,
+                "top": 2
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 116,
+                "top": 2
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 117,
+                "top": 2
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            }
+        }
+    },
+    "blusunrize.immersiveengineering.client.gui.FermenterScreen": {
+        "buttonHints": {
+            "MOVE_TO_CONTAINER": {
+                "horizontalOffset": 65,
+                "bottom": 29
+            },
+            "MOVE_TO_PLAYER": {
+                "horizontalOffset": 39,
+                "top": 2
+            },
+            "SORT": {
+                "horizontalOffset": 36,
+                "top": 2
+            },
+            "SORT_COLUMNS": {
+                "horizontalOffset": 37,
+                "top": 2
+            },
+            "SORT_ROWS": {
+                "horizontalOffset": 38,
+                "top": 2
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            },
+            "SHOW_EDITOR": {
+                "top": -10
+            }
+        }
     }
 }

@@ -3,11 +3,9 @@
 const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
 const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
 
-console.info('I have no idea what I am doing, but it somehow works')
-
 // Loot tables do not work for this
 onEvent('block.break', e => {
-	if (!e.player.isCreativeMode() && e.block.id === 'tfc:calcite') {
+	if (!e.player.isCreativeMode() && e.block.id === 'tfc:calcite' && !e.level.minecraftLevel.isClientSide()) {
 		let item_entity = e.level.createEntity('minecraft:item');
 		let level_random = e.level.minecraftLevel.random;
 		item_entity.setItem('tfc:calcite');
@@ -17,7 +15,7 @@ onEvent('block.break', e => {
 		item_entity.setMotion((level_random.nextFloat() - 0.5) * 0.1, level_random.nextFloat() * 0.25, (level_random.nextFloat() - 0.5) * 0.1);
 		e.level.minecraftLevel.addFreshEntity(item_entity.minecraftEntity);
 	}
-});
+})
 
 onEvent('block.right_click', e => {
 	let pos = e.block.pos;

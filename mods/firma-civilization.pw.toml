@@ -1,13 +1,13 @@
 name = "Firma: Civilization"
-filename = "FirmaCivilization-0.0.33-alpha-1.18.2.jar"
+filename = "FirmaCivilization-0.0.41-alpha-1.18.2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "8e169c4e73a7d0e22af4ab73a589739a22856015"
+hash = "b70145ad6f717e629ecf4fad2b770d484c29e77c"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4613146
+file-id = 4629345
 project-id = 714158

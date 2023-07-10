@@ -1,0 +1,13 @@
+name = "Tool Belt Retextured"
+filename = "Tool Belt Retextured 1.18.x.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "2ad56b7843ce9f3dd6f6c9d941ccdbb09cfe5adb"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 3749681
+project-id = 504062

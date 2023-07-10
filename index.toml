@@ -82,11 +82,15 @@ hash = "ca413dea02cce69c69dccdc525fb0ec013236876eff2d142772c68db3d772d3a"
 
 [[files]]
 file = "config/inventoryprofilesnext/integrationHints/immersiveengineering.json"
-hash = "f70bc54b5f8bb19cf018c41b6f74ba0180df1649a85f1e32a2750f5a55d8de6a"
+hash = "5ee1dfd5e52c1998da04201cc61e13ebcd7bb05c9cc428f774c7cedf95e91e89"
 
 [[files]]
 file = "config/inventoryprofilesnext/integrationHints/player-defined.json"
-hash = "2a7de8992fbbb9df54bd061c5cd6f1a904d9206e6809e9b3b4716bb0b6dd8839"
+hash = "f809a0832c848c98258d1a16a04eb9a225e35f2b8564d115fb1161580aaa9369"
+
+[[files]]
+file = "config/inventoryprofilesnext/integrationHints/tfc.json"
+hash = "2c879793f2fc171d1b316705e1186c460eb4205512c649bd15b7dbf7d42d5fd5"
 
 [[files]]
 file = "config/inventoryprofilesnext/inventoryprofiles.json"
@@ -578,7 +582,19 @@ hash = "a7ad37b45ef4f0d15be20ea6e8f44569138a05f7005047dd60cf7caedfc3c09d"
 
 [[files]]
 file = "kubejs/assets/createdeco/lang/en_us.json"
-hash = "d42e9cecf94430b5a13379b7e8f941d1c34b62b70d3053f25074597e69f78fb3"
+hash = "31b640260e7f672762197b5ba939e40220646e980b2874bb5ad89c69c168be7b"
+
+[[files]]
+file = "kubejs/assets/firmalife/models/block/jar_1.json"
+hash = "d0967031e13e39dbebb7c8a85ca359e33bcd9ffd5389ae0daa73d10804f4810b"
+
+[[files]]
+file = "kubejs/assets/firmalife/models/block/oven_bottom.json"
+hash = "fc151ffebf6cfffeb348fe9713b1be82d3ac7458f2de9ae32952db7eb8d730e4"
+
+[[files]]
+file = "kubejs/assets/firmalife/models/block/oven_chimney.json"
+hash = "a74957a29daea638d0e3ad1b08180f51e3942fbea4b95aec324ec582967ee442"
 
 [[files]]
 file = "kubejs/assets/gunswithoutroses/lang/en_us.json"
@@ -594,7 +610,7 @@ hash = "e2fd53018180c10c0867424d337016e7cb1f7661f3463524b8244589d2556c03"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/lang/en_us.json"
-hash = "68c233bee563fd93f533c3ca3d434f0ebd5c2d4cd5576f17016ceaf24924b504"
+hash = "3a9bd687899e7afde744ca0dbc2747906e86118f9a6ed0df2e8f73cfbee0b6b2"
 
 [[files]]
 file = "kubejs/assets/immersiveengineering/models/item/blueprint.json"
@@ -642,7 +658,7 @@ hash = "fd6c3c79a17807e8537f9c0be343ba02bee5cdebfba1c42268c2eb661e3c869f"
 
 [[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "21fe88603d733cd412388899a1657ce498c0bf6c545d7a3f81c2dec50ab4ef2e"
+hash = "ece383e941656392c6feef747ccb437cb4c5fd7fbc09eaf86d627cc066ef1875"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/frame/capacitor_hv.json"
@@ -1210,11 +1226,11 @@ hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "f02d378c753f2bfa5a6380353a3244c82bd96132a76fe0a2b8fcd77d28509e14"
+hash = "3d4dadc20c1d09e593ecce48e7a66ac3ae6032d6fa8d6ca6c47ed652ef3afc0a"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "53dcd9118b59e3c479b2600d99367d0e81bf7964fe88cff9549e015f40cfae0f"
+hash = "6cdad7c198106687e0d1b280d2212ac34b5da729fde8afaf5d31dc562d7a506c"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -1310,11 +1326,11 @@ hash = "0acfc1931620a5294c662c2450418325071c9052b8f7b267e469e82735578691"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "861d8a0a122bd23cca8b75fa40b3b9870f0250d2cddbc1e347220a7e68bf7d10"
+hash = "2da66e5d6fb4351720022bca06b97614b5b934cce82bfa0fc8929b8fcf368f0b"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "34d2ed514df801ecbd74f32224eaf9e60320f22c158ad0c3a9f60b017d8fcf45"
+hash = "dc7c4ac38dedc9d3e2f176da08ed03fd1224e9a882874c5d0099b14046d29258"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1322,15 +1338,15 @@ hash = "d78e471ec8d7324f1c2fe5f451b70d816fb27c848d4be47bdfff829565984ce9"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "0345f87f68d413891d6df600b7dd8468462098c55edca6a8d1346af29891ff06"
+hash = "3fb18b8a03889677a507a38f9af2558b0fa8a0113537213bf08bfe9cb8e75ecd"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "ae802f241ee1ebbc62677c34ccb94e878d3fbfa0e34246c950c42772ce36fa97"
+hash = "289370a67c3102eb8cc88857dc95839b7f28e874cd8ee105b0117d563f25640f"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "f8722b30446731401c9512be1cdb6997856db9f37ce925faa3f40e83fa57f358"
+hash = "496720227e2df8fa223f69617864a4c47793b39c76b827572d7390b32e7fe095"
 
 [[files]]
 file = "kubejs/server_scripts/server_constants.js"
@@ -1342,15 +1358,15 @@ hash = "26f05923d4cef60ea12100bba38ab1a0b92836669bb16544026c2bac7a8e6c90"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "fe7473dbd11f8755ca061189af1892f44d0983bc5da1fb6e971e7209c8140de3"
+hash = "ef2a9b95007eb838588a98cc9d902b1025d76668a6df0039bcb5067147a034e2"
 
 [[files]]
 file = "kubejs/startup_scripts/bricks.js"
-hash = "9f12a39813e7a9d16d585a38b98123c70ea096c00ef8aa9871f1c58cc4377dac"
+hash = "ee818100056c118e1499f3d2cf7da50068ca1e1259dd9fd260be635c34009c19"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "2c5eb74d8b53aa02191bff4a7ba7f2da94522a5152bdb3f5d72b3be08b838c5a"
+hash = "e21e36ecd67bcd9305cd70f2346290806adc63ecccc3f07497fe668420b01743"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
@@ -1413,7 +1429,7 @@ metafile = true
 
 [[files]]
 file = "mods/cloth-config.pw.toml"
-hash = "a57e921f872596ca19e411d726b7f6db272267f2dd712322a3168ce0f404fd44"
+hash = "dd37f8dd2520e55ca2d3c85d92de682c31e4fdedea64a090bca80e1f0d3fd80a"
 metafile = true
 
 [[files]]
@@ -1468,7 +1484,7 @@ metafile = true
 
 [[files]]
 file = "mods/firma-civilization.pw.toml"
-hash = "12bec8c6cc3af5702a9cf0681f902fc03cfc48fa8471c6428b8292c7e561a3d0"
+hash = "4442f0f58d3daacbc5f57e7b31e49fe6f9f497fb5a7247bf1ea6427911ced49b"
 metafile = true
 
 [[files]]
@@ -1499,11 +1515,6 @@ metafile = true
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
 hash = "88a69dec7e83b69c2d314d74d9df5fcde3d92ee1c4233ff2ce203c81550e0681"
-metafile = true
-
-[[files]]
-file = "mods/iris-flywheel-compat.pw.toml"
-hash = "99fcd65385689c080a6541e3654141e11e8fbbb5eb47015c81b8551866fc64e1"
 metafile = true
 
 [[files]]
@@ -1587,11 +1598,6 @@ hash = "bb7caadc47e1f7b1a6647a3afdb67a76c81a495fe3c86bfcc310e3be1547f5f0"
 metafile = true
 
 [[files]]
-file = "mods/oculus.pw.toml"
-hash = "fad0e1c59d0548afbcbe2e34d25fbf97cf4c6effe40b3f7e2b93dd5c546ee601"
-metafile = true
-
-[[files]]
 file = "mods/ok-zoomer-forge.pw.toml"
 hash = "4d90fc54c60eac4c117e60e98659519c4a1411e85e72b6da8932b6ca7dc94642"
 metafile = true
@@ -1633,7 +1639,7 @@ metafile = true
 
 [[files]]
 file = "mods/supermartijn642s-config-lib.pw.toml"
-hash = "5f62a1b53954ac5f25d506f24755c7bde75b179895219260612f4ccad31bf2c5"
+hash = "562881c6a1fcb9a26574d5d8d86d752c20518947b949de39662a53fd8070b6af"
 metafile = true
 
 [[files]]
@@ -1714,10 +1720,6 @@ file = "patchouli_books/field_guide/en_us/entries/machinery/metal_press.json"
 hash = "ee48edbc3b908c3485734d8623e1ee8d27213bced0a2fa0fc6b86c09237ccb6d"
 
 [[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/sorry.json"
-hash = "0c444a9600cbcd8a41398717ca3cd6dacab71d080fb8b1e19846533290db38d4"
-
-[[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/trains.json"
 hash = "8e8391bedc0f61a15c20b1ac6c950df9b354205dcd43051de350711cb7e78d61"
 
@@ -1728,6 +1730,16 @@ hash = "654b02ddf96ae61d21ded34574d584eb56e0076c5944030113c9741e8cd61a10"
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/mechanics/girders.json"
 hash = "824f7ef5b70984f14519544c0bdf474115a7ed9a2a3bd3fca539fc07ee6fe7ed"
+
+[[files]]
+file = "resourcepacks/terrafirmacraft-vexxed-visuals.pw.toml"
+hash = "b1a5ef89f0d4d602cae02d78aef9640d85a80be41c3b6edf929e81b54de8cbd3"
+metafile = true
+
+[[files]]
+file = "resourcepacks/tool-belt-retextured.pw.toml"
+hash = "25a7332ccd294854b2f6ac229e389b09f118f78cfd400e83070f383c9452a77a"
+metafile = true
 
 [[files]]
 file = "resourcepacks/updated-engineering.pw.toml"

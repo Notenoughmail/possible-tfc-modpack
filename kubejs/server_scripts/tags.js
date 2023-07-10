@@ -322,7 +322,11 @@ onEvent('tags.fluids', e => {
 		'#immersiveengineering:concrete',
 		'#forge:creosote',
 		'#forge:ethanol',
-		'immersiveengineering:redstone_acid'
+		'immersiveengineering:redstone_acid',
+		'kubejs:asphalt'
+	)
+	e.add('forge:true_lava',
+		'minecraft:lava'
 	)
 })
 

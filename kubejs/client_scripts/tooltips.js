@@ -6,5 +6,6 @@ onEvent('item.tooltip', tip => {
 			text.add(Text.of('NBT: ').append(Text.prettyPrintNbt(item.nbt)))
 		}
 	})
-	tip.add('immersiveengineering:storage_uranium', Text.translate("tooltip.kubejs.block_has_passive_heat"))
+	tip.add('immersiveengineering:storage_uranium', Text.translate('tooltip.kubejs.block_has_passive_heat'))
+	tip.add('minecraft:netherite_leggings', Text.translate('tooltip.kubejs.part_of_set'))
 })

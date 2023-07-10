@@ -55,6 +55,9 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573)
 	e.addTFCHeat(['createdeco:cast_iron_block', 'minecraft:iron_block'], 7.145)
 	e.addTFCHeat('tfc:powder/coke', 7.31)
+	e.addTFCHeat('immersiveengineering:ingot_aluminum', 0.46, 396.18)
+	e.addTFCHeat('immersiveengineering:wire_aluminum', 0.115, 396.18)
+	e.addTFCHeat('immersiveengineering:stick_aluminum', 0.23, 396.18)
 	
 	e.addTFCItemSize('chunkloaders:advanced_chunk_loader', 's=large, w=heavy')
 	e.addTFCItemSize('chunkloaders:basic_chunk_loader', 's=normal, w=medium')

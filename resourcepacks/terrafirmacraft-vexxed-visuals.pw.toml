@@ -1,0 +1,13 @@
+name = "Vexxed Visuals: TerraFirmaCraft"
+filename = "Vexxed_Visuals_TFCTNG_v1.0.3.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "58011a2a927133d617debf6cb5abf82841f97c71"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4466979
+project-id = 664832

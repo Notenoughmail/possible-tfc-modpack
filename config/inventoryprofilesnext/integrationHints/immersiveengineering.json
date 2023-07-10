@@ -137,6 +137,24 @@
         "playerSideOnly": true
     },
     "blusunrize.immersiveengineering.client.gui.RevolverScreen": {
-        "playerSideOnly": true
+        "playerSideOnly": true,
+        "buttonHints": {
+            "SHOW_EDITOR": {
+                "top": -10
+            },
+            "SETTINGS": {
+                "horizontalOffset": -10,
+                "top": -25
+            },
+            "SORT": {
+                "bottom": 6
+            },
+            "SORT_COLUMNS": {
+                "bottom": 6
+            },
+            "SORT_ROWS": {
+                "bottom": 6
+            }
+        }
     }
 }

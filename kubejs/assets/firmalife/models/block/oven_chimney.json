@@ -1,0 +1,58 @@
+{
+    "credit": "Made by Vexxel#9727 with Blockbench || https://github.com/Vexxel || 2022",
+    "parent": "block/block",
+    "textures": {
+        "1": "#cured",
+        "bricks": "#cured",
+        "particle": "#cured"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 16, 4],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#bricks"},
+                "east": {"uv": [12, 0, 16, 16], "texture": "#bricks"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#bricks"},
+                "west": {"uv": [0, 0, 4, 16], "texture": "#bricks"},
+                "up": {"uv": [0, 0, 16, 4], "texture": "#1"},
+                "down": {"uv": [0, 12, 16, 16], "texture": "#1"}
+            }
+        },
+        {
+            "from": [0, 0, 12],
+            "to": [16, 16, 16],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 20]},
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#bricks"},
+                "east": {"uv": [0, 0, 4, 16], "texture": "#bricks"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#bricks"},
+                "west": {"uv": [12, 0, 16, 16], "texture": "#bricks"},
+                "up": {"uv": [0, 12, 16, 16], "texture": "#1"},
+                "down": {"uv": [0, 0, 16, 4], "texture": "#1"}
+            }
+        },
+        {
+            "from": [0, 0, 4],
+            "to": [4, 16, 12],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 12]},
+            "faces": {
+                "east": {"uv": [4, 0, 12, 16], "texture": "#bricks"},
+                "west": {"uv": [4, 0, 12, 16], "texture": "#bricks"},
+                "up": {"uv": [0, 4, 4, 12], "texture": "#1"},
+                "down": {"uv": [0, 4, 4, 12], "texture": "#1"}
+            }
+        },
+        {
+            "from": [12, 0, 4],
+            "to": [16, 16, 12],
+            "rotation": {"angle": 0, "axis": "y", "origin": [20, 8, 12]},
+            "faces": {
+                "east": {"uv": [4, 0, 12, 16], "texture": "#bricks"},
+                "west": {"uv": [4, 0, 12, 16], "texture": "#bricks"},
+                "up": {"uv": [12, 4, 16, 12], "texture": "#1"},
+                "down": {"uv": [12, 4, 16, 12], "texture": "#1"}
+            }
+        }
+    ]
+}

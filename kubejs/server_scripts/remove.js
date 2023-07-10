@@ -77,7 +77,10 @@ let ids = [
 	/immersiveengineering:.*(?:hammer|nugget|storage|raw).*/,
 	'createaddition:mixing/netherrack',
 	'immersiveengineering:crafting/drill',
-	'immersiveengineering:crafting/buzzsaw'
+	'immersiveengineering:crafting/buzzsaw',
+	'immersiveengineering:crafting/stick_aluminum',
+	'createaddition:rolling/aluminum_ingot',
+	'immersivepetroleum:asphalt'
 ]
 
 onEvent('recipes', e => {
@@ -273,7 +276,8 @@ onEvent('recipes', e => {
 		'create:industrial_iron_block',
 		'minecraft:candle',
 		'immersivepetroleum:speedboat',
-		/immersivepetroleum:upgrade.+/
+		/immersivepetroleum:upgrade.+/,
+		'createaddition:rolling_mill'
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})
@@ -314,4 +318,6 @@ onEvent('recipes', e => {
 	e.remove({type: 'immersiveengineering:mineral_mix'})
 	e.remove({type: 'immersivepetroleum:reservoirs'})
 	e.replaceInput('firmalife:beeswax', '#kubejs:light_wax')
+	e.remove({type: 'create:mixing'})
+	e.remove({type: 'create:compacting'})
 })

@@ -27,6 +27,10 @@ onEvent('recipes', e => {
 	e.shapeless('1x kubejs:composite_catalyst', ['4x #tfc:igneous_rock', '#tfc:forge_fuel']).id('kubejs:crafting/composite_catalyst');
 	e.shapeless('1x create:andesite_door', ['#minecraft:wooden_doors', 'create:andesite_casing']).id('create:crafting/kinetics/composite_door');
 	e.shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block']).id('create:crafting/materials/composite_material_from_block');
+	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_aluminum', [
+		'immersiveengineering:rod_aluminum',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/aluminum_wire');
 	
 	let blueprint = (input, output, id) => {
 		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:crafting/' + id)
@@ -59,7 +63,7 @@ onEvent('recipes', e => {
 		'minecraft:redstone_torch',
 		Item.of('create:super_glue').ignoreNBT()
 	]).id('kubejs:crafting/pulse_repeater_to_pulse_extender');
-	e.recipes.tfcDamageInputsShapelessCrafting(e.recipes.tfcAdvancedShapelessCrafting('minecraft:dropper', ['minecraft:dispenser', Item.of('immersiveengineering:wirecutter').ignoreNBT()])).id('kubejs:crafting/dispenser_to_dropper');
+	e.recipes.tfcDamageInputsShapelessCrafting(e.shapeless('minecraft:dropper', ['minecraft:dispenser', Item.of('immersiveengineering:wirecutter').ignoreNBT()])).id('kubejs:crafting/dispenser_to_dropper');
 	
 	e.recipes.tfcExtraProductsShapelessCrafting('minecraft:redstone_torch', e.recipes.tfcDamageInputsShapelessCrafting('create:pulse_repeater', [
 		'create:pulse_extender',
@@ -107,40 +111,44 @@ onEvent('recipes', e => {
 	})
 	deco_metals.forEach(metal => {
 		e.shaped('1x createdeco:yellow_' + metal + '_lamp', [
-			'S',
-			'A',
-			'B'
+			' S ',
+			'CAC',
+			' B '
 		], {
 			S: 'tfc:metal/rod/' + metal,
-			A: 'immersiveengineering:light_bulb',
-			B: 'tfc:metal/sheet/' + metal
+			A: 'create:rose_quartz_lamp',
+			B: 'tfc:metal/sheet/' + metal,
+			C: '#forge:dyes/yellow'
 		}).id('kuebjs:crafting/yellow_' + metal + '_lamp');
 		e.shaped('1x createdeco:red_' + metal + '_lamp', [
-			'S',
-			'A',
-			'B'
+			' S ',
+			'CAC',
+			' B '
 		], {
 			S: 'tfc:metal/rod/' + metal,
-			A: 'kubejs:red_tinted_light_bulb',
-			B: 'tfc:metal/sheet/' + metal
+			A: 'create:rose_quartz_lamp',
+			B: 'tfc:metal/sheet/' + metal,
+			C: '#forge:dyes/red'
 		}).id('kuebjs:crafting/red_' + metal + '_lamp');
 		e.shaped('1x createdeco:blue_' + metal + '_lamp', [
-			'S',
-			'A',
-			'B'
+			' S ',
+			'CAC',
+			' B '
 		], {
 			S: 'tfc:metal/rod/' + metal,
-			A: 'kubejs:blue_tinted_light_bulb',
-			B: 'tfc:metal/sheet/' + metal
+			A: 'create:rose_quartz_lamp',
+			B: 'tfc:metal/sheet/' + metal,
+			C: '#forge:dyes/blue'
 		}).id('kuebjs:crafting/blue_' + metal + '_lamp');
 		e.shaped('1x createdeco:green_' + metal + '_lamp', [
-			'S',
-			'A',
-			'B'
+			' S ',
+			'CAC',
+			' B '
 		], {
 			S: 'tfc:metal/rod/' + metal,
-			A: 'kubejs:green_tinted_light_bulb',
-			B: 'tfc:metal/sheet/' + metal
+			A: 'create:rose_quartz_lamp',
+			B: 'tfc:metal/sheet/' + metal,
+			C: '#forge:dyes/green'
 		}).id('kuebjs:crafting/green_' + metal + '_lamp');
 	})
 	
@@ -1149,16 +1157,6 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:warped_window'
 	}).id('kubejs:crafting/bismuth_bronze_window_pane');
-	e.shaped('1x createaddition:rolling_mill', [
-	'SAS',
-	'BAB',
-	'BCB'
-	], {
-		S: 'tfc:metal/sheet/wrought_iron',
-		A: 'create:shaft',
-		B: 'create:andesite_alloy',
-		C: 'create:andesite_casing'
-	}).id('createaddition:crafting/rolling_mill');
 	e.shaped('8x createaddition:barbed_wire', [
 	' S ',
 	'S S',
@@ -1311,72 +1309,80 @@ onEvent('recipes', e => {
 		C: 'immersiveengineering:component_electronic'
 	}).id('immersiveengineering:crafting/redstone_breaker');
 	e.shaped('1x createdeco:yellow_andesite_lamp', [
-		'S',
-		'A',
-		'S'
+		' S ',
+		'BAB',
+		' S '
 	], {
 		S: 'create:andesite_alloy',
-		A: 'immersiveengineering:light_bulb'
+		A: 'create:rose_quartz_lamp',
+		B: '#forge:dyes/yellow'
 	}).id('kuebjs:crafting/yellow_composite_material_lamp');
 	e.shaped('1x createdeco:red_andesite_lamp', [
-		'S',
-		'A',
-		'S'
+		' S ',
+		'BAB',
+		' S '
 	], {
 		S: 'create:andesite_alloy',
-		A: 'kubejs:red_tinted_light_bulb'
+		A: 'create:rose_quartz_lamp',
+		B: '#forge:dyes/red'
 	}).id('kuebjs:crafting/red_composite_material_lamp');
 	e.shaped('1x createdeco:blue_andesite_lamp', [
-		'S',
-		'A',
-		'S'
+		' S ',
+		'BAB',
+		' S '
 	], {
 		S: 'create:andesite_alloy',
-		A: 'kubejs:blue_tinted_light_bulb'
+		A: 'create:rose_quartz_lamp',
+		B: '#forge:dyes/blue'
 	}).id('kuebjs:crafting/blue_composite_material_lamp');
 	e.shaped('1x createdeco:green_andesite_lamp', [
-		'S',
-		'A',
-		'S'
+		' S ',
+		'BAB',
+		' S '
 	], {
 		S: 'create:andesite_alloy',
-		A: 'kubejs:green_tinted_light_bulb'
+		A: 'create:rose_quartz_lamp',
+		B: '#forge:dyes/green'
 	}).id('kuebjs:crafting/green_composite_material_lamp');
 	e.shaped('1x createdeco:yellow_iron_lamp', [
-		'S',
-		'A',
-		'B'
+		' S ',
+		'CAC',
+		' B '
 	], {
 		S: 'tfc:metal/rod/wrought_iron',
-		A: 'immersiveengineering:light_bulb',
-		B: 'tfc:metal/sheet/wrought_iron'
+		A: 'create:rose_quartz_lamp',
+		B: 'tfc:metal/sheet/wrought_iron',
+		C: '#forge:dyes/yellow'
 	}).id('kuebjs:crafting/yellow_wrought_iron_lamp');
 	e.shaped('1x createdeco:red_iron_lamp', [
-		'S',
-		'A',
-		'B'
+		' S ',
+		'CAC',
+		' B '
 	], {
 		S: 'tfc:metal/rod/wrought_iron',
-		A: 'kubejs:red_tinted_light_bulb',
-		B: 'tfc:metal/sheet/wrought_iron'
+		A: 'create:rose_quartz_lamp',
+		B: 'tfc:metal/sheet/wrought_iron',
+		C: '#forge:dyes/red'
 	}).id('kuebjs:crafting/red_wrought_iron_lamp');
 	e.shaped('1x createdeco:blue_iron_lamp', [
-		'S',
-		'A',
-		'B'
+		' S ',
+		'CAC',
+		' B '
 	], {
 		S: 'tfc:metal/rod/wrought_iron',
-		A: 'kubejs:blue_tinted_light_bulb',
-		B: 'tfc:metal/sheet/wrought_iron'
+		A: 'create:rose_quartz_lamp',
+		B: 'tfc:metal/sheet/wrought_iron',
+		C: '#forge:dyes/blue'
 	}).id('kuebjs:crafting/blue_wrought_iron_lamp');
 	e.shaped('1x createdeco:green_iron_lamp', [
-		'S',
-		'A',
-		'B'
+		' S ',
+		'CAC',
+		' B '
 	], {
 		S: 'tfc:metal/rod/wrought_iron',
-		A: 'kubejs:green_tinted_light_bulb',
-		B: 'tfc:metal/sheet/wrought_iron'
+		A: 'create:rose_quartz_lamp',
+		B: 'tfc:metal/sheet/wrought_iron',
+		C: '#forge:dyes/green'
 	}).id('kuebjs:crafting/green_wrought_iron_lamp');
 	e.shaped('1x immersiveengineering:toolupgrade_drill_waterproof', [
 		'SA ',
@@ -1560,4 +1566,12 @@ onEvent('recipes', e => {
 		B: 'tfc:metal/rod/steel',
 		C: 'immersiveengineering:component_electronic'
 	}).id('immersiveengineering:crafting/current_transformer');
+	e.shaped('12x immersiveengineering:steel_scaffolding_standard', [
+		'SSS',
+		' A ',
+		'A A'
+	], {
+		S: '#forge:ingots/steel',
+		A: '#forge:rods/steel'
+	}).id('immersiveengineering:crafting/steel_scaffolding_standard');
 })

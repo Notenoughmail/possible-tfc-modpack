@@ -1,7 +1,5 @@
 // priority: 0
 
-const BlockStateProperties = java('net.minecraft.world.level.block.state.properties.BlockStateProperties')
-
 console.info('Custom items, blocks, and liquids inbound!')
 
 let types = ['normal', 'poor', 'rich']
@@ -35,9 +33,6 @@ onEvent('item.registry', e => {
 		.tag('tfc:metal_item/graphite')
 		.tag('tfc:pileable_sheets')
 	e.create('composite_catalyst')
-	e.create('red_tinted_light_bulb')
-	e.create('green_tinted_light_bulb')
-	e.create('blue_tinted_light_bulb')
 	e.create('sequence/light_component', 'create:sequenced_assembly')
 	e.create('sequence/heavy_component', 'create:sequenced_assembly')
 	e.create('sequence/heavy_engineering', 'create:sequenced_assembly').parentModel('immersiveengineering:item/light_engineering')
@@ -110,16 +105,6 @@ onEvent('block.registry', e => {
 	e.create('frame/capacitor_hv')//+ expandability for future frames if that's something that happens
 })
 
-onEvent('block.modification', e => {
-	// A hilarious consequence of the recently added methods
-	BlockIngredient.of(/createdeco:.+lamp/).asJavaObject().validBlocks.forEach(block => {
-		// Fixme
-		e.modify(block.id + '[lit=true]', modify => {
-			modify.lightEmission = 7
-		})
-	})
-})
-
 onEvent('fluid.registry', e => {
 	e.create('constantan')
 		.thickTexture(0xfc8d6f)
@@ -150,6 +135,7 @@ onEvent('fluid.registry', e => {
 		.bucketColor(0x101010)
 		.displayName('Molten Graphite')
 		.noBlock()
+		.noBucket()
 		.tag('tfc:molten_metals')
 		.tag('tfc:graphite')
 	e.create('unrefined_graphite')
@@ -157,6 +143,7 @@ onEvent('fluid.registry', e => {
 		.bucketColor(0x080a08)
 		.displayName('Unrefined Molten Graphite')
 		.noBlock()
+		.noBucket()
 		.tag('tfc:molten_metals')
 		.tag('tfc:unrefined_graphite')
 	e.create('diluted_milk')
@@ -167,4 +154,17 @@ onEvent('fluid.registry', e => {
 		.noBucket()
 		.tag('tfc:usable_in_wooden_bucket')
 		.tag('tfc:usable_in_barrel')
+	e.create('alumina')
+		.thinTexture(0xcbcfd6)
+		.bucketColor(0xcbcfd6)
+		.displayName('Alumina Solution')
+		.noBlock()
+		.noBucket()
+	e.create('asphalt')
+		.thinTexture(0x1f1919)
+		.bucketColor(0x1f1919)
+		.displayName('Molten Asphalt')
+		.noBlock()
+		.noBucket()
+		.tag('kubejs:asphalt')
 })

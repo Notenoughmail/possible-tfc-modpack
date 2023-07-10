@@ -114,6 +114,9 @@ onEvent('jei.hide.items', e => {
 	e.hide('minecraft:experience_bottle')
 	e.hide('create:potato_cannon')
 	e.hide(/(?:create|immersiveengineering):.*raw.*/)
+	e.hide(/immersiveengineering:(?:slab_)?(?:sheetmetal|storage)_aluminum/)
+	e.hide('createaddition:rolling_mill')
+	e.hide(/immersiveengineering:.*ore.*/)
 })
 
 onEvent('jei.add.items', e => {
