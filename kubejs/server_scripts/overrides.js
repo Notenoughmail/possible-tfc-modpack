@@ -18,21 +18,54 @@ onEvent('block.break', e => {
 })
 
 onEvent('block.right_click', e => {
-	let pos = e.block.pos;
-	let level = e.block.minecraftLevel;
+	let player_js = e.entity;
+	if (player_js == null) { return; }
+	let mc_player = player_js.minecraftPlayer;
+	let block_js = e.block;
+	let pos = block_js.pos;
+	let level = block_js.minecraftLevel;
+	let item_js = e.item;
+	let level_js = block_js.level;
+	let mc_level = level_js.minecraftLevel;
 
-	if (e.entity.isFake() && e.item.hasTag('tfc:starts_fires_with_durability')) {
-		if (e.block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
-			e.item.itemStack.hurtAndBreak(1, e.entity.minecraftPlayer, p => p.broadcastBreakEvent(e.hand));
+	if (player_js.isFake() && item_js.hasTag('tfc:starts_fires_with_durability')) {
+		if (block_js.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
+			item_js.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos.below());
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos.below()))
 			}
-		} else if (e.block.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
-			e.item.itemStack.hurtAndBreak(1, e.entity.minecraftPlayer, p => p.broadcastBreakEvent(e.hand));
+		} else if (block_js.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
+			item_js.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos);
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos));
+			}
+		}
+	}
+
+	if (block_js.hasTag('tfc:barrels') && item_js.id === 'create:wrench' && player_js.isCrouching()) {
+		let properties = block_js.getProperties();
+		if (properties['rack'] === 'true' && properties['sealed'] === 'true') {
+			let be = block_js.entity;
+			level.setBlock(pos.immutable(), Block.getBlock('tfc:barrel_rack').defaultBlockState(), 2);
+			let entities = level_js.getEntitiesWithin(AABB.ofBlock(pos.immutable()));
+			let rack_age = 10;
+			let entity_num = 0;
+			for (let i = 0 ; i < entities.size() ; i++) {
+				let entity = entities.get(i);
+				try {
+					if (entity.item.id === 'tfc:barrel_rack') {
+						rack_age = entity.age;
+						entity_num = i;
+					}
+				} catch (ignored) {}
+			}
+			if (rack_age < 0.1) {
+				entities.get(entity_num).kill();
+				player_js.give(Item.of(block_js.id, {BlockEntityTag: be.serializeNBT()}));
+				e.player.swingArm(e.hand); // e.player gives the ServerPlayerJS which has this method
+				mc_level.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 0.8, 0.8);
 			}
 		}
 	}

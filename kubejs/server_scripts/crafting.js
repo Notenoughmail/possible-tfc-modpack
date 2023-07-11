@@ -28,7 +28,7 @@ onEvent('recipes', e => {
 	e.shapeless('1x create:andesite_door', ['#minecraft:wooden_doors', 'create:andesite_casing']).id('create:crafting/kinetics/composite_door');
 	e.shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block']).id('create:crafting/materials/composite_material_from_block');
 	e.recipes.tfcDamageInputsShapelessCrafting('2x immersiveengineering:wire_aluminum', [
-		'immersiveengineering:rod_aluminum',
+		'immersiveengineering:stick_aluminum',
 		Item.of('immersiveengineering:wirecutter').ignoreNBT()
 	]).id('kubejs:crafting/aluminum_wire');
 	
@@ -63,7 +63,10 @@ onEvent('recipes', e => {
 		'minecraft:redstone_torch',
 		Item.of('create:super_glue').ignoreNBT()
 	]).id('kubejs:crafting/pulse_repeater_to_pulse_extender');
-	e.recipes.tfcDamageInputsShapelessCrafting(e.shapeless('minecraft:dropper', ['minecraft:dispenser', Item.of('immersiveengineering:wirecutter').ignoreNBT()])).id('kubejs:crafting/dispenser_to_dropper');
+	e.recipes.tfcDamageInputsShapelessCrafting('minecraft:dropper', [
+		'minecraft:dispenser',
+		Item.of('immersiveengineering:wirecutter').ignoreNBT()
+	]).id('kubejs:crafting/dispenser_to_dropper');
 	
 	e.recipes.tfcExtraProductsShapelessCrafting('minecraft:redstone_torch', e.recipes.tfcDamageInputsShapelessCrafting('create:pulse_repeater', [
 		'create:pulse_extender',

@@ -37,7 +37,6 @@ onEvent('jei.hide.items', e => {
 	e.hide('createaddition:zinc_sheet')
 	e.hide('createaddition:accumulator')
 	e.hide(/createaddition:.*_rod/)
-	e.hide('immersiveengineering:manual')
 	e.hide(/immersiveengineering:armor_steel_.*/)
 	e.hide(/create:.*_sheet/)
 	e.hide(/minecraft:raw_.*/)
