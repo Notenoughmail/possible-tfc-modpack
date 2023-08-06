@@ -1,7 +1,7 @@
 // priority: 0
 
 // There's no method to check/get the living enity so had to resort to this
-const LivingEntity = java("net.minecraft.world.entity.LivingEntity")
+const LivingEntity = java("net.minecraft.world.entity.LivingEntity");
 const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
 const FirePit = java("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
 const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
@@ -22,7 +22,7 @@ onEvent('create.pipe.fluid_effect', e => {
 })
 
 onEvent('create.boiler.heater', e => {
-	e.registerHeater('immersiveengineering:storage_uranium', (block) => {
+	e.registerHeater('kubejs:uranium_block', (block) => {
 		return 0;
 	})
 	e.registerHeater('tfc:firepit', (block) => {
@@ -109,16 +109,13 @@ onEvent('morejs.potion_brewing.register', e => {
 	e.removeByPotion(null, null, null)
 })
 
-onForgeEvent('net.dries007.tfc.util.events.StartFireEvent', e => {
-	let level = e.getLevel();
-	let pos = e.getPos();
-	let state = e.getState();
-	let block = state.getBlock();
-
-	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below()) && e.isStrong()) {
-		let be = level.getBlockEntity(pos.below());
-		if (be instanceof CharcoalForge && be.light(level.getBlockState(pos.below()))) {
-			e.canceled = true;
+onEvent('tfc.start_fire', e => {
+	let { level, block } = e;
+	let below = block.down;
+	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level.minecraftLevel, below.pos) && e.isStrong()) {
+		let be = below.entity;
+		if (be instanceof CharcoalForge && be.light(below.blockState)) {
+			e.cancel();
 		}
 	}
 })

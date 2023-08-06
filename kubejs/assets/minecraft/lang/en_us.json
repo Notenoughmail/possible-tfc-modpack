@@ -1,3 +1,5 @@
 {
-    "item.minecraft.netherite_leggings": "Blue Steel Diving Greaves"
+    "item.minecraft.netherite_leggings": "Blue Steel Diving Greaves",
+	
+	"death.attack.wither": "%1$s discovered radiation"
 }

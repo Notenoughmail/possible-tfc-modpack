@@ -1,7 +1,5 @@
 // priority: 0
 
-console.info('Custom items, blocks, and liquids inbound!')
-
 let types = ['normal', 'poor', 'rich']
 
 let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone', 'conglomerate', 'dolomite', 'chert', 'chalk', 'rhyolite', 'basalt', 'andesite', 'dacite', 'quartzite', 'slate', 'phyllite', 'schist', 'gneiss', 'marble']
@@ -51,12 +49,6 @@ onEvent('item.modification', e => {
 	e.modify('create:copper_diving_boots', item => {
 		item.maxDamage = 197
 	})
-	e.modify('gunswithoutroses:gold_gun', item => {
-		item.maxDamage = 900
-	})
-	e.modify('gunswithoutroses:iron_gun', item => {
-		item.maxDamage = 1650
-	})
 	e.modify('create:netherite_diving_helmet', item => {
 		item.maxDamage = 748
 	})
@@ -89,8 +81,9 @@ onEvent('block.registry', e => {
 	sample_ores.forEach(ore => {
 		e.create('sample_ore/' + ore)
 			.noItem()
+			.displayName('For render purposes')
 	})
-	e.create('ore/small_lead', 'tfc_groundcover')
+	e.create('ore/small_lead', 'tfc:groundcover')
 		.ore()
 		.model("kubejs:block/ore/small_lead")
 		.hardness(0.1)
@@ -103,6 +96,23 @@ onEvent('block.registry', e => {
 		.tagItem('tfc:nuggets')
 	e.create('frame/capacitor_mv')//done this way to let the name be different in the lang file, as KubeJS's generated default overrides it
 	e.create('frame/capacitor_hv')//+ expandability for future frames if that's something that happens
+	e.create('uranium_block')
+		.model('immersiveengineering:block/storage_uranium')
+		.randomTick(callback => {
+			let pos = callback.block.pos;
+			let entities = callback.level.getEntitiesWithin(AABB.ofBlocks(pos.offset(-5, -5, -5), pos.offset(5, 5, 5)));
+			entities.forEach(entity => {
+				if (callback.random.nextFloat() < 0.7) {
+					entity.attack('wither', 0.3);
+				}
+			})
+		})
+		.material('metal')
+		.requiresTool(true)
+		.resistance(8)
+		.hardness(3.2)
+		.displayName('Block of Uranium')
+		.tagBlock('minecraft:mineable/pickaxe')
 })
 
 onEvent('fluid.registry', e => {

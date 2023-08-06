@@ -31,12 +31,14 @@ onEvent('tags.blocks', e => {
 	e.add('forge:relocation_not_supported',
 		'tfc:burning_log_pile',
 		'tfc:molten',
-		'tfc:bloom'
+		'tfc:bloom',
+		'kubejs:kinetic_adapter'
 	)
 	e.add('create:non_movable',
 		'tfc:burning_log_pile',
 		'tfc:molten',
-		'tfc:bloom'
+		'tfc:bloom',
+		'kubejs:kinetic_adapter'
 	)
 	e.add('tfc:toughness_3',
 		'immersiveengineering:excavator',
@@ -121,8 +123,6 @@ onEvent('tags.items', e => {
 		'immersiveengineering:chemthrower',
 		'immersiveengineering:railgun',
 		'immersiveengineering:skyhook',
-		'gunswithoutroses:iron_gun',
-		'gunswithoutroses:gold_gun',
 		'firmalife:watering_can'
 	)
 	e.add('forge:sheetmetal/colorless',

@@ -3,8 +3,11 @@
 
 # Exclude README
 /README.md
+
+# Exclude pack utils and other generated stuff
 kubejs/probe
 kubejs/exported
 kubejs/README.txt
 jsconfig.json
 probejs.json
+.vscode

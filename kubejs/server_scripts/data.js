@@ -1,4 +1,4 @@
-settings.dataPackOutput = true
+settings.dataPackOutput = false
 
 onEvent('server.datapack.first', e => {
 	
@@ -71,7 +71,6 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemSize('create:flywheel', 's=large, w=medium')
 	e.addTFCItemSize('immersiveengineering:glider', 's=normal, w=light')
 	e.addTFCItemSize('create:goggles', 's=small')
-	e.addTFCItemSize(/gunswithoutroses:(?:gold|iron)_gun/, 's=very_large, w=heavy')
 	e.addTFCItemSize('immersiveengineering:hammer', 's=small, w=medium')
 	e.addTFCItemSize('create:item_vault', 'w=medium')
 	e.addTFCItemSize('create:mechanical_crafter', 'w=heavy')

@@ -28,23 +28,6 @@ onEvent('recipes', e => {
 			}
 		}).id('kubejs:bottling/' + type + '_' + metal);
 	}
-	let ie_bottler_bucket = (metal) => {
-		e.custom({
-			'type': 'immersiveengineering:bottling_machine',
-			'results': [
-			{
-				'item': 'tfc:bucket/metal/' + metal
-			}
-			],
-			'input': {
-				'item': 'minecraft:bucket'
-			},
-			'fluid': {
-				'tag': 'tfc:' + metal,
-				'amount': 1000
-			}
-		}).id('immersiveengineering:jei_bucket_metal/' + metal);//this exists purely to fix IE grabbing a random tag from a fluid for filling buckets as removing the recipes does not seem to work
-	}
 	let ie_bottler_mold = (output, mold, fluid_tag, amount, id) => {
 		e.custom({
 			'type': 'immersiveengineering:bottling_machine',
@@ -104,7 +87,7 @@ onEvent('recipes', e => {
 		], 'tfc:ore/small_' + iron).id('kubejs:crushing/small_iron_dust_' + iron);
 	})
 	grains.forEach(grain => {
-		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], 'tfc:food/' + grain + '_grain').id('kubejs:milling/' + grain);
+		e.recipes.createMilling(['1x tfc:food/' + grain + '_flour'], Ingredient.notRotten('tfc:food/' + grain + '_grain')).id('kubejs:milling/' + grain);
 	});
 	planks.forEach(plank => {
 		e.recipes.createCutting('1x tfc:wood/stripped_log/' + plank, 'tfc:wood/log/' + plank).processingTime(150).id('kubejs:cutting/' + plank + '_stripping');
@@ -129,7 +112,6 @@ onEvent('recipes', e => {
 	tfc_metals.forEach(metal => {
 		ie_bottler_simple_mold('sheet', metal, 'immersiveengineering:mold_plate', 200)
 		ie_bottler_simple_mold('rod', metal, 'immersiveengineering:mold_rod', 50)
-		ie_bottler_bucket(metal)//this only fixes half of them for some reason but I'll keep it
 		ie_bottler_simple_mold('ingot', metal, 'kubejs:mold/ingot', 100)
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_ingot/' + metal], 'tfc:metal/ingot/' + metal, ['tfc:metal/ingot/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_ingot');
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/' + metal], 'tfc:metal/sheet/' + metal, ['tfc:metal/sheet/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_sheet');
@@ -648,8 +630,6 @@ onEvent('recipes', e => {
 	e.recipes.tfcHeating('minecraft:glass', ['create:tiled_glass', 'create:vertical_framed_glass', 'create:framed_glass', 'create:horizontal_framed_glass'], 350).id('kubejs:heating/create_glass');
 	e.recipes.tfcHeating('minecraft:glass_pane', ['create:tiled_glass_pane', 'create:vertical_framed_glass_pane', 'create:framed_glass_pane', 'create:horizontal_framed_glass_pane'], 350).id('kubejs:heating/create_glass_panes');
 	e.recipes.tfcHeating('immersiveengineering:slag_glass', '#forge:slag', 650).id('kubejs:heating/slag_glass');
-	e.recipes.tfcHeating(Fluid.of('tfc:metal/bismuth_bronze', 800), Item.of('gunswithoutroses:gold_gun').ignoreNBT(), 985).useDurability().id('kubejs:heating/bismuth_bronze_rifle');
-	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 800), Item.of('gunswithoutroses:iron_gun').ignoreNBT(), 1535).useDurability().id('kubejs:heating/wrought_iron_rifle');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/copper', 125), /minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab$/, 1080).id('kubejs:heating/copper_block_slab');
 	e.recipes.tfcHeating(Fluid.of('tfc:metal/cast_iron', 250), ['createdeco:cast_iron_block', 'minecraft:iron_block'], 1535).id('kubejs:heating/iron_block');
 	e.recipes.tfcHeating(Fluid.of('kubejs:unrefined_graphite', 10), 'tfc:powder/coke', 2135).id('kubejs:heating/coke_powder');
@@ -670,11 +650,11 @@ onEvent('recipes', e => {
 	e.recipes.tfcAlloy('kubejs_tfc:kubejs_electrum', [
 		['tfc:gold', 0.4, 0.6],
 		['tfc:silver', 0.4, 0.6]
-	]).id('kubejs:electrum');
+	]).id('kubejs:alloy/electrum');
 	e.recipes.tfcAlloy('kubejs_tfc:kubejs_constantan', [
 		['tfc:copper', 0.5, 0.6],
 		['tfc:nickel', 0.4, 0.5]
-	]).id('kubejs:constantan');
+	]).id('kubejs:alloy/constantan');
 	
 	e.recipes.tfcChisel('immersiveengineering:concrete_tile', 'immersiveengineering:concrete', 'smooth').id('kubejs:chisel/smooth/concrete_tile');
 	e.recipes.tfcChisel('immersiveengineering:stairs_concrete', 'immersiveengineering:concrete', 'stair').id('kubejs:chisel/stair/concrete');
@@ -730,7 +710,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper', 'minecraft:waxed_oxidized_copper', 'smooth').id('kubejs:chisel/smooth/waxed_oxidized_cut_copper');
 	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper_stairs', 'minecraft:waxed_oxidized_cut_copper', 'stair').id('kubejs:chisel/stair/waxed_oxidized_cut_copper');
 	e.recipes.tfcChisel('minecraft:waxed_oxidized_cut_copper_slab', 'minecraft:waxed_oxidized_cut_copper', 'slab').extraDrop('minecraft:waxed_oxidized_cut_copper_slab').id('kubejs:chisel/slab/waxed_oxidized_cut_copper');
-	e.recipes.tfcChisel('immersivepetroleum:asphalt_slab', 'immersivepetroleum:asphalt', 'slab').extraDrop('immersiveengineering:asphalt_slab').id('kubejs:chisel/slab/asphalt');
+	e.recipes.tfcChisel('immersivepetroleum:asphalt_slab', 'immersivepetroleum:asphalt', 'slab').extraDrop('immersivepetroleum:asphalt_slab').id('kubejs:chisel/slab/asphalt');
 	e.recipes.tfcChisel('immersivepetroleum:asphalt_stair', 'immersivepetroleum:asphalt', 'stair').id('kubejs:chisel/stair/asphalt');
 	
 	e.recipes.tfcLeatherKnapping('kubejs:leather_pouch', [
@@ -805,7 +785,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_lead', 'immersiveengineering:ingot_lead').id('kubejs:crusher/lead_grit');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_silver', 'tfc:metal/ingot/silver').id('kubejs:crusher/silver_grit');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_nickel', 'tfc:metal/ingot/nickel').id('kubejs:crusher/nickel_grit');
-	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_uranium', 'immersiveengineering:ingot_uranium').id('kubejs:crusher/uranium_grit');
+	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_uranium', 'immersiveengineering:raw_uranium').id('kubejs:crusher/uranium_grit');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_constantan', 'immersiveengineering:ingot_constantan').id('kubejs:crusher/constantan_grit');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_electrum', 'immersiveengineering:ingot_electrum').id('kubejs:crusher/electrum_grit');
 	e.recipes.immersiveengineeringCrusher('2x immersiveengineering:dust_steel', 'tfc:metal/ingot/steel').id('kubejs:crusher/steel_grit');
@@ -3274,4 +3254,61 @@ onEvent('recipes', e => {
 		},
 		name: 'oil'
 	}).id('kubejs:reservior/oil');
+
+	// Thermo
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:ice_pile',
+		tempKelvin: 260
+	}).id('kubejs:thermo/ice_pile');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:sea_ice',
+		tempKelvin: 240
+	}).id('kubejs:thermo/sea_ice');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/diorite',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/diorite_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/granite',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/granite_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/rhyolite',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/rhyolite_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/gabbro',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/gabbro_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/dacite',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/dacite_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/basalt',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/basalt_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:rock/magma/andesite',
+		tempKelvin: 1250
+	}).id('kubejs:thermo/andesite_magma');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'tfc:icicle',
+		tempKelvin: 287
+	}).id('kubejs:thermo/icicle');
+	e.custom({
+		type: 'immersiveengineering:thermoelectric_source',
+		singleBlock: 'kubejs:uranium_block',
+		tempKelvin: 1500
+	}).id('kubejs:thermo/uranium');
 })

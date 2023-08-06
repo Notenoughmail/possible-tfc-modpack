@@ -18,25 +18,24 @@ onEvent('block.break', e => {
 })
 
 onEvent('block.right_click', e => {
-	let player_js = e.entity;
-	if (player_js == null) { return; }
-	let mc_player = player_js.minecraftPlayer;
-	let block_js = e.block;
-	let pos = block_js.pos;
-	let level = block_js.minecraftLevel;
-	let item_js = e.item;
-	let level_js = block_js.level;
-	let mc_level = level_js.minecraftLevel;
+	let playerJS = e.entity;
+	if (playerJS == null) { return; }
+	let mc_player = playerJS.minecraftPlayer;
+	let blockJS = e.block;
+	let pos = blockJS.pos;
+	let level = blockJS.minecraftLevel;
+	let itemJS = e.item;
+	let levelJS = blockJS.level;
 
-	if (player_js.isFake() && item_js.hasTag('tfc:starts_fires_with_durability')) {
-		if (block_js.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
-			item_js.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
+	if (playerJS.isFake() && itemJS.hasTag('tfc:starts_fires_with_durability')) {
+		if (blockJS.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
+			itemJS.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos.below());
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos.below()))
 			}
-		} else if (block_js.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
-			item_js.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
+		} else if (blockJS.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
+			itemJS.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos);
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos));
@@ -44,29 +43,49 @@ onEvent('block.right_click', e => {
 		}
 	}
 
-	if (block_js.hasTag('tfc:barrels') && item_js.id === 'create:wrench' && player_js.isCrouching()) {
-		let properties = block_js.getProperties();
+	if (blockJS.hasTag('tfc:barrels') && itemJS.id === 'create:wrench' && playerJS.isCrouching()) {
+		let properties = blockJS.getProperties();
 		if (properties['rack'] === 'true' && properties['sealed'] === 'true') {
-			let be = block_js.entity;
+			let be = blockJS.entity;
 			level.setBlock(pos.immutable(), Block.getBlock('tfc:barrel_rack').defaultBlockState(), 2);
-			let entities = level_js.getEntitiesWithin(AABB.ofBlock(pos.immutable()));
+			let entities = levelJS.getEntitiesWithin(AABB.ofBlock(pos.immutable()));
 			let rack_age = 10;
 			let entity_num = 0;
 			for (let i = 0 ; i < entities.size() ; i++) {
 				let entity = entities.get(i);
-				try {
-					if (entity.item.id === 'tfc:barrel_rack') {
-						rack_age = entity.age;
-						entity_num = i;
-					}
-				} catch (ignored) {}
+				if (entity.item !== null && entity.item.id === 'tfc:barrel_rack' && entity.age < 0.1) {
+					rack_age = entity.age;
+					entity_num = i;
+				}
 			}
 			if (rack_age < 0.1) {
 				entities.get(entity_num).kill();
-				player_js.give(Item.of(block_js.id, {BlockEntityTag: be.serializeNBT()}));
+				playerJS.give(Item.of(blockJS.id, {BlockEntityTag: be.serializeNBT()}));
 				e.player.swingArm(e.hand); // e.player gives the ServerPlayerJS which has this method
-				mc_level.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 0.8, 0.8);
+				level.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0);
 			}
+		}
+	}
+
+	if (blockJS.id === 'create:andesite_casing' && itemJS.hasTag('railways:conductor_caps')) {
+		e.cancel();
+	}
+})
+
+onEvent('player.tick', e => {
+	if (e.level.time % 20 < 1) {
+		let i = 0;
+		e.player.inventory.minecraftInventory.forEach(stack => {
+			if (stack.item.id === 'kubejs:uranium_block') {
+				i += stack.count;
+			} else if (stack.item.id === 'immersiveengineering:ingot_uranium') {
+				i += stack.count / 4;
+			} else if (stack.item.id === 'immersiveposts:stick_uranium') {
+				i += stack.count / 8;
+			}
+		})
+		if (i > 0) {
+			e.player.attack('wither', i * e.level.minecraftLevel.random.nextFloat());
 		}
 	}
 })

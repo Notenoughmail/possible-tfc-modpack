@@ -65,6 +65,8 @@
 	"block.kubejs.frame.capacitor_mv": "Medium-Voltage Capacitor Frame",
 	"block.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame",
 	
+	"block.kubejs.kinetic_adapter": "Kinetic Adapter",
+	
 	"item.kubejs.ore.normal_lead": "Normal Native Lead",
 	"item.kubejs.ore.poor_lead": "Poor Native Lead",
 	"item.kubejs.ore.rich_lead": "Rich Native Lead",
@@ -89,8 +91,13 @@
 
 	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch",
 	"tooltip.kubejs.part_of_set": "Part of a set!",
+	"tooltip.kubejs.fake_4x": " ■■▩ 4x ",
+	"tooltip.kubejs.karma": "This block has a history\nof ghost stress, please\nreport problems!",
 	
 	"tfc.recipe.barrel.kubejs.sealed_barrel.paper": "Unrefined Paper",
 	"tfc.recipe.barrel.kubejs.sealed_barrel.worn_brick": "Worn Brick",
-	"tfc.recipe.barrel.kubejs.sealed_barrel.alumina_powder": "Alumina Powder"
+	"tfc.recipe.barrel.kubejs.sealed_barrel.alumina_powder": "Alumina Powder",
+	
+	"kubejs.advancement.root.title": "Welcome to the Pack!",
+	"kubejs.advancement.root.description": "Filler text"
 }

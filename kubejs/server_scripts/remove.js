@@ -277,12 +277,12 @@ onEvent('recipes', e => {
 		'minecraft:candle',
 		'immersivepetroleum:speedboat',
 		/immersivepetroleum:upgrade.+/,
-		'createaddition:rolling_mill'
+		'createaddition:rolling_mill',
+		'immersiveposts:fence_uranium'
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})
 	})
-	e.remove({mod: 'gunswithoutroses'});
 	e.remove({mod: 'chunkloaders'});
 	e.remove({input: 'minecraft:charcoal', type: 'create:milling'});
 	e.remove({input: '#forge:sandstone', output: 'immersiveengineering:cokebrick'});

@@ -18,7 +18,6 @@ onEvent('recipes', e => {
 	e.recipes.tfcAdvancedShapelessCrafting(ItemProvider.of('1x create:super_glue').copyForgingBonus(), [Item.of('tfc:metal/tuyere/wrought_iron').ignoreNBT(), 'tfc:glue']).id('kubejs:crafting/super_glue');
 	e.shapeless('2x create:train_door', ['#minecraft:wooden_doors', 'tfc:metal/sheet/brass', '#minecraft:wooden_doors']).id('kubejs:crafting/train_door');
 	e.shapeless('2x create:train_trapdoor', ['#minecraft:wooden_trapdoors', 'tfc:metal/sheet/brass', '#minecraft:wooden_trapdoors']).id('kubejs:crafting/train_trapdoor');
-	e.shapeless('32x gunswithoutroses:flint_bullet', ['minecraft:gunpowder', '4x minecraft:flint']).id('kubejs:crafting/flint_shot');
 	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:crafting/single_chunk_loader');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:crafting/sand_paper');
 	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:crafting/train_station');
@@ -610,26 +609,6 @@ onEvent('recipes', e => {
 		A: 'minecraft:stick',
 		B: 'create:electron_tube'
 	}).id('kubejs:crafting/controller_rail');
-	e.recipes.tfcAdvancedShapedCrafting(ItemProvider.of('gunswithoutroses:iron_gun').copyForgingBonus(), [
-	'S  ',
-	'ASB',
-	' AC'
-	], {
-		S: Item.of('tfc:metal/tuyere/wrought_iron').ignoreNBT(),
-		A: 'minecraft:stick',
-		B: 'minecraft:flint',
-		C: '#tfc:rocks/loose'
-	}, 1, 1).id('kubejs:crafting/wrought_iron_rifle');
-	e.recipes.tfcAdvancedShapedCrafting(ItemProvider.of('gunswithoutroses:gold_gun').copyForgingBonus(), [
-	'S  ',
-	'ASB',
-	' AC'
-	], {
-		S: Item.of('tfc:metal/tuyere/bismuth_bronze').ignoreNBT(),
-		A: 'minecraft:stick',
-		B: 'minecraft:flint',
-		C: '#tfc:rocks/loose'
-	}, 1, 1).id('kubejs:crafting/bismuth_bronze_rifle');
 	e.shaped('1x uppers:upper', [
 	' S ',
 	'A A'
