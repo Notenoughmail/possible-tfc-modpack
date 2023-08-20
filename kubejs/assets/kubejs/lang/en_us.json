@@ -101,5 +101,18 @@
 	"tfc.recipe.barrel.kubejs.sealed_barrel.alumina_powder": "Alumina Powder",
 	
 	"kubejs.advancement.root.title": "Welcome to the Pack!",
-	"kubejs.advancement.root.description": "Filler text"
+	"kubejs.advancement.root.description": "Filler text",
+	"kubejs.advancement.compmat.title": "Composite Material",
+	"kubejs.advancement.compmat.description": "Make some Composite Material in the Bloomery",
+	"kubejs.advancement.adapter.title": "Adaptability",
+	"kubejs.advancement.adapter.description": "Make a Kinetic Adapter",
+	"kubejs.advancement.electric_mixer.title": "Industrial Mixing",
+	"kubejs.advancement.sawmill.title": "Heavy Sawing",
+	"kubejs.advancement.sawmill.description": "Form the Sawmill multiblock",
+	"kubejs.advancement.copper_pipe.title": "Fluid Dynamics",
+	"kubejs.advancement.copper_pipe.description": "Craft some Copper Fluid Pipes",
+	"kubejs.advancement.smart_pipe.title": "Filtration",
+	"kubejs.advancement.smart_pipe.description": "Craft a Filtered Copper Fluid Pipe",
+	"kubejs.advancement.valve.title": "Block the Flow",
+	"kubejs.advancement.valve.description": "Craft a Copper Fluid Valve"
 }

@@ -554,7 +554,6 @@ onEvent('recipes', e => {
 	e.recipes.tfcAnvil('2x immersiveposts:stick_constantan', 'immersiveengineering:ingot_constantan', ['bend_last', 'draw_not_last']).tier(2).id('kubejs:anvil/constantan_rod');
 	e.recipes.tfcAnvil('2x immersiveposts:stick_lead', 'immersiveengineering:ingot_lead', ['bend_last', 'draw_not_last']).tier(1).id('kubejs:anvil/lead_rod');
 	e.recipes.tfcAnvil('12x create:copper_nugget', 'tfc:metal/ingot/copper', ['punch_last', 'bend_not_last', 'draw_not_last']).tier(1).id('kubejs:anvil/copper_sheel_end');
-	e.recipes.tfcAnvil('railways:conductor_whistle', 'tfc:metal/double_sheet/brass', ['bend_last', 'draw_not_last', 'hit_any']).tier(2).id('kubejs:anvil/whistle');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last']).applyBonus().tier(2).id('tfc:anvil/bismuth_bronze_tuyere');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/black_bronze', '#forge:double_sheets/black_bronze', ['bend_last', 'bend_second_last']).applyBonus().tier(2).id('tfc:anvil/black_bronze_tuyere');
 	e.recipes.tfcAnvil('tfc:metal/tuyere/black_steel', '#forge:double_sheets/black_steel', ['bend_last', 'bend_second_last']).applyBonus().tier(5).id('tfc:anvil/black_steel_tuyere');
