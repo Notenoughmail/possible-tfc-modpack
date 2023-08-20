@@ -103,6 +103,8 @@ onEvent('item.model_properties', e => {
 		}
 		return 0;
 	})
+	// Yes, this is the event this must be called in, despite it being a startup event, when internally its a *client* event
+	RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
 })
 
 onEvent('morejs.potion_brewing.register', e => {

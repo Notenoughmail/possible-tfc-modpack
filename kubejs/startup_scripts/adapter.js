@@ -1,15 +1,36 @@
 const DeferredRegister = java("dev.architectury.registry.registries.DeferredRegister");
 const CoreRegistry = java("net.minecraft.core.Registry");
+const BlockItem = java("net.minecraft.world.item.BlockItem");
+const ItemProperties = java("net.minecraft.world.item.Item$Properties");
+const defaultItemProperties = new ItemProperties().tab(Item.findGroup('kubejs.kubejs'));
+
+// Adapter
 const BlockEntityType = java("net.minecraft.world.level.block.entity.BlockEntityType");
 const KineticBlockEntity = java("com.simibubi.create.content.kinetics.base.KineticBlockEntity");
 const DeviceBlock = java("net.dries007.tfc.common.blocks.devices.DeviceBlock");
 const ExtendedProperties = java("net.dries007.tfc.common.blocks.ExtendedProperties");
-const BlockItem = java("net.minecraft.world.item.BlockItem");
-const ItemProperties = java("net.minecraft.world.item.Item$Properties");
 const StressDefaults = java("com.simibubi.create.content.kinetics.BlockStressDefaults");
 const IRotate = java("com.simibubi.create.content.kinetics.base.IRotate");
 const FakeDeployerPlayer = java("com.simibubi.create.content.kinetics.deployer.DeployerFakePlayer");
 const Capabilities = java('net.dries007.tfc.common.capabilities.Capabilities');
+const TooltipModifier = java("com.simibubi.create.foundation.item.TooltipModifier");
+const ItemDescriptionModifier = java("com.simibubi.create.foundation.item.ItemDescription$Modifier");
+const Palette = java("com.simibubi.create.foundation.item.TooltipHelper$Palette");
+const KineticStats = java("com.simibubi.create.foundation.item.KineticStats");
+
+// Track
+const Trackmaterial = java("com.simibubi.create.content.trains.track.TrackMaterial");
+const TrackMaterialFactory = java("com.simibubi.create.content.trains.track.TrackMaterialFactory");
+const TrackBlockItem = java("com.simibubi.create.content.trains.track.TrackBlockItem");
+const RenderTypeRegistry = java("dev.architectury.registry.client.rendering.RenderTypeRegistry");
+const RenderType = java("net.minecraft.client.renderer.RenderType");
+ // Can I just say how much I hate registrate, this has no reason to exist, yet it does, @Nullable and @Nonnull annotations on parameters exist; Forge has this *builtin* even
+const NonNullSupplier = java("com.tterrag.registrate.util.nullness.NonNullSupplier");
+
+// Absoluetly awful, but it makes it work, so deal with it
+let registratePain = NonNullSupplier.lazy(() => NonNullSupplier.of(Utils['lazy(java.util.function.Supplier)'](() => STAINED_TRACK_BLOCK.get())));
+
+const STAINED_WOOD_TRACK_MATERIAL = TrackMaterialFactory.make('kubejs:stained_wood').lang('Stained Wood').block(registratePain).particle('immersiveengineering:block/wooden_decoration/treated_wood_horizontal').standardModels().build();
 
 const BLOCKS = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_REGISTRY);
 const BLOCK_ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_ENTITY_TYPE_REGISTRY);
@@ -17,13 +38,20 @@ const ITEMS = DeferredRegister.create('kubejs', CoreRegistry.ITEM_REGISTRY);
 
 const ADAPTER_BLOCK = BLOCKS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
 const ADAPTER_BE = BLOCK_ENTITIES['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [Block.getBlock('kubejs:kinetic_adapter')]).build(null));
-const ADAPTER_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new BlockItem(ADAPTER_BLOCK.get(), new ItemProperties().tab(Item.findGroup('kubejs.kubejs'))));
+const ADAPTER_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new BlockItem(ADAPTER_BLOCK.get(), defaultItemProperties));
+
+// I *will* re-implement your mod through KubeJS reflection
+const STAINED_TRACK_BLOCK = BLOCKS['register(java.lang.String,java.util.function.Supplier)']('stained_wood_track', () => STAINED_WOOD_TRACK_MATERIAL.createBlock(ExtendedProperties.of(Block.material['wood'].minecraftMaterial).strength(0.8, 2).sound(Block.material['wood'].sound).noOcclusion().properties()));
+const STAINED_TRACK_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('stained_wood_track', () => new TrackBlockItem(STAINED_TRACK_BLOCK.get(), defaultItemProperties));
 
 onEvent('init', e => {
     BLOCKS.register();
     BLOCK_ENTITIES.register();
     ITEMS.register();
-    StressDefaults.setDefaultImpact('kubejs:kinetic_adapter', 4)
+    StressDefaults.setDefaultImpact('kubejs:kinetic_adapter', 4);
+    TooltipModifier.REGISTRY['registerDeferred(net.minecraft.resources.ResourceLocation,java.util.function.Function)']('kubejs:kinetic_adapter', item => {
+        return new ItemDescriptionModifier(item, Palette.STANDARD_CREATE).andThen(TooltipModifier.mapNull(new KineticStats(Block.getBlock('kubejs:kinetic_adapter'))));
+    });
 })
 
 /**
@@ -38,54 +66,55 @@ function adapterTick(level, pos, state) {
     let blockJS = levelJS.getBlock(pos);
     let kbe = blockJS.entity;
     if (kbe instanceof KineticBlockEntity) {
+        let belowJS = blockJS.down;
+        let belowEntity = belowJS.entity;
+        let belowState = belowJS.blockState;
+        let belowBlock = belowState.block;
+
+        // Theoretically this should prevent the F3 screen from crashing when looking at this but it doesn't because reasons :(
+        kbe.setSource(belowJS.pos); 
         kbe.tick();
+        if (belowEntity instanceof KineticBlockEntity && belowBlock instanceof IRotate && belowBlock.hasShaftTowards(level, belowJS.pos, belowState, Direction.UP)) {
+            kbe.setSpeed(belowEntity.getSpeed());
+            let network = belowEntity.orCreateNetwork;
+            if (network != null && network.initialized) {
+                kbe.initialize();
+                network.updateNetwork();
+            }
+        }
+
         if (levelJS.time % 20 === 0) {
             let aboveJS = blockJS.up;
-            let belowJS = blockJS.down;
-            let belowEntity = belowJS.entity;
-            let belowState = belowJS.blockState;
-            let belowBlock = belowState.block;
-            if (belowEntity instanceof KineticBlockEntity && belowBlock instanceof IRotate && belowBlock.hasShaftTowards(level, belowJS.pos, belowState, Direction.UP)) {
-                kbe.setSpeed(belowEntity.getSpeed());
-                kbe.setSource(belowJS.pos); 
-                let network = belowEntity.orCreateNetwork;
-                if (network != null && network.initialized) {
-                    kbe.initialize();
-                    network.updateNetwork();
-                }
-            } else {
-                kbe.setSpeed(0);
-                kbe.setNetwork(null);
-            }
             
             if (JavaMath.abs(kbe.getSpeed()) >= 16) {
                 if (aboveJS.id === 'tfc:quern' && aboveJS.properties['has_handstone'] === 'true') {
                     let quernBE = aboveJS.entity;
-                    if (!quernBE.grinding) {
-                        if (quernBE.startGrinding()) {
-                            levelJS.minecraftLevel.playSound(null, aboveJS.pos, 'tfc:block.quern.drag', 'blocks', 1.0, 1.0);
-                        }
+                    if (!quernBE.grinding && quernBE.startGrinding()) {
+                        levelJS.minecraftLevel.playSound(null, aboveJS.pos, 'tfc:block.quern.drag', 'blocks', 1.0, 1.0);
                     }
                 } else if (aboveJS.id === 'tfc:bellows') {
                     let bellowsBE = aboveJS.entity;
                     if (bellowsBE.ticksSincePushed > (20 * 90)) {
                         bellowsBE.onRightClick();
                     }
-                } else if (levelJS.server != null) { // Done this way to guarantee a ServerLevel, probably not side safe
-                    let fakePlayer = new FakeDeployerPlayer(levelJS.server.getLevel(levelJS.dimension).minecraftLevel, null);
+                } else if (levelJS.server != null) {
+                    let fakePlayer;
                     if (aboveJS.hasTag('tfc:looms')) {
+                        fakePlayer = makeFakePlayer(levelJS);
                         let loomBE = aboveJS.entity;
                         loomBE.getCapability(Capabilities.ITEM, null).ifPresent(slotHandler => {
                             if (slotHandler.getStackInSlot(1).isEmpty()) {
+                                // The model doesn't animate b/c lastPushed is not synced betweeen server and client
                                 loomBE.onRightClick(fakePlayer);
                             }
                         })
                     } else if (aboveJS.hasTag('tfc:anvils')) {
+                        fakePlayer = makeFakePlayer(levelJS);
                         let anvilBE = aboveJS.entity;
                         anvilBE.getCapability(Capabilities.ITEM, null).ifPresent(slotHandler => {
                             if (slotHandler.getStackInSlot(anvilBE.SLOT_HAMMER).asKJS().hasTag('tfc:hammers')) {
                                 if (anvilBE.weld(fakePlayer).consumesAction()) {
-                                    levelJS.minecraftLevel.playSound(null, aboveJS.pos, 'tfc:block.anvil.hit', 'players', 1.0, 1.0);
+                                    levelJS.minecraftLevel.playSound(null, aboveJS.pos, 'tfc:block.anvil.hit', 'blocks', 1.0, 1.0);
                                     if (!levelJS.minecraftLevel.clientSide) {
                                         let random = level.random;
                                         let x = aboveJS.pos.x + nextDouble(random, 0.2, 0.8);
@@ -97,11 +126,21 @@ function adapterTick(level, pos, state) {
                             }
                         })
                     }
-                    fakePlayer.remove('discarded');
+                    if (fakePlayer != null && fakePlayer != undefined) {
+                        fakePlayer.remove('discarded');
+                    }
                 }
             }
         }
     }
+}
+
+/**
+ * Makes a fake player
+ * @param {Internal.LevelJS} levelJS 
+ */
+function makeFakePlayer(levelJS) {
+    return new FakeDeployerPlayer(levelJS.server.getLevel(levelJS.dimension).minecraftLevel, null);
 }
 
 /**

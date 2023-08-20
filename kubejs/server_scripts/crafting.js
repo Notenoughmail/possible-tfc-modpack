@@ -13,15 +13,12 @@ onEvent('recipes', e => {
 
 	e.shapeless('1x create:encased_chain_drive', ['create:andesite_casing', '2x tfc:metal/chain/wrought_iron']).id('kubejs:crafting/chain_drive');
 	e.shapeless('1x create:placard', ['minecraft:item_frame', 'tfc:metal/sheet/brass']).id('kubejs:crafting/placard');
-	e.shapeless('1x create:rose_quartz', ['tfc:ore/halite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_halite');
-	e.shapeless('1x create:rose_quartz', ['tfc:ore/sylvite', '8x minecraft:redstone']).id('kubejs:crafting/redstone_salt_sylvite');
+	e.shapeless('1x create:rose_quartz', ['#tfc:raw_salts', 'tfc:powder/sulfur', '7x minecraft:redstone']).id('kubejs:crafting/redstone_salt_halite');
 	e.recipes.tfcAdvancedShapelessCrafting(ItemProvider.of('1x create:super_glue').copyForgingBonus(), [Item.of('tfc:metal/tuyere/wrought_iron').ignoreNBT(), 'tfc:glue']).id('kubejs:crafting/super_glue');
 	e.shapeless('2x create:train_door', ['#minecraft:wooden_doors', 'tfc:metal/sheet/brass', '#minecraft:wooden_doors']).id('kubejs:crafting/train_door');
 	e.shapeless('2x create:train_trapdoor', ['#minecraft:wooden_trapdoors', 'tfc:metal/sheet/brass', '#minecraft:wooden_trapdoors']).id('kubejs:crafting/train_trapdoor');
-	e.shapeless('9x chunkloaders:single_chunk_loader', ['chunkloaders:basic_chunk_loader']).id('kubejs:crafting/single_chunk_loader');
 	e.shapeless('1x create:sand_paper', ['minecraft:paper', '#forge:sand']).id('kubejs:crafting/sand_paper');
 	e.shapeless('2x create:track_station', ['create:railway_casing', '#minecraft:banners']).id('kubejs:crafting/train_station');
-	e.shapeless('1x railways:benchcart', ['minecraft:minecart', ['minecraft:crafting_table', '#tfc:workbenches']]).id('railways:benchcart');
 	e.shapeless('4x createaddition:portable_energy_interface', ['create:brass_casing', 'create:chute', 'immersiveengineering:coil_lv']).id('createaddition:crafting/portable_energy_interface');
 	e.shapeless('1x kubejs:composite_catalyst', ['4x #tfc:igneous_rock', '#tfc:forge_fuel']).id('kubejs:crafting/composite_catalyst');
 	e.shapeless('1x create:andesite_door', ['#minecraft:wooden_doors', 'create:andesite_casing']).id('create:crafting/kinetics/composite_door');
@@ -305,7 +302,7 @@ onEvent('recipes', e => {
 	'A',
 	'B'
 	], {
-		S: 'tfc:metal/sheet/brass',
+		S: 'create:brass_casing',
 		A: 'create:chute',
 		B: 'create:electron_tube'
 	}).id('kubejs:crafting/smart_chute');
@@ -436,7 +433,7 @@ onEvent('recipes', e => {
 	'B'
 	], {
 		S: 'create:electron_tube',
-		A: 'tfc:metal/sheet/brass',
+		A: 'create:brass_casing',
 		B: '#tfc:kelp'
 	}).id('kubejs:crafting/brass_funnel');
 	e.shaped('4x create:brass_tunnel', [
@@ -445,7 +442,7 @@ onEvent('recipes', e => {
 	'B'
 	], {
 		S: 'create:electron_tube',
-		A: 'tfc:metal/double_sheet/brass',
+		A: 'create:brass_casing',
 		B: '#tfc:kelp'
 	}).id('kubejs:crafting/brass_tunnel');
 	e.shaped('2x create:display_link', [
@@ -623,45 +620,6 @@ onEvent('recipes', e => {
 		S: '#forge:chests/wooden',
 		A: 'tfc:metal/sheet/steel'
 	}).id('kubejs:crafting/upper_steel');
-	e.shaped('1x chunkloaders:basic_chunk_loader', [
-	'SSS',
-	'SSS',
-	'SSS'
-	], {
-		S: 'chunkloaders:single_chunk_loader'
-	}).id('kubejs:crafting/small_chunk_loader_to_basic');
-	e.shaped('1x chunkloaders:basic_chunk_loader', [
-	' S ',
-	'SAS',
-	' S '
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:metal/double_ingot/cast_iron'
-	}).id('kubejs:crafting/basic_chunk_loader');
-	e.shaped('1x chunkloaders:advanced_chunk_loader', [
-	' S ',
-	'SAS',
-	' S '
-	], {
-		S: 'tfc:metal/sheet/gold',
-		A: 'tfc:metal/double_ingot/gold'
-	}).id('kubejs:crafting/advanced_chunk_loader');
-	e.shaped('1x chunkloaders:ultimate_chunk_loader', [
-	' S ',
-	'SAS',
-	' S '
-	], {
-		S: 'tfc:metal/sheet/steel',
-		A: 'tfc:metal/double_ingot/steel'
-	}).id('kubejs:crafting/ultimate_chunk_loader');
-	e.shaped('1x create:empty_blaze_burner', [
-	' S ',
-	'SAS',
-	' S '
-	], {
-		S: 'tfc:metal/sheet/black_steel',
-		A: 'tfc:thatch'
-	}).id('kubejs:crafting/empty_blaze_burner');
 	e.shaped('1x toolbelt:pouch', [
 	' S ',
 	'A A',
@@ -994,25 +952,6 @@ onEvent('recipes', e => {
 		B: '#forge:rods/wooden',
 		C: 'tfc:metal/ingot/copper'
 	}).id('kubejs:crafting/multimeter');
-	e.shaped('4x railways:semaphore', [
-	' S ',
-	'ABC',
-	' S '
-	], {
-		S: 'tfc:metal/sheet/wrought_iron',
-		A: '#forge:fences/wooden',
-		B: 'create:andesite_casing',
-		C: 'create:electron_tube'
-	}).id('kubejs:crafting/semaphore');
-	e.shaped('1x railways:track_coupler', [
-	'S',
-	'A',
-	'B'
-	], {
-		S: 'tfc:metal/sheet/wrought_iron',
-		A: 'minecraft:redstone',
-		B: 'create:railway_casing'
-	}).id('kubejs:crafting/track_coupler');
 	e.shaped('6x create:ornate_iron_window', [
 	'SAS',
 	'BSB'
@@ -1157,49 +1096,6 @@ onEvent('recipes', e => {
 		C: 'immersiveengineering:capacitor_hv',
 		D: 'create:brass_casing'
 	}).id('kubejs:crafting/modular_accumulator');
-	e.shaped('2x railways:smokestack_caboosestyle', [
-	'S',
-	'A'
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_caboosestyle');
-	e.shaped('8x railways:smokestack_coalburner', [
-	'S S',
-	'S S',
-	'SAS',
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_coalburner');
-	e.shaped('6x railways:smokestack_oilburner', [
-	'S S',
-	'SAS'
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_oilburner');
-	e.shaped('2x railways:smokestack_streamlined', [
-	'SAS'
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_streamlined');
-	e.shaped('4x railways:smokestack_woodburner', [
-	' S ',
-	'SAS'
-	], {
-		S: 'tfc:metal/sheet/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_woodburner');
-	e.shaped('4x railways:smokestack_diesel', [
-	'SAS',
-	' B '
-	], {
-		S: 'tfc:metal/sheet/wrought_iron',
-		A: 'create:propeller',
-		B: 'tfc:soot'
-	}).id('railways:crafting/smokestack_diesel');
 	e.shaped('1x immersiveengineering:fluid_placer', [
 	'SAS',
 	'A A',
@@ -1482,12 +1378,6 @@ onEvent('recipes', e => {
 		A: '#tfc:kelp',
 		B: 'tfc:metal/sheet/wrought_iron'
 	}).id('create:crafting/kinetics/elevator_pulley');
-	e.shaped('2x railways:smokestack_long', [
-		'SAS'
-	], {
-		S: 'tfc:metal/ingot/cast_iron',
-		A: 'tfc:soot'
-	}).id('railways:crafting/smokestack_long');
 	e.shaped('1x create:netherite_backtank', [
 		'SAS',
 		'BCB',
@@ -1556,4 +1446,24 @@ onEvent('recipes', e => {
 		S: '#forge:ingots/steel',
 		A: '#forge:rods/steel'
 	}).id('immersiveengineering:crafting/steel_scaffolding_standard');
+	e.shaped('kubejs:kinetic_adapter', [
+		'S',
+		'A',
+		'B'
+	], {
+		S: 'tfc:metal/sheet/brass',
+		A: 'create:andesite_casing',
+		B: 'create:shaft'
+	}).id('kubejs:crafting/kinetic_adapter');
+	e.shaped('create:blaze_burner', [
+		'SAS',
+		'BCB',
+		'SDS'
+	], {
+		S: 'tfc:metal/sheet/silver',
+		A: 'create:sturdy_sheet',
+		B: 'create:brass_casing',
+		C: 'immersiveengineering:component_electronic_adv',
+		D: 'tfc:metal/sheet/brass'
+	}).id('kubejs:crafting/train_computer');
 })

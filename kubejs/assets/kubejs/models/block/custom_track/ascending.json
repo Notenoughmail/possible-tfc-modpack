@@ -1,0 +1,8 @@
+{
+    "parent": "create:block/track/ascending",
+    "textures": {
+        "particle": "immersiveengineering:block/wooden_decoration/treated_wood_horizontal",
+        "0": "kubejs:block/custom_track/track",
+        "1": "kubejs:block/custom_track/track_mip"
+    }
+}

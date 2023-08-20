@@ -1,6 +1,6 @@
 // priority: 0
 
-settings.logAddedRecipes = true
+settings.logAddedRecipes = false
 settings.logRemovedRecipes = false
 settings.logSkippedRecipes = true
 settings.logErroringRecipes = true
@@ -399,7 +399,6 @@ onEvent('recipes', e => {
 	
 	e.recipes.createDeploying('4x create:attribute_filter', ['tfc:silk_cloth', 'tfc:metal/ingot/brass']).id('kubejs:deploying/attribute_filter');
 	e.recipes.createDeploying('4x create:filter', ['tfc:silk_cloth', 'tfc:metal/ingot/wrought_iron']).id('kubejs:deploying/filter');
-	e.recipes.createDeploying('create:blaze_burner', ['create:empty_blaze_burner', 'immersiveengineering:coal_coke']).id('kubejs:deploying/blaze_burner');
 	
 	e.recipes.createFilling('create:chocolate_glazed_berries', [Ingredient.notRotten('#tfc:foods/berries'), Fluid.of('firmalife:chocolate', 250)]).id('kubejs:filling/chocolate_berries');
 	e.recipes.createFilling('immersiveengineering:treated_wood_horizontal', ['#minecraft:planks', Fluid.of('immersiveengineering:creosote', 25)]).id('kubejs:filling/stained_wood');
@@ -510,16 +509,11 @@ onEvent('recipes', e => {
 		e.recipes.createDeploying('kubejs:frame/capacitor_hv', ['kubejs:frame/capacitor_hv', 'tfc:metal/sheet/steel']),
 		e.recipes.createPressing('kubejs:frame/capacitor_hv', 'kubejs:frame/capacitor_hv')
 	]).transitionalItem('kubejs:sequence/hv_capacitor').loops(1).id('kubejs:sequenced_assembly/hv_capacitor');
-	e.recipes.createSequencedAssembly(['16x railways:track_dark_oak'], '#forge:treated_wood_slab', [
-		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
-		e.recipes.createDeploying('railways:track_incomplete_dark_oak', ['railways:track_incomplete_dark_oak', 'tfc:metal/rod/steel']),
-		e.recipes.createPressing('railways:track_incomplete_dark_oak', 'railways:track_incomplete_dark_oak')
-	]).transitionalItem('railways:track_incomplete_dark_oak').loops(1).id('kubejs:sequenced_assembly/treated_planks_track'); // Unfortunately, SnR doesn't have the ability to make rails from all of TFC's woods, so just one is here as irl creosote stained wood ties
-	e.recipes.createSequencedAssembly(['16x railways:track_monorail'], '#forge:sheets/steel', [
-		e.recipes.createDeploying('railways:track_incomplete_monorail', ['railways:track_incomplete_monorail', 'kubejs:sheet/graphite']),
-		e.recipes.createDeploying('railways:track_incomplete_monorail', ['railways:track_incomplete_monorail', '#forge:sheets/steel']),
-		e.recipes.createPressing('railways:track_incomplete_monorail', 'railways:track_incomplete_monorail')
-	]).transitionalItem('railways:track_incomplete_monorail').loops(1).id('kubejs:sequenced_assembly/monorail');
+	e.recipes.createSequencedAssembly(['16x kubejs:stained_wood_track'], '#forge:treated_wood_slab', [
+		e.recipes.createDeploying('kubejs:sequence/stained_wood_track', ['kubejs:sequence/stained_wood_track', 'tfc:metal/rod/steel']),
+		e.recipes.createDeploying('kubejs:sequence/stained_wood_track', ['kubejs:sequence/stained_wood_track', 'tfc:metal/rod/steel']),
+		e.recipes.createPressing('kubejs:sequence/stained_wood_track', 'kubejs:sequence/stained_wood_track')
+	]).transitionalItem('kubejs:sequence/stained_wood_track').loops(1).id('kubejs:sequenced_assembly/stained_wood_track');
 	
 	e.recipes.createCutting('minecraft:stick', '#tfc:lumber').id('kubejs:cutting/stick');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_copper', 'minecraft:copper_block').id('kubejs:cutting/copper_sheetmetal');
@@ -1278,13 +1272,20 @@ onEvent('recipes', e => {
 		'type': 'immersiveengineering:mixer',
 		'inputs': [
 		{
-			'item': 'minecraft:redstone'
+			count: 3,
+			item: 'minecraft:redstone'
+		},
+		{
+			item: 'tfc:powder/sulfur'
+		},
+		{
+			tag: 'tfc:raw_salts'
 		}
 		],
-		'result': Fluid.of('immersiveengineering:redstone_acid', 250).toJson(),
+		'result': Fluid.of('immersiveengineering:redstone_acid', 500).toJson(),
 		'fluid': {
 			'tag': 'forge:true_water',
-			'amount': 250
+			'amount': 500
 		},
 		'energy': 1600
 	}).id('kubejs:mixer/redstone_acid');
@@ -1862,6 +1863,26 @@ onEvent('recipes', e => {
 			amount: 1000
 		}
 	}).id('kubejs:bottling/asphalt');
+	e.custom({
+		type: 'immersiveengineering:bottling_machine',
+		results: [
+			{
+				item: 'create:polished_rose_quartz'
+			},
+			{
+				item: 'kubejs:mold/ingot'
+			}
+		],
+		inputs: [
+			{
+				item: 'kubejs:mold/ingot'
+			}
+		],
+		fluid: {
+			tag: 'forge:redstone_acid',
+			amount: 500
+		}
+	}).id('kubejs:bottling/redstone_crystalization');
 	
 	// Refinery
 	e.custom({
@@ -1904,6 +1925,19 @@ onEvent('recipes', e => {
 		},
 		result: Fluid.of('immersiveengineering:acetaldehyde', 8).toJson()
 	}).id('immersivepetroleum:refinery/acetaldehyde');
+	e.custom({
+		type: 'immersiveengineering:refinery',
+		input0: {
+			amount: 2,
+			tag: 'forge:ethylene'
+		},
+		input1: {
+			amount: 2,
+			tag: 'forge:propylene'
+		},
+		energy: 230,
+		result: Fluid.of('kubejs:ethy_prop_rubber', 3).toJson()
+	}).id('kubejs:refinery/synthetic_rubber');
 	
 	// Fermenter
 	e.custom({

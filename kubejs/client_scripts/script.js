@@ -71,7 +71,6 @@ onEvent('jei.hide.items', e => {
 	e.hide('create:haunted_bell')
 	e.hide('#forge:nuggets')
 	e.hide('#forge:plates')
-	e.hide(/railways:track_.*/)
 	e.hide(/(?:minecraft|create):.*(?:diorite|granite|dripstone|limestone|deespslate).*/)
 	e.hide('createaddition:festive_spool')
 	e.hide(/minecraft:infested_.+/)
@@ -111,6 +110,8 @@ onEvent('jei.hide.items', e => {
 	e.hide(/immersiveengineering:.*ore.*/)
 	e.hide('immersiveengineering:gunpowder_barrel')
 	e.hide('immersiveposts:fence_uranium')
+	e.hide('minecraft:kelp')
+	e.hide('minecraft:dried_kelp_block')
 })
 
 onEvent('jei.add.items', e => {
@@ -133,9 +134,6 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:spider_eye')
 	e.add('minecraft:rotten_flesh')
 	e.add('minecraft:melon_slice')
-	e.add('railways:track_coupler')
-	e.add('railways:track_dark_oak')
-	e.add('railways:track_monorail')
 	e.add('minecraft:leather_boots')
 	e.add('minecraft:leather_chestplate')
 	e.add('minecraft:leather_helmet')
@@ -150,6 +148,7 @@ onEvent('jei.add.items', e => {
 	e.add('minecraft:netherite_leggings')
 	e.add('immersiveengineering:raw_uranium')
 	e.add('immersiveengineering:raw_aluminum')
+	e.add('create:sturdy_sheet')
 })
 
 onEvent('jei.add.fluids', e => {

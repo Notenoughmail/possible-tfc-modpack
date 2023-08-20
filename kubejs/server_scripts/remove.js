@@ -80,7 +80,8 @@ let ids = [
 	'immersiveengineering:crafting/buzzsaw',
 	'immersiveengineering:crafting/stick_aluminum',
 	'createaddition:rolling/aluminum_ingot',
-	'immersivepetroleum:asphalt'
+	'immersivepetroleum:asphalt',
+	'railyways:crafting/remote_lens'
 ]
 
 onEvent('recipes', e => {
@@ -247,11 +248,8 @@ onEvent('recipes', e => {
 		'immersiveengineering:railgun',
 		'create:track_station',
 		'immersiveengineering:voltmeter',
-		'railways:semaphore',
-		/railways:track_.*/,
 		/(?:minecraft|create):.*(?:diorite|granite|andesite|dripstone|limestone|deespslate).*/,
 		/create:.*window/,
-		'railways:conductor_whistle',
 		'createaddition:modular_accumulator',
 		/(?:create|minecraft):waxed_.+/,
 		/create:copper_(?:tiles|shingles)/,

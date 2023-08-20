@@ -59,8 +59,6 @@ onEvent('server.datapack.first', e => {
 	e.addTFCHeat('immersiveengineering:wire_aluminum', 0.115, 396.18)
 	e.addTFCHeat('immersiveengineering:stick_aluminum', 0.23, 396.18)
 	
-	e.addTFCItemSize('chunkloaders:advanced_chunk_loader', 's=large, w=heavy')
-	e.addTFCItemSize('chunkloaders:basic_chunk_loader', 's=normal, w=medium')
 	e.addTFCItemSize('toolbelt:belt', 's=very_large, w=heavy')
 	e.addTFCItemSize('immersiveengineering:coal_coke', 's=small, w=medium')
 	e.addTFCItemSize(/immersiveengineering:connector_hv(?:_relay)?/, 's=normal, w=heavy')
@@ -83,7 +81,6 @@ onEvent('server.datapack.first', e => {
 	e.addTFCItemSize('immersiveengineering:screwdriver', 's=small, w=light')
 	e.addTFCItemSize('create:steam_engine', 's=large, w=heavy')
 	e.addTFCItemSize('create:sturdy_sheet', 's=large, w=medium')
-	e.addTFCItemSize('chunkloaders:ultimate_chunk_loader', 's=very_large, w=very_heavy')
 	e.addTFCItemSize('create:wand_of_symmetry', 's=huge, w=very_heavy')
 	e.addTFCItemSize('create:water_wheel', 's=normal, w=medium')
 	e.addTFCItemSize('immersiveengineering:watermill', 's=huge, w=very_heavy')

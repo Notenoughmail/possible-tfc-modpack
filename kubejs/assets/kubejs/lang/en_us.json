@@ -66,6 +66,7 @@
 	"block.kubejs.frame.capacitor_hv": "High-Voltage Capacitor Frame",
 	
 	"block.kubejs.kinetic_adapter": "Kinetic Adapter",
+	"block.kubejs.stained_wood_track": "Track With Creosote Stained Ties",
 	
 	"item.kubejs.ore.normal_lead": "Normal Native Lead",
 	"item.kubejs.ore.poor_lead": "Poor Native Lead",
@@ -86,13 +87,14 @@
 	"item.kubejs.sequence.hv_capacitor": "Incomplete High-Voltage Capacitor",
 	"item.kubejs.sequence.light_component": "Incomplete Wrought Iron Mechanical Component",
 	"item.kubejs.sequence.mv_capacitor": "Incomplete Medium-Voltage Capacitor",
+	"item.kubejs.sequence.stained_wood_track": "Incomplete Track With Creosote Stained Ties",
 	
 	"item.kubejs.sheet.graphite": "Graphite Sheet",
 
 	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch",
 	"tooltip.kubejs.part_of_set": "Part of a set!",
-	"tooltip.kubejs.fake_4x": " ■■▩ 4x ",
-	"tooltip.kubejs.karma": "This block has a history\nof ghost stress, please\nreport problems!",
+	"tooltip.kubejs.adapter_speed_req": "16 %1$s",
+	"tooltip.kubejs.karma": "May crash when looked\nat with F3 open",
 	
 	"tfc.recipe.barrel.kubejs.sealed_barrel.paper": "Unrefined Paper",
 	"tfc.recipe.barrel.kubejs.sealed_barrel.worn_brick": "Worn Brick",

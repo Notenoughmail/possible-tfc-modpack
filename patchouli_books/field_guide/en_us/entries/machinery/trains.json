@@ -16,13 +16,6 @@
 	},
 	{
 		"type": "patchouli:spotlight",
-		"item": "chunkloaders:ultimate_chunk_loader",
-		"title": "Outpost 1",
-		"link_recipes": false,
-		"text": "Chunkloaders are available to ensure your mining outposts work even while you're away from them."
-	},
-	{
-		"type": "patchouli:spotlight",
 		"item": "create:mechanical_drill",
 		"title": "Mining",
 		"link_recipes": false,

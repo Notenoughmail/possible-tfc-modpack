@@ -210,7 +210,7 @@ hash = "478ee16efa21a629179436ce52d2490619f48b6fb2b141cfe11f18694209f4b2"
 
 [[files]]
 file = "kubejs/assets/create/lang/en_us.json"
-hash = "a7482124507f93ad9b6b61da5332f6db2c61be12e279b866f0807c5c8b5df280"
+hash = "2a21392d86627d20f9444d0807acc47d19a64df7f64cd2a4bfb9c3df442ce416"
 
 [[files]]
 file = "kubejs/assets/create/models/block/acacia_window.json"
@@ -653,8 +653,60 @@ file = "kubejs/assets/kubejs/blockstates/kinetic_adapter.json"
 hash = "c8d22b012b16fce463eb69e9a71a9806561210c43df0510bd9fe73e308ea40a1"
 
 [[files]]
+file = "kubejs/assets/kubejs/blockstates/stained_wood_track.json"
+hash = "ff29c6000c26e5d3e1ac1b25eb2d51511981bc7fc2a7c6b086484c24ec36371a"
+
+[[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "54f2e338dd338627e9529f876d791476cb6b61097d30204173dbc7532032e8a1"
+hash = "02ff93cd8e5871458ab3094a1dfa6f3d7558e4e6373ba7ace340eabcb89da612"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/ascending.json"
+hash = "98217c7d914d2e4454ca46907a7b47cc68a90cd76199cfea8e371e1a51a08acd"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_d1_xo.json"
+hash = "6401418570e42bb3db60da9ba938dcd68e03915b16e87e8cafe552d171ed4e2e"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_d1_zo.json"
+hash = "91b6c3a612ebcadebb0e369030573d2e5fb31f2314259b09f365ddddd3ecfeae"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_d2_xo.json"
+hash = "76bafe527956e33b1833e0c77b7f13db3975f0ce554a8e07b66a52b7b67b3763"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_d2_zo.json"
+hash = "448a5bcbe5a6de48a070a9fdcf156fbdbf651d7053a5a959626e430936a192f7"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_diag.json"
+hash = "3d9e13ca1670983ac8bc2aa1a68f17bc52e9661cb5f2226d1e82576a1e3c27c8"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/cross_ortho.json"
+hash = "784c672fecbc6517b8757047f665e9574e1e7980df0cf82712f0dc0b991eab0f"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/diag.json"
+hash = "de7f226b81187d2c6169a9aeb3335abb17a204af84b356d179a2c2467fd01ffb"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/diag_2.json"
+hash = "dbab6bdea42d73a45fc87b9b9ae5a91f4ca90dd99bffe140de7b0a9af0e6073e"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/teleport.json"
+hash = "ecba1f1d70ffa1805c37768c0d5310c9dd0584d8445a4d7c071a4809305af01b"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/x_ortho.json"
+hash = "38a7735838d1b84c578d9bddf15c0893359ed34e2cf6b4412f05f41da20618a8"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/custom_track/z_ortho.json"
+hash = "c9884a979b1fd3b50a3a92b5e5f97598dab5af701c6a476191ba7a6e3cecb5c0"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/frame/capacitor_hv.json"
@@ -913,6 +965,18 @@ file = "kubejs/assets/kubejs/models/block/ore/small_lead.json"
 hash = "4790ffc5468cc52b1d6b78b26338ee0f191336222b23aa83d19f27d84cbbde9a"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/block/track/stained_wood/segment_left.json"
+hash = "9fd4b3dddfa275afacc195540d3652340ee55f84644b02dbd9dfc267cab5e0fe"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/track/stained_wood/segment_right.json"
+hash = "e72e10a17aa0e32836c359f28d6d13c00bd8e46e1eb657838385238062cb9a8c"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/track/stained_wood/tie.json"
+hash = "a9809bc2ebc6e3339d5e379042242104cca0f03bda0ab5acc046446fc9d542c9"
+
+[[files]]
 file = "kubejs/assets/kubejs/models/item/blueprint/bannerpatterns.json"
 hash = "91187c3556e949389eb1682288d3da9ace008478ba9f33efa1ddb801dbf5f595"
 
@@ -951,6 +1015,22 @@ hash = "37f231b962a0540a1b736ddb8385fcc67b39dd6ced22a409cf09662f51972bd7"
 [[files]]
 file = "kubejs/assets/kubejs/models/item/ore/small_lead.json"
 hash = "a640671184eba1acf9ce99ecc0b5bc55d2db1625058a2aef68d9d7c5461af035"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/stained_wood_track.json"
+hash = "6fe51eda5a581ef6364e1459504cbdbcf481ebf2ed5b1919227eb5af1f47ce06"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/custom_track/crossing.png"
+hash = "77d18d2a4ecd665649495334d27654eb00034268f06c15d5c8a4775c85b8941e"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/custom_track/track.png"
+hash = "429dfa99c359d257b5557ffddc4137930e3ce1b9867748b5e24c5562341fd1a7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/custom_track/track_mip.png"
+hash = "d3b02f5a61aa1893d8a3ba4e42c22886c8674de4fc480032a7a8570aa6d82e4f"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/frame/capacitor_hv_top.png"
@@ -1165,8 +1245,16 @@ file = "kubejs/assets/kubejs/textures/item/ore/small_lead.png"
 hash = "e8760f5b94a8d5c581bcc61cb280f97595f9d4fa9a88d1823d2afe613a97c702"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/sequence/stained_wood_track.png"
+hash = "2f8717681a83b1db9bc0b91d22091a3d80f4dc9340a207e401f855a37387afa7"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/sheet/graphite.png"
 hash = "4aa04eea36427392551090826996787b9d01318cd11e66bebe058a00e76e4fe1"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/stained_wood_track.png"
+hash = "95988f7fb4a4fc16f2bdae4dcab8a4ceb4025bbbb14fabf25919b86a3ba99d20"
 
 [[files]]
 file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_constantan.png"
@@ -1197,30 +1285,6 @@ file = "kubejs/assets/minecraft/textures/models/armor/netherite_layer_2.png"
 hash = "5b8a832b6b36a8be0a0520504643de727e5ea11df0dcf5243f7f78268c321b39"
 
 [[files]]
-file = "kubejs/assets/railways/lang/en_us.json"
-hash = "2e14d1afcf462851905f15fcd296b46efa34ca8bdc382ec80b9d8f67f4404996"
-
-[[files]]
-file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_crossing_dark_oak.png"
-hash = "77d18d2a4ecd665649495334d27654eb00034268f06c15d5c8a4775c85b8941e"
-
-[[files]]
-file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_dark_oak.png"
-hash = "429dfa99c359d257b5557ffddc4137930e3ce1b9867748b5e24c5562341fd1a7"
-
-[[files]]
-file = "kubejs/assets/railways/textures/block/track/dark_oak/standard_track_mip_dark_oak.png"
-hash = "d3b02f5a61aa1893d8a3ba4e42c22886c8674de4fc480032a7a8570aa6d82e4f"
-
-[[files]]
-file = "kubejs/assets/railways/textures/item/track/track_dark_oak.png"
-hash = "95988f7fb4a4fc16f2bdae4dcab8a4ceb4025bbbb14fabf25919b86a3ba99d20"
-
-[[files]]
-file = "kubejs/assets/railways/textures/item/track_incomplete/track_incomplete_dark_oak.png"
-hash = "2f8717681a83b1db9bc0b91d22091a3d80f4dc9340a207e401f855a37387afa7"
-
-[[files]]
 file = "kubejs/assets/tfc/lang/en_us.json"
 hash = "139f911d95df4fce13928423cbeed9c85ecff7b21c5f1f3c429a47e6e7737b8f"
 
@@ -1230,11 +1294,11 @@ hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "af4d96be5922ed671c5deec1b3d0dda5fc1abd5cb908d91ff3b4372e950e6c4b"
+hash = "c9b565a40743fb0b9b254a32c124345c81f0895f8058e1d3d8b6ed5d894ad243"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "a677aa2328b1351353297c815c31a13f18bc1821af2175e6c2a61d58f303c44e"
+hash = "12c8bc2111af5dbc7abd255f0c103ebfabfbb6fb0a7c9e9f4193eb37a73ee48b"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -1354,11 +1418,11 @@ hash = "7c2bf0873f9c5d8cfc2aadfff9723f1a337d38c7d4b68a1a6196fa5dd491e2f8"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "c45f9d9dab1342a46a2b71130108d181f6291a53de05f3e0a13cd742f80f8aad"
+hash = "44b702321fd69f3a3d276a16052807ed96cd2880adb05c074f0705f3456cde1d"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "29b9207d24cebdd3a5075e4ddb6cbcba743a8dadc77fdb44acdf98f24e2b672e"
+hash = "fa039de51c21e96fcb02db8958bf0a772469b0520db48c95bfe7df3885be817d"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -1370,11 +1434,11 @@ hash = "302a068e21f39773791f39a199346049e04e271f7a50a932001a3ef9191f7dbe"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "ad84de20a8c8efc4b64fb7602de2be577b106a0466af188c81df3504c748655f"
+hash = "3f46d29932d9f1d56cb54689fad30fb49908a1de78a5415b967e5bf2061bd97d"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "ca209a0022d89892dd262ddb42b06f0caea4250fb547cc4bb077d40c434dc8ed"
+hash = "88e721701c2301c4de7254de502c98b498eeadf4ba8b67aa9a856e8c25a581f7"
 
 [[files]]
 file = "kubejs/server_scripts/server_constants.js"
@@ -1386,11 +1450,11 @@ hash = "26f05923d4cef60ea12100bba38ab1a0b92836669bb16544026c2bac7a8e6c90"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "94f3e49f3e4bed472ee3f21c46263f25405c0768c99fb173f6c604ae92d7d7bf"
+hash = "591d3c9e73cf7ef8b5cc3b5c81e0f2a903c03c7b0983e4264a8efc90f1e31496"
 
 [[files]]
 file = "kubejs/startup_scripts/adapter.js"
-hash = "0feacf577db8f36958ce0f783cf7264192025bccffb6b8cb913210292614f045"
+hash = "1a455b383bbbd6fb18c19ce9cc30772b15fae562515f7d8a450c8fba85d50c03"
 
 [[files]]
 file = "kubejs/startup_scripts/bricks.js"
@@ -1398,11 +1462,11 @@ hash = "eed7d5c5601c52a0995bf0dde438128d246b81b62b783564146e3cbcae04b806"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "701f45b042426725ca4d7b4d09d317c1b489bb67806ff0106516eb7cc8b19094"
+hash = "11171f2e2048a0a3a04b1f379d431bbdb12b86ca11082612a00302378f0b39ff"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "6ff8e49158ed9b65a929ea03df4bded7ea7728bb50545f0ddb40174a1fbda590"
+hash = "b348b8fd29aa0f6cfa3f86fdcaed959e588923f5e33f2b1fa3525cd9581428e4"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -1480,13 +1544,8 @@ hash = "a870f4e08855ee1eb1845baa93c0f941f8b39842e20f6d43e78fa8b212508a87"
 metafile = true
 
 [[files]]
-file = "mods/create-steam-n-rails.pw.toml"
-hash = "c93b799505f1c70e96cc92ef9ee200fd73a3dd4f0a26b0abb373349eb4343eb7"
-metafile = true
-
-[[files]]
 file = "mods/create.pw.toml"
-hash = "722260d950673eedd85d141e00883d8899b5336a79cfaded12e96359875f4c09"
+hash = "f8f420ecca3eeccc8ad458369654f2f73e0a729472d95afd019e819b2a5b73ee"
 metafile = true
 
 [[files]]
@@ -1733,7 +1792,7 @@ hash = "ee48edbc3b908c3485734d8623e1ee8d27213bced0a2fa0fc6b86c09237ccb6d"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/machinery/trains.json"
-hash = "8e8391bedc0f61a15c20b1ac6c950df9b354205dcd43051de350711cb7e78d61"
+hash = "2a69fe1f72801a8b95c01231d6215db19f3a682871f548c0b134ac956f757fb2"
 
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/mechanics/composite.json"

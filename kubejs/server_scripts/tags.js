@@ -3,9 +3,6 @@
 console.info('Loading tag scripts')
 
 onEvent('tags.blocks', e => {
-	e.add('tfc:support_beam',
-		'create:metal_girder'
-	)
 	e.add('firmalife:all_copper_greenhouse',
 		'create:encased_fluid_pipe',
 		'create:copper_door'
@@ -32,13 +29,15 @@ onEvent('tags.blocks', e => {
 		'tfc:burning_log_pile',
 		'tfc:molten',
 		'tfc:bloom',
-		'kubejs:kinetic_adapter'
+		'kubejs:kinetic_adapter',
+		'kubejs:stained_wood_track'
 	)
 	e.add('create:non_movable',
 		'tfc:burning_log_pile',
 		'tfc:molten',
 		'tfc:bloom',
-		'kubejs:kinetic_adapter'
+		'kubejs:kinetic_adapter',
+		'kubejs:stained_wood_track'
 	)
 	e.add('tfc:toughness_3',
 		'immersiveengineering:excavator',
@@ -67,6 +66,22 @@ onEvent('tags.blocks', e => {
 		'immersivepetroleum:pumpjack',
 		'immersiveengineering:refinery',
 		'immersiveengineering:sawmill'
+	)
+	e.add('tfc:forge_insulation',
+		'kubejs:kinetic_adapter'
+	)
+	e.add('create:tracks', 
+		'kubejs:stained_wood_track'
+	)
+	e.add('create:gridable_tracks',
+		'kubejs:stained_wood_track'
+	)
+	e.add('minecraft:mineable/pickaxe',
+		'kubejs:kinetic_adapter',
+		'kubejs:stained_wood_track'
+	)
+	e.add('minecraft:mineable/axe',
+		'kubejs:stained_wood_track'
 	)
 });
 
@@ -213,6 +228,10 @@ onEvent('tags.items', e => {
 		'tfc:rock/magma/andesite',
 		'tfc:rock/magma/dacite'
 	)
+	e.add('tfc:raw_salts',
+		'tfc:ore/halite',
+		'tfc:ore/sylvite'
+	)
 	
 	//metal reorganization
 	e.add('forge:sheets',
@@ -276,9 +295,7 @@ onEvent('tags.items', e => {
 		'minecraft:minecart',
 		'minecraft:furnace_minecart',
 		'minecraft:tnt_minecart',
-		'minecraft:hopper_minecart',
-		'railways:benchcart',
-		'railways:jukeboxcart',
+		'minecraft:hopper_minecart'
 	)
 })
 
