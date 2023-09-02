@@ -1,9 +1,0 @@
-{
-    "parent": "create:block/track/cross_d2_xo",
-    "textures": {
-        "particle": "immersiveengineering:block/wooden_decoration/treated_wood_horizontal",
-        "0": "kubejs:block/custom_track/track",
-        "1": "kubejs:block/custom_track/track_mip",
-        "2": "kubejs:block/custom_track/crossing"
-    }
-}

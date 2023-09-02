@@ -2,6 +2,7 @@
 
 const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
 const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
+const FluidHelpers = java("net.dries007.tfc.common.fluids.FluidHelpers");
 
 // Loot tables do not work for this
 onEvent('block.break', e => {
@@ -18,7 +19,7 @@ onEvent('block.break', e => {
 })
 
 onEvent('block.right_click', e => {
-	let playerJS = e.entity;
+	let playerJS = e.player;
 	if (playerJS == null) { return; }
 	let mc_player = playerJS.minecraftPlayer;
 	let blockJS = e.block;
@@ -60,15 +61,33 @@ onEvent('block.right_click', e => {
 			}
 			if (rack_age < 0.1) {
 				entities.get(entity_num).kill();
-				playerJS.give(Item.of(blockJS.id, {BlockEntityTag: be.serializeNBT()}));
+				playerJS.give(Item.of(blockJS.id, `{BlockEntityTag: ${be.serializeNBT()}}`));
 				e.player.swingArm(e.hand); // e.player gives the ServerPlayerJS which has this method
 				level.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0);
 			}
 		}
 	}
 
-	if (blockJS.id === 'create:andesite_casing' && itemJS.hasTag('railways:conductor_caps')) {
-		e.cancel();
+	if (blockJS.hasTag('kubejs:vertical_support') && itemJS.hasTag('tfc:support_beams')) {
+		if (!level.clientSide && e.hand === Hand.MAIN_HAND && playerJS.crouching) {
+			for (let i = 1 ; i < 4 ; i++) {
+				let aboveJS = blockJS.offset(0, i, 0);
+				let aboveState = aboveJS.blockState;
+				if (aboveState.material.replaceable) {
+					let itemBlock = itemJS.item.block;
+					let placeState = FluidHelpers.fillWithFluid(itemBlock.defaultBlockState(), level.getFluidState(aboveJS.pos).type);
+					if (placeState != null) {
+						e.cancel();
+						level.setBlockAndUpdate(aboveJS.pos, placeState);
+						if (!playerJS.creativeMode) {
+							itemJS.itemStack.shrink(1);
+						}
+						level.playSound(null, aboveJS.pos, itemBlock.getSoundType(placeState).placeSound, 'blocks', 1.0, 1.0);
+						return;
+					}
+				}
+			}
+		}
 	}
 })
 

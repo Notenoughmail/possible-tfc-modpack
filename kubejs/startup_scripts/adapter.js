@@ -37,7 +37,7 @@ const BLOCK_ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_ENTI
 const ITEMS = DeferredRegister.create('kubejs', CoreRegistry.ITEM_REGISTRY);
 
 const ADAPTER_BLOCK = BLOCKS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
-const ADAPTER_BE = BLOCK_ENTITIES['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [Block.getBlock('kubejs:kinetic_adapter')]).build(null));
+const ADAPTER_BE = BLOCK_ENTITIES['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [ADAPTER_BLOCK.get()]).build(null));
 const ADAPTER_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new BlockItem(ADAPTER_BLOCK.get(), defaultItemProperties));
 
 // I *will* re-implement your mod through KubeJS reflection

@@ -86,7 +86,6 @@ onEvent('block.registry', e => {
 	})
 	e.create('ore/small_lead', 'tfc:groundcover')
 		.ore()
-		.model("kubejs:block/ore/small_lead")
 		.hardness(0.1)
 		.tagBlock('tfc:can_be_snow_piled')
 		.material('stone')

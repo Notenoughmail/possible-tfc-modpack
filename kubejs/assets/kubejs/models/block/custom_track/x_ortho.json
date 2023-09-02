@@ -1,9 +1,0 @@
-{
-    "parent": "create:block/track/x_ortho",
-    "textures": {
-        "particle": "immersiveengineering:block/wooden_decoration/treated_wood_horizontal",
-        "1": "kubejs:block/custom_track/track",
-        "2": "kubejs:block/custom_track/track_mip",
-        "3": "kubejs:block/custom_track/crossing"
-    }
-}
