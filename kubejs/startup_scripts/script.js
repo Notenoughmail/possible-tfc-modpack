@@ -100,10 +100,13 @@ onEvent('block.registry', e => {
 		.model('immersiveengineering:block/storage_uranium')
 		.randomTick(callback => {
 			let pos = callback.block.pos;
-			let entities = callback.level.getEntitiesWithin(AABB.ofBlocks(pos.offset(-5, -5, -5), pos.offset(5, 5, 5)));
+			let entities = callback.level.getEntitiesWithin(AABB.ofBlocks(pos.offset(-7, -7, -7), pos.offset(7, 7, 7)));
 			entities.forEach(entity => {
-				if (callback.random.nextFloat() < 0.7) {
-					entity.attack('wither', 0.3);
+				let dist = entity.getDistance(pos);
+				for (let i = 0 ; i < 2 ; i++) {
+					if (callback.random.nextFloat() > 0.3 * (i + 1)) {
+						entity.attack('wither', 0.8 / dist);
+					}
 				}
 			})
 		})

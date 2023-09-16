@@ -84,7 +84,7 @@ onEvent('jei.hide.items', e => {
 	e.hide('tfc:snow_pile')
 	e.hide('tfc:ice_pile')
 	e.hide('minecraft:dirt_path')
-	e.hide('minecraft:enchanted_book')
+	e.hide(Item.of('minecraft:enchanted_book').ignoreNBT())
 	e.hide(/minecraft:brick.+/)
 	e.hide('immersiveengineering:potion')
 	e.hide('immersiveengineering:homing')

@@ -858,1205 +858,502 @@ onEvent('recipes', e => {
 	ie_bottler_simple_mold('ingot', 'pig_iron', 'kubejs:mold/ingot', 100)
 	
 	//blueprints
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'tfc:metal/sheet/wrought_iron'
-		},
-		{
-			'count': 4,
-			'base_ingredient': {
-				'item': 'tfc:metal/ingot/copper'
-			}
-		},
-		{
-			'count': 2,
-			'base_ingredient': {
-				'item': 'create:cogwheel'
-			}
-		}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:component_iron'
-		}
-	}).id('kubejs:blueprint/iron_components');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'tfc:metal/sheet/steel'
-		},
-		{
-			'count': 4,
-			'base_ingredient': {
-				'item': 'tfc:metal/ingot/copper'
-			}
-		},
-		{
-			'count': 2,
-			'base_ingredient': {
-				'item': 'create:large_cogwheel'
-			}
-		}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:component_steel'
-		}
-	}).id('kubejs:blueprint/steel_components');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'tag': 'forge:glass/colorless'
-		},
-		{
-			'item': 'immersiveengineering:wire_copper'
-		},
-		{
-			'item': 'tfc:metal/sheet/nickel'
-		},
-		{
-			'item': 'minecraft:redstone'
-		}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:electron_tube',
-			'count': 3
-		}
-	}).id('kubejs:blueprint/vacuum_tube');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'tag': 'forge:glass/colorless'
-		},
-		{
-			'item': 'immersiveengineering:wire_copper'
-		},
-		{
-			'item': 'tfc:metal/rod/nickel'
-		},
-		{
-			'count': 2,
-			'base_ingredient': {
-				'item': 'tfc:powder/graphite'
-			}
-		}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:light_bulb'
-		}
-	}).id('kubejs:blueprint/light_blub');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'minecraft:paper'
-		},
-		{
-			'tag': 'forge:sheets'
-		}
-		],
-		'category': 'bannerpatterns',
-		'result': {
-			'item': 'immersiveengineering:bannerpattern_bevels'
-		}
-	}).id('immersiveengineering:blueprint/banner_bevels');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'immersiveengineering:wooden_grip'
-		},
-		{
-			'item': 'tfc:metal/tuyere/steel'
-		},
-		{
-			'item': 'immersiveengineering:component_steel'
-		},
-		{
-			'item': 'immersiveengineering:gunpart_drum'
-		},
-		{
-			'item': 'immersiveengineering:gunpart_hammer'
-		}
-		],
-		'category': 'electrode',
-		'result': {
-			'item': 'immersiveengineering:revolver'
-		}
-	}).id('kubejs:blueprint/revolver');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'immersiveengineering:wooden_grip'
-		},
-		{
-			'count': 2,
-			'base_ingredient': {
-				'item': 'immersiveengineering:coil_mv'
-			}
-		},
-		{
-			'item': 'immersiveengineering:capacitor_hv'
-		},
-		{
-			'item': 'immersiveengineering:component_electronic_adv'
-		},
-		{
-			'count': 2,
-			'base_ingredient': {
-				'item': 'tfc:metal/rod/steel'
-			}
-		},
-		{
-			'item': 'tfc:metal/ingot/steel'
-		}
-		],
-		'category': 'electrode',
-		'result': {
-			'item': 'immersiveengineering:railgun'
-		}
-	}).id('kubejs:blueprint/railgun');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-		{
-			'item': 'immersiveengineering:plate_duroplast'
-		},
-		{
-			'item': 'tfc:metal/sheet/copper'
-		}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:circuit_board'
-		}
-	}).id('immersiveengineering:blueprint/circuit_board');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-			{
-				'tag': 'forge:treated_wood_slab'
-			},
-			{
-				'item': 'minecraft:redstone'
-			},
-			{
-				'item': 'immersiveengineering:wire_electrum'
-			},
-			{
-				'item': 'create:electron_tube'
-			}
-		],
-		'category': 'components',
-		'result': {
-			'item': 'immersiveengineering:component_electronic',
-			'count': 2
-		}
-	}).id('kubejs:blueprint/electronic_component');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-			{
-				'item': 'immersiveengineering:empty_casing'
-			},
-			{
-				'item': 'tfc:powderkeg'
-			},
-			{
-				'count': 25,
-				'base_ingredient': {
-					'tag': 'forge:gunpowder'
-				}
-			}
-		],
-		'category': 'specialBullet',
-		'result': {
-			'item': 'immersiveengineering:he',
-		}
-	}).id('immersiveengineering:blueprint/bullet_explosive');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-			{
-				'item': 'immersiveengineering:empty_casing'
-			},
-			{
-				'tag': 'forge:gunpowder'
-			},
-			{
-				'count': 2,
-				'base_ingredient': {
-					'item': 'immersiveengineering:nugget_lead'
-				}
-			}
-		],
-		'category': 'bullet',
-		'result': {
-			'item': 'immersiveengineering:casull'
-		}
-	}).id('immersiveengineering:blueprint/bullet_casull');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-			{
-				'item': 'immersiveengineering:empty_casing'
-			},
-			{
-				'tag': 'forge:gunpowder'
-			},
-			{
-				'count': 2,
-				'base_ingredient': {
-					'item': 'immersiveengineering:nugget_steel'
-				}
-			},
-			{
-				'count': 2,
-				'base_ingredient': {
-					'item': 'immersiveengineering:nugget_constantan'
-				}
-			}
-		],
-		'category': 'bullet',
-		'result': {
-			'item': 'immersiveengineering:armor_piercing'
-		}
-	}).id('immersiveengineering:blueprint/bullet_armorpiercing');
-	e.custom({
-		'type': 'immersiveengineering:blueprint',
-		'inputs': [
-			{
-				'item': 'immersiveengineering:empty_casing'
-			},
-			{
-				'tag': 'forge:gunpowder'
-			},
-			{
-				'count': 2,
-				'base_ingredient': {
-					'item': 'immersiveengineering:nugget_lead'
-				}
-			},
-			{
-				'item': 'immersiveengineering:nugget_silver'
-			}
-		],
-		'category': 'bullet',
-		'result': {
-			'item': 'immersiveengineering:silver'
-		}
-	}).id('immersiveengineering:blueprint/bullet_silver');
-	e.custom({
-		type: 'immersiveengineering:blueprint',
-		inputs: [
-			{
-				item: 'minecraft:paper'
-			},
-			{
-				item: 'immersiveengineering:hammer'
-			}
-		],
-		category: 'bannerpatterns',
-		result: {
-			item: 'immersiveengineering:bannerpattern_hammer'
-		}
-	}).id('immersiveengineering:blueprint/banner_hammer');
-	e.custom({
-		type: 'immersiveengineering:blueprint',
-		inputs: [
-			{
-				item: 'immersiveengineering:heavy_engineering'
-			},
-			{
-				item: 'immersiveengineering:component_iron'
-			},
-			{
-				item: 'immersiveengineering:capacitor_lv'
-			},
-			{
-				count: 2,
-				base_ingredient: {
-					item: 'immersiveengineering:wooden_grip'
-				}
-			}
-		],
-		category: 'electrode',
-		result: {
-			item: 'immersiveengineering:drill'
-		}
-	}).id('kubejs:blueprint/drill');
-	e.custom({
-		type: 'immersiveengineering:blueprint',
-		inputs: [
-			{
-				item: 'immersiveengineering:heavy_engineering'
-			},
-			{
-				count: 2,
-				base_ingredient: {
-					item: 'tfc:metal/rod/steel'
-				}
-			},
-			{
-				item: 'immersiveengineering:capacitor_lv'
-			},
-			{
-				count: 2,
-				base_ingredient: {
-					item: 'immersiveengineering:wooden_grip'
-				}
-			}
-		],
-		category: 'electrode',
-		result: {
-			item: 'immersiveengineering:buzzsaw'
-		}
-	}).id('kubejs:blueprint/buzzsaw');
-	e.custom({
-		type: 'immersiveengineering:blueprint',
-		inputs: [
-			{
-				item: 'tfc:metal/tuyere/steel'
-			},
-			{
-				item: 'immersiveengineering:metal_barrel'
-			},
-			{
-				item: 'immersiveengineering:heavy_engineering'
-			},
-			{
-				count: 2,
-				base_ingredient: {
-					item: 'immersiveengineering:wooden_grip'
-				}
-			}
-		],
-		category: 'electrode',
-		result: {
-			item: 'immersiveengineering:chemthrower'
-		}
-	}).id('kubejs:blueprint/chemthrower');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('tfc:metal/sheet/wrought_iron')
+		.addInput('4x tfc:metal/ingot/copper')
+		.addInput('2x create:cogwheel')
+		.setResult('immersiveengineering:component_iron')
+		.build()
+	).id('kubejs:blueprint/iron_components');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('tfc:metal/sheet/steel')
+		.addInput('4x tfc:metal/inogt/copper')
+		.addInput('2x create:latge_cogwheel')
+		.setResult('immersiveengineering:component_steel')
+		.build()
+	).id('kubejs:blueprint/steel_components');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('#forge:glass/colorless')
+		.addInput('immersiveengineering:wire_copper')
+		.addInput('tfc:metal/sheet/nickel')
+		.addInput('minecraft:redstone')
+		.setResult('3x immersiveengineering:electron_tube')
+		.build()
+	).id('kubejs:blueprint/vacuum_tube');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('#forge:glass/colorless')
+		.addInput('immersiveengineering:wire_copper')
+		.addInput('tfc:metal/rod/nickel')
+		.addInput('2x tfc:powder/graphite')
+		.setResult('immersiveengineering:light_bulb')
+		.build()
+	).id('kubejs:blueprint/light_blub');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('bannerpatterns')
+		.addInput('minecraft:paper')
+		.addInput('#forge:sheets')
+		.setResult('immersiveengineering:bannerpattern_bevels')
+		.build()
+	).id('immersiveengineering:blueprint/banner_bevels');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('electrode')
+		.addInput('immersiveengineering:wooden_grip')
+		.addInput('tfc:metal/tuyere/steel')
+		.addInput('immersiveengineering:component_steel')
+		.addInput('immersiveengineering:gunpart_drum')
+		.addInput('immersiveengineering:gunpart_hammer')
+		.setResult('immersiveengineering:revolver')
+		.build()
+	).id('kubejs:blueprint/revolver');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('electrode')
+		.addInput('immersiveengineering:wooden_grip')
+		.addInput('2x immersiveengineering:coil_mv')
+		.addInput('immersiveengineering:capacitor_hv')
+		.addInput('2x tfc:metal/rod/steel')
+		.addInput('tfc:metal/ingot/wrought_iron')
+		.setResult('immersiveengineering:railgun')
+		.build()
+	).id('kubejs:blueprint/railgun');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('immersiveengineering:plate_duroplast')
+		.addInput('4x immersiveengineering:wire_copper')
+		.setResult('immersiveengineering:circuit_board')
+		.build()
+	).id('immersiveengineering:blueprint/circuit_board');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('components')
+		.addInput('#forge:treated_wood_slab')
+		.addInput('minecraft:redstone')
+		.addInput('immersiveengineering:wire_electrum')
+		.addInput('create:electron_tube')
+		.setResult('2x immersiveengineering:component_electronic')
+		.build()
+	).id('kubejs:blueprint/electronic_component');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('specialBullet')
+		.addInput('immersiveengineering:empty_casing')
+		.addInput('tfc:powderkeg')
+		.addInput('25x #forge:gunpowder')
+		.setResult('immersiveengineering:he')
+		.build()
+	).id('immersiveengineering:blueprint/bullet_explosive');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('bullet')
+		.addInput('immersiveengineering:empty_casing')
+		.addInput('#forge:gunpowder')
+		.addInput('2x immersiveengineering:nugget_lead')
+		.setResult('immersiveengineering:casull')
+		.build()
+	).id('immersiveengineering:blueprint/bullet_casull');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('bullet')
+		.addInput('immersiveengineering:empty_casing')
+		.addInput('#forge:gunpowder')
+		.addInput('2x immersiveengineering:nugget_constantan')
+		.setResult('immersiveengineering:armor_piercing')
+		.build()
+	).id('immersiveengineering:blueprint/bullet_armorpiercing');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('bullet')
+		.addInput('immersiveengineering:empty_casing')
+		.addInput('#forge:gunpowder')
+		.addInput('2x immersiveengineering:nugget_lead')
+		.addInput('immersiveengineering:nugget_silver')
+		.setResult('immersiveengineering:silver')
+		.build()
+	).id('immersiveengineering:blueprint/bullet_silver');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('bannerpatterns')
+		.addInput('minecraft:paper')
+		.addInput('immersiveengineering:hammer')
+		.setResult('immersiveengineering:bannerpattern_hammer')
+		.build()
+	).id('immersiveengineering:blueprint/banner_hammer');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('electrode')
+		.addInput('immersiveengineering:heavy_engineering')
+		.addInput('immersiveengineering:component_iron')
+		.addInput('immersiveengineering:capacitor_mv')
+		.addInput('2x immersiveengineering:wooden_grip')
+		.setResult('immersiveengineering:drill')
+		.build()
+	).id('kubejs:blueprint/drill');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('electrode')
+		.addInput('immersiveengineering:heavy_engineering')
+		.addInput('2x tfc:metal/rod/steel')
+		.addInput('immersiveengineering:capacitor_mv')
+		.addInput('2x immersiveengineering:wooden_grip')
+		.setResult('immersiveengineering:buzzsaw')
+		.build()
+	).id('kubejs:blueprint/buzzsaw');
+	e.custom(new BlueprintRecipeBuilder()
+		.setCategory('electrode')
+		.addInput('tfc:metal/tuyere/steel')
+		.addInput('immersiveengineering:metal_barrel')
+		.addInput('immersiveengineering:heavy_engineering')
+		.addInput('2x immersiveengineering:wooden_grip')
+		.setResult('immersiveengineering:chemthrower')
+		.build()
+	).id('kubejs:blueprint/chemthrower');
 	
 	//mixer
-	e.custom({
-		'type': 'immersiveengineering:mixer',
-		'inputs': [
-		{
-			'tag': 'forge:sand',
-			'count': 2
-		},
-		{
-			'tag': 'forge:gravel'
-		},
-		{
-			'item': 'minecraft:clay_ball'
-		}
-		],
-		'result': Fluid.of('immersiveengineering:concrete', 250).toJson(),
-		'fluid': {
-			'tag': 'forge:true_water',
-			'amount': 250
-		},
-		'energy': 3200
-	}).id('kubejs:mixer/concrete');
-	e.custom({
-		'type': 'immersiveengineering:mixer',
-		'inputs': [
-		{
-			count: 3,
-			item: 'minecraft:redstone'
-		},
-		{
-			item: 'tfc:powder/sulfur'
-		},
-		{
-			tag: 'tfc:raw_salts'
-		}
-		],
-		'result': Fluid.of('immersiveengineering:redstone_acid', 500).toJson(),
-		'fluid': {
-			'tag': 'forge:true_water',
-			'amount': 500
-		},
-		'energy': 1600
-	}).id('kubejs:mixer/redstone_acid');
-	e.custom({
-		'type': 'immersiveengineering:mixer',
-		'inputs': [
-		{
-			'item': 'tfc:jute_fiber',
-			'count': 3
-		}
-		],
-		'result': Fluid.of('kubejs:jutecrete', 500).toJson(),
-		'fluid': {
-			'tag': 'immersiveengineering:concrete',
-			'amount': 500
-		},
-		'energy': 1600
-	}).id('kubejs:mixer/jutecrete');
-	e.custom({
-		'type': 'immersiveengineering:mixer',
-		'inputs': [
-			{
-				'tag': 'firmalife:sweetener'
-			}, 
-			{
-				'tag': 'firmalife:foods/chocolate'
-			}
-		],
-		'result': Fluid.of('firmalife:chocolate', 1000).toJson(),
-		'fluid': {
-			'tag': 'tfc:milks',
-			'amount': 1000
-		},
-		'energy': 1800
-	}).id('kubejs:mixer/chocolate');
-	e.custom({
-		'type': 'immersiveengineering:mixer',
-		'inputs': [
-			{
-				'item': 'tfc:powder/sulfur'
-			},
-			{
-				'item': 'immersiveengineering:dust_copper'
-			}
-		],
-		'result': Fluid.of('immersiveengineering:herbicide', 500).toJson(),
-		'fluid': {
-			'tag': 'forge:ethanol',
-			'amount': 500
-		},
-		'energy': 1800
-	}).id('immersiveengineering:mixer/herbicide');
-	e.custom({
-		type: 'immersiveengineering:mixer',
-		inputs: [
-			{
-				item: 'immersiveengineering:raw_aluminum'
-			}
-		],
-		result: Fluid.of('kubejs:alumina', 100).toJson(),
-		fluid: {
-			tag: 'tfc:lye',
-			amount: 250
-		},
-		energy: 8000
-	}).id('kubejs:mixer/alumina');
-	e.custom({
-		type: 'immersiveengineering:mixer',
-		inputs: [
-			{
-				item: 'immersivepetroleum:bitumen'
-			},
-			{
-				tag: 'forge:sand'
-			},
-			{
-				tag: 'forge:gravel',
-				count: 2
-			}
-		],
-		result: Fluid.of('kubejs:asphalt', 250).toJson(),
-		fluid: {
-			tag: 'forge:true_water',
-			amount: 500
-		},
-		energy: 8000
-	}).id('kubejs:mixer/asphalt');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('2x #forge:sand')
+		.addInput('#forge:gravel')
+		.addInput('minecraft:clay_ball')
+		.setResult(Fluid.of('immersiveengineering:concrete', 250))
+		.setInputFluid('forge:true_water', 250)
+		.setEnergy(3200)
+		.build()
+	).id('kubejs:mixer/concrete');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('3x minecraft:redstone')
+		.addInput('tfc:powder/sulfur')
+		.addInput('#tfc:raw_salts')
+		.setResult(Fluid.of('immersiveengineering:redstone_acid', 500))
+		.setInputFluid('forge:true_water', 500)
+		.setEnergy(1600)
+		.build()
+	).id('kubejs:mixer/redstone_acid');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('3x tfc:jute_fiber')
+		.setResult(Fluid.of('kubejs:jutecrete', 500))
+		.setInputFluid('immersiveengineering:concrete', 500)
+		.setEnergy(1600)
+		.build()
+	).id('kubejs:mixer/jutecrete');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('#firmalife:sweetener')
+		.addInput(Ingredient.notRotten('#firmalife:foods/chocolate'))
+		.setResult(Fluid.of('firmalife:chocolate', 1000))
+		.setInputFluid('tfc:milks', 1000)
+		.setEnergy(1800)
+		.build()
+	).id('kubejs:mixer/chocolate');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('tfc:powder/sulfur')
+		.addInput('immersiveengineering:dust_copper')
+		.setResult(Fluid.of('immersiveengineering:herbicide', 500))
+		.setInputFluid('forge:ethanol', 500)
+		.setEnergy(1800)
+		.build()
+	).id('immersiveengineering:mixer/herbicide');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('immersiveengineering:raw_aluminum')
+		.setResult(Fluid.of('kubejs:alumina', 100))
+		.setInputFluid('tfc:lye', 250)
+		.setEnergy(8000)
+		.build()
+	).id('kubejs:mixer/alumina');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('immersivepetroleum:bitumen')
+		.addInput('#forge:sand')
+		.addInput('2x #forge:gravel')
+		.setResult(Fluid.of('kubejs:asphalt', 250))
+		.setInputFluid('forge:true_water', 500)
+		.setEnergy(8000)
+		.build()
+	).id('kubejs:mixer/asphalt');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('3x minecraft:redstone')
+		.addInput('tfc:powder/sulfur')
+		.setResult(Fluid.of('immersiveengineering:redstone_acid', 500))
+		.setInputFluid('tfc:salt_water', 500)
+		.setEnergy(2500)
+		.build()
+	).id('kubejs:mixer/salt_redstone');
 	
 	//bottling
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:concrete'
-		}
-		],
-		'input': {
-			'tag': 'immersiveengineering:scaffoldings/steel'
-		},
-		'fluid': {
-			'tag': 'immersiveengineering:concrete',
-			'amount': 250
-		}
-	}).id('kubejs:bottling/concrete');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:hempcrete',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'kubejs:jutecrete',
-			'amount': 250
-		}
-	}).id('kubejs:bottling/jutecrete');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'minecraft:gold_block',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:gold',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/gold_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_constantan',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:constantan',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/constantan_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'create:zinc_block',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:zinc',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/zinc_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'create:brass_block',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:brass',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/brass_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_electrum',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:electrum',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/electrum_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_steel',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:steel',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/steel_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_nickel',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:nickel',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/nickel_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_silver',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:silver',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/silver_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:storage_lead',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:lead',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/lead_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'minecraft:copper_block',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'input': {
-			'item': 'immersiveengineering:mold_packing_4'
-		},
-		'fluid': {
-			'tag': 'tfc:copper',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/copper_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:treated_wood_horizontal'
-		}
-		],
-		'input': {
-			'tag': 'minecraft:planks'
-		},
-		'fluid': {
-			'tag': 'forge:creosote',
-			'amount': 100
-		}
-	}).id('kubejs:bottling/stained_wood');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'createaddition:diamond_grit_sandpaper'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'tfc:powder/diamond'
-		},
-		{
-			'item': 'immersiveengineering:plate_duroplast'
-		}
-		],
-		'fluid': {
-			'tag': 'forge:phenolic_resin',
-			'amount': 50
-		}
-	}).id('kubejs:bottling/high_durability_sandpaper');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:ingot_hop_graphite'
-		},
-		{
-			'item': 'kubejs:mold/ingot'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'kubejs:mold/ingot'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:graphite',
-			'amount': 100
-		}
-	}).id('kubejs:bottling/graphite');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:empty_shell',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_bullet_casing'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_bullet_casing'
-		},
-		{
-			'count': 4,
-			'base_ingredient': {
-				'item': 'create:copper_nugget'
-			}
-		}
-		],
-		'fluid': {
-			'tag': 'forge:phenolic_resin',
-			'amount': 250
-		}
-	}).id('immersiveengineering:bottling/empty_shell');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:duroplast',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'fluid': {
-			'tag': 'forge:phenolic_resin',
-			'amount': 1000
-		}
-	}).id('immersiveengineering:bottling/duroplast_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:plate_duroplast'
-		},
-		{
-			'item': 'immersiveengineering:mold_plate'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_plate'
-		}
-		],
-		'fluid': {
-			'tag': 'forge:phenolic_resin',
-			'amount': 200
-		}
-	}).id('immersiveengineering:bottling/duroplast_plate');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:empty_casing',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_bullet_casing'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_bullet_casing'
-		}
-		],
-		'fluid': {
-			'tag': 'forge:phenolic_resin',
-			'amount': 250
-		}
-	}).id('kubejs:bottling/empty_casing');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'createdeco:cast_iron_block',
-			'count': 4
-		},
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_packing_4'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:cast_iron',
-			'amount': 1000
-		}
-	}).id('kubejs:bottling/cast_iron_block');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:wire_electrum',
-		},
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:electrum',
-			'amount': 25
-		}
-	}).id('kubejs:bottling/electrum_wire');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:wire_lead',
-		},
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:lead',
-			'amount': 25
-		}
-	}).id('kubejs:bottling/lead_wire');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:wire_steel',
-		}, {
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:steel',
-			'amount': 25
-		}
-	}).id('kubejs:bottling/steel_wire');
-	e.custom({
-		'type': 'immersiveengineering:bottling_machine',
-		'results': [
-		{
-			'item': 'immersiveengineering:wire_copper',
-		}, {
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'inputs': [
-		{
-			'item': 'immersiveengineering:mold_wire'
-		}
-		],
-		'fluid': {
-			'tag': 'tfc:copper',
-			'amount': 25
-		}
-	}).id('kubejs:bottling/copper_wire');
-	e.custom({
-		type: 'immersiveengineering:bottling_machine',
-		results: [
-			{
-				item: 'immersivepetroleum:asphalt',
-				count: 4
-			},
-			{
-				item: 'immersiveengineering:mold_packing_4'
-			}
-		],
-		inputs: [
-			{
-				item: 'immersiveengineering:mold_packing_4'
-			}
-		],
-		fluid: {
-			tag: 'kubejs:asphalt',
-			amount: 1000
-		}
-	}).id('kubejs:bottling/asphalt');
-	e.custom({
-		type: 'immersiveengineering:bottling_machine',
-		results: [
-			{
-				item: 'create:polished_rose_quartz'
-			},
-			{
-				item: 'kubejs:mold/ingot'
-			}
-		],
-		inputs: [
-			{
-				item: 'kubejs:mold/ingot'
-			}
-		],
-		fluid: {
-			tag: 'forge:redstone_acid',
-			amount: 500
-		}
-	}).id('kubejs:bottling/redstone_crystalization');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:concrete')
+		.addInput('#immersiveengineering:scaffoldings/steel')
+		.setFluid('immersiveengineering:concrete', 125)
+		.build()
+	).id('kubejs:bottling/concrete');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:hempcrete')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('kubejs:jutecrete', 250)
+		.build()
+	).id('kubejs:bottling/jutecrete');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x minecraft:gold_block')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:gold', 1000)
+		.build()
+	).id('kubejs:bottling/gold_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_constantan')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:constantan', 1000)
+		.build()
+	).id('kubejs:bottling/constantan_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x create:zinc_block')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:zinc', 1000)
+		.build()
+	).id('kubejs:bottling/zinc_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x create:brass_block')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:brass', 1000)
+		.build()
+	).id('kubejs:bottling/brass_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_electrum')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:electrum', 1000)
+		.build()
+	).id('kubejs:bottling/electrum_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_steel')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:steel', 1000)
+		.build()
+	).id('kubejs:bottling/steel_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_nickel')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:nickel', 1000)
+		.build()
+	).id('kubejs:bottling/nickel_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_silver')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:silver', 1000)
+		.build()
+	).id('kubejs:bottling/silver_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:storage_lead')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:lead', 1000)
+		.build()
+	).id('kubejs:bottling/lead_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x minecraft:copper_block')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:copper', 1000)
+		.build()
+	).id('kubejs:bottling/copper_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:treated_wood_horizontal')
+		.addInput('#minecraft:planks')
+		.setFluid('forge:creosote', 100)
+		.build()
+	).id('kubejs:bottling/stained_wood');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('createaddition:diamond_grit_sandpaper')
+		.addInput('tfc:powder/diamond')
+		.addInput('immersiveengineering:plate_duroplast')
+		.setFluid('forge:phenolic_resin', 50)
+		.build()
+	).id('kubejs:bottling/high_durability_sandpaper');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:ingot_hop_graphite')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:graphite', 100)
+		.build()
+	).id('kubejs:bottling/graphite');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:empty_shell')
+		.addResult('immersiveengineering:mold_bullet_casing')
+		.addInput('immersiveengineering:mold_bullet_casing')
+		.addInput('4x create:copper_nugget')
+		.setFluid('forge:phenolic_resin', 250)
+		.build()
+	).id('immersiveengineering:bottling/empty_shell');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:duroplast')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('forge:phenolic_resin', 1000)
+		.build()
+	).id('immersiveengineering:bottling/duroplast_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:plate_duroplast')
+		.addResult('immersiveengineering:mold_plate')
+		.addInput('immersiveengineering:mold_plate')
+		.setFluid('forge:phenolic_resin', 200)
+		.build()
+	).id('immersiveengineering:bottling/duroplast_plate');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersiveengineering:empty_casing')
+		.addResult('immersiveengineering:mold_bullet_casing')
+		.addInput('immersiveengineering:mold_bullet_casing')
+		.setFluid('forge:phenolic_resin', 250)
+		.build()
+	).id('kubejs:bottling/empty_casing');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x createdeco:cast_iron_block')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('tfc:cast_iron', 1000)
+		.build()
+	).id('kubejs:bottling/cast_iron_block');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:wire_electrum')
+		.addResult('immersiveengineering:mold_wire')
+		.addInput('immersiveengineering:mold_wire')
+		.setFluid('tfc:electrum', 25)
+		.build()
+	).id('kubejs:bottling/electrum_wire');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:wire_lead')
+		.addResult('immersiveengineering:mold_wire')
+		.addInput('immersiveengineering:mold_wire')
+		.setFluid('tfc:lead', 25)
+		.build()
+	).id('kubejs:bottling/lead_wire');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:wire_steel')
+		.addResult('immersiveengineering:mold_wire')
+		.addInput('immersiveengineering:mold_wire')
+		.setFluid('tfc:steel', 25)
+		.build()
+	).id('kubejs:bottling/steel_wire');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:wire_copper')
+		.addResult('immersiveengineering:mold_wire')
+		.addInput('immersiveengineering:mold_wire')
+		.setFluid('tfc:copper', 25)
+		.build()
+	).id('kubejs:bottling/copper_wire');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('4x immersivepetroleum:asphalt')
+		.addResult('immersiveengineering:mold_packing_4')
+		.addInput('immersiveengineering:mold_packing_4')
+		.setFluid('kubejs:asphalt', 1000)
+		.build()
+	).id('kubejs:bottling/asphalt');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('create:polished_rose_quartz')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('forge:redstone_acid', 500)
+		.build()
+	).id('kubejs:bottling/redstone_crystalization');
 	
 	// Refinery
-	e.custom({
-		'type': 'immersiveengineering:refinery',
-		'catalyst': {
-			'tag': 'forge:sheets/silver'
-		},
-		'energy': 120,
-		'input0': {
-			'amount': 8,
-			'tag': 'forge:ethanol'
-		},
-		'result': Fluid.of('immersiveengineering:acetaldehyde', 8).toJson()
-	}).id('immersiveengineering:refinery/acetaldehyde');
-	e.custom({
-		'type': 'immersiveengineering:refinery',
-		'catalyst': {
-			'item': 'tfc:powder/saltpeter'
-		},
-		'energy': 200,
-		'input0': {
-			'amount': 8,
-			'tag': 'forge:plantoil'
-		},
-		'input1': {
-			'amount': 8,
-			'tag': 'forge:ethanol'
-		},
-		'result': Fluid.of('immersiveengineering:biodiesel', 16).toJson()
-	}).id('immersiveengineering:refinery/biodiesel')
-	e.custom({
-		type: 'immersiveengineering:refinery',
-		catalyst: {
-			item: 'tfc:metal/sheet/copper'
-		} ,
-		energy: 150,
-		input0: {
-			amount: 8,
-			tag: 'forge:ethylene'
-		},
-		result: Fluid.of('immersiveengineering:acetaldehyde', 8).toJson()
-	}).id('immersivepetroleum:refinery/acetaldehyde');
-	e.custom({
-		type: 'immersiveengineering:refinery',
-		input0: {
-			amount: 2,
-			tag: 'forge:ethylene'
-		},
-		input1: {
-			amount: 2,
-			tag: 'forge:propylene'
-		},
-		energy: 230,
-		result: Fluid.of('kubejs:ethy_prop_rubber', 3).toJson()
-	}).id('kubejs:refinery/synthetic_rubber');
+	e.custom(new RefineryRecipeBuilder()
+		.setCatalyst('#forge:sheets/silver')
+		.setEnergy(120)
+		.addInput('forge:ethanol', 8)
+		.setResult(Fluid.of('immersiveengineering:acetaldehyde', 8))
+		.build()
+	).id('immersiveengineering:refinery/acetaldehyde');
+	e.custom(new RefineryRecipeBuilder()
+		.setCatalyst('tfc:powder/saltpeter')
+		.setEnergy(200)
+		.setResult(Fluid.of('immersiveengineering:biodiesel', 16))
+		.addInput('forge:plantoil', 8)
+		.addInput('forge:ethanol', 8)
+		.build()
+	).id('immersiveengineering:refinery/biodiesel')
+	e.custom(new RefineryRecipeBuilder()
+		.setCatalyst('tfc:metal/sheet/copper')
+		.setEnergy(150)
+		.addInput('forge:ethylene', 8)
+		.setResult(Fluid.of('immersiveengineering:acetaldehyde', 8))
+		.build()
+	).id('immersivepetroleum:refinery/acetaldehyde');
+	e.custom(new RefineryRecipeBuilder()
+		.addInput('forge:ethylene', 2)
+		.addInput('forge:propylene', 2)
+		.setEnergy(230)
+		.setResult(Fluid.of('kubejs:ethy_prop_rubber', 3))
+		.build()
+	).id('kubejs:refinery/synthetic_rubber');
 	
 	// Fermenter
-	e.custom({
-		'type': 'immersiveengineering:fermenter',
-		'fluid': Fluid.of('immersiveengineering:ethanol', 120).toJson(),
-		'input': Ingredient.notRotten('tfc:food/sugarcane').toJson(),
-		'energy': 6400
-	}).id('kubejs:fermenter/sugarcane');
-	e.custom({
-		'type': 'immersiveengineering:fermenter',
-		'fluid': Fluid.of('immersiveengineering:ethanol', 60).toJson(),
-		'input': Ingredient.notRotten('tfc:food/potato').toJson(),
-		'energy': 6400
-	}).id('kubejs:fermenter/potato');
-	e.custom({
-		'type': 'immersiveengineering:fermenter',
-		'fluid': Fluid.of('immersiveengineering:ethanol', 150).toJson(),
-		'input': Ingredient.notRotten('#tfc:foods/fruits').toJson(),
-		'energy': 6400
-	}).id('kubejs:fermenter/fruits');
-	e.custom({
-		'type': 'immersiveengineering:fermenter',
-		'fluid': Fluid.of('immersiveengineering:ethanol', 200).toJson(),
-		'input': {
-			'item': 'firmalife:raw_honey'
-		},
-		'energy': 6400
-	}).id('kubejs:fermenter/honey');
-	e.custom({
-		'type': 'immersiveengineering:fermenter',
-		'fluid': Fluid.of('immersiveengineering:ethanol', 60).toJson(),
-		'input': Ingredient.notRotten('#tfc:foods/grains').toJson(),
-		'energy': 6400
-	}).id('kubejs:fermenter/grain');
-	
+	e.custom(new FermenterRecipeBuilder()
+		.setFluid(Fluid.of('immersiveengineering:ethanol', 120))
+		.setInput(Ingredient.notRotten('tfc:food/sugarcane'))
+		.setEnergy(6400)
+		.build()
+	).id('kubejs:fermenter/sugarcane');
+	e.custom(new FermenterRecipeBuilder()
+		.setFluid(Fluid.of('immersiveengineering:ethanol', 60))
+		.setInput(Ingredient.notRotten('tfc:food/potato'))
+		.setEnergy(6400)
+		.build()
+	).id('kubejs:fermenter/potato');
+	e.custom(new FermenterRecipeBuilder()
+		.setFluid(Fluid.of('immersiveengineering:ethanol', 150))
+		.setInput(Ingredient.notRotten('#tfc:foods/fruits'))
+		.setEnergy(6400)
+		.build()
+	).id('kubejs:fermenter/fruits');
+	e.custom(new FermenterRecipeBuilder()
+		.setFluid(Fluid.of('immersiveengineering:ethanol', 200))
+		.setInput('firmalife:raw_honey')
+		.setEnergy(6400)
+		.build()
+	).id('kubejs:fermenter/honey');
+	e.custom(new FermenterRecipeBuilder()
+		.setFluid(Fluid.of('immersiveengineering:ethanol', 60))
+		.setInput(Ingredient.notRotten('#tfc:foods/grains'))
+		.setEnergy(6400)
+		.build()
+	).id('kubejs:fermenter/grain');
+
 	// Coker
-	e.custom({
-		type: 'immersivepetroleum:coker',
-		result: {
-			item: 'immersivepetroleum:petcoke',
-			count: 2
-		},
-		resultfluid: {
-			tag: 'forge:diesel_sulfur',
-			amount: 27
-		},
-		input: {
-			count: 2,
-			base_ingredient: {
-				item: 'immersivepetroleum:bitumen'
-			}
-		},
-		inputfluid: {
-			tag: 'forge:true_water',
-			amount: 125
-		},
-		time: 30,
-		energy: 15360
-	}).id('immersivepetroleum:coking/petcoke');
+	e.custom(new CokerRecipeBuilder()
+		.setResult('2x immersivepetroleum:petcoke')
+		.setFluidResult('forge:diesel_sulfur', 27)
+		.setInput('2x immersivepetroleum:bitumen')
+		.setFluidInput('forge:true_water', 125)
+		.setTime(30)
+		.setEnergy(15360)
+		.build()
+	).id('immersivepetroleum:coking/petcoke');
 
 	// Hydrotreater
-	e.custom({
-		type: 'immersivepetroleum:hydrotreater',
-		time: 5,
-		energy: 2560,
-		result: {
-			fluid: 'immersivepetroleum:lubricant_cracked',
-			amount: 24
-		},
-		input: {
-			tag: 'forge:lubricant',
-			amount: 24
-		},
-		secondary_input: {
-			tag: 'forge:true_water',
-			amount: 5
-		},
-		secondary_result: {
-			item: 'immersivepetroleum:paraffin_wax',
-			chance: 0.048
-		}
-	}).id('immersivepetroleum:hydrotreater/lubricant_cracking');
-	e.custom({
-		type: 'immersivepetroleum:hydrotreater',
-		time: 5,
-		energy: 2560,
-		result: {
-			fluid: 'immersivepetroleum:naphtha_cracked',
-			amount: 20
-		},
-		input: {
-			tag: 'forge:naphtha',
-			amount: 20
-		},
-		secondary_input: {
-			tag: 'forge:true_water',
-			amount: 5
-		}
-	}).id('immersivepetroleum:hydrotreater/naphtha_cracking');
-	e.custom({
-		type: 'immersivepetroleum:hydrotreater',
-		time: 1,
-		energy: 80,
-		result: {
-			fluid: 'immersivepetroleum:diesel',
-			amount: 10
-		},
-		input: {
-			tag: 'forge:diesel_sulfur',
-			amount: 10
-		},
-		secondary_input: {
-			tag: 'forge:true_water',
-			amount: 5
-		},
-		secondary_result: {
-			item: 'tfc:powder/sulfur',
-			chance: 0.07
-		}
-	}).id('immersivepetroleum:hydrotreater/sulfur_recovery')
+	e.custom(new HydrotreaterRecipeBuilder()
+		.setTime(5)
+		.setEnergy(2560)
+		.addInput('forge:lubricant', 24)
+		.addInput('forge:true_water', 5)
+		.setFluidResult(Fluid.of('immersivepetroleum:lubricant_cracked', 24))
+		.setItemResult(Item.of('immersivepetroleum:paraffin_wax').withChance(0.048))
+		.build()
+	).id('immersivepetroleum:hydrotreater/lubricant_cracking');
+	e.custom(new HydrotreaterRecipeBuilder()
+		.setTime(5)
+		.setEnergy(2560)
+		.setFluidResult(Fluid.of('immersivepetroleum:naphtha_cracked', 20))
+		.addInput('forge:naphtha', 20)
+		.addInput('forge:true_water', 5)
+		.build()
+	).id('immersivepetroleum:hydrotreater/naphtha_cracking');
+	e.custom(new HydrotreaterRecipeBuilder()
+		.setTime(1)
+		.setEnergy(80)
+		.setFluidResult(Fluid.of('immersivepetroleum:diesel', 10))
+		.addInput('forge:diesel_sulfur', 10)
+		.addInput('forge:true_water', 5)
+		.setItemResult(Item.of('tfc:powder/sulfur').withChance(0.07))
+		.build()
+	).id('immersivepetroleum:hydrotreater/sulfur_recovery')
 
 	// Mineral
 	// Notes:

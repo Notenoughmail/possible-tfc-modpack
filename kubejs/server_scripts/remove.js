@@ -80,8 +80,7 @@ let ids = [
 	'immersiveengineering:crafting/buzzsaw',
 	'immersiveengineering:crafting/stick_aluminum',
 	'createaddition:rolling/aluminum_ingot',
-	'immersivepetroleum:asphalt',
-	'railyways:crafting/remote_lens'
+	'immersivepetroleum:asphalt'
 ]
 
 onEvent('recipes', e => {

@@ -36,13 +36,23 @@ const BLOCKS = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_REGISTRY);
 const BLOCK_ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_ENTITY_TYPE_REGISTRY);
 const ITEMS = DeferredRegister.create('kubejs', CoreRegistry.ITEM_REGISTRY);
 
-const ADAPTER_BLOCK = BLOCKS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
-const ADAPTER_BE = BLOCK_ENTITIES['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [ADAPTER_BLOCK.get()]).build(null));
-const ADAPTER_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('kinetic_adapter', () => new BlockItem(ADAPTER_BLOCK.get(), defaultItemProperties));
+const ADAPTER_BLOCK = register(BLOCKS, 'kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
+const ADAPTER_BE = register(BLOCK_ENTITIES, 'kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [ADAPTER_BLOCK.get()]).build(null));
+const ADAPTER_ITEM = register(ITEMS, 'kinetic_adapter', () => new BlockItem(ADAPTER_BLOCK.get(), defaultItemProperties));
 
 // I *will* re-implement your mod through KubeJS reflection
-const STAINED_TRACK_BLOCK = BLOCKS['register(java.lang.String,java.util.function.Supplier)']('stained_wood_track', () => STAINED_WOOD_TRACK_MATERIAL.createBlock(ExtendedProperties.of(Block.material['wood'].minecraftMaterial).strength(0.8, 2).sound(Block.material['wood'].sound).noOcclusion().properties()));
-const STAINED_TRACK_ITEM = ITEMS['register(java.lang.String,java.util.function.Supplier)']('stained_wood_track', () => new TrackBlockItem(STAINED_TRACK_BLOCK.get(), defaultItemProperties));
+const STAINED_TRACK_BLOCK = register(BLOCKS, 'stained_wood_track', () => STAINED_WOOD_TRACK_MATERIAL.createBlock(ExtendedProperties.of(Block.material['wood'].minecraftMaterial).strength(0.8, 2).sound(Block.material['wood'].sound).noOcclusion().properties()));
+const STAINED_TRACK_ITEM = register(ITEMS, 'stained_wood_track', () => new TrackBlockItem(STAINED_TRACK_BLOCK.get(), defaultItemProperties));
+
+/**
+ * I understand why this works, I still hate it
+ * @param {Internal.DeferredRegister} register 
+ * @param {string} name 
+ * @param {Internal.Supplier} supplier 
+ */
+function register(register, name, supplier) {
+    return register['register(java.lang.String,java.util.function.Supplier)'](name, supplier);
+}
 
 onEvent('init', e => {
     BLOCKS.register();
@@ -50,7 +60,7 @@ onEvent('init', e => {
     ITEMS.register();
     StressDefaults.setDefaultImpact('kubejs:kinetic_adapter', 4);
     TooltipModifier.REGISTRY['registerDeferred(net.minecraft.resources.ResourceLocation,java.util.function.Function)']('kubejs:kinetic_adapter', item => {
-        return new ItemDescriptionModifier(item, Palette.STANDARD_CREATE).andThen(TooltipModifier.mapNull(new KineticStats(Block.getBlock('kubejs:kinetic_adapter'))));
+        return new ItemDescriptionModifier(item, Palette.STANDARD_CREATE).andThen(TooltipModifier.mapNull(new KineticStats(ADAPTER_BLOCK.get())));
     });
 })
 
@@ -84,6 +94,7 @@ function adapterTick(level, pos, state) {
         }
 
         if (levelJS.time % 20 === 0) {
+            kbe.notifyUpdate();
             let aboveJS = blockJS.up;
             
             if (JavaMath.abs(kbe.getSpeed()) >= 16) {
