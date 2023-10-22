@@ -11,4 +11,10 @@ onEvent('item.tooltip', tip => {
 	
 	tip.add('kubejs:kinetic_adapter', Text.translate('create.tooltip.speedRequirement', Text.translate('tooltip.kubejs.adapter_speed_req', Text.translate('create.generic.unit.rpm')).color(Color.RED)).color(Color.GRAY))
 	tip.add('kubejs:kinetic_adapter', Text.translate('tooltip.kubejs.karma').color(Color.CYAN_DYE))
+
+	tip.addAdvanced(['minecraft:leather_boots', 'minecraft:leather_chestplate', 'minecraft:leather_leggings', 'minecraft:leather_helmet'], (item, advanced, text) => {
+		if (item.nbt.getBoolean('AluPadding')) {
+			text.add(Text.translate('tooltip.kubejs.shock_proof').color(Color.LIGHT_GRAY_DYE));
+		}
+	})
 })

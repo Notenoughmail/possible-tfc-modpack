@@ -152,4 +152,15 @@ onEvent('client.generate_assets', e => {
         m.parent(gened)
         m.texture('layer0', 'kubejs:item/ore/small_lead')
     })
+
+    // Sound
+    e.add('kubejs:sounds', {
+        rocket: {
+            category: 'neutral',
+            sounds: [
+                'kubejs:rocket'
+            ],
+            subtitle: 'subtitle.kubejs.rocket'
+        }
+    })
 })

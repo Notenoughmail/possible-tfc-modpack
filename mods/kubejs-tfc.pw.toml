@@ -1,13 +1,13 @@
 name = "KubeJS TFC"
-filename = "kubejs_tfc-1.18.2-0.5.4.jar"
+filename = "kubejs_tfc-1.18.2-0.6.0.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "847d76d0331184b501bc6b04b7c6961b48cf72a7"
+hash = "8dfd82f8cf9a7c1dd7cc213cbc458caf1b58be01"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4664994
+file-id = 4809974
 project-id = 841001

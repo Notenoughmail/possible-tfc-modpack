@@ -165,9 +165,9 @@
 		#Range: > 1
 		consumption_accelerate = 5
 		#Set this to false to disable the fluid pump being able to draw infinite water from sources
-		infiniteWater = true
+		infiniteWater = false
 		#If this is set to true (default) the pump will replace fluids it picks up with cobblestone in order to reduce lag caused by flowing fluids.
-		placeCobble = true
+		placeCobble = false
 
 	[machines.teslacoil]
 		#The Flux per tick the Tesla Coil will consume, simply by being active

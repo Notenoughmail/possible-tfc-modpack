@@ -4,6 +4,14 @@ const BlockItem = java("net.minecraft.world.item.BlockItem");
 const ItemProperties = java("net.minecraft.world.item.Item$Properties");
 const defaultItemProperties = new ItemProperties().tab(Item.findGroup('kubejs.kubejs'));
 
+// Rocket & Bike
+const BikeEntity = java("software.bernie.example.entity.BikeEntity");
+const EntityTypeBuilder = java("net.minecraft.world.entity.EntityType$Builder");
+const EntityAttributeRegistry = java("dev.architectury.registry.level.entity.EntityAttributeRegistry");
+const AttributeSupplierBuilder = java("net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder");
+const Attributes = java("net.minecraft.world.entity.ai.attributes.Attributes");
+const Mob = java("net.minecraft.world.entity.Mob");
+
 // Adapter
 const BlockEntityType = java("net.minecraft.world.level.block.entity.BlockEntityType");
 const KineticBlockEntity = java("com.simibubi.create.content.kinetics.base.KineticBlockEntity");
@@ -22,8 +30,6 @@ const KineticStats = java("com.simibubi.create.foundation.item.KineticStats");
 const Trackmaterial = java("com.simibubi.create.content.trains.track.TrackMaterial");
 const TrackMaterialFactory = java("com.simibubi.create.content.trains.track.TrackMaterialFactory");
 const TrackBlockItem = java("com.simibubi.create.content.trains.track.TrackBlockItem");
-const RenderTypeRegistry = java("dev.architectury.registry.client.rendering.RenderTypeRegistry");
-const RenderType = java("net.minecraft.client.renderer.RenderType");
  // Can I just say how much I hate registrate, this has no reason to exist, yet it does, @Nullable and @Nonnull annotations on parameters exist; Forge has this *builtin* even
 const NonNullSupplier = java("com.tterrag.registrate.util.nullness.NonNullSupplier");
 
@@ -35,6 +41,10 @@ const STAINED_WOOD_TRACK_MATERIAL = TrackMaterialFactory.make('kubejs:stained_wo
 const BLOCKS = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_REGISTRY);
 const BLOCK_ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.BLOCK_ENTITY_TYPE_REGISTRY);
 const ITEMS = DeferredRegister.create('kubejs', CoreRegistry.ITEM_REGISTRY);
+const ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.ENTITY_TYPE_REGISTRY);
+
+// Model is currently fucked
+const ROCKET_ENTITY = register(ENTITIES, 'rocket', () => EntityTypeBuilder.of((type, level) => new BikeEntity(type, level), 'misc').sized(1, 4).setUpdateInterval(1).fireImmune().build('rocket'));
 
 const ADAPTER_BLOCK = register(BLOCKS, 'kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
 const ADAPTER_BE = register(BLOCK_ENTITIES, 'kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [ADAPTER_BLOCK.get()]).build(null));
@@ -58,15 +68,27 @@ onEvent('init', e => {
     BLOCKS.register();
     BLOCK_ENTITIES.register();
     ITEMS.register();
+    ENTITIES.register();
     StressDefaults.setDefaultImpact('kubejs:kinetic_adapter', 4);
     TooltipModifier.REGISTRY['registerDeferred(net.minecraft.resources.ResourceLocation,java.util.function.Function)']('kubejs:kinetic_adapter', item => {
         return new ItemDescriptionModifier(item, Palette.STANDARD_CREATE).andThen(TooltipModifier.mapNull(new KineticStats(ADAPTER_BLOCK.get())));
     });
+    
+    // HELL
+    EntityAttributeRegistry.register(ROCKET_ENTITY, () => Mob.createMobAttributes().add(Attributes.FOLLOW_RANGE, 0).add(Attributes.KNOCKBACK_RESISTANCE, 1));
+
+    if (Platform.isClientEnvironment()) {
+        let EntityRenderRegistry = java("dev.architectury.registry.client.level.entity.EntityRendererRegistry");
+        let BikeRenderer = java("software.bernie.example.client.renderer.entity.BikeGeoRenderer");
+        EntityRenderRegistry.register(ROCKET_ENTITY, (context) => new BikeRenderer(context));
+    }
 })
 
 /**
- * The kinetic adapter's tick method, this is called on the client *and* server
- * There may or may not be sidedness issues here, I don't know yet
+ * - The kinetic adapter's tick method, this is called on the client *and* server
+ * - There may or may not be sidedness issues here, I don't know yet
+ * - This is completely broken on world load
+ * - ![](https://media.tenor.com/GOabrbLMl4AAAAAd/plink-cat-plink.gif)
  * @param {Internal.Level} level 
  * @param {BlockPos} pos 
  * @param {Internal.BlockState} state 
@@ -81,11 +103,12 @@ function adapterTick(level, pos, state) {
         let belowState = belowJS.blockState;
         let belowBlock = belowState.block;
 
+        kbe.tick();
         // Theoretically this should prevent the F3 screen from crashing when looking at this but it doesn't because reasons :(
         kbe.setSource(belowJS.pos); 
-        kbe.tick();
         if (belowEntity instanceof KineticBlockEntity && belowBlock instanceof IRotate && belowBlock.hasShaftTowards(level, belowJS.pos, belowState, Direction.UP)) {
             kbe.setSpeed(belowEntity.getSpeed());
+            // This is probably what breaks the network on world reload
             let network = belowEntity.orCreateNetwork;
             if (network != null && network.initialized) {
                 kbe.initialize();
@@ -115,7 +138,6 @@ function adapterTick(level, pos, state) {
                         let loomBE = aboveJS.entity;
                         loomBE.getCapability(Capabilities.ITEM, null).ifPresent(slotHandler => {
                             if (slotHandler.getStackInSlot(1).isEmpty()) {
-                                // The model doesn't animate b/c lastPushed is not synced betweeen server and client
                                 loomBE.onRightClick(fakePlayer);
                             }
                         })

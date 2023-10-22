@@ -27,9 +27,14 @@ onEvent('recipes', e => {
 		'immersiveengineering:stick_aluminum',
 		Item.of('immersiveengineering:wirecutter').ignoreNBT()
 	]).id('kubejs:crafting/aluminum_wire');
+	e.recipes.tfcDamageInputsShapelessCrafting('kubejs:rubber_sheet', [
+		'kubejs:rubber_bar',
+		'#tfc:saws'
+	]).id('kubejs:crafting/rubber_sheet');
+	e.shapeless('3x kubejs:latex_clump', [FluidIngredient.of('kubejs:latex', 1000).asItemIngredient(), 'tfc:powder/sulfur']).id('kubejs:crafting/latex_clump');
 	
 	let blueprint = (input, output, id) => {
-		e.shapeless( output, ['create:crafting_blueprint', input ]).id('kubejs:crafting/' + id)
+		e.shapeless(output, ['create:crafting_blueprint', input]).id(`kubejs:crafting/${id}`)
 	}
 	blueprint('tfc:metal/double_sheet/black_steel', Item.of('immersiveengineering:blueprint', '{blueprint:"molds"}'), 'metal_press_mold_blueprint')
 	blueprint('create:precision_mechanism', Item.of('immersiveengineering:blueprint', '{blueprint:"components"}'), 'component_blueprint')
@@ -342,7 +347,7 @@ onEvent('recipes', e => {
 	'B'
 	], {
 		S: 'create:copper_casing',
-		A: '#tfc:kelp',
+		A: 'kubejs:rubber_sheet',
 		B: 'tfc:metal/sheet/copper'
 	}).id('kubejs:crafting/hose_pulley');
 	e.shaped('1x create:spout', [
@@ -350,7 +355,7 @@ onEvent('recipes', e => {
 	'A'
 	], {
 		S: 'create:copper_casing',
-		A: '#tfc:kelp'
+		A: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/spout');
 	e.shaped('1x create:steam_engine', [
 	'S',
@@ -418,14 +423,14 @@ onEvent('recipes', e => {
 	'A'
 	], {
 		S: 'create:andesite_alloy',
-		A: '#tfc:kelp'
+		A: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/composite_funnel');
 	e.shaped('2x create:andesite_tunnel', [
 	'SS',
 	'AA'
 	], {
 		S: 'create:andesite_alloy',
-		A: '#tfc:kelp'
+		A: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/composite_tunnel');
 	e.shaped('4x create:brass_funnel', [
 	'S',
@@ -434,7 +439,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:electron_tube',
 		A: 'create:brass_casing',
-		B: '#tfc:kelp'
+		B: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/brass_funnel');
 	e.shaped('4x create:brass_tunnel', [
 	'S',
@@ -443,7 +448,7 @@ onEvent('recipes', e => {
 	], {
 		S: 'create:electron_tube',
 		A: 'create:brass_casing',
-		B: '#tfc:kelp'
+		B: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/brass_tunnel');
 	e.shaped('2x create:display_link', [
 	'S',
@@ -474,10 +479,9 @@ onEvent('recipes', e => {
 		C: '#forge:smooth_stone'
 	}).id('kubejs:crafting/pulse_repeater');
 	e.shaped('1x create:belt_connector', [
-	'SSS',
-	'SSS'
+	'SS'
 	], {
-		S: ['#tfc:kelp', '#forge:leather']
+		S: 'kubejs:rubber_sheet'
 	}).id('kubejs:crafting/belt');
 	e.shaped('1x create:mechanical_plough', [
 	'S',
@@ -915,7 +919,7 @@ onEvent('recipes', e => {
 	'A  '
 	], {
 		S: 'tfc:metal/rod/copper',
-		A: '#tfc:lumber'
+		A: '#forge:treated_wood_slab'
 	}).id('kubejs:crafting/wooden_grip');
 	e.shaped('1x immersiveengineering:gunpart_drum', [
 	'SSS',
@@ -1375,7 +1379,7 @@ onEvent('recipes', e => {
 		'B'
 	], {
 		S: 'create:brass_casing',
-		A: '#tfc:kelp',
+		A: 'kubejs:rubber_sheet',
 		B: 'tfc:metal/sheet/wrought_iron'
 	}).id('create:crafting/kinetics/elevator_pulley');
 	e.shaped('1x create:netherite_backtank', [
@@ -1466,4 +1470,13 @@ onEvent('recipes', e => {
 		C: 'immersiveengineering:component_electronic_adv',
 		D: 'tfc:metal/sheet/brass'
 	}).id('kubejs:crafting/train_computer');
+	e.shaped('4x immersiveengineering:radiator', [
+		'SAS',
+		'ABA',
+		'SAS'
+	], {
+		S: 'immersiveengineering:sheetmetal_steel',
+		A: '#forge:sheets/constantan',
+		B: FluidIngredient.of('#forge:true_water', 1000).asItemIngredient()
+	}).id('immersiveengineering:crafting/radiator');
 })

@@ -1,27 +1,46 @@
 
 #Wires
 [wires]
-	#Connector max input in FE/t (Energy transfer).
+	#Small Connector max output in FE/t (Energy transfer).
 	#Range: > 0
-	connector_max_input = 1024
-	#Max wire length in blocks.
+	small_connector_max_output = 1024
+	#Small Connector max input in FE/t (Energy transfer).
+	#Range: > 0
+	small_connector_max_input = 1024
+	#Large Connector max wire length in blocks.
 	#Range: 0 ~ 256
-	wire_length = 12
-	#Connector max output in FE/t (Energy transfer).
+	large_connector_wire_length = 32
+	#Small Connector max wire length in blocks.
+	#Range: 0 ~ 256
+	small_connector_wire_length = 16
+	#Large Connector max input in FE/t (Energy transfer).
 	#Range: > 0
-	connector_max_output = 1024
-	#Connector internal input buffer in FE.
+	large_connector_max_input = 4096
+	#Allows blocks attached to a connector to freely pass energy to and from the connector network.
+	connector_allow_passive_io = true
+	#Large Connector max output in FE/t (Energy transfer).
 	#Range: > 0
-	connector_input_capacity = 2048
+	large_connector_max_output = 4096
+	#Ignore checking if block face can support connector.
+	connector_ignore_face_check = true
 
 #General Settings
 [general]
-	#Forge Energy conversion rate (in FE/t at 256 RPM).
-	#Range: > 0
-	fe_conversion = 240
 	#Max stress for the Alternator and Electric Motor (in SU at 256 RPM).
 	#Range: > 0
-	baseline_stress = 8192
+	max_stress = 16384
+	#Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).
+	#Range: > 0
+	fe_at_max_rpm = 480
+
+#Portable Energy Interface
+[portable_energy_interface]
+	#PEI max output in FE/t (Energy transfer).
+	#Range: > 0
+	pei_max_output = 4096
+	#PEI max input in FE/t (Energy transfer).
+	#Range: > 0
+	pei_max_input = 4096
 
 #Electric Motor
 [electric_motor]
@@ -38,23 +57,6 @@
 	#Range: > 1
 	motor_rpm_range = 256
 
-#Heater
-[heater]
-	#Enable Induction Heater when attached to a Furnace Engine.
-	heater_furnace_engine_enable = false
-	#Induction Heater internal capacity in FE.
-	#Range: > 0
-	heater_capacity = 2048
-	#Induction Heater max input in FE (Energy transfer, not consumption).
-	#Range: > 0
-	heater_max_input = 256
-	#Induction Heater normal consumption rate in FE/t.
-	#Range: > 0
-	heater_normal_consumption = 96
-	#Induction Heater when attached to a Furnace Engine consumption rate in FE/t.
-	#Range: > 0
-	heater_furnace_engine_consumption = 1024
-
 #Tesla Coil
 [tesla_coil]
 	#Tesla Coil charge rate in FE/t.
@@ -66,7 +68,7 @@
 	#Hurt range (in blocks/meters).
 	#Range: > 0
 	tesla_coil_hurt_range = 3
-	#Charger internal capacity in FE.
+	#Tesla Coil internal capacity in FE.
 	#Range: > 0
 	tesla_coil_capacity = 32000
 	#Energy consumed when Tesla Coil is fired (in FE).
@@ -105,15 +107,21 @@
 
 #Accumulator
 [accumulator]
-	#Accumulator internal capacity in FE.
+	#Accumulator internal capacity per block in FE.
 	#Range: > 0
 	accumulator_capacity = 4196000
 	#Accumulator max output in FE/t (Energy transfer).
 	#Range: > 0
-	accumulator_max_output = 512
+	accumulator_max_output = 4096
 	#Accumulator max input in FE/t (Energy transfer).
 	#Range: > 0
-	accumulator_max_input = 512
+	accumulator_max_input = 4096
+	#Accumulator max multiblock height.
+	#Range: 1 ~ 8
+	accumulator_max_height = 5
+	#Accumulator max multiblock width.
+	#Range: 1 ~ 8
+	accumulator_max_width = 3
 
 #Rolling Mill
 [rolling_mill]
@@ -128,5 +136,8 @@
 [misc]
 	#Diamond Grit Sandpaper durability (number of uses).
 	#Range: > 3
-	diamond_grit_sandpaper_uses = 1024
+	diamond_grit_sandpaper_uses = 64
+	#Barbed Wire Damage.
+	#Range: 0.0 ~ 3.4028234663852886E38
+	barbed_wire_damage = 3.0
 

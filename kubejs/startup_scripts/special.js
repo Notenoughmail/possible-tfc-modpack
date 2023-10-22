@@ -6,6 +6,8 @@ const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeB
 const FirePit = java("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
 const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
 const FirePitBlock = java("net.dries007.tfc.common.blocks.devices.FirepitBlock");
+const MCF = java("net.minecraftforge.common.MinecraftForge");
+const Class = java("java.lang.Class");
 
 onEvent('create.pipe.fluid_effect', e => {
 	e.addFluidHandler(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
@@ -104,20 +106,58 @@ onEvent('item.model_properties', e => {
 		return 0;
 	})
 	// Yes, this is the event this must be called in, despite it being a startup event, when internally its a *client* event
-	RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
+	if (Platform.isClientEnvironment()) {
+		let RenderTypeRegistry = java("dev.architectury.registry.client.rendering.RenderTypeRegistry");
+		let RenderType = java("net.minecraft.client.renderer.RenderType");
+		RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
+	}
 })
 
 onEvent('morejs.potion_brewing.register', e => {
 	e.removeByPotion(null, null, null)
 })
 
-onEvent('tfc.start_fire', e => {
-	let { level, block } = e;
-	let below = block.down;
-	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level.minecraftLevel, below.pos) && e.isStrong()) {
-		let be = below.entity;
-		if (be instanceof CharcoalForge && be.light(below.blockState)) {
-			e.cancel();
+onEvent('init', e => {
+	MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
+		'lowest',
+		false,
+		Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Flow'),
+		/**
+		 * @param {Internal.PipeCollisionEvent$Flow} event 
+		 */
+		event => handlePipeCollision(event, event.firstFluid.arch$registryName(), event.secondFluid.arch$registryName())
+	);
+	MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
+		'lowest',
+		false,
+		Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Spill'),
+		/**
+		 * @param {Internal.PipeCollisionEvent$Spill} event 
+		 */
+		event => handlePipeCollision(event, event.worldFluid.arch$registryName(), event.pipeFluid.arch$registryName())
+	);
+})
+
+/**
+ * @param {Internal.PipeCollisionEvent_} event 
+ * @param {ResourceLocation} f0 
+ * @param {ResourceLocation} f1 
+ */
+function handlePipeCollision(event, f0, f1) {
+	if (((f0 == 'minecraft:water' || f0 == 'minecraft:flowing_water') && (f1 == 'minecraft:lava' || f1 == 'minecraft:flowing_lava')) || ((f0 == 'minecraft:lava' || f0 == 'minecraft:flowing_lava') && (f1 == 'minecraft:water' || f1 == 'minecraft:flowing_water'))) {
+		setEventState(event, 'tfc:rock/hardened/rhyolite');
+	} else if (event.state) {
+		let block = event.state.block;
+		if (block == Block.getBlock('minecraft:stone') || block == Block.getBlock('minecraft:cobblestone')) {
+			setEventState(event, 'tfc:rock/hardened/rhyolite');
 		}
 	}
-})
+}
+
+/**
+ * @param {Internal.PipeCollisionEvent_} event 
+ * @param {string} block 
+ */
+function setEventState(event, block) {
+	event.setState(Block.getBlock(block).defaultBlockState());
+}

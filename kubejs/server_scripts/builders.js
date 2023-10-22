@@ -222,14 +222,10 @@ CokerRecipeBuilder.prototype = {
         return this;
     },
     /**
-     * @param {string} tag The fluid tag
-     * @param {number} amount The amount
+     * @param {Internal.FluidStackJS} result
      */
-    setFluidResult: function(tag, amount) {
-        this.fluidResult = {
-            tag: tag,
-            amount: amount
-        }
+    setFluidResult: function(result) {
+        this.fluidResult = Fluid.of(result).toJson()
         return this;
     },
     /**

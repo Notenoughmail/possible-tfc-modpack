@@ -1,8 +1,0 @@
-{
-	"ingredient": {
-		"tag": "forge:double_sheets/stainless_steel"
-	},
-	"heat_capacity": 10.107,
-	"forging_temperature": 924,
-	"welding_temperature": 1232
-}

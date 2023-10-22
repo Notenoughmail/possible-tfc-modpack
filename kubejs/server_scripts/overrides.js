@@ -21,7 +21,7 @@ onEvent('block.break', e => {
 onEvent('block.right_click', e => {
 	let playerJS = e.player;
 	if (playerJS == null) { return; }
-	let mc_player = playerJS.minecraftPlayer;
+	let mcPlayer = playerJS.minecraftPlayer;
 	let blockJS = e.block;
 	let pos = blockJS.pos;
 	let level = blockJS.minecraftLevel;
@@ -30,13 +30,13 @@ onEvent('block.right_click', e => {
 
 	if (playerJS.isFake() && itemJS.hasTag('tfc:starts_fires_with_durability')) {
 		if (blockJS.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
-			itemJS.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
+			itemJS.itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos.below());
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos.below()))
 			}
 		} else if (blockJS.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
-			itemJS.itemStack.hurtAndBreak(1, mc_player, p => p.broadcastBreakEvent(e.hand));
+			itemJS.itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos);
 			if (be instanceof CharcoalForge) {
 				be.light(level.getBlockState(pos));
@@ -62,7 +62,7 @@ onEvent('block.right_click', e => {
 			if (rack_age < 0.1) {
 				entities.get(entity_num).kill();
 				playerJS.give(Item.of(blockJS.id, `{BlockEntityTag: ${be.serializeNBT()}}`));
-				e.player.swingArm(e.hand); // e.player gives the ServerPlayerJS which has this method
+				playerJS.swingArm(e.hand);
 				level.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0);
 			}
 		}
@@ -105,6 +105,74 @@ onEvent('player.tick', e => {
 		})
 		if (i > 0) {
 			e.player.attack('wither', i * e.level.minecraftLevel.random.nextFloat());
+		}
+	}
+
+	if (e.player.ridingEntity != null && e.player.ridingEntity.type === 'kubejs:rocket') {
+		e.player.dismountRidingEntity();
+	}
+
+})
+
+onEvent('entity.hurt', e => {
+	if (e.source.type === 'ieWireShock') {
+		if (e.entity.isPlayer()) {
+			let i = 0;
+			let playerJS = e.entity.player;
+			let inventoryJS = playerJS.inventory;
+			let mcPlayer = playerJS.minecraftPlayer;
+			let tester = Ingredient.of({
+				type: 'forge:partial_nbt',
+				items: [
+					'minecraft:leather_boots',
+					'minecraft:leather_leggings',
+					'minecraft:leather_chestplate',
+					'minecraft:leather_helmet'
+				],
+				nbt: {
+					AluPadding: true
+				}
+			})
+			let random = e.level.minecraftLevel.random;
+
+			if (tester.test(inventoryJS.get(36))) {
+				i++;
+				if (random.nextFloat() > 0.85) {
+					inventoryJS.get(36).itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent('feet'));
+				}
+			}
+			if (tester.test(inventoryJS.get(37))) {
+				i++;
+				if (random.nextFloat() > 0.80) {
+					inventoryJS.get(37).itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent('legs'));
+				}
+			}
+			if (tester.test(inventoryJS.get(38))) {
+				i++;
+				if (random.nextFloat() > 0.85) {
+					inventoryJS.get(38).itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent('chest'));
+				}
+			}
+			if (tester.test(inventoryJS.get(39))) {
+				i++;
+				if (random.nextFloat() > 0.85) {
+					inventoryJS.get(39).itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent('head'));
+				}
+			}
+			if (i > 3) {
+				e.cancel();
+			}
+		}
+	}
+})
+
+onEvent('tfc.start_fire', e => {
+	let { level, block } = e;
+	let below = block.down;
+	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level.minecraftLevel, below.pos) && e.isStrong()) {
+		let be = below.entity;
+		if (be instanceof CharcoalForge && be.light(below.blockState)) {
+			e.cancel();
 		}
 	}
 })

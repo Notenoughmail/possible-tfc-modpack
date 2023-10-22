@@ -33,11 +33,18 @@ onEvent('item.registry', e => {
 	e.create('composite_catalyst')
 	e.create('sequence/light_component', 'create:sequenced_assembly')
 	e.create('sequence/heavy_component', 'create:sequenced_assembly')
-	e.create('sequence/heavy_engineering', 'create:sequenced_assembly').parentModel('immersiveengineering:item/light_engineering')
-	e.create('sequence/coke_brick', 'create:sequenced_assembly').parentModel('tfc:item/fire_bricks')
-	e.create('sequence/mv_capacitor', 'create:sequenced_assembly').parentModel('kubejs:item/frame/capacitor_mv')
-	e.create('sequence/hv_capacitor', 'create:sequenced_assembly').parentModel('kubejs:item/frame/capacitor_hv')
+	e.create('sequence/heavy_engineering', 'create:sequenced_assembly')
+		.parentModel('immersiveengineering:item/light_engineering')
+	e.create('sequence/coke_brick', 'create:sequenced_assembly')
+		.parentModel('tfc:item/fire_bricks')
+	e.create('sequence/mv_capacitor', 'create:sequenced_assembly')
+		.parentModel('kubejs:item/frame/capacitor_mv')
+	e.create('sequence/hv_capacitor', 'create:sequenced_assembly')
+		.parentModel('kubejs:item/frame/capacitor_hv')
 	e.create('sequence/stained_wood_track', 'create:sequenced_assembly')
+	e.create('rubber_sheet')
+	e.create('rubber_bar')
+	e.create('latex_clump')
 })
 
 onEvent('item.modification', e => {
@@ -94,8 +101,8 @@ onEvent('block.registry', e => {
 		.tagBlock('tfc:breaks_when_isolated')
 		.tagItem('tfc:small_ore_pieces')
 		.tagItem('tfc:nuggets')
-	e.create('frame/capacitor_mv')//done this way to let the name be different in the lang file, as KubeJS's generated default overrides it
-	e.create('frame/capacitor_hv')//+ expandability for future frames if that's something that happens
+	e.create('frame/capacitor_mv') // Done this way to let the name be different in the lang file, as KubeJS's generated default overrides it
+	e.create('frame/capacitor_hv') // + expandability for future frames if that's something that happens
 	e.create('uranium_block')
 		.model('immersiveengineering:block/storage_uranium')
 		.randomTick(callback => {
@@ -103,10 +110,14 @@ onEvent('block.registry', e => {
 			let entities = callback.level.getEntitiesWithin(AABB.ofBlocks(pos.offset(-7, -7, -7), pos.offset(7, 7, 7)));
 			entities.forEach(entity => {
 				let dist = entity.getDistance(pos);
-				for (let i = 0 ; i < 2 ; i++) {
-					if (callback.random.nextFloat() > 0.3 * (i + 1)) {
-						entity.attack('wither', 0.8 / dist);
+				if (dist > 0) {
+					let damage = 0;
+					for (let i = 0 ; i < 2 ; i++) {
+						if (callback.random.nextFloat() > 0.3 * (i + 1)) {
+							damage += 0.8 / dist;
+						}
 					}
+					entity.attack('wither', damage);
 				}
 			})
 		})
@@ -179,4 +190,16 @@ onEvent('fluid.registry', e => {
 		.displayName('Ethylene-Propylene Rubber')
 		.noBlock()
 		.noBucket()
+		.tag('kubejs:rubber')
+	e.create('latex')
+		.thinTexture(0xdee3d5)
+		.displayName('Natural Latex')
+		.noBlock()
+		.noBucket()
+		.tag('tfc:usable_in_wooden_bucket')
+		.tag('kubejs:latex')
+})
+
+onEvent('sound_event.registry', e => {
+	e.create('rocket')
 })

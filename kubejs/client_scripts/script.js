@@ -77,7 +77,7 @@ onEvent('jei.hide.items', e => {
 	// e.hide(/minecraft:(?:polished_)?andesite(?:_(?:stairs|slab|wall))?$/)
 	// e.hide(/create:(?:(?:cut|polished|small)_){0,2}andesite(?:_brick)?(?:_(?:stairs|slab|wall))?$/)
 	e.hide('firmalife:embedded_pipe')
-	e.hide('firmalife:squirt_moisture_transducer')
+	e.hide('firmalife:squirting_moisture_transducer')
 	e.hide('immersiveengineering:dust_hop_graphite')
 	e.hide('immersiveengineering:metal_ladder_none')
 	e.hide('tfc:pan/filled')
@@ -112,6 +112,13 @@ onEvent('jei.hide.items', e => {
 	e.hide('immersiveposts:fence_uranium')
 	e.hide('minecraft:kelp')
 	e.hide('minecraft:dried_kelp_block')
+	e.hide('createaddition:bioethanol_bucket')
+	e.hide('create:builders_tea')
+	e.hide(/minecraft:.*basalt/)
+})
+
+onEvent('jei.hide.fluids', e => {
+	e.hide('createaddition:bioethanol')
 })
 
 onEvent('jei.add.items', e => {

@@ -90,11 +90,14 @@
 	"item.kubejs.sequence.stained_wood_track": "Incomplete Track With Creosote Stained Ties",
 	
 	"item.kubejs.sheet.graphite": "Graphite Sheet",
+	
+	"entity.kubejs.rocket": "Satellite Rocket",
 
 	"tooltip.kubejs.block_has_passive_heat": "This block seems to be very warm to the touch",
 	"tooltip.kubejs.part_of_set": "Part of a set!",
 	"tooltip.kubejs.adapter_speed_req": "16 %1$s",
 	"tooltip.kubejs.karma": "May crash when looked\nat with F3 open",
+	"tooltip.kubejs.shock_proof": "Protects against shock damage",
 	
 	"tfc.recipe.barrel.kubejs.sealed_barrel.paper": "Unrefined Paper",
 	"tfc.recipe.barrel.kubejs.sealed_barrel.worn_brick": "Worn Brick",

@@ -8,46 +8,6 @@ settings.logErroringRecipes = true
 console.info('Welcome to my personal hell!')
 
 onEvent('recipes', e => {
-	let ie_bottler_simple_mold = (type, metal, mold, amount) => {
-		e.custom({
-			'type': 'immersiveengineering:bottling_machine',
-			'results': [
-			{
-				'item': 'tfc:metal/' + type + '/' + metal
-			},
-			{
-				'item': mold
-			}
-			],
-			'input': {
-				'item': mold
-			},
-			'fluid': {
-				'tag': 'tfc:' + metal,
-				'amount': amount
-			}
-		}).id('kubejs:bottling/' + type + '_' + metal);
-	}
-	let ie_bottler_mold = (output, mold, fluid_tag, amount, id) => {
-		e.custom({
-			'type': 'immersiveengineering:bottling_machine',
-			'results': [
-			{
-				'item': output
-			},
-			{
-				'item': mold
-			}
-			],
-			'input': {
-				'item': mold
-			},
-			'fluid': {
-				'tag': fluid_tag,
-				'amount': amount
-			}
-		}).id('kubejs:bottling/' + id);
-	}
 	stones.forEach(rock => {
 		e.recipes.createMilling(['1x tfc:rock/gravel/' + rock], 'tfc:rock/cobble/' + rock).id('kubejs:milling/' + rock);
 		e.recipes.immersiveengineeringCrusher('1x tfc:rock/gravel/' + rock, 'tfc:rock/cobble/' + rock).id('kubejs:crushing/' + rock);
@@ -110,9 +70,27 @@ onEvent('recipes', e => {
 		e.recipes.immersiveengineeringCrusher('2x tfc:sand/' + sand, 'tfc:raw_sandstone/' + sand, [Item.of('tfc:powder/saltpeter').withChance(0.13)]).id('kubejs:crusher/' + sand)
 	});
 	tfc_metals.forEach(metal => {
-		ie_bottler_simple_mold('sheet', metal, 'immersiveengineering:mold_plate', 200)
-		ie_bottler_simple_mold('rod', metal, 'immersiveengineering:mold_rod', 50)
-		ie_bottler_simple_mold('ingot', metal, 'kubejs:mold/ingot', 100)
+		e.custom(new BottlerRecipeBuilder()
+			.addResult(`tfc:metal/sheet/${metal}`)
+			.addResult('immersiveengineering:mold_plate')
+			.addInput('immersiveengineering:mold_plate')
+			.setFluid(`tfc:${metal}`, 200)
+			.build()
+		).id(`kubejs:bottling/sheet_${metal}`);
+		e.custom(new BottlerRecipeBuilder()
+			.addResult(`tfc:metal/rod/${metal}`)
+			.addResult('immersiveengineering:mold_rod')
+			.addInput('immersiveengineering:mold_rod')
+			.setFluid(`tfc:${metal}`, 50)
+			.build()
+		).id(`kubejs:bottling/rod_${metal}`);
+		e.custom(new BottlerRecipeBuilder()
+			.addResult(`tfc:metal/ingot/${metal}`)
+			.addResult('kubejs:mold/ingot')
+			.addInput('kubejs:mold/ingot')
+			.setFluid(`tfc:${metal}`, 100)
+			.build()
+		).id(`kubejs:bottling/ingot_${metal}`);
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_ingot/' + metal], 'tfc:metal/ingot/' + metal, ['tfc:metal/ingot/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_ingot');
 		e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/' + metal], 'tfc:metal/sheet/' + metal, ['tfc:metal/sheet/' + metal]).time(500).energy(25600).id('kubejs:arc_furnace/' + metal + '_double_sheet');
 		e.recipes.immersiveengineeringMetalPress('1x tfc:metal/sheet/' + metal, 'tfc:metal/double_ingot/' + metal, 'immersiveengineering:mold_plate').energy(10000).id('kubejs:metal_press/' + metal + '_sheet');
@@ -120,28 +98,15 @@ onEvent('recipes', e => {
 	ie_metals.forEach(metal => {
 		e.recipes.tfcChisel('immersiveengineering:slab_storage_' + metal, 'immersiveengineering:storage_' + metal, 'slab').extraDrop('immersiveengineering:slab_storage_' + metal).id('kubejs:chisel/slab/' + metal);
 	});
-	
-	let mold_blueprint = (result, id) => {
-		e.custom({
-			'type': 'immersiveengineering:blueprint',
-			'inputs': [
-			{
-				'item': 'tfc:metal/double_sheet/black_steel'
-			},
-			{
-				'item': 'immersiveengineering:wirecutter'
-			}
-			],
-			'category': 'molds',
-			'result': {
-				'item': result
-			}
-		}).id('kubejs:blueprint/mold_' + id)
-	}
 	molds.forEach(mold => {
-		mold_blueprint('immersiveengineering:mold_' + mold, mold)
-	})
-	mold_blueprint('kubejs:mold/ingot', 'ingot')
+		e.custom(new BlueprintRecipeBuilder()
+			.addInput('tfc:metal/double_sheet/black_steel')
+			.addInput(Item.of('immersiveengineering:wirecutter').ignoreNBT())
+			.setCategory('molds')
+			.setResult(`immersiveengineering:mold_${mold}`)
+			.build()
+		).id(`kubejs:blueprint/mold_${mold}`);
+	});
 
 	e.stonecutting('4x create:andesite_bars', 'create:andesite_casing');
 	e.stonecutting('2x create:andesite_scaffolding', 'create:andesite_casing');
@@ -390,6 +355,8 @@ onEvent('recipes', e => {
 
 	e.recipes.createMixing(Fluid.of('create:tea', 500), [Fluid.of('kubejs:diluted_milk', 500), '4x firmalife:fruit_leaf', 'firmalife:spice/vanilla']).id('kubejs:mixing/tea');
 	e.recipes.createMixing('immersiveengineering:dust_aluminum', Fluid.of('kubejs:alumina', 75)).id('kubejs:mixing/alumina_drying');
+	e.recipes.createMixing(Fluid.of('kubejs:latex', 150), [Fluid.of('tfc:lye', 300), '#tfc:kelp']).id('kubejs:mixing/latex');
+	e.recipes.createMixing('3x kubejs:latex_clump', [Fluid.of('kubejs:latex', 900), '2x tfc:powder/sulfur']).id('kubejs:mixing/latex_clump');
 	
 	e.recipes.createPressing('create:crafter_slot_cover', 'tfc:metal/sheet/brass').id('kubejs:pressing/crafter_slot');
 	e.recipes.createPressing('tfc:grass_path/silt', 'tfc:dirt/silt').id('kubejs:pressing/silt_path');
@@ -482,11 +449,11 @@ onEvent('recipes', e => {
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_iron'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/wrought_iron']),
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'create:cogwheel'])
-	]).transitionalItem('kubejs:sequence/light_component').loops(4).id('kubejs:sequenced_assembly/iron_component');
+	]).transitionalItem('kubejs:sequence/light_component').loops(1).id('kubejs:sequenced_assembly/iron_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:component_steel'], 'tfc:metal/ingot/copper', [
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'tfc:metal/sheet/steel']),
 		e.recipes.createDeploying('tfc:metal/ingot/copper', ['tfc:metal/ingot/copper', 'create:large_cogwheel'])
-	]).transitionalItem('kubejs:sequence/heavy_component').loops(4).id('kubejs:sequenced_assembly/steel_component');
+	]).transitionalItem('kubejs:sequence/heavy_component').loops(1).id('kubejs:sequenced_assembly/steel_component');
 	e.recipes.createSequencedAssembly(['immersiveengineering:heavy_engineering'], 'immersiveengineering:light_engineering', [
 		e.recipes.createFilling('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', Fluid.of('tfc:metal/black_steel', 100)]),
 		e.recipes.createDeploying('immersiveengineering:light_engineering', ['immersiveengineering:light_engineering', 'immersiveengineering:component_steel']),
@@ -527,6 +494,7 @@ onEvent('recipes', e => {
 	e.recipes.createCutting('6x create:shaft', 'create:andesite_alloy').id('create:cutting/andesite_alloy');
 	e.recipes.createCutting('4x immersiveengineering:sheetmetal_iron', 'minecraft:iron_block').id('kubejs:cutting/iron_sheetmetal');
 	e.recipes.createCutting('4x createdeco:cast_iron_sheet_metal', 'createdeco:cast_iron_block').id('kubejs:cutting/cast_iron_sheetmetal');
+	e.recipes.createCutting('2x kubejs:rubber_sheet', 'kubejs:rubber_bar').id('kubejs:cutting/rubber_sheet');
 	
 	e.recipes.tfcWelding('create:copper_diving_helmet', ['tfc:metal/helmet/copper', '#forge:glass']).tier(2).id('kubejs:welding/copper_diving_helmet');
 	e.recipes.tfcWelding('6x create:fluid_pipe', ['tfc:metal/sheet/copper', 'tfc:metal/rod/copper']).tier(1).id('kubejs:welding/copper_fluid_pipe');
@@ -734,6 +702,8 @@ onEvent('recipes', e => {
 	e.recipes.tfcBarrelInstantFluid(Fluid.of('kubejs:diluted_milk', 8), Fluid.water(3), FluidIngredient.of('#tfc:milks', 5)).id('kubejs:fluid_barrel/diluted_milk');
 
 	e.recipes.firmalifeMixingBowl(Fluid.of('create:tea', 500), [Fluid.of('kubejs:diluted_milk', 500), '4x firmalife:fruit_leaf', 'firmalife:spice/vanilla']).id('kubejs:mixing_bowl/tea');
+
+	e.recipes.firmalifeDrying('kubejs:rubber_bar', 'kubejs:latex_clump');
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -811,8 +781,8 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/blue_steel'], 'tfc:metal/ingot/weak_blue_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/blue_steel');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/red_steel'], 'tfc:metal/ingot/weak_red_steel', ['tfc:metal/ingot/pig_iron'], 'immersiveengineering:slag').time(200).energy(204800).id('kubejs:arc_furnace/red_steel');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/steel'], 'tfc:metal/ingot/pig_iron').time(100).energy(102400).id('kubejs:arc_furnace/steel');
-	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/cast_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_cast_iron');
-	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/wrought_iron').time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_wrought_iron');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/cast_iron', ['3x tfc:powder/charcoal']).time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_cast_iron');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/pig_iron'], 'tfc:metal/ingot/wrought_iron', ['3x tfc:powder/charcoal']).time(100).energy(102400).id('kubejs:arc_furnace/pig_iron_wrought_iron');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_ingot/wrought_iron'], 'tfc:metal/ingot/wrought_iron', ['tfc:metal/ingot/wrought_iron']).time(500).energy(25600).id('kubejs:arc_furnace/wrought_iron_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/double_sheet/wrought_iron'], 'tfc:metal/sheet/wrought_iron', ['tfc:metal/sheet/wrought_iron']).time(500).energy(25600).id('kubejs:arc_furnace/wrought_iron_double_sheet');
 	e.recipes.immersiveengineeringArcFurnace(['1x firmalife:metal/double_ingot/chromium'], 'firmalife:metal/ingot/chromium', ['firmalife:metal/ingot/chromium']).time(500).energy(25600).id('kubejs:arc_furnace/chromium_double_ingot');
@@ -823,54 +793,25 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x kubejs:metal/double_ingot/electrum'], 'immersiveengineering:ingot_electrum', ['immersiveengineering:ingot_electrum']).time(500).energy(25600).id('kubejs:arc_furnace/electrum_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x kubejs:metal/double_ingot/lead'], 'immersiveengineering:ingot_lead', ['immersiveengineering:ingot_lead']).time(500).energy(25600).id('kubejs:arc_furnace/lead_double_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['1x minecraft:iron_block'], 'createdeco:cast_iron_block').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_block');
-	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/wrought_iron'], 'tfc:metal/ingot/pig_iron').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_ingot');
+	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/wrought_iron'], 'tfc:metal/ingot/cast_iron').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['immersiveengineering:ingot_aluminum'], '2x immersiveengineering:dust_aluminum').time(500).energy(512000).id('kubejs:arc_furnace/aluminum');
 	
 	e.recipes.immersiveengineeringSqueezer(Fluid.of('immersiveengineering:plantoil', 60), '#tfc:seeds').energy(6400).id('kubejs:squeezing/plant_oil');
-	
-	//bottling machine
-	//ie_bottler*:note - make sure everything is spelt correctly, else the game will crash while (re)loading the server
-	//ie_bottler_mold:order = output, mold, fluid_tag, amount, id | yes, it must be a fluid tag, b/c IE's just like that
-	ie_bottler_mold('immersiveengineering:ingot_lead', 'kubejs:mold/ingot', 'tfc:lead', 100, 'ingot_lead')
-	ie_bottler_mold('immersiveengineering:ingot_constantan', 'kubejs:mold/ingot', 'tfc:constantan', 100, 'ingot_constantan')
-	ie_bottler_mold('immersiveengineering:ingot_electrum', 'kubejs:mold/ingot', 'tfc:electrum', 100, 'ingot_electrum')
-	ie_bottler_mold('tfc:metal/ingot/weak_steel', 'kubejs:mold/ingot', 'tfc:weak_steel', 100, 'ingot_weak_steel')
-	ie_bottler_mold('tfc:metal/ingot/weak_blue_steel', 'kubejs:mold/ingot', 'tfc:weak_blue_steel', 100, 'ingot_weak_blue_steel')
-	ie_bottler_mold('tfc:metal/ingot/weak_red_steel', 'kubejs:mold/ingot', 'tfc:weak_red_steel', 100, 'ingot_weak_red_steel')
-	ie_bottler_mold('tfc:metal/ingot/high_carbon_steel', 'kubejs:mold/ingot', 'tfc:high_carbon_steel', 100, 'ingot_high_carbon_weak_steel')
-	ie_bottler_mold('tfc:metal/ingot/high_carbon_black_steel', 'kubejs:mold/ingot', 'tfc:high_carbon_black_steel', 100, 'ingot_high_carbon_black_steel')
-	ie_bottler_mold('tfc:metal/ingot/high_carbon_blue_steel', 'kubejs:mold/ingot', 'tfc:high_carbon_blue_steel', 100, 'ingot_high_carbon_blue_steel')
-	ie_bottler_mold('tfc:metal/ingot/high_carbon_red_steel', 'kubejs:mold/ingot', 'tfc:high_carbon_red_steel', 100, 'ingot_high_carbon_red_steel')
-	ie_bottler_mold('tfc:metal/ingot/unknown', 'kubejs:mold/ingot', 'tfc:unknown', 100, 'ingot_unknown')
-	ie_bottler_mold('firmalife:metal/ingot/chromium', 'kubejs:mold/ingot', 'firmalife:chromium', 100, 'ingot_chromium')
-	ie_bottler_mold('firmalife:metal/ingot/stainless_steel', 'kubejs:mold/ingot', 'firmalife:stainless_steel', 100, 'ingot_stainless_steel')
-	ie_bottler_mold('immersiveengineering:plate_lead', 'immersiveengineering:mold_plate', 'tfc:lead', 200, 'sheet_lead')
-	ie_bottler_mold('immersiveengineering:plate_constantan', 'immersiveengineering:mold_plate', 'tfc:constantan', 200, 'sheet_cosntantan')
-	ie_bottler_mold('immersiveengineering:plate_electrum', 'immersiveengineering:mold_plate', 'tfc:electrum', 200, 'sheet_electrum')
-	ie_bottler_mold('firmalife:metal/sheet/chromium', 'immersiveengineering:mold_plate', 'firmalife:chromium', 200, 'sheet_chromium')
-	ie_bottler_mold('firmalife:metal/sheet/stainless_steel', 'immersiveengineering:mold_plate', 'firmalife:stainless_steel', 200, 'sheet_stainless_steel')
-	ie_bottler_mold('immersiveposts:stick_lead', 'immersiveengineering:mold_rod', 'tfc:lead', 50, 'rod_lead')
-	ie_bottler_mold('immersiveposts:stick_constantan', 'immersiveengineering:mold_rod', 'tfc:constantan', 50, 'rod_constantan')
-	ie_bottler_mold('immersiveposts:stick_electrum', 'immersiveengineering:mold_rod', 'tfc:electrum', 50, 'rod_electrum')
-	ie_bottler_mold('firmalife:metal/rod/chromium', 'immersiveengineering:mold_rod', 'firmalife:chromium', 50, 'rod_chromium')
-	ie_bottler_mold('firmalife:metal/rod/stainless_steel', 'immersiveengineering:mold_rod', 'firmalife:stainless_steel', 50, 'rod_stainless_steel')
-	
-	ie_bottler_simple_mold('ingot', 'pig_iron', 'kubejs:mold/ingot', 100)
 	
 	//blueprints
 	e.custom(new BlueprintRecipeBuilder()
 		.setCategory('components')
 		.addInput('tfc:metal/sheet/wrought_iron')
-		.addInput('4x tfc:metal/ingot/copper')
-		.addInput('2x create:cogwheel')
+		.addInput('2x tfc:metal/ingot/copper')
+		.addInput('create:cogwheel')
 		.setResult('immersiveengineering:component_iron')
 		.build()
 	).id('kubejs:blueprint/iron_components');
 	e.custom(new BlueprintRecipeBuilder()
 		.setCategory('components')
 		.addInput('tfc:metal/sheet/steel')
-		.addInput('4x tfc:metal/inogt/copper')
-		.addInput('2x create:latge_cogwheel')
+		.addInput('2x tfc:metal/ingot/copper')
+		.addInput('create:large_cogwheel')
 		.setResult('immersiveengineering:component_steel')
 		.build()
 	).id('kubejs:blueprint/steel_components');
@@ -1002,6 +943,13 @@ onEvent('recipes', e => {
 		.setResult('immersiveengineering:chemthrower')
 		.build()
 	).id('kubejs:blueprint/chemthrower');
+	e.custom(new BlueprintRecipeBuilder()
+		.addInput('tfc:metal/double_sheet/black_steel')
+		.addInput(Item.of('immersiveengineering:wirecutter').ignoreNBT())
+		.setCategory('molds')
+		.setResult('kubejs:mold/ingot')
+		.build()
+	).id('kubejs:blueprint/mold_ingot');
 	
 	//mixer
 	e.custom(new MixerRecipeBuilder()
@@ -1069,7 +1017,21 @@ onEvent('recipes', e => {
 		.setEnergy(2500)
 		.build()
 	).id('kubejs:mixer/salt_redstone');
-	
+	e.custom(new MixerRecipeBuilder()
+		.addInput('#tfc:kelp')
+		.setResult(Fluid.of('kubejs:latex', 200))
+		.setInputFluid('tfc:lye', 275)
+		.setEnergy(2500)
+		.build()
+	).id('kubejs:mixer/latex');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('tfc:powder/wood_ash')
+		.setResult(Fluid.of('tfc:lye', 200))
+		.setInputFluid('forge:true_water', 200)
+		.setEnergy(1500)
+		.build()
+	).id('kubejs:mixer/lye');
+
 	//bottling
 	e.custom(new BottlerRecipeBuilder()
 		.addResult('immersiveengineering:concrete')
@@ -1252,6 +1214,188 @@ onEvent('recipes', e => {
 		.setFluid('forge:redstone_acid', 500)
 		.build()
 	).id('kubejs:bottling/redstone_crystalization');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:ingot_lead')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:kead', 100)
+		.build()
+	).id('kubejs:bottling/ingot_lead');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:ingot_constantan')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:constantan', 100)
+		.build()
+	).id('kubejs:bottling/ingot_constantan');	
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:ingot_electrum')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:electrum', 100)
+		.build()
+	).id('kubejs:bottling/ingot_electrum');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/weak_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:weak_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_weak_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/weak_blue_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:weak_blue_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_weak_blue_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/weak_red_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:weak_red_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_weak_red_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/high_carbon_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:high_carbon_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_high_carbon_weak_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/high_carbon_black_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:high_carbon_black_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_high_carbon_black_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/high_carbon_blue_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:high_carbon_blue_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_high_carbon_blue_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/high_carbon_red_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:high_carbon_red_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_high_carbon_red_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('tfc:metal/ingot/unknown')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('tfc:unknown', 100)
+		.build()
+	).id('kubejs:bottling/ingot_unknown');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('firmalife:metal/ingot/chromium')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('firmalife:chromium', 100)
+		.build()
+	).id('kubejs:bottling/ingot_chromium');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('firmalife:metal/ingot/stainless_steel')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('firmalife:stainless_steel', 100)
+		.build()
+	).id('kubejs:bottling/ingot_stainless_steel');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:plate_lead')
+		.addResult('immersiveengineering:mold_plate')
+		.addInput('immersiveengineering:mold_plate')
+		.setFluid('tfc:lead', 200)
+		.build()
+	).id('kubejs:bottling/sheet_lead');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:plate_constantan')
+		.addResult('immersiveengineering:mold_plate')
+		.addInput('immersiveengineering:mold_plate')
+		.setFluid('tfc:constantan', 200)
+		.build()
+	).id('kubejs:bottling/sheet_constantan');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('immersiveengineering:plate_electrum')
+		.addResult('immersiveengineering:mold_plate')
+		.addInput('immersiveengineering:mold_plate')
+		.setFluid('tfc:electrum', 200)
+		.build()
+	).id('kubejs:bottling/sheet_electrum');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('firmalife:metal/sheet/chromium')
+ 		.addResult('immersiveengineering:mold_plate')
+ 		.addInput('immersiveengineering:mold_plate')
+ 		.setFluid('firmalife:chromium', 200)
+ 		.build()
+ 	).id('kubejs:bottling/sheet_chromium');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('firmalife:metal/sheet/stainless_steel')
+ 		.addResult('immersiveengineering:mold_plate')
+ 		.addInput('immersiveengineering:mold_plate')
+ 		.setFluid('firmalife:stainless_steel', 200)
+ 		.build()
+ 	).id('kubejs:bottling/sheet_stainless_steel');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('immersiveposts:stick_lead')
+ 		.addResult('immersiveengineering:mold_rod')
+ 		.addInput('immersiveengineering:mold_rod')
+ 		.setFluid('tfc:lead', 50)
+ 		.build()
+ 	).id('kubejs:bottling/rod_lead');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('immersiveposts:stick_constantan')
+ 		.addResult('immersiveengineering:mold_rod')
+ 		.addInput('immersiveengineering:mold_rod')
+ 		.setFluid('tfc:constantan', 50)
+ 		.build()
+ 	).id('kubejs:bottling/rod_constantan');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('immersiveposts:stick_electrum')
+ 		.addResult('immersiveengineering:mold_rod')
+ 		.addInput('immersiveengineering:mold_rod')
+ 		.setFluid('tfc:electrum', 50)
+ 		.build()
+ 	).id('kubejs:bottling/rod_electrum');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('firmalife:metal/rod/chromium')
+ 		.addResult('immersiveengineering:mold_rod')
+ 		.addInput('immersiveengineering:mold_rod')
+ 		.setFluid('firmallife:chromium', 50)
+ 		.build()
+ 	).id('kubejs:bottling/rod_chromium');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('firmalife:metal/rod/stainless_steel')
+ 		.addResult('immersiveengineering:mold_rod')
+ 		.addInput('immersiveengineering:mold_rod')
+ 		.setFluid('firmalife:stainless_steel', 50)
+ 		.build()
+ 	).id('kubejs:bottling/rod_stainless_steel');
+ 	e.custom(new BottlerRecipeBuilder()
+ 		.addResult('tfc:metal/ingot/pig_iron')
+ 		.addResult('kubejs:mold/ingot')
+ 		.addInput('kubejs:mold/ingot')
+ 		.setFluid('tfc:pig_iron', 100)
+ 		.build()
+ 	).id('kubejs:bottling/ingot_pig_iron');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('kubejs:rubber_bar')
+		.addResult('kubejs:mold/ingot')
+		.addInput('kubejs:mold/ingot')
+		.setFluid('kubejs:rubber', 100)
+		.build()
+	).id('kubejs:bottling/rubber_bar');
+	e.custom(new BottlerRecipeBuilder()
+		.addResult('kubejs:rubber_sheet')
+		.addResult('immersiveengineering:mold_plate')
+		.addInput('immersiveengineering:mold_plate')
+		.setFluid('kubejs:rubber', 50)
+		.build()
+	).id('kubejs:bottling/rubber_sheet');
 	
 	// Refinery
 	e.custom(new RefineryRecipeBuilder()
@@ -1319,7 +1463,7 @@ onEvent('recipes', e => {
 	// Coker
 	e.custom(new CokerRecipeBuilder()
 		.setResult('2x immersivepetroleum:petcoke')
-		.setFluidResult('forge:diesel_sulfur', 27)
+		.setFluidResult(Fluid.of('immersivepetroleum:diesel_sulfur', 27))
 		.setInput('2x immersivepetroleum:bitumen')
 		.setFluidInput('forge:true_water', 125)
 		.setTime(30)
@@ -1353,7 +1497,7 @@ onEvent('recipes', e => {
 		.addInput('forge:true_water', 5)
 		.setItemResult(Item.of('tfc:powder/sulfur').withChance(0.07))
 		.build()
-	).id('immersivepetroleum:hydrotreater/sulfur_recovery')
+	).id('immersivepetroleum:hydrotreater/sulfur_recovery');
 
 	// Mineral
 	// Notes:
@@ -2372,7 +2516,7 @@ onEvent('recipes', e => {
 				}
 			}
 		],
-		weight: 68,
+		weight: 2, // For some reason 90% of all veins in a 9000 chunk area are sphalerite, WTF
 		fail_chance: 0.24,
 		sample_background: 'kubejs:sample_ore/sphalerite'
 	}).id('kubejs:mineral_mix/sphalerite');
@@ -2580,7 +2724,12 @@ onEvent('recipes', e => {
 		},
 		biomes: {
 			isBlacklist: false,
-			list: []
+			list: [
+				'tfc:ocean',
+				'tfc:ocean_reef',
+				'tfc:deep_ocean',
+				'tfc:deep_ocean_trench'
+			]
 		},
 		name: 'oil'
 	}).id('kubejs:reservior/oil');
