@@ -2,7 +2,7 @@
 
 onEvent('item.tooltip', tip => {
 	tip.addAdvanced(Ingredient.all, (item, advanced, text) => {
-		if (tip.alt && item.nbt) {
+		if (debugMode && tip.alt && item.nbt) {
 			text.add(Text.of('NBT: ').append(Text.prettyPrintNbt(item.nbt)))
 		}
 	})
@@ -13,8 +13,9 @@ onEvent('item.tooltip', tip => {
 	tip.add('kubejs:kinetic_adapter', Text.translate('tooltip.kubejs.karma').color(Color.CYAN_DYE))
 
 	tip.addAdvanced(['minecraft:leather_boots', 'minecraft:leather_chestplate', 'minecraft:leather_leggings', 'minecraft:leather_helmet'], (item, advanced, text) => {
-		if (item.nbt.getBoolean('AluPadding')) {
+		if (item.nbt?.getBoolean('AluPadding')) {
 			text.add(Text.translate('tooltip.kubejs.shock_proof').color(Color.LIGHT_GRAY_DYE));
 		}
 	})
+	tip.add('kubejs:thermometer', Text.translate('tooltip.kubejs.thermometer'))
 })

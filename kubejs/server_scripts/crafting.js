@@ -1479,4 +1479,36 @@ onEvent('recipes', e => {
 		A: '#forge:sheets/constantan',
 		B: FluidIngredient.of('#forge:true_water', 1000).asItemIngredient()
 	}).id('immersiveengineering:crafting/radiator');
+	e.shaped('1x immersiveengineering:transformer', [
+		'SA',
+		'BC',
+		'DD'
+	], {
+		S: 'immersiveengineering:connector_lv',
+		A: 'immersiveengineering:connector_mv',
+		B: 'immersiveengineering:component_electronic',
+		C: 'immersiveengineering:coil_mv',
+		D: 'tfc:metal/sheet/steel'
+	}).id('immersiveengineering:crafting/transformer');
+	e.shaped('1x immersiveengineering:transformer_hv', [
+		'SA',
+		'BC',
+		'DD'
+	], {
+		S: 'immersiveengineering:connector_mv',
+		A: 'immersiveengineering:connector_hv',
+		B: 'immersiveengineering:component_electronic',
+		C: 'immersiveengineering:coil_hv',
+		D: 'tfc:metal/sheet/steel'
+	}).id('immersiveengineering:crafting/transformer_hv');
+	e.shaped('1x kubejs:thermometer', [
+		'SAS',
+		' B ',
+		' C '
+	], {
+		S: 'immersiveengineering:plate_constantan',
+		A: 'immersiveengineering:component_electronic',
+		B: 'tfc:metal/double_sheet/brass',
+		C: 'kubejs:iron_belt_clip'
+	}).id('kubejs:crafting/thermometer');
 })

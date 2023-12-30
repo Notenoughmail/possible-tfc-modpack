@@ -1,6 +1,6 @@
 settings.dataPackOutput = false
 
-onEvent('server.datapack.first', e => {
+onEvent('tfc.data', e => {
 	
 	e.addTFCFoodItem('create:chocolate_glazed_berries', food => {
 		food.hunger(4)
@@ -11,7 +11,7 @@ onEvent('server.datapack.first', e => {
 		food.dairy(2)
 	})
 	
-	e.addTFCDrinkable(FluidIngredient.of('#forge:tea'), drink => {
+	e.addTFCDrinkable('#forge:tea', drink => {
 		drink.consumeChance(1)
 		drink.thirst(5)
 		drink.effect('minecraft:haste', effect => {
@@ -122,6 +122,9 @@ onEvent('server.datapack.first', e => {
 	e.addTFCMetal('firmalife:metal/stainless_steel', 1540, 0.00758, '#forge:ingots/stainless_steel', '#forge:sheets/stainless_steel', 4, 'firmalife:stainless_steel')
 	
 	e.addTFCSupport('create:metal_girder', 2, 2, 6)
+})
+
+onEvent('tfc.worldgen.data', e => {
 	
 	e.buildTFCVein('vein/poor_lead', vein => {
 		vein.rarity(75)

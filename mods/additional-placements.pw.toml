@@ -1,13 +1,13 @@
 name = "Additional Placements"
-filename = "AdditionalPlacements-1.18.2-1.7.5.jar"
+filename = "AdditionalPlacements-1.18.2-1.7.6.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "aecbc310cc7825d70a01086abe48ffff2de41aa6"
+hash = "f04079a3aac5e0e695f4255280f6d57be30d5f7b"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4799024
+file-id = 4828007
 project-id = 674852

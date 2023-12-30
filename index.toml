@@ -157,6 +157,10 @@ file = "defaultconfigs/create-server.toml"
 hash = "7d882c463530d6f946006e9728f0f508a42f34434f2a585766453f720973045a"
 
 [[files]]
+file = "defaultconfigs/curios-server.toml"
+hash = "eba5d39197c37eb6f31cb85f79d4596394bc170bc8f49e6dc2e6afc73121e7f4"
+
+[[files]]
 file = "defaultconfigs/immersiveengineering-server.toml"
 hash = "77edf30f5e27274261c5e82010113214e0bc5f678b5f6aeebbcde477cf5833d0"
 
@@ -610,7 +614,7 @@ hash = "fd6c3c79a17807e8537f9c0be343ba02bee5cdebfba1c42268c2eb661e3c869f"
 
 [[files]]
 file = "kubejs/assets/kubejs/lang/en_us.json"
-hash = "b9902ec42c4a281c275aa6bcede299799a5dec5c4019391793989f9238c0800a"
+hash = "78958c00ee598d10731664f7d51ee75bd0f4cb71b3c7101354fcbcc6e94c353c"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/ore/small_lead.json"
@@ -618,7 +622,7 @@ hash = "e88c4f910ea295bbfbeb5b43cb88026c6441d69e2ad61c41d7a3fffe30b9e4fc"
 
 [[files]]
 file = "kubejs/assets/kubejs/sounds/rocket.ogg"
-hash = "7dada29828d10e544d2def608d580cf77ae78434c254778ce246f069983e835a"
+hash = "9b9144804f0a7f9fb2f8459d28f22f27f238f38802b65bc379434cee0404ca0e"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/frame/capacitor_hv_top.png"
@@ -894,15 +898,19 @@ hash = "a9c1576e5b3190c1b6bfd729bd5061bbbfc8f056aee5f5b8a75dcd7e507ff559"
 
 [[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "367a3b274b605b155bd0906e5d5e1bb47c5b245d6bcc596189a9b8e167be214a"
+hash = "a8651ac1442b5ac37f5d8341b488584afc2c6bf5c543fb109bbdbaabe8ec2c1d"
+
+[[files]]
+file = "kubejs/client_scripts/client_settings.js"
+hash = "c741854b3fe0213720a2777dfd827da99a2da05de94368e303643babe50c2531"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "baa2430a4b14f84a0858a970891dcb8b6369be1d8beff060553515441864ed88"
+hash = "b9a17d44872a5bb389ce2e43550561ead52f90f4e2cd41917752ba6fe2654c6d"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "bc2d7f3547b79ddf14795a8488dbfc3c50e1020b1f97d2bf7b150d1b97bcc6ec"
+hash = "f5cea68d0835addf548cc1e155a2aa18da81a95118ef31a36a2be3cae5688797"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -982,11 +990,11 @@ hash = "b37690754351093610e8a6e5d5bf311bdcc9dc8329f0bab248572765cc2a7610"
 
 [[files]]
 file = "kubejs/server_scripts/crafting.js"
-hash = "906cd5cd74e0828bc2411112dc1cfceae09cee9d24da6c69a10f9aecc8b6278a"
+hash = "bf599f47abe2a30ff7fcb6d2f916d87fedb0a342fb0e42231fe3996bc1700244"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "7a26d20d8d4607fed675640287d1191fe7e01a289e6d9b33682955c54c0c7734"
+hash = "9e7329e3a852c071e9976816345128e9f7a7c28cc30fb4f9a99785e6e2ba3351"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -994,15 +1002,15 @@ hash = "c2de262a847dde367df8e396135be862ce7ec03d1b883dcafc788fc68732a07a"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "d2dc7b6982d6296d010769f3f169e4bcee02c4f12f28d76c76129171ecbe3196"
+hash = "5846512fe55b83fc7ce2271ee1f90c0241c44d5d5d851a23c0cf683242fc1c15"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "40ba2d5e8c452b57311a8d937d457511101892f38c760f2cc50fe39e1a0cf094"
+hash = "6856787791e8213a1c7ecc0413476f566ddddd6c72c3c2489589d3804ecb693a"
 
 [[files]]
 file = "kubejs/server_scripts/script.js"
-hash = "2f4d5cd1041fd83c7e34bb6495f0023337b4b31cac5022a291084928964e0ffb"
+hash = "a246d8d3d64ad40674306aed630b47cba903391e48f8acdd6e6b26d6c2d77a40"
 
 [[files]]
 file = "kubejs/server_scripts/server_constants.js"
@@ -1014,11 +1022,11 @@ hash = "26f05923d4cef60ea12100bba38ab1a0b92836669bb16544026c2bac7a8e6c90"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "b4952559caed3f8bf8e579263307525d5e0ca4855e8adcf51dd2efb1a16f0c23"
+hash = "0832f53e3493af8cfe45f8299ce760520cd1a28e2e96fc056967fd53836b0516"
 
 [[files]]
 file = "kubejs/startup_scripts/adapter.js"
-hash = "2399865efa682ac00785c3e8e7e13d7237caf2d89cc88fc575f3c4294b191f38"
+hash = "f93aae69dadb845fe464554595e4c34e12a29d00ad9a0a0b9c9d7d3bb0ce6865"
 
 [[files]]
 file = "kubejs/startup_scripts/bricks.js"
@@ -1026,15 +1034,15 @@ hash = "eed7d5c5601c52a0995bf0dde438128d246b81b62b783564146e3cbcae04b806"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "f280110567f8a0452f4dd1894bcfcdad0696dcb58e864500b45d127130ec66d0"
+hash = "2f2cb52bd6146e809f77338b35f919348924f0db8a93c34f9933530d20320f03"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "6d33d6b6196166a5163b7100efec1c63adf977cf8997793199a9fde9c302ed47"
+hash = "50e4c54b99cb383786110bf7e1075c015275e976ce90fd238e4ae7ecc679bb1a"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
-hash = "4dcbb52795f9bab75257af2a4c9e87d1bab802b462656b5787a35a3a2bc7558b"
+hash = "d6b31885ab1d2ad25102ae52a01ec20d74e42fbe9169ca9ee4cb4a5f67476d79"
 metafile = true
 
 [[files]]
@@ -1109,7 +1117,7 @@ metafile = true
 
 [[files]]
 file = "mods/create.pw.toml"
-hash = "422c5f649d9316f8b6572748a5633e0ab6bd8a8fa3c40e88b192041d1d53cc2c"
+hash = "33d7887c49e0450fd0466ea686140a461aa0510329f4505cfa17164454737363"
 metafile = true
 
 [[files]]
@@ -1149,7 +1157,7 @@ metafile = true
 
 [[files]]
 file = "mods/immersive-petroleum.pw.toml"
-hash = "9040a85194309387917dbea260b011e1fe505d268982aa8268443ddf10be32e3"
+hash = "9c4c4eb27c5b487c0303aa05300670147b1087ac6303da0f3ed4fb5f6ade725c"
 metafile = true
 
 [[files]]
@@ -1159,7 +1167,7 @@ metafile = true
 
 [[files]]
 file = "mods/inventory-profiles-next.pw.toml"
-hash = "6742db3d366c92144cef3fc6d12de02a1786ef3965d99ab9b69d03c01ac35b55"
+hash = "8caf01b6b46f2448e69776c192adf4370140f6b845910e3574641000e6ae57ac"
 metafile = true
 
 [[files]]
@@ -1209,7 +1217,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs-tfc.pw.toml"
-hash = "567fc0804cc593e869ec8de5d707590aad5f4ecf1947c31465774a7b2a9326f7"
+hash = "adb9f3aa06fe117ccd45504cbb6e0a5f2022b192b1a3e8b40e379abd38f31466"
 metafile = true
 
 [[files]]
@@ -1229,7 +1237,7 @@ metafile = true
 
 [[files]]
 file = "mods/modernfix.pw.toml"
-hash = "2aa66e4ddb82ddaf60b268d97d948b5c638d937a8d575d490c8f43c459bb22db"
+hash = "68445f97383faa897458fb05bfc138beda594d531eb90fa60d4534e5099b1270"
 metafile = true
 
 [[files]]
@@ -1264,7 +1272,7 @@ metafile = true
 
 [[files]]
 file = "mods/terrafirmacraft.pw.toml"
-hash = "afc212786829a9d9c5eb5b2295b12991d98bcf94f5cd275a70282152a916701d"
+hash = "477ab0b0dfb0f67795aad813ce1ed73c64336b0259cb258ec130f3244664d904"
 metafile = true
 
 [[files]]

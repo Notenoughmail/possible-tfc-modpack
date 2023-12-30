@@ -1,0 +1,5 @@
+[[curiosSettings]]
+	identifier = "clip"
+	size = 1
+	icon = "curios:item/empty_charm_slot"
+	hasCosmetic = false

@@ -547,6 +547,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcAnvil('3x immersiveengineering:sheetmetal_constantan', '#forge:sheets/constantan', ['bend_last', 'hit_any', 'hit_any']).tier(2).id('kubejs:anvil/constantan_sheet_metal');
 	e.recipes.tfcAnvil('4x create:industrial_iron_block', 'tfc:metal/ingot/cast_iron', ['hit_any', 'punch_last']).tier(2).id('kubejs:anvil/industrial_iron');
 	e.recipes.tfcAnvil('2x immersiveengineering:stick_aluminum', 'immersiveengineering:ingot_aluminum', ['bend_last', 'draw_not_last']).tier(6).id('kubejs:anvil/aluminum_rod');
+	e.recipes.tfcAnvil('2x kubejs:iron_belt_clip', 'tfc:metal/rod/wrought_iron', ['bend_last', 'bend_not_last', 'hit_any']).tier(2).id('kubejs:anvil/iron_belt_clips')
 
 	e.recipes.tfcHeating(Fluid.of('kubejs:constantan', 100), 'immersiveengineering:ingot_constantan', 1266).id('kubejs:heating/constantan_ingot');
 	e.recipes.tfcHeating(Fluid.of('kubejs:electrum', 100), 'immersiveengineering:ingot_electrum', 1010).id('kubejs:heating/electrum_ingot');
@@ -683,7 +684,6 @@ onEvent('recipes', e => {
 	]).id('kubejs:leather_knapping/leather_pouch');
 	
 	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/zinc', 40), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/zinc_composite_material');
-	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/silver', 32), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/silver_composite_material');
 	e.recipes.tfcBloomery('create:andesite_alloy', Fluid.of('tfc:metal/nickel', 64), 'kubejs:composite_catalyst', 48000).id('kubejs:bloomery/nickel_composite_material');
 	
 	e.recipes.tfcBlastFurnace(Fluid.of('kubejs:graphite', 1), Fluid.of('kubejs:unrefined_graphite', 1), 'tfc:powder/graphite').id('kubejs:blast_furnace/graphite_refinement');
@@ -702,8 +702,7 @@ onEvent('recipes', e => {
 	e.recipes.tfcBarrelInstantFluid(Fluid.of('kubejs:diluted_milk', 8), Fluid.water(3), FluidIngredient.of('#tfc:milks', 5)).id('kubejs:fluid_barrel/diluted_milk');
 
 	e.recipes.firmalifeMixingBowl(Fluid.of('create:tea', 500), [Fluid.of('kubejs:diluted_milk', 500), '4x firmalife:fruit_leaf', 'firmalife:spice/vanilla']).id('kubejs:mixing_bowl/tea');
-
-	e.recipes.firmalifeDrying('kubejs:rubber_bar', 'kubejs:latex_clump');
+	e.recipes.firmalifeMixingBowl('3x kubejs:rubber_bar', ['tfc:powder/sulfur', '3x kubejs:latex_clump']).id('kubejs:mixing_bowl/rubber_vulcanization');
 	
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_copper', '1x tfc:metal/sheet/copper', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/copper_wire');
 	e.recipes.immersiveengineeringMetalPress('8x immersiveengineering:wire_electrum', '1x immersiveengineering:plate_electrum', 'immersiveengineering:mold_wire').energy(2400).id('kubejs:metal_press/electrum_wire');
@@ -795,6 +794,7 @@ onEvent('recipes', e => {
 	e.recipes.immersiveengineeringArcFurnace(['1x minecraft:iron_block'], 'createdeco:cast_iron_block').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_block');
 	e.recipes.immersiveengineeringArcFurnace(['1x tfc:metal/ingot/wrought_iron'], 'tfc:metal/ingot/cast_iron').time(2000).energy(2048000).id('kubejs:arc_furnace/wrought_iron_ingot');
 	e.recipes.immersiveengineeringArcFurnace(['immersiveengineering:ingot_aluminum'], '2x immersiveengineering:dust_aluminum').time(500).energy(512000).id('kubejs:arc_furnace/aluminum');
+	e.recipes.immersiveengineeringArcFurnace(['10x firmalife:metal/ingot/stainless_steel'], '7x tfc:metal/ingot/steel', ['1x tfc:emtal/ingot/nickel', '2x firmalife:metal/ingot/chromium']).time(300).energy(153600).id('kubejs:arc_furnace/stainless_steel_ingot');
 	
 	e.recipes.immersiveengineeringSqueezer(Fluid.of('immersiveengineering:plantoil', 60), '#tfc:seeds').energy(6400).id('kubejs:squeezing/plant_oil');
 	
@@ -1031,6 +1031,13 @@ onEvent('recipes', e => {
 		.setEnergy(1500)
 		.build()
 	).id('kubejs:mixer/lye');
+	e.custom(new MixerRecipeBuilder()
+		.addInput('5x #tfc:saplings')
+		.setResult(Fluid.of('createaddition:bioethanol', 15))
+		.setInputFluid('forge:ethanol', 3)
+		.setEnergy(4500)
+		.build()
+	).id('kubejs:mixer/bioethanol');
 
 	//bottling
 	e.custom(new BottlerRecipeBuilder()
@@ -1124,7 +1131,7 @@ onEvent('recipes', e => {
 	).id('kubejs:bottling/stained_wood');
 	e.custom(new BottlerRecipeBuilder()
 		.addResult('createaddition:diamond_grit_sandpaper')
-		.addInput('tfc:powder/diamond')
+		.addInput('3x #tfc:gem_powders')
 		.addInput('immersiveengineering:plate_duroplast')
 		.setFluid('forge:phenolic_resin', 50)
 		.build()

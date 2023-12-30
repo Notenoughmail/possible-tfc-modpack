@@ -98,6 +98,9 @@
 	"tooltip.kubejs.adapter_speed_req": "16 %1$s",
 	"tooltip.kubejs.karma": "May crash when looked\nat with F3 open",
 	"tooltip.kubejs.shock_proof": "Protects against shock damage",
+	"tooltip.kubejs.thermometer": "Allows the wearer to see heat values in degrees instead of colors",
+	
+	"subtitle.kubejs.rocket": "Rocket Engine Roars",
 	
 	"tfc.recipe.barrel.kubejs.sealed_barrel.paper": "Unrefined Paper",
 	"tfc.recipe.barrel.kubejs.sealed_barrel.worn_brick": "Worn Brick",
@@ -117,5 +120,7 @@
 	"kubejs.advancement.smart_pipe.title": "Filtration",
 	"kubejs.advancement.smart_pipe.description": "Craft a Filtered Copper Fluid Pipe",
 	"kubejs.advancement.valve.title": "Block the Flow",
-	"kubejs.advancement.valve.description": "Craft a Copper Fluid Valve"
+	"kubejs.advancement.valve.description": "Craft a Copper Fluid Valve",
+	
+	"curios.identifier.clip": "Belt Clip"
 }

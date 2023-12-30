@@ -156,7 +156,7 @@ onEvent('client.generate_assets', e => {
     // Sound
     e.add('kubejs:sounds', {
         rocket: {
-            category: 'neutral',
+            category: 'master',
             sounds: [
                 'kubejs:rocket'
             ],

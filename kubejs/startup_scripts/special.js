@@ -8,6 +8,7 @@ const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.Charcoal
 const FirePitBlock = java("net.dries007.tfc.common.blocks.devices.FirepitBlock");
 const MCF = java("net.minecraftforge.common.MinecraftForge");
 const Class = java("java.lang.Class");
+const ChunkData = java("net.dries007.tfc.world.chunkdata.ChunkData");
 
 onEvent('create.pipe.fluid_effect', e => {
 	e.addFluidHandler(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
@@ -144,20 +145,31 @@ onEvent('init', e => {
  * @param {ResourceLocation} f1 
  */
 function handlePipeCollision(event, f0, f1) {
+	event.setState(null);
 	if (((f0 == 'minecraft:water' || f0 == 'minecraft:flowing_water') && (f1 == 'minecraft:lava' || f1 == 'minecraft:flowing_lava')) || ((f0 == 'minecraft:lava' || f0 == 'minecraft:flowing_lava') && (f1 == 'minecraft:water' || f1 == 'minecraft:flowing_water'))) {
-		setEventState(event, 'tfc:rock/hardened/rhyolite');
-	} else if (event.state) {
-		let block = event.state.block;
-		if (block == Block.getBlock('minecraft:stone') || block == Block.getBlock('minecraft:cobblestone')) {
-			setEventState(event, 'tfc:rock/hardened/rhyolite');
-		}
+		event.setState(waterLavaInteractionAtPosition(event.level, event.pos));
 	}
 }
 
 /**
  * @param {Internal.PipeCollisionEvent_} event 
- * @param {string} block 
+ * @param {ResourceLocation} block 
  */
 function setEventState(event, block) {
 	event.setState(Block.getBlock(block).defaultBlockState());
+}
+
+/**
+ * @param {Internal.Level} level 
+ * @param {BlockPos} pos 
+ * @returns 
+ */
+function waterLavaInteractionAtPosition(level, pos) {
+	let chunkData = ChunkData.get(level, pos);
+	let status = chunkData.status;
+	if (status === status["FULL"]) {
+		return chunkData.rockData.getRock(pos).hardened().defaultBlockState();
+	} else {
+		return Block.getBlock('tfc:rock/hardened/rhyolite').defaultBlockState();
+	}
 }

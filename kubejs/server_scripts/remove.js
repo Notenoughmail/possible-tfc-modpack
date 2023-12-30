@@ -80,7 +80,8 @@ let ids = [
 	'immersiveengineering:crafting/buzzsaw',
 	'immersiveengineering:crafting/stick_aluminum',
 	'createaddition:rolling/aluminum_ingot',
-	'immersivepetroleum:asphalt'
+	'immersivepetroleum:asphalt',
+	'firmalife:alloy/stainless_steel'
 ]
 
 onEvent('recipes', e => {
@@ -275,7 +276,9 @@ onEvent('recipes', e => {
 		'immersivepetroleum:speedboat',
 		/immersivepetroleum:upgrade.+/,
 		'createaddition:rolling_mill',
-		'immersiveposts:fence_uranium'
+		'immersiveposts:fence_uranium',
+		'createaddition:electrum_spool',
+		'createaddition:large_connector',
 	]});
 	ids.forEach(id => {
 		e.remove({id: id})

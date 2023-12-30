@@ -1,6 +1,18 @@
 // priority: 0
 
+const IPParticleTypes = java("flaxbeard.immersivepetroleum.client.particle.IPParticleTypes");
+const ClientTFCConfig = java("net.dries007.tfc.config.TFCConfig").CLIENT;
+const HeatStyle = java("net.dries007.tfc.config.HeatTooltipStyle");
+
 console.info('Hiding precious items')
+
+let thermometerScaleMap = {
+	C: HeatStyle['CELSIUS'],
+	K: HeatStyle['KELVIN'],
+	F: HeatStyle['FAHRENHEIT'],
+	R: HeatStyle['RANKINE'],
+	RGB: HeatStyle['COLOR']
+}
 
 onEvent('jei.hide.items', e => {
 	e.hide('immersiveengineering:pickaxe_steel')
@@ -117,10 +129,6 @@ onEvent('jei.hide.items', e => {
 	e.hide(/minecraft:.*basalt/)
 })
 
-onEvent('jei.hide.fluids', e => {
-	e.hide('createaddition:bioethanol')
-})
-
 onEvent('jei.add.items', e => {
 	e.add('minecraft:cauldron')
 	e.add('minecraft:rabbit_foot')
@@ -186,4 +194,31 @@ onEvent('jei.remove.categories', e => {
 	e.remove('minecraft:stonecutting')
 	e.remove('jeresources:worldgen')
 	e.remove('jeresources:plant')
+})
+
+let rocketList = null;
+
+onEvent('client.tick', e => {
+	let levelJS = e.level;
+	if (rocketList == null || levelJS.time % 20 < 1) {
+		rocketList = levelJS.entities.filter(entity => {
+			return entity.type == "kubejs:rocket";
+		});
+	}
+	if (rocketList != null) {
+		rocketList.forEach(rocket => {
+			levelJS.minecraftLevel.addParticle(IPParticleTypes.FLARE_FIRE, true, rocket.x, rocket.y, rocket.z, 0, -0.3, 0);
+		});
+	}
+})
+
+onEvent('player.data_from_server.thermometer', e => {
+	let {data} = e;
+	let scale = thermometerScaleMap['RGB'];
+	if (data.hasThermometer) {
+		scale = thermometerScaleMap[thermometerTemperatureScale];
+	}
+	if (ClientTFCConfig.heatTooltipStyle.get() != scale) {
+		ClientTFCConfig.heatTooltipStyle.set(scale);
+	}
 })

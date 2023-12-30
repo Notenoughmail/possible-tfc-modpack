@@ -4,7 +4,7 @@ const BlockItem = java("net.minecraft.world.item.BlockItem");
 const ItemProperties = java("net.minecraft.world.item.Item$Properties");
 const defaultItemProperties = new ItemProperties().tab(Item.findGroup('kubejs.kubejs'));
 
-// Rocket & Bike
+// Rocket
 const BikeEntity = java("software.bernie.example.entity.BikeEntity");
 const EntityTypeBuilder = java("net.minecraft.world.entity.EntityType$Builder");
 const EntityAttributeRegistry = java("dev.architectury.registry.level.entity.EntityAttributeRegistry");
@@ -44,7 +44,7 @@ const ITEMS = DeferredRegister.create('kubejs', CoreRegistry.ITEM_REGISTRY);
 const ENTITIES = DeferredRegister.create('kubejs', CoreRegistry.ENTITY_TYPE_REGISTRY);
 
 // Model is currently fucked
-const ROCKET_ENTITY = register(ENTITIES, 'rocket', () => EntityTypeBuilder.of((type, level) => new BikeEntity(type, level), 'misc').sized(1, 4).setUpdateInterval(1).fireImmune().build('rocket'));
+const ROCKET_ENTITY = register(ENTITIES, 'rocket', () => EntityTypeBuilder.of((type, level) => new BikeEntity(type, level), 'misc').sized(1.5, 1).setUpdateInterval(1).fireImmune().build('rocket'));
 
 const ADAPTER_BLOCK = register(BLOCKS, 'kinetic_adapter', () => new DeviceBlock(ExtendedProperties.of(Block.material['metal'].minecraftMaterial).blockEntity(ADAPTER_BE).ticks((level, pos, state) => adapterTick(level, pos, state)).sound(Block.material['metal'].sound).strength(4, 60), null));
 const ADAPTER_BE = register(BLOCK_ENTITIES, 'kinetic_adapter', () => BlockEntityType.Builder.of((pos, state) => new KineticBlockEntity(ADAPTER_BE.get(), pos, state), [ADAPTER_BLOCK.get()]).build(null));

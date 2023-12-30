@@ -45,6 +45,9 @@ onEvent('item.registry', e => {
 	e.create('rubber_sheet')
 	e.create('rubber_bar')
 	e.create('latex_clump')
+	e.create('thermometer')
+		.tag('curios:clip')
+	e.create('iron_belt_clip')
 })
 
 onEvent('item.modification', e => {

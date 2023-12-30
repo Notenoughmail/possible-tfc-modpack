@@ -89,6 +89,36 @@ onEvent('block.right_click', e => {
 			}
 		}
 	}
+
+	if (itemJS.hasTag('kubejs:rocket_debug_test')) {
+		let verticalMotion = 0.01;
+		level.playSound(null, blockJS.pos, 'kubejs:rocket', 'master', 100, 1);
+		let rocket = levelJS.createEntity('kubejs:rocket');
+		rocket.setNoGravity(true);
+		rocket.setPosition(blockJS.offset(0, 2, 0));
+		rocket.spawn();
+		// rocket.setInvulnerable(true);
+		let rider = levelJS.createEntity('minecraft:armor_stand'); // This is needed because the BikeEntity class overrrides the travel method to only do something when being ridden by a LivingEntity, using an armor stand because it is the only LivingEntity which respects its invisibility status without also having the potion effect
+		rider.setSilent(true);
+		rider.setInvisible(true);
+		rider.spawn();
+		rider.startRiding(rocket, true);
+		levelJS.server.scheduleInTicks(30, rocket, schedule => {
+			let scheduledRocket = schedule.data;
+			scheduledRocket.addMotion(0, verticalMotion * 3, 0);
+		})
+		for (let i = 1 ; i < 40 ; i++) {
+			levelJS.server.scheduleInTicks(40 + (i * 10), rocket, schedule => {
+				let scheduledRocket = schedule.data;
+				scheduledRocket.addMotion(0, verticalMotion * (i / 3), 0);
+			})
+		}
+		levelJS.server.scheduleInTicks(450, [rocket, rider], schedule => {
+			let scheduledRocket = schedule.data;
+			scheduledRocket[0].remove();
+			scheduledRocket[1].remove();
+		})
+	}
 })
 
 onEvent('player.tick', e => {
@@ -106,12 +136,21 @@ onEvent('player.tick', e => {
 		if (i > 0) {
 			e.player.attack('wither', i * e.level.minecraftLevel.random.nextFloat());
 		}
-	}
 
-	if (e.player.ridingEntity != null && e.player.ridingEntity.type === 'kubejs:rocket') {
-		e.player.dismountRidingEntity();
+		let curiosData = e.player.fullNBT.ForgeCaps['curios:inventory'];
+		// Managed to make this null somehow, just don't process/send if so
+		if (curiosData) {
+			let clipStacks = [];
+			curiosData.Curios.forEach(compoundTag => {
+				if (compoundTag.Identifier === 'clip') {
+					compoundTag.StacksHandler.Stacks.Items.forEach(stack => {
+						clipStacks.push(stack.id);
+					});
+				}
+			});
+			e.player.sendData('thermometer', { hasThermometer: clipStacks.indexOf('kubejs:thermometer') > -1 });
+		}
 	}
-
 })
 
 onEvent('entity.hurt', e => {
