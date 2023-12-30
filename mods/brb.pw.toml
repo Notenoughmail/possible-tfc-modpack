@@ -1,13 +1,13 @@
-name = "Better Recipe Books (+ Brewing Stands)"
-filename = "brb-1.18.2-forge-1.5.6.jar"
+name = "Better Recipe Books (+ Smithing Tables, Brewing Stands)"
+filename = "brb-1.10.0+1.20.0-1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "5f9e81fa7d566b0cf7e4f2c48da81cf7f56a6f8a"
+hash = "211dff34a3d187332ac35a135446926d2e06bd53"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 3764548
+file-id = 4988460
 project-id = 486485

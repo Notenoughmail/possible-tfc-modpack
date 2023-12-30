@@ -1,13 +1,13 @@
 name = "Recipe Book is Pain"
-filename = "recipe-book-is-pain-0.7.1-1.18-forge.jar"
+filename = "recipe-book-is-pain-0.9.0-1.20-forge.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "bde9cc3861a2253f9c3c48a97fc544e25f544064"
+hash = "0cf890f138a45464b282d496911fdfce5341aa5e"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4066258
+file-id = 4577700
 project-id = 643246
