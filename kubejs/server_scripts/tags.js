@@ -1,89 +1,7 @@
 // priority: 0
 
-console.info('Loading tag scripts')
-
-onEvent('tags.blocks', e => {
-	e.add('firmalife:all_copper_greenhouse',
-		'create:encased_fluid_pipe',
-		'create:copper_door'
-	)
-	e.add('firmalife:greenhouse',
-		'create:encased_fluid_pipe',
-		'create:ornate_iron_window',
-		'create:copper_door'
-	)
-	e.add('firmalife:copper_greenhouse',
-		'create:encased_fluid_pipe',
-		'create:copper_door'
-	)
-	e.add('firmalife:all_iron_greenhouse',
-		'create:ornate_iron_window'
-	)
-	e.add('firmalife:iron_greenhouse',
-		'create:ornate_iron_window'
-	)
-	e.add('tfc:forge_invisible_whitelist',
-		'create:fluid_tank'
-	)
-	e.add('forge:relocation_not_supported',
-		'tfc:burning_log_pile',
-		'tfc:molten',
-		'tfc:bloom',
-		'kubejs:kinetic_adapter',
-		'kubejs:stained_wood_track'
-	)
-	e.add('create:non_movable',
-		'tfc:burning_log_pile',
-		'tfc:molten',
-		'tfc:bloom',
-		'kubejs:kinetic_adapter',
-		'kubejs:stained_wood_track'
-	)
-	e.add('tfc:toughness_3',
-		'immersiveengineering:excavator',
-		'immersiveengineering:bucket_wheel',
-		'immersiveengineering:crusher',
-		'immersiveengineering:advanced_blast_furnace',
-		'immersiveengineering:bottling_machine',
-		'immersiveengineering:metal_press',
-		'immersiveengineering:arc_furnace',
-		'immersiveengineering:fermenter',
-		'immersiveengineering:alloy_smelter',
-		'immersiveengineering:assembler',
-		'immersiveengineering:auto_workbench',
-		'immersiveengineering:coke_oven',
-		'immersivepetroleum:coker_unit',
-		'immersivepetroleum:derrick',
-		'immersiveengineering:diesel_generator',
-		'immersivepetroleum:distillation_tower',
-		'immersiveengineering:tank',
-		'immersivepetroleum:hydrotreater',
-		'immersiveengineering:squeezer',
-		'immersiveengineering:silo',
-		'immersiveengineering:lightning_rod',
-		'immersiveengineering:mixer',
-		'immersivepetroleum:oiltank',
-		'immersivepetroleum:pumpjack',
-		'immersiveengineering:refinery',
-		'immersiveengineering:sawmill'
-	)
-	e.add('tfc:forge_insulation',
-		'kubejs:kinetic_adapter'
-	)
-	e.add('create:tracks', 
-		'kubejs:stained_wood_track'
-	)
-	e.add('create:gridable_tracks',
-		'kubejs:stained_wood_track'
-	)
-	e.add('minecraft:mineable/pickaxe',
-		'kubejs:kinetic_adapter',
-		'kubejs:stained_wood_track'
-	)
-	e.add('minecraft:mineable/axe',
-		'kubejs:stained_wood_track'
-	)
-	e.add('kubejs:vertical_support',
+ServerEvents.tags('block', e => {
+	e.add('kubejs:vertical_support', [
     	"tfc:wood/vertical_support/acacia",
     	"tfc:wood/vertical_support/ash",
     	"tfc:wood/vertical_support/aspen",
@@ -103,29 +21,16 @@ onEvent('tags.blocks', e => {
     	"tfc:wood/vertical_support/sycamore",
     	"tfc:wood/vertical_support/white_cedar",
     	"tfc:wood/vertical_support/willow"
-	)
+	])
 });
 
-onEvent('tags.items', e => {
+ServerEvents.tags('item', e => {
 
 	// Removal
-	e.removeAllTagsFrom(
-		'immersiveengineering:plate_constantan',
-		'immersiveengineering:plate_electrum',
-		'immersiveengineering:plate_lead',
-		'immersiveengineering:nugget_lead',
-		'immersiveengineering:nugget_steel',
-		'immersiveengineering:nugget_constantan',
-		'immersiveengineering:nugget_silver',
-		'create:copper_nugget',
-		'immersiveengineering:dust_coke'
-	)
 	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/)
-	e.remove('forge:storage_blocks/andesite_alloy', 'create:andesite_alloy_block')
-	e.removeAll('create:sleepers')
 	
 	//general
-	e.add('forge:rods/all_metal',
+	e.add('forge:rods/all_metal', [
 		'tfc:metal/rod/bismuth',
 		'tfc:metal/rod/bismuth_bronze',
 		'tfc:metal/rod/black_bronze',
@@ -145,75 +50,31 @@ onEvent('tags.items', e => {
 		'tfc:metal/rod/black_steel',
 		'tfc:metal/rod/blue_steel',
 		'tfc:metal/rod/red_steel'
-	)
-	e.add('tfc:usable_on_tool_rack',
+	])
+	e.add('tfc:usable_on_tool_rack', [
 		'create:wrench',
 		'create:goggles',
-		'immersiveengineering:hammer',
-		'immersiveengineering:wirecutter',
-		'immersiveengineering:screwdriver',
-		'immersiveengineering:voltmeter',
-		'immersiveengineering:drill',
-		'immersiveengineering:buzzsaw',
-		'immersiveengineering:revolver',
-		'immersiveengineering:chemthrower',
-		'immersiveengineering:railgun',
-		'immersiveengineering:skyhook',
 		'firmalife:watering_can'
-	)
-	e.add('forge:sheetmetal/colorless',
-		'immersiveengineering:sheetmetal_copper',
-		'immersiveengineering:sheetmetal_aluminum',
-		'immersiveengineering:sheetmetal_lead',
-		'immersiveengineering:sheetmetal_silver',
-		'immersiveengineering:sheetmetal_nickel',
-		'immersiveengineering:sheetmetal_uranium',
-		'immersiveengineering:sheetmetal_constantan',
-		'immersiveengineering:sheetmetal_electrum',
-		'immersiveengineering:sheetmetal_steel',
-		'immersiveengineering:sheetmetal_iron',
-		'immersiveengineering:sheetmetal_gold',
-		'createdeco:cast_iron_sheet_metal'
-	)
-	e.add('forge:molds/metal',
-		'kubejs:mold/ingot',
-		'immersiveengineering:mold_plate',
-		'immersiveengineering:mold_gear',
-		'immersiveengineering:mold_rod',
-		'immersiveengineering:mold_bullet_casing',
-		'immersiveengineering:mold_wire',
-		'immersiveengineering:mold_packing_4',
-		'immersiveengineering:mold_packing_9',
-		'immersiveengineering:mold_unpacking'
-	)
-	e.add('tfc:rocks/loose',
+	])
+	e.add('tfc:rocks/loose', [
 		'#tfc:rock_knapping'
-	)
-	e.add('tfc:kelp',
+	])
+	e.add('tfc:kelp', [
 		'tfc:plant/winged_kelp',
 		'tfc:plant/leafy_kelp',
 		'tfc:plant/giant_kelp_flower'
-	)
+	])
 	e.add('forge:cobblestone',
 		/tfc:rock.*mossy_cobble.*/
 	)
-	e.add('forge:cobblestone/mossy',
+	e.add('forge:cobblestone/mossy', [
 		/tfc:rock.*mossy_cobble.*/
-	)
-	e.add('forge:dusts/coal_coke',
-		'tfc:powder/coke'//IE loves tags too much
-	)
-	e.add('tfc:blast_furnace_fuel',
-		'immersiveengineering:coal_coke'
-	)
-	e.add('forge:ladders/metal',
-		/create(?:deco)?:.+_ladder/
-	)
-	e.add('tfc:igneous_rock',
+	])
+	e.add('tfc:igneous_rock', [
 		'#tfc:igneous_intrusive_rock',
 		'#tfc:igneous_extrusive_rock'
-	)
-	e.add('tfc:foods/berries',
+	])
+	e.add('tfc:foods/berries', [
 		'tfc:food/blackberry',
 		'tfc:food/blueberry',
 		'tfc:food/bunchberry',
@@ -225,22 +86,8 @@ onEvent('tags.items', e => {
 		'tfc:food/snowberry',
 		'tfc:food/strawberry',
 		'tfc:food/wintergreen_berry'
-	)
-	e.add('forge:storage_blocks/composite_material', 
-		'create:andesite_alloy_block'
-	)
-	e.add('create:diving_equipment/copper',
-		'create:copper_diving_helmet',
-		'create:copper_diving_boots',
-		'create:copper_backtank'
-	)
-	e.add('create:diving_equipment/blue_steel',
-		'create:netherite_diving_helmet',
-		'create:netherite_diving_boots',
-		'create:netherite_backtank',
-		'minecraft:netherite_leggings'
-	)
-	e.add('tfc:magma_blocks',
+	])
+	e.add('tfc:magma_blocks', [
 		'tfc:rock/magma/granite',
 		'tfc:rock/magma/diorite',
 		'tfc:rock/magma/gabbro',
@@ -248,12 +95,12 @@ onEvent('tags.items', e => {
 		'tfc:rock/magma/basalt',
 		'tfc:rock/magma/andesite',
 		'tfc:rock/magma/dacite'
-	)
-	e.add('tfc:raw_salts',
+	])
+	e.add('tfc:raw_salts', [
 		'tfc:ore/halite',
 		'tfc:ore/sylvite'
-	)
-	e.add('tfc:saplings',
+	])
+	e.add('tfc:saplings', [
 		'tfc:wood/sapling/acacia',
 		'tfc:wood/sapling/ash',
 		'tfc:wood/sapling/aspen',
@@ -284,79 +131,22 @@ onEvent('tags.items', e => {
 		'tfc:plant/banana_sapling',
 		'firmalife:plant/cocoa_sapling',
 		'firmalife:plant/fig_sapling'
-	)
-	
-	//metal reorganization
-	e.add('forge:sheets',
-		'immersiveengineering:plate_constantan',
-		'immersiveengineering:plate_electrum',
-		'immersiveengineering:plate_lead'
-	)
-	e.add('forge:sheets/constantan',
-		'immersiveengineering:plate_constantan'
-	)
-	e.add('forge:sheets/electrum',
-		'immersiveengineering:plate_electrum'
-	)
-	e.add('forge:sheets/lead',
-		'immersiveengineering:plate_lead'
-	)
-	e.add('tfc:metal_item/constantan',
-		'immersiveengineering:plate_constantan',
-		'immersiveengineering:ingot_constantan',
-		'immersiveposts:stick_constantan'
-	)
-	e.add('tfc:metal_item/electrum',
-		'immersiveengineering:plate_electrum',
-		'immersiveengineering:ingot_electrum',
-		'immersiveposts:stick_electrum'
-	)
-	e.add('tfc:metal_item/lead',
-		'immersiveengineering:plate_lead',
-		'immersiveengineering:ingot_lead',
-		'immersiveposts:stick_lead'
-	)
-	e.add('tfc:metal_item/graphite',
-		'immersiveengineering:ingot_hop_graphite',
-		'immersiveengineering:dust_hop_graphite'
-	)
-	e.add('tfc:pileable_sheets',
-		'immersiveengineering:plate_constantan',
-		'immersiveengineering:plate_electrum',
-		'immersiveengineering:plate_lead',
-	)
-	e.add('tfc:pileable_ingots', 
-		'immersiveengineering:ingot_constantan',
-		'immersiveengineering:ingot_electrum',
-		'immersiveengineering:ingot_lead',
-		'immersiveengineering:ingot_hop_graphite'
-	)
-	e.add('createdeco:decals',
-		/createdeco:.+_decal/
-	)
-	e.add('kubejs:light_wax',
-		'firmalife:beeswax',
-		'immersivepetroleum:paraffin_wax'
-	)
+	])
 
-	//weight and szie
-	e.add('tfc:minecarts', 
-		'immersiveengineering:minecart_woodencrate',
-		'immersiveengineering:minecart_reinforcedcrate',
-		'immersiveengineering:minecart_woodenbarrel',
-		'immersiveengineering:minecart_metalbarrel',
+	e.add('exposure:lenses', [
+		'tfc:lens'
+	])
+
+	//weight and size
+	e.add('tfc:minecarts', [
 		'minecraft:minecart',
 		'minecraft:furnace_minecart',
 		'minecraft:tnt_minecart',
 		'minecraft:hopper_minecart'
-	)
-
-	e.add('kubejs:rocket_debug_test',
-		'minecraft:stick'
-	)
+	])
 })
 
-onEvent('tags.fluids', e => {
+ServerEvents.tags('fluid', e => {
 
 	e.removeAll('forge:plantoil')
 
@@ -365,49 +155,20 @@ onEvent('tags.fluids', e => {
 		'firmalife:metal/chromium'
 	)
 	e.add('forge:true_water',
-		'minecraft:water',/*IE why do you require fluid tags for your inputs*/
-		'minecraft:flowing_water'/*a normal fluid would be fine*/
-	)
-	e.add('immersiveengineering:concrete',
-		'immersiveengineering:concrete',
-		'immersiveengineering:concrete_flowing'
-	)
-	e.add('kubejs:jutecrete',
-		'kubejs:jutecrete',
-		'kubejs:flowing_jutecrete'
-	)
-	e.add('tfc:usable_in_jug',
-		'#forge:tea'
-	)
-	e.add('forge:plantoil',
-		'immersiveengineering:plantoil'
-	)
-	e.add('tfc:usable_in_red_steel_bucket',
-		'#forge:plantoil',
-		'#kubejs:jutecrete',
-		'#immersiveengineering:concrete',
-		'#forge:creosote',
-		'#forge:ethanol',
-		'immersiveengineering:redstone_acid'
-	)
-	e.add('tfc:usable_in_blue_steel_bucket',
-		'#forge:plantoil',
-		'#kubejs:jutecrete',
-		'#immersiveengineering:concrete',
-		'#forge:creosote',
-		'#forge:ethanol',
-		'immersiveengineering:redstone_acid',
-		'kubejs:asphalt'
+		'minecraft:water',
+		'minecraft:flowing_water'
 	)
 	e.add('forge:true_lava',
 		'minecraft:lava'
 	)
 })
 
-onEvent('tags.worldgen.placed_feature', e => {
+/*
+ServerEvents.tags('worldgen/placed_feature', e => {
 	e.add('tfc:in_biome/veins',
 		'kubejs_tfc:vein/poor_lead',
 		'kubejs_tfc:vein/normal_lead',
 		'kubejs_tfc:vein/deep_lead'
 	)
 })
+*/

@@ -1,17 +1,44 @@
-// priority: 0
+global.clientConfig = {};
+global.clientConfig.customization = {};
+global.clientConfig.debug = {};
 
-// There's no method to check/get the living enity so had to resort to this
-const LivingEntity = java("net.minecraft.world.entity.LivingEntity");
-const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
-const FirePit = java("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
-const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
-const FirePitBlock = java("net.dries007.tfc.common.blocks.devices.FirepitBlock");
-const MCF = java("net.minecraftforge.common.MinecraftForge");
-const Class = java("java.lang.Class");
-const ChunkData = java("net.dries007.tfc.world.chunkdata.ChunkData");
+global.serverConfig = {};
+global.serverConfig.debug = {};
 
-onEvent('create.pipe.fluid_effect', e => {
-	e.addFluidHandler(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
+global.commonConfig = {};
+
+// There's no method to check/get the living entity so had to resort to this
+const LivingEntity = Java.loadClass("net.minecraft.world.entity.LivingEntity");
+const CharcoalForge = Java.loadClass("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
+const FirePit = Java.loadClass("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
+const CharcoalForgeBlock = Java.loadClass("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
+const FirePitBlock = Java.loadClass("net.dries007.tfc.common.blocks.devices.FirepitBlock");
+const MCF = Java.loadClass("net.minecraftforge.common.MinecraftForge");
+const Class = Java.loadClass("java.lang.Class");
+const ChunkData = Java.loadClass("net.dries007.tfc.world.chunkdata.ChunkData");
+
+ConfigsEvent.client(e => {
+	e.setName('possible-tfc-pack-client');
+	e.push('customization');
+	e.comment('Determines the TFC temperature scale to be used when wearing a thermometer, forces COLOR if not wearing a thermometer');
+	global.clientConfig.customization.thermometerScale = e.enumValue('thermometerTemperatureScale', 'Celsius', ['Celsius', 'Fahrenheit', 'Kelvin', 'Rankine']);
+	e.pop();
+	e.push('debug');
+	global.clientConfig.debug.enabled = e.booleanValue('enabled', false);
+})
+
+ConfigsEvent.server(e => {
+	e.setName('possible-tfc-pack-server');
+	e.push('debug');
+	e.comment('Enables server debug mode');
+	global.serverConfig.debug.enabled = e.booleanValue('enabled', false)
+	e.comment('Adds debug recipes')
+	global.serverConfig.debug.debugRecipes = e.booleanValue('debugRecipes', true);
+})
+
+/*
+CreateEvents.pipeFluidEffect(e => {
+	e.add(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
 		let level = pipe.getWorld();
 		let entities = level.getEntities(null, pipe.getAOE());
 		if (level.random.nextInt(10) == 0) {
@@ -24,11 +51,11 @@ onEvent('create.pipe.fluid_effect', e => {
 	})
 })
 
-onEvent('create.boiler.heater', e => {
-	e.registerHeater('kubejs:uranium_block', (block) => {
+CreateEvents.boilerHeatHandler(e => {
+	e.add('kubejs:uranium_block', block => {
 		return 0;
 	})
-	e.registerHeater('tfc:firepit', (block) => {
+	e.add('tfc:firepit', block => {
 		if (!block.blockState.getValue(FirePitBlock.LIT)) {
 			return -1;
 		}
@@ -41,7 +68,7 @@ onEvent('create.boiler.heater', e => {
 		}
 		return -1;
 	})
-	e.registerHeater('tfc:pot', (block) => {
+	e.add('tfc:pot', block => {
 		if (!block.blockState.getValue(FirePitBlock.LIT)) {
 			return -1;
 		}
@@ -54,7 +81,7 @@ onEvent('create.boiler.heater', e => {
 		}
 		return -1;
 	})
-	e.registerHeater('tfc:grill', (block) => {
+	e.add('tfc:grill', block => {
 		if (!block.blockState.getValue(FirePitBlock.LIT)) {
 			return -1;
 		}
@@ -67,7 +94,7 @@ onEvent('create.boiler.heater', e => {
 		}
 		return -1;
 	})
-	e.registerHeater('tfc:charcoal_forge', (block) => {
+	e.add('tfc:charcoal_forge', block => {
 		if (block.blockState.getValue(CharcoalForgeBlock.HEAT) < 2) {
 			return -1;
 		}
@@ -78,65 +105,41 @@ onEvent('create.boiler.heater', e => {
 		return -1;
 	})
 })
+*/
 
 // And they say you can't have nbt based textures!
-onEvent('item.model_properties', e => {
-	e.register('immersiveengineering:blueprint', 'kubejs:blueprint', (stackJS, levelJS, entityJS, idInt) => {
-		let NBT = stackJS.nbt;
-		if (NBT.contains('blueprint')) {
-			let value = NBT.get('blueprint').asString;
-			if (value.localeCompare('molds') === 0) {
-				return 0.1;
-			}
-			if (value.localeCompare('components') === 0) {
-				return 0.2;
-			}
-			if (value.localeCompare('bullet') === 0) {
-				return 0.3;
-			}
-			if (value.localeCompare('bannerpatterns') === 0) {
-				return 0.4;
-			}
-			if (value.localeCompare('specialBullet') === 0) {
-				return 0.5;
-			}
-			if (value.localeCompare('electrode') === 0) {
-				return 0.6;
-			}
-		}
-		return 0;
-	})
+ItemEvents.modelProperties(e => {
 	// Yes, this is the event this must be called in, despite it being a startup event, when internally its a *client* event
-	if (Platform.isClientEnvironment()) {
-		let RenderTypeRegistry = java("dev.architectury.registry.client.rendering.RenderTypeRegistry");
-		let RenderType = java("net.minecraft.client.renderer.RenderType");
-		RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
-	}
+	// if (Platform.isClientEnvironment()) {
+	// 	let RenderTypeRegistry = Java.loadClass("dev.architectury.registry.client.rendering.RenderTypeRegistry");
+	// 	let RenderType = Java.loadClass("net.minecraft.client.renderer.RenderType");
+	// 	RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
+	// }
 })
 
-onEvent('morejs.potion_brewing.register', e => {
+MoreJSEvents.registerPotionBrewing(e => {
 	e.removeByPotion(null, null, null)
 })
 
-onEvent('init', e => {
-	MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
-		'lowest',
-		false,
-		Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Flow'),
-		/**
-		 * @param {Internal.PipeCollisionEvent$Flow} event 
-		 */
-		event => handlePipeCollision(event, event.firstFluid.arch$registryName(), event.secondFluid.arch$registryName())
-	);
-	MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
-		'lowest',
-		false,
-		Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Spill'),
-		/**
-		 * @param {Internal.PipeCollisionEvent$Spill} event 
-		 */
-		event => handlePipeCollision(event, event.worldFluid.arch$registryName(), event.pipeFluid.arch$registryName())
-	);
+StartupEvents.init(e => {
+	// MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
+	// 	'lowest',
+	// 	false,
+	// 	Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Flow'),
+	// 	/**
+	// 	 * @param {Internal.PipeCollisionEvent$Flow} event 
+	// 	 */
+	// 	event => handlePipeCollision(event, event.firstFluid.arch$registryName(), event.secondFluid.arch$registryName())
+	// );
+	// MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
+	// 	'lowest',
+	// 	false,
+	// 	Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Spill'),
+	// 	/**
+	// 	 * @param {Internal.PipeCollisionEvent$Spill} event 
+	// 	 */
+	// 	event => handlePipeCollision(event, event.worldFluid.arch$registryName(), event.pipeFluid.arch$registryName())
+	// );
 })
 
 /**

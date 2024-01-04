@@ -1,11 +1,12 @@
-//priority 0
 
-const CharcoalForgeBlock = java("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
-const CharcoalForge = java("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
-const FluidHelpers = java("net.dries007.tfc.common.fluids.FluidHelpers");
+const CharcoalForgeBlock = Java.loadClass("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
+const CharcoalForge = Java.loadClass("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
+const FluidHelpers = Java.loadClass("net.dries007.tfc.common.fluids.FluidHelpers");
+
+// TODO: port event handlers to 1.20 syntax
 
 // Loot tables do not work for this
-onEvent('block.break', e => {
+BlockEvents.broken(e => {
 	if (!e.player.isCreativeMode() && e.block.id === 'tfc:calcite' && !e.level.minecraftLevel.isClientSide()) {
 		let item_entity = e.level.createEntity('minecraft:item');
 		let level_random = e.level.minecraftLevel.random;
@@ -18,7 +19,7 @@ onEvent('block.break', e => {
 	}
 })
 
-onEvent('block.right_click', e => {
+BlockEvents.rightClicked(e => {
 	let playerJS = e.player;
 	if (playerJS == null) { return; }
 	let mcPlayer = playerJS.minecraftPlayer;
@@ -29,13 +30,7 @@ onEvent('block.right_click', e => {
 	let levelJS = blockJS.level;
 
 	if (playerJS.isFake() && itemJS.hasTag('tfc:starts_fires_with_durability')) {
-		if (blockJS.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level, pos.below())) {
-			itemJS.itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent(e.hand));
-			let be = level.getBlockEntity(pos.below());
-			if (be instanceof CharcoalForge) {
-				be.light(level.getBlockState(pos.below()))
-			}
-		} else if (blockJS.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
+		if (blockJS.id === 'tfc:charcoal_forge' && CharcoalForgeBlock.isValid(level, pos)) {
 			itemJS.itemStack.hurtAndBreak(1, mcPlayer, p => p.broadcastBreakEvent(e.hand));
 			let be = level.getBlockEntity(pos);
 			if (be instanceof CharcoalForge) {
@@ -44,7 +39,7 @@ onEvent('block.right_click', e => {
 		}
 	}
 
-	if (blockJS.hasTag('tfc:barrels') && itemJS.id === 'create:wrench' && playerJS.isCrouching()) {
+	if (blockJS.hasTag('tfc:barrels') && itemJS.id === 'electrodynamics:wrench' && playerJS.isCrouching()) {
 		let properties = blockJS.getProperties();
 		if (properties['rack'] === 'true' && properties['sealed'] === 'true') {
 			let be = blockJS.entity;
@@ -121,8 +116,10 @@ onEvent('block.right_click', e => {
 	}
 })
 
-onEvent('player.tick', e => {
+PlayerEvents.tick(e => {
+	
 	if (e.level.time % 20 < 1) {
+		/*
 		let i = 0;
 		e.player.inventory.minecraftInventory.forEach(stack => {
 			if (stack.item.id === 'kubejs:uranium_block') {
@@ -136,7 +133,9 @@ onEvent('player.tick', e => {
 		if (i > 0) {
 			e.player.attack('wither', i * e.level.minecraftLevel.random.nextFloat());
 		}
+		*/
 
+		/*
 		let curiosData = e.player.fullNBT.ForgeCaps['curios:inventory'];
 		// Managed to make this null somehow, just don't process/send if so
 		if (curiosData) {
@@ -150,10 +149,11 @@ onEvent('player.tick', e => {
 			});
 			e.player.sendData('thermometer', { hasThermometer: clipStacks.indexOf('kubejs:thermometer') > -1 });
 		}
+		*/
 	}
 })
 
-onEvent('entity.hurt', e => {
+EntityEvents.hurt(e => {
 	if (e.source.type === 'ieWireShock') {
 		if (e.entity.isPlayer()) {
 			let i = 0;
@@ -201,17 +201,6 @@ onEvent('entity.hurt', e => {
 			if (i > 3) {
 				e.cancel();
 			}
-		}
-	}
-})
-
-onEvent('tfc.start_fire', e => {
-	let { level, block } = e;
-	let below = block.down;
-	if (block.id === 'create:fluid_tank' && CharcoalForgeBlock.isValid(level.minecraftLevel, below.pos) && e.isStrong()) {
-		let be = below.entity;
-		if (be instanceof CharcoalForge && be.light(below.blockState)) {
-			e.cancel();
 		}
 	}
 })

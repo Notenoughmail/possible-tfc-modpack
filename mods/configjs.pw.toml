@@ -1,13 +1,13 @@
 name = "ConfigJS"
-filename = "configjs-1.0.0.jar"
+filename = "configjs-1.0.1-1.20.1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "829fbe6f4b9431779a66587f7b4ab6d042404ffa"
+hash = "9cec0100de9935856845bd60d244df5ab6884cb8"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4988610
+file-id = 4995588
 project-id = 955036

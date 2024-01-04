@@ -6,7 +6,7 @@ let stones = ['granite', 'diorite', 'gabbro', 'shale', 'claystone', 'limestone',
 
 let sample_ores = ['bituminous_coal', 'lignite', 'kaolinite', 'graphite', 'gypsum', 'sulfur', 'cinnabar', 'cryolite', 'saltpeter', 'sylvite', 'borax', 'halite', 'kimberlite', 'emerald', 'lapis', 'copper', 'gold', 'hematite', 'silver', 'cassiterite', 'bismuthinite', 'garnierite', 'malachite', 'magnetite', 'limonite', 'sphalerite', 'tetrahedrite', 'lead', 'uranium', 'bauxite']
 
-onEvent('item.registry', e => {
+StartupEvents.registry('item', e => {
 	types.forEach(type => {
 		e.create('ore/' + type +'_lead')
 			.tag('tfc:ore_pieces')
@@ -14,34 +14,14 @@ onEvent('item.registry', e => {
 	e.create('leather_pouch')
 	e.create('dummy')
 	e.create('mold/ingot')
-	e.create('metal/double_ingot/constantan')
-		.tag('tfc:metal_item/constantan')
-		.tag('forge:double_ingots')
-		.tag('forge:double_ingots/constantan')
-	e.create('metal/double_ingot/electrum')
-		.tag('tfc:metal_item/electrum')
-		.tag('forge:double_ingots')
-		.tag('forge:double_ingots/electrum')
-	e.create('metal/double_ingot/lead')
+	e.create('rod/lead')
+		.tag('tfc:metal_item/lead')
+		.tag('forge:rods')
+		.tag('forge:rods/lead')
+	e.create('double_ingot/lead')
 		.tag('tfc:metal_item/lead')
 		.tag('forge:double_ingots')
 		.tag('forge:double_ingots/lead')
-	e.create('sheet/graphite')
-		.tag('forge:sheets')
-		.tag('tfc:metal_item/graphite')
-		.tag('tfc:pileable_sheets')
-	e.create('composite_catalyst')
-	e.create('sequence/light_component', 'create:sequenced_assembly')
-	e.create('sequence/heavy_component', 'create:sequenced_assembly')
-	e.create('sequence/heavy_engineering', 'create:sequenced_assembly')
-		.parentModel('immersiveengineering:item/light_engineering')
-	e.create('sequence/coke_brick', 'create:sequenced_assembly')
-		.parentModel('tfc:item/fire_bricks')
-	e.create('sequence/mv_capacitor', 'create:sequenced_assembly')
-		.parentModel('kubejs:item/frame/capacitor_mv')
-	e.create('sequence/hv_capacitor', 'create:sequenced_assembly')
-		.parentModel('kubejs:item/frame/capacitor_hv')
-	e.create('sequence/stained_wood_track', 'create:sequenced_assembly')
 	e.create('rubber_sheet')
 	e.create('rubber_bar')
 	e.create('latex_clump')
@@ -50,10 +30,7 @@ onEvent('item.registry', e => {
 	e.create('iron_belt_clip')
 })
 
-onEvent('item.modification', e => {
-	e.modify('immersiveengineering:glider', item => {
-		item.maxDamage = 500
-	})
+ItemEvents.modification(e => {
 	e.modify('create:copper_diving_helmet', item => {
 		item.maxDamage = 173
 	})
@@ -71,11 +48,12 @@ onEvent('item.modification', e => {
 	})
 })
 
-onEvent('block.registry', e => {
+StartupEvents.registry('block', e => {
 	stones.forEach(rock => {
 		types.forEach(type => {
 			e.create('ore/' + type + '_lead/' + rock)
-				.material('stone')
+				.stoneSoundType()
+				.mapColor('stone')
 				.hardness(3)
 				.tagBlock('minecraft:mineable/pickaxe')
 				.tagBlock('tfc:prospectable')
@@ -94,21 +72,20 @@ onEvent('block.registry', e => {
 			.noItem()
 			.displayName('For render purposes')
 	})
-	e.create('ore/small_lead', 'tfc:groundcover')
+	e.create('ore/small_lead', 'tfc:ground_cover')
 		.ore()
 		.hardness(0.1)
 		.tagBlock('tfc:can_be_snow_piled')
-		.material('stone')
+		.stoneSoundType()
+		.mapColor('stone')
 		.tagBlock('minecraft:mineable/pickaxe')
-		.tagBlock('immersiveengineering:mineable/drill')
 		.tagBlock('tfc:breaks_when_isolated')
 		.tagItem('tfc:small_ore_pieces')
 		.tagItem('tfc:nuggets')
 	e.create('frame/capacitor_mv') // Done this way to let the name be different in the lang file, as KubeJS's generated default overrides it
 	e.create('frame/capacitor_hv') // + expandability for future frames if that's something that happens
 	e.create('uranium_block')
-		.model('immersiveengineering:block/storage_uranium')
-		.randomTick(callback => {
+		.randomTick(callback => { // In the future move this to block modification of 
 			let pos = callback.block.pos;
 			let entities = callback.level.getEntitiesWithin(AABB.ofBlocks(pos.offset(-7, -7, -7), pos.offset(7, 7, 7)));
 			entities.forEach(entity => {
@@ -124,7 +101,7 @@ onEvent('block.registry', e => {
 				}
 			})
 		})
-		.material('metal')
+		// .material('metal')
 		.requiresTool(true)
 		.resistance(8)
 		.hardness(3.2)
@@ -132,44 +109,7 @@ onEvent('block.registry', e => {
 		.tagBlock('minecraft:mineable/pickaxe')
 })
 
-onEvent('fluid.registry', e => {
-	e.create('constantan')
-		.thickTexture(0xfc8d6f)
-		.bucketColor(0xfc8d6f)
-		.displayName('Molten Constantan')
-		.tag('tfc:molten_metals')
-		.tag('tfc:constantan')
-	e.create('electrum')
-		.thickTexture(0xf4e388)
-		.bucketColor(0xf4e388)
-		.displayName('Molten Electrum')
-		.tag('tfc:molten_metals')
-		.tag('tfc:electrum')
-	e.create('lead')
-		.thickTexture(0x4c5163)
-		.bucketColor(0x4c5163)
-		.displayName('Molten Lead')
-		.tag('tfc:molten_metals')
-		.tag('tfc:lead')
-	e.create('jutecrete')
-		.thinTexture(0x34342f)
-		.displayName('Liquid Jutecrete')
-		.noBlock()
-		.noBucket()
-	e.create('graphite')
-		.thickTexture(0x101010)
-		.displayName('Molten Graphite')
-		.noBlock()
-		.noBucket()
-		.tag('tfc:molten_metals')
-		.tag('tfc:graphite')
-	e.create('unrefined_graphite')
-		.thickTexture(0x080a08)
-		.displayName('Unrefined Molten Graphite')
-		.noBlock()
-		.noBucket()
-		.tag('tfc:molten_metals')
-		.tag('tfc:unrefined_graphite')
+StartupEvents.registry('fluid', e => {
 	e.create('diluted_milk')
 		.thinTexture(0xc3ccdb)
 		.displayName('Diluted Milk')
@@ -182,12 +122,6 @@ onEvent('fluid.registry', e => {
 		.displayName('Alumina Solution')
 		.noBlock()
 		.noBucket()
-	e.create('asphalt')
-		.thinTexture(0x1f1919)
-		.displayName('Molten Asphalt')
-		.noBlock()
-		.noBucket()
-		.tag('kubejs:asphalt')
 	e.create('ethy_prop_rubber')
 		.thickTexture(0x0c1413)
 		.displayName('Ethylene-Propylene Rubber')
@@ -203,6 +137,6 @@ onEvent('fluid.registry', e => {
 		.tag('kubejs:latex')
 })
 
-onEvent('sound_event.registry', e => {
+StartupEvents.registry('sound_event', e => {
 	e.create('rocket')
 })
