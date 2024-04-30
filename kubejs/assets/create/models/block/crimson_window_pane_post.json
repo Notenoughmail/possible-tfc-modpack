@@ -1,7 +1,0 @@
-{
-	"parent": "create:block/connected_glass_pane/post",
-	"textures": {
-		"pane": "create:block/palettes/crimson_window",
-		"edge": "tfc:block/metal/full/rose_gold"
-	}
-}

@@ -1,12 +1,12 @@
 name = "Possible TFC Pack"
 author = "NotEnoughMail"
-version = "0.0.1"
+version = "0.0.2"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "8f9237c0801ba11dee8b6f9065b5496e22eac1ad582238ee4e562c94aa2932b0"
+hash = "dd3563e5b13ef6ed8ccaa3bed9eb7b26332ddce429b6d01a4ef857d430ca8c90"
 
 [versions]
 forge = "47.2.6"

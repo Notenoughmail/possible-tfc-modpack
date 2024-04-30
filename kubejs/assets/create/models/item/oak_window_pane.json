@@ -1,7 +1,0 @@
-{
-  "parent": "create:item/pane",
-  "textures": {
-    "pane": "create:block/palettes/oak_window",
-    "edge": "tfc:block/metal/full/brass"
-  }
-}

@@ -1,13 +1,13 @@
 name = "Tool Belt Retextured"
-filename = "Tool_Belt_Retextured_1.20.x.zip"
+filename = "Tool_Belt_Retextured_1.20.x_V3.zip"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "53d66ef2535be43c85aecc1348805ef28b3d363d"
+hash = "104713cd449a26c6c5b3637fee344b8b6da05cd0"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 4647471
+file-id = 5238574
 project-id = 504062

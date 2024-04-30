@@ -1,0 +1,13 @@
+name = "Fullblock Energistics"
+filename = "fulleng-forge-1.7.1-1.20.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3c13c23cca4df5896e145377ad74853649e83a29"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5296303
+project-id = 776293

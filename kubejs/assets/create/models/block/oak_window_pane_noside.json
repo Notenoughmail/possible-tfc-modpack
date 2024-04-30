@@ -1,7 +1,0 @@
-{
-	"parent": "create:block/connected_glass_pane/noside",
-	"textures": {
-		"pane": "create:block/palettes/oak_window",
-		"edge": "tfc:block/metal/full/brass"
-	}
-}

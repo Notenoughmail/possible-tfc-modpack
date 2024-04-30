@@ -1,178 +1,154 @@
-global.clientConfig = {};
-global.clientConfig.customization = {};
-global.clientConfig.debug = {};
-
-global.serverConfig = {};
-global.serverConfig.debug = {};
 
 global.commonConfig = {};
 
-// There's no method to check/get the living entity so had to resort to this
-const LivingEntity = Java.loadClass("net.minecraft.world.entity.LivingEntity");
-const CharcoalForge = Java.loadClass("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity");
-const FirePit = Java.loadClass("net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity");
-const CharcoalForgeBlock = Java.loadClass("net.dries007.tfc.common.blocks.devices.CharcoalForgeBlock");
-const FirePitBlock = Java.loadClass("net.dries007.tfc.common.blocks.devices.FirepitBlock");
-const MCF = Java.loadClass("net.minecraftforge.common.MinecraftForge");
-const Class = Java.loadClass("java.lang.Class");
-const ChunkData = Java.loadClass("net.dries007.tfc.world.chunkdata.ChunkData");
+Platform.setModName("configjs", "Possible TFC Pack");
+
+const GameEvent = Java.loadClass('net.minecraft.world.level.gameevent.GameEvent');
+const ItemEntity = Java.loadClass('net.minecraft.world.entity.item.ItemEntity');
+const FarmlandBlock = Java.loadClass('net.dries007.tfc.common.blocks.soil.FarmlandBlock');
 
 ConfigsEvent.client(e => {
+	global.clientConfig = {};
 	e.setName('possible-tfc-pack-client');
 	e.push('customization');
+	global.clientConfig.customization = {};
 	e.comment('Determines the TFC temperature scale to be used when wearing a thermometer, forces COLOR if not wearing a thermometer');
 	global.clientConfig.customization.thermometerScale = e.enumValue('thermometerTemperatureScale', 'Celsius', ['Celsius', 'Fahrenheit', 'Kelvin', 'Rankine']);
 	e.pop();
 	e.push('debug');
+	global.clientConfig.debug = {};
 	global.clientConfig.debug.enabled = e.booleanValue('enabled', false);
 })
 
 ConfigsEvent.server(e => {
+	global.serverConfig = {};
 	e.setName('possible-tfc-pack-server');
 	e.push('debug');
+	global.serverConfig.debug = {};
 	e.comment('Enables server debug mode');
 	global.serverConfig.debug.enabled = e.booleanValue('enabled', false)
 	e.comment('Adds debug recipes')
-	global.serverConfig.debug.debugRecipes = e.booleanValue('debugRecipes', true);
-})
-
-/*
-CreateEvents.pipeFluidEffect(e => {
-	e.add(Fluid.of('tfc:spring_water'), (pipe, fluid) => {
-		let level = pipe.getWorld();
-		let entities = level.getEntities(null, pipe.getAOE());
-		if (level.random.nextInt(10) == 0) {
-			entities.forEach(entity => {
-				if (entity instanceof LivingEntity) {
-					entity.heal(0.08);
-				}
-			})
-		}
-	})
-})
-
-CreateEvents.boilerHeatHandler(e => {
-	e.add('kubejs:uranium_block', block => {
-		return 0;
-	})
-	e.add('tfc:firepit', block => {
-		if (!block.blockState.getValue(FirePitBlock.LIT)) {
-			return -1;
-		}
-		let pit = block.getEntity();
-		if (pit instanceof FirePit) {
-			if (pit.getTemperature() < 100) {
-				return -1;
-			}
-			return (pit.getTemperature() / 500);
-		}
-		return -1;
-	})
-	e.add('tfc:pot', block => {
-		if (!block.blockState.getValue(FirePitBlock.LIT)) {
-			return -1;
-		}
-		let pot = block.getEntity();
-		if (pot instanceof FirePit) {
-			if (pot.getTemperature() < 100) {
-				return -1;
-			}
-			return (pot.getTemperature() / 500);
-		}
-		return -1;
-	})
-	e.add('tfc:grill', block => {
-		if (!block.blockState.getValue(FirePitBlock.LIT)) {
-			return -1;
-		}
-		let grill = block.getEntity();
-		if (grill instanceof FirePit) {
-			if (grill.getTemperature() < 100) {
-				return -1;
-			}
-			return (grill.getTemperature() / 500);
-		}
-		return -1;
-	})
-	e.add('tfc:charcoal_forge', block => {
-		if (block.blockState.getValue(CharcoalForgeBlock.HEAT) < 2) {
-			return -1;
-		}
-		let forge = block.getEntity();
-		if (forge instanceof CharcoalForge) {
-			return (forge.getTemperature() / 500);
-		}
-		return -1;
-	})
-})
-*/
-
-// And they say you can't have nbt based textures!
-ItemEvents.modelProperties(e => {
-	// Yes, this is the event this must be called in, despite it being a startup event, when internally its a *client* event
-	// if (Platform.isClientEnvironment()) {
-	// 	let RenderTypeRegistry = Java.loadClass("dev.architectury.registry.client.rendering.RenderTypeRegistry");
-	// 	let RenderType = Java.loadClass("net.minecraft.client.renderer.RenderType");
-	// 	RenderTypeRegistry['register(net.minecraft.client.renderer.RenderType,net.minecraft.world.level.block.Block[])'](RenderType.cutoutMipped(), [STAINED_TRACK_BLOCK.get()]);
-	// }
+	global.serverConfig.debug.debugRecipes = e.booleanValue('debugRecipes', false);
 })
 
 MoreJSEvents.registerPotionBrewing(e => {
 	e.removeByPotion(null, null, null)
 })
 
-StartupEvents.init(e => {
-	// MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
-	// 	'lowest',
-	// 	false,
-	// 	Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Flow'),
-	// 	/**
-	// 	 * @param {Internal.PipeCollisionEvent$Flow} event 
-	// 	 */
-	// 	event => handlePipeCollision(event, event.firstFluid.arch$registryName(), event.secondFluid.arch$registryName())
-	// );
-	// MCF.EVENT_BUS['addListener(net.minecraftforge.eventbus.api.EventPriority,boolean,java.lang.Class,java.util.function.Consumer)'](
-	// 	'lowest',
-	// 	false,
-	// 	Class.forName('com.simibubi.create.api.event.PipeCollisionEvent$Spill'),
-	// 	/**
-	// 	 * @param {Internal.PipeCollisionEvent$Spill} event 
-	// 	 */
-	// 	event => handlePipeCollision(event, event.worldFluid.arch$registryName(), event.pipeFluid.arch$registryName())
-	// );
+EntityJSEvents.attributes(event => {
+	event.modify('kubejs:rocket', attributes => {
+		attributes.add('forge:entity_gravity', 0)
+		attributes.add('minecraft:generic.max_health', 1)
+		attributes.add('minecraft:generic.knockback_resistance', 1)
+	})
 })
 
-/**
- * @param {Internal.PipeCollisionEvent_} event 
- * @param {ResourceLocation} f0 
- * @param {ResourceLocation} f1 
- */
-function handlePipeCollision(event, f0, f1) {
-	event.setState(null);
-	if (((f0 == 'minecraft:water' || f0 == 'minecraft:flowing_water') && (f1 == 'minecraft:lava' || f1 == 'minecraft:flowing_lava')) || ((f0 == 'minecraft:lava' || f0 == 'minecraft:flowing_lava') && (f1 == 'minecraft:water' || f1 == 'minecraft:flowing_water'))) {
-		event.setState(waterLavaInteractionAtPosition(event.level, event.pos));
-	}
-}
+TFCEvents.prospectRepresentative(e => {
+	global.gradedOres.forEach(ore => {
+		let ores = [];
+		TFC.misc.rock.keySet().forEach(rock => {
+			global.oreGrades.forEach(grade => {
+				ores.push(`kubejs:ore/${grade}_${ore}/${rock}`)
+			});
+		});
+		e.registerRepresentative(`kubejs:ore/normal_${ore}/dacite`, ores);
+	})
+	global.ungradedOres.forEach(ore => {
+		let ores = [];
+		TFC.misc.rock.keySet().forEach(rock => {
+			ores.push(`kubejs:ore/${ore}/${rock}`)
+		});
+		e.registerRepresentative(`kubejs:ore/${ore}/dacite`, ores);
+	});
+	e.registerRepresentative('ae2:flawless_budding_quartz', 'ae2:flawed_budding_quartz', 'ae2:chipped_budding_quartz', 'ae2:damaged_budding_quartz');
+})
 
-/**
- * @param {Internal.PipeCollisionEvent_} event 
- * @param {ResourceLocation} block 
- */
-function setEventState(event, block) {
-	event.setState(Block.getBlock(block).defaultBlockState());
-}
+ForgeEvents.onEvent('net.minecraftforge.event.VanillaGameEvent', e => global.vanillaGameEvent(e.level, e.cause, e.vanillaEvent, e.eventPosition, e.context))
+ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioEquipEvent', e => global.curioEquipEvent(e))
+ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioUnequipEvent', e => global.curioUnequipEvent(e))
 
 /**
  * @param {Internal.Level} level 
- * @param {BlockPos} pos 
- * @returns 
+ * @param {Internal.Entity} entity may be null
+ * @param {Internal.GameEvent} gameEvent 
+ * @param {Vec3d} position 
+ * @param {Internal.GameEvent$Context} context 
  */
-function waterLavaInteractionAtPosition(level, pos) {
-	let chunkData = ChunkData.get(level, pos);
-	let status = chunkData.status;
-	if (status === status["FULL"]) {
-		return chunkData.rockData.getRock(pos).hardened().defaultBlockState();
-	} else {
-		return Block.getBlock('tfc:rock/hardened/rhyolite').defaultBlockState();
+global.vanillaGameEvent = (level, entity, gameEvent, position, context) => {
+	let pos = BlockPos.containing(position);
+	if (gameEvent == GameEvent.LIGHTNING_STRIKE) {
+		console.warn('kaboom 0');
+		let block = level.getBlock(position.x(), position.y(), position.z()).down;
+		console.warn(block.id);
+		// Summon glass if hit in sand
+		if (block.hasTag('kubejs:glass_sand')) {
+			console.warn('kaboom 1');
+			let hydration = FarmlandBlock.getHydration(level, pos);
+			console.warn(hydration);
+			if (hydration >= 30) {
+				console.warn('kaboom 2');
+				let stack = Item.of('kubejs:fulgurite', hydration / 25);
+				console.error(stack);
+				// level.addFreshEntity(item);
+				block.popItemFromFace(stack, 'up');
+			}
+		}
 	}
+}
+
+/**
+ * @param {Internal.CurioEquipEvent} event
+ */
+global.curioEquipEvent = (event) => {
+	let { slotContext, stack, entity, result } = event;
+	if (entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
+		entity.persistentData.putBoolean('hasThermometer', true);
+	}
+}
+
+/**
+ * @param {Internal.CurioUnequipEvent} event
+ */
+global.curioUnequipEvent = (event) => {
+	let { slotContext, stack, entity, result } = event;
+	if (entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
+		entity.persistentData.putBoolean('hasThermometer', false);
+	}
+}
+
+if (Platform.isClientEnvironment()) {
+	let sapConstructor = Java.loadClass('net.minecraft.client.particle.SimpleAnimatedParticle').__javaObject__.declaredConstructors[0];
+	sapConstructor.setAccessible(true);
+	let zero = Float.valueOf(0); // When passing in a raw Object... it never hurts to be cautious
+	let frictionField = Java.loadClass('net.minecraft.client.particle.Particle').__javaObject__.getDeclaredField('f_172258_'); // protected float friction
+	frictionField.setAccessible(true);
+	/**
+	 * @param {Internal.RegisterParticleProvidersEvent} event 
+	 */
+	global.registerParticleProvider = (event) => {
+		event.registerSpriteSet(global.rocketPlumeSupplier.get(), set => {
+			return (particleOptions, clientLevel, x, y, z, xSpeed, ySpeed, zSpeed) => {
+				let plume = sapConstructor.newInstance(clientLevel, x, y, z, set, zero);
+				plume.setParticleSpeed(xSpeed, ySpeed, zSpeed);
+				plume.scale(5);
+				plume.setLifetime(65);
+				plume.setSpriteFromAge(set); // The sprite gets accessed before the first tick happens
+				frictionField.setFloat(plume, 1);
+				return plume;
+			}
+		})
+		event.registerSpriteSet(global.rocketPlumeEjectaSupplier.get(), set => {
+			return (particleOptions, clientLevel, x, y, z, xSpeed, ySpeed, zSpeed) => {
+				let ejecta = sapConstructor.newInstance(clientLevel, x, y, z, set, zero);
+				ejecta.setParticleSpeed(xSpeed, ySpeed, zSpeed);
+				ejecta.scale(3);
+				ejecta.setLifetime(50);
+				ejecta.setSpriteFromAge(set);
+				frictionField.setFloat(ejecta, 1);
+				return ejecta;
+			}
+		})
+	}
+
+	ForgeModEvents.onEvent('net.minecraftforge.client.event.RegisterParticleProvidersEvent', e => global.registerParticleProvider(e));
 }

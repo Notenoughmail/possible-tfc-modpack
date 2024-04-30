@@ -1,0 +1,13 @@
+name = "Thorium Reactors"
+filename = "thoriumreactors-1.20.1-0.1.6b-all.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "63cd5f078b06beaa762426778417fd0108781d15"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5155197
+project-id = 775514

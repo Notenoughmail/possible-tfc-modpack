@@ -3,17 +3,23 @@
 const ClientTFCConfig = Java.loadClass("net.dries007.tfc.config.TFCConfig").CLIENT;
 const TemperatureStyle = Java.loadClass("net.dries007.tfc.config.TemperatureDisplayStyle");
 
-const C = ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Celsius')
-const K = ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Kelvin')
-const F = ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Fahrenheit')
-const R = ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Rankine')
+const JadeConfig = Java.loadClass("snownee.jade.impl.config.PluginConfig").INSTANCE;
 
-let thermometerScaleMap = {
-	C: TemperatureStyle['CELSIUS'],
-	K: TemperatureStyle['KELVIN'],
-	F: TemperatureStyle['FAHRENHEIT'],
-	R: TemperatureStyle['RANKINE']
-}
+let configThermo = [
+	null, // Skip index 0
+	ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Celsius'),
+	ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Kelvin'),
+	ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Fahrenheit'),
+	ConfigJS.getOtherValueFromEnumConfig(global.clientConfig.customization.thermometerScale, 'Rankine')
+]
+
+let tfcThermo = [
+	TemperatureStyle['COLOR'],
+	TemperatureStyle['CELSIUS'],
+	TemperatureStyle['KELVIN'],
+	TemperatureStyle['FAHRENHEIT'],
+	TemperatureStyle['RANKINE']
+]
 
 JEIEvents.hideItems(e => {
 	e.hide('minecraft:chest_minecart')
@@ -52,7 +58,7 @@ JEIEvents.hideItems(e => {
 	e.hide('tfc:snow_pile')
 	e.hide('tfc:ice_pile')
 	e.hide('minecraft:dirt_path')
-	e.hide(Item.of('minecraft:enchanted_book').ignoreNBT())
+	e.hide('minecraft:enchanted_book')
 	e.hide(/minecraft:brick.+/)
 	e.hide(/minecraft:.*(?:log|wood|planks|stem|hyphae|purpur|nether|sapling|leaves|sign|fence|prismarine).*/)
 	e.hide(/.*netherite.*/)
@@ -89,45 +95,45 @@ JEIEvents.addItems(e => {
 
 JEIEvents.removeCategories(e => {
 	//console.log(e.getCategoryIds())
-	e.remove('minecraft:anvil')
-	e.remove('minecraft:blasting')
-	e.remove('minecraft:brewing')
-	e.remove('minecraft:campfire')
-	e.remove('minecraft:compostable')
-	e.remove('minecraft:fuel')
-	e.remove('minecraft:furnace')
-	e.remove('minecraft:smithing')
-	e.remove('minecraft:smoking')
-	e.remove('minecraft:stonecutting')
+	e.remove([
+		'minecraft:anvil',
+		'minecraft:blasting',
+		'minecraft:brewing',
+		'minecraft:campfire',
+		'minecraft:compostable',
+		'minecraft:fuel',
+		'minecraft:furnace',
+		'minecraft:smithing',
+		'minecraft:smoking',
+		'minecraft:stonecutting'
+	])
 })
-let rocketList = null;
 
 ClientEvents.tick(e => {
-	/*
-	let levelJS = e.level;
-	if (rocketList == null || levelJS.time % 20 < 1) {
-		rocketList = levelJS.entities.filter(entity => {
-			return entity.type == "kubejs:rocket";
-		});
+	let { level, player } = e;
+	if (level.time % 20 == 0) {
+		let { persistentData } = player;
+		let { hasThermometer } = persistentData;
+
+		let currentHeatIndex = tfcThermo.indexOf(ClientTFCConfig.heatTooltipStyle.get());
+
+		if (hasThermometer) {
+			let index = configThermo.indexOf(global.clientConfig.customization.thermometerScale.get());
+			if (currentHeatIndex != index) {
+				ClientTFCConfig.heatTooltipStyle.set(tfcThermo[index]);
+			}
+		} else {
+			if (currentHeatIndex) {
+				ClientTFCConfig.heatTooltipStyle.set(tfcThermo[0]);
+			}
+		}
 	}
-	if (rocketList != null) {
-		rocketList.forEach(rocket => {
-			levelJS.minecraftLevel.addParticle(IPParticleTypes.FLARE_FIRE, true, rocket.x, rocket.y, rocket.z, 0, -0.3, 0);
-		});
-	}
-	*/
 })
 
-NetworkEvents.dataReceived('thermometer', e => {
-	let {data} = e;
-	let scale = TemperatureStyle['COLOR'];
-	if (data.hasThermometer) {
-		scale = thermometerScaleMap[global.clientConfig.customization.thermometerScale.get()];
-	}
-	if (ClientTFCConfig.heatTooltipStyle.get() != scale) {
-		ClientTFCConfig.heatTooltipStyle.set(scale);
-	}
-	if (ClientTFCConfig.climateTooltipStyle.get() != scale) {
-		ClientTFCConfig.climateTooltipStyle.set(scale);
-	}
+NetworkEvents.dataReceived('rocket_explosion', e => {
+	Client.soundManager.stop('kubejs:rocket', null);
+})
+
+NetworkEvents.dataReceived('swing', e => {
+	e.player.swing();
 })
