@@ -35,7 +35,7 @@ TFCEvents.data(e => {
 	
 	e.itemSize('toolbelt:belt', 'very_large', 'heavy');
 	e.itemSize('toolbelt:pouch', 'normal', 'light');
-	e.itemSize(['#morered:network_cables', '#morered:red_alloy_wires'], 'tiny', 'very_light');
+	e.itemSize(['#morered:network_cables', '#morered:red_alloy_wires'], 'tiny', 'light');
 
 	e.metal(
 		'firmalife:metal/chromium',

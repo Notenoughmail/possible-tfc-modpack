@@ -22,7 +22,7 @@ ServerEvents.recipes(e => {
 		tfc.collapse('kubejs:ore/poor_lead/' + stone, 'kubejs:ore/normal_lead/' + stone);
 		tfc.collapse('tfc:rock/cobble/' + stone, 'kubejs:ore/poor_lead/' + stone);
 	});
-	colors.forEach(color => {
+	global.colors.forEach(color => {
 		thoriumreactors.crystallizing(`minecraft:${color}_dye`, Fluid.of(`tfc:${color}_dye`, 1000), 20, 2)
 			.id(`kubejs:crystallizing/${color}_dye`);
 		tfc.barrel_sealed(1000)
@@ -120,14 +120,6 @@ ServerEvents.recipes(e => {
 		D: 'tfc:lamp_glass',
 		E: 'tfc:metal/rod/cast_iron'
 	}).id('exposure:lightroom');
-	minecraft.crafting_shaped('electrodynamics:wrench', [
-		' X ',
-		' YX',
-		'X  '
-	], {
-		X: 'tfc:metal/rod/steel',
-		Y: 'tfc:metal/ingot/wrought_iron'
-	}).id('electrodynamics:wrench');
 	minecraft.crafting_shaped('morered:multiplexer', [
 		'SAS',
 		'ABA',
@@ -421,63 +413,6 @@ ServerEvents.recipes(e => {
 		.id('kubejs:casting/fire_redstone_alloy_ingot');
 
 	// Chisel
-	// TODO: is this needed with TFC's copper blocks now
-	tfc.chisel('minecraft:cut_copper', 'minecraft:copper_block', 'smooth')
-		.id('kubejs:chisel/smooth/cut_copper');
-	tfc.chisel('minecraft:cut_copper_stairs', 'minecraft:cut_copper', 'stair')
-		.id('kubejs:chisel/stair/cut_copper');
-	tfc.chisel('minecraft:cut_copper_slab', 'minecraft:cut_copper', 'slab')
-		.extraDrop('minecraft:cut_copper_slab')
-		.id('kubejs:chisel/slab/cut_copper');
-	tfc.chisel('minecraft:exposed_cut_copper', 'minecraft:exposed_copper', 'smooth')
-		.id('kubejs:chisel/smooth/exposed_cut_copper');
-	tfc.chisel('minecraft:exposed_cut_copper_stairs', 'minecraft:exposed_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/exposed_cut_copper');
-	tfc.chisel('minecraft:exposed_cut_copper_slab', 'minecraft:exposed_cut_copper', 'slab')
-		.extraDrop('minecraft:exposed_cut_copper_slab')
-		.id('kubejs:chisel/slab/exposed_cut_copper');
-	tfc.chisel('minecraft:weathered_cut_copper', 'minecraft:weathered_copper', 'smooth')
-		.id('kubejs:chisel/smooth/weathered_cut_copper');
-	tfc.chisel('minecraft:weathered_cut_copper_stairs', 'minecraft:weathered_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/weathered_cut_copper');
-	tfc.chisel('minecraft:weathered_cut_copper_slab', 'minecraft:weathered_cut_copper', 'slab')
-		.extraDrop('minecraft:weathered_cut_copper_slab')
-		.id('kubejs:chisel/slab/weathered_cut_copper');
-	tfc.chisel('minecraft:oxidized_cut_copper', 'minecraft:oxidized_copper', 'smooth')
-		.id('kubejs:chisel/smooth/oxidized_cut_copper');
-	tfc.chisel('minecraft:oxidized_cut_copper_stairs', 'minecraft:oxidized_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/oxidized_cut_copper');
-	tfc.chisel('minecraft:oxidized_cut_copper_slab', 'minecraft:oxidized_cut_copper', 'slab')
-		.extraDrop('minecraft:oxidized_cut_copper_slab')
-		.id('kubejs:chisel/slab/oxidized_cut_copper');
-	tfc.chisel('minecraft:waxed_cut_copper', 'minecraft:waxed_copper_block', 'smooth')
-		.id('kubejs:chisel/smooth/waxed_cut_copper');
-	tfc.chisel('minecraft:waxed_cut_copper_stairs', 'minecraft:waxed_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/waxed_cut_copper');
-	tfc.chisel('minecraft:waxed_cut_copper_slab', 'minecraft:waxed_cut_copper', 'slab')
-		.extraDrop('minecraft:waxed_cut_copper_slab')
-		.id('kubejs:chisel/slab/waxed_cut_copper');
-	tfc.chisel('minecraft:waxed_exposed_cut_copper', 'minecraft:waxed_exposed_copper', 'smooth')
-		.id('kubejs:chisel/smooth/waxed_exposed_cut_copper');
-	tfc.chisel('minecraft:waxed_exposed_cut_copper_stairs', 'minecraft:waxed_exposed_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/waxed_exposed_cut_copper');
-	tfc.chisel('minecraft:waxed_exposed_cut_copper_slab', 'minecraft:waxed_exposed_cut_copper', 'slab')
-		.extraDrop('minecraft:waxed_exposed_cut_copper_slab')
-		.id('kubejs:chisel/slab/waxed_exposed_cut_copper');
-	tfc.chisel('minecraft:waxed_weathered_cut_copper', 'minecraft:waxed_weathered_copper', 'smooth')
-		.id('kubejs:chisel/smooth/waxed_weathered_cut_copper');
-	tfc.chisel('minecraft:waxed_weathered_cut_copper_stairs', 'minecraft:waxed_weathered_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/waxed_weathered_cut_copper');
-	tfc.chisel('minecraft:waxed_weathered_cut_copper_slab', 'minecraft:waxed_weathered_cut_copper', 'slab')
-		.extraDrop('minecraft:waxed_weathered_cut_copper_slab')
-		.id('kubejs:chisel/slab/waxed_weathered_cut_copper');
-	tfc.chisel('minecraft:waxed_oxidized_cut_copper', 'minecraft:waxed_oxidized_copper', 'smooth')
-		.id('kubejs:chisel/smooth/waxed_oxidized_cut_copper');
-	tfc.chisel('minecraft:waxed_oxidized_cut_copper_stairs', 'minecraft:waxed_oxidized_cut_copper', 'stair')
-		.id('kubejs:chisel/stair/waxed_oxidized_cut_copper');
-	tfc.chisel('minecraft:waxed_oxidized_cut_copper_slab', 'minecraft:waxed_oxidized_cut_copper', 'slab')
-		.extraDrop('minecraft:waxed_oxidized_cut_copper_slab')
-		.id('kubejs:chisel/slab/waxed_oxidized_cut_copper');
 	tfc.chisel('thoriumreactors:industrial_block_paving', 'thoriumreactors:industrial_block', 'smooth')
 		.id('kubejs:chisel/smooth/industrial_paving');
 	tfc.chisel('thoriumreactors:white_industrial_block_paving', 'thoriumreactors:white_industrial_block', 'smooth')

@@ -198,7 +198,7 @@ hash = "81612558902de821b1eb2a068573cf217124766360e6641df94bc7833e2f4ad6"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "8f643ba743430a0d77ac9bfea3d27da3f2c1e6821535a8dd0708db2aca164e8d"
+hash = "98f39b617b93055b9914ed6a45fe1ec9948fd60bcd42c3f4c451c4292d4b7317"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -206,23 +206,19 @@ hash = "0add240ba0e56f24b5475737bd020de41c23e275d4a9cd6d534000979ee10ccb"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "65a6d69dd80bc96b7564276e403cdd503f3a20c1ae0da3de0aead0bdf39094dd"
+hash = "3af87161114cc93a7b7c3a7ce9a6515093dcd61e930902308ad4136e0f1a6194"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "03ee55c3357629dc9e2ff342505c2506869c1829f157fb6994e899ee16e2058f"
+hash = "89ee1d2b005af0d6890b25dd06c43b71659e8339c24a87b331d39e28ad2fdf9a"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
 hash = "52bd6a796f438273be86a1b9e3f874b84f49cbd1a08a49550ac82585766d23eb"
 
 [[files]]
-file = "kubejs/server_scripts/server_constants.js"
-hash = "877f017a42990966e0650c1b2665eb19fb2f249c11257d0bc81dcad4148c7d6a"
-
-[[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "b2ae52c58d88ae2e3f9b205036390cb5b553754edfc5b3ccdae040e77e08063d"
+hash = "95344fcccbc3f95f7715c60a4929dd39594d0a9b5238c1afb46fad5aa0b08f70"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -238,7 +234,7 @@ hash = "28758c8520d82d7074b77e7a476e1069cf75bc759f4a606c23621fa4ce647e75"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
-hash = "78c08ed2d309447974a14c407b109e8c035e5777ab414640c40d23fdea475efd"
+hash = "1c05c88d558402e04a4391baae86128f3c2ec03e18b63c3c326540cde5d37cec"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"

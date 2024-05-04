@@ -131,4 +131,9 @@ ClientEvents.lang('en_us', e => {
     e.add('jade.tooltip.kubejs.horizontal_support', 'Horizontal: %d');
     e.add('jade.tooltip.kubejs.up_support', 'Up: %d');
     e.add('jade.tooltip.kubejs.down_support', 'Down: %d');
+
+    e.add('kubejs.tooltip.heats_to', 'When heated sufficiently:');
+    e.add('kubejs.tooltip.heats_to_liquid', '%smB of %s');
+    e.add('kubejs.tooltip.heats_to_item', '~%sx %s');
+    e.add('kubejs.tooltip.alloys_to', 'Alloy produced: %s');
 })

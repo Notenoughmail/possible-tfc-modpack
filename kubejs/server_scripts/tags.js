@@ -378,8 +378,6 @@ ServerEvents.tags('item', e => {
 
 ServerEvents.tags('fluid', e => {
 
-	e.removeAll('forge:plantoil');
-
 	e.add('tfc:molten_metals', [
 		'firmalife:metal/stainless_steel',
 		'firmalife:metal/chromium'
