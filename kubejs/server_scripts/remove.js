@@ -33,7 +33,7 @@ ServerEvents.recipes( e => {
 				'minecraft:gold_block',
 				'minecraft:bucket',
 				'minecraft:glass_bottle',
-				/thoriumreactors:.*chest.*/
+				/thoriumreactors:.*(?:chest|ore).*/
 			]
 		}, {
 			input: [

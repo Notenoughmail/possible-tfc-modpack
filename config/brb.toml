@@ -1,5 +1,4 @@
 enablePinning = true
-darkMode = false
 keepCentered = true
 settingsButton = false
 enableBook = true
@@ -10,11 +9,12 @@ enableBounce = false
 
 [instantCraft]
 showButton = true
+enabled = false
 
 [alternativeRecipes]
 onHover = true
 noGrouped = false
 
 [scrolling]
-enableScrolling = true
-scrollAround = true
+enableScrolling = false
+scrollAround = false

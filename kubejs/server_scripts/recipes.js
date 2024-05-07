@@ -289,6 +289,12 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/sheet/copper',
 		B: 'thoriumreactors:thermal_conductor'
 	}).id('thoriumreactors:thorium_crafting/thermal_heatsink');
+	minecraft.crafting_shaped('minecraft:amethyst_block', [
+		'SS',
+		'SS'
+	], {
+		S: 'tfc:gem/amethyst'
+	}).id('minecraft:amethyst_block');
 
 	// Anvil
 	tfc.anvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last'])

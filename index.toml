@@ -6,7 +6,7 @@ hash = "926d41c6c175375678e009fd56e0b9592e1968882d7f829f91f144e6d79df666"
 
 [[files]]
 file = "config/brb.toml"
-hash = "0095be7302654cc22f5d114acc560430ca4f8def76830eae8b94f97b9297230b"
+hash = "8451ddf50157dc56d34e361cf75822aa0da90769e76bd8836b1ff8869f04674b"
 
 [[files]]
 file = "config/curios-client.toml"
@@ -170,19 +170,19 @@ hash = "40dae16df51701c378e76da452199a1f143d17b073da34e63cbf41ab24244e74"
 
 [[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "79b34fd385afc93f83e482ea4deae37689ae8b2231290e62a828648d3650c193"
+hash = "0f370ed3c5af36fb40d1f12511dd6a54214c7910e5af444bd333a42d186b6feb"
 
 [[files]]
 file = "kubejs/client_scripts/recipes.js"
-hash = "6dc83ee39faaa8d457b6e5dc6e6d0aa1552749b75c7d3e8eb7201262ac192e9d"
+hash = "8e9a2a46c9eae526692a0232ecf9cbaf314ef411f549c832f46fa8c88fc5716d"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "bdc909f4aefebd23108d9b3883986473f061530ac86f72497932b762f2aaac66"
+hash = "4e87648865f545af9c5a7b27b224357ea3bc5c60967d656241250a98f728be10"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "68572cc791cdd0f7b10193c2581e840994a757eeabad374fea96c232a09fa0cc"
+hash = "c4d13adecea8753f5bf72766618f141a28a1b686340b39f97bc8d76363f12894"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -194,7 +194,7 @@ hash = "58305bb3323965c2979a225619d211641c3962779064f189b8f2b849dbad9e6f"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
-hash = "81612558902de821b1eb2a068573cf217124766360e6641df94bc7833e2f4ad6"
+hash = "508c8d20b5dd4d3ffd2640ec5b5b1f8d0704435a7c8a0925e6e99b3e7434d8f1"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
@@ -210,15 +210,15 @@ hash = "3af87161114cc93a7b7c3a7ce9a6515093dcd61e930902308ad4136e0f1a6194"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "89ee1d2b005af0d6890b25dd06c43b71659e8339c24a87b331d39e28ad2fdf9a"
+hash = "6a82407c45b681939de8bcfd006fcf23f122a67069118f26f2bfef25c8ec0717"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "52bd6a796f438273be86a1b9e3f874b84f49cbd1a08a49550ac82585766d23eb"
+hash = "2f50db25f37a77230f1b5360b10162153581bbdea2151f89006b3304a35cf1bf"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "95344fcccbc3f95f7715c60a4929dd39594d0a9b5238c1afb46fad5aa0b08f70"
+hash = "c68abca5b80bebb37da0ff6ff6f7bf540845dd8b68cd749c2f084db0fbafbadb"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -230,7 +230,7 @@ hash = "568cada70ef654aa3a6763f90796d31bc03b22f36373d3ee0e3a37721e9f81cf"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "28758c8520d82d7074b77e7a476e1069cf75bc759f4a606c23621fa4ce647e75"
+hash = "60286ee7b799751ca11107c334dc43a52672679646c87ca4bd5a81396a25af4a"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
@@ -318,7 +318,7 @@ metafile = true
 
 [[files]]
 file = "mods/embeddium.pw.toml"
-hash = "56ba4521e19908bbca80a4832c3acf92683ea2376e808628e5ae775b1857f304"
+hash = "f4072fa34f5089d9d5bedda848e5926d5b36f378908de01ffb38469968c927c2"
 metafile = true
 
 [[files]]
@@ -338,7 +338,7 @@ metafile = true
 
 [[files]]
 file = "mods/firmacivilization.pw.toml"
-hash = "da4202a5fed7822eecfe8721f03f0ba73e42f25559656d4edd20464f902fca77"
+hash = "3dc88d6a8529d2485007d9c90eb404b3f62a8930414dcb0a61b62ff32aa7641e"
 metafile = true
 
 [[files]]
@@ -393,7 +393,7 @@ metafile = true
 
 [[files]]
 file = "mods/mega-cells.pw.toml"
-hash = "702d6c190db828a1c76d8ead5b937691abc6a8c92046ec1c65f09dc557f27cb6"
+hash = "8dcded48817b3313cc796df6e3e193c399f17d19377ff6bc6b4a97b5f18bd75c"
 metafile = true
 
 [[files]]
@@ -418,7 +418,12 @@ metafile = true
 
 [[files]]
 file = "mods/morejs.pw.toml"
-hash = "e9328ccddce3d4f85d0fe10394e37b289d8dc13e5ec03112c6c4533bea351285"
+hash = "19e2f5faa9bcdc20a377198e232f2566d87b7bf7bf82c0764add649a3741a38f"
+metafile = true
+
+[[files]]
+file = "mods/mouse-tweaks.pw.toml"
+hash = "fac74cc46a4424c4a235a6efbb7e8b3b62c200ad95564e230857eec26b33f216"
 metafile = true
 
 [[files]]
@@ -514,6 +519,11 @@ hash = "654b02ddf96ae61d21ded34574d584eb56e0076c5944030113c9741e8cd61a10"
 [[files]]
 file = "patchouli_books/field_guide/en_us/entries/mechanics/girders.json"
 hash = "824f7ef5b70984f14519544c0bdf474115a7ed9a2a3bd3fca539fc07ee6fe7ed"
+
+[[files]]
+file = "resourcepacks/terrafirmacraft-vexxed-visuals.pw.toml"
+hash = "23da7c6fdff1008d16414b660db69f26cc5e5665ec2498611b1eff18496d8587"
+metafile = true
 
 [[files]]
 file = "resourcepacks/tool-belt-retextured.pw.toml"

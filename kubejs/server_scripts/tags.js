@@ -305,10 +305,10 @@ ServerEvents.tags('item', e => {
 		'#tfc:ores/zinc/poor',
 		'#tfc:ores/zinc/normal',
 		'#tfc:ores/zinc/rich',
-		'tfc:ore/rich_zinc',
-		'tfc:ore/normal_zinc',
-		'tfc:ore/poor_zinc',
-		'tfc:ore/small_zinc'
+		'tfc:ore/rich_sphalerite',
+		'tfc:ore/normal_sphalerite',
+		'tfc:ore/poor_sphalerite',
+		'tfc:ore/small_sphalerite'
 	]);
 	e.add('kubejs:ore/lignite', [
 		/tfc:ore\/lignite\/.*/,
@@ -374,6 +374,108 @@ ServerEvents.tags('item', e => {
 		'#forge:ores/opal',
 		'tfc:ore/opal'
 	]);
+	e.add('kubejs:ore/chromite', /firmalife:.*chromite.*/);
+	
+	let rockTypes = {};
+	TFC.misc.rock.forEach((rock, reg) => {
+		rockTypes[rock] = [
+			reg.getBlock('loose').get().asItem().arch$registryName(),
+			reg.getBlock('hardened').get().asItem().arch$registryName(),
+			reg.getBlock('mossy_loose').get().asItem().arch$registryName(),
+			reg.getBlock('raw').get().asItem().arch$registryName()
+		]
+	});
+	let meta = [];
+	rockTypes['slate'].forEach(b => meta.push(b));
+	rockTypes['quartzite'].forEach(b => meta.push(b));
+	rockTypes['phyllite'].forEach(b => meta.push(b));
+	rockTypes['schist'].forEach(b => meta.push(b));
+	rockTypes['gneiss'].forEach(b => meta.push(b));
+	rockTypes['marble'].forEach(b => meta.push(b));
+	let sed = [];
+	rockTypes['shale'].forEach(b => sed.push(b));
+	rockTypes['claystone'].forEach(b => sed.push(b));
+	rockTypes['limestone'].forEach(b => sed.push(b));
+	rockTypes['conglomerate'].forEach(b => sed.push(b));
+	rockTypes['dolomite'].forEach(b => sed.push(b));
+	rockTypes['chert'].forEach(b => sed.push(b));
+	rockTypes['chalk'].forEach(b => sed.push(b));
+	let ignIn = [];
+	rockTypes['granite'].forEach(b => ignIn.push(b));
+	rockTypes['diorite'].forEach(b => ignIn.push(b));
+	rockTypes['gabbro'].forEach(b => ignIn.push(b));
+	let ignEx = [];
+	rockTypes['rhyolite'].forEach(b => ignEx.push(b));
+	rockTypes['basalt'].forEach(b => ignEx.push(b));
+	rockTypes['andesite'].forEach(b => ignEx.push(b));
+	rockTypes['dacite'].forEach(b => ignEx.push(b));
+
+	e.add('kubejs:rock/native_copper_bearing', ignEx);
+	e.add('kubejs:rock/native_gold_bearing', ignEx);
+	e.add('kubejs:rock/native_gold_bearing', ignIn);
+	e.add('kubejs:rock/native_silver_bearing', rockTypes['granite']);
+	e.add('kubejs:rock/native_silver_bearing', rockTypes['diorite']);
+	e.add('kubejs:rock/native_silver_bearing', rockTypes['schist']);
+	e.add('kubejs:rock/native_silver_bearing', rockTypes['gneiss']);
+	e.add('kubejs:rock/tetrahedrite_bearing', meta);
+	e.add('kubejs:rock/malachite_bearing', rockTypes['marble']);
+	e.add('kubejs:rock/malachite_bearing', rockTypes['limestone']);
+	e.add('kubejs:rock/malachite_bearing', rockTypes['chalk']);
+	e.add('kubejs:rock/malachite_bearing', rockTypes['dolomite']);
+	e.add('kubejs:rock/cassiterite_bearing', ignIn);
+	e.add('kubejs:rock/bismuthinite_bearing', sed);
+	e.add('kubejs:rock/bismuthinite_bearing', ignIn);
+	e.add('kubejs:rock/garnierite_bearing', ignIn);
+	e.add('kubejs:rock/hematite_bearing', ignEx);
+	e.add('kubejs:rock/magnetite_bearing', sed);
+	e.add('kubejs:rock/limonite_bearing', sed);
+	e.add('kubejs:rock/sphalerite_bearing', ignEx);
+	e.add('kubejs:rock/sphalerite_bearing', ignIn);
+	e.add('kubejs:rock/lignite_bearing', sed);
+	e.add('kubejs:rock/bituminous_coal_bearing', sed);
+	e.add('kubejs:rock/graphite_bearing', rockTypes['gneiss']);
+	e.add('kubejs:rock/graphite_bearing', rockTypes['marble']);
+	e.add('kubejs:rock/graphite_bearing', rockTypes['quartzite']);
+	e.add('kubejs:rock/graphite_bearing', rockTypes['schist']);
+	e.add('kubejs:rock/cinnabar_bearing', rockTypes['quartzite']);
+	e.add('kubejs:rock/cinnabar_bearing', rockTypes['granite']);
+	e.add('kubejs:rock/cinnabar_bearing', rockTypes['phyllite']);
+	e.add('kubejs:rock/cinnabar_bearing', rockTypes['schist']);
+	e.add('kubejs:rock/cryolite_bearing', rockTypes['granite']);
+	e.add('kubejs:rock/cryolite_bearing', rockTypes['diorite']);
+	e.add('kubejs:rock/saltpeter_bearing', sed);
+	e.add('kubejs:rock/sulfur_bearing', meta);
+	e.add('kubejs:rock/sulfur_bearing', ignIn);
+	e.add('kubejs:rock/sylvite_bearing', rockTypes['shale']);
+	e.add('kubejs:rock/sylvite_bearing', rockTypes['claystone']);
+	e.add('kubejs:rock/sylvite_bearing', rockTypes['chert']);
+	e.add('kubejs:rock/borax_bearing', rockTypes['claystone']);
+	e.add('kubejs:rock/borax_bearing', rockTypes['limestone']);
+	e.add('kubejs:rock/borax_bearing', rockTypes['shale']);
+	e.add('kubejs:rock/gypsum_bearing', sed);
+	e.add('kubejs:rock/halite_bearing', sed);
+	e.add('kubejs:rock/emerald_bearing', ignIn);
+	e.add('kubejs:rock/diamond_bearing', rockTypes['gabbro']);
+	e.add('kubejs:rock/lapis_lazuli_bearing', rockTypes['limestone']);
+	e.add('kubejs:rock/lapis_lazuli_bearing', rockTypes['marble']);
+	e.add('kubejs:rock/amethyst_bearing', sed);
+	e.add('kubejs:rock/amethyst_bearing', meta);
+	e.add('kubejs:rock/opal_bearing', sed);
+	e.add('kubejs:rock/opal_bearing', ignEx);
+	e.add('kubejs:rock/kaolin_bearing', [
+		'tfc:grass/loam',
+		'tfc:grass/silt',
+		'tfc:grass/sandy_loam',
+		'tfc:grass/silty_loam',
+		'tfc:dirt/loam',
+		'tfc:dirt/silt',
+		'tfc:dirt/sandy_loam',
+		'tfc:dirt/silty_loam'
+	]);
+	e.add('kubejs:rock/certus_quartz_bearing', rockTypes['claystone']);
+	e.add('kubejs:rock/certus_quartz_bearing', rockTypes['phyllite']);
+	e.add('kubejs:rock/chromite_bearing', ignIn);
+	e.add('kubejs:rock/chromite_bearing', meta);
 })
 
 ServerEvents.tags('fluid', e => {

@@ -117,9 +117,7 @@ global.curioUnequipEvent = (event) => {
 }
 
 if (Platform.isClientEnvironment()) {
-	let sapConstructor = Java.loadClass('net.minecraft.client.particle.SimpleAnimatedParticle').__javaObject__.declaredConstructors[0];
-	sapConstructor.setAccessible(true);
-	let zero = Float.valueOf(0); // When passing in a raw Object... it never hurts to be cautious
+	let AnimatedParticle = Java.loadClass('net.dries007.tfc.client.particle.AnimatedParticle');
 	let frictionField = Java.loadClass('net.minecraft.client.particle.Particle').__javaObject__.getDeclaredField('f_172258_'); // protected float friction
 	frictionField.setAccessible(true);
 	/**
@@ -128,22 +126,20 @@ if (Platform.isClientEnvironment()) {
 	global.registerParticleProvider = (event) => {
 		event.registerSpriteSet(global.rocketPlumeSupplier.get(), set => {
 			return (particleOptions, clientLevel, x, y, z, xSpeed, ySpeed, zSpeed) => {
-				let plume = sapConstructor.newInstance(clientLevel, x, y, z, set, zero);
+				let plume = new AnimatedParticle(clientLevel, x, y, z, set);
 				plume.setParticleSpeed(xSpeed, ySpeed, zSpeed);
 				plume.scale(5);
 				plume.setLifetime(65);
-				plume.setSpriteFromAge(set); // The sprite gets accessed before the first tick happens
 				frictionField.setFloat(plume, 1);
 				return plume;
 			}
 		})
 		event.registerSpriteSet(global.rocketPlumeEjectaSupplier.get(), set => {
 			return (particleOptions, clientLevel, x, y, z, xSpeed, ySpeed, zSpeed) => {
-				let ejecta = sapConstructor.newInstance(clientLevel, x, y, z, set, zero);
+				let ejecta = new AnimatedParticle(clientLevel, x, y, z, set);
 				ejecta.setParticleSpeed(xSpeed, ySpeed, zSpeed);
 				ejecta.scale(3);
 				ejecta.setLifetime(50);
-				ejecta.setSpriteFromAge(set);
 				frictionField.setFloat(ejecta, 1);
 				return ejecta;
 			}

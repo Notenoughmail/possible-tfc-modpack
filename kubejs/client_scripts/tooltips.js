@@ -130,7 +130,7 @@ JadeEvents.onClientRegistration(e => {
 global.collapseTooltip = (tooltip, accessor, config) => {
 	let { blockState } = accessor;
 
-	if (blockState.block.arch$holder()["containsTag(net.minecraft.tags.TagKey)"](TFCBlockTags.CAN_COLLAPSE)) {
+	if (blockState.block.arch$holder()["containsTag(net.minecraft.tags.TagKey)"](TFCBlockTags.CAN_COLLAPSE) || blockState.block.arch$holder()["containsTag(net.minecraft.tags.TagKey)"](TFCBlockTags.CAN_LANDSLIDE)) {
 		let { level, position } = accessor;
 
 		let recipe = CollapseRecipe.getRecipe(level, new BlockInventory(position, blockState));

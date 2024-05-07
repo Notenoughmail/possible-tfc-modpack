@@ -96,7 +96,7 @@ ClientEvents.lang('en_us', e => {
     e.add('jei.description.ores.native_silver', 'Poor veins of Native Silver can be found in granite and diorite above y=90 and richer veins can be found in granite, diorite, schist, and gneiss rocks below y=20');
     e.add('jei.description.ores.tetrahedrite', 'Tetrahedrite can be found at any elevation in Metamorphic rocks');
     e.add('jei.description.ores.malachite', 'Malachite can be found at most elevations in Marble, Limestone, Chalk, and Dolomite');
-    e.add('jei.description.ores.cassiterite', 'Cassiterite in Igneous Intrusive rocks at elevations above y=80 in uplift regions or dikes');
+    e.add('jei.description.ores.cassiterite', 'Cassiterite can be found in Igneous Intrusive rocks at elevations above y=80 in uplift regions or dikes');
     e.add('jei.description.ores.bismuthinite', 'Bismuthinite can be found in Sedimentary rocks near the surface or in larger veins in Igneous Intrusive rocks underground');
     e.add('jei.description.ores.garnierite', 'Garnierite can be found below y=0 in Gabbro, but rarely, smaller veins can be found in any Igneous Intrusive rocks');
     e.add('jei.description.ores.hematite', 'Hematite can be found in an Igneous Extrusive rocks near the surface');
@@ -119,6 +119,8 @@ ClientEvents.lang('en_us', e => {
     e.add('jei.description.ores.lapis_lazuli', 'Lapis Lazuli can be found in Limestone and Marble between y=20 and y=80');
     e.add('jei.description.ores.amethyst', 'Amethyst can be found in Sedimentary and Metamorphic rocks beneath rivers');
     e.add('jei.description.ores.opal', 'Opal can be found in Sedimentary and Igneous Intrusive rocks beneath rivers');
+    e.add('jei.description.ores.chromite', 'Chromite can be found in Igneous Intrusive and Metamorphic rocks');
+
     e.add('jei.description.rocket', 'Wow! A "rocket"!');
 
     e.add('jade.tooltip.kubejs.supported', 'Supported');

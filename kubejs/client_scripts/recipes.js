@@ -26,13 +26,17 @@ JEIAddedEvents.registerCategories(e => {
         let { jeiHelpers } = category;
         let { guiHelper } = jeiHelpers;
 
+		let staticArrow = guiHelper.createDrawable('tfc:textures/gui/jei/icons.png', 0, 14, 22, 16);
+		let animatedArrow = guiHelper.createAnimatedDrawable(guiHelper.createDrawable('tfc:textures/gui/jei/icons.png', 22, 14, 22, 16), 80, 'left', false);
+		let slot = guiHelper.slotDrawable;
+
         global.oreRecipeType = category
             .title(Text.translatable('category.kubejs.ores'))
             .background(guiHelper.createBlankDrawable(140, 100))
             .icon(guiHelper.createDrawableItemStack('tfc:ore/rich_malachite'))
             .isRecipeHandled(r => global.verifyOreRecipe(jeiHelpers, r))
-            .handleLookup((builder, r, focuses) => global.handleOreLookup(jeiHelpers, builder, r, focuses))
-            .setDrawHandler((r, recipeSlotsView, guiGraphics, mouseX, mouseY) => global.renderOreRecipe(jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY))
+            .handleLookup((builder, r, focuses) => global.handleOreLookup(jeiHelpers, builder, r, focuses, slot))
+            .setDrawHandler((r, recipeSlotsView, guiGraphics, mouseX, mouseY) => global.renderOreRecipe(jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY, staticArrow, animatedArrow))
             .recipeType;
     });
 })
@@ -84,14 +88,16 @@ JEIAddedEvents.registerRecipes(e => {
 			items: Ingredient.of('#kubejs:ore/certus_quartz'),
 			description: Text.translatable('jei.description.ores.certus_quartz'),
 			single: false,
-			scale: 40
+			scale: 40,
+			rocks: Ingredient.of('#kubejs:rock/certus_quartz_bearing')
 		},
 		{
 			states: kaoliniteStates,
 			items: Ingredient.of('#kubejs:ore/kaolin'),
 			description: Text.translatable('jei.description.ores.kaolinite'),
 			single: false,
-			scale: 40
+			scale: 40,
+			rocks: Ingredient.of('#kubejs:rock/kaolin_bearing')
 		}
 	];
 
@@ -113,7 +119,8 @@ JEIAddedEvents.registerRecipes(e => {
 			state: Utils.parseBlockState(`tfc:ore/rich_${ore}/dacite`),
 			items: Ingredient.of(`#kubejs:ore/${ore}`),
 			description: Text.translatable(`jei.description.ores.${ore}`),
-			single: true
+			single: true,
+			rocks: Ingredient.of(`#kubejs:rock/${ore}_bearing`)
 		})
 	});
 
@@ -139,9 +146,18 @@ JEIAddedEvents.registerRecipes(e => {
 			state: Utils.parseBlockState(`tfc:ore/${ore}/dacite`),
 			items: Ingredient.of(`#kubejs:ore/${ore}`),
 			description: Text.translatable(`jei.description.ores.${ore}`),
-			single: true
+			single: true,
+			rocks: Ingredient.of(`#kubejs:rock/${ore}_bearing`)
 		})
 	});
+
+	recipes.push({
+		state: Utils.parseBlockState('firmalife:ore/normal_chromite/dacite'),
+		items: Ingredient.of('#kubejs:ore/chromite'),
+		description: Text.translatable('jei.description.ores.chromite'),
+		single: true,
+		rocks: Ingredient.of('#kubejs:rock/chromite_bearing')
+	})
 
     e.custom('kubejs:ores')
         .addAll(recipes);
@@ -173,7 +189,8 @@ global.verifyOreRecipe = (jeiHelpers, r) => {
 			r.data.single != undefined &&
             ((r.data.states != undefined && r.data.single == false && r.data.scale != undefined) || (r.data.state != undefined && r.data.single == true)) &&
             r.data.items != undefined &&
-            r.data.description != undefined;
+            r.data.description != undefined &&
+			r.data.rocks != undefined;
 }
 
 /**
@@ -191,9 +208,11 @@ global.handleEntityLookup = (jeiHelpers, builder, r, focuses) => {
  * @param {Internal.IRecipeLayoutBuilder} builder 
  * @param {Internal.CustomJSRecipe} r 
  * @param {Internal.IFocusGroup} focuses 
+ * @param {Internal.IDrawableStatic} slot
  */
-global.handleOreLookup = (jeiHelpers, builder, r, focuses) => {
-    builder.addSlot('output', 4, 80).addIngredients(r.data.items);
+global.handleOreLookup = (jeiHelpers, builder, r, focuses, slot) => {
+	builder.addSlot('input', 4, 80).addIngredients(r.data.rocks).setBackground(slot, -1, -1);
+    builder.addSlot('output', 48, 80).addIngredients(r.data.items).setBackground(slot, -1, -1);
 }
 
 /**
@@ -241,11 +260,16 @@ global.renderEntityRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX
  * @param {Internal.GuiGraphics} guiGraphics 
  * @param {number} mouseX 
  * @param {number} mouseY 
+ * @param {Internal.IDrawableStatic} arrow
+ * @param {Internal.IDrawableAnimated} arrowAnim
  */
-global.renderOreRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY) => {
+global.renderOreRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY, arrow, arrowAnim) => {
     let { data } = r;
 
     guiGraphics.drawWordWrap(Client.font, data.description, 0, 5, 140, 0);
+
+	arrow.draw(guiGraphics, 23, 80);
+	arrowAnim.draw(guiGraphics, 23, 80);
 
     let poseStack = guiGraphics.pose();
     poseStack.pushPose();
