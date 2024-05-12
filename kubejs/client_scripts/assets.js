@@ -22,9 +22,25 @@ ClientEvents.highPriorityAssets(e => {
                     all: `tfc:block/rock/raw/${rock}`,
                     particle: `tfc:block/rock/raw/${rock}`,
                     overlay: `kubejs:block/ore/${ore}`
-                })
-            })
-        })
+                });
+            });
+        });
+    });
+
+    TFC.misc.wood.keySet().forEach(wood => {
+        e.addMultipartBlockState(`kubejs:support/${wood}`, g => {
+            g['part(java.lang.String,java.util.function.Consumer)']('facing=north', v => v.model(`kubejs:block/support/${wood}`));
+            g['part(java.lang.String,java.util.function.Consumer)']('facing=east', v => v.model(`kubejs:block/support/${wood}`).y(90));
+            g['part(java.lang.String,java.util.function.Consumer)']('facing=south', v => v.model(`kubejs:block/support/${wood}`).y(180));
+            g['part(java.lang.String,java.util.function.Consumer)']('facing=west', v => v.model(`kubejs:block/support/${wood}`).y(270));
+        });
+        e.addModel('block', `kubejs:panel/${wood}`, m => {
+            m.parent('kubejs:block/panel/base');
+            m.texture('planks', `tfc:block/wood/planks/${wood}`);
+            m.texture('particle', `tfc:block/wood/planks/${wood}`);
+            m.texture('log', `tfc:block/wood/stripped_log/${wood}`);
+            m.texture('log_top', `tfc:block/wood/stripped_log_top/${wood}`);
+        });
     })
 
     // Sounds
@@ -85,6 +101,7 @@ ClientEvents.lang('en_us', e => {
     e.add('metal.kubejs.redstone_alloy', 'Redstone Alloy');
     e.add('metal.kubejs.unrefined_redstone', 'Unrefined Redstone');
     e.add('metal.kubejs.refined_redstone', 'Refined Redstone');
+    e.add('metal.kubejs.refined_graphite', 'Graphite');
     e.renameItem('morered:red_alloy_wire', 'Redwire');
     e.add('category.kubejs.ores', 'Ores');
     e.add('category.kubejs.entity', 'Entities');

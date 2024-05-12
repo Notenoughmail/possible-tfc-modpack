@@ -10,9 +10,16 @@ ServerEvents.recipes( e => {
 		'minecraft:brick',
 		'minecraft:iron_block',
 		'minecraft:paper',
-		'firmalife:alloy/stainless_steel',
 		'morered:smooth_stone_slab_from_stone_plate',
-		'ae2:transform/entangled_singularity_from_pearl'
+		'ae2:transform/entangled_singularity_from_pearl',
+		'ae2:inscriber/ender_dust',
+		'ae2:inscriber/silicon_print',
+		'ae2:inscriber/certus_quartz_dust',
+		'ae2:inscriber/silicon_press',
+		'ae2:inscriber/fluix_dust',
+		'ae2:inscriber/sky_stone_dust',
+		'megacells:transform/sky_steel_ingot',
+		'thoriumreactors:thorium_crafting/water_source_block'
 	].forEach(id => {
 		e.remove({id: id})
 	})

@@ -10,6 +10,12 @@ ServerEvents.recipes(e => {
 		], {
 			S: reg.getBlock('slab').get()
 		}).id(`kubejs:crafting/${wood}_slab_to_plank`);
+		minecraft.crafting_shaped(`3x kubejs:panel/${wood}`, [
+			'SSS',
+			'SSS'
+		], {
+			S: `tfc:wood/lumber/${wood}`
+		}).id(`kubejs:crafting/${wood}_panel`);
 	});
 	TFC.misc.rock.keySet().forEach(stone => {
 		minecraft.crafting_shaped('tfc:rock/bricks/' + stone, [
@@ -34,6 +40,34 @@ ServerEvents.recipes(e => {
 			.outputItem(`ae2:${color}_glass_cable`)
 			.id(`kubejs:sealed_barrel/${color}_fluix_cable`);
 	});
+	[
+		'engineering',
+		'calculation',
+		'logic'
+	].forEach(type => {
+		ae2.inscriber(`ae2:${type}_processor_press`, `ae2:${type}_processor_press`, 'tfc:metal/sheet/wrought_iron')
+			.id(`ae2:inscriber/${type}_processor_press`);
+		ae2.inscriber(`ae2:${type}_processor`, `ae2:printed_${type}_processor`, 'morered:red_alloy_wire', 'thoriumreactors:redstone_processor')
+			.id(`ae2:inscriber/${type}_processor`);
+	});
+	global.metals.forEach(metal => {
+		thoriumreactors.blasting(`${metal.mod}:metal/double_ingot/${metal.name}`, [
+			`${metal.mod}:metal/ingot/${metal.name}`,
+			`${metal.mod}:metal/ingot/${metal.name}`
+		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 20000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_ingot`);
+		thoriumreactors.blasting(`${metal.mod}:metal/double_sheet/${metal.name}`, [
+			`${metal.mod}:metal/sheet/${metal.name}`,
+			`${metal.mod}:metal/sheet/${metal.name}`
+		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 20000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_sheet`);
+		thoriumreactors.blasting(`2x ${metal.mod}:metal/rod/${metal.name}`, 'kubejs:rod_mold', [
+			`${metal.mod}:metal/ingot/${metal.name}`,
+			'kubejs:rod_mold'
+		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 20000) / 3), (metal.mt - 120)).id(`kubejs:blasting/${metal.name}_rod`);
+		thoriumreactors.blasting(`${metal.mod}:metal/sheet/${metal.name}`, 'kubejs:sheet_mold', [
+			`${metal.mod}:metal/double_ingot/${metal.name}`,
+			'kubejs:sheet_mold'
+		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 20000) / 1.5), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_sheet`);
+	});
 
 	// Film Developing
 	exposure.film_developing('exposure:developed_black_and_white_film', 'exposure:black_and_white_film', [
@@ -45,16 +79,10 @@ ServerEvents.recipes(e => {
 	]).id('exposure:developing_color_film');
 
 	// Shapeless
-	tfc.damage_inputs_shapeless_crafting(minecraft.crafting_shapeless('kubejs:rubber_sheet', [
-		'kubejs:rubber_bar',
-		'#tfc:saws'
-	])).id('kubejs:crafting/rubber_sheet');
 	tfc.damage_inputs_shapeless_crafting(minecraft.crafting_shapeless('4x morered:stone_plate', [
 		'#tfc:chisels',
 		'#forge:smooth_stone_slab'
 	])).id('morered:stone_plate');
-	minecraft.crafting_shapeless('3x kubejs:latex_clump', [TFC.ingredient.fluid(Fluid.of('kubejs:latex', 1000)), 'tfc:powder/sulfur'])
-		.id('kubejs:crafting/latex_clump');
 	minecraft.crafting_shapeless('exposure:album', ['minecraft:writable_book', 'minecraft:paper', 'minecraft:paper'])
 		.id('exposure:album');
 	minecraft.crafting_shapeless('morered:bundled_cable_post', ['tfc:metal/rod/wrought_iron', 'morered:bundled_network_cable'])
@@ -264,13 +292,14 @@ ServerEvents.recipes(e => {
 		C: 'thoriumreactors:graphite_ingot'
 	}).id('thoriumreactors:thorium_crafting/reactor_glass');
 	minecraft.crafting_shaped('thoriumreactors:thorium_crafting_table', [
-		'SSS',
 		'SAS',
-		'SSS'
+		'ABA',
+		'SAS'
 	], {
 		S: '#tfc:workbenches',
-		A: 'tfc:metal/double_sheet/red_steel'
-	}).id('kubejs:crafting/big_crafting_table');
+		A: 'tfc:metal/double_sheet/steel',
+		B: 'tfc:metal/rod/nickel'
+	}).id('thoriumreactors:thorium_crafting_table');
 	minecraft.crafting_shaped('thoriumreactors:thermal_conductor', [
 		'SAS',
 		'ABA',
@@ -295,6 +324,74 @@ ServerEvents.recipes(e => {
 	], {
 		S: 'tfc:gem/amethyst'
 	}).id('minecraft:amethyst_block');
+	minecraft.crafting_shaped('ae2:energy_acceptor', [
+		'SAS',
+		'ABA',
+		'SAS'
+	], {
+		S: 'tfc:metal/rod/wrought_iron',
+		A: 'ae2:quartz_glass',
+		B: 'thoriumreactors:module_energy'
+	}).id('ae2:network/blocks/energy_energy_acceptor'); // Its actually called that
+	minecraft.crafting_shaped('ae2:charger', [
+		'SAS',
+		'B  ',
+		'SAS'
+	], {
+		S: 'tfc:metal/ingot/wrought_iron',
+		A: 'tfc:metal/sheet/copper',
+		B: 'thoriumreactors:module_energy'
+	}).id('ae2:network/blocks/crystal_processing_charger');
+	minecraft.crafting_shaped('ae2:crank', [
+		'SSS',
+		'  S',
+		'  A'
+	], {
+		S: 'minecraft:stick',
+		A: 'tfc:metal/sheet/copper'
+	}).id('ae2:network/blocks/crank');
+	minecraft.crafting_shaped('ae2:energy_cell', [
+		'SAS',
+		'BCB',
+		'SAS'
+	], {
+		S: 'thoriumreactors:module_energy',
+		A: 'ae2:fluix_crystal',
+		B: 'ae2:charged_certus_quartz_crystal',
+		C: 'ae2:quartz_glass'
+	}).id('ae2:network/blocks/energy_energy_cell');
+	minecraft.crafting_shaped('ae2:energy_cell', [
+		'SAS',
+		'BCB',
+		'SAS'
+	], {
+		S: 'thoriumreactors:module_energy',
+		A: 'ae2:charged_certus_quartz_crystal',
+		B: 'ae2:fluix_crystal',
+		C: 'ae2:quartz_glass'
+	}).id('kubejs:crafting/energy_cell');
+	minecraft.crafting_shaped('merequester:requester', [
+		'SAS',
+		'BCB',
+		'DED'
+	], {
+		S: 'tfc:metal/sheet/wrought_iron',
+		A: '#ae2:interface',
+		B: 'ae2:crafting_accelerator',
+		C: 'ae2:engineering_processor',
+		D: 'tfc:metal/rod/copper',
+		E: 'thoriumreactors:module_io'
+	}).id('merequester:requester');
+	minecraft.crafting_shaped('3x ae2:semi_dark_monitor', [
+		' SA',
+		'BCA',
+		' SA'
+	], {
+		S: 'ae2:charged_certus_quartz_crystal',
+		A: 'ae2:quartz_glass',
+		B: 'tfc:metal/rod/zinc',
+		C: 'thoriumreactors:redstone_processor'
+	}).id('ae2:network/parts/panels_semi_dark_monitor');
 
 	// Anvil
 	tfc.anvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last'])
@@ -389,24 +486,18 @@ ServerEvents.recipes(e => {
 	tfc.heating('firmalife:ore/rich_chromite', 1907)
 		.resultFluid(Fluid.of('firmalife:metal/chromium', 35))
 		.id('kubejs:heating/rich_chromite');
-	tfc.heating('minecraft:gold_block', 1060)
-		.resultFluid(Fluid.of('tfc:metal/gold', 250))
-		.id('kubejs:heating/gold_block');/*
-	tfc.heating([/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper$/, /minecraft:(?:waxed_)?copper_block/], 1080)
-		.resultFluid(Fluid.of('tfc:metal/copper', 250))
-		.id('kubejs:heating/copper_block');*//*
-	tfc.heating(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab$/, 1080)
-		.resultFluid(Fluid.of('tfc:metal/copper', 125))
-		.id('kubejs:heating/copper_block_slab');*//*
 	tfc.heating('tfc:powder/coke', 2135)
 		.resultFluid(Fluid.of('kubejs:unrefined_graphite', 10))
-		.id('kubejs:heating/coke_powder');*/
+		.id('kubejs:heating/coke_powder');
 	tfc.heating('minecraft:redstone', 2013)
 		.resultFluid(Fluid.of('kubejs:unrefined_redstone', 50))
 		.id('kubejs:heating/unrefined_redstone');
 	tfc.heating('morered:red_alloy_ingot', 1573)
 		.resultFluid(Fluid.of('kubejs:redstone_alloy', 100))
 		.id('kubejs:heating/redstone_alloy');
+	tfc.heating('minecraft:redstone_block', 2013)
+		.resultFluid(Fluid.of('kubejs:unrefined_redstone', 450))
+		.id('kubejs:heating/unrefined_redstone_block');
 
 	// Blast Furnace
 	tfc.blast_furnace(Fluid.of('kubejs:refined_redstone', 1), 'tfc:powder/cassiterite', Fluid.of('kubejs:unrefined_redstone', 1))
@@ -451,20 +542,23 @@ ServerEvents.recipes(e => {
 		'XXXXX'
 	]).id('kubejs:knapping/leather_pouch');
 
-	// Instant Fluid Barrel
-	tfc.barrel_instant_fluid(Fluid.of('kubejs:diluted_milk', 8), Fluid.water(3), TFC.fluidStackIngredient('#tfc:milks', 5))
-		.id('kubejs:fluid_barrel/diluted_milk');
-
 	// Alloying
 	tfc.alloy('kubejs:redstone_alloy', [
 		TFC.alloyPart('tfc:copper', 0.65, 0.7),
 		TFC.alloyPart('kubejs:refined_redstone', 0.3, 0.35),
 		TFC.alloyPart('tfc:nickel', 0.05, 0.12)
 	]).id('kubejs:alloy/redstone_alloy');
+	tfc.alloy('firmalife:stainless_steel', [
+		TFC.alloyPart('tfc:steel', 0.65, 0.85),
+		TFC.alloyPart('firmalife:chromium', 0.1, 0.25),
+		TFC.alloyPart('tfc:nickel', 0.05, 0.15)
+	]).id('firmalife:alloy/stainless_steel');
 
 	// Quern
-	tfc.quern('3x ae2:certus_quartz_dust', '#forge:buds')
+	tfc.quern('3x ae2:certus_quartz_dust', ['#forge:buds', '#ae2:all_certus_quartz'])
 		.id('kubejs:quern/certus_quartz');
+	tfc.quern('2x ae2:fluix_dust', 'ae2:fluix_crystal')
+		.id('kubejs:quern/fluix_dust');
 
 	// Collapse
 	tfc.collapse('ae2:flawed_budding_quartz', 'ae2:flawless_budding_quartz')
@@ -501,8 +595,28 @@ ServerEvents.recipes(e => {
 	// Instant Barrel
 	tfc.barrel_instant()
 		.outputItem('ae2:fluix_glass_cable')
-		.inputs('#ae2:glass_cable', Fluid.water(10))
+		.inputs(IngredientHelper.subtract('#ae2:glass_cable', 'ae2:fluix_glass_cable'), Fluid.water(10))
 		.id('ae2:network/cables/glass_fluix_clean');
+	tfc.barrel_instant()
+		.outputItem('ae2:fluix_smart_cable')
+		.inputs(IngredientHelper.subtract('#ae2:smart_cable', 'ae2:fluix_smart_cable'), Fluid.water(10))
+		.id('ae2:network/cables/smart_fluix_clean');
+	tfc.barrel_instant()
+		.outputItem('ae2:fluix_smart_dense_cable')
+		.inputs(IngredientHelper.subtract('#ae2:smart_dense_cable', 'ae2:fluix_smart_dense_cable'), Fluid.water(10))
+		.id('ae2:network/cables/dense_smart_fluix_clean');
+	tfc.barrel_instant()
+		.outputItem('ae2:fluix_covered_cable')
+		.inputs(IngredientHelper.subtract('#ae2:covered_cable', 'ae2:fluix_covered_cable'), Fluid.water(10))
+		.id('ae2:network/cables/covered_fluix_clean');
+	tfc.barrel_instant()
+		.outputItem('ae2:fluix_covered_dense_cable')
+		.inputs(IngredientHelper.subtract('#ae2:covered_dense_cable', 'ae2:fluix_covered_dense_cable'), Fluid.water(10))
+		.id('ae2:network/cables/dense_covered_fluix_clean');
+
+	// Landslide
+	tfc.landslide('kubejs:lithium_salt', ['kubejs:lithium_salt', 'kubejs:lithium_salt_grass'])
+		.id('kubejs:landslide/lithium_salt');
 
 	// Mixing Bowl
 	firmalife.mixing_bowl()
@@ -564,8 +678,18 @@ ServerEvents.recipes(e => {
 	}).id('ae2:transform/entangled_singularity');
 
 	// Inscriber
-	ae2.inscriber('ae2:printed_logic_processor', 'ae2:logic_processor_press', 'tfc:metal/sheet/gold')
+	ae2.inscriber('ae2:printed_logic_processor', 'ae2:logic_processor_press', 'tfc:powder/native_gold')
 		.id('ae2:inscriber/logic_processor_print');
+	ae2.inscriber('ae2:printed_engineering_processor', 'ae2:engineering_processor_press', ['tfc:powder/diamond', 'tfc:powder/opal', 'tfc:powder/sapphire'])
+		.id('ae2:inscriber/engineering_processor_print');
+	ae2.inscriber('ae2:printed_calculation_processor', 'ae2:calculation_processor_press', 'ae2:certus_quartz_dust')
+		.id('ae2:inscriber/calculation_processor_print');
+	ae2.inscriber('megacells:printed_accumulation_processor', 'megacells:accumulation_processor_press', 'tfc:metal/sheet/black_steel')
+		.id('megacells:inscriber/accumulation_processor_print');
+	ae2.inscriber('megacells:accumulation_processor', 'megacells:printed_accumulation_processor', 'morered:red_alloy_wire', 'thoriumreactors:redstone_processor')
+		.id('megacells:inscriber/accumulation_processor');
+	ae2.inscriber('megacells:accumulation_processor_press', 'megacells:accumulation_processor_press', 'tfc:metal/sheet/wrought_iron')
+		.id('megacells:inscriber/accumulation_processor_press_extra');
 
 	// Bigger Crafting
 	thoriumreactors.thorium_crafting('thoriumreactors:redstone_processor', [
@@ -596,6 +720,86 @@ ServerEvents.recipes(e => {
 		C: 'tfc:metal/rod/nickel',
 		D: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_empty');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_energy', [
+		' SAS ',
+		'SBBBS',
+		'ACCCA',
+		'SDEDS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/copper',
+		B: 'kubejs:lithium_plate',
+		C: 'kubejs:graphite_plate',
+		D: 'morered:bundled_network_cable',
+		E: 'thoriumreactors:module_empty'
+	}).id('thoriumreactors:thorium_crafting/module_energy');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_io', [
+		' SAS ',
+		'SBCBS',
+		'ABCBA',
+		'SBDBS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/gold',
+		B: 'morered:bundled_network_cable',
+		C: 'morered:red_alloy_wire',
+		D: 'thoriumreactors:module_empty'
+	}).id('thoriumreactors:thorium_crafting/module_io');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_storage', [
+		' SAS ',
+		'SBBBS',
+		'ACCCA',
+		'SBDBS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/zinc',
+		B: 'morered:bundled_network_cable',
+		C: '#forge:chests/wooden',
+		D: 'thoriumreactors:module_empty'
+	}).id('thoriumreactors:thorium_crafting/module_storage');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_sensor', [
+		' SAS ',
+		'SBCBS',
+		'ACBCA',
+		'SDEDS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/nickel',
+		B: 'minecraft:daylight_detector',
+		C: '#minecraft:stone_pressure_plates',
+		D: 'morered:bundled_network_cable',
+		E: 'thoriumreactors:module_empty'
+	}).id('thoriumreactors:thorium_crafting/module_sensor');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_processing', [
+		' SAS ',
+		'SBBBS',
+		'ACCCA',
+		'SBDBS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/brass',
+		B: 'morered:bundled_network_cable',
+		C: 'ae2:calculation_processor',
+		D: 'thoriumreactors:module_empty'
+	}).id('thoriumreactors:thorium_crafting/module_processing');
+	thoriumreactors.thorium_crafting('thoriumreactors:module_tank', [
+		' SAS ',
+		'SBBBS',
+		'ACCCA',
+		'SBDBS',
+		' SAS '
+	], {
+		S: 'tfc:metal/ingot/steel',
+		A: 'tfc:metal/rod/steel',
+		B: 'morered:bundled_network_cable',
+		C: '#tfc:barrels',
+		D: 'thoriumreactors:module_empty'
+	}).id('kubejs:thorium_crafting/module_tank');
 
 	// Tests
 	if (global.serverConfig.debug.debugRecipes.get()) {

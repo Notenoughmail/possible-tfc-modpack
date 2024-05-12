@@ -37,10 +37,10 @@ MoreJSEvents.registerPotionBrewing(e => {
 
 EntityJSEvents.attributes(event => {
 	event.modify('kubejs:rocket', attributes => {
-		attributes.add('forge:entity_gravity', 0)
-		attributes.add('minecraft:generic.max_health', 1)
-		attributes.add('minecraft:generic.knockback_resistance', 1)
-	})
+		attributes.add('forge:entity_gravity', 0);
+		attributes.add('minecraft:generic.max_health', 1);
+		attributes.add('minecraft:generic.knockback_resistance', 1);
+	});
 })
 
 TFCEvents.prospectRepresentative(e => {
@@ -48,7 +48,7 @@ TFCEvents.prospectRepresentative(e => {
 		let ores = [];
 		TFC.misc.rock.keySet().forEach(rock => {
 			global.oreGrades.forEach(grade => {
-				ores.push(`kubejs:ore/${grade}_${ore}/${rock}`)
+				ores.push(`kubejs:ore/${grade}_${ore}/${rock}`);
 			});
 		});
 		e.registerRepresentative(`kubejs:ore/normal_${ore}/dacite`, ores);
@@ -56,45 +56,16 @@ TFCEvents.prospectRepresentative(e => {
 	global.ungradedOres.forEach(ore => {
 		let ores = [];
 		TFC.misc.rock.keySet().forEach(rock => {
-			ores.push(`kubejs:ore/${ore}/${rock}`)
+			ores.push(`kubejs:ore/${ore}/${rock}`);
 		});
 		e.registerRepresentative(`kubejs:ore/${ore}/dacite`, ores);
 	});
 	e.registerRepresentative('ae2:flawless_budding_quartz', 'ae2:flawed_budding_quartz', 'ae2:chipped_budding_quartz', 'ae2:damaged_budding_quartz');
 })
 
-ForgeEvents.onEvent('net.minecraftforge.event.VanillaGameEvent', e => global.vanillaGameEvent(e.level, e.cause, e.vanillaEvent, e.eventPosition, e.context))
-ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioEquipEvent', e => global.curioEquipEvent(e))
-ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioUnequipEvent', e => global.curioUnequipEvent(e))
-
-/**
- * @param {Internal.Level} level 
- * @param {Internal.Entity} entity may be null
- * @param {Internal.GameEvent} gameEvent 
- * @param {Vec3d} position 
- * @param {Internal.GameEvent$Context} context 
- */
-global.vanillaGameEvent = (level, entity, gameEvent, position, context) => {
-	let pos = BlockPos.containing(position);
-	if (gameEvent == GameEvent.LIGHTNING_STRIKE) {
-		console.warn('kaboom 0');
-		let block = level.getBlock(position.x(), position.y(), position.z()).down;
-		console.warn(block.id);
-		// Summon glass if hit in sand
-		if (block.hasTag('kubejs:glass_sand')) {
-			console.warn('kaboom 1');
-			let hydration = FarmlandBlock.getHydration(level, pos);
-			console.warn(hydration);
-			if (hydration >= 30) {
-				console.warn('kaboom 2');
-				let stack = Item.of('kubejs:fulgurite', hydration / 25);
-				console.error(stack);
-				// level.addFreshEntity(item);
-				block.popItemFromFace(stack, 'up');
-			}
-		}
-	}
-}
+ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioEquipEvent', e => global.curioEquipEvent(e));
+ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioUnequipEvent', e => global.curioUnequipEvent(e));
+ForgeEvents.onEvent('net.minecraftforge.event.entity.player.PlayerDestroyItemEvent', e => global.playerDestroyItem(e));
 
 /**
  * @param {Internal.CurioEquipEvent} event
@@ -113,6 +84,27 @@ global.curioUnequipEvent = (event) => {
 	let { slotContext, stack, entity, result } = event;
 	if (entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
 		entity.persistentData.putBoolean('hasThermometer', false);
+	}
+}
+
+/**
+ * @param {Internal.PlayerDestroyItemEvent} event 
+ */
+global.playerDestroyItem = (event) => {
+	let { original, hand } = event;
+	/**
+	 * @type {Internal.Player} player
+	 */
+	let player = event.entity;
+	if (hand != null) {
+		let { inventory } = player;
+		let slotIndex = inventory.find(original.item);
+		if (slotIndex != -1) {
+			let replacement = inventory.extractItem(slotIndex, 1, false);
+			if (!replacement.empty) {
+				player.setHeldItem(hand, replacement);
+			}
+		}
 	}
 }
 

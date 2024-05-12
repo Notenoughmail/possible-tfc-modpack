@@ -16,7 +16,7 @@ JEIAddedEvents.registerCategories(e => {
 		global.entityRecipeType = category
 			.title(Text.translatable('category.kubejs.entity'))
 			.background(guiHelper.createBlankDrawable(100, 100))
-			.icon(guiHelper.createDrawableItemStack('kubejs:double_ingot/lead'))
+			.icon(guiHelper.createDrawableItemStack('tfc:kaolin_clay')) // TODO: Change this
 			.isRecipeHandled(r => global.verifyEntityRecipe(jeiHelpers, r))
 			.handleLookup((builder, r, focuses) => global.handleEntityLookup(jeiHelpers, builder, r, focuses))
 			.setDrawHandler((r, recipeSlotsView, guiGraphics, mouseX, mouseY) => global.renderEntityRecipe(jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY))
@@ -226,7 +226,7 @@ global.handleOreLookup = (jeiHelpers, builder, r, focuses, slot) => {
 global.renderEntityRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY) => {
 	let { data } = r;
 
-	guiGraphics.drawWordWrap(Client.font, data.description, 0, 5, 100, 0);
+	guiGraphics.drawWordWrap(Client.font, data.description, 0, 0, 100, 0);
 
 	let poseStack = guiGraphics.pose();
 	poseStack.pushPose();

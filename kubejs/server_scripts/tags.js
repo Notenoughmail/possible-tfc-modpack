@@ -62,6 +62,10 @@ ServerEvents.tags('block', e => {
 		'ae2:damaged_budding_quartz',
 		'ae2:quartz_block'
 	]);
+	e.add('forge:ores', [
+		/ae2:.*bud(?:ding)?.*/,
+		'ae2:quartz_block'
+	]);
 });
 
 ServerEvents.tags('item', e => {
@@ -188,7 +192,8 @@ ServerEvents.tags('item', e => {
 	]);
 
 	e.add('tfc:pileable_ingots', [
-		'morered:red_alloy_ingot'
+		'morered:red_alloy_ingot',
+		'thoriumreactors:graphite_ingot'
 	]);
 
 	// Weight and size

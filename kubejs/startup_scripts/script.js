@@ -1,56 +1,28 @@
 // priority: 0
 
 const IntTag = Java.loadClass('net.minecraft.nbt.IntTag');
-const BannerPattern = Java.loadClass('net.minecraft.world.level.block.entity.BannerPattern');
 
 StartupEvents.registry('item', e => {
 	global.oreGrades.forEach(grade => {
 		global.gradedOres.forEach(ore => {
 			e.create(`ore/${grade}_${ore}`)
-				.tag('tfc:ore_pieces')
+				.tag('tfc:ore_pieces');
 		})
 	})
 	global.ungradedOres.forEach(ore => {
 		e.create(`ore/${ore}`)
-			.tag('tfc:ore_pieces')
+			.tag('tfc:ore_pieces');
 	})
-	e.create('leather_pouch')
-	e.create('dummy')
-	e.create('rod/lead')
-		.tag('tfc:metal_item/lead')
-		.tag('forge:rods')
-		.tag('forge:rods/lead')
-	e.create('double_ingot/lead')
-		.tag('tfc:metal_item/lead')
-		.tag('forge:double_ingots')
-		.tag('forge:double_ingots/lead')
-		.tag('tfc:pileable_double_ingots')
-	e.create('rubber_sheet')
-	e.create('rubber_bar')
-	e.create('latex_clump')
+	e.create('leather_pouch');
 	e.create('thermometer')
-		.tag('curios:thermometer')
-	e.create('iron_belt_clip')
-	e.create('fulgurite')
-		.fireResistant(true)
-})
-
-ItemEvents.modification(e => {
-	e.modify('create:copper_diving_helmet', item => {
-		item.maxDamage = 173
-	})
-	e.modify('create:copper_diving_boots', item => {
-		item.maxDamage = 197
-	})
-	e.modify('create:netherite_diving_helmet', item => {
-		item.maxDamage = 748
-	})
-	e.modify('minecraft:netherite_leggings', item => {
-		item.maxDamage = 960
-	})
-	e.modify('create:netherite_diving_boots', item => {
-		item.maxDamage = 860
-	})
+		.tag('curios:thermometer');
+	e.create('iron_belt_clip');
+	e.create('lithium_ingot');
+	e.create('lithium_plate');
+	e.create('graphite_plate');
+	e.create('lithium_salt_clump');
+	e.create('sheet_mold');
+	e.create('rod_mold');
 })
 
 StartupEvents.registry('block', e => {
@@ -69,6 +41,7 @@ StartupEvents.registry('block', e => {
 					.tagBlock('tfc:can_start_collapse')
 					.tagBlock('minecraft:needs_stone_tool')
 					.tagBlock(`forge:ores/${ore}`)
+					.tagBlock('forge:ores')
 					.tagBlock(`tfc:ore/${ore}/${grade}`)
 					.renderType('cutout')
 					.requiresTool();
@@ -87,11 +60,39 @@ StartupEvents.registry('block', e => {
 				.tagBlock('tfc:can_start_collapse')
 				.tagBlock('minecraft:needs_stone_tool')
 				.tagBlock(`forge:ores/${ore}`)
+				.tagBlock('forge:ores')
 				.tagBlock(`tfc:ore/${ore}`)
 				.renderType('cutout')
 				.requiresTool();
 		})
 	})
+
+	e.create('lithium_salt', 'tfc:dirt')
+		.grass(grass => {
+;			grass.hardness(0.9);
+			grass.gravelSoundType();
+			grass.tagBlock('minecraft:mineable/shovel');
+			grass.tagBlock('tfc:can_landslide');
+			grass.displayName('Lithium Salt Grass');
+			grass.tagBlock('forge:ores');
+		})
+		.hardness(0.9)
+		.tagBlock('minecraft:mineable/shovel')
+		.tagBlock('tfc:can_landslide')
+		.tagBlock('forge:ores')
+		.gravelSoundType()
+		.displayName('Lithium Salt Soil');
+
+	TFC.misc.wood.keySet().forEach(wood => {
+		e.create(`panel/${wood}`, 'cardinal')
+			.woodSoundType()
+			.tagBlock('minecraft:mineable/axe')
+			.displayName(`${Utils.toTitleCase(wood)} Panel`)
+			.box(0, 0, 0, 16, 16, 2)
+			.box(0, 0, 0, 3, 16, 3)
+			.box(13, 0, 0, 16, 16, 3)
+			.waterlogged();
+	});
 
 	let groundCovers = ['malachite', 'native_copper', 'sphalerite'];
 
@@ -106,53 +107,46 @@ StartupEvents.registry('block', e => {
 			.tagBlock('tfc:breaks_when_isolated')
 			.tagItem('tfc:small_ore_pieces')
 			.tagItem('tfc:nuggets')
-			.groundCoverModelShape(groundCovers[i % groundCovers.length])
+			.groundCoverModelShape(groundCovers[i % groundCovers.length]);
 	}
 })
 
-StartupEvents.registry('banner_pattern', e => {
-	e.createCustom('test', () => new BannerPattern('test'))
-		.tag('minecraft:no_item_required');
-})
-
 StartupEvents.registry('fluid', e => {
-	e.create('diluted_milk')
-		.thinTexture(0xc3ccdb)
-		.displayName('Diluted Milk')
-		.noBlock()
-		.noBucket()
-		.tag('tfc:usable_in_wooden_bucket')
-		.tag('tfc:usable_in_barrel')
-	e.create('alumina')
-		.thinTexture(0xcbcfd6)
-		.displayName('Alumina Solution')
-		.noBlock()
-		.noBucket()
-	e.create('ethy_prop_rubber')
-		.thickTexture(0x0c1413)
-		.displayName('Ethylene-Propylene Rubber')
-		.noBlock()
-		.noBucket()
-		.tag('kubejs:rubber')
-	e.create('latex')
-		.thinTexture(0xdee3d5)
-		.displayName('Natural Latex')
-		.noBlock()
-		.noBucket()
-		.tag('tfc:usable_in_wooden_bucket')
-		.tag('kubejs:latex')
 	e.create('unrefined_redstone')
 		.noBlock()
 		.noBucket()
 		.thickTexture(0x9f0a2a)
+		.displayName('Molten Redstone')
+		.tag('tfc:molten_metals')
+		.tag('kubejs:unrefined_redstone');
 	e.create('refined_redstone')
 		.noBlock()
 		.noBucket()
 		.thinTexture(0x9f0a2a)
+		.displayName('Molten Redstone Mixture')
+		.tag('tfc:molten_metals')
+		.tag('kubejs:refined_redstone');
 	e.create('redstone_alloy')
 		.noBlock()
 		.noBucket()
 		.thinTexture(0x7c262e)
+		.displayName('Molten Redstone Alloy')
+		.tag('tfc:molten_metals')
+		.tag('kubejs:redstone_alloy');
+	e.create('graphite')
+		.thickTexture(0x101010)
+		.displayName('Molten Refined Graphite')
+		.noBlock()
+		.noBucket()
+		.tag('tfc:molten_metals')
+		.tag('kubejs:graphite');
+	e.create('unrefined_graphite')
+		.thickTexture(0x080a08)
+		.displayName('Molten unrefined Graphite')
+		.noBlock()
+		.noBucket()
+		.tag('tfc:molten_metals')
+		.tag('kubejs:unrefined_graphite');
 })
 
 StartupEvents.registry('sound_event', e => {

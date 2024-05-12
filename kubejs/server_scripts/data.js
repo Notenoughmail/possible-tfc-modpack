@@ -32,6 +32,7 @@ TFCEvents.data(e => {
 	e.itemHeat('#forge:double_sheets/chromium', 9.28, 1144, 1526, 'firmalife:metal/chromium_double_sheet');
 	e.itemHeat('minecraft:redstone', 0.824, null, null);
 	e.itemHeat('morered:red_alloy_ingot', 0.654, null, null);
+	e.itemHeat('minecraft:redstone_block', 7.416, null, null);
 	
 	e.itemSize('toolbelt:belt', 'very_large', 'heavy');
 	e.itemSize('toolbelt:pouch', 'normal', 'light');
@@ -71,7 +72,7 @@ TFCEvents.data(e => {
 		'kubejs:refined_redstone',
 		2013,
 		0.00851,
-		'kubejs:refined_redstone',
+		null,
 		null,
 		null,
 		0,
@@ -86,6 +87,26 @@ TFCEvents.data(e => {
 		null,
 		0,
 		'kubejs:redstone_alloy'
+	);
+	e.metal(
+		'kubejs:graphite',
+		2000, // TODO: Find a better number for this
+		0.00912,
+		'thoriumreactors:graphite_ingot',
+		null,
+		null,
+		6,
+		'kubejs:refined_graphite'
+	);
+	e.metal(
+		'kubejs:unrefined_graphite',
+		2000,
+		0.00912,
+		null,
+		null,
+		null,
+		4,
+		'kubejs:unrefined_graphite'
 	);
 })
 
@@ -103,6 +124,23 @@ TFCEvents.worldgenData(e => {
 	], 96, 0.2, -64, 12, 15, vein => {
 		vein.nearLava(true)
 	}, placement => {});
+
+	e.soilDisc('kubejs:lithium_salt', [
+		e.blockToBlockState('tfc:grass/loam', 'kubejs:lithium_salt_grass'),
+		e.blockToBlockState('tfc:grass/silt', 'kubejs:lithium_salt_grass'),
+		e.blockToBlockState('tfc:grass/sandy_loam', 'kubejs:lithium_salt_grass'),
+		e.blockToBlockState('tfc:grass/silty_loam', 'kubejs:lithium_salt_grass'),
+		e.blockToBlockState('tfc:dirt/loam', 'kubejs:lithium_salt'),
+		e.blockToBlockState('tfc:dirt/silt', 'kubejs:lithium_salt'),
+		e.blockToBlockState('tfc:dirt/sandy_loam', 'kubejs:lithium_salt'),
+		e.blockToBlockState('tfc:dirt/silty_loam', 'kubejs:lithium_salt')
+	], 6, 12, 5, 0.85, placement => {
+		placement.climate(climate => {
+			climate.minRain(350)
+			climate.minTemp(10)
+			climate.maxForest('sparse')
+		});
+	});
 })
 
 ServerEvents.highPriorityData(e => {

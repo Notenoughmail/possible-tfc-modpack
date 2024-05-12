@@ -62,7 +62,7 @@ hash = "b5fd72b44a0de6f9723fde9893af959853c5274535a84c3f520bc4d02c26706e"
 
 [[files]]
 file = "config/tfc-common.toml"
-hash = "9e16a29ebc8859dc74158581f3942acfca7667541cd266f4f73ab6a339906b0c"
+hash = "d291470f2a1339befbdaf1f8d0da0b25144b3e003310dcbff845f75c2ddce4f4"
 
 [[files]]
 file = "config/toolbelt-client.toml"
@@ -97,8 +97,20 @@ file = "kubejs/assets/kubejs/geo/entity/rocket.geo.json"
 hash = "4eebb30ba1cd6fb1a658d92689686751f92157498d0c3fd5e9f02bfc27257a99"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/block/panel/base.json"
+hash = "e4baf9586d0c863b988d07d41bcdd94845adce7340722ffe3d75bdd1e08f7640"
+
+[[files]]
 file = "kubejs/assets/kubejs/sounds/rocket.ogg"
 hash = "b8171806b0a75f012ffade3c4c7a1738ce143941e5ce8f700aaf5c492ad80da7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/metal/block/refined_graphite.png"
+hash = "43626092415ce23486412a3d23a8dc3d5c6384502430997d2d0135a9a322381d"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/metal/smooth/refined_graphite.png"
+hash = "43626092415ce23486412a3d23a8dc3d5c6384502430997d2d0135a9a322381d"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/ore/normal_lead.png"
@@ -153,32 +165,16 @@ file = "kubejs/assets/kubejs/textures/item/sheet/graphite.png"
 hash = "4aa04eea36427392551090826996787b9d01318cd11e66bebe058a00e76e4fe1"
 
 [[files]]
-file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_constantan.png"
-hash = "d017b8efa2d7345ca526dc2a6dc4c168e81f657b8b22666e6b712b2f9b17c6ab"
-
-[[files]]
-file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_electrum.png"
-hash = "111a5a1bd53541ea3164370ef6eecd35de3893944f9ef8c284f9d8e9c5bd4854"
-
-[[files]]
-file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_graphite.png"
-hash = "43626092415ce23486412a3d23a8dc3d5c6384502430997d2d0135a9a322381d"
-
-[[files]]
-file = "kubejs/assets/kubejs_tfc/textures/block/metal/full/kubejs_lead.png"
-hash = "40dae16df51701c378e76da452199a1f143d17b073da34e63cbf41ab24244e74"
-
-[[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "0f370ed3c5af36fb40d1f12511dd6a54214c7910e5af444bd333a42d186b6feb"
+hash = "095fd0499f07109462b5daf417c7ac2e297bfef26849f6876e49b754869ab5c6"
 
 [[files]]
 file = "kubejs/client_scripts/recipes.js"
-hash = "8e9a2a46c9eae526692a0232ecf9cbaf314ef411f549c832f46fa8c88fc5716d"
+hash = "eb2eeab7c1a9260f2bf0df0134276ff8add774c2f739019a93dca09d9c93e697"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "4e87648865f545af9c5a7b27b224357ea3bc5c60967d656241250a98f728be10"
+hash = "7192a42388b64d2f3007504fb04ee7c7bb6ad6493453a391ac7ea788c557d5f8"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
@@ -198,27 +194,27 @@ hash = "508c8d20b5dd4d3ffd2640ec5b5b1f8d0704435a7c8a0925e6e99b3e7434d8f1"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "98f39b617b93055b9914ed6a45fe1ec9948fd60bcd42c3f4c451c4292d4b7317"
+hash = "6921dcbbaa02d583faf1c08d69631eff0e8027cbf71da4ba2febd24a990cde9f"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
-hash = "0add240ba0e56f24b5475737bd020de41c23e275d4a9cd6d534000979ee10ccb"
+hash = "c8eba762bb14f23761924bebdc5f3999eefe5fd93435d6b8a8c0501c8b7493d6"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "3af87161114cc93a7b7c3a7ce9a6515093dcd61e930902308ad4136e0f1a6194"
+hash = "b2a5bea04c5815be0bcd4b644cbab1993f0a4e9515ce3232304a5df392889781"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "6a82407c45b681939de8bcfd006fcf23f122a67069118f26f2bfef25c8ec0717"
+hash = "5ab59a1fdaf0150f97759ac58ea228e820f9a98cb68a3bf6f11bb7ceb0aaec2b"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "2f50db25f37a77230f1b5360b10162153581bbdea2151f89006b3304a35cf1bf"
+hash = "1b3d258d77ce970e3be90533924a8c0b5dec9751fe3fec2cb6ade5d6f75e6440"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "c68abca5b80bebb37da0ff6ff6f7bf540845dd8b68cd749c2f084db0fbafbadb"
+hash = "331ffdcb9827d5de58cd7c5e984c335d33e9ed8901e2fbd1114d43e1bc822d7a"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -226,15 +222,15 @@ hash = "a59da0444281d33be413edd15779a8f4c044c1623b4ebbf40f0ee918b6638033"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "568cada70ef654aa3a6763f90796d31bc03b22f36373d3ee0e3a37721e9f81cf"
+hash = "6f4bf6378a5076151789396cd6cdb02057b9c82de25955894221467383ecfd8a"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "60286ee7b799751ca11107c334dc43a52672679646c87ca4bd5a81396a25af4a"
+hash = "c89ddf5888d392f32b2903dfdf37f89978e4ef44aefe71de1d828a48b2f8be76"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
-hash = "1c05c88d558402e04a4391baae86128f3c2ec03e18b63c3c326540cde5d37cec"
+hash = "2b24e2ad38b124cd83d4d1bf2ede482be6d9544f4d2cedd26364daa9887b089b"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -253,7 +249,7 @@ metafile = true
 
 [[files]]
 file = "mods/applied-energistics-2.pw.toml"
-hash = "65ce57a6ef462c45d74bbe9d6b8b7cfeb7c568e5b67ed9f54771284487e8009b"
+hash = "1ccdc223317e3c8da5594e56d66a0da5dd9b8a7caa43bbc03d517309321193b6"
 metafile = true
 
 [[files]]
@@ -328,7 +324,7 @@ metafile = true
 
 [[files]]
 file = "mods/exposure.pw.toml"
-hash = "e93b3f714f776cfd8731626e780faf3cce9415d0eed3714d110c472823598ef5"
+hash = "1bd064b812416bc467c2b236cc2904f00f9d36b0e994f5623d3e31897a1eb2d3"
 metafile = true
 
 [[files]]
@@ -368,7 +364,7 @@ metafile = true
 
 [[files]]
 file = "mods/jade.pw.toml"
-hash = "33466bb8e4a189bc2fc7e456f0f06c94979b87141fb064706f96b1ff7ead74d3"
+hash = "6c55d62a19881830ac4c424feb35714954dafc338e9c2ab8564da70f7e092306"
 metafile = true
 
 [[files]]
@@ -477,52 +473,8 @@ hash = "8eef3bfcaf11d312fde6f3e084aff0ce3266f4d4adfcfa4617f0c7bbfaeeee2b"
 metafile = true
 
 [[files]]
-file = "patchouli_books/field_guide/book.json"
-hash = "eed356f2efdafa2f77bbd06244e91446022f021521414e44dc7180f7438fcccc"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/categories/machinery.json"
-hash = "8a51c4484e4a0ff47ee5e21330501ce00b59296d935e720463d71bfed9d014fd"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/blast_furnace.json"
-hash = "e6c5a220eefdcc540d19d2298169c77d4830b1c362e64858c3378d6b4326118d"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/bottler.json"
-hash = "615bc100652e5ac8338dff017fb40ec46fbc1e798b2f3fea5a0a47ebd331f541"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/coke_oven.json"
-hash = "8f1e3aca6c2d9a69cf9eba666de1cf50dbb407ecbfdc99922950647dd8188adb"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/crusher.json"
-hash = "a7925b23f09bb5aca229736c6e96f38df129778a8b189b917dec4262a87a506b"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/introduction.json"
-hash = "3ed5fac4d86347cbec6f410fab84ef9e6d625cbae86238d83d349a8dea5cd75a"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/metal_press.json"
-hash = "ee48edbc3b908c3485734d8623e1ee8d27213bced0a2fa0fc6b86c09237ccb6d"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/machinery/trains.json"
-hash = "2a69fe1f72801a8b95c01231d6215db19f3a682871f548c0b134ac956f757fb2"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/mechanics/composite.json"
-hash = "654b02ddf96ae61d21ded34574d584eb56e0076c5944030113c9741e8cd61a10"
-
-[[files]]
-file = "patchouli_books/field_guide/en_us/entries/mechanics/girders.json"
-hash = "824f7ef5b70984f14519544c0bdf474115a7ed9a2a3bd3fca539fc07ee6fe7ed"
-
-[[files]]
 file = "resourcepacks/terrafirmacraft-vexxed-visuals.pw.toml"
-hash = "23da7c6fdff1008d16414b660db69f26cc5e5665ec2498611b1eff18496d8587"
+hash = "e6afd049253585658d1d18ed0d44500185968c63ddd4dc71cf9a2aa49613c502"
 metafile = true
 
 [[files]]
