@@ -101,6 +101,14 @@ file = "kubejs/assets/kubejs/models/block/panel/base.json"
 hash = "e4baf9586d0c863b988d07d41bcdd94845adce7340722ffe3d75bdd1e08f7640"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/block/rocket_engine.mtl"
+hash = "b48246ba8198ef12278741629881a8ca9ce8d819942b7fcb34561c4c9b820533"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/rocket_engine.obj"
+hash = "78e6f196e5dffa2328bbe4f08a43941cd950db4db4480190c1c4168dcaf804fb"
+
+[[files]]
 file = "kubejs/assets/kubejs/sounds/rocket.ogg"
 hash = "b8171806b0a75f012ffade3c4c7a1738ce143941e5ce8f700aaf5c492ad80da7"
 
@@ -166,19 +174,19 @@ hash = "4aa04eea36427392551090826996787b9d01318cd11e66bebe058a00e76e4fe1"
 
 [[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "095fd0499f07109462b5daf417c7ac2e297bfef26849f6876e49b754869ab5c6"
+hash = "35adcd80e9a5bdb8e55f9170234848086d9051bafeb0e188f03f463b819efc47"
 
 [[files]]
 file = "kubejs/client_scripts/recipes.js"
-hash = "eb2eeab7c1a9260f2bf0df0134276ff8add774c2f739019a93dca09d9c93e697"
+hash = "4f7e5ed5d6aec86331d955ff6d740808e0f65067afb192afa71e745afaa467c4"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "7192a42388b64d2f3007504fb04ee7c7bb6ad6493453a391ac7ea788c557d5f8"
+hash = "f4f1c51952df5cb95a20e1c4a48ad283828abebe283748ba6e078565a93a6008"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "c4d13adecea8753f5bf72766618f141a28a1b686340b39f97bc8d76363f12894"
+hash = "3db854c34399d813d3155c7cb41fa3e7dc2d3ff9666ae45c8b548a527e55f1f9"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -190,15 +198,15 @@ hash = "58305bb3323965c2979a225619d211641c3962779064f189b8f2b849dbad9e6f"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
-hash = "508c8d20b5dd4d3ffd2640ec5b5b1f8d0704435a7c8a0925e6e99b3e7434d8f1"
+hash = "0876629982fd4483ca32e1d0e65655b77efdfdef01df84e1bc2ca588c6ae52b0"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "6921dcbbaa02d583faf1c08d69631eff0e8027cbf71da4ba2febd24a990cde9f"
+hash = "fa1a02ad011634b2b6ebff45ba59042412d78ca68259a95d66fada138b53ac2c"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
-hash = "c8eba762bb14f23761924bebdc5f3999eefe5fd93435d6b8a8c0501c8b7493d6"
+hash = "e8e71e6d9c348bb831ffa300cf62ad0642ad41fa99b96d56e180d521d9bfac41"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
@@ -206,7 +214,7 @@ hash = "b2a5bea04c5815be0bcd4b644cbab1993f0a4e9515ce3232304a5df392889781"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "5ab59a1fdaf0150f97759ac58ea228e820f9a98cb68a3bf6f11bb7ceb0aaec2b"
+hash = "9f9752981a8c749611fbc0fe5e90d9647ee0a2fb5dc75e2f04b62d95be7bbd03"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
@@ -214,7 +222,7 @@ hash = "1b3d258d77ce970e3be90533924a8c0b5dec9751fe3fec2cb6ade5d6f75e6440"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "331ffdcb9827d5de58cd7c5e984c335d33e9ed8901e2fbd1114d43e1bc822d7a"
+hash = "ead9f354db59adb308fa62960f10d29d7ed16adc3eb65a9f87a94fd66f801e96"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -222,11 +230,11 @@ hash = "a59da0444281d33be413edd15779a8f4c044c1623b4ebbf40f0ee918b6638033"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "6f4bf6378a5076151789396cd6cdb02057b9c82de25955894221467383ecfd8a"
+hash = "a83797b3d2a66a006cd4c238441090358f283dcdf91f2471da83e198f6c0cf3e"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "c89ddf5888d392f32b2903dfdf37f89978e4ef44aefe71de1d828a48b2f8be76"
+hash = "4ec12187b4fab2fdeed63e5c7f931e70730c1020bf88eeb6b10caf9172723f1a"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
@@ -364,7 +372,7 @@ metafile = true
 
 [[files]]
 file = "mods/jade.pw.toml"
-hash = "6c55d62a19881830ac4c424feb35714954dafc338e9c2ab8564da70f7e092306"
+hash = "fcb1cb77c34aa9819c2dd9dacd13526592fb0995da7e8cd5f1f6d595b7ffd9d4"
 metafile = true
 
 [[files]]
@@ -419,7 +427,7 @@ metafile = true
 
 [[files]]
 file = "mods/mouse-tweaks.pw.toml"
-hash = "fac74cc46a4424c4a235a6efbb7e8b3b62c200ad95564e230857eec26b33f216"
+hash = "e72f73611904e14d915418f0e3c6cb483cdc600e211375c2eceb393fec5b80f1"
 metafile = true
 
 [[files]]
@@ -474,7 +482,7 @@ metafile = true
 
 [[files]]
 file = "resourcepacks/terrafirmacraft-vexxed-visuals.pw.toml"
-hash = "e6afd049253585658d1d18ed0d44500185968c63ddd4dc71cf9a2aa49613c502"
+hash = "3091006556396f8213d0f0752e871f3748463d6249aa92120c7440b5a6b43ea2"
 metafile = true
 
 [[files]]

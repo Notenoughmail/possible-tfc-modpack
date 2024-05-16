@@ -1,4 +1,3 @@
-// TODO: Test, and fix, port to 1.20 syntax
 
 const ClientTFCConfig = Java.loadClass("net.dries007.tfc.config.TFCConfig").CLIENT;
 const TemperatureStyle = Java.loadClass("net.dries007.tfc.config.TemperatureDisplayStyle");
@@ -47,7 +46,7 @@ JEIEvents.hideItems(e => {
 	e.hide('minecraft:stonecutter');
 	e.hide('#forge:nuggets');
 	e.hide('#forge:plates');
-	e.hide(/minecraft:.*(?:diorite|granite|dripstone|limestone|deespslate).*/);
+	e.hide(/minecraft:.*(?:diorite|granite|dripstone|limestone|deespslate|glowstone|andesite).*/);
 	e.hide(/minecraft:infested_.+/);
 	e.hide('firmalife:embedded_pipe');
 	e.hide('firmalife:squirting_moisture_transducer');
@@ -76,7 +75,11 @@ JEIEvents.hideItems(e => {
 	e.hide(/minecraft:(?:blaze|end)_rod/);
 	e.hide('minecraft:iron_bars');
 	e.hide('minecraft:coal_block');
-	e.hide(/minecraft:(?:(?:mossy_)?(?:cobble|cracked|chiseled)?)?stone(?:_(?:stairs|slab|pressure_plate|button|wall|bricks|brick_stairs|brick_slab|brick_wall))?/);
+	e.hide(/minecraft:(?:(?:mossy_)?(?:(?:cobble|cracked|chiseled|smooth)_?)?)?stone(?:_(?:stairs|slab|pressure_plate|button|wall|bricks|brick_stairs|brick_slab|brick_wall))?/);
+	e.hide('minecraft:lodestone');
+	e.hide('minecraft:blast_furnace');
+	e.hide(/thoriumreactors:blasted.*/);
+	e.hide('thoriumreactors:graphite_crystal');
 })
 
 JEIEvents.addItems(e => {

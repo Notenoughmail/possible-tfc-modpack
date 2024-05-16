@@ -11,6 +11,8 @@ const VesselCachedRecipe = Java.loadClass("net.dries007.tfc.common.items.VesselI
 VesselCachedRecipe.setAccessible(true);
 const Integer = Java.loadClass("java.lang.Integer");
 const Alloy = Java.loadClass("net.dries007.tfc.util.Alloy");
+const CanoeComponentBlock = Java.loadClass('com.alekiponi.firmaciv.common.block.CanoeComponentBlock');
+const CanoeComponentBlockEntity = Java.loadClass('com.alekiponi.firmaciv.common.blockentity.CanoeComponentBlockEntity');
 
 const THERMO = Text.translate('tooltip.kubejs.thermometer');
 const HEATS_TO = Text.translatable('kubejs.tooltip.heats_to').gray();
@@ -94,14 +96,17 @@ ItemEvents.tooltip(tip => {
 				}
 			});
 			if (fluids.length > 1) {
+				let amount = 0;
 				let alloy = new Alloy();
 				fluids.forEach(obj => {
 					let metal = TFC.misc.getMetal(obj.fluid);
+					amount += obj.amount;
 					if (metal != null) {
 						alloy.add(metal, obj.amount, false);
 					}
 				});
 				text.add(Text.translatable('kubejs.tooltip.alloys_to', alloy.result.displayName.copy().gold().italic()).gray());
+				text.add(Text.translatable('kubejs.tooltip.total_fluid', Text.literal(Integer['valueOf(int)'](amount).toString()).aqua()).gray());
 			}
 			items.forEach(obj => {
 				text.add(Text.translatable('kubejs.tooltip.heats_to_item', Text.literal(Integer['valueOf(int)'](obj.count).toString()).aqua(), obj.item.description.copy().gold().italic()).gray());
@@ -120,6 +125,8 @@ JadeEvents.onClientRegistration(e => {
 		.tooltip((tooltip, accessor, config) => global.collapseTooltip(tooltip, accessor, config));
 	e.block('kubejs:support', Block)
 		.tooltip((tooltip, accessor, config) => global.supportTooltip(tooltip, accessor, config));
+	e.block('kubejs:firmaciv/canoe_time', CanoeComponentBlock)
+		.tooltip((tooltip, accessor, config) => global.canoeTimeLeft(tooltip, accessor, config));
 })
 
 /**
@@ -195,5 +202,17 @@ global.supportTooltip = (tooltip, accessor, config) => {
 		tooltip.add(Text.translatable('jade.tooltip.kubejs.horizontal_support', support.supportHorizontal).gray().italic());
 		tooltip.add(Text.translatable('jade.tooltip.kubejs.up_support', support.supportUp).gray().italic());
 		tooltip.add(Text.translatable('jade.tooltip.kubejs.down_support', support.supportDown).gray().italic());
+	}
+}
+
+/**
+ * @param {Internal.ITooltipWrapper} tooltip 
+ * @param {Internal.BlockAccessor} accessor 
+ * @param {Internal.IPluginConfig} config 
+ */
+global.canoeTimeLeft = (tooltip, accessor, config) => {
+	let { level, blockEntity, blockState } = accessor;
+	if (blockState.getValue(CanoeComponentBlock.CANOE_CARVED) > 11 && blockEntity instanceof CanoeComponentBlockEntity) {
+		tooltip.add(Text.translatable('tfc.jade.time_left', TFC.calendar.getCalendar(level).getTimeDelta(blockEntity.ticksLeft)));
 	}
 }

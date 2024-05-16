@@ -3,10 +3,6 @@ global.commonConfig = {};
 
 Platform.setModName("configjs", "Possible TFC Pack");
 
-const GameEvent = Java.loadClass('net.minecraft.world.level.gameevent.GameEvent');
-const ItemEntity = Java.loadClass('net.minecraft.world.entity.item.ItemEntity');
-const FarmlandBlock = Java.loadClass('net.dries007.tfc.common.blocks.soil.FarmlandBlock');
-
 ConfigsEvent.client(e => {
 	global.clientConfig = {};
 	e.setName('possible-tfc-pack-client');
@@ -60,7 +56,7 @@ TFCEvents.prospectRepresentative(e => {
 		});
 		e.registerRepresentative(`kubejs:ore/${ore}/dacite`, ores);
 	});
-	e.registerRepresentative('ae2:flawless_budding_quartz', 'ae2:flawed_budding_quartz', 'ae2:chipped_budding_quartz', 'ae2:damaged_budding_quartz');
+	e.registerRepresentative('ae2:quartz_block', 'ae2:flawless_budding_quartz', 'ae2:flawed_budding_quartz', 'ae2:chipped_budding_quartz', 'ae2:damaged_budding_quartz');
 })
 
 ForgeEvents.onEvent('top.theillusivec4.curios.api.event.CurioEquipEvent', e => global.curioEquipEvent(e));

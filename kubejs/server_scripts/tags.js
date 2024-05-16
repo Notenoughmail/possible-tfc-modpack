@@ -66,6 +66,11 @@ ServerEvents.tags('block', e => {
 		/ae2:.*bud(?:ding)?.*/,
 		'ae2:quartz_block'
 	]);
+	e.add('tfc:mineable_with_glass_saw', [
+		/ae2:.*bud(?:ding)?.*/,
+		'ae2:quartz_block',
+		'minecraft:amethyst_block'
+	]);
 });
 
 ServerEvents.tags('item', e => {
@@ -196,6 +201,10 @@ ServerEvents.tags('item', e => {
 		'thoriumreactors:graphite_ingot'
 	]);
 
+	e.add('tfc:gem_powders', [
+		'ae2:certus_quartz_dust'
+	]);
+
 	// Weight and size
 	e.add('tfc:minecarts', [
 		'minecraft:minecart',
@@ -214,7 +223,8 @@ ServerEvents.tags('item', e => {
 		'ae2:quartz_cluster',
 		'ae2:medium_quartz_bud',
 		'ae2:small_quartz_bud',
-		'ae2:certus_quartz_crystal'
+		'ae2:certus_quartz_crystal',
+		'ae2:quartz_block'
 	]);
 	e.add('kubejs:ore/kaolin', [
 		'tfc:white_kaolin_clay',
@@ -481,6 +491,16 @@ ServerEvents.tags('item', e => {
 	e.add('kubejs:rock/certus_quartz_bearing', rockTypes['phyllite']);
 	e.add('kubejs:rock/chromite_bearing', ignIn);
 	e.add('kubejs:rock/chromite_bearing', meta);
+	e.add('kubejs:rock/lithium_bearing', [
+		'tfc:grass/loam',
+		'tfc:grass/silt',
+		'tfc:grass/sandy_loam',
+		'tfc:grass/silty_loam',
+		'tfc:dirt/loam',
+		'tfc:dirt/silt',
+		'tfc:dirt/sandy_loam',
+		'tfc:dirt/silty_loam'
+	]);
 })
 
 ServerEvents.tags('fluid', e => {

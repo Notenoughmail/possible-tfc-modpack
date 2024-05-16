@@ -1,4 +1,3 @@
-// TODO: Fix all of this
 
 TFCEvents.data(e => {
 	
@@ -6,7 +5,6 @@ TFCEvents.data(e => {
 	e.itemHeat('#forge:ingots/constantan', 1.233, 760, 1012);
 	e.itemHeat('#forge:rods/constantan', 0.616, 760, 1012);
 	e.itemHeat('#forge:sheets/constantan', 2.166, 760, 1012);
-	// e.itemHeat([/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper$/, /minecraft:(?:waxed_)?copper_block/], 7.145, null, null);
 	e.itemHeat('#forge:double_ingots/electrum', 2.219, 606, 808);
 	e.itemHeat('#forge:ingots/electrum', 1.11, 606, 808);
 	e.itemHeat('#forge:rods/electrum', 0.555, 606, 808);
@@ -16,9 +14,7 @@ TFCEvents.data(e => {
 	e.itemHeat('#forge:ingots/lead', 1.69, 196, 261);
 	e.itemHeat('#forge:rods/lead', 0.845, 196, 261);
 	e.itemHeat('#forge:sheets/lead', 3.379, 196, 261);
-	// e.itemHeat(/kubejs:ore\/.+_lead$/, 0.34, null, null);
-	// e.itemHeat(/minecraft:(?:waxed_)?(?:(?:exposed|weathered|oxidized)_)?(?:cut_)?copper_slab/, 3.573, null, null);
-	e.itemHeat('tfc:powder/coke', 7.31, null, null);
+	e.itemHeat('tfc:powder/graphite', 7.31, null, null);
 	e.itemHeat(['firmalife:ore/small_chromite', 'firmalife:ore/normal_chromite', 'firmalife:ore/poor_chromite', 'firmalife:ore/rich_chromite'], 1.143, 1144, 1526, 'firmalife:ore/chromite');
 	e.itemHeat('#forge:double_ingots/chromium', 4.64, 1144, 1526, 'firmalife:metal/chromium_double_ingot');
 	e.itemHeat('#forge:sheets/stainless_steel', 5.0533, 924, 1232, 'firmalife:metal/stainless_steel_sheet');
@@ -37,6 +33,7 @@ TFCEvents.data(e => {
 	e.itemSize('toolbelt:belt', 'very_large', 'heavy');
 	e.itemSize('toolbelt:pouch', 'normal', 'light');
 	e.itemSize(['#morered:network_cables', '#morered:red_alloy_wires'], 'tiny', 'light');
+	e.itemSize('kubejs:rocket_engine', 'huge', 'very_heavy');
 
 	e.metal(
 		'firmalife:metal/chromium',
@@ -116,6 +113,7 @@ TFCEvents.worldgenData(e => {
 			'tfc:rock/raw/claystone',
 			'tfc:rock/raw/phyllite'
 		], [
+			'45 ae2:quartz_block',
 			'15 ae2:damaged_budding_quartz',
 			'5 ae2:chipped_budding_quartz',
 			'3 ae2:flawed_budding_quartz',

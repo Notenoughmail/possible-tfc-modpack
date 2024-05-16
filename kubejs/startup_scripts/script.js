@@ -1,6 +1,10 @@
 // priority: 0
 
 const IntTag = Java.loadClass('net.minecraft.nbt.IntTag');
+const HarvestToolProvider = Java.loadClass('snownee.jade.addon.harvest.HarvestToolProvider');
+const SimpleToolHandler = Java.loadClass('snownee.jade.addon.harvest.SimpleToolHandler');
+const TFCBlockTags = Java.loadClass('net.dries007.tfc.common.TFCTags$Blocks');
+const TFCMultiBlock = Java.loadClass('net.dries007.tfc.util.MultiBlock');
 
 StartupEvents.registry('item', e => {
 	global.oreGrades.forEach(grade => {
@@ -20,7 +24,8 @@ StartupEvents.registry('item', e => {
 	e.create('lithium_ingot');
 	e.create('lithium_plate');
 	e.create('graphite_plate');
-	e.create('lithium_salt_clump');
+	e.create('lithium_salt_clump')
+		.tag('kubejs:ore/lithium');
 	e.create('sheet_mold');
 	e.create('rod_mold');
 })
@@ -75,11 +80,13 @@ StartupEvents.registry('block', e => {
 			grass.tagBlock('tfc:can_landslide');
 			grass.displayName('Lithium Salt Grass');
 			grass.tagBlock('forge:ores');
+			grass.tagItem('kubejs:ore/lithium');
 		})
 		.hardness(0.9)
 		.tagBlock('minecraft:mineable/shovel')
 		.tagBlock('tfc:can_landslide')
 		.tagBlock('forge:ores')
+		.tagItem('kubejs:ore/lithium')
 		.gravelSoundType()
 		.displayName('Lithium Salt Soil');
 
@@ -93,6 +100,34 @@ StartupEvents.registry('block', e => {
 			.box(13, 0, 0, 16, 16, 3)
 			.waterlogged();
 	});
+
+	e.create('rocket_engine')
+		.rightClick(click => global.clickRocketEngine(click))
+		.box(0, 11, 0, 16, 16, 16)
+		.box(3, 9, 3, 13, 11, 13)
+		.box(3, 6, 3, 13, 9, 13)
+		.box(2, 4, 2, 14, 6, 14)
+		.box(1, 2, 1, 15, 4, 15)
+		.box(0, 0, 0, 16, 2, 16)
+		.soundType('metal');
+
+	e.create('glass_slab', 'slab')
+		.soundType('glass')
+		.waterlogged()
+		.requiresTool()
+		.defaultCutout()
+		.tagBlock('tfc:mineable_with_glass_saw')
+		.textureAll('minecraft:block/glass');
+	
+	global.colors.forEach(color => {
+		e.create(`${color}_stained_glass_slab`, 'slab')
+			.soundType('glass')
+			.waterlogged()
+			.requiresTool()
+			.defaultTranslucent()
+			.tagBlock('tfc:mineable_with_glass_saw')
+			.textureAll(`minecraft:block/${color}_stained_glass`);
+	})
 
 	let groundCovers = ['malachite', 'native_copper', 'sphalerite'];
 
@@ -150,7 +185,7 @@ StartupEvents.registry('fluid', e => {
 })
 
 StartupEvents.registry('sound_event', e => {
-	e.create('rocket')
+	e.create('rocket');
 })
 
 StartupEvents.registry('entity_type', e => {
@@ -164,10 +199,12 @@ StartupEvents.registry('entity_type', e => {
 })
 
 StartupEvents.registry('particle_type', e => {
-	global.rocketPlumeSupplier = e.create('rocket_plume')
-		.overrideLimiter(true)
-	global.rocketPlumeEjectaSupplier = e.create('rocket_plume_ejecta')
-		.overrideLimiter(true)
+	global.rocketPlumeSupplier = e.create('rocket_plume');
+	global.rocketPlumeEjectaSupplier = e.create('rocket_plume_ejecta');
+})
+
+StartupEvents.postInit(e => {
+	HarvestToolProvider.registerHandler(new SimpleToolHandler('gem_saw', TFCBlockTags.MINEABLE_WITH_GLASS_SAW, 'tfc:gem_saw'));
 })
 
 /**
@@ -272,5 +309,36 @@ global.rocketInteract = (ctx) => {
 				}
 			}
 		});
+	}
+}
+
+// Wrapped in a lazy so blocks can be referenced 'before' they exist
+const ROCKET_STRUCTURE = Utils.lazy(() => new TFCMultiBlock()
+	.match([0, 0, 0], BlockStatePredicate.fromString('kubejs:rocket_engine'))
+);
+
+let rocketPosOffsets = [
+	[0, 0, 0],
+	[0, 1, 0]
+]
+
+/**
+ * @param {Internal.BlockRightClickedEventJS} e 
+ */
+global.clickRocketEngine = (e) => {
+	let { player, block, item, hand } = e;
+	let { level, pos } = block;
+	
+	if (item.empty && hand.name() == 'MAIN_HAND' && ROCKET_STRUCTURE.get().test(level, pos)) {
+
+		// Clear blocks
+		rocketPosOffsets.forEach(offset => {
+			level.destroyBlock(pos.offset(offset[0], offset[1], offset[2]), false, player);
+		});
+
+		// Summon rocket
+		let rocket = level.createEntity('kubejs:rocket');
+		rocket.setPos(pos.x + 0.5, pos.y, pos.z + 0.5);
+		level.addFreshEntity(rocket);
 	}
 }

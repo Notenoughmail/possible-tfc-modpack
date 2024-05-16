@@ -28,12 +28,6 @@ ClientEvents.highPriorityAssets(e => {
     });
 
     TFC.misc.wood.keySet().forEach(wood => {
-        e.addMultipartBlockState(`kubejs:support/${wood}`, g => {
-            g['part(java.lang.String,java.util.function.Consumer)']('facing=north', v => v.model(`kubejs:block/support/${wood}`));
-            g['part(java.lang.String,java.util.function.Consumer)']('facing=east', v => v.model(`kubejs:block/support/${wood}`).y(90));
-            g['part(java.lang.String,java.util.function.Consumer)']('facing=south', v => v.model(`kubejs:block/support/${wood}`).y(180));
-            g['part(java.lang.String,java.util.function.Consumer)']('facing=west', v => v.model(`kubejs:block/support/${wood}`).y(270));
-        });
         e.addModel('block', `kubejs:panel/${wood}`, m => {
             m.parent('kubejs:block/panel/base');
             m.texture('planks', `tfc:block/wood/planks/${wood}`);
@@ -41,7 +35,19 @@ ClientEvents.highPriorityAssets(e => {
             m.texture('log', `tfc:block/wood/stripped_log/${wood}`);
             m.texture('log_top', `tfc:block/wood/stripped_log_top/${wood}`);
         });
-    })
+    });
+
+    // TODO: Texture, is 32x32 with top left 16x16 being the textures for the mount, the bottom left 16x16 being the texture for the nozzle, and right 16x32 being unused
+    e.add('kubejs:models/block/rocket_engine', {
+        parent: 'block/block',
+        ambientocclusion: false,
+        loader: 'forge:obj',
+        model: 'kubejs:models/block/rocket_engine.obj',
+        textures: {
+            tex: 'kubejs:block/rocket_engine',
+            particle: 'tfc:block/metal/smooth/block_steel'
+        }
+    });
 
     // Sounds
     e.add('kubejs:sounds', {
@@ -102,6 +108,7 @@ ClientEvents.lang('en_us', e => {
     e.add('metal.kubejs.unrefined_redstone', 'Unrefined Redstone');
     e.add('metal.kubejs.refined_redstone', 'Refined Redstone');
     e.add('metal.kubejs.refined_graphite', 'Graphite');
+    e.add('metal.kubejs.unrefined_graphite', 'Unrefined Graphite')
     e.renameItem('morered:red_alloy_wire', 'Redwire');
     e.add('category.kubejs.ores', 'Ores');
     e.add('category.kubejs.entity', 'Entities');
@@ -155,4 +162,5 @@ ClientEvents.lang('en_us', e => {
     e.add('kubejs.tooltip.heats_to_liquid', '%smB of %s');
     e.add('kubejs.tooltip.heats_to_item', '~%sx %s');
     e.add('kubejs.tooltip.alloys_to', 'Alloy produced: %s');
+    e.add('kubejs.tooltip.total_fluid', 'Total fluid: %smB');
 })

@@ -39,6 +39,10 @@ ServerEvents.recipes(e => {
 			.inputs('ae2:fluix_glass_cable', Fluid.of(`tfc:${color}_dye`, 10))
 			.outputItem(`ae2:${color}_glass_cable`)
 			.id(`kubejs:sealed_barrel/${color}_fluix_cable`);
+		tfc.chisel(`kubejs:${color}_stained_glass_slab`, `minecraft:${color}_stained_glass`, 'slab')
+			.extraDrop(`kubejs:${color}_stained_glass_slab`)
+			.itemIngredient('tfc:metal/chisel/bronze')
+			.id(`kubejs:chisel/slab/${color}_stained_glass`);
 	});
 	[
 		'engineering',
@@ -54,19 +58,41 @@ ServerEvents.recipes(e => {
 		thoriumreactors.blasting(`${metal.mod}:metal/double_ingot/${metal.name}`, [
 			`${metal.mod}:metal/ingot/${metal.name}`,
 			`${metal.mod}:metal/ingot/${metal.name}`
-		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 20000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_ingot`);
+		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 10000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_ingot`);
 		thoriumreactors.blasting(`${metal.mod}:metal/double_sheet/${metal.name}`, [
 			`${metal.mod}:metal/sheet/${metal.name}`,
 			`${metal.mod}:metal/sheet/${metal.name}`
-		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 20000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_sheet`);
+		], ((Math.log(metal.tier + 1) + 1) * metal.sh * 10000), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_double_sheet`);
 		thoriumreactors.blasting(`2x ${metal.mod}:metal/rod/${metal.name}`, 'kubejs:rod_mold', [
 			`${metal.mod}:metal/ingot/${metal.name}`,
 			'kubejs:rod_mold'
-		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 20000) / 3), (metal.mt - 120)).id(`kubejs:blasting/${metal.name}_rod`);
+		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 10000) / 3), (metal.mt - 120)).id(`kubejs:blasting/${metal.name}_rod`);
 		thoriumreactors.blasting(`${metal.mod}:metal/sheet/${metal.name}`, 'kubejs:sheet_mold', [
 			`${metal.mod}:metal/double_ingot/${metal.name}`,
 			'kubejs:sheet_mold'
-		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 20000) / 1.5), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_sheet`);
+		], (((Math.log(metal.tier + 1) + 1) * metal.sh * 10000) / 1.5), (metal.mt - 10)).id(`kubejs:blasting/${metal.name}_sheet`);
+	});
+	[
+		'S  ',
+		' S ',
+		'  S'
+	].forEach((sawPos, index) => {
+		tfc.damage_inputs_shaped_crafting(minecraft.crafting_shaped('6x kubejs:glass_slab', [
+			sawPos,
+			'AAA'
+		], {
+			S: 'tfc:gem_saw',
+			A: 'minecraft:glass'
+		})).id(`kubejs:crafting/glass_slab_${index}`);
+		global.colors.forEach(color => {
+			tfc.damage_inputs_shaped_crafting(minecraft.crafting_shaped(`6x kubejs:${color}_stained_glass_slab`, [
+				sawPos,
+				'AAA'
+			], {
+				S: 'tfc:gem_saw',
+				A: `minecraft:${color}_stained_glass`
+			})).id(`kubejs:crafting/${color}_stained_glass_slab_${index}`);
+		});
 	});
 
 	// Film Developing
@@ -94,7 +120,7 @@ ServerEvents.recipes(e => {
 		'A A',
 		' B '
 	], {
-		S: 'tfc:metal/sheet/rose_gold',
+		S: 'tfc:metal/rod/rose_gold',
 		A: '#forge:string',
 		B: 'kubejs:leather_pouch'
 	}).id('kubejs:crafting/tool_pouch');
@@ -104,7 +130,7 @@ ServerEvents.recipes(e => {
 		'BBB'
 	], {
 		S: '#forge:string',
-		A: 'tfc:metal/sheet/nickel',
+		A: 'tfc:metal/rod/nickel',
 		B: 'toolbelt:pouch'
 	}).id('kubejs:crafting/tool_belt');
 	minecraft.crafting_shaped('exposure:camera', [
@@ -486,7 +512,7 @@ ServerEvents.recipes(e => {
 	tfc.heating('firmalife:ore/rich_chromite', 1907)
 		.resultFluid(Fluid.of('firmalife:metal/chromium', 35))
 		.id('kubejs:heating/rich_chromite');
-	tfc.heating('tfc:powder/coke', 2135)
+	tfc.heating('tfc:powder/graphite', 2135)
 		.resultFluid(Fluid.of('kubejs:unrefined_graphite', 10))
 		.id('kubejs:heating/coke_powder');
 	tfc.heating('minecraft:redstone', 2013)
@@ -532,6 +558,10 @@ ServerEvents.recipes(e => {
 		.id('kubejs:chisel/smooth/frameless_industrial_floor');
 	tfc.chisel('thoriumreactors:frameless_black_industrial_block_floor', 'thoriumreactors:black_industrial_block_floor', 'smooth')
 		.id('kubejs:chisel/smooth/frameless_black_industrial_floor');
+	tfc.chisel('kubejs:glass_slab', 'minecraft:glass', 'slab')
+		.extraDrop('kubejs:glass_slab')
+		.itemIngredient('tfc:metal/chisel/bronze')
+		.id('kubejs:chisel/slab/glass');
 	
 	// Knapping
 	tfc.knapping('kubejs:leather_pouch', 'tfc:leather',[

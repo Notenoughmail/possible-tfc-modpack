@@ -70,17 +70,24 @@ JEIAddedEvents.registerRecipes(e => {
         Utils.parseBlockState('ae2:flawless_budding_quartz'),
         Utils.parseBlockState('ae2:flawed_budding_quartz'),
         Utils.parseBlockState('ae2:chipped_budding_quartz'),
-        Utils.parseBlockState('ae2:damaged_budding_quartz')
+        Utils.parseBlockState('ae2:damaged_budding_quartz'),
+		Utils.parseBlockState('ae2:quartz_block')
     ]);
 
-	let kaoliniteStates= Utils.newList();
+	let kaoliniteStates = Utils.newList();
 	kaoliniteStates.addAll([
 		Utils.parseBlockState('tfc:white_kaolin_clay'),
 		Utils.parseBlockState('tfc:pink_kaolin_clay'),
 		Utils.parseBlockState('tfc:red_kaolin_clay'),
 		Utils.parseBlockState('tfc:kaolin_clay_grass'),
 		Utils.parseBlockState('tfc:plant/blood_lily')
-	])
+	]);
+
+	let lithiumStates = Utils.newList();
+	lithiumStates.addAll([
+		Utils.parseBlockState('kubejs:lithium_salt'),
+		Utils.parseBlockState('kubejs:lithium_salt_grass')
+	]);
 
 	let recipes = [
 		{
@@ -88,7 +95,7 @@ JEIAddedEvents.registerRecipes(e => {
 			items: Ingredient.of('#kubejs:ore/certus_quartz'),
 			description: Text.translatable('jei.description.ores.certus_quartz'),
 			single: false,
-			scale: 40,
+			scale: 80,
 			rocks: Ingredient.of('#kubejs:rock/certus_quartz_bearing')
 		},
 		{
@@ -96,8 +103,23 @@ JEIAddedEvents.registerRecipes(e => {
 			items: Ingredient.of('#kubejs:ore/kaolin'),
 			description: Text.translatable('jei.description.ores.kaolinite'),
 			single: false,
-			scale: 40,
+			scale: 100,
 			rocks: Ingredient.of('#kubejs:rock/kaolin_bearing')
+		},
+		{
+			state: Utils.parseBlockState('firmalife:ore/normal_chromite/dacite'),
+			items: Ingredient.of('#kubejs:ore/chromite'),
+			description: Text.translatable('jei.description.ores.chromite'),
+			single: true,
+			rocks: Ingredient.of('#kubejs:rock/chromite_bearing')
+		},
+		{
+			states: lithiumStates,
+			items: Ingredient.of('#kubejs:ore/lithium'),
+			description: Text.translatable('jei.description.ores.lithium'),
+			single: false,
+			scale: 40,
+			rocks: Ingredient.of('#kubejs:rock/lithium_bearing')
 		}
 	];
 
@@ -148,16 +170,8 @@ JEIAddedEvents.registerRecipes(e => {
 			description: Text.translatable(`jei.description.ores.${ore}`),
 			single: true,
 			rocks: Ingredient.of(`#kubejs:rock/${ore}_bearing`)
-		})
+		});
 	});
-
-	recipes.push({
-		state: Utils.parseBlockState('firmalife:ore/normal_chromite/dacite'),
-		items: Ingredient.of('#kubejs:ore/chromite'),
-		description: Text.translatable('jei.description.ores.chromite'),
-		single: true,
-		rocks: Ingredient.of('#kubejs:rock/chromite_bearing')
-	})
 
     e.custom('kubejs:ores')
         .addAll(recipes);
