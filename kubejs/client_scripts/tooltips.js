@@ -15,7 +15,8 @@ const CanoeComponentBlock = Java.loadClass('com.alekiponi.firmaciv.common.block.
 const CanoeComponentBlockEntity = Java.loadClass('com.alekiponi.firmaciv.common.blockentity.CanoeComponentBlockEntity');
 
 const THERMO = Text.translate('tooltip.kubejs.thermometer');
-const HEATS_TO = Text.translatable('kubejs.tooltip.heats_to').gray();
+const HEATS_TO = Text.translatable('tooltip.kubejs.heats_to').gray();
+const GROWS_IN = Text.translatable('tooltip.kubejs.grows_in').gray();
 
 ItemEvents.tooltip(tip => {
 	tip.addAdvanced(Ingredient.all, (item, advanced, text) => {
@@ -92,7 +93,7 @@ ItemEvents.tooltip(tip => {
 			fluids.forEach(obj => {
 				let metal = TFC.misc.getMetal(obj.fluid);
 				if (metal != null) {
-					text.add(Text.translatable('kubejs.tooltip.heats_to_liquid', Text.literal(Integer['valueOf(int)'](obj.amount).toString()).aqua(), metal.displayName.copy().gold().italic()).gray());
+					text.add(Text.translatable('tooltip.kubejs.heats_to_liquid', Text.aqua(Integer['valueOf(int)'](obj.amount).toString()), metal.displayName.copy().gold().italic()).gray());
 				}
 			});
 			if (fluids.length > 1) {
@@ -105,13 +106,29 @@ ItemEvents.tooltip(tip => {
 						alloy.add(metal, obj.amount, false);
 					}
 				});
-				text.add(Text.translatable('kubejs.tooltip.alloys_to', alloy.result.displayName.copy().gold().italic()).gray());
-				text.add(Text.translatable('kubejs.tooltip.total_fluid', Text.literal(Integer['valueOf(int)'](amount).toString()).aqua()).gray());
+				text.add(Text.translatable('tooltip.kubejs.alloys_to', alloy.result.displayName.copy().gold().italic()).gray());
+				text.add(Text.translatable('tooltip.kubejs.total_fluid', Text.aqua(Integer['valueOf(int)'](amount).toString())).gray());
 			}
 			items.forEach(obj => {
-				text.add(Text.translatable('kubejs.tooltip.heats_to_item', Text.literal(Integer['valueOf(int)'](obj.count).toString()).aqua(), obj.item.description.copy().gold().italic()).gray());
+				text.add(Text.translatable('tooltip.kubejs.heats_to_item', Text.aqua(Integer['valueOf(int)'](obj.count).toString()), obj.item.description.copy().gold().italic()).gray());
 			});
 		}
+	});
+
+	global.crops.forEach(crop => {
+		tip.addAdvanced(`${crop.mod}:seeds/${crop.name}`, (item, advanced, text) => {
+			text.add(GROWS_IN);
+			text.add(Text.translatable('tooltip.kubejs.grows_in.temp', Text.green(Integer['valueOf(int)'](crop.minT).toString()), Text.green(Integer['valueOf(int)'](crop.maxT).toString())).gray());
+			text.add(Text.translatable('tooltip.kubejs.grows_in.hydration', Text.blue(Integer['valueOf(int)'](crop.minH).toString()), Text.blue(Integer['valueOf(int)'](crop.maxH).toString())).gray());
+		});
+	});
+
+	global.plants.forEach(plant => {
+		tip.addAdvanced(`${plant.mod}:plant/${plant.name}`, (item, advanced, text) => {
+			text.add(GROWS_IN);
+			text.add(Text.translatable('tooltip.kubejs.grows_in.temp', Text.green(Integer['valueOf(int)'](plant.minT).toString()), Text.green(Integer['valueOf(int)'](plant.maxT).toString())).gray());
+			text.add(Text.translatable('tooltip.kubejs.grows_in.hydration', Text.blue(Integer['valueOf(int)'](plant.minH).toString()), Text.blue(Integer['valueOf(int)'](plant.maxH).toString())).gray());
+		});
 	});
 })
 

@@ -37,6 +37,20 @@ ClientEvents.highPriorityAssets(e => {
         });
     });
 
+    e.addBlockState('kubejs:rocket_scaffolding', g => {
+        g.simpleVariant('axis=y', 'kubejs:block/rocket_scaffolding');
+        g.variant('axis=z', v => v.model('kubejs:block/rocket_scaffolding').x(90));
+        g.variant('axis=x', v => v.model('kubejs:block/rocket_scaffolding').x(90).y(90));
+    });
+
+    e.addModel('block', 'kubejs:rocket_scaffolding', m => {
+        m.parent('block/cube_column');
+        m.textures({
+            end: 'kubejs:block/rocket_scaffolding/end',
+            side: 'kubejs:block/rocket_scaffolding/side'
+        });
+    })
+
     // TODO: Texture, is 32x32 with top left 16x16 being the textures for the mount, the bottom left 16x16 being the texture for the nozzle, and right 16x32 being unused
     e.add('kubejs:models/block/rocket_engine', {
         parent: 'block/block',
@@ -158,9 +172,21 @@ ClientEvents.lang('en_us', e => {
     e.add('jade.tooltip.kubejs.up_support', 'Up: %d');
     e.add('jade.tooltip.kubejs.down_support', 'Down: %d');
 
-    e.add('kubejs.tooltip.heats_to', 'When heated sufficiently:');
-    e.add('kubejs.tooltip.heats_to_liquid', '%smB of %s');
-    e.add('kubejs.tooltip.heats_to_item', '~%sx %s');
-    e.add('kubejs.tooltip.alloys_to', 'Alloy produced: %s');
-    e.add('kubejs.tooltip.total_fluid', 'Total fluid: %smB');
+    e.add('tooltip.kubejs.heats_to', 'When heated sufficiently:');
+    e.add('tooltip.kubejs.heats_to_liquid', '%smB of %s');
+    e.add('tooltip.kubejs.heats_to_item', '~%sx %s');
+    e.add('tooltip.kubejs.alloys_to', 'Alloy produced: %s');
+    e.add('tooltip.kubejs.total_fluid', 'Total fluid: %smB');
+
+    e.add('tooltip.kubejs.grows_in', 'Will grow in:');
+    e.add('tooltip.kubejs.grows_in.temp', '%s - %s °C');
+    e.add('tooltip.kubejs.grows_in.hydration', '%s - %s%% hydration');
+
+    e.add('message.kubejs.need_empty_hand', 'An empty hand is required to assemble a rocket!');
+    e.add('message.kubejs.improper_rocket_structure', 'The rocket is not properly built, please review the building instructions!');
+    e.add('message.kubejs.missing_scaffold', 'The rocket requires scaffolding to assemble');
+    e.add('message.kubejs.assembly_successful', 'Successfully assembled rocket!');
+    e.add('message.kubejs.improper_rocket_fuel_ratio', 'There is an improper ratio of fuel in the rocket!');
+
+    e.renameBlock('ae2:sky_stone_tank', 'Rocket Fuel Tank');
 })

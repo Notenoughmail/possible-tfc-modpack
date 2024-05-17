@@ -2,28 +2,6 @@
 
 ServerEvents.tags('block', e => {
 
-	e.add('kubejs:vertical_support', [
-    	'tfc:wood/vertical_support/acacia',
-    	'tfc:wood/vertical_support/ash',
-    	'tfc:wood/vertical_support/aspen',
-    	'tfc:wood/vertical_support/birch',
-    	'tfc:wood/vertical_support/blackwood',
-    	'tfc:wood/vertical_support/chestnut',
-    	'tfc:wood/vertical_support/douglas_fir',
-    	'tfc:wood/vertical_support/hickory',
-    	'tfc:wood/vertical_support/kapok',
-    	'tfc:wood/vertical_support/maple',
-    	'tfc:wood/vertical_support/oak',
-    	'tfc:wood/vertical_support/palm',
-    	'tfc:wood/vertical_support/pine',
-    	'tfc:wood/vertical_support/rosewood',
-    	'tfc:wood/vertical_support/sequoia',
-    	'tfc:wood/vertical_support/spruce',
-    	'tfc:wood/vertical_support/sycamore',
-    	'tfc:wood/vertical_support/white_cedar',
-    	'tfc:wood/vertical_support/willo'
-	]);
-
 	e.add('kubejs:glass_sand', [
 		'tfc:sand/white',
 		'tfc:sand/red',
@@ -524,4 +502,7 @@ ServerEvents.tags('worldgen/placed_feature', e => {
 	e.add('tfc:in_biome/veins', [
 		'kubejs:vein/certus_quartz'
 	]);
+	e.add('tfc:feature/soil_discs', [
+		'kubejs:soil_disc/lithium_salt'
+	])
 })

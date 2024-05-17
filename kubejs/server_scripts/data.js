@@ -123,7 +123,7 @@ TFCEvents.worldgenData(e => {
 		vein.nearLava(true)
 	}, placement => {});
 
-	e.soilDisc('kubejs:lithium_salt', [
+	e.soilDisc('kubejs:soil_disc/lithium_salt', [
 		e.blockToBlockState('tfc:grass/loam', 'kubejs:lithium_salt_grass'),
 		e.blockToBlockState('tfc:grass/silt', 'kubejs:lithium_salt_grass'),
 		e.blockToBlockState('tfc:grass/sandy_loam', 'kubejs:lithium_salt_grass'),

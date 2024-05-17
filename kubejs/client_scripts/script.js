@@ -80,6 +80,8 @@ JEIEvents.hideItems(e => {
 	e.hide('minecraft:blast_furnace');
 	e.hide(/thoriumreactors:blasted.*/);
 	e.hide('thoriumreactors:graphite_crystal');
+	e.hide(/minecraft:(?:dead|rose)_bush/);
+	e.hide(/minecraft:.*seed.*/);
 })
 
 JEIEvents.addItems(e => {

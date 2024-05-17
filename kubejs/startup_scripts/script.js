@@ -109,7 +109,29 @@ StartupEvents.registry('block', e => {
 		.box(2, 4, 2, 14, 6, 14)
 		.box(1, 2, 1, 15, 4, 15)
 		.box(0, 0, 0, 16, 2, 16)
-		.soundType('metal');
+		.soundType('metal')
+		.requiresTool()
+		.tagBlock('minecraft:mineable/pickaxe');
+
+	e.create('rocket_scaffolding')
+		.property(BlockProperties.AXIS)
+		.placementState(place => {
+			place.setValue(BlockProperties.AXIS, place.clickedFace.axis);
+		})
+		.soundType('metal')
+		.requiresTool()
+		.tagBlock('minecraft:mineable/pickaxe')
+		.defaultCutout();
+
+	e.create('rocket_payload')
+		.soundType('metal')
+		.requiresTool()
+		.tagBlock('minecraft:mineable/pickaxe');
+
+	e.create('rocket_avionics')
+		.soundType('metal')
+		.requiresTool()
+		.tagBlock('minecraft:mineable/pickaxe');
 
 	e.create('glass_slab', 'slab')
 		.soundType('glass')
@@ -315,12 +337,58 @@ global.rocketInteract = (ctx) => {
 // Wrapped in a lazy so blocks can be referenced 'before' they exist
 const ROCKET_STRUCTURE = Utils.lazy(() => new TFCMultiBlock()
 	.match([0, 0, 0], BlockStatePredicate.fromString('kubejs:rocket_engine'))
+	.match([0, 1, 0], BlockStatePredicate.fromString('ae2:sky_stone_tank'))
+	.match([0, 2, 0], BlockStatePredicate.fromString('ae2:sky_stone_tank'))
+	.match([0, 3, 0], BlockStatePredicate.fromString('kubejs:rocket_avionics'))
+	.match([0, 4, 0], BlockStatePredicate.fromString('kubejs:rocket_payload'))
+	// TODO: Coverings on side?
+);
+
+const SCAFFOLD_STRUCTURE = Utils.lazy(() => new TFCMultiBlock()
+	.matchOneOf([0, 0, 0],
+		new TFCMultiBlock().matchHorizontal([0, 0, 0],
+			new TFCMultiBlock()
+				.match([0, 0, 0], BlockStatePredicate.fromString('kubejs:rocket_scaffolding[axis=y]'))
+				.match([0, 1, 0], BlockStatePredicate.fromString('kubejs:rocket_scaffolding[axis=y]'))
+				.match([0, 2, 0], BlockStatePredicate.fromString('kubejs:rocket_scaffolding[axis=y]'))
+				.match([0, 3, 0], BlockStatePredicate.fromString('kubejs:rocket_scaffolding[axis=y]'))
+			, 3
+		)
+	)
+);
+
+const ROCKET_FUEL = Utils.lazy(() => new TFCMultiBlock()
+	.match([0, 1, 0], be => {
+		/**
+		 * @type {Internal.IFluidTank} tank
+		 */
+		let tank = be.storage;
+		// TODO: Implement fuels
+		return true;
+	}, Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank'))
+	.match([0, 2, 0], be => {
+		/**
+		 * @type {Internal.IFluidTank} tank
+		 */
+		let tank = be.storage;
+		// TODO: Implement fuels
+		return true;
+	}, Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank'))
 );
 
 let rocketPosOffsets = [
 	[0, 0, 0],
-	[0, 1, 0]
-]
+	[0, 1, 0],
+	[0, 2, 0],
+	[0, 3, 0],
+	[0, 4, 0]
+];
+
+const NEED_EMPTY_HAND = Text.translatable('message.kubejs.need_empty_hand').yellow();
+const IMPROPER_STRUCTURE = Text.translatable('message.kubejs.improper_rocket_structure').darkRed();
+const NO_SCAFFOLD = Text.translatable('message.kubejs.missing_scaffold').color(Color.ORANGE_DYE);
+const ASSEMBLY_SUCCESSFUL = Text.translatable('message.kubejs.assembly_successful').green()
+const IMPROPER_FUEL_RATIO = Text.translatable('message.kubejs.improper_rocket_fuel_ratio').darkAqua();
 
 /**
  * @param {Internal.BlockRightClickedEventJS} e 
@@ -329,16 +397,32 @@ global.clickRocketEngine = (e) => {
 	let { player, block, item, hand } = e;
 	let { level, pos } = block;
 	
-	if (item.empty && hand.name() == 'MAIN_HAND' && ROCKET_STRUCTURE.get().test(level, pos)) {
-
-		// Clear blocks
-		rocketPosOffsets.forEach(offset => {
-			level.destroyBlock(pos.offset(offset[0], offset[1], offset[2]), false, player);
-		});
-
-		// Summon rocket
-		let rocket = level.createEntity('kubejs:rocket');
-		rocket.setPos(pos.x + 0.5, pos.y, pos.z + 0.5);
-		level.addFreshEntity(rocket);
+	if (item.empty && hand.name() == 'MAIN_HAND') {
+		if (ROCKET_STRUCTURE.get().test(level, pos)) {
+			if (ROCKET_FUEL.get().test(level, pos)) {
+				if (SCAFFOLD_STRUCTURE.get().test(level, pos)) {
+					// Clear blocks
+					rocketPosOffsets.forEach(offset => {
+						level.destroyBlock(pos.offset(offset[0], offset[1], offset[2]), false, player);
+					});
+			
+					// Summon rocket
+					let rocket = level.createEntity('kubejs:rocket');
+					rocket.setPos(pos.x + 0.5, pos.y, pos.z + 0.5);
+					level.addFreshEntity(rocket);
+					
+					// Inform player (as if it wasn't obvious)
+					player.tell(ASSEMBLY_SUCCESSFUL);
+				} else {
+					player.tell(NO_SCAFFOLD);
+				}
+			} else {
+				player.tell(IMPROPER_FUEL_RATIO);
+			}
+		} else {
+			player.tell(IMPROPER_STRUCTURE);
+		}
+	} else {
+		player.tell(NEED_EMPTY_HAND);
 	}
 }
