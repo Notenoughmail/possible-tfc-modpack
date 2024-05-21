@@ -82,6 +82,8 @@ JEIEvents.hideItems(e => {
 	e.hide('thoriumreactors:graphite_crystal');
 	e.hide(/minecraft:(?:dead|rose)_bush/);
 	e.hide(/minecraft:.*seed.*/);
+	e.hide('ae2:silicon_press');
+	e.hide(/tfcastikorcarts:.*postilion.*/);
 })
 
 JEIEvents.addItems(e => {
@@ -151,3 +153,24 @@ NetworkEvents.dataReceived('rocket_explosion', e => {
 NetworkEvents.dataReceived('swing', e => {
 	e.player.swing();
 })
+
+/*
+ClientEvents.particleProviderRegistry(e => {
+	e.register('kubejs:rocket_plume', (options, clientLevel, spriteSet, x, y, z, xSpeed, ySpeed, zSpeed) => {
+		let particle = Client.customParticle(clientLevel, spriteSet, x, y, z);
+		particle.setParticleSpeed(xSpeed, ySpeed, zSpeed);
+		particle.scale(5);
+		particle.lifetime = 65;
+		particle.friction = 1;
+		return particle
+	});
+	e.register('kubejs:rocket_plume_ejecta', (options, clientLevel, spriteSet, x, y, z, xSpeed, ySpeed, zSpeed) => {
+		let particle = Client.customParticle(clientLevel, spriteSet, x, y, z);
+		particle.setParticleSpeed(xSpeed, ySpeed, zSpeed);
+		particle.scale(3);
+		particle.lifetime = 50;
+		particle.friction = 1;
+		return particle;
+	});
+})
+*/

@@ -179,7 +179,30 @@ JEIAddedEvents.registerRecipes(e => {
 
 JEIAddedEvents.registerRecipeCatalysts(e => {
 	let { data } = e;
-	// data.addRecipeCatalyst('kubejs:double_ingot/lead', global.entityRecipeType);
+	data.addRecipeCatalyst(
+		Item.of('ae2:certus_quartz_cutting_knife')
+			.withLore(Text.translatable('kubejs.jei.lore.in_offhand').green()),
+		data.jeiHelpers.getRecipeType('tfc:steel_sheet_carving_knapping').get()
+	);
+})
+
+const KNIFE_IN_OFFHAND = Utils.lazy(() => {
+	let list = Utils.newList();
+	list.add(Text.translatable('kubejs.jei.tooltip.in_offhand', Item.of('ae2:certus_quartz_cutting_knife').displayName.copy().gold()).gray())
+	return list;
+});
+
+JEIAddedEvents.registerAdvanced(e => {
+	let { data } = e;
+	data.addRecipeCategoryDecorator(
+		data.jeiHelpers.getRecipeType('tfc:steel_sheet_carving_knapping').get(),
+		e.categoryDecorator((recipe, category, slotView, guiGraphics, mouseX, mouseY) => {}, (tooltips, recipe, category, slotView, mouseX, mouseY) => {
+			if (mouseX > 100 || mouseX < 20) {
+				return KNIFE_IN_OFFHAND.get()
+			}
+			return tooltips;
+		})
+	);
 })
 
 /**

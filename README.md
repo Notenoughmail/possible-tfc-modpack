@@ -6,6 +6,7 @@ A modpack centered around TerraFirmaCraft, Thorium Reactors, AE2, and a few othe
 
 - The leather pouch is a lightly edited copy of Tool Belt's tool pouch
 - Custom ore vein overlays are recolours of various TFC ore overlays
+- The icons for steel sheet carving is TFC's smooth metal texture for steel
 
 ## Sounds
 

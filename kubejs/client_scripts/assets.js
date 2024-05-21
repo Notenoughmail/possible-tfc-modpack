@@ -47,9 +47,10 @@ ClientEvents.highPriorityAssets(e => {
         m.parent('block/cube_column');
         m.textures({
             end: 'kubejs:block/rocket_scaffolding/end',
-            side: 'kubejs:block/rocket_scaffolding/side'
+            side: 'kubejs:block/rocket_scaffolding/side',
+            particle: 'kubejs:block/rocket_scaffolding/side'
         });
-    })
+    });
 
     // TODO: Texture, is 32x32 with top left 16x16 being the textures for the mount, the bottom left 16x16 being the texture for the nozzle, and right 16x32 being unused
     e.add('kubejs:models/block/rocket_engine', {
@@ -189,4 +190,8 @@ ClientEvents.lang('en_us', e => {
     e.add('message.kubejs.improper_rocket_fuel_ratio', 'There is an improper ratio of fuel in the rocket!');
 
     e.renameBlock('ae2:sky_stone_tank', 'Rocket Fuel Tank');
+
+    e.add('tfc.jei.steel_sheet_carving_knapping', 'Steel Carving');
+    e.add('kubejs.jei.lore.in_offhand', 'In offhand');
+    e.add('kubejs.jei.tooltip.in_offhand', 'With %s in offhand');
 })

@@ -11,11 +11,56 @@ ServerEvents.recipes(e => {
 			S: reg.getBlock('slab').get()
 		}).id(`kubejs:crafting/${wood}_slab_to_plank`);
 		minecraft.crafting_shaped(`3x kubejs:panel/${wood}`, [
-			'SSS',
-			'SSS'
+			'S',
+			'S',
+			'S'
 		], {
 			S: `tfc:wood/lumber/${wood}`
 		}).id(`kubejs:crafting/${wood}_panel`);
+		minecraft.crafting_shaped(`tfcastikorcarts:supply_cart/${wood}`, [
+			'SSS',
+			'ABA',
+			'CDC'
+		], {
+			S: '#forge:chests/wooden',
+			A: `tfc:wood/lumber/${wood}`,
+			B: 'tfc:brass_mechanisms',
+			C: `tfcastikorcarts:wheel/${wood}`,
+			D: [
+				'tfc:metal/rod/bismuth_bronze',
+				'tfc:metal/rod/black_bronze',
+				'tfc:metal/rod/bronze'
+			]
+		}).id(`tfcastikorcarts:crafting/supply_cart/${wood}`);
+		minecraft.crafting_shaped(`tfcastikorcarts:animal_cart/${wood}`, [
+			'SSS',
+			'SAS',
+			'BCB'
+		], {
+			S: `tfc:wood/lumber/${wood}`,
+			A: 'tfc:brass_mechanisms',
+			B: `tfcastikorcarts:wheel/${wood}`,
+			C: [
+				'tfc:metal/rod/bismuth_bronze',
+				'tfc:metal/rod/black_bronze',
+				'tfc:metal/rod/bronze'
+			]
+		}).id(`tfcastikorcarts:crafting/animal_cart/${wood}`);
+		minecraft.crafting_shaped(`tfcastikorcarts:plow/${wood}`, [
+			'SSS',
+			'ABA',
+			'CDC'
+		], {
+			S: '#rods:rods/wooden',
+			A: `tfc:wood/lumber/${wood}`,
+			B: 'tfc:brass_mechanisms',
+			C: `tfcastikorcarts:wheel/${wood}`,
+			D: [
+				'tfc:metal/rod/bismuth_bronze',
+				'tfc:metal/rod/black_bronze',
+				'tfc:metal/rod/bronze'
+			]
+		}).id(`tfcastikorcarts:crafting/plow/${wood}`);
 	});
 	TFC.misc.rock.keySet().forEach(stone => {
 		minecraft.crafting_shaped('tfc:rock/bricks/' + stone, [
@@ -122,7 +167,7 @@ ServerEvents.recipes(e => {
 	], {
 		S: 'tfc:metal/rod/rose_gold',
 		A: '#forge:string',
-		B: 'kubejs:leather_pouch'
+		B: 'kubejs:pouch'
 	}).id('kubejs:crafting/tool_pouch');
 	minecraft.crafting_shaped(Item.of('toolbelt:belt', '{Size:5}'), [
 		'SAS',
@@ -468,6 +513,12 @@ ServerEvents.recipes(e => {
 	tfc.anvil('8x thoriumreactors:grate_wall_block', 'tfc:metal/sheet/steel', ['draw_any', 'hit_last', 'hit_any'])
 		.tier(4)
 		.id('kubejs:anvil/wall_grate');
+	tfc.anvil('kubejs:sheet_mold', 'tfc:metal/double_sheet/black_steel', ['punch_last', 'upset_second_last', 'shrink_third_last'])
+		.tier(5)
+		.id('kubejs:anvil/sheet_mold');
+	tfc.anvil('kubejs:rod_mold', 'tfc:metal/double_sheet/black_steel', ['punch_last', 'upset_second_last', 'shrink_third_last'])
+		.tier(5)
+		.id('kubejs:anvil/rod_mold');
 
 	// Heating
 	tfc.heating('firmalife:metal/ingot/chromium', 1907)
@@ -562,15 +613,6 @@ ServerEvents.recipes(e => {
 		.extraDrop('kubejs:glass_slab')
 		.itemIngredient('tfc:metal/chisel/bronze')
 		.id('kubejs:chisel/slab/glass');
-	
-	// Knapping
-	tfc.knapping('kubejs:leather_pouch', 'tfc:leather',[
-		'XX XX',
-		'X   X',
-		'X   X',
-		'X   X',
-		'XXXXX'
-	]).id('kubejs:knapping/leather_pouch');
 
 	// Alloying
 	tfc.alloy('kubejs:redstone_alloy', [
@@ -647,6 +689,50 @@ ServerEvents.recipes(e => {
 	// Landslide
 	tfc.landslide('kubejs:lithium_salt', ['kubejs:lithium_salt', 'kubejs:lithium_salt_grass'])
 		.id('kubejs:landslide/lithium_salt');
+
+	// Sewing
+	tfc.sewing('kubejs:pouch', [
+		0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 1, 1, 0, 1, 1, 0, 0,
+		0, 0, 0, 1, 1, 1, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 1, 1, 1, 1, 1, 0, 0
+	], [
+		-1, -1, 1, 1, 1, 1, -1, -1,
+		-1, -1, 0, 1, 1, 0, -1, -1,
+		-1, -1, 0, 0, 0, 0, -1, -1,
+		-1, -1, 0, 0, 0, 0, -1, -1
+	]).id('kubejs:sewing/pouch');
+
+	// Knapping
+	tfc.knapping('ae2:engineering_processor_press', 'kubejs:steel_sheet_carving', [
+		'XXX  ',
+		'XXX  ',
+		'XX XX',
+		'  XXX',
+		'  XXX'
+	]).id('kubejs:knapping/steel_carving/engineering_press');
+	tfc.knapping('ae2:calculation_processor_press', 'kubejs:steel_sheet_carving', [
+		'XX XX',
+		'X X X',
+		' XXX ',
+		'X X X',
+		'XX XX'
+	]).id('kubejs:knapping/steel_carving/calculation_press');
+	tfc.knapping('ae2:logic_processor_press', 'kubejs:steel_sheet_carving', [
+		'XXXXX',
+		'X X X',
+		'X X X',
+		'X X X',
+		'XXXXX'
+	]).id('kubejs:knapping/steel_carving/logic_press');
+	tfc.knapping('megacells:accumulation_processor_press', 'kubejs:steel_sheet_carving', [
+		'XXXXX',
+		' X X ',
+		' X X ',
+		' X X ',
+		' X X '
+	]).id('kubejs:knapping/steel_carving/accumulation_press');
 
 	// Mixing Bowl
 	firmalife.mixing_bowl()

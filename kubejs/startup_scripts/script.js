@@ -17,7 +17,7 @@ StartupEvents.registry('item', e => {
 		e.create(`ore/${ore}`)
 			.tag('tfc:ore_pieces');
 	})
-	e.create('leather_pouch');
+	e.create('pouch');
 	e.create('thermometer')
 		.tag('curios:thermometer');
 	e.create('iron_belt_clip');
@@ -133,6 +133,12 @@ StartupEvents.registry('block', e => {
 		.requiresTool()
 		.tagBlock('minecraft:mineable/pickaxe');
 
+	e.create('rocket_panelling', 'cardinal')
+		.soundType('metal')
+		.tagBlock('minecraft:mineable/pickaxe')
+		.requiresTool()
+		.box(0, 0, 15, 16, 16, 16)
+
 	e.create('glass_slab', 'slab')
 		.soundType('glass')
 		.waterlogged()
@@ -207,7 +213,12 @@ StartupEvents.registry('fluid', e => {
 })
 
 StartupEvents.registry('sound_event', e => {
-	e.create('rocket');
+	e.create('rocket')/*
+		.sound(entry => {
+			entry.subtitle('subtitle.kubejs.rocket');
+			entry.sounds('kubejs:rocket')
+		})
+	*/;
 })
 
 StartupEvents.registry('entity_type', e => {
@@ -221,8 +232,26 @@ StartupEvents.registry('entity_type', e => {
 })
 
 StartupEvents.registry('particle_type', e => {
-	global.rocketPlumeSupplier = e.create('rocket_plume');
-	global.rocketPlumeEjectaSupplier = e.create('rocket_plume_ejecta');
+	global.rocketPlumeSupplier = e.create('rocket_plume')/*
+		.textures(g => {
+			g.textures([
+				'kubejs:rocket_plume/0',
+				'kubejs:rocket_plume/1',
+				'kubejs:rocket_plume/2',
+				'kubejs:rocket_plume/3',
+				'kubejs:rocket_plume/4'
+			]);
+		})
+	*/;
+	global.rocketPlumeEjectaSupplier = e.create('rocket_plume_ejecta')/*
+		.textures(g => {
+			g.textures([
+				'kubejs:rocket_plume_ejecta/0',
+				'kubejs:rocket_plume_ejecta/1',
+				'kubejs:rocket_plume_ejecta/2'
+			])
+		})
+	*/;
 })
 
 StartupEvents.postInit(e => {
@@ -357,23 +386,60 @@ const SCAFFOLD_STRUCTURE = Utils.lazy(() => new TFCMultiBlock()
 	)
 );
 
-const ROCKET_FUEL = Utils.lazy(() => new TFCMultiBlock()
-	.match([0, 1, 0], be => {
-		/**
-		 * @type {Internal.IFluidTank} tank
-		 */
-		let tank = be.storage;
-		// TODO: Implement fuels
-		return true;
-	}, Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank'))
-	.match([0, 2, 0], be => {
-		/**
-		 * @type {Internal.IFluidTank} tank
-		 */
-		let tank = be.storage;
-		// TODO: Implement fuels
-		return true;
-	}, Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank'))
+const ROCKET_FUEL_VALIDATOR = Utils.lazy(() => new TFCMultiBlock()['match(net.minecraft.core.BlockPos,java.util.function.BiPredicate)']([0, 1, 0], (level, pos) => {
+		let bottomBE = level.getBlockEntity(pos, Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank')).orElseGet(() => null);
+		let topBE = level.getBlockEntity(pos.offset(0, 1, 0), Utils.getRegistry('block_entity_type').getValue('ae2:sky_tank')).orElseGet(() => null);
+		if (bottomBE != null && topBE != null) {
+			/**
+			 * @type {Internal.IFluidTank} bottomTank
+			 */
+			let bottomTank = bottomBE.storage;
+			let bottomFuel = bottomTank.fluid.fluid.arch$registryName();
+			/**
+			 * @type {Internal.IFluidTank} topTank
+			 */
+			let topTank = topBE.storage;
+			let topFuel = topTank.fluid.fluid.arch$registryName();
+
+			let mixesWith = ROCKET_FUELS[bottomFuel];
+			if (mixesWith) {
+				let range = mixesWith[topFuel];
+				if (range) {
+					if (topTank.fluidAmount + bottomTank.fluidAmount >= range.totalMinAmount) {
+						let fuelRatio = bottomTank.fluidAmount / topTank.fluidAmount;	
+						return fuelRatio > range.min && fuelRatio < range.max;
+					}
+				}
+			} else {
+				mixesWith = ROCKET_FUELS[topFuel];
+				if (mixesWith) {
+					let range = mixesWith[bottomFuel];
+					if (range) {
+						if (topTank.fluidAmount + bottomTank.fluidAmount >= range.totalMinAmount) {
+							let fuelRatio = topTank.fluidAmount / bottomTank.fluidAmount;	
+							return fuelRatio > range.min && fuelRatio < range.max;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	})
+);
+
+const ROCKET_PANELLING = Utils.lazy(() => new TFCMultiBlock()
+	.match([1, 1, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=east]'))
+	.match([0, 1, 1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=south]'))
+	.match([-1, 1, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=west]'))
+	.match([0, 1, -1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=north]'))
+	.match([1, 2, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=east]'))
+	.match([0, 2, 1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=south]'))
+	.match([-1, 2, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=west]'))
+	.match([0, 2, -1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=north]'))
+	.match([1, 3, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=east]'))
+	.match([0, 3, 1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=south]'))
+	.match([-1, 3, 0], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=west]'))
+	.match([0, 3, -1], BlockStatePredicate.fromString('kubejs:rocket_panelling[facing=north]'))
 );
 
 let rocketPosOffsets = [
@@ -381,7 +447,19 @@ let rocketPosOffsets = [
 	[0, 1, 0],
 	[0, 2, 0],
 	[0, 3, 0],
-	[0, 4, 0]
+	[0, 4, 0],
+	[1, 1, 0],
+	[0, 1, 1],
+	[-1, 1, 0],
+	[0, 1, -1],
+	[1, 2, 0],
+	[0, 2, 1],
+	[-1, 2, 0],
+	[0, 2, -1],
+	[1, 3, 0],
+	[0, 3, 1],
+	[-1, 3, 0],
+	[0, 3, -1]
 ];
 
 const NEED_EMPTY_HAND = Text.translatable('message.kubejs.need_empty_hand').yellow();
@@ -389,6 +467,7 @@ const IMPROPER_STRUCTURE = Text.translatable('message.kubejs.improper_rocket_str
 const NO_SCAFFOLD = Text.translatable('message.kubejs.missing_scaffold').color(Color.ORANGE_DYE);
 const ASSEMBLY_SUCCESSFUL = Text.translatable('message.kubejs.assembly_successful').green()
 const IMPROPER_FUEL_RATIO = Text.translatable('message.kubejs.improper_rocket_fuel_ratio').darkAqua();
+const REQUIRES_PANELLING = Text.translatable('message.kubejs.requires_panelling').color(Color.DARK_PURPLE);
 
 /**
  * @param {Internal.BlockRightClickedEventJS} e 
@@ -399,22 +478,26 @@ global.clickRocketEngine = (e) => {
 	
 	if (item.empty && hand.name() == 'MAIN_HAND') {
 		if (ROCKET_STRUCTURE.get().test(level, pos)) {
-			if (ROCKET_FUEL.get().test(level, pos)) {
-				if (SCAFFOLD_STRUCTURE.get().test(level, pos)) {
-					// Clear blocks
-					rocketPosOffsets.forEach(offset => {
-						level.destroyBlock(pos.offset(offset[0], offset[1], offset[2]), false, player);
-					});
+			if (ROCKET_FUEL_VALIDATOR.get().test(level, pos)) {
+				if (ROCKET_PANELLING.get().test(level, pos)) {
+					if (SCAFFOLD_STRUCTURE.get().test(level, pos)) {
+						// Clear blocks
+						rocketPosOffsets.forEach(offset => {
+							level.destroyBlock(pos.offset(offset[0], offset[1], offset[2]), false, player);
+						});
 			
-					// Summon rocket
-					let rocket = level.createEntity('kubejs:rocket');
-					rocket.setPos(pos.x + 0.5, pos.y, pos.z + 0.5);
-					level.addFreshEntity(rocket);
+						// Summon rocket
+						let rocket = level.createEntity('kubejs:rocket');
+						rocket.setPos(pos.x + 0.5, pos.y, pos.z + 0.5);
+						level.addFreshEntity(rocket);
 					
-					// Inform player (as if it wasn't obvious)
-					player.tell(ASSEMBLY_SUCCESSFUL);
+						// Inform player (as if it wasn't obvious)
+						player.tell(ASSEMBLY_SUCCESSFUL);
+					} else {
+						player.tell(NO_SCAFFOLD);
+					}
 				} else {
-					player.tell(NO_SCAFFOLD);
+					player.tell(REQUIRES_PANELLING);
 				}
 			} else {
 				player.tell(IMPROPER_FUEL_RATIO);
@@ -424,5 +507,25 @@ global.clickRocketEngine = (e) => {
 		}
 	} else {
 		player.tell(NEED_EMPTY_HAND);
+	}
+}
+
+const ROCKET_FUELS = {
+	// Primary Fluid
+	//     Secondary fluid
+	//         Min primary / secondary ratio
+	//         Max primary / secondary ratio
+	//         Minimum total amount
+	'minecraft:lava': {
+		'minecraft:water': {
+			min: 0.9,
+			max: 1.1,
+			totalMinAmount: 4000
+		},
+		'minecraft:milk': {
+			min: 1.9,
+			max: 2.1,
+			totalMinAmount: 2000
+		}
 	}
 }

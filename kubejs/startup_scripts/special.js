@@ -1,4 +1,9 @@
 
+const KnappingType = Java.loadClass('net.dries007.tfc.util.KnappingType');
+const ItemStackContainerProvider = Java.loadClass('net.dries007.tfc.common.container.ItemStackContainerProvider');
+const KnappingContainer = Java.loadClass('net.dries007.tfc.common.container.KnappingContainer');
+const ServerPlayer = Java.loadClass('net.minecraft.server.level.ServerPlayer');
+
 global.commonConfig = {};
 
 Platform.setModName("configjs", "Possible TFC Pack");
@@ -92,7 +97,7 @@ global.playerDestroyItem = (event) => {
 	 * @type {Internal.Player} player
 	 */
 	let player = event.entity;
-	if (hand != null) {
+	if (hand != null && original.hasTag('kubejs:tool_auto_replace')) {
 		let { inventory } = player;
 		let slotIndex = inventory.find(original.item);
 		if (slotIndex != -1) {
@@ -135,4 +140,30 @@ if (Platform.isClientEnvironment()) {
 	}
 
 	ForgeModEvents.onEvent('net.minecraftforge.client.event.RegisterParticleProvidersEvent', e => global.registerParticleProvider(e));
+}
+
+TFCEvents.registerInteractions(e => {
+	e.interaction('tfc:metal/sheet/steel', false, true, (stack, ctx) => global.steelCarvingInteraction(stack, ctx));
+});
+
+/**
+ * @param {Internal.ItemStack} stack 
+ * @param {Internal.UseOnContext} ctx 
+ * @returns {Internal.InteractionResult}
+ */
+global.steelCarvingInteraction = (stack, ctx) => {
+	let { player, clickedPos, hand } = ctx;
+	let { offHandItem } = player;
+	
+	if (player != null && clickedPos.equals(BlockPos.ZERO) && offHandItem.is('ae2:certus_quartz_cutting_knife')) {
+		let type = KnappingType.get(player);
+		if (type != null && player instanceof ServerPlayer) {
+			let provider = new ItemStackContainerProvider((stack1, hand, slot, playerInventory, windowId) => KnappingContainer.create(stack1, type, hand, slot, playerInventory, windowId), Text.translatable('tfc.screen.knapping'));
+			provider.openScreen(player, hand, buffer => buffer.writeResourceLocation(type.id));
+			offHandItem.hurtAndBreak(1, player, e => e.broadcastBreakEvent('off_hand'));
+		}
+		return 'success';
+	}
+
+	return 'pass';
 }

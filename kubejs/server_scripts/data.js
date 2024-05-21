@@ -105,6 +105,18 @@ TFCEvents.data(e => {
 		4,
 		'kubejs:unrefined_graphite'
 	);
+
+	e.knappingType(
+		'tfc:metal/sheet/steel',
+		1,
+		1,
+		'tfc:block.anvil.hit',
+		false,
+		false,
+		false,
+		'tfc:metal/sheet/steel',
+		'kubejs:steel_sheet_carving'
+	);
 })
 
 TFCEvents.worldgenData(e => {

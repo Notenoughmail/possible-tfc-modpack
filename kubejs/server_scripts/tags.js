@@ -2,16 +2,6 @@
 
 ServerEvents.tags('block', e => {
 
-	e.add('kubejs:glass_sand', [
-		'tfc:sand/white',
-		'tfc:sand/red',
-		'tfc:sand/pink',
-		'tfc:sand/yellow',
-		'tfc:sand/green',
-		'tfc:sand/brown',
-		'tfc:sand/black'
-	]);
-
 	e.add('tfc:prospectable', [
 		'ae2:flawless_budding_quartz',
 		'ae2:flawed_budding_quartz',
@@ -55,6 +45,7 @@ ServerEvents.tags('item', e => {
 
 	// Removal
 	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/);
+	e.removeAll('ae2:metal_ingots');
 	
 	// General
 	e.add('forge:rods/all_metal', [
@@ -80,19 +71,7 @@ ServerEvents.tags('item', e => {
 	]);
 
 	e.add('tfc:usable_on_tool_rack', [
-		'create:wrench',
-		'create:goggles',
 		'firmalife:watering_can'
-	]);
-
-	e.add('tfc:rocks/loose', [
-		'#tfc:rock_knapping'
-	]);
-
-	e.add('tfc:kelp', [
-		'tfc:plant/winged_kelp',
-		'tfc:plant/leafy_kelp',
-		'tfc:plant/giant_kelp_flower'
 	]);
 
 	e.add('forge:cobblestone', [
@@ -101,40 +80,6 @@ ServerEvents.tags('item', e => {
 
 	e.add('forge:cobblestone/mossy', [
 		/tfc:rock.*mossy_cobble.*/
-	]);
-
-	e.add('tfc:igneous_rock', [
-		'#tfc:igneous_intrusive_rock',
-		'#tfc:igneous_extrusive_rock'
-	]);
-
-	e.add('tfc:foods/berries', [
-		'tfc:food/blackberry',
-		'tfc:food/blueberry',
-		'tfc:food/bunchberry',
-		'tfc:food/cloudberry',
-		'tfc:food/cranberry',
-		'tfc:food/elderberry',
-		'tfc:food/gooseberry',
-		'tfc:food/raspberry',
-		'tfc:food/snowberry',
-		'tfc:food/strawberry',
-		'tfc:food/wintergreen_berry'
-	]);
-
-	e.add('tfc:magma_blocks', [
-		'tfc:rock/magma/granite',
-		'tfc:rock/magma/diorite',
-		'tfc:rock/magma/gabbro',
-		'tfc:rock/magma/rhyolite',
-		'tfc:rock/magma/basalt',
-		'tfc:rock/magma/andesite',
-		'tfc:rock/magma/dacite'
-	]);
-
-	e.add('tfc:raw_salts', [
-		'tfc:ore/halite',
-		'tfc:ore/sylvite'
 	]);
 
 	e.add('tfc:saplings', [
@@ -182,6 +127,53 @@ ServerEvents.tags('item', e => {
 	e.add('tfc:gem_powders', [
 		'ae2:certus_quartz_dust'
 	]);
+
+	e.add('ae2:metal_ingots', [
+		'tfc:metal/ingot/wrought_iron',
+		'tfc:metal/ingot/steel'
+	]);
+
+	let tools = [];
+
+	global.metals.forEach(metal => {
+		if (metal.tools) {
+			tools.push(`tfc:metal/axe/${metal.name}`);
+			tools.push(`tfc:metal/pickaxe/${metal.name}`);
+			tools.push(`tfc:metal/shovel/${metal.name}`);
+			tools.push(`tfc:metal/hoe/${metal.name}`);
+			tools.push(`tfc:metal/sword/${metal.name}`);
+			tools.push(`tfc:metal/chisel/${metal.name}`);
+			tools.push(`tfc:metal/hammer/${metal.name}`);
+			tools.push(`tfc:metal/saw/${metal.name}`);
+			tools.push(`tfc:metal/knife/${metal.name}`);
+			tools.push(`tfc:metal/scythe/${metal.name}`);
+			tools.push(`tfc:metal/propick/${metal.name}`);
+			tools.push(`tfc:metal/javelin/${metal.name}`);
+			tools.push(`tfc:metal/mace/${metal.name}`);
+			tools.push(`tfc:metal/shears/${metal.name}`);
+			tools.push(`tfc:metal/fishing_rod/${metal.name}`);
+			tools.push(`precisionprospecting:metal/prospector_hammer/${metal.name}`);
+			tools.push(`precisionprospecting:metal/prospector_drill/${metal.name}`);
+			tools.push(`precisionprospecting:metal/mineral_prospector/${metal.name}`);
+		}
+	});
+	[
+		'igneous_intrusive',
+		'igneous_extrusive',
+		'metamorphic',
+		'sedimentary'
+	].forEach(rock => {
+		tools.push(`tfc:stone/axe/${rock}`);
+		tools.push(`tfc:stone/hammer/${rock}`);
+		tools.push(`tfc:stone/hoe/${rock}`);
+		tools.push(`tfc:rock/javelin/${rock}`);
+		tools.push(`tfc:rock/knife/${rock}`);
+		tools.push(`tfc:rock/shovel/${rock}`);
+	});
+	tools.push('tfc:gem_saw');
+	tools.push('tfc:firestarter');
+
+	e.add('kubejs:tool_auto_replace', tools);
 
 	// Weight and size
 	e.add('tfc:minecarts', [

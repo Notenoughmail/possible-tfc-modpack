@@ -42,8 +42,8 @@ ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:["vanilla","mod_resources","firmalife_data","file/Tool_Belt_Retextured_1.20.x_V3.zip","file/Vexxed_Visuals_TFC_v1.2.2.1.zip"]
-incompatibleResourcePacks:["firmalife_data","precisionprospecting:vexxed_items"]
+resourcePacks:["vanilla","mod_resources","firmalife_data","file/Tool_Belt_Retextured_1.20.x_V3.zip","file/Vexxed_Visuals_TFC_v1.2.3.zip"]
+incompatibleResourcePacks:["firmalife_data"]
 lastServer:
 lang:en_us
 soundDevice:""
