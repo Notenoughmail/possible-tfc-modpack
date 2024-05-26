@@ -21,92 +21,100 @@ let tfcThermo = [
 ]
 
 JEIEvents.hideItems(e => {
-	e.hide('minecraft:chest_minecart');
-	e.hide('minecraft:enchanting_table');
-	e.hide('%brewing');
-	e.hide('%combat');
-	e.hide('%tools');
-	e.hide('%food');
-	e.hide(/minecraft:.*_spawn_egg/);
-	e.hide(/tfc:spawn_egg.*/);
-	e.hide(/minecraft:.*candle/);
-	e.hide('minecraft:elytra');
-	e.hide(/minecraft:.*_boat/);
-	e.hide('minecraft:furnace_minecart');
-	e.hide(/minecraft:raw_.*/);
-	e.hide(/minecraft:.*copper_ore/);
-	e.hide(/minecraft:.*_ingot/);
-	e.hide(/minecraft:.*shulker_box/);
-	e.hide('minecraft:composter');
-	e.hide('minecraft:barrel');
-	e.hide(/minecraft:.*campfire/);
-	e.hide(/minecraft:.*lantern/);
-	e.hide('minecraft:chorus_plant');
-	e.hide(/minecraft:.*_ore/);
-	e.hide('minecraft:stonecutter');
-	e.hide('#forge:nuggets');
-	e.hide('#forge:plates');
-	e.hide(/minecraft:.*(?:diorite|granite|dripstone|limestone|deespslate|glowstone|andesite).*/);
-	e.hide(/minecraft:infested_.+/);
-	e.hide('firmalife:embedded_pipe');
-	e.hide('firmalife:squirting_moisture_transducer');
-	e.hide('tfc:pan/filled');
-	e.hide('tfc:snow_pile');
-	e.hide('tfc:ice_pile');
-	e.hide('minecraft:dirt_path');
-	e.hide('minecraft:enchanted_book');
-	e.hide(/minecraft:brick.+/);
-	e.hide(/minecraft:.*(?:log|wood|planks|stem|hyphae|purpur|nether|sapling|leaves|sign|fence|prismarine|mud|sandstone|sculk|coral|end_stone|deepslate|blackstone|quartz|copper|(?:oak|spruce|birch|jungle|acacia|dark_oak|mangrove|cherry|crimson|warped)_(?:stairs|slab|door|button|trapdoor|pressure_plate)|basalt).*/);
-	e.hide(/.*netherite.*/);
-	e.hide(/tfc:wood\/boat\/.+/);
-	e.hide('minecraft:smoker');
-	e.hide('minecraft:experience_bottle');
-	e.hide('minecraft:kelp');
-	e.hide('minecraft:dried_kelp_block');
-	e.hide(/thoriumreactors:.*(?:chest|ore).*/);
-	e.hide(/minecraft:(?:.*_amethyst.*|amethyst_(?:shard|cluster))/);
-	e.hide(/tfc:bucket\/.*/);
-	e.hide(/(?:minecraft|thoriumreactors):.*bucket.*/);
-	e.hide('dysonsphere:bucket_steam');
-	e.hide(/minecraft:.*bee.*/);
-	e.hide(/minecraft:(?:gold|iron|diamond|emerald|lapis|)_block/);
-	e.hide('minecraft:bamboo_raft');
-	e.hide('minecraft:bamboo_chest_raft');
-	e.hide(/minecraft:(?:blaze|end)_rod/);
-	e.hide('minecraft:iron_bars');
-	e.hide('minecraft:coal_block');
-	e.hide(/minecraft:(?:(?:mossy_)?(?:(?:cobble|cracked|chiseled|smooth)_?)?)?stone(?:_(?:stairs|slab|pressure_plate|button|wall|bricks|brick_stairs|brick_slab|brick_wall))?/);
-	e.hide('minecraft:lodestone');
-	e.hide('minecraft:blast_furnace');
-	e.hide(/thoriumreactors:blasted.*/);
-	e.hide('thoriumreactors:graphite_crystal');
-	e.hide(/minecraft:(?:dead|rose)_bush/);
-	e.hide(/minecraft:.*seed.*/);
-	e.hide('ae2:silicon_press');
-	e.hide(/tfcastikorcarts:.*postilion.*/);
+	e.hide([
+		'minecraft:chest_minecart',
+		'minecraft:enchanting_table',
+		/minecraft:.*candle/,
+		'minecraft:elytra',
+		/minecraft:.*_boat/,
+		'minecraft:furnace_minecart',
+		/minecraft:raw_.*/,
+		/minecraft:.*_ingot/,
+		/minecraft:.*shulker_box/,
+		'minecraft:composter',
+		'minecraft:barrel',
+		/minecraft:.*campfire/,
+		/minecraft:.*lantern/,
+		'minecraft:chorus_plant',
+		/minecraft:.*_ore/,
+		'minecraft:stonecutter',
+		'#forge:nuggets',
+		'#forge:plates',
+		/minecraft:.*(?:diorite|granite|dripstone|limestone|deespslate|glowstone|andesite).*/,
+		/minecraft:infested_.+/,
+		'firmalife:embedded_pipe',
+		'firmalife:squirting_moisture_transducer',
+		'tfc:pan/filled',
+		'tfc:snow_pile',
+		'tfc:ice_pile',
+		'minecraft:dirt_path',
+		'minecraft:enchanted_book',
+		/minecraft:brick.+/,
+		/minecraft:.*(?:log|wood|planks|stem|hyphae|purpur|nether|sapling|leaves|sign|fence|prismarine|mud|sandstone|sculk|coral|end_stone|deepslate|blackstone|quartz|copper|(?:oak|spruce|birch|jungle|acacia|dark_oak|mangrove|cherry|crimson|warped)_(?:stairs|slab|door|button|trapdoor|pressure_plate)|basalt).*/,
+		/.*netherite.*/,
+		/tfc:wood\/boat\/.+/,
+		'minecraft:smoker',
+		'minecraft:experience_bottle',
+		'minecraft:kelp',
+		'minecraft:dried_kelp_block',
+		/thoriumreactors:.*(?:chest|ore).*/,
+		/minecraft:(?:.*_amethyst.*|amethyst_(?:shard|cluster))/,
+		/tfc:bucket\/.*/,
+		/(?:minecraft|thoriumreactors):.*bucket.*/,
+		'dysonsphere:bucket_steam',
+		/minecraft:.*bee.*/,
+		/minecraft:(?:gold|iron|diamond|emerald|lapis|)_block/,
+		'minecraft:bamboo_raft',
+		'minecraft:bamboo_chest_raft',
+		/minecraft:(?:blaze|end)_rod/,
+		'minecraft:iron_bars',
+		'minecraft:coal_block',
+		/minecraft:(?:(?:mossy_)?(?:(?:cobble|cracked|chiseled|smooth)_?)?)?stone(?:_(?:stairs|slab|pressure_plate|button|wall|bricks|brick_stairs|brick_slab|brick_wall))?/,
+		'minecraft:lodestone',
+		'minecraft:blast_furnace',
+		/thoriumreactors:blasted.*/,
+		'thoriumreactors:graphite_crystal',
+		/minecraft:(?:dead|rose)_bush/,
+		/minecraft:.*seed.*/,
+		'ae2:silicon_press',
+		/tfcastikorcarts:.*postilion.*/,
+		/ae2:(?:(?:certus|nether)_quartz|fluix)_(?:sword|hoe|axe|shovel|pickaxe)/,
+		'ae2:nether_quartz_wrench',
+		/ae2:(?:printed_)?silicon/,
+		IngredientHelper.creativeTab('food_and_drinks'),
+		IngredientHelper.creativeTab('ae2:facades'),
+		IngredientHelper.creativeTab('minecraft:spawn_eggs'),
+		IngredientHelper.creativeTab('minecraft:op_blocks'),
+		'minecraft:tipped_arrow',
+		'minecraft:heart_of_the_sea',
+		/minecraft:(?:tipped_arrow|heart_of_the_sea|shulker_shell|popped_chorus|emerald|lapis_lazuli|diamond|wheat|echo_shard|dragon_breath|blaze_powder|glistering_melon_slice|magma_cream|ghast_tear|phantom_membrane|recovery_compass|ender_pearl|carrot_on_a_stick|warped_fungus_on_a_stick|trident|shears|tnt(?:_minecraft)?|beacon|torch|honey_block|.*froglight|furnace|.*anvil|conduit|brewing_stand|end_crystal|ender_eye|end_portal|dragon_egg|bookshelf|(?:(?:ender|trapped)_)?chest|respawn_anchor|suspicous_(?:gravel|sand))/,
+		/minecraft:(?:glass_bottle|fermented_spider_eye|nautilus_shell|spectral_arrow|totem_of_undying|melon_slice|honeycomb|fishing_rod|turtle_egg|frogspawm|chorus_flower|(?:red|brown)_mushroom(?:_block)?|ancient_debris|crying_obsidian|gravel|(?:red_)?sand|tuff|calcite|farmland|grass(?:_block)?|mycelium|(?:(?:coarse|rooted)_)?dirt|shroomlight|mangrove_roots|soul_(?:sand|soil|torch)|redstone_lamp|(?:iron|golden|chainmail)_(?:horse_armor|shovel|axe|hoe|sword|pickaxe|helmet|chestplate|leggings|boots)|(?:warped|crimson)_(?:nylium|roots))/
+	]);
 })
 
 JEIEvents.addItems(e => {
-	e.add('minecraft:cauldron');
-	e.add('minecraft:rabbit_foot');
-	e.add('minecraft:fermented_spider_eye');
-	e.add('minecraft:bow');
-	e.add('minecraft:arrow');
-	e.add('minecraft:crossbow');
-	e.add('minecraft:lead');
-	e.add('minecraft:name_tag');
-	e.add(Item.of('toolbelt:belt', '{Size:5}'));
-	e.add('toolbelt:pouch');
-	e.add('minecraft:flint_and_steel');
-	e.add('minecraft:clock');
-	e.add('minecraft:spyglass');
-	e.add('minecraft:compass');
-	e.add('minecraft:fishing_rod');
-	e.add('minecraft:pumpkin_pie');
-	e.add('minecraft:spider_eye');
-	e.add('minecraft:rotten_flesh');
-	e.add('minecraft:melon_slice');
-	e.add('minecraft:snowball');
+	e.add([
+		'minecraft:cauldron',
+		'minecraft:rabbit_foot',
+		'minecraft:fermented_spider_eye',
+		'minecraft:bow',
+		'minecraft:arrow',
+		'minecraft:crossbow',
+		'minecraft:lead',
+		'minecraft:name_tag',
+		Item.of('toolbelt:belt', '{Size:5}'),
+		'toolbelt:pouch',
+		'minecraft:flint_and_steel',
+		'minecraft:clock',
+		'minecraft:spyglass',
+		'minecraft:compass',
+		'minecraft:fishing_rod',
+		'minecraft:pumpkin_pie',
+		'minecraft:spider_eye',
+		'minecraft:rotten_flesh',
+		'minecraft:melon_slice',
+		'minecraft:snowball'
+	]);
 })
 
 JEIEvents.removeCategories(e => {
@@ -121,7 +129,10 @@ JEIEvents.removeCategories(e => {
 		'minecraft:furnace',
 		'minecraft:smithing',
 		'minecraft:smoking',
-		'minecraft:stonecutting'
+		'minecraft:stonecutting',
+		'jumbofurnace:jumbo_furnace_upgrade',
+		'jumbofurnace:jumbo_smelting',
+		'ae2:certus_growth'
 	])
 })
 

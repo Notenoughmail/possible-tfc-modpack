@@ -1,5 +1,12 @@
 {
 	"credit": "Made with Blockbench",
+	"loader": "fusion:model",
+	"type": "connecting",
+	"connections": [
+		{
+			"type": "is_same_state"
+		}
+	],
 	"parent": "block/block",
 	"textures": {
 		"particle": "kubejs:block/rocket_panelling"

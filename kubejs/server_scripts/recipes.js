@@ -61,6 +61,10 @@ ServerEvents.recipes(e => {
 				'tfc:metal/rod/bronze'
 			]
 		}).id(`tfcastikorcarts:crafting/plow/${wood}`);
+		tfc.damage_inputs_shapeless_crafting(minecraft.crafting_shapeless(`tfc:wood/lumber/${wood}`, [
+			'#tfc:saws',
+			`kubejs:panel/${wood}`
+		])).id(`kubejs:crafting/${wood}_panel_planks`);
 	});
 	TFC.misc.rock.keySet().forEach(stone => {
 		minecraft.crafting_shaped('tfc:rock/bricks/' + stone, [
@@ -463,6 +467,22 @@ ServerEvents.recipes(e => {
 		B: 'tfc:metal/rod/zinc',
 		C: 'thoriumreactors:redstone_processor'
 	}).id('ae2:network/parts/panels_semi_dark_monitor');
+	minecraft.crafting_shaped('2x kubejs:rocket_scaffolding', [
+		'S S',
+		' S ',
+		'S S'
+	], {
+		S: 'tfc:metal/rod/steel'
+	}).id('kubejs:crafting/rocket_scaffolding');
+	minecraft.crafting_shaped('2x ae2:sky_stone_tank', [
+		'SAS',
+		'SBS',
+		'SAS'
+	], {
+		S: 'tfc:metal/sheet/steel',
+		A: 'tfc:steel_pipe',
+		B: 'thoriumreactors:simple_fluid_tank'
+	}).id('kubejs:crafting/rocket_fuel_tank');
 
 	// Anvil
 	tfc.anvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last'])
@@ -519,6 +539,9 @@ ServerEvents.recipes(e => {
 	tfc.anvil('kubejs:rod_mold', 'tfc:metal/double_sheet/black_steel', ['punch_last', 'upset_second_last', 'shrink_third_last'])
 		.tier(5)
 		.id('kubejs:anvil/rod_mold');
+	tfc.anvil('2x kubejs:rocket_panelling', 'tfc:metal/double_sheet/steel', ['hit_any', 'upset_not_last'])
+		.tier(4)
+		.id('kubejs:anvil/rocket_panelling');
 
 	// Heating
 	tfc.heating('firmalife:metal/ingot/chromium', 1907)

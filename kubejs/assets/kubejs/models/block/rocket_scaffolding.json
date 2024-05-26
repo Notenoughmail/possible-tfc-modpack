@@ -1,0 +1,36 @@
+{
+    "credit": "Made with Blockbench",
+    "parent": "block/block",
+    "textures": {
+        "end": "kubejs:block/rocket_scaffolding/end",
+        "side": "kubejs:block/rocket_scaffolding/side",
+        "side_alt": "kubejs:block/rocket_scaffolding/side_alt",
+        "particle": "tfc:block/metal/smooth/steel"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "down": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "down"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "up"},
+                "north": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "north"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "south"},
+                "west": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "west"},
+                "east": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "east"}
+            }
+        },
+        {
+            "from": [15.99, 15.99, 15.99],
+            "to": [0.01, 0.01, 0.01],
+            "faces": {
+                "down": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "up"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "down"},
+                "north": {"uv": [0, 0, 16, 16], "texture": "#side_alt", "cullface": "south"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#side_alt", "cullface": "north"},
+                "west": {"uv": [0, 0, 16, 16], "texture": "#side_alt", "cullface": "east"},
+                "east": {"uv": [0, 0, 16, 16], "texture": "#side_alt", "cullface": "west"}
+            }
+        }
+    ]
+}

@@ -71,7 +71,8 @@ ServerEvents.tags('item', e => {
 	]);
 
 	e.add('tfc:usable_on_tool_rack', [
-		'firmalife:watering_can'
+		'firmalife:watering_can',
+		'tfc:wooden_bucket'
 	]);
 
 	e.add('forge:cobblestone', [
@@ -179,7 +180,6 @@ ServerEvents.tags('item', e => {
 	e.add('tfc:minecarts', [
 		'minecraft:minecart',
 		'minecraft:furnace_minecart',
-		'minecraft:tnt_minecart',
 		'minecraft:hopper_minecart'
 	]);
 

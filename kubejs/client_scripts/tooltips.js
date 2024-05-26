@@ -2,7 +2,6 @@
 
 const Block = Java.loadClass("net.minecraft.world.level.block.Block");
 const TFCBlockTags = Java.loadClass("net.dries007.tfc.common.TFCTags$Blocks");
-const Support = Java.loadClass("net.dries007.tfc.util.Support");
 const BlockInventory = Java.loadClass("net.dries007.tfc.common.recipes.inventory.BlockInventory");
 const CollapseRecipe = Java.loadClass("net.dries007.tfc.common.recipes.CollapseRecipe");
 const VesselLike = Java.loadClass("net.dries007.tfc.common.capabilities.VesselLike");
@@ -93,7 +92,7 @@ ItemEvents.tooltip(tip => {
 			fluids.forEach(obj => {
 				let metal = TFC.misc.getMetal(obj.fluid);
 				if (metal != null) {
-					text.add(Text.translatable('tooltip.kubejs.heats_to_liquid', Text.aqua(Integer['valueOf(int)'](obj.amount).toString()), metal.displayName.copy().gold().italic()).gray());
+					text.add(Text.translatable('tooltip.kubejs.heats_to.liquid', Text.aqua(Integer['valueOf(int)'](obj.amount).toString()), metal.displayName.copy().gold().italic()).gray());
 				}
 			});
 			if (fluids.length > 1) {
@@ -110,7 +109,7 @@ ItemEvents.tooltip(tip => {
 				text.add(Text.translatable('tooltip.kubejs.total_fluid', Text.aqua(Integer['valueOf(int)'](amount).toString())).gray());
 			}
 			items.forEach(obj => {
-				text.add(Text.translatable('tooltip.kubejs.heats_to_item', Text.aqua(Integer['valueOf(int)'](obj.count).toString()), obj.item.description.copy().gold().italic()).gray());
+				text.add(Text.translatable('tooltip.kubejs.heats_to.item', Text.aqua(Integer['valueOf(int)'](obj.count).toString()), obj.item.description.copy().gold().italic()).gray());
 			});
 		}
 	});
@@ -162,8 +161,7 @@ global.collapseTooltip = (tooltip, accessor, config) => {
 			tooltip.add(Text.translatable('jade.tooltip.kubejs.collapses_into', recipe.getBlockCraftingResult(blockState).block.name.italic()));
 		}
 		
-		// TODO: Change Support access to KubeJS TFC accessors in 1.2.0
-		if (Support.isSupported(level, position)) {
+		if (TFC.misc.isSupported(level, position)) {
 			tooltip.add(SUPPORTED);
 		} else {
 			tooltip.add(UNSUPPORTED);
@@ -173,7 +171,7 @@ global.collapseTooltip = (tooltip, accessor, config) => {
 	if (blockState.block.arch$holder()["containsTag(net.minecraft.tags.TagKey)"](TFCBlockTags.CAN_TRIGGER_COLLAPSE)) {
 		let { level, position } = accessor;
 
-		let collapseIterator = Support.findUnsupportedPositions(
+		let collapseIterator = TFC.misc.findUnsupportedPositions(
 			level,
 			position.offset(-4 , -2, -4),
 			position.offset(4, 2, 4)
@@ -212,7 +210,7 @@ const SUPPORT = Text.translatable('jade.tooltip.kubejs.support').gray();
 global.supportTooltip = (tooltip, accessor, config) => {
 	let { blockState } = accessor;
 
-	let support = Support.get(blockState);
+	let support = TFC.misc.getSupport(blockState);
 
 	if (support) {
 		tooltip.add(SUPPORT);

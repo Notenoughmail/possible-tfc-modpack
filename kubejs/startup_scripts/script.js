@@ -137,7 +137,7 @@ StartupEvents.registry('block', e => {
 		.soundType('metal')
 		.tagBlock('minecraft:mineable/pickaxe')
 		.requiresTool()
-		.box(0, 0, 15, 16, 16, 16)
+		.box(0, 0, 15, 16, 16, 16);
 
 	e.create('glass_slab', 'slab')
 		.soundType('glass')

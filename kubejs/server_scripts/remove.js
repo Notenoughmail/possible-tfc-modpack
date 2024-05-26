@@ -19,7 +19,8 @@ ServerEvents.recipes( e => {
 		'ae2:inscriber/fluix_dust',
 		'ae2:inscriber/sky_stone_dust',
 		'megacells:transform/sky_steel_ingot',
-		'thoriumreactors:thorium_crafting/water_source_block'
+		'thoriumreactors:thorium_crafting/water_source_block',
+		'ae2:misc/tank_sky_stone'
 	].forEach(id => {
 		e.remove({id: id})
 	})
@@ -40,7 +41,10 @@ ServerEvents.recipes( e => {
 				'minecraft:gold_block',
 				'minecraft:bucket',
 				'minecraft:glass_bottle',
-				/thoriumreactors:.*(?:chest|ore).*/
+				/thoriumreactors:.*(?:chest|ore).*/,
+				'ae2:charger/meteorite_compass',
+				/ae2:(?:(?:certus|nether)_quartz|fluix)_(?:sword|hoe|axe|shovel|pickaxe)/,
+				'ae2:nether_quartz_wrench'
 			]
 		}, {
 			input: [
@@ -56,6 +60,9 @@ ServerEvents.recipes( e => {
 			type: 'jumbofurnace:jumbo_smelting'
 		}, {
 			type: 'thoriumreactors:blasting'
+		}, {
+			type: 'minecraft:crafting_shapeless',
+			output: 'minecraft:sugar'
 		}]
 	});
 })
