@@ -42,15 +42,15 @@ hash = "f3f154efc2fdf6ae5447072bfe4bae790e768e0b23df1a0ec955b875c2c82968"
 
 [[files]]
 file = "config/jei/ingredient-list-mod-sort-order.ini"
-hash = "6c990149be798c86b87f188d591033f053f496ee9d2c8ce57cd5e4cc21329001"
+hash = "d126205242e960b9bf493f9b313ae62d77edbb0a064a10d4189d8194128122c4"
 
 [[files]]
-file = "config/jei/ingredient-list-type-sort-order.ini"
-hash = "394008bf216efb4c05a2c4398edbf8f3178e026a28285de3d962eac0800a3cfc"
+file = "config/jei/jei-client.ini"
+hash = "d86f874b97cb66d98eb19f1ff65838c7378c846ecab3987330cf9f3d92473f4b"
 
 [[files]]
 file = "config/jei/recipe-category-sort-order.ini"
-hash = "837cb703945d0a17ac205fcd94b5af2b54a22ea995a1a6dbad07325ad0363556"
+hash = "0e8ae89203c227802f9dff54439b70b0cb7b06fd5633c6c03bf2fad1e9d22c08"
 
 [[files]]
 file = "config/patchouli-client.toml"
@@ -110,11 +110,23 @@ hash = "78e6f196e5dffa2328bbe4f08a43941cd950db4db4480190c1c4168dcaf804fb"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/block/rocket_panelling.json"
-hash = "00e6aa82d4114f4c049d3104a2694ae76092673e6740babee089091dc8040c52"
+hash = "60028e8432eac747bbec9e43c09f7986ce1b7430eca2f03a42761a6ad90e0c8f"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/block/rocket_scaffolding.json"
+hash = "2200e92c9eef2fce22357901806c76200d56d9e88d12f3a6d9065f6f4ae732ad"
 
 [[files]]
 file = "kubejs/assets/kubejs/sounds/rocket.ogg"
 hash = "b8171806b0a75f012ffade3c4c7a1738ce143941e5ce8f700aaf5c492ad80da7"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/lithium_salt.png"
+hash = "7106d2e214d341ef924e60b665ba7394c544c8f4d4ced215ca3080b0bceed564"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/lithium_salt_grass.png"
+hash = "7106d2e214d341ef924e60b665ba7394c544c8f4d4ced215ca3080b0bceed564"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/metal/block/refined_graphite.png"
@@ -139,6 +151,26 @@ hash = "00bab0b33b66def129a6f3249c588c575a73c85a177bf4e0ae4f911f75f0dc10"
 [[files]]
 file = "kubejs/assets/kubejs/textures/block/ore/small_lead.png"
 hash = "81040f2d26f71bb5032ea8b1e72a33d05878cd11ec7c3aeecba354762280b03e"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/rocket_panelling.png"
+hash = "2a6ddfdadc8268090adcb8855000f04324eb19accbdebc496e23eddc9f4541b3"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/rocket_panelling.png.mcmeta"
+hash = "b9fc573980ec65604c52a091713b7a1e6cc83f2262b89773b2c68804b03516be"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/rocket_scaffolding/end.png"
+hash = "83a5404dbb50da491f31d940127ee9b563d763abab22e92d2f826fe1a4030de0"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/rocket_scaffolding/side.png"
+hash = "f58b4a875efd7f8c7a564ebdc11761bc0a9a093ef9b17f45e3814dd42c436dab"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/block/rocket_scaffolding/side_alt.png"
+hash = "177e9f932f4ff4b11b04f5f2902698a0fa7eccf4d5d4689d39e4df5ccc40633f"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/metal/double_ingot/constantan.png"
@@ -182,7 +214,7 @@ hash = "2be70a80eaccc6934ec487e92e002a0b1a829940ce18ac654c5565700d518162"
 
 [[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "37aee3fb1473df7c3a9c93d67b7422c64607ff34ebefac245731bc3faf69ce4d"
+hash = "778e580e2b3c611ca2304a232c747be042430a7404af14381b1995c8dcce6210"
 
 [[files]]
 file = "kubejs/client_scripts/recipes.js"
@@ -190,11 +222,11 @@ hash = "a10148923d298f547ac0ac8ef8f2d018228449dfc77437ad96f674476f088635"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "1ec8b7970b5048358e2148f6609130b304633c425b90868f20b4fbd16913653b"
+hash = "c17ff9a39a002a3ab62bfc52ed336d24c65dff55e6082a13370aa863f28947e7"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "6eb2e4049db8c16eff1e2043611182d47077a97e86020ec581d4896f406c3c5e"
+hash = "d1940146e0fd4e9851a8e4d15792857462d97265bf41cf619ecc23735b9f0559"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -210,7 +242,7 @@ hash = "4d80ffbd2ae6c6d4e0bdfab6a5dee030e7b4a17f6ab84a4a2feb8fff747194b7"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "04b1cca15e3572528e0deabcd5f0750dcb65d14a7d0ff93c32772fac3b345e00"
+hash = "fc459d6c2f6336a257f1abd4dbec87857029ba53cbda0598893059bf0a87dd94"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
@@ -222,15 +254,15 @@ hash = "b2a5bea04c5815be0bcd4b644cbab1993f0a4e9515ce3232304a5df392889781"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "572db16bb982066d5c4a45a3f8c6db73507a15d21a2fe83684eeb2667dbf438e"
+hash = "3855e91e913273c6608da6562e42c449d3735b57256057777eb66c3d8cf3ff8f"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "1b3d258d77ce970e3be90533924a8c0b5dec9751fe3fec2cb6ade5d6f75e6440"
+hash = "1fb21c6b98c7ad949e74295fead6ce8a3c70739586dab156bddf0b28baf32493"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "b6f645de040c76c5fd6158f7f692a340cf641fbc8380d08a6c6e1a026977e11c"
+hash = "bfcc72921c510a70ed72e5c52ec77863344e97adcdcf4294686667ad198a7a4d"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -238,11 +270,11 @@ hash = "a59da0444281d33be413edd15779a8f4c044c1623b4ebbf40f0ee918b6638033"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "baa880a642a659c7ec259ff32c714289849fd76a77901f7fd65f82a4d2117db5"
+hash = "96250134e338070982909f826582e9dd157195e848c73270d690f398fce606d6"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "34ba351343b5eb0227d58b184e2ba27f2ed0bb16549d621df166f48e83f25dfb"
+hash = "4668c55d582299d2435fe28aafd4f4275e890787662c68d4fbef6b2e3d22c65d"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
@@ -441,6 +473,11 @@ metafile = true
 [[files]]
 file = "mods/patchouli.pw.toml"
 hash = "3a7eaa64434e7449e5fe6bd089bc784499432dae7d6ca07174b55b10a3b32ec8"
+metafile = true
+
+[[files]]
+file = "mods/powerfuljs.pw.toml"
+hash = "bd87f993bf0ce3fcb2abe3c42f8cce07efb2d0a8061131ee1285fefa1b7e39a0"
 metafile = true
 
 [[files]]

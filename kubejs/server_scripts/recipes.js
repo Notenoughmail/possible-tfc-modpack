@@ -51,7 +51,7 @@ ServerEvents.recipes(e => {
 			'ABA',
 			'CDC'
 		], {
-			S: '#rods:rods/wooden',
+			S: '#forge:rods/wooden',
 			A: `tfc:wood/lumber/${wood}`,
 			B: 'tfc:brass_mechanisms',
 			C: `tfcastikorcarts:wheel/${wood}`,
@@ -66,7 +66,7 @@ ServerEvents.recipes(e => {
 			`kubejs:panel/${wood}`
 		])).id(`kubejs:crafting/${wood}_panel_planks`);
 	});
-	TFC.misc.rock.keySet().forEach(stone => {
+	TFC.misc.rock.forEach((stone, reg) => {
 		minecraft.crafting_shaped('tfc:rock/bricks/' + stone, [
 			'S',
 			'S'
@@ -375,7 +375,7 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/double_sheet/steel',
 		B: 'tfc:metal/rod/nickel'
 	}).id('thoriumreactors:thorium_crafting_table');
-	minecraft.crafting_shaped('thoriumreactors:thermal_conductor', [
+	minecraft.crafting_shaped('4x thoriumreactors:thermal_conductor', [
 		'SAS',
 		'ABA',
 		'SAS'
@@ -384,7 +384,7 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/ingot/steel',
 		B: 'tfc:metal/double_ingot/copper'
 	}).id('thoriumreactors:thorium_crafting/thermal_conductor');
-	minecraft.crafting_shaped('thoriumreactors:thermal_heat_sink', [
+	minecraft.crafting_shaped('3x thoriumreactors:thermal_heat_sink', [
 		'SSS',
 		'AAA',
 		'BBB'
@@ -483,6 +483,35 @@ ServerEvents.recipes(e => {
 		A: 'tfc:steel_pipe',
 		B: 'thoriumreactors:simple_fluid_tank'
 	}).id('kubejs:crafting/rocket_fuel_tank');
+	minecraft.crafting_shaped('ae2:certus_quartz_cutting_knife', [
+		'  S',
+		'AS ',
+		'BB '
+	], {
+		S: '#forge:rods/wooden',
+		A: 'tfc:metal/rod/wrought_iron',
+		B: '#ae2:all_certus_quartz'
+	}).id('ae2:tools/certus_quartz_cutting_knife');
+	minecraft.crafting_shaped('kubejs:thermometer', [
+		' S ',
+		'ABA',
+		'CCC'
+	], {
+		S: 'thoriumreactors:module_sensor',
+		A: 'tfc:metal/sheet/silver',
+		B: 'thoriumreactors:redstone_processor',
+		C: 'tfc:metal/rod/brass'
+	}).id('kubejs:crafting/thermometer');
+	minecraft.crafting_shaped('kubejs:solar_panel', [
+		'SAS',
+		'SBS',
+		' C '
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'minecraft:glass_pane',
+		B: TFC.ingredient.fluid(['tfc:ceramic/ingot_mold', 'tfc:ceramic/fire_ingot_mold'], Fluid.of('kubejs:solar_paste', 100)),
+		C: 'tfc:metal/rod/copper'
+	}).id('kubejs:crafting/solar_panel');
 
 	// Anvil
 	tfc.anvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last'])
@@ -602,6 +631,8 @@ ServerEvents.recipes(e => {
 	// Blast Furnace
 	tfc.blast_furnace(Fluid.of('kubejs:refined_redstone', 1), 'tfc:powder/cassiterite', Fluid.of('kubejs:unrefined_redstone', 1))
 		.id('kubejs:blast_furnace/redstone_refinement');
+	tfc.blast_furnace(Fluid.of('kubejs:solar_paste', 1), 'minecraft:redstone', Fluid.of('tfc:metal/zinc', 2))
+		.id('kubejs:blast_furnace/solar_paste');
 
 	// Casting
 	tfc.casting('morered:red_alloy_ingot', 'tfc:ceramic/ingot_mold', Fluid.of('kubejs:redstone_alloy', 100), 0.1)
@@ -831,7 +862,7 @@ ServerEvents.recipes(e => {
 		.id('megacells:inscriber/accumulation_processor_press_extra');
 
 	// Bigger Crafting
-	thoriumreactors.thorium_crafting('thoriumreactors:redstone_processor', [
+	thoriumreactors.thorium_crafting('4x thoriumreactors:redstone_processor', [
 		'  S  ',
 		' ABA ',
 		' CDE ',
@@ -846,20 +877,7 @@ ServerEvents.recipes(e => {
 		E: 'minecraft:comparator',
 		F: 'minecraft:observer'
 	}).id('thoriumreactors:thorium_crafting/redstone_processor');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_empty', [
-		' SAS ',
-		'SBCBS',
-		'ACDCA',
-		'SBCBS',
-		' SAS '
-	], {
-		S: 'tfc:metal/rod/steel',
-		A: 'tfc:metal/sheet/gold',
-		B: 'morered:bundled_network_cable',
-		C: 'tfc:metal/rod/nickel',
-		D: 'thoriumreactors:redstone_processor'
-	}).id('thoriumreactors:thorium_crafting/module_empty');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_energy', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_energy', [
 		' SAS ',
 		'SBBBS',
 		'ACCCA',
@@ -871,9 +889,9 @@ ServerEvents.recipes(e => {
 		B: 'kubejs:lithium_plate',
 		C: 'kubejs:graphite_plate',
 		D: 'morered:bundled_network_cable',
-		E: 'thoriumreactors:module_empty'
+		E: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_energy');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_io', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_io', [
 		' SAS ',
 		'SBCBS',
 		'ABCBA',
@@ -884,9 +902,9 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/rod/gold',
 		B: 'morered:bundled_network_cable',
 		C: 'morered:red_alloy_wire',
-		D: 'thoriumreactors:module_empty'
+		D: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_io');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_storage', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_storage', [
 		' SAS ',
 		'SBBBS',
 		'ACCCA',
@@ -897,9 +915,9 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/rod/zinc',
 		B: 'morered:bundled_network_cable',
 		C: '#forge:chests/wooden',
-		D: 'thoriumreactors:module_empty'
+		D: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_storage');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_sensor', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_sensor', [
 		' SAS ',
 		'SBCBS',
 		'ACBCA',
@@ -911,9 +929,9 @@ ServerEvents.recipes(e => {
 		B: 'minecraft:daylight_detector',
 		C: '#minecraft:stone_pressure_plates',
 		D: 'morered:bundled_network_cable',
-		E: 'thoriumreactors:module_empty'
+		E: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_sensor');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_processing', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_processing', [
 		' SAS ',
 		'SBBBS',
 		'ACCCA',
@@ -924,9 +942,9 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/rod/brass',
 		B: 'morered:bundled_network_cable',
 		C: 'ae2:calculation_processor',
-		D: 'thoriumreactors:module_empty'
+		D: 'thoriumreactors:redstone_processor'
 	}).id('thoriumreactors:thorium_crafting/module_processing');
-	thoriumreactors.thorium_crafting('thoriumreactors:module_tank', [
+	thoriumreactors.thorium_crafting('2x thoriumreactors:module_tank', [
 		' SAS ',
 		'SBBBS',
 		'ACCCA',
@@ -937,7 +955,7 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/rod/steel',
 		B: 'morered:bundled_network_cable',
 		C: '#tfc:barrels',
-		D: 'thoriumreactors:module_empty'
+		D: 'thoriumreactors:redstone_processor'
 	}).id('kubejs:thorium_crafting/module_tank');
 
 	// Tests

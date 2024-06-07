@@ -105,6 +105,16 @@ TFCEvents.data(e => {
 		4,
 		'kubejs:unrefined_graphite'
 	);
+	e.metal(
+		'kubejs:solar_paste',
+		1256,
+		0.00412,
+		null,
+		null,
+		null,
+		0,
+		'kubejs:solar_paste'
+	);
 
 	e.knappingType(
 		'tfc:metal/sheet/steel',

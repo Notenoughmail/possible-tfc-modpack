@@ -79,7 +79,7 @@ JEIEvents.hideItems(e => {
 		'ae2:silicon_press',
 		/tfcastikorcarts:.*postilion.*/,
 		/ae2:(?:(?:certus|nether)_quartz|fluix)_(?:sword|hoe|axe|shovel|pickaxe)/,
-		'ae2:nether_quartz_wrench',
+		/ae2:nether_quartz_(?:wrench|cutting_knife)/,
 		/ae2:(?:printed_)?silicon/,
 		IngredientHelper.creativeTab('food_and_drinks'),
 		IngredientHelper.creativeTab('ae2:facades'),
@@ -88,7 +88,14 @@ JEIEvents.hideItems(e => {
 		'minecraft:tipped_arrow',
 		'minecraft:heart_of_the_sea',
 		/minecraft:(?:tipped_arrow|heart_of_the_sea|shulker_shell|popped_chorus|emerald|lapis_lazuli|diamond|wheat|echo_shard|dragon_breath|blaze_powder|glistering_melon_slice|magma_cream|ghast_tear|phantom_membrane|recovery_compass|ender_pearl|carrot_on_a_stick|warped_fungus_on_a_stick|trident|shears|tnt(?:_minecraft)?|beacon|torch|honey_block|.*froglight|furnace|.*anvil|conduit|brewing_stand|end_crystal|ender_eye|end_portal|dragon_egg|bookshelf|(?:(?:ender|trapped)_)?chest|respawn_anchor|suspicous_(?:gravel|sand))/,
-		/minecraft:(?:glass_bottle|fermented_spider_eye|nautilus_shell|spectral_arrow|totem_of_undying|melon_slice|honeycomb|fishing_rod|turtle_egg|frogspawm|chorus_flower|(?:red|brown)_mushroom(?:_block)?|ancient_debris|crying_obsidian|gravel|(?:red_)?sand|tuff|calcite|farmland|grass(?:_block)?|mycelium|(?:(?:coarse|rooted)_)?dirt|shroomlight|mangrove_roots|soul_(?:sand|soil|torch)|redstone_lamp|(?:iron|golden|chainmail)_(?:horse_armor|shovel|axe|hoe|sword|pickaxe|helmet|chestplate|leggings|boots)|(?:warped|crimson)_(?:nylium|roots))/
+		/minecraft:(?:glass_bottle|fermented_spider_eye|nautilus_shell|spectral_arrow|totem_of_undying|melon_slice|honeycomb|fishing_rod|turtle_egg|frogspawm|chorus_flower|(?:red|brown)_mushroom(?:_block)?|ancient_debris|crying_obsidian|gravel|(?:red_)?sand|tuff|calcite|farmland|grass(?:_block)?|mycelium|(?:(?:coarse|rooted)_)?dirt|shroomlight|mangrove_roots|soul_(?:sand|soil|torch)|redstone_lamp|(?:iron|golden|chainmail)_(?:horse_armor|shovel|axe|hoe|sword|pickaxe|helmet|chestplate|leggings|boots)|(?:warped|crimson)_(?:nylium|roots))/,
+		'ae2:fluix_upgrade_smithing_template',
+		/ae2:.*sky_stone.*/,
+		'ae2:sky_dust',
+		/tfc:spawn_egg\/.*/,
+		'thoriumreactors:module_empty',
+		'thoriumreactors:creative_fluid_tank',
+		'thoriumreactors:creative_energy_tank'
 	]);
 })
 
@@ -113,7 +120,8 @@ JEIEvents.addItems(e => {
 		'minecraft:spider_eye',
 		'minecraft:rotten_flesh',
 		'minecraft:melon_slice',
-		'minecraft:snowball'
+		'minecraft:snowball',
+		'ae2:sky_stone_tank'
 	]);
 })
 

@@ -5,6 +5,8 @@ const HarvestToolProvider = Java.loadClass('snownee.jade.addon.harvest.HarvestTo
 const SimpleToolHandler = Java.loadClass('snownee.jade.addon.harvest.SimpleToolHandler');
 const TFCBlockTags = Java.loadClass('net.dries007.tfc.common.TFCTags$Blocks');
 const TFCMultiBlock = Java.loadClass('net.dries007.tfc.util.MultiBlock');
+const CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag');
+const Fuel = Java.loadClass('net.dries007.tfc.util.Fuel');
 
 StartupEvents.registry('item', e => {
 	global.oreGrades.forEach(grade => {
@@ -31,50 +33,10 @@ StartupEvents.registry('item', e => {
 })
 
 StartupEvents.registry('block', e => {
-	TFC.misc.rock.keySet().forEach(rock => {
-		global.gradedOres.forEach(ore => {
-			global.oreGrades.forEach(grade => {
-				e.create(`ore/${grade}_${ore}/${rock}`)
-					.stoneSoundType()
-					.mapColor('stone')
-					.hardness(3)
-					.tagBlock('minecraft:mineable/pickaxe')
-					.tagBlock('tfc:prospectable')
-					.tagBlock('tfc:can_trigger_collapse')
-					.tagBlock('tfc:rock/ores')
-					.tagBlock('tfc:can_collapse')
-					.tagBlock('tfc:can_start_collapse')
-					.tagBlock('minecraft:needs_stone_tool')
-					.tagBlock(`forge:ores/${ore}`)
-					.tagBlock('forge:ores')
-					.tagBlock(`tfc:ore/${ore}/${grade}`)
-					.renderType('cutout')
-					.requiresTool();
-			})
-		})
-		global.ungradedOres.forEach(ore => {
-			e.create(`ore/${ore}/${rock}`)
-				.stoneSoundType()
-				.mapColor('stone')
-				.hardness(3)
-				.tagBlock('minecraft:mineable/pickaxe')
-				.tagBlock('tfc:prospectable')
-				.tagBlock('tfc:can_trigger_collapse')
-				.tagBlock('tfc:rock/ores')
-				.tagBlock('tfc:can_collapse')
-				.tagBlock('tfc:can_start_collapse')
-				.tagBlock('minecraft:needs_stone_tool')
-				.tagBlock(`forge:ores/${ore}`)
-				.tagBlock('forge:ores')
-				.tagBlock(`tfc:ore/${ore}`)
-				.renderType('cutout')
-				.requiresTool();
-		})
-	})
 
 	e.create('lithium_salt', 'tfc:dirt')
 		.grass(grass => {
-;			grass.hardness(0.9);
+			grass.hardness(0.9);
 			grass.gravelSoundType();
 			grass.tagBlock('minecraft:mineable/shovel');
 			grass.tagBlock('tfc:can_landslide');
@@ -110,8 +72,9 @@ StartupEvents.registry('block', e => {
 		.box(1, 2, 1, 15, 4, 15)
 		.box(0, 0, 0, 16, 2, 16)
 		.soundType('metal')
-		.requiresTool()
-		.tagBlock('minecraft:mineable/pickaxe');
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_diamond_tool')
+		.requiresTool();
 
 	e.create('rocket_scaffolding')
 		.property(BlockProperties.AXIS)
@@ -119,23 +82,28 @@ StartupEvents.registry('block', e => {
 			place.setValue(BlockProperties.AXIS, place.clickedFace.axis);
 		})
 		.soundType('metal')
-		.requiresTool()
 		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool()
+		.waterlogged()
 		.defaultCutout();
 
 	e.create('rocket_payload')
 		.soundType('metal')
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
 		.requiresTool()
-		.tagBlock('minecraft:mineable/pickaxe');
 
 	e.create('rocket_avionics')
 		.soundType('metal')
-		.requiresTool()
-		.tagBlock('minecraft:mineable/pickaxe');
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool();
 
 	e.create('rocket_panelling', 'cardinal')
 		.soundType('metal')
 		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
 		.requiresTool()
 		.box(0, 0, 15, 16, 16, 16);
 
@@ -155,24 +123,83 @@ StartupEvents.registry('block', e => {
 			.defaultTranslucent()
 			.tagBlock('tfc:mineable_with_glass_saw')
 			.textureAll(`minecraft:block/${color}_stained_glass`);
-	})
+	});
 
-	let groundCovers = ['malachite', 'native_copper', 'sphalerite'];
+	e.create('solar_panel')
+		.blockEntity(info => {
+			info.serverTick(be => global.solarTick(be));
+		})
+		.box(6, 0, 6, 10, 3, 10)
+		.box(1, 3, 1, 15, 5, 15)
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool()
+		.soundType('glass')
+		.waterlogged();
 
-	for (let i = 0 ; i < global.allOres ; i++) {
-		e.create(`ore/small_${global.allOres[i]}`, 'tfc:ground_cover')
-			.ore()
-			.hardness(0.1)
-			.tagBlock('tfc:can_be_snow_piled')
-			.stoneSoundType()
-			.mapColor('stone')
-			.tagBlock('minecraft:mineable/pickaxe')
-			.tagBlock('tfc:breaks_when_isolated')
-			.tagItem('tfc:small_ore_pieces')
-			.tagItem('tfc:nuggets')
-			.groundCoverModelShape(groundCovers[i % groundCovers.length]);
-	}
+	e.create('generator')
+		.blockEntity(info => {
+			info.inventory(9, 1, '#kubejs:generator_fuels');
+			info.attachCapability(
+				CapabilityBuilder.ITEM.blockEntity()
+					.availableOn((be, dir) => dir != null && dir != Direction.UP)
+					.extractItem((be, slot, amount, simulate) => be.inventory.extractItem(slot, amount, simulate))
+					.insertItem((be, slot, stack, simulate) => be.inventory.insertItem(slot, stack, simulate))
+					.getSlotLimit((be, slot) => be.inventory.getSlotLimit(slot))
+					.getSlots(be => be.inventory.slots)
+					.getStackInSlot((be, slot) => be.inventory.getStackInSlot(slot))
+					.isItemValid((be, slot, stack) => be.inventory.isItemValid(slot, stack))
+			);
+			info.attachCapability(
+				CapabilityBuilder.ENERGY.customBlockEntity()
+					.availableOn((be, dir) => dir != Direction.UP)
+					.canExtract(be => be.data.stored > 0)
+					.canReceive(be => false)
+					.getEnergyStored(be => be.data.stored)
+					.getMaxEnergyStored(be => be.data.max)
+					.withCapacity(15000)
+					.extractEnergy((be, amount, simulate) => {
+						let { stored } = be.data;
+						let remaining = stored - amount;
+						if (remaining < 0) {
+							if (!simulate) {
+								be.data.putInt('stored', 0)
+							}
+							return stored;
+						} else {
+							if (!simulate) {
+								be.data.putInt('stored', remaining);
+							}
+							return amount;
+						}
+					})
+					.receiveEnergy((be, amount, simulate) => 0)
+			);
+			info.serverTick(be => global.generatorTick(be));
+			info.rightClickOpensInventory();
+			info.enableSync();
+			info.initialData(initialStored(15000))
+		})
+		.box(0, 0, 0, 16, 12, 16)
+		.box(0, 12, 4, 16, 14, 12)
+		.box(4, 12, 0, 12, 14, 4)
+		.box(4, 12, 12, 12, 14, 16)
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool()
+		.soundType('metal');
 })
+
+function initialStored(max) {
+	return maxAndStored(max, 0);
+}
+
+function maxAndStored(max, stored) {
+	let tag = new CompoundTag()
+	tag.putInt('max', max);
+	tag.putInt('stored', stored)
+	return tag;
+}
 
 StartupEvents.registry('fluid', e => {
 	e.create('unrefined_redstone')
@@ -210,6 +237,13 @@ StartupEvents.registry('fluid', e => {
 		.noBucket()
 		.tag('tfc:molten_metals')
 		.tag('kubejs:unrefined_graphite');
+	e.create('solar_paste')
+		.thickTexture(0x455bd9)
+		.displayName('Solar Paste')
+		.noBlock()
+		.noBucket()
+		.tag('tfc:molten_metals')
+		.tag('kubejs:solar_paste');
 })
 
 StartupEvents.registry('sound_event', e => {
@@ -222,13 +256,13 @@ StartupEvents.registry('sound_event', e => {
 })
 
 StartupEvents.registry('entity_type', e => {
-	e.create('rocket', 'entityjs:living')
+	global.rocketTypeSupplier = e.create('rocket', 'entityjs:living')
 		.sized(1.5, 5)
 		.tick(rocket => global.rocketTick(rocket))
 		.onInteract(ctx => global.rocketInteract(ctx))
 		.isPushable(false)
 		.isInvulnerableTo(ctx => true)
-		.render(ctx => true)
+		.render(ctx => true);
 })
 
 StartupEvents.registry('particle_type', e => {
@@ -528,4 +562,123 @@ const ROCKET_FUELS = {
 			totalMinAmount: 2000
 		}
 	}
+}
+
+/**
+ * @param {Internal.BlockEntityJS} be 
+ */
+global.solarTick = (be) => {
+	let { level, blockPos, block, blockState } = be;
+	if (
+		block.down.entity != null &&
+		level.day &&
+		!blockState.getValue(BlockProperties.WATERLOGGED)
+		&& level.canSeeSky(blockPos) &&
+		!level.isRainingAt(blockPos)
+	) {
+		block.down.entity.getCapability(ForgeCapabilities.ENERGY, 'up').ifPresent(energy => {
+			let solar = Math.cos(level.getSunAngle(0));
+			if (solar > 0.1) {
+				energy.receiveEnergy(Math.pow(solar, 0.4) * 20, false);
+			}
+		});
+	}
+}
+
+/**
+ * @param {Internal.BlockEntityJS} be 
+ */
+global.generatorTick = (be) => {
+	let { data, level, blockPos } = be;
+	let { stored, max } = data;
+	if (data.active) {
+		let { gen, time } = data;
+		let { ticks } = TFC.calendar.getCalendar(level);
+		if (time - ticks > 0) {
+			if (stored < max) {
+				let withGen = stored + gen;
+				if (withGen > max) {
+					data.putInt('stored', max);
+				} else {
+					data.putInt('stored', withGen);
+				}
+			} else if (Utils.random.nextFloat() > 0.95) {
+				level.spawnParticles(
+					'minecraft:campfire_signal_smoke',
+					true,
+					blockPos.x + 0.5,
+					blockPos.y + 1,
+					blockPos.z + 0.5,
+					(0.5 - Utils.random.nextFloat()) * 0.05,
+					(0.5 + Utils.random.nextFloat(1.6)) * 0.05,
+					(0.5 - Utils.random.nextFloat()) * 0.05,
+					0,
+					1
+				);
+			}
+		} else {
+			data.putBoolean('active', false);
+			data.remove('gen');
+			data.remove('time');
+		}
+	} else {
+		if (stored < max && level.time % 10 == 0) {
+			let { inventory } = be;
+			if (inventory != null && inventory != undefined) {
+				let slot = inventory.find();
+				if (slot > -1) {
+					let stack = inventory.extractItem(slot, 1, true);
+					if (!stack.empty) {
+						let fuel = Fuel.get(stack);
+						if (fuel != null) {
+							let { temperature, purity, duration } = fuel;
+							inventory.extractItem(slot, 1, false);
+							data.putBoolean('active', true);
+							data.putInt('gen', Math.pow(KMath.E, temperature / 500) * purity * 0.833);
+							data.putLong('time', duration + TFC.calendar.getCalendar(level).ticks);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	transferEnergy(be, [
+		Direction.DOWN,
+		Direction.EAST,
+		Direction.WEST,
+		Direction.NORTH,
+		Direction.SOUTH
+	], 50);
+}
+
+/**
+ * @param {Internal.BlockEntityJS} be 
+ * @param {Internal.Direction[]} dirs 
+ * @param {number} maxTransfer 
+ */
+function transferEnergy(be, dirs, maxTransfer) {
+	let { level, blockPos, data, type } = be;
+	dirs.forEach(dir => {
+		let { stored } = data; // Reload data to account for transfers/generation since beginning of tick
+		let relBe = level.getBlockEntity(blockPos.relative(dir));
+		if (relBe != null && relBe.type != type) {
+			relBe.getCapability(ForgeCapabilities.ENERGY, dir.opposite).ifPresent(energy => {
+				let transferAttempt = Math.min(stored, maxTransfer);
+				let amount = energy.receiveEnergy(transferAttempt, true);
+				let after = stored - amount;
+				if (after >= 0) {
+					energy.receiveEnergy(amount, false);
+					data.putInt('stored', after);
+				} else {
+					amount = energy.receiveEnergy(stored, true);
+					after = stored - amount;
+					if (after >= 0) {
+						energy.receiveEnergy(after, false);
+						data.putInt('stored', after);
+					}
+				}
+			})
+		}
+	});
 }

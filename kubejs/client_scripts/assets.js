@@ -114,7 +114,8 @@ ClientEvents.lang('en_us', e => {
     e.add('metal.kubejs.unrefined_redstone', 'Unrefined Redstone');
     e.add('metal.kubejs.refined_redstone', 'Refined Redstone');
     e.add('metal.kubejs.refined_graphite', 'Graphite');
-    e.add('metal.kubejs.unrefined_graphite', 'Unrefined Graphite')
+    e.add('metal.kubejs.unrefined_graphite', 'Unrefined Graphite');
+    e.add('metal.kubejs.solar_paste', 'Solar Paste');
     e.renameItem('morered:red_alloy_wire', 'Redwire');
     e.add('category.kubejs.ores', 'Ores');
     e.add('category.kubejs.entity', 'Entities');
@@ -163,6 +164,7 @@ ClientEvents.lang('en_us', e => {
     e.add('jade.tooltip.kubejs.horizontal_support', 'Horizontal: %d');
     e.add('jade.tooltip.kubejs.up_support', 'Up: %d');
     e.add('jade.tooltip.kubejs.down_support', 'Down: %d');
+    e.add('jade.tooltip.kubejs.item_count', '%dx %s');
 
     e.add('tooltip.kubejs.heats_to', 'When heated sufficiently:');
     e.add('tooltip.kubejs.heats_to.liquid', '%smB of %s');

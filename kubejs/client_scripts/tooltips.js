@@ -12,6 +12,7 @@ const Integer = Java.loadClass("java.lang.Integer");
 const Alloy = Java.loadClass("net.dries007.tfc.util.Alloy");
 const CanoeComponentBlock = Java.loadClass('com.alekiponi.firmaciv.common.block.CanoeComponentBlock');
 const CanoeComponentBlockEntity = Java.loadClass('com.alekiponi.firmaciv.common.blockentity.CanoeComponentBlockEntity');
+const BasicBlockJS$WithEntity = Java.loadClass('dev.latvian.mods.kubejs.block.custom.BasicBlockJS$WithEntity');
 
 const THERMO = Text.translate('tooltip.kubejs.thermometer');
 const HEATS_TO = Text.translatable('tooltip.kubejs.heats_to').gray();
@@ -27,90 +28,63 @@ ItemEvents.tooltip(tip => {
 	tip.add('kubejs:thermometer', THERMO);
 
 	tip.addAdvanced('#tfc:fired_vessels', (item, advanced, text) => {
-		let fluids = [];
-		let items = [];
+		let fluids = {};
+		let items = {};
 		let vessel = VesselLike.get(item);
 		if (vessel != null && vessel.mode() == VesselMode.INVENTORY) {
 			let cache = VesselCachedRecipe.get(vessel);
 			for (let i = 0 ; i < 4 ; i++) {
-				let count = vessel.getStackInSlot(i).count;
 				let recipe = cache[i];
 				if (recipe != null) {
+					let count = vessel.getStackInSlot(i).count;
 					let recipeItemResult = recipe.getResultItem(null);
 					if (!recipeItemResult.empty) {
-						let preexistingItem = false;
-						let index = 0;
-						items.forEach(obj => {
-							if (obj.item == recipeItemResult.item || preexistingItem) {
-								preexistingItem = true;
-							} else {
-								index++;
-							}
-						});
-						if (preexistingItem) {
-							let value = items[index];
-							items[index] = {
-								item: value.item,
-								count: (value.count + (recipeItemResult.count * count * recipe.chance))
-							}
+						let old = items[recipeItemResult.item];
+						if (old != null && old != undefined) {
+							old.grow(recipeItemResult.count * count * recipe.chance);
+							items[old.item] = old;
 						} else {
-							items.push({
-								item: recipeItemResult.item,
-								count: (recipeItemResult.count * count * recipe.chance)
-							});
+							items[recipeItemResult.item] = Item.of(recipeItemResult, recipeItemResult.count * count * recipe.chance);
 						}
 					}
 					let recipeFluidResult = recipe.displayOutputFluid;
 					if (!recipeFluidResult.empty) {
-						let preexistingFluid = false;
-						let index = 0;
-						fluids.forEach(obj => {
-							if (obj.fluid == recipeFluidResult.fluid || preexistingFluid) {
-								preexistingFluid = true;
-							} else {
-								index++;
-							}
-						});
-						if (preexistingFluid) {
-							let value = fluids[index];
-							fluids[index] = {
-								fluid: value.fluid,
-								amount: (value.amount + (recipeFluidResult.amount * count))
-							}
+						let old = fluids[recipeFluidResult.fluid];
+						if (old != null && old != undefined) {
+							old.grow(recipeFluidResult.amount * count);
+							fluids[old.fluid] = old;
 						} else {
-							fluids.push({
-								fluid: recipeFluidResult.fluid,
-								amount: (recipeFluidResult.amount * count)
-							});
+							fluids[recipeFluidResult.fluid] = Fluid.of(recipeFluidResult.fluid, recipeFluidResult.amount * count).fluidStack;
 						}
 					}
 				}
 			}
 		}
-		if (fluids.length > 0 || items.length > 0) {
+		let fluidLength = Object.keys(fluids).length;
+		if (fluidLength > 0 || Object.keys(items).length > 0) {
 			text.add(HEATS_TO);
-			fluids.forEach(obj => {
-				let metal = TFC.misc.getMetal(obj.fluid);
+			let amount = 0;
+			let alloy = null;
+			if (fluidLength > 1) {
+				alloy = new Alloy();
+			}
+			for (let ref in fluids) {
+				amount += fluids[ref].amount;
+				let metal = TFC.misc.getMetal(fluids[ref].fluid);
 				if (metal != null) {
-					text.add(Text.translatable('tooltip.kubejs.heats_to.liquid', Text.aqua(Integer['valueOf(int)'](obj.amount).toString()), metal.displayName.copy().gold().italic()).gray());
-				}
-			});
-			if (fluids.length > 1) {
-				let amount = 0;
-				let alloy = new Alloy();
-				fluids.forEach(obj => {
-					let metal = TFC.misc.getMetal(obj.fluid);
-					amount += obj.amount;
-					if (metal != null) {
-						alloy.add(metal, obj.amount, false);
+					text.add(Text.translatable('tooltip.kubejs.heats_to.liquid', Text.aqua(Integer['valueOf(int)'](fluids[ref].amount).toString()), metal.displayName.copy().gold().italic()).gray());
+					if (alloy != null && alloy != undefined) {
+						alloy.add(metal, fluids[ref].amount, false);
 					}
-				});
+				}
+			}
+			if (fluidLength > 1) {
 				text.add(Text.translatable('tooltip.kubejs.alloys_to', alloy.result.displayName.copy().gold().italic()).gray());
 				text.add(Text.translatable('tooltip.kubejs.total_fluid', Text.aqua(Integer['valueOf(int)'](amount).toString())).gray());
 			}
-			items.forEach(obj => {
-				text.add(Text.translatable('tooltip.kubejs.heats_to.item', Text.aqua(Integer['valueOf(int)'](obj.count).toString()), obj.item.description.copy().gold().italic()).gray());
-			});
+			for (let ref in items) {
+				text.add(Text.translatable('tooltip.kubejs.heats_to.item', Text.aqua(Integer['valueOf(int)'](items[ref].count).toString()), items[ref].hoverName.copy().gold().italic()).gray())
+			}
 		}
 	});
 
@@ -143,6 +117,8 @@ JadeEvents.onClientRegistration(e => {
 		.tooltip((tooltip, accessor, config) => global.supportTooltip(tooltip, accessor, config));
 	e.block('kubejs:firmaciv/canoe_time', CanoeComponentBlock)
 		.tooltip((tooltip, accessor, config) => global.canoeTimeLeft(tooltip, accessor, config));
+	e.block('kubejs:jade_data', BasicBlockJS$WithEntity)
+		.tooltip((tooltip, accessor, config) => global.jadeDataReceiver(tooltip, accessor, config));
 })
 
 /**
@@ -229,5 +205,38 @@ global.canoeTimeLeft = (tooltip, accessor, config) => {
 	let { level, blockEntity, blockState } = accessor;
 	if (blockState.getValue(CanoeComponentBlock.CANOE_CARVED) > 11 && blockEntity instanceof CanoeComponentBlockEntity) {
 		tooltip.add(Text.translatable('tfc.jade.time_left', TFC.calendar.getCalendar(level).getTimeDelta(blockEntity.ticksLeft)));
+	}
+}
+
+/**
+ * @param {Internal.ITooltipWrapper} tooltip 
+ * @param {Internal.BlockAccessor} accessor 
+ * @param {Internal.IPluginConfig} config 
+ */
+global.jadeDataReceiver = (tooltip, accessor, config) => {
+	let { blockEntity, serverData } = accessor;
+	let { elementHelper } = tooltip;
+	if (serverData != null) {
+		if (serverData.contains('kube_inv')) {
+			let { inventory } = blockEntity;
+			inventory.readAttachment(serverData.get('kube_inv'));
+			let stacks = {};
+			inventory.allItems.forEach(stack => {
+				let old = stacks[stack.item];
+				if (old != null && old != undefined) {
+					old.grow(stack.count);
+					stacks[stack.item] = old;
+				} else {
+					stacks[stack.item] = stack;
+				}
+			});
+	
+			for (var ref in stacks) {
+				tooltip.addElements([
+					elementHelper.smallItem(stacks[ref].item).clearCachedMessage(),
+					elementHelper.text(Text.translatable('jade.tooltip.kubejs.item_count', Integer['valueOf(int)'](stacks[ref].count), stacks[ref].hoverName))
+				])
+			}
+		}
 	}
 }

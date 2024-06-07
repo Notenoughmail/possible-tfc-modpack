@@ -134,6 +134,22 @@ ServerEvents.tags('item', e => {
 		'tfc:metal/ingot/steel'
 	]);
 
+	e.add('kubejs:generator_fuels', [
+		'minecraft:coal',
+		'minecraft:charcoal',
+		'tfc:ore/bituminous_coal',
+		'tfc:ore/lignite'
+	]);
+
+	TFC.misc.wood.forEach((wood, reg) => {
+		e.add('kubejs:generator_fuels', [
+			reg.getBlock('log').get().idLocation,
+			reg.getBlock('stripped_log').get().idLocation,
+			reg.getBlock('wood').get().idLocation,
+			reg.getBlock('stripped_wood').get().idLocation
+		]);
+	});
+
 	let tools = [];
 
 	global.metals.forEach(metal => {

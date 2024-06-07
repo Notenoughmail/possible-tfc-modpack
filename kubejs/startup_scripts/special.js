@@ -3,6 +3,7 @@ const KnappingType = Java.loadClass('net.dries007.tfc.util.KnappingType');
 const ItemStackContainerProvider = Java.loadClass('net.dries007.tfc.common.container.ItemStackContainerProvider');
 const KnappingContainer = Java.loadClass('net.dries007.tfc.common.container.KnappingContainer');
 const ServerPlayer = Java.loadClass('net.minecraft.server.level.ServerPlayer');
+const BlockEntityJS = Java.loadClass('dev.latvian.mods.kubejs.block.entity.BlockEntityJS');
 
 global.commonConfig = {};
 
@@ -166,4 +167,27 @@ global.steelCarvingInteraction = (stack, ctx) => {
 	}
 
 	return 'pass';
+}
+
+ForgeEvents.onEvent('net.minecraftforge.client.event.RenderNameTagEvent', e => {
+	if (e.entity.entityType == global.rocketTypeSupplier.get()) {
+		e.setResult('deny');
+	}
+})
+
+JadeEvents.onCommonRegistration(e => {
+	e.blockDataProvider('kubejs:jade_data', BlockEntityJS)
+		.setCallback((tag, accessor) => global.jadeDataProvider(tag, accessor))
+})
+
+/**
+ * @param {Internal.CompoundTag} tag 
+ * @param {Internal.BlockAccessor} accessor 
+ */
+global.jadeDataProvider = (tag, accessor) => {
+	let { blockEntity } = accessor;
+	let { inventory } = blockEntity;
+	if (inventory != null && inventory != undefined) {
+		tag.put('kube_inv', inventory.writeAttachment());
+	}
 }
