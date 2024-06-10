@@ -1,9 +1,31 @@
 
 PlayerEvents.loggedIn(e => {
-	let data = e.player.persistentData;
+	let { player } = e;
+	let data = player.persistentData;
+	
 	if (data.contains('rocketIds')) {
 		data.remove('rocketIds');
 	}
+	
+	let thermoIndex = -1;
+	player.getCapability(CuriosCapabilities.INVENTORY).ifPresent(curio => {
+		thermoIndex = curio.equippedCurios.find('kubejs:thermometer');
+	});
+	player.sendData('curios', {
+		hasThermometer: (thermoIndex != -1)
+	});
+})
+
+PlayerEvents.respawned(e => {
+	let { player } = e;
+
+	let thermoIndex = -1;
+	player.getCapability(CuriosCapabilities.INVENTORY).ifPresent(curio => {
+		thermoIndex = curio.equippedCurios.find('kubejs:thermometer');
+	});
+	player.sendData('curios', {
+		hasThermometer: (thermoIndex != -1)
+	});
 })
 
 // Done here because the cardinal type does not implement the onPlace callback

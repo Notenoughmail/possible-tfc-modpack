@@ -3,20 +3,6 @@
 const Integer = Java.loadClass('java.lang.Integer');
 const Float = Java.loadClass('java.lang.Float');
 
-global.oreGrades = ['normal', 'poor', 'rich'];
-
-global.gradedOres = [];
-
-global.ungradedOres = [];
-
-global.allOres = [];
-global.gradedOres.forEach(ore => {
-    global.allOres.push(ore);
-});
-global.ungradedOres.forEach(ore => {
-    global.allOres.push(ore);
-});
-
 global.metals = [{
     name: 'bismuth',
     mod: 'tfc',

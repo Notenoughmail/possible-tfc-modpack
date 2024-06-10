@@ -107,7 +107,7 @@ TFCEvents.data(e => {
 	);
 	e.metal(
 		'kubejs:solar_paste',
-		1256,
+		87,
 		0.00412,
 		null,
 		null,

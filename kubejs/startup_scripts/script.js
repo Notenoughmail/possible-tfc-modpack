@@ -7,20 +7,13 @@ const TFCBlockTags = Java.loadClass('net.dries007.tfc.common.TFCTags$Blocks');
 const TFCMultiBlock = Java.loadClass('net.dries007.tfc.util.MultiBlock');
 const CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag');
 const Fuel = Java.loadClass('net.dries007.tfc.util.Fuel');
+const BlockClass = Java.loadClass("net.minecraft.world.level.block.Block");
 
 StartupEvents.registry('item', e => {
-	global.oreGrades.forEach(grade => {
-		global.gradedOres.forEach(ore => {
-			e.create(`ore/${grade}_${ore}`)
-				.tag('tfc:ore_pieces');
-		})
-	})
-	global.ungradedOres.forEach(ore => {
-		e.create(`ore/${ore}`)
-			.tag('tfc:ore_pieces');
-	})
+
 	e.create('pouch');
 	e.create('thermometer')
+		.unstackable()
 		.tag('curios:thermometer');
 	e.create('iron_belt_clip');
 	e.create('lithium_ingot');
@@ -142,7 +135,7 @@ StartupEvents.registry('block', e => {
 			info.inventory(9, 1, '#kubejs:generator_fuels');
 			info.attachCapability(
 				CapabilityBuilder.ITEM.blockEntity()
-					.availableOn((be, dir) => dir != null && dir != Direction.UP)
+					.availableOn((be, dir) => dir != Direction.UP)
 					.extractItem((be, slot, amount, simulate) => be.inventory.extractItem(slot, amount, simulate))
 					.insertItem((be, slot, stack, simulate) => be.inventory.insertItem(slot, stack, simulate))
 					.getSlotLimit((be, slot) => be.inventory.getSlotLimit(slot))
@@ -188,6 +181,70 @@ StartupEvents.registry('block', e => {
 		.tagBlock('minecraft:needs_iron_tool')
 		.requiresTool()
 		.soundType('metal');
+
+	e.create('rtg')
+		.box(2, 0, 2, 14, 16, 14)
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool()
+		.soundType('metal')
+		.waterlogged()
+		.displayName('RTG')
+		.model('ae2:block/crystal_resonance_generator')
+		.blockEntity(info => {
+			info.initialData({
+				quantity: 1
+			});
+			info.serverTick(be => global.rtgTick(be));
+			info.enableSync();
+		});
+
+	e.create('electronics_assembler')
+		.tagBlock('minecraft:mineable/pickaxe')
+		.tagBlock('minecraft:needs_iron_tool')
+		.requiresTool()
+		.soundType('metal')
+		.blockEntity(info => {
+			info.serverTick(be => global.electronicsAssemblerTick(be));
+			info.inventory(9, 1, '#kubejs:allowed_in_electronics_assembler');
+			info.attachCapability(
+				CapabilityBuilder.ITEM.blockEntity()
+					.availableOn((be, dir) => true)
+					.extractItem((be, slot, amount, simulate) => be.inventory.extractItem(slot, amount, simulate))
+					.insertItem((be, slot, stack, simulate) => be.inventory.insertItem(slot, stack, simulate))
+					.getSlotLimit((be, slot) => be.inventory.getSlotLimit(slot))
+					.getSlots(be => be.inventory.slots)
+					.getStackInSlot((be, slot) => be.inventory.getStackInSlot(slot))
+					.isItemValid((be, slot, stack) => be.inventory.isItemValid(slot, stack))
+			);
+			info.attachCapability(
+				CapabilityBuilder.ENERGY.customBlockEntity()
+					.availableOn((be, dir) => true)
+					.canExtract(be => false)
+					.canReceive(be => be.data.stored < be.data.max)
+					.getEnergyStored(be => be.data.stored)
+					.getMaxEnergyStored(be => be.data.max)
+					.withCapacity(50000)
+					.extractEnergy((be, amount, simulate) => 0)
+					.receiveEnergy((be, amount, simulate) => {
+						let { stored, max } = be.data;
+						let after = stored + amount;
+						if (after > max) {
+							if (!simulate) {
+								data.putInt('stored', max);
+							}
+							return max - stored;
+						} else {
+							if (!simulate) {
+								data.putInt('stored', after);
+							}
+							return amount;
+						}
+					})
+			);
+			info.rightClickOpensInventory();
+			info.initialData(initialStored(50000));
+		});
 })
 
 function initialStored(max) {
@@ -243,6 +300,8 @@ StartupEvents.registry('fluid', e => {
 		.noBlock()
 		.noBucket()
 		.tag('tfc:molten_metals')
+		.tag('tfc:usable_in_jug')
+		.tag('tfc:usable_in_ingot_mold')
 		.tag('kubejs:solar_paste');
 })
 
@@ -681,4 +740,534 @@ function transferEnergy(be, dirs, maxTransfer) {
 			})
 		}
 	});
+}
+
+/**
+ * @param {Internal.BlockEntityJS} be 
+ */
+global.rtgTick = (be) => {
+	let { data, level, blockPos, type } = be;
+	let { quantity } = data;
+	
+	if (quantity > 0) {
+		let receiver = level.getBlockEntity(blockPos.below());
+		if (receiver != null && receiver.type != type) {
+			receiver.getCapability(ForgeCapabilities.ENERGY, Direction.DOWN).ifPresent(energy => {
+				energy.receiveEnergy(Math.pow(quantity, 0.4) * 50, false);
+			});
+		}
+
+		if (Utils.random.nextFloat() > 0.9954 * (-Math.pow(quantity, 3.4) + 1)) { // Degrade slower as quantity decreases
+			let newQ = quantity - 0.0001;
+			data.putDouble('quantity', newQ);
+		}
+	}
+}
+
+/**
+ * Absolutely awful, but deal with it, it works
+ * @param {Internal.BlockEntityJS} be 
+ */
+global.electronicsAssemblerTick = (be) => {
+	let { level, inventory, data } = be;
+	let { stored } = data;
+	if (level.time % 20 == 0 && stored > 2500 && !inventory.empty && inventory.allItems.size() != 9) {
+
+		let cableIndex = inventory.find('morered:bundled_network_cable');
+		if (cableIndex != -1) {
+			// Modules
+			let steelIndex = inventory.find('tfc:metal/sheet/steel');
+			if (steelIndex != -1) {
+				let processorIndex = inventory.find('thoriumreactors:redstone_processor');
+				if (processorIndex != -1) {
+					let bundleIndex = inventory.find('morered:bundled_network_cable');
+					if (bundleIndex != -1) {
+						// Energy
+						let rodIndex = inventory.find('tfc:metal/rod/copper');
+						if (rodIndex != -1) {
+							let lithiumIndex = inventory.find('kubejs:lithium_plate');
+							if (lithiumIndex != -1) {
+								let graphiteIndex = inventory.find('kubejs:graphite_plate');
+								if (
+									graphiteIndex != -1 &&
+									!inventory.extractItem(steelIndex, 1, true).empty &&
+									!inventory.extractItem(processorIndex, 1, true).empty &&
+									inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+									!inventory.extractItem(rodIndex, 1, true).empty &&
+									!inventory.extractItem(lithiumIndex, 1, true).empty &&
+									!inventory.extractItem(graphiteIndex, 1, true).empty
+								) {
+									inventory.extractItem(steelIndex, 1, false);
+									inventory.extractItem(processorIndex, 1, false);
+									inventory.extractItem(bundleIndex, 2 ,false);
+									inventory.extractItem(rodIndex, 1, false);
+									inventory.extractItem(lithiumIndex, 1, false);
+									inventory.extractItem(graphiteIndex, 1, false);
+									craftAndInsertItem('thoriumreactors:module_energy', be, 1);
+									data.putInt('stored', stored - 1000);
+									return;
+								}
+							}
+						}
+						// Tank
+						rodIndex = inventory.find('tfc:metal/rod/steel');
+						if (rodIndex != -1) {
+							let barrelIndex = inventory.find('#tfc:barrels');
+							if (
+								barrelIndex != -1 &&
+								!inventory.extractItem(steelIndex, 1, true).empty &&
+								!inventory.extractItem(processorIndex, 1, true).empty &&
+								inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+								!inventory.extractItem(rodIndex, 1, true).empty &&
+								!inventory.extractItem(barrelIndex, 1, true).empty
+							) {
+								inventory.extractItem(steelIndex, 1, false);
+								inventory.extractItem(processorIndex, 1, false);
+								inventory.extractItem(bundleIndex, 2 ,false);
+								inventory.extractItem(rodIndex, 1, false);
+								inventory.extractItem(barrelIndex, 1, false);
+								craftAndInsertItem('thoriumreactors:module_tank', be, 1);
+								return;
+							}
+						}
+						// I/O
+						rodIndex = inventory.find('tfc:metal/rod/gold');
+						if (rodIndex != -1) {
+							let wireIndex = inventory.find('morered:red_alloy_wire');
+							if (
+								wireIndex != -1 &&
+								!inventory.extractItem(steelIndex, 1, true).empty &&
+								!inventory.extractItem(processorIndex, 1, true).empty &&
+								inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+								!inventory.extractItem(rodIndex, 1, true).empty &&
+								inventory.extractItem(wireIndex, 4, true).count == 4
+							) {
+								inventory.extractItem(steelIndex, 1, false);
+								inventory.extractItem(processorIndex, 1, false);
+								inventory.extractItem(bundleIndex, 2 ,false);
+								inventory.extractItem(rodIndex, 1, false);
+								inventory.extractItem(wireIndex, 4, false);
+								craftAndInsertItem('thoriumreactors:module_io', be, 1);
+								data.putInt('stored', stored - 1000);
+								return;
+							} 
+						}
+						// Sensor
+						rodIndex = inventory.find('tfc:metal/rod/nickel');
+						if (rodIndex != -1) {
+							let detectorIndex = inventory.find('minecraft:daylight_detector');
+							if (detectorIndex != -1) {
+								let plateIndex = inventory.find('#minecraft:stone_pressure_plates');
+								if (
+									plateIndex != -1 &&
+									!inventory.extractItem(steelIndex, 1, true).empty &&
+									!inventory.extractItem(processorIndex, 1, true).empty &&
+									inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+									!inventory.extractItem(rodIndex, 1, true).empty &&
+									!inventory.extractItem(detectorIndex, 1, true).empty &&
+									!inventory.extractItem(plateIndex, 1, true).empty
+								) {
+									inventory.extractItem(steelIndex, 1, false);
+									inventory.extractItem(processorIndex, 1, false);
+									inventory.extractItem(bundleIndex, 2 ,false);
+									inventory.extractItem(rodIndex, 1, false);
+									inventory.extractItem(detectorIndex, 1, false);
+									inventory.extractItem(plateIndex, 1, false);
+									craftAndInsertItem('thoriumreactors:module_sensor', be, 1);
+									data.putInt('stored', stored - 1000);
+									return;
+								}
+							}
+						}
+						// Processing
+						rodIndex = inventory.find('tfc:metal/rod/brass');
+						if (rodIndex != -1) {
+							let calcIndex = inventory.find('ae2:calculation_processor');
+							if (
+								calcIndex != -1 &&
+								!inventory.extractItem(steelIndex, 1, true).empty &&
+								!inventory.extractItem(processorIndex, 1, true).empty &&
+								inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+								!inventory.extractItem(rodIndex, 1, true).empty &&
+								inventory.extractItem(calcIndex, 2, true).count == 2
+							) {
+								inventory.extractItem(steelIndex, 1, false);
+								inventory.extractItem(processorIndex, 1, false);
+								inventory.extractItem(bundleIndex, 2 ,false);
+								inventory.extractItem(rodIndex, 1, false);
+								inventory.extractItem(calcIndex, 2, false);
+								craftAndInsertItem('thoriumreactors:module_processing', be, 1);
+								data.putInt('stored', stored - 1000);
+								return;
+							}
+						}
+						// Storage
+						rodIndex = inventory.find('tfc:metal/rod/zinc');
+						if (rodIndex != -1) {
+							let chestIndex = inventory.find('#forge:chests/wooden');
+							if (
+								chestIndex != -1 &&
+								!inventory.extractItem(steelIndex, 1, true).empty &&
+								!inventory.extractItem(processorIndex, 1, true).empty &&
+								inventory.extractItem(bundleIndex, 2 ,true).count == 2 &&
+								!inventory.extractItem(rodIndex, 1, true).empty &&
+								!inventory.extractItem(chestIndex, 1, true).empty
+							) {
+								inventory.extractItem(steelIndex, 1, false);
+								inventory.extractItem(processorIndex, 1, false);
+								inventory.extractItem(bundleIndex, 2 ,false);
+								inventory.extractItem(rodIndex, 1, false);
+								inventory.extractItem(chestIndex, 1, false);
+								craftAndInsertItem('thoriumreactors:module_storage', be, 1);
+								data.putInt('stored', stored - 1000);
+								return;
+							}
+						}
+					}
+				}
+			}
+
+			// Fluix cables
+			let fiberIndex = inventory.find('ae2:quartz_fiber');
+			if (fiberIndex != -1) {
+				let dustIndex = inventory.find('ae2:fluix_dust');
+				if (
+					dustIndex != -1 &&
+					!inventory.extractItem(fiberIndex, 1, true).empty &&
+					!inventory.extractItem(dustIndex, 1, true).empty &&
+					!inventory.extractItem(cableIndex, 1, true).empty
+				) {
+					inventory.extractItem(fiberIndex, 1, false);
+					inventory.extractItem(dustIndex, 1, false);
+					inventory.extractItem(cableIndex, 1, false);
+					craftAndInsertItem('ae2:fluix_glass_cable', be, 12);
+					data.putInt('stored', stored - 500);
+					return;
+				}
+			}
+
+			// Redstone processor
+			let goldIndex = inventory.find('tfc:metal/sheet/gold');
+			if (goldIndex != -1) {
+				let comparatorIndex = inventory.find('minecraft:comparator');
+				if (comparatorIndex != -1) {
+					let rodIndex = inventory.find('tfc:metal/rod/copper');
+					if (
+						rodIndex != -1 &&
+						!inventory.extractItem(cableIndex, 1, true).empty &&
+						!inventory.extractItem(goldIndex, 1, true).empty &&
+						!inventory.extractItem(rodIndex, 1, true).empty &&
+						inventory.extractItem(comparatorIndex, 2, true).count == 2
+					) {
+						inventory.extractItem(cableIndex, 1, false);
+						inventory.extractItem(goldIndex, 1, false);
+						inventory.extractItem(rodIndex, 1, false);
+						inventory.extractItem(comparatorIndex, 2, false);
+						craftAndInsertItem('thoriumreactors:redstone_processor', be, 6);
+						data.putInt('stored', stored - 750);
+						return;
+					}
+				}
+			}
+
+			// Large components
+			// 16m, 64m, 256m, 2s, 16s, 128s
+			let processorIndex = inventory.find('megacells:accumulation_processor');
+			if (processorIndex != -1) {
+				// 256m
+				let componentIndex = inventory.find('megacells:cell_component_64m');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(cableIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(cableIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('megacells:cell_component_256m', be, 1);
+					data.putInt('stored', stored - 100);
+					return;
+				}
+				// 64m
+				componentIndex = inventory.find('megacells:cell_component_16m');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(cableIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(cableIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('megacells:cell_component_64m', be, 1);
+					data.putInt('stored', stored - 100);
+					return;
+				}
+				// 16m
+				componentIndex = inventory.find('megacells:cell_component_4m');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(cableIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(cableIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('megacells:cell_component_16m', be, 1);
+					data.putInt('stored', stored - 100);
+					return;
+				}
+				// 128s
+				componentIndex = inventory.find('ae2:spatial_cell_component_16');
+				if (
+					componentIndex != -1 &&
+					!inventory.extractItem(cableIndex, 1, true).empty &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 6, true).count == 6
+				) {
+					inventory.extractItem(cableIndex, 1, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 6, false);
+					craftAndInsertItem('ae2:spatial_cell_component_128', be, 1);
+					data.putInt('stored', stored - 2500);
+					return;
+				}
+				// 16s
+				componentIndex = inventory.find('ae2:spatial_cell_component_2');
+				if (
+					componentIndex != -1 &&
+					!inventory.extractItem(cableIndex, 1, true).empty &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 6, true).count == 6
+				) {
+					inventory.extractItem(cableIndex, 1, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 6, false);
+					craftAndInsertItem('ae2:spatial_cell_component_16', be, 1);
+					data.putInt('stored', stored - 2500);
+					return;
+				}
+				// 2s
+				componentIndex = inventory.find('ae2:fluix_crystal');
+				if (componentIndex != -1) {
+					let glassIndex = inventory.find('ae2:quartz_glass');
+					if (
+						glassIndex != -1 &&
+						!inventory.extractItem(glassIndex, 1, true).empty &&
+						inventory.extractItem(componentIndex, 5, true).count == 5 &&
+						inventory.extractItem(processorIndex, 2, true).count == 2 &&
+						inventory.extractItem(cableIndex, 10, true).count == 10
+					) {
+						inventory.extractItem(glassIndex, 1, false);
+						inventory.extractItem(componentIndex, 5, false);
+						inventory.extractItem(processorIndex, 2, false);
+						inventory.extractItem(cableIndex, 10, false);
+						craftAndInsertItem('ae2:spatial_cell_component_2', be, 1);
+						data.putInt('stored', stored - 2500);
+						return;
+					}
+				}
+			}
+			processorIndex = inventory.find('ae2:engineering_processor');
+			if (processorIndex != -1) {
+				// 4m
+				let componentIndex = inventory.find('megacells:cell_component_1m');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(cableIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(cableIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('megacells:cell_component_4m', be, 1);
+					data.putInt('stored', stored - 100);
+					return;
+				}
+			}
+		}
+
+		// Small components
+		let wireIndex = inventory.find('morered:red_alloy_wire');
+		if (wireIndex != -1) {
+			// 256k, 1m
+			let processorIndex = inventory.find('ae2:engineering_processor');
+			if (processorIndex != -1) {
+				// 1m
+				let componentIndex = inventory.find('ae2:cell_component_256k');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(wireIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('megacells:cell_component_1m', be, 1);
+					data.putInt('stored', stored - 1500);
+					return;
+				}
+				// 256k
+				componentIndex = inventory.find('ae2:cell_component_64k');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(wireIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('ae2:cell_component_256k', be, 1);
+					data.putInt('stored', stored - 1500);
+					return;
+				}
+			}
+			// 4k, 16k, 64k
+			processorIndex = inventory.find('ae2:calculation_processor');
+			if (processorIndex != -1) {
+				// 64K
+				let componentIndex = inventory.find('ae2:cell_component_16k');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(wireIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('ae2:cell_component_64k', be, 1);
+					data.putInt('stored', stored - 1500);
+					return;
+				}
+				// 16k
+				componentIndex = inventory.find('ae2:cell_component_4k');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(wireIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('ae2:cell_component_16k', be, 1);
+					data.putInt('stored', stored - 1500);
+					return;
+				}
+				// 4k
+				componentIndex = inventory.find('ae2:cell_component_1k');
+				if (
+					componentIndex != -1 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(componentIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(wireIndex, 3, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(componentIndex, 3, false);
+					craftAndInsertItem('ae2:cell_component_4k', be, 1);
+					data.putInt('stored', stored - 1500);
+					return;
+				}
+			}
+			// 1k
+			processorIndex = inventory.find('ae2:logic_processor');
+			if (processorIndex != -1) {
+				let crystalIndex = inventory.find('ae2:certus_quartz_crystal');
+				if (
+					crystalIndex != -1 &&
+					inventory.extractItem(crystalIndex, 2, true).count == 2 &&
+					inventory.extractItem(processorIndex, 2, true).count == 2 &&
+					inventory.extractItem(wireIndex, 3, true).count == 3
+				) {
+					inventory.extractItem(crystalIndex, 2, false);
+					inventory.extractItem(processorIndex, 2, false);
+					inventory.extractItem(wireIndex, 3, false);
+					craftAndInsertItem('ae2:cell_component_1k', be, 1)
+					data.putInt('stored', stored - 100);
+					return;
+				}
+			}
+		}
+
+		// Quartz fiber
+		let certusIndex = inventory.find('ae2:certus_quartz_dust');
+		if (certusIndex != -1) {
+			let glassIndex = inventory.find('#forge:glass');
+			if (
+				glassIndex != -1 &&
+				!inventory.extractItem(certusIndex, 1, true).empty &&
+				!inventory.extractItem(glassIndex, 1, true).empty
+			) {
+				inventory.extractItem(certusIndex, 1, false);
+				inventory.extractItem(glassIndex, 1, false);
+				craftAndInsertItem('ae2:quartz_fiber', be, 8);
+				data.putInt('stored', stored - 20);
+				return;
+			}
+		}
+
+		organizeContainer(inventory);
+	}
+}
+
+/**
+ * @param {Internal.ItemStack_} item 
+ * @param {Internal.BlockEntityJS} be
+ * @param {number} count 
+ */
+function craftAndInsertItem(item, be, count) {
+	let remainder = Item.of(item, count)
+	let { level, blockPos } = be;
+
+	let belBe = level.getBlockEntity(blockPos.below());
+	if (belBe != null) {
+		belBe.getCapability(ForgeCapabilities.ITEM_HANDLER, 'up').ifPresent(items => {
+			remainder = items.insertItem(remainder, false);
+		});
+	}
+	if (!remainder.empty) {
+		let abvBe = level.getBlockEntity(blockPos.above());
+		if (abvBe != null) {
+			abvBe.getCapability(ForgeCapabilities.ITEM_HANDLER, 'down').ifPresent(items => {
+				remainder = items.insertItem(remainder, false);
+			});
+		}
+	}
+
+	if (!remainder.empty) {
+		remainder = be.inventory.insertItem(remainder, false);
+	}
+
+	if (!remainder.empty) {
+		BlockClass.popResourceFromFace(level, blockPos, 'up', remainder);
+	}
+}
+
+/**
+ * This absolutely will not work in 1.21 due to stacks being limited to 99
+ * @param {Internal.InventoryKJS} inventory
+ */
+function organizeContainer(inventory) {
+	let { allItems } = inventory;
+	let items = {};
+	allItems.forEach(stack => {
+		let old = items[stack.item];
+		if (old != null && old != undefined) {
+			old.grow(stack.count);
+			items[old.item] = old;
+		} else {
+			items[stack.item] = stack;
+		}
+	});
+	inventory.clear();
+	for (let ref in items) {
+		inventory.insertItem(items[ref], false);
+	}
 }

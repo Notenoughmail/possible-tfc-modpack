@@ -214,19 +214,19 @@ hash = "2be70a80eaccc6934ec487e92e002a0b1a829940ce18ac654c5565700d518162"
 
 [[files]]
 file = "kubejs/client_scripts/assets.js"
-hash = "778e580e2b3c611ca2304a232c747be042430a7404af14381b1995c8dcce6210"
+hash = "d6ce28fc26e75feb74f2cdd145a243a072fb4cc368c27379599e6bbba6993be2"
 
 [[files]]
 file = "kubejs/client_scripts/recipes.js"
-hash = "a10148923d298f547ac0ac8ef8f2d018228449dfc77437ad96f674476f088635"
+hash = "4507d286cd879436f0d09c414de8d460996c7d1f906a5977cc81cc178f80a807"
 
 [[files]]
 file = "kubejs/client_scripts/script.js"
-hash = "c17ff9a39a002a3ab62bfc52ed336d24c65dff55e6082a13370aa863f28947e7"
+hash = "979683074ad3d5a3087bae2a9d69d85f4ce77293a0a8a568bba272756eddf615"
 
 [[files]]
 file = "kubejs/client_scripts/tooltips.js"
-hash = "d1940146e0fd4e9851a8e4d15792857462d97265bf41cf619ecc23735b9f0559"
+hash = "20e34266b4f3bf108f06e7d2a95f40dbefe28ffe92060cb2c896ff2faf74eaf0"
 
 [[files]]
 file = "kubejs/config/client.properties"
@@ -238,31 +238,31 @@ hash = "58305bb3323965c2979a225619d211641c3962779064f189b8f2b849dbad9e6f"
 
 [[files]]
 file = "kubejs/config/defaultoptions.txt"
-hash = "4d80ffbd2ae6c6d4e0bdfab6a5dee030e7b4a17f6ab84a4a2feb8fff747194b7"
+hash = "898568fbd3eb5b805ba8eab1a5eea97cb578654908c9b9ba8ec1d6fe8ed02814"
 
 [[files]]
 file = "kubejs/server_scripts/data.js"
-hash = "fc459d6c2f6336a257f1abd4dbec87857029ba53cbda0598893059bf0a87dd94"
+hash = "1216927abefd47d87bbf845cbc4f7e64b30ad3e6b7d4558b7dc621fa9026bd49"
 
 [[files]]
 file = "kubejs/server_scripts/loot_table.js"
-hash = "e8e71e6d9c348bb831ffa300cf62ad0642ad41fa99b96d56e180d521d9bfac41"
+hash = "cf5c6dba74101633dfeb76a7d90a79cda18a29e00b26b3b58cafcc902300f09d"
 
 [[files]]
 file = "kubejs/server_scripts/overrides.js"
-hash = "b2a5bea04c5815be0bcd4b644cbab1993f0a4e9515ce3232304a5df392889781"
+hash = "446d0cfd10d5773feef7d2b2cff45cfe41fe0196641d34808aa6e8f55d642f97"
 
 [[files]]
 file = "kubejs/server_scripts/recipes.js"
-hash = "3855e91e913273c6608da6562e42c449d3735b57256057777eb66c3d8cf3ff8f"
+hash = "06eafc6f678091bbaad871418a66a8b2cf0034e6fb76ac74f2049f31663075d2"
 
 [[files]]
 file = "kubejs/server_scripts/remove.js"
-hash = "1fb21c6b98c7ad949e74295fead6ce8a3c70739586dab156bddf0b28baf32493"
+hash = "e7dd5b74287dbf204bee72cc67233346a759105fb436971ea9ac8af554a3bd1d"
 
 [[files]]
 file = "kubejs/server_scripts/tags.js"
-hash = "bfcc72921c510a70ed72e5c52ec77863344e97adcdcf4294686667ad198a7a4d"
+hash = "95fe7f26d629120dd969cfe862efb9cfb2f7fa541008dc3672478d634856ac3a"
 
 [[files]]
 file = "kubejs/startup_scripts/schema.js"
@@ -270,15 +270,15 @@ hash = "a59da0444281d33be413edd15779a8f4c044c1623b4ebbf40f0ee918b6638033"
 
 [[files]]
 file = "kubejs/startup_scripts/script.js"
-hash = "96250134e338070982909f826582e9dd157195e848c73270d690f398fce606d6"
+hash = "d9662648227f9c432abe68d80ddc40770aec04e38e3191ecb4e7596a7c10ecf6"
 
 [[files]]
 file = "kubejs/startup_scripts/special.js"
-hash = "4668c55d582299d2435fe28aafd4f4275e890787662c68d4fbef6b2e3d22c65d"
+hash = "3c4b2da7b5cca7b21a776df46fd5a37e14f8fd2c3d72a94a0daf192eb3a1e37e"
 
 [[files]]
 file = "kubejs/startup_scripts/util.js"
-hash = "83bc5a1e641dc6a27760679e0fc05e7cd108ec12b6b44512e425317e649a74eb"
+hash = "4106e165ef9b1e0732af1e535819a15a32b6e884467d231f98914e6af55eaaaf"
 
 [[files]]
 file = "mods/additional-placements.pw.toml"
@@ -297,7 +297,7 @@ metafile = true
 
 [[files]]
 file = "mods/applied-energistics-2.pw.toml"
-hash = "1ccdc223317e3c8da5594e56d66a0da5dd9b8a7caa43bbc03d517309321193b6"
+hash = "9213eaaca144e07c14322982367dffdb3c75fd9eba8d8a82f55c7002e0067e44"
 metafile = true
 
 [[files]]
@@ -337,7 +337,7 @@ metafile = true
 
 [[files]]
 file = "mods/cc-tweaked.pw.toml"
-hash = "e20c65099b272ff1848676dcc4d9e6025722ab35c60d9e1dfd1d36f44457cdea"
+hash = "b5b9fb98a3c556205fec1e4a502b2065c596b86e13d6fdace4b2f209ca496257"
 metafile = true
 
 [[files]]
@@ -357,12 +357,12 @@ metafile = true
 
 [[files]]
 file = "mods/curios.pw.toml"
-hash = "f4d41750be3841d73640ba8f4da3ec8e2e8baef4afef7ecb55dd4afd10588d34"
+hash = "ef203cfb9e4703fc48e154ccc2da9f0a1af4770d49f403f3ed0a581e5498a515"
 metafile = true
 
 [[files]]
 file = "mods/embeddium.pw.toml"
-hash = "a2888c614afd7ad2e06e8b6e5a1d2d8fc18e950b0c3855ae6adb459eb3778a30"
+hash = "7de0f48f0ab30917c637c1a8a4853802578942a051f5616a6848b5045960c57f"
 metafile = true
 
 [[files]]
@@ -402,7 +402,7 @@ metafile = true
 
 [[files]]
 file = "mods/geckolib.pw.toml"
-hash = "8ee03cc11e08cc40ada8804d1e7b7373fcd5b7c2ee0f84b470cdbbbf7fab038d"
+hash = "237cb304225faf4c0ea3011fae80a9f438d2d002f0de5007c00f020613b3ff9b"
 metafile = true
 
 [[files]]
@@ -412,7 +412,7 @@ metafile = true
 
 [[files]]
 file = "mods/jade.pw.toml"
-hash = "fcb1cb77c34aa9819c2dd9dacd13526592fb0995da7e8cd5f1f6d595b7ffd9d4"
+hash = "212633e875f70f3990a8064079e116dae6b957363c2d67776cc56debb2e64c7b"
 metafile = true
 
 [[files]]
@@ -447,7 +447,7 @@ metafile = true
 
 [[files]]
 file = "mods/modernfix.pw.toml"
-hash = "9c29166ac593cc02740a23ead3862f61a78d733e3c72567413ed6ef19f85e182"
+hash = "c835e3734d6bd1156827fb51f539bf8871d1d87a237561ed38f59d3deb0c8d54"
 metafile = true
 
 [[files]]
@@ -517,7 +517,7 @@ metafile = true
 
 [[files]]
 file = "mods/tool-belt.pw.toml"
-hash = "fc609c2c8e3d9ce340a79e7cc1c81da7168e982f1c5a37705bbe4fcf89d06d47"
+hash = "95d60fd0a890b6b1087de0bc89079e1dd1276b61a9b1241857f3ea414a3592d2"
 metafile = true
 
 [[files]]
@@ -527,7 +527,7 @@ metafile = true
 
 [[files]]
 file = "resourcepacks/terrafirmacraft-vexxed-visuals.pw.toml"
-hash = "a01b6c01dfd93b629b5dcc01e86ba509d872f6dbc844c75273b3d95f92f48fbd"
+hash = "809864e0f8c41311517a25f6e8c340ccebbfce66dfe0be7788cc0ea4f86cfd2e"
 metafile = true
 
 [[files]]

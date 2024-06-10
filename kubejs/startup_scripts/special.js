@@ -46,22 +46,6 @@ EntityJSEvents.attributes(event => {
 })
 
 TFCEvents.prospectRepresentative(e => {
-	global.gradedOres.forEach(ore => {
-		let ores = [];
-		TFC.misc.rock.keySet().forEach(rock => {
-			global.oreGrades.forEach(grade => {
-				ores.push(`kubejs:ore/${grade}_${ore}/${rock}`);
-			});
-		});
-		e.registerRepresentative(`kubejs:ore/normal_${ore}/dacite`, ores);
-	})
-	global.ungradedOres.forEach(ore => {
-		let ores = [];
-		TFC.misc.rock.keySet().forEach(rock => {
-			ores.push(`kubejs:ore/${ore}/${rock}`);
-		});
-		e.registerRepresentative(`kubejs:ore/${ore}/dacite`, ores);
-	});
 	e.registerRepresentative('ae2:quartz_block', 'ae2:flawless_budding_quartz', 'ae2:flawed_budding_quartz', 'ae2:chipped_budding_quartz', 'ae2:damaged_budding_quartz');
 })
 
@@ -74,8 +58,10 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.player.PlayerDestroyItemEve
  */
 global.curioEquipEvent = (event) => {
 	let { slotContext, stack, entity, result } = event;
-	if (entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
-		entity.persistentData.putBoolean('hasThermometer', true);
+	if (!entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
+		entity.sendData('curios', {
+			hasThermometer: true
+		});
 	}
 }
 
@@ -84,8 +70,10 @@ global.curioEquipEvent = (event) => {
  */
 global.curioUnequipEvent = (event) => {
 	let { slotContext, stack, entity, result } = event;
-	if (entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
-		entity.persistentData.putBoolean('hasThermometer', false);
+	if (!entity.level.clientSide && entity.player && result.name() != 'DENY' && stack.id == 'kubejs:thermometer') {
+		entity.sendData('curios', {
+			hasThermometer: false
+		});
 	}
 }
 
@@ -174,20 +162,3 @@ ForgeEvents.onEvent('net.minecraftforge.client.event.RenderNameTagEvent', e => {
 		e.setResult('deny');
 	}
 })
-
-JadeEvents.onCommonRegistration(e => {
-	e.blockDataProvider('kubejs:jade_data', BlockEntityJS)
-		.setCallback((tag, accessor) => global.jadeDataProvider(tag, accessor))
-})
-
-/**
- * @param {Internal.CompoundTag} tag 
- * @param {Internal.BlockAccessor} accessor 
- */
-global.jadeDataProvider = (tag, accessor) => {
-	let { blockEntity } = accessor;
-	let { inventory } = blockEntity;
-	if (inventory != null && inventory != undefined) {
-		tag.put('kube_inv', inventory.writeAttachment());
-	}
-}

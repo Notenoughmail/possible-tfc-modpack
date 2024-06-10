@@ -2,31 +2,6 @@
 ClientEvents.highPriorityAssets(e => {
 
     // Blocks
-    TFC.misc.rock.keySet().forEach(rock => {
-        global.gradedOres.forEach(ore => {
-            global.oreGrades.forEach(grade => {
-                e.addModel('block', `kubejs:ore/${grade}_${ore}/${rock}`, m => {
-                    m.parent('tfc:block/ore')
-                    m.textures({
-                        all: `tfc:block/rock/raw/${rock}`,
-                        particle: `tfc:block/rock/raw/${rock}`,
-                        overlay: `kubejs:block/ore/${grade}_${ore}`
-                    })
-                })
-            })
-        })
-        global.ungradedOres.forEach(ore => {
-            e.addModel('block', `kubejs:ore/${ore}/${rock}`, m => {
-                m.parent('tfc:block/ore')
-                m.textures({
-                    all: `tfc:block/rock/raw/${rock}`,
-                    particle: `tfc:block/rock/raw/${rock}`,
-                    overlay: `kubejs:block/ore/${ore}`
-                });
-            });
-        });
-    });
-
     TFC.misc.wood.keySet().forEach(wood => {
         e.addModel('block', `kubejs:panel/${wood}`, m => {
             m.parent('kubejs:block/panel/base');
@@ -85,40 +60,31 @@ ClientEvents.highPriorityAssets(e => {
 })
 
 ClientEvents.lang('en_us', e => {
-    e.add('message.kubejs.begin_launch', 'Beginning launch');
     e.renameEntity('kubejs:rocket', 'Satellite Rocket');
+
     e.renameItem('kubejs:double_ingot/lead', 'Lead Double Ingot');
-    e.add('subtitle.kubejs.rocket', 'Rocket launch begins');
-    e.add('tooltip.kubejs.thermometer', 'Allows the wearer to see heat values in degrees instead of colors');
-    e.add('curios.identifier.thermometer', 'Thermometer');
-    global.gradedOres.forEach(ore => {
-        e.renameBlock(`kubejs:ore/small_${ore}`, `Small ${Utils.toTitleCase(ore)}`);
-        global.oreGrades.forEach(grade => {
-            e.renameItem(`kubejs:ore/${grade}_${ore}`, `${Utils.toTitleCase(grade)} ${Utils.toTitleCase(ore)}`);
-            TFC.misc.rock.keySet().forEach(rock => {
-                e.renameBlock(`kubejs:ore/${grade}_${ore}/${rock}`, `${Utils.toTitleCase(grade)} ${Utils.toTitleCase(rock)} ${Utils.toTitleCase(ore)}`);
-            })
-        })
-        e.add(`block.kubejs.ore.normal_${ore}.dacite.prospected`, Utils.toTitleCase(ore));
-    })
-    global.ungradedOres.forEach(ore => {
-        e.renameItem(`kubejs:ore/${ore}`, `Small ${Utils.toTitleCase(ore)}`);
-        TFC.misc.rock.keySet().forEach(rock => {
-            e.renameBlock(`kubejs:ore/${ore}/${rock}`, `${Utils.toTitleCase(rock)} ${Utils.toTitleCase(ore)}`);
-        })
-        e.add(`block.kubejs.ore.${ore}.dacite.prospected`, Utils.toTitleCase(ore));
-    })
-    e.add('death.attack.wither', '%1$s discovered radiation');
     e.renameItem('morered:red_alloy_ingot', 'Redstone Alloy Ingot');
+    e.renameItem('morered:red_alloy_wire', 'Redwire');
+
+    e.renameBlock('ae2:sky_stone_tank', 'Rocket Fuel Tank');
+    e.renameBlock('thoriumreactors:thorium_crafting_table', 'Electronics Crafting Table');
+
     e.add('metal.kubejs.redstone_alloy', 'Redstone Alloy');
     e.add('metal.kubejs.unrefined_redstone', 'Unrefined Redstone');
     e.add('metal.kubejs.refined_redstone', 'Refined Redstone');
     e.add('metal.kubejs.refined_graphite', 'Graphite');
     e.add('metal.kubejs.unrefined_graphite', 'Unrefined Graphite');
     e.add('metal.kubejs.solar_paste', 'Solar Paste');
-    e.renameItem('morered:red_alloy_wire', 'Redwire');
+
+    e.add('subtitle.kubejs.rocket', 'Rocket launch begins');
+
+    e.add('curios.identifier.thermometer', 'Thermometer');
+    
+    e.add('death.attack.wither', '%1$s discovered radiation');
+
     e.add('category.kubejs.ores', 'Ores');
     e.add('category.kubejs.entity', 'Entities');
+    e.add('category.kubejs.electronics_assembler', 'Electronics Assembler');
 
     e.add('jei.description.ores.certus_quartz', 'Certus Quartz buds can be found rarely throughout the world in claystone and phyllite rocks near lava');
     e.add('jei.description.ores.kaolinite', 'Kaolinite can be found in high altitudes in Plateaus, Old Mountains, and Highlands with temperature of at least 18°C and rainfall of at least 300mm. Blood Lilies grow on top of deposits');
@@ -159,12 +125,14 @@ ClientEvents.lang('en_us', e => {
     e.add('jade.tooltip.kubejs.may_trigger_collapse', 'May trigger a collapse...');
     e.add('jade.tooltip.kubejs.will_not_trigger_collapse', 'Will not trigger a collapse');
     e.add('jade.tooltip.kubejs.collapses_into', 'Collapses into: %s');
-
     e.add('jade.tooltip.kubejs.support', 'Supports:');
     e.add('jade.tooltip.kubejs.horizontal_support', 'Horizontal: %d');
     e.add('jade.tooltip.kubejs.up_support', 'Up: %d');
     e.add('jade.tooltip.kubejs.down_support', 'Down: %d');
     e.add('jade.tooltip.kubejs.item_count', '%dx %s');
+    e.add('jade.tooltip.kubejs.rtg', 'Remaining quantity: %s');
+
+    e.add('tooltip.kubejs.thermometer', 'Allows the wearer to see heat values in degrees instead of colors');
 
     e.add('tooltip.kubejs.heats_to', 'When heated sufficiently:');
     e.add('tooltip.kubejs.heats_to.liquid', '%smB of %s');
@@ -181,11 +149,13 @@ ClientEvents.lang('en_us', e => {
     e.add('message.kubejs.missing_scaffold', 'The rocket requires scaffolding to assemble');
     e.add('message.kubejs.assembly_successful', 'Successfully assembled rocket!');
     e.add('message.kubejs.improper_rocket_fuel_ratio', 'There is an improper ratio of fuel in the rocket, it cannot be assembled');
-    e.add('message.kubejs.requires_panelling', 'The rocket requires side panelling to assemble')
-
-    e.renameBlock('ae2:sky_stone_tank', 'Rocket Fuel Tank');
+    e.add('message.kubejs.requires_panelling', 'The rocket requires side panelling to assemble');
+    e.add('message.kubejs.begin_launch', 'Beginning launch');
 
     e.add('tfc.jei.steel_sheet_carving_knapping', 'Steel Carving');
     e.add('kubejs.jei.lore.in_offhand', 'In offhand');
     e.add('kubejs.jei.tooltip.in_offhand', 'With %s in offhand');
+
+    e.add('text.thoriumreactors.inventory.machines.thorium_crafting_table.name', 'Electronics Crafting');
+    e.add('block.thoriumreactors.thorium_crafting_table_description', 'A crafting table used for creating electronics parts by hand');
 })

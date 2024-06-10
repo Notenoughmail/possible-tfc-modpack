@@ -1,6 +1,6 @@
 // priority: 0
 
-const Block = Java.loadClass("net.minecraft.world.level.block.Block");
+const BlockClass = Java.loadClass("net.minecraft.world.level.block.Block");
 const TFCBlockTags = Java.loadClass("net.dries007.tfc.common.TFCTags$Blocks");
 const BlockInventory = Java.loadClass("net.dries007.tfc.common.recipes.inventory.BlockInventory");
 const CollapseRecipe = Java.loadClass("net.dries007.tfc.common.recipes.CollapseRecipe");
@@ -103,6 +103,14 @@ ItemEvents.tooltip(tip => {
 			text.add(Text.translatable('tooltip.kubejs.grows_in.hydration', Text.blue(Integer['valueOf(int)'](plant.minH).toString()), Text.blue(Integer['valueOf(int)'](plant.maxH).toString())).gray());
 		});
 	});
+
+	tip.addAdvanced('kubejs:rtg', (item, advanced, text) => {
+		let quantity = '1.0';
+		if (item.nbt != null) {
+			quantity = `${item.nbt.BlockEntityTag.data.quantity}`.substring(0, 5);
+		}
+		text.add(Text.translatable('jade.tooltip.kubejs.rtg', quantity).gray());
+	})
 })
 
 const SUPPORTED = Text.translatable('jade.tooltip.kubejs.supported').green();
@@ -111,9 +119,9 @@ const WILL_NOT_TRIGGER_COLLAPSE = Text.translatable('jade.tooltip.kubejs.will_no
 const MAY_TRIGGER_COLLAPSE = Text.translatable('jade.tooltip.kubejs.may_trigger_collapse').color(Color.ORANGE_DYE);
 
 JadeEvents.onClientRegistration(e => {
-	e.block('kubejs:collapse', Block)
+	e.block('kubejs:collapse', BlockClass)
 		.tooltip((tooltip, accessor, config) => global.collapseTooltip(tooltip, accessor, config));
-	e.block('kubejs:support', Block)
+	e.block('kubejs:support', BlockClass)
 		.tooltip((tooltip, accessor, config) => global.supportTooltip(tooltip, accessor, config));
 	e.block('kubejs:firmaciv/canoe_time', CanoeComponentBlock)
 		.tooltip((tooltip, accessor, config) => global.canoeTimeLeft(tooltip, accessor, config));
@@ -214,29 +222,10 @@ global.canoeTimeLeft = (tooltip, accessor, config) => {
  * @param {Internal.IPluginConfig} config 
  */
 global.jadeDataReceiver = (tooltip, accessor, config) => {
-	let { blockEntity, serverData } = accessor;
-	let { elementHelper } = tooltip;
-	if (serverData != null) {
-		if (serverData.contains('kube_inv')) {
-			let { inventory } = blockEntity;
-			inventory.readAttachment(serverData.get('kube_inv'));
-			let stacks = {};
-			inventory.allItems.forEach(stack => {
-				let old = stacks[stack.item];
-				if (old != null && old != undefined) {
-					old.grow(stack.count);
-					stacks[stack.item] = old;
-				} else {
-					stacks[stack.item] = stack;
-				}
-			});
-	
-			for (var ref in stacks) {
-				tooltip.addElements([
-					elementHelper.smallItem(stacks[ref].item).clearCachedMessage(),
-					elementHelper.text(Text.translatable('jade.tooltip.kubejs.item_count', Integer['valueOf(int)'](stacks[ref].count), stacks[ref].hoverName))
-				])
-			}
-		}
+	let { blockEntity } = accessor;
+
+	let { type } = blockEntity;
+	if (Utils.getRegistry('minecraft:block_entity_type').getId(type) == 'kubejs:rtg') {
+		tooltip.add(Text.translatable('jade.tooltip.kubejs.rtg', `${blockEntity.data.quantity}`.substring(0, 5)));
 	}
 }

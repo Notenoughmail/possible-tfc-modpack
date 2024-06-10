@@ -1,16 +1,6 @@
 //priority: 0
 
 ServerEvents.blockLootTables(e => {
-	TFC.misc.rock.keySet().forEach(rock => {
-		global.oreGrades.forEach(grade => {
-			global.gradedOres.forEach(ore => {
-				e.addSimpleBlock(`kubejs:ore/${grade}_${ore}/${rock}`, `kubejs:ore/${grade}_${ore}`);
-			});
-		});
-		global.ungradedOres.forEach(ore => {
-			e.addSimpleBlock(`kubejs:ore/${ore}/${rock}`, `kubejs:ore/${ore}`);
-		});
-	});
 
 	e.addBlock(['kubejs:lithium_salt', 'kubejs:lithium_slat_grass'], lb => {
 		lb.addPool(pool => {
@@ -52,6 +42,22 @@ ServerEvents.blockLootTables(e => {
 			});
 		});
 	});
+	e.addBlock('kubejs:rtg', lb => {
+		lb.addPool(pool => {
+			pool.survivesExplosion()
+			pool.addItem('kubejs:rtg').addFunction({
+				function: 'minecraft:copy_nbt',
+				source: 'block_entity',
+				ops: [
+					{
+						source: '',
+						target: 'BlockEntityTag',
+						op: 'replace'
+					}
+				]
+			});
+		});
+	});
 })
 
 /**
@@ -70,7 +76,6 @@ function survivesExplosion(value) {
 }
 
 /**
- * 
  * @param {string[]} needs Yes, this must be an array
  * @param {string} value 
  */

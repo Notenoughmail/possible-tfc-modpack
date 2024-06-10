@@ -1,13 +1,13 @@
 name = "Vexxed Visuals: TerraFirmaCraft"
-filename = "Vexxed_Visuals_TFC_v1.2.3.zip"
+filename = "Vexxed_Visuals_TFC_v1.2.4.1.zip"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "11d41fe9de633e70a891225054f88c6f6991ab06"
+hash = "b8b9dd2768f2149ccb7a6ca36c31ad23122d28be"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 5357058
+file-id = 5401705
 project-id = 664832

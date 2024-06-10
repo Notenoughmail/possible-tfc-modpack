@@ -95,8 +95,16 @@ JEIEvents.hideItems(e => {
 		/tfc:spawn_egg\/.*/,
 		'thoriumreactors:module_empty',
 		'thoriumreactors:creative_fluid_tank',
-		'thoriumreactors:creative_energy_tank'
+		'thoriumreactors:creative_energy_tank',
+		'throiumreactors:water_source_block',
+		'ae2:vibration_chamber',
+		'ae2:crystal_resonance_generator',
+		'ae2:ender_dust'
 	]);
+})
+
+JEIEvents.hideFluids(e => {
+	e.hide('tfc:metal/wrought_iron');
 })
 
 JEIEvents.addItems(e => {
@@ -171,6 +179,11 @@ NetworkEvents.dataReceived('rocket_explosion', e => {
 
 NetworkEvents.dataReceived('swing', e => {
 	e.player.swing();
+})
+
+NetworkEvents.dataReceived('curios', e => {
+	let { player, data } = e;
+	player.persistentData.merge(data);
 })
 
 /*
