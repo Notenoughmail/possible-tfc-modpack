@@ -1,13 +1,13 @@
 name = "The Dyson Sphere Project"
-filename = "dysonsphere-0.1-1.jar"
+filename = "dysonsphere-0.1-2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "83408d8fa2b0673295abc8947010f16af3ae1f48"
+hash = "b0c87e842577ce7d0961ae2b1cb8d8afb9313ad0"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 5203452
+file-id = 5502975
 project-id = 987065

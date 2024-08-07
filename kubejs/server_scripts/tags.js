@@ -39,6 +39,9 @@ ServerEvents.tags('block', e => {
 		'ae2:quartz_block',
 		'minecraft:amethyst_block'
 	]);
+	e.add('minecraft:mineable/pickaxe', [
+		'jumbofurnace:jumbo_furnace'
+	]);
 });
 
 ServerEvents.tags('item', e => {
@@ -46,6 +49,7 @@ ServerEvents.tags('item', e => {
 	// Removal
 	e.remove('forge:cobblestone/normal', /tfc:rock.*mossy_cobble.*/);
 	e.removeAll('ae2:metal_ingots');
+	e.removeAll('jumbofurnace:multiprocessing_upgrade');
 	
 	// General
 	e.add('forge:rods/all_metal', [
@@ -146,64 +150,9 @@ ServerEvents.tags('item', e => {
 		'tfc:ceramic/fire_ingot_mold'
 	]);
 
-	e.add('kubejs:allowed_in_electronics_assembler', [
-		'ae2:engineering_processor',
-		'ae2:logic_processor',
-		'ae2:calculation_processor',
-		'ae2:cell_component_1k',
-		'ae2:cell_component_4k',
-		'ae2:cell_component_16k',
-		'ae2:cell_component_64k',
-		'ae2:cell_component_256k',
-		'megacells:cell_component_1m',
-		'megacells:cell_component_4m',
-		'megacells:cell_component_16m',
-		'megacells:cell_component_64m',
-		'megacells:cell_component_256m',
-		'ae2:spatial_cell_component_2',
-		'ae2:spatial_component_16',
-		'ae2:spatial_component_128',
-		'morered:read_alloy_wire',
-		'morered:bundled_network_cable',
-		'megacells:accumulation_processor',
-		'ae2:quartz_fiber',
-		'ae2:fluix_dust',
-		'ae2:fluix_glass_cable',
-		'thoriumreactors:redstone_processor',
-		'ae2:certus_quartz_dust',
-		'#forge:glass',
-		'ae2:fluix_crystal',
-		'ae2:certus_quartz_crystal',
-		'tfc:metal/sheet/steel',
-		'tfc:metal/sheet/gold',
-		'tfc:metal/rod/steel',
-		'tfc:metal/rod/copper',
-		'tfc:metal/rod/gold',
-		'tfc:metal/rod/nickel',
-		'tfc:metal/rod/brass',
-		'tfc:metal/rod/zinc',
-		'#forge:chests/wooden',
-		'minecraft:daylight_detector',
-		'#minecraft:stone_pressure_plates',
-		'#tfc:barrels',
-		'kubejs:graphite_plate',
-		'kubejs:lithium_plate',
-		'minecraft:redstone_torch',
-		'minecraft:repeater',
-		'minecraft:comparator',
-		'minecraft:observer',
-		'morered:red_alloy_wire',
-		'ae2:quartz_glass',
-		'ae2:spatial_cell_component_2',
-		'ae2:spatial_cell_component_16',
-		'ae2:spatial_cell_component_128',
-		'thoriumreactors:module_processing',
-		'thoriumreactors:module_energy',
-		'thoriumreactors:module_storage',
-		'thoriumreactors:module_sensor',
-		'thoriumreactors:module_tank',
-		'thoriumreactors:module_io'
-	]);
+	e.add('jumbofurnace:multiprocessing_upgrade', [
+		'thoriumreactors:module_processing'
+	])
 
 	TFC.misc.wood.forEach((wood, reg) => {
 		e.add('kubejs:generator_fuels', [
@@ -255,6 +204,11 @@ ServerEvents.tags('item', e => {
 	tools.push('tfc:firestarter');
 
 	e.add('kubejs:tool_auto_replace', tools);
+
+	e.add('tfc:blast_furnace_fuel', [
+		'tfc:ore/bituminous_coal',
+		'tfc:ore/lignite'
+	])
 
 	// Weight and size
 	e.add('tfc:minecarts', [

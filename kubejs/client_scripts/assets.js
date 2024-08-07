@@ -103,7 +103,7 @@ ClientEvents.lang('en_us', e => {
     e.add('jei.description.ores.lignite', 'Lignite can be found in Sedimentary rocks near the surface');
     e.add('jei.description.ores.bituminous_coal', 'Bituminous Coal can be found in Sedimentary rocks near the surface');
     e.add('jei.description.ores.graphite', 'Graphite can be found in Gneiss, Marble, Quartzite, and Schist in elevations below y=60');
-    e.add('jei.description.ores.cinnabar', 'Cinnabar can be found deep underground in QUartzite, Granite, Phyllite, and Schist');
+    e.add('jei.description.ores.cinnabar', 'Cinnabar can be found deep underground in Quartzite, Granite, Phyllite, and Schist');
     e.add('jei.description.ores.cryolite', 'Cryolite can be found deep underground in Granite and Diorite');
     e.add('jei.description.ores.saltpeter', 'Saltpeter can be found near the surface in Sedimentary rocks');
     e.add('jei.description.ores.sulfur', 'Sulfur can be found near lava deep underground in Metamorphic and Igneous Intrusive rocks');
@@ -131,6 +131,7 @@ ClientEvents.lang('en_us', e => {
     e.add('jade.tooltip.kubejs.down_support', 'Down: %d');
     e.add('jade.tooltip.kubejs.item_count', '%dx %s');
     e.add('jade.tooltip.kubejs.rtg', 'Remaining quantity: %s');
+    e.add('jade.tooltip.kubejs.solar_panel', 'Currently generating: %d');
 
     e.add('tooltip.kubejs.thermometer', 'Allows the wearer to see heat values in degrees instead of colors');
 
@@ -158,4 +159,10 @@ ClientEvents.lang('en_us', e => {
 
     e.add('text.thoriumreactors.inventory.machines.thorium_crafting_table.name', 'Electronics Crafting');
     e.add('block.thoriumreactors.thorium_crafting_table_description', 'A crafting table used for creating electronics parts by hand');
+
+    e.add('block.jumbofurnace.jumbo_furnace', 'Electronics Assembler');
+    e.add('container.jumbofurnace.jumbo_furnace', 'Electronics Assembler');
+    e.add('item.jumbofurnace.jumbo_furnace_jei', 'Electronics Assembler');
+    e.add('item.jumbofurnace.jumbo_furnace', 'Electronics Assembler');
+    e.add('gui.jumbofurnace.category.jumbo_smelting', 'Electronics Assembler')
 })

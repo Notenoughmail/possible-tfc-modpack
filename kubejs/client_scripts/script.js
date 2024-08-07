@@ -99,7 +99,8 @@ JEIEvents.hideItems(e => {
 		'throiumreactors:water_source_block',
 		'ae2:vibration_chamber',
 		'ae2:crystal_resonance_generator',
-		'ae2:ender_dust'
+		'ae2:ender_dust',
+		'jumbofurnace:jumbo_furnace'
 	]);
 })
 
@@ -147,7 +148,6 @@ JEIEvents.removeCategories(e => {
 		'minecraft:smoking',
 		'minecraft:stonecutting',
 		'jumbofurnace:jumbo_furnace_upgrade',
-		'jumbofurnace:jumbo_smelting',
 		'ae2:certus_growth'
 	])
 })
@@ -186,6 +186,25 @@ NetworkEvents.dataReceived('curios', e => {
 	player.persistentData.merge(data);
 })
 
+NetworkEvents.dataReceived('mount', e => {
+	let { data } = e;
+	if (global.clientConfig.customization.enableEntityAutoThirdPerson.get()) {
+		if (global.clientConfig.customization.forwardThirdPersonEntities.get().contains(data.type)) {
+			if (data.mounting) {
+				Client.options.cameraType = 'third_person_back';
+			} else {
+				Client.options.cameraType = 'first_person';
+			}
+		} else if (global.clientConfig.customization.reverseThirdPersonEntities.get().contains(data.type)) {
+			if (data.mounting) {
+				Client.options.cameraType = 'third_person_front';
+			} else {
+				Client.options.cameraType = 'first_person';
+			}
+		}
+	}
+})
+
 /*
 ClientEvents.particleProviderRegistry(e => {
 	e.register('kubejs:rocket_plume', (options, clientLevel, spriteSet, x, y, z, xSpeed, ySpeed, zSpeed) => {
@@ -206,3 +225,28 @@ ClientEvents.particleProviderRegistry(e => {
 	});
 })
 */
+
+const Button = Java.loadClass('net.minecraft.client.gui.components.Button');
+
+NetworkEvents.dataReceived('sort_init', e => {
+    let { data } = e;
+    if (buttonPositions[data.type]) {
+        let { screen } = Client;
+        screen.addRenderableWidget(buttonPositions[data.type](Button.builder('≡', button => {
+			Client.player.sendData('sort', { type: data.type });
+			Client.scheduleInTicks(5, event => {
+				button.focused = false;
+			});
+		}).bounds(screen.guiLeft + screen.getXSize() - 16, screen.guiTop + 4, 12, 12), screen).build());
+    }
+})
+
+const buttonPositions = {
+    'minecraft:generic_3x3': (builder, screen) => builder,
+    'minecraft:generic_9x3': (builder, screen) => builder,
+    'minecraft:generic_9x6': (builder, screen) => builder,
+    'minecraft:shulker_box': (builder, screen) => builder,
+    'tfc:chest_9x2': (builder, screen) => builder,
+    'tfc:chest_9x4': (builder, screen) => builder,
+    'computercraft:turtle': (builder, screen) => builder.pos(screen.guiLeft + screen.getXSize() - 25, screen.guiTop + screen.getYSize() - 45)
+}

@@ -11,10 +11,6 @@ global.condemnation = "I love Rhino! It's a perfectly reasonable piece of softwa
 
 StartupEvents.recipeSchemaRegistry(e => {
 
-    e.namespace('exposure')
-        .register('film_developing', new RecipeSchema(e.components.get('outputItem')().key('result'), e.components.get('inputItem')().key('film'), e.components.get('inputItemArray')().key('ingredients')))
-        .register('photograph_aging', new RecipeSchema(e.components.get('outputItem')().key('result'), e.components.get('inputItem')().key('photograph'), e.components.get('inputItemArray')().key('ingredients')));
-
     let fluidStateComponent = RecipeComponent.builder(
         e.components.get('registryObject')({registry: 'fluid'}).key('id'),
         new MapRecipeComponent(
@@ -359,7 +355,34 @@ StartupEvents.recipeSchemaRegistry(e => {
     }, saltOut, saltIn0, saltIn1, saltIn2, saltTicks, saltTemp, saltDelay));
 
     thoriumReactors.shaped('thorium_crafting');
+
+    let jumboOut = e.components.get('outputItem')().key('result');
+    let jumboIn = e.components.get('inputItemArray')().mapOut(elm => global.jumboFurnaceMapOut(elm)).key('ingredients')
+    let jumboExperience = e.components.get('floatNumber')().key('experience').optional(0).alwaysWrite()
+
+    e.register(
+        'jumbofurnace:jumbo_smelting',
+        new RecipeSchema(jumboOut, jumboIn, jumboExperience)
+    );
 })
+
+/**
+ * I hate that this needs to exist, can't wait for 1.21 with native ingredient stacks
+ * @param {Internal.JsonElement} elm 
+ */
+global.jumboFurnaceMapOut = (elm) => {
+    elm = JsonIO.of(elm);
+    elm.forEach(sub => {
+        if (sub.has('count')) {
+            if (sub.has('tag')) {
+                sub.addProperty('type', 'jumbofurnace:tag_stack');
+            } else if (sub.has('item')) {
+                sub.addProperty('type', 'forge:nbt');
+            }
+        }
+    })
+    return elm;
+}
 
 /**
  * @param {(Internal.JsonObject|Internal.FluidStackJS|string)} fluid 

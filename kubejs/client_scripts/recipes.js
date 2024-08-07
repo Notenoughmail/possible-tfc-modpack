@@ -39,22 +39,6 @@ JEIAddedEvents.registerCategories(e => {
             .setDrawHandler((r, recipeSlotsView, guiGraphics, mouseX, mouseY) => global.renderOreRecipe(jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY, staticArrow, animatedArrow))
             .recipeType;
     });
-	e.custom('kubejs:electronics_assembler', category => {
-		let { jeiHelpers } = category;
-		let { guiHelper } = jeiHelpers;
-
-		let arrow = guiHelper.createDrawable('tfc:textures/gui/jei/icons.png', 0, 14, 22, 16);
-		let slot = guiHelper.slotDrawable;
-
-		global.electronicsRecipeType = category
-			.title(Text.translatable('category.kubejs.electronics_assembler'))
-			.background(guiHelper.createBlankDrawable(98, 54))
-			.icon(guiHelper.createDrawableItemStack('kubejs:electronics_assembler'))
-			.isRecipeHandled(r => global.verifyElectronicsRecipe(jeiHelpers, r))
-			.handleLookup((builder, r, focuses) => global.handleElectronicsLookup(jeiHelpers, builder, r, focuses, slot))
-			.setDrawHandler((r, recipeSlotsView, guiGraphics, mouseX, mouseY) => global.renderElectronicsRecipe(jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY, arrow))
-			.recipeType;
-	});
 })
 
 JEIAddedEvents.registerRecipes(e => {
@@ -191,335 +175,7 @@ JEIAddedEvents.registerRecipes(e => {
 
     e.custom('kubejs:ores')
         .addAll(oreRecipes);
-	
-	e.custom('kubejs:electronics_assembler')
-		.addAll([
-			{
-				ingredients: [
-					{
-						ingredient: 'ae2:certus_quartz_dust',
-						count: 1
-					}, {
-						ingredient: '#forge:glass',
-						count: 1,
-						tag: true
-					}
-				],
-				output: '8x ae2:quartz_fiber'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'morered:bundled_network_cable',
-						count: 1
-					}, {
-						ingredient: 'ae2:quartz_fiber',
-						count: 1
-					}, {
-						ingredient: 'ae2:fluix_dust',
-						count: 1
-					}
-				],
-				output: '12x ae2:fluix_glass_cable'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:certus_quartz_crystal',
-						count: 2
-					}, {
-						ingredient: 'ae2:logic_processor',
-						count: 2
-					}, redWire(3)
-				],
-				output: 'ae2:cell_component_1k'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:cell_component_1k',
-						count: 3
-					},
-					calculation(2),
-					redWire(3)
-				],
-				output: 'ae2:cell_component_4k'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:cell_component_4k',
-						count: 3
-					},
-					calculation(2),
-					redWire(3)
-				],
-				output: 'ae2:cell_component_16k'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:cell_component_16k',
-						count: 3
-					},
-					calculation(2),
-					redWire(3)
-				],
-				output: 'ae2:cell_component_64k'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:cell_component_64k',
-						count: 3
-					},
-					engineering(2),
-					redWire(3)
-				],
-				output: 'ae2:cell_component_256k'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:cell_component_256k',
-						count: 3
-					},
-					engineering(2),
-					redWire(3)
-				],
-				output: 'megacells:cell_component_1m'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'megacells:cell_component_1m',
-						count: 3
-					},
-					engineering(2),
-					bundle(3)
-				],
-				output: 'megacells:cell_component_4m'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'megacells:cell_component_4m',
-						count: 3
-					},
-					accumulation(2),
-					bundle(3)
-				],
-				output: 'megacells:cell_component_16m'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'megacells:cell_component_16m',
-						count: 3
-					},
-					accumulation(2),
-					bundle(3)
-				],
-				output: 'megacells:cell_component_64m'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'megacells:cell_component_64m',
-						count: 3
-					},
-					accumulation(2),
-					bundle(3)
-				],
-				output: 'megacells:cell_component_256m'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:quartz_glass',
-						count: 1
-					},
-					{
-						ingredient: 'ae2:fluix_crystal',
-						count: 5
-					},
-					accumulation(2),
-					bundle(10)
-				],
-				output: 'ae2:spatial_cell_component_2'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:spatial_cell_component_2',
-						count: 6
-					},
-					accumulation(2),
-					bundle(1)
-				],
-				output: 'ae2:spatial_cell_component_16'
-			}, {
-				ingredients: [
-					{
-						ingredient: 'ae2:spatial_cell_component_16',
-						count: 6
-					},
-					accumulation(2),
-					bundle(1)
-				],
-				output: 'ae2:spatial_cell_component_128'
-			}, {
-				ingredients: [
-					rod('copper'),
-					bundle(1),
-					{
-						ingredient: 'tfc:metal/sheet/gold',
-						count: 1
-					}, {
-						ingredient: 'minecraft:comparator',
-						count: 2
-					}
-				],
-				output: '6x thoriumreactors:redstone_processor'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('copper'),
-					bundle(2),
-					rsProcessor(),
-					{
-						ingredient: 'kubejs:lithium_plate',
-						count: 1
-					}, {
-						ingredient: 'kubejs:graphite_plate',
-						count: 1
-					}
-				],
-				output: 'thoriumreactors:module_energy'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('steel'),
-					bundle(2),
-					rsProcessor(),
-					{
-						ingredient: '#tfc:barrels',
-						count: 1,
-						tag: true
-					}
-				],
-				output: 'thoriumreactors:module_tank'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('gold'),
-					bundle(2),
-					rsProcessor(),
-					redWire(4)
-				],
-				output: 'thoriumreactors:module_io'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('nickel'),
-					bundle(2),
-					rsProcessor(),
-					{
-						ingredient: 'minecraft:daylight_detector',
-						count: 1
-					}, {
-						ingredient: '#minecraft:stone_pressure_plates',
-						count: 1,
-						tag: true
-					}
-				],
-				output: 'thoriumreactors:module_sensor'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('brass'),
-					bundle(2),
-					rsProcessor(),
-					calculation(2)
-				],
-				output: 'thoriumreactors:module_processing'
-			}, {
-				ingredients: [
-					steelSheet(),
-					rod('zinc'),
-					bundle(2),
-					rsProcessor(),
-					{
-						ingredient: '#forge:chests/wooden',
-						count: 1,
-						tag: true
-					}
-				],
-				output: 'thoriumreactors:module_storage'
-			}
-		]);
 })
-
-/**
- * @param {number} c 
- */
-function redWire(c) {
-	return {
-		ingredient: 'morered:red_alloy_wire',
-		count: c
-	}
-}
-
-/**
- * @param {number} c 
- */
-function engineering(c) {
-	return {
-		ingredient: 'ae2:engineering_processor',
-		count: c
-	}
-}
-
-/**
- * @param {number} c 
- */
-function calculation(c) {
-	return {
-		ingredient: 'ae2:calculation_processor',
-		count: c
-	}
-}
-
-/**
- * @param {number} c 
- */
-function accumulation(c) {
-	return {
-		ingredient: 'megacells:accumulation_processor',
-		count: c
-	}
-}
-
-/**
- * @param {number} c 
- */
-function bundle(c) {
-	return {
-		ingredient: 'morered:bundled_network_cable',
-		count: c
-	}
-}
-
-function steelSheet() {
-	return {
-		ingredient: 'tfc:metal/sheet/steel',
-		count: 1
-	}
-}
-
-/**
- * @param {string} type 
- */
-function rod(type) {
-	return {
-		ingredient: `tfc:metal/rod/${type}`,
-		count: 1
-	}
-}
-
-function rsProcessor() {
-	return {
-		ingredient: 'thoriumreactors:redstone_processor',
-		count: 1
-	}
-}
 
 JEIAddedEvents.registerRecipeCatalysts(e => {
 	let { data } = e;
@@ -529,11 +185,6 @@ JEIAddedEvents.registerRecipeCatalysts(e => {
 			.withLore(Text.translatable('kubejs.jei.lore.in_offhand').green()),
 		data.jeiHelpers.getRecipeType('tfc:steel_sheet_carving_knapping').get()
 	);
-
-	data.addRecipeCatalyst(
-		'kubejs:electronics_assembler',
-		global.electronicsRecipeType
-	)
 })
 
 const KNIFE_IN_OFFHAND = Utils.lazy(() => {
@@ -551,6 +202,12 @@ JEIAddedEvents.registerAdvanced(e => {
 				return KNIFE_IN_OFFHAND.get()
 			}
 			return tooltips;
+		})
+	);
+	data.addRecipeCategoryDecorator(
+		data.jeiHelpers.getRecipeType('jumbofurnace:jumbo_smelting').get(),
+		e.categoryDecorator((recipe, category, slotView, guiGraphics, mouseX, mouseY) => {
+			guiGraphics.blit('jei:textures/jei/gui/gui_vanilla.png', 66, 38, 64, 64, 14, 14);
 		})
 	);
 })
@@ -585,20 +242,6 @@ global.verifyOreRecipe = (jeiHelpers, r) => {
 }
 
 /**
- * 
- * @param {Internal.IJeiHelpers} jeiHelpers 
- * @param {Internal.CustomJSRecipe} r 
- */
-global.verifyElectronicsRecipe = (jeiHelpers, r) => {
-	let { data } = r;
-	return  data != undefined &&
-			data != null &&
-			data.output != undefined &&
-			data.ingredients != undefined &&
-			data.ingredients.length < 9
-}
-
-/**
  * @param {Internal.IJeiHelpers} jeiHelpers 
  * @param {Internal.IRecipeLayoutBuilder} builder 
  * @param {Internal.CustomJSRecipe} r 
@@ -618,71 +261,6 @@ global.handleEntityLookup = (jeiHelpers, builder, r, focuses) => {
 global.handleOreLookup = (jeiHelpers, builder, r, focuses, slot) => {
 	builder.addSlot('input', 4, 80).addIngredients(r.data.rocks).setBackground(slot, -1, -1);
     builder.addSlot('output', 48, 80).addIngredients(r.data.items).setBackground(slot, -1, -1);
-}
-
-/**
- * @param {Internal.IJeiHelpers} jeiHelpers 
- * @param {Internal.IRecipeLayoutBuilder} builder 
- * @param {Internal.CustomJSRecipe} r 
- * @param {Internal.IFocusGroup} focuses 
- * @param {Internal.IDrawableStatic} slot
- */
-global.handleElectronicsLookup = (jeiHelpers, builder, r, focuses, slot) => {
-	let { data } = r;
-	let { ingredients, output } = data;
-	builder.addSlot('output', 81, 19).addItemStack(output).setBackground(slot, -1, -1);
-	for (let i = 0 ; i < ingredients.length ; i++) {
-		let ingredient = decomposeIngredient(i, ingredients[i].ingredient, ingredients[i].count, ingredients.length == 8);
-		builder.addSlot('input', ingredient.x, ingredient.y).addItemStacks(ingredient.ingredients).setBackground(slot, -1, -1);
-	}
-}
-
-/**
- * @param {number} index 
- * @param {Internal.Ingredient} ingredient 
- * @param {number} count 
- * @param {boolean} circle 
- * @returns 
- */
-function decomposeIngredient(index, ingredient, count, circle) {
-	let stacks = Utils.newList();
-	Ingredient.of(ingredient).stacks.forEach(stack => {
-		stacks.add(stack.copy().withCount(count));
-	});
-	return {
-		ingredients: stacks,
-		x: electronicsX(index, circle),
-		y: electronicsY(index, circle)
-	}
-}
-
-const electronicsX8 = [1,1,1,19,19,37,37,37];
-const electronicsY8 = [1,19,37,1,37,1,19,37];
-const electronicsXS = [1,1,1,19,19,19,37,37];
-const electronicsYS = [1,19,37,1,19,37,1,19];
-
-/**
- * @param {number} index 
- * @param {boolean} circle 
- */
-function electronicsX(index, circle) {
-	if (circle) {
-		return electronicsX8[index];
-	} else {
-		return electronicsXS[index];
-	}
-}
-
-/**
- * @param {number} index 
- * @param {boolean} circle 
- */
-function electronicsY(index, circle) {
-	if (circle) {
-		return electronicsY8[index];
-	} else {
-		return electronicsYS[index];
-	}
 }
 
 /**
@@ -760,17 +338,4 @@ global.renderOreRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, m
     Client.blockRenderer.renderSingleBlock(state, poseStack, guiGraphics.bufferSource(), 0xF000F0, OverlayTexture.NO_OVERLAY);
 
     poseStack.popPose();
-}
-
-/**
- * @param {Internal.IJeiHelpers} jeiHelpers 
- * @param {Internal.CustomJSRecipe} r 
- * @param {Internal.IRecipeSlotView} recipeSlotsView 
- * @param {Internal.GuiGraphics} guiGraphics 
- * @param {number} mouseX 
- * @param {number} mouseY 
- * @param {Internal.IDrawableStatic} arrow
- */
-global.renderElectronicsRecipe = (jeiHelpers, r, recipeSlotsView, guiGraphics, mouseX, mouseY, arrow) => {
-	arrow.draw(guiGraphics, 56, 19);
 }

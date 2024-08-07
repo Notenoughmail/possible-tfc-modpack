@@ -42,7 +42,7 @@ ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:["vanilla","mod_resources","firmalife_data","file/Tool_Belt_Retextured_1.20.x_V3.zip","file/Vexxed_Visuals_TFC_v1.2.4.1.zip"]
+resourcePacks:["vanilla","mod_resources","Moonlight Mods Dynamic Assets","firmalife_data","file/Tool_Belt_Retextured_1.20.x_V3.zip","file/Vexxed_Visuals_TFC_v1.2.7.1.zip"]
 incompatibleResourcePacks:["firmalife_data"]
 lastServer:
 lang:en_us

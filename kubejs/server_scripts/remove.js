@@ -32,7 +32,8 @@ ServerEvents.recipes( e => {
 		/^thoriumreactors:thorium_crafting\/(?:grate_floor|fluid_centrifuge|decomposer|blast_furnace|generator|fluid_evaporation|grate_wall|turbine|machine|crystallizer|thermal_heat|concentrator|electromagnetic_coil|reactor_graphite_moderator|graphite_tube|reactor|uranium_oxidizer|fluid_enricher)(?:_(?:block|casing|con(?:s)?troller|power_port|rotor|vent|control_rod|rotation_mount|blade))?$/,
 		'ae2:network/cells/view_cell',
 		/^ae2:network\/cells\/(?:item|fluid|spatial)_storage_cell_(?:1|2|4|16|64|128|256)(?:k|_cubed)$/,
-		/^megacells:cells\/standard\/(?:item|fluid)_storage_cell_(?:1|4|16|64|256)m$/
+		/^megacells:cells\/standard\/(?:item|fluid)_storage_cell_(?:1|4|16|64|256)m$/,
+		'ae2:charger/meteorite_compass'
 	].forEach(id => {
 		e.remove({id: id})
 	})

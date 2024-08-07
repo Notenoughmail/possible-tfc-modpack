@@ -1,7 +1,7 @@
 // priority: 0
 
 ServerEvents.recipes(e => {
-	let { tfc, minecraft, exposure, firmalife, ae2, thoriumreactors } = e.recipes;
+	let { tfc, minecraft, exposure, firmalife, ae2, thoriumreactors, jumbofurnace } = e.recipes;
 
 	TFC.misc.wood.forEach((wood, reg) => {
 		minecraft.crafting_shaped(reg.getBlock('planks').get(), [
@@ -144,15 +144,6 @@ ServerEvents.recipes(e => {
 		});
 	});
 
-	// Film Developing
-	exposure.film_developing('exposure:developed_black_and_white_film', 'exposure:black_and_white_film', [
-		TFC.ingredient.fluid(Fluid.of('minecraft:water', 50))
-	]).id('exposure:developing_black_and_white_film');
-	exposure.film_developing('exposure:developed_color_film', 'exposure:color_film', [
-		TFC.ingredient.fluid(Fluid.of('minecraft:water', 50)),
-		TFC.ingredient.fluid(Fluid.of('tfc:vinegar', 100))
-	]).id('exposure:developing_color_film');
-
 	// Shapeless
 	tfc.damage_inputs_shapeless_crafting(minecraft.crafting_shapeless('4x morered:stone_plate', [
 		'#tfc:chisels',
@@ -172,6 +163,21 @@ ServerEvents.recipes(e => {
 		'minecraft:redstone',
 		'ae2:certus_quartz_dust'
 	]).id('ae2:network/cables/smart_fluix');
+	e.custom({
+		type: 'map_atlases:crafting_atlas',
+		ingredients: [{
+				item: 'minecraft:leather'
+			}, {
+				item: 'tfc:glue'
+			}]
+	}).id('map_atlases:craft_atlas');
+	tfc.damage_inputs_shapeless_crafting(minecraft.crafting_shapeless('3x kubejs:film_paper', [
+		'#tfc:lumber',
+		'tfc:powder/sulfur',
+		'tfc:powder/native_silver',
+		'#tfc:knives',
+		TFC.ingredient.fluid(Fluid.of('tfc:vinegar', 200))
+	])).id('kubejs:crafting/film_paper');
 
 	// Shaped
 	minecraft.crafting_shaped('toolbelt:pouch', [
@@ -204,21 +210,29 @@ ServerEvents.recipes(e => {
 		E: 'tfc:lens',
 		F: 'tfc:metal/rod/wrought_iron'
 	}).id('exposure:camera');
-	minecraft.crafting_shaped('exposure:color_film', [
+	minecraft.crafting_shaped('2x exposure:color_film', [
 		'ABB',
 		'ACD'
 	], {
-		A: 'tfc:metal/tuyere/wrought_iron',
-		B: 'tfc:food/dried_kelp',
+		A: 'tfc:metal/rod/wrought_iron',
+		B: {
+			type: 'forge:partial_nbt',
+			item: 'kubejs:film_paper',
+			nbt: '{dried:1b}'
+		},
 		C: 'tfc:powder/lapis_lazuli',
 		D: 'tfc:powder/native_gold'
 	}).id('exposure:color_film');
-	minecraft.crafting_shaped('exposure:black_and_white_film', [
+	minecraft.crafting_shaped('2x exposure:black_and_white_film', [
 		'ABB',
 		'ACD'
 	], {
-		A: 'tfc:metal/tuyere/wrought_iron',
-		B: 'tfc:food/dried_kelp',
+		A: 'tfc:metal/rod/wrought_iron',
+		B: {
+			type: 'forge:partial_nbt',
+			item: 'kubejs:film_paper',
+			nbt: '{dried:1b}'
+		},
 		C: 'minecraft:gunpowder',
 		D: '#forge:dyes/white'
 	}).id('exposure:black_and_white_film');
@@ -591,6 +605,94 @@ ServerEvents.recipes(e => {
 		A: 'tfc:metal/sheet/copper',
 		B: 'minecraft:piston'
 	}).id('ae2:network/blocks/inscribers');
+	minecraft.crafting_shaped('minecraft:piston', [
+		'SSS',
+		'ABA',
+		'ACA'
+	], {
+		S: '#tfc:lumber',
+		A: '#forge:cobblestone/normal',
+		B: 'tfc:metal/rod/wrought_iron',
+		C: 'tfc:brass_mechanisms'
+	}).id('tfc:crafting/vanilla/redstone/piston');
+	minecraft.crafting_shaped('ae2:drive', [
+		'SAS',
+		'B B',
+		'SAS'
+	], {
+		S: 'tfc:metal/ingot/wrought_iron',
+		A: 'ae2:engineering_processor',
+		B: 'ae2:fluix_glass_cable'
+	}).id('ae2:network/blocks/storage_drive');
+	minecraft.crafting_shaped('thoriumreactors:simple_fluid_tank', [
+		'SAS',
+		'ABA',
+		'SAS'
+	], {
+		S: 'tfc:metal/sheet/steel',
+		A: '#forge:glass',
+		B: 'tfc:steel_pipe'
+	}).id('kubejs:crafting/simple_fluid_tank');
+	minecraft.crafting_shaped('thoriumreactors:simple_energy_tank', [
+		'SAS',
+		'ABA',
+		'SAS'
+	], {
+		S: 'tfc:metal/sheet/steel',
+		A: '#forge:glass',
+		B: 'ae2:dense_energy_cell'
+	}).id('kubejs:crafting/simple_energy_tank');
+	minecraft.crafting_shaped('ae2:controller', [
+		'SAS',
+		'ABA',
+		'SAS'
+	], {
+		S: 'tfc:metal/rod/steel',
+		A: 'ae2:fluix_crystal',
+		B: 'ae2:engineering_processor'
+	}).id('ae2:network/blocks/controller');
+	tfc.damage_inputs_shaped_crafting(minecraft.crafting_shaped('8x firmalife:metal/block/chromium', [
+		' SA',
+		'SBS',
+		' S '
+	], {
+		S: 'firmalife:metal/sheet/chromium',
+		A: '#tfc:hammers',
+		B: '#minecraft:planks'
+	})).id('firmalife:crafting/metal/block/chromium');
+	tfc.damage_inputs_shaped_crafting(minecraft.crafting_shaped('8x firmalife:metal/block/stainless_steel', [
+		' SA',
+		'SBS',
+		' S '
+	], {
+		S: 'firmalife:metal/sheet/stainless_steel',
+		A: '#tfc:hammers',
+		B: '#minecraft:planks'
+	})).id('firmalife:crafting/metal/block/stainless_steel');
+	minecraft.crafting_shaped('6x firmalife:metal/block/chromium_slab', [
+		'SSS'
+	], {
+		S: 'firmalife:metal/block/chromium'
+	}).id('firmalife:crafting/metal/block/chromium_slab');
+	minecraft.crafting_shaped('6x firmalife:metal/block/stainless_steel_slab', [
+		'SSS'
+	], {
+		S: 'firmalife:metal/block/stainless_steel'
+	}).id('firmalife:crafting/metal/block/stainless_steel_slab');
+	minecraft.crafting_shaped('8x firmalife:metal/block/chromium_stairs', [
+		'S  ',
+		'SS ',
+		'SSS'
+	], {
+		S: 'firmalife:metal/block/chromium'
+	}).id('firmalife:crafting/metal/block/chromium_stairs');
+	minecraft.crafting_shaped('8x firmalife:metal/block/stainless_steel_stairs', [
+		'S  ',
+		'SS ',
+		'SSS'
+	], {
+		S: 'firmalife:metal/block/stainless_steel'
+	}).id('firmalife:crafting/metal/block/stainless_steel_stair');
 
 	// Anvil
 	tfc.anvil('tfc:metal/tuyere/bismuth_bronze', '#forge:double_sheets/bismuth_bronze', ['bend_last', 'bend_second_last'])
@@ -632,7 +734,7 @@ ServerEvents.recipes(e => {
 	tfc.anvil('2x kubejs:iron_belt_clip', 'tfc:metal/rod/wrought_iron', ['bend_last', 'bend_not_last', 'hit_any'])
 		.tier(2)
 		.id('kubejs:anvil/iron_belt_clips');
-	tfc.anvil('12x morered:red_alloy_wire', 'morered:red_alloy_ingot', ['draw_any', 'hit_any', 'punch_not_last'])
+	tfc.anvil('12x morered:red_alloy_wire', 'morered:red_alloy_ingot', ['hit_any', 'hit_any', 'hit_any'])
 		.tier(3)
 		.id('morered:red_alloy_wire');
 	tfc.anvil('8x thoriumreactors:grate_floor_block', 'tfc:metal/sheet/steel', ['draw_any', 'hit_last', 'hit_any'])
@@ -706,6 +808,24 @@ ServerEvents.recipes(e => {
 	tfc.heating('minecraft:redstone_block', 2013)
 		.resultFluid(Fluid.of('kubejs:unrefined_redstone', 450))
 		.id('kubejs:heating/unrefined_redstone_block');
+	tfc.heating('firmalife:metal/block/chromium', 1907)
+		.resultFluid(Fluid.of('firmalife:metal/chromium', 100))
+		.id('firmalife:heating/metal/chromium_block');
+	tfc.heating('firmalife:metal/block/stainless_steel', 1540)
+		.resultFluid(Fluid.of('firmalife:metal/stainless_steel', 100))
+		.id('firmalife:heating/metal/stainless_steel_block');
+	tfc.heating('firmalife:metal/block/chromium_slab', 1907)
+		.resultFluid(Fluid.of('firmalife:metal/chromium', 50))
+		.id('firmalife:heating/metal/chromium_block_slab');
+	tfc.heating('firmalife:metal/block/stainless_steel_slab', 1540)
+		.resultFluid(Fluid.of('firmalife:metal/stainless_steel', 50))
+		.id('firmalife:heating/metal/stainless_steel_block_slab');
+	tfc.heating('firmalife:metal/block/chromium_stairs', 1907)
+		.resultFluid(Fluid.of('firmalife:metal/chromium', 75))
+		.id('firmalife:heating/metal/chromium_block_stairs');
+	tfc.heating('firmalife:metal/block/stainless_steel_stairs', 1540)
+		.resultFluid(Fluid.of('firmalife:metal/stainless_steel', 75))
+		.id('firmalife:heating/metal/stainless_steel_block_stair');
 
 	// Blast Furnace
 	tfc.blast_furnace(Fluid.of('kubejs:refined_redstone', 1), 'tfc:powder/cassiterite', Fluid.of('kubejs:unrefined_redstone', 1))
@@ -816,6 +936,10 @@ ServerEvents.recipes(e => {
 		.inputs('thoriumreactors:black_factory_block', Fluid.of('tfc:gray_dye', 25))
 		.outputItem('thoriumreactors:black_inverted_factory_block')
 		.id('kubejs:sealed_barrel/black_inverted_factory_block');
+	tfc.barrel_sealed(1000)
+		.inputs('exposure:photograph', Fluid.of('tfc:brown_dye', 10))
+		.outputItem(TFC.isp.of('exposure:aged_photograph').simpleModifier('kubejs:copy_nbt'))
+		.id('exposure:photograph_aging');
 
 	// Instant Barrel
 	tfc.barrel_instant()
@@ -838,6 +962,14 @@ ServerEvents.recipes(e => {
 		.outputItem('ae2:fluix_covered_dense_cable')
 		.inputs(IngredientHelper.subtract('#ae2:covered_dense_cable', 'ae2:fluix_covered_dense_cable'), Fluid.water(10))
 		.id('ae2:network/cables/dense_covered_fluix_clean');
+	tfc.barrel_instant()
+		.outputItem(TFC.isp.of('exposure:developed_black_and_white_film').simpleModifier('kubejs:copy_nbt'))
+		.inputs('exposure:black_and_white_film', Fluid.of('tfc:lye', 50))
+		.id('exposure:developing_black_and_white_film');
+	tfc.barrel_instant()
+		.outputItem(TFC.isp.of('exposure:developed_color_film').simpleModifier('kubejs:copy_nbt'))
+		.inputs('exposure:color_film', Fluid.of('tfc:lye', 50))
+		.id('exposure:developing_color_film');
 
 	// Landslide
 	tfc.landslide('kubejs:lithium_salt', ['kubejs:lithium_salt', 'kubejs:lithium_salt_grass'])
@@ -887,11 +1019,9 @@ ServerEvents.recipes(e => {
 		' X X '
 	]).id('kubejs:knapping/steel_carving/accumulation_press');
 
-	// Mixing Bowl
-	firmalife.mixing_bowl()
-		.outputItem('3x kubejs:rubber_bar')
-		.itemIngredients(['tfc:powder/sulfur', '3x kubejs:latex_clump'])
-		.id('kubejs:mixing_bowl/rubber_vulcanization');
+	// Drying
+	firmalife.drying(Item.of('kubejs:film_paper', '{dried:1b}'), 'kubejs:film_paper')
+		.id('kubejs:drying/film_paper');
 
 	// In World Transformation
 	ae2.transform('2x ae2:fluix_crystal', [
@@ -1210,6 +1340,139 @@ ServerEvents.recipes(e => {
 		C: 'ae2:quartz_glass'
 	}).id('ae2:network/cells/spatial_components_1');
 
+	// Blasting
+	thoriumreactors.blasting('ae2:quartz_glass', [
+		'#forge:glass',
+		'ae2:certus_quartz_dust'
+	], 5, 1200).id('ae2:decorative/quartz_glass');
+
+	// Electronics Assembler
+	jumbofurnace.jumbo_smelting('8x ae2:quartz_fiber', [
+		'ae2:certus_quartz_dust',
+		'#forge:glass'
+	]).id('kubejs:electronics_assembler/quartz_fiber');
+	jumbofurnace.jumbo_smelting('12x ae2:fluix_glass_cable', [
+		'morered:bundled_network_cable',
+		'ae2:quartz_fiber',
+		'ae2:fluix_dust'
+	]).id('kubejs:electronics_assembler/fluix_cable');
+	jumbofurnace.jumbo_smelting('ae2:cell_component_1k', [
+		stackIngredient(2, 'ae2:certus_quartz_crystal'),
+		stackIngredient(2, 'ae2:logic_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_1k');
+	jumbofurnace.jumbo_smelting('ae2:cell_component_4k', [
+		stackIngredient(3, 'ae2:cell_component_1k'),
+		stackIngredient(2, 'ae2:calculation_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_4k');
+	jumbofurnace.jumbo_smelting('ae2:cell_component_16k', [
+		stackIngredient(3, 'ae2:cell_component_4k'),
+		stackIngredient(2, 'ae2:calculation_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_16k');
+	jumbofurnace.jumbo_smelting('ae2:cell_component_64k', [
+		stackIngredient(3, 'ae2:cell_component_16k'),
+		stackIngredient(2, 'ae2:engineering_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_64k');
+	jumbofurnace.jumbo_smelting('ae2:cell_component_256k', [
+		stackIngredient(3, 'ae2:cell_component_64k'),
+		stackIngredient(2, 'ae2:engineering_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_256k');
+	jumbofurnace.jumbo_smelting('megacells:cell_component_1m', [
+		stackIngredient(3, 'ae2:cell_component_256k'),
+		stackIngredient(2, 'ae2:engineering_processor'),
+		redWire(3)
+	]).id('kubejs:electronics_assembler/comp_1m');
+	jumbofurnace.jumbo_smelting('megacells:cell_component_4m', [
+		stackIngredient(3, 'megacells:cell_component_1m'),
+		stackIngredient(2, 'ae2:engineering_processor'),
+		bundle(3)
+	]).id('kubejs:electronics_assembler/comp_4m');
+	jumbofurnace.jumbo_smelting('megacells:cell_component_16m', [
+		stackIngredient(3, 'megacells:cell_component_4m'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		bundle(3)
+	]).id('kubejs:electronics_assembler/comp_16m');
+	jumbofurnace.jumbo_smelting('megacells:cell_component_64m', [
+		stackIngredient(3, 'megacells:cell_component_16m'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		bundle(3)
+	]).id('kubejs:electronics_assembler/comp_64m');
+	jumbofurnace.jumbo_smelting('megacells:cell_component_256m', [
+		stackIngredient(3, 'megacells:cell_component_64m'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		bundle(3)
+	]).id('kubejs:electronics_assembler/comp_256m');
+	jumbofurnace.jumbo_smelting('ae2:spatial_cell_component_2', [
+		'ae2:quartz_glass',
+		stackIngredient(5, 'ae2:fluix_crystal'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		bundle(10)
+	]).id('kubejs:electronics_assembler/comp_2s');
+	jumbofurnace.jumbo_smelting('ae2:spatial_cell_component_16', [
+		stackIngredient(7, 'ae2:spatial_cell_component_2'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		'morered:bundled_network_cable'
+	]).id('kubejs:electronics_assembler/comp_16s');
+	jumbofurnace.jumbo_smelting('ae2:spatial_cell_component_128', [
+		stackIngredient(7, 'ae2:spatial_cell_component_16'),
+		stackIngredient(2, 'megacells:accumulation_processor'),
+		'morered:bundled_network_cable'
+	]).id('kubejs:electronics_assembler/comp_128s');
+	jumbofurnace.jumbo_smelting('6x thoriumreactors:redstone_processor', [
+		'tfc:metal/rod/copper',
+		'morered:bundled_network_cable',
+		'tfc:metal/sheet/gold',
+		stackIngredient(2, 'minecraft:comparator')
+	]).id('kubejs:electronics_assembler/redstone_processor');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_energy', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/copper',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		'kubejs:lithium_plate',
+		'kubejs:graphite_plate'
+	]).id('kubejs:electronics_assembler/energy_module');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_tank', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/steel',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		'#tfc:barrels'
+	]).id('kubejs:electronics_assembler/tank_module');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_io', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/gold',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		redWire(4)
+	]).id('kubejs:electronics_processor/io_module');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_sensor', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/nickel',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		'minecraft:daylight_detector',
+		'#minecraft:stone_pressure_plates'
+	]).id('kubejs:electronics_assembler/sensor_module');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_processing', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/brass',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		stackIngredient(2, 'ae2:calculation_processor')
+	]).id('kubejs:electronics_assembler/processing_module');
+	jumbofurnace.jumbo_smelting('thoriumreactors:module_storage', [
+		'tfc:metal/sheet/steel',
+		'tfc:metal/rod/zinc',
+		bundle(2),
+		'thoriumreactors:redstone_processor',
+		'#forge:chests/wooden'
+	]).id('kubejs:electronics_assembler/storage_module');
+
 	// Tests
 	if (global.serverConfig.debug.debugRecipes.get()) {
 		thoriumreactors.blasting('acacia_boat', [
@@ -1308,3 +1571,31 @@ ServerEvents.recipes(e => {
 		}).id('kubejs:thorium_crafting/test');
 	}
 })
+
+/**
+ * @param {number} amount 
+ * @param {string} ingredient 
+ */
+function stackIngredient(amount, ingredient) {
+	if (ingredient[0] == '#') {
+		return JsonIO.of({
+			type: 'jumbofurnace:tag_stack',
+			tag: ingredient.substring(1),
+			count: amount
+		});
+	} else {
+		return JsonIO.of({
+			type: 'forge:nbt',
+			item: ingredient,
+			count: amount
+		});
+	}
+}
+
+function redWire(count) {
+	return stackIngredient(count, 'morered:red_alloy_wire');
+}
+
+function bundle(count) {
+	return stackIngredient(count, 'morered:bundled_network_cable')
+}

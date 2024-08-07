@@ -107,10 +107,21 @@ ItemEvents.tooltip(tip => {
 	tip.addAdvanced('kubejs:rtg', (item, advanced, text) => {
 		let quantity = '1.0';
 		if (item.nbt != null) {
-			quantity = `${item.nbt.BlockEntityTag.data.quantity}`.substring(0, 5);
+			quantity = `${Math.abs(item.nbt.BlockEntityTag.data.quantity)}`.substring(0, 5);
 		}
 		text.add(Text.translatable('jade.tooltip.kubejs.rtg', quantity).gray());
 	})
+
+	tip.addAdvanced('kubejs:film_paper', (item, advanced, text) => {
+		let { nbt } = item;
+		if (nbt != null && nbt.dried) {
+			text.add(Text.translatable('firmalife.tooltip.food_trait.dried'));
+		}
+	});
+
+	tip.addAdvanced('jumbofurnace:jumbo_furnace_jei', (item, advanced, text) => {
+		text.remove(1);
+	});
 })
 
 const SUPPORTED = Text.translatable('jade.tooltip.kubejs.supported').green();
@@ -225,7 +236,10 @@ global.jadeDataReceiver = (tooltip, accessor, config) => {
 	let { blockEntity } = accessor;
 
 	let { type } = blockEntity;
-	if (Utils.getRegistry('minecraft:block_entity_type').getId(type) == 'kubejs:rtg') {
-		tooltip.add(Text.translatable('jade.tooltip.kubejs.rtg', `${blockEntity.data.quantity}`.substring(0, 5)));
-	}
+	let id = Utils.getRegistry('minecraft:block_entity_type').getId(type);
+	if (id == 'kubejs:rtg') {
+		tooltip.add(Text.translatable('jade.tooltip.kubejs.rtg', `${Math.abs(blockEntity.data.quantity)}`.substring(0, 5)));
+	} else if (id == 'kubejs:solar_panel') {
+		tooltip.add(Text.translatable('jade.tooltip.kubejs.solar_panel', blockEntity.data.gen));
+	} 
 }

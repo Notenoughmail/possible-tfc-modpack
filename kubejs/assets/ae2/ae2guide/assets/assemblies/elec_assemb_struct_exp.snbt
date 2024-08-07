@@ -1,0 +1,614 @@
+{
+    size: [5, 5, 5],
+    entities: [],
+    blocks: [
+        {
+            pos: [0, 0, 0],
+            state: 0
+        },
+        {
+            pos: [0, 0, 2],
+            state: 0
+        },
+        {
+            pos: [0, 0, 4],
+            state: 0
+        },
+        {
+            pos: [2, 0, 0],
+            state: 0
+        },
+        {
+            pos: [2, 0, 4],
+            state: 0
+        },
+        {
+            pos: [4, 0, 0],
+            state: 0
+        },
+        {
+            pos: [4, 0, 2],
+            state: 0
+        },
+        {
+            pos: [4, 0, 4],
+            state: 0
+        },
+        {
+            pos: [0, 2, 0],
+            state: 1
+        },
+        {
+            pos: [0, 2, 4],
+            state: 1
+        },
+        {
+            pos: [4, 2, 0],
+            state: 1
+        },
+        {
+            pos: [4, 2, 4],
+            state: 1
+        },
+        {
+            pos: [0, 4, 0],
+            state: 0
+        },
+        {
+            pos: [0, 4, 2],
+            state: 0
+        },
+        {
+            pos: [0, 4, 4],
+            state: 0
+        },
+        {
+            pos: [2, 4, 0],
+            state: 0
+        },
+        {
+            pos: [2, 4, 4],
+            state: 0
+        },
+        {
+            pos: [4, 4, 0],
+            state: 0
+        },
+        {
+            pos: [4, 4, 2],
+            state: 0
+        },
+        {
+            pos: [4, 4, 4],
+            state: 0
+        },
+        {
+            pos: [0, 0, 1],
+            state: 2
+        },
+        {
+            pos: [0, 0, 3],
+            state: 2
+        },
+        {
+            pos: [1, 0, 0],
+            state: 2
+        },
+        {
+            pos: [1, 0, 1],
+            state: 2
+        },
+        {
+            pos: [1, 0, 2],
+            state: 2
+        },
+        {
+            pos: [1, 0, 3],
+            state: 2
+        },
+        {
+            pos: [1, 0, 4],
+            state: 2
+        },
+        {
+            pos: [2, 0, 1],
+            state: 2
+        },
+        {
+            pos: [2, 0, 3],
+            state: 2
+        },
+        {
+            pos: [3, 0, 0],
+            state: 2
+        },
+        {
+            pos: [3, 0, 1],
+            state: 2
+        },
+        {
+            pos: [3, 0, 2],
+            state: 2
+        },
+        {
+            pos: [3, 0, 3],
+            state: 2
+        },
+        {
+            pos: [3, 0, 4],
+            state: 2
+        },
+        {
+            pos: [4, 0, 1],
+            state: 2
+        },
+        {
+            pos: [4, 0, 3],
+            state: 2
+        },
+        {
+            pos: [0, 1, 0],
+            state: 2
+        },
+        {
+            pos: [0, 1, 1],
+            state: 2
+        },
+        {
+            pos: [0, 1, 2],
+            state: 2
+        },
+        {
+            pos: [0, 1, 3],
+            state: 2
+        },
+        {
+            pos: [0, 1, 4],
+            state: 2
+        },
+        {
+            pos: [1, 1, 0],
+            state: 2
+        },
+        {
+            pos: [1, 1, 1],
+            state: 2
+        },
+        {
+            pos: [1, 1, 2],
+            state: 2
+        },
+        {
+            pos: [1, 1, 3],
+            state: 2
+        },
+        {
+            pos: [1, 1, 4],
+            state: 2
+        },
+        {
+            pos: [2, 1, 0],
+            state: 2
+        },
+        {
+            pos: [2, 1, 1],
+            state: 2
+        },
+        {
+            pos: [2, 1, 2],
+            state: 2
+        },
+        {
+            pos: [2, 1, 3],
+            state: 2
+        },
+        {
+            pos: [2, 1, 4],
+            state: 2
+        },
+        {
+            pos: [3, 1, 0],
+            state: 2
+        },
+        {
+            pos: [3, 1, 1],
+            state: 2
+        },
+        {
+            pos: [3, 1, 2],
+            state: 2
+        },
+        {
+            pos: [3, 1, 3],
+            state: 2
+        },
+        {
+            pos: [3, 1, 4],
+            state: 2
+        },
+        {
+            pos: [4, 1, 0],
+            state: 2
+        },
+        {
+            pos: [4, 1, 1],
+            state: 2
+        },
+        {
+            pos: [4, 1, 2],
+            state: 2
+        },
+        {
+            pos: [4, 1, 3],
+            state: 2
+        },
+        {
+            pos: [4, 1, 4],
+            state: 2
+        },
+        {
+            pos: [0, 2, 1],
+            state: 2
+        },
+        {
+            pos: [0, 2, 3],
+            state: 2
+        },
+        {
+            pos: [1, 2, 0],
+            state: 2
+        },
+        {
+            pos: [1, 2, 1],
+            state: 2
+        },
+        {
+            pos: [1, 2, 2],
+            state: 2
+        },
+        {
+            pos: [1, 2, 3],
+            state: 2
+        },
+        {
+            pos: [1, 2, 4],
+            state: 2
+        },
+        {
+            pos: [2, 2, 1],
+            state: 2
+        },
+        {
+            pos: [2, 2, 3],
+            state: 2
+        },
+        {
+            pos: [3, 2, 0],
+            state: 2
+        },
+        {
+            pos: [3, 2, 1],
+            state: 2
+        },
+        {
+            pos: [3, 2, 2],
+            state: 2
+        },
+        {
+            pos: [3, 2, 3],
+            state: 2
+        },
+        {
+            pos: [3, 2, 4],
+            state: 2
+        },
+        {
+            pos: [4, 2, 1],
+            state: 2
+        },
+        {
+            pos: [4, 2, 3],
+            state: 2
+        },
+        {
+            pos: [0, 3, 0],
+            state: 2
+        },
+        {
+            pos: [0, 3, 1],
+            state: 2
+        },
+        {
+            pos: [0, 3, 2],
+            state: 2
+        },
+        {
+            pos: [0, 3, 3],
+            state: 2
+        },
+        {
+            pos: [0, 3, 4],
+            state: 2
+        },
+        {
+            pos: [1, 3, 0],
+            state: 2
+        },
+        {
+            pos: [1, 3, 1],
+            state: 2
+        },
+        {
+            pos: [1, 3, 2],
+            state: 2
+        },
+        {
+            pos: [1, 3, 3],
+            state: 2
+        },
+        {
+            pos: [1, 3, 4],
+            state: 2
+        },
+        {
+            pos: [2, 3, 0],
+            state: 2
+        },
+        {
+            pos: [2, 3, 1],
+            state: 2
+        },
+        {
+            pos: [2, 3, 2],
+            state: 2
+        },
+        {
+            pos: [2, 3, 3],
+            state: 2
+        },
+        {
+            pos: [2, 3, 4],
+            state: 2
+        },
+        {
+            pos: [3, 3, 0],
+            state: 2
+        },
+        {
+            pos: [3, 3, 1],
+            state: 2
+        },
+        {
+            pos: [3, 3, 2],
+            state: 2
+        },
+        {
+            pos: [3, 3, 3],
+            state: 2
+        },
+        {
+            pos: [3, 3, 4],
+            state: 2
+        },
+        {
+            pos: [4, 3, 0],
+            state: 2
+        },
+        {
+            pos: [4, 3, 1],
+            state: 2
+        },
+        {
+            pos: [4, 3, 2],
+            state: 2
+        },
+        {
+            pos: [4, 3, 3],
+            state: 2
+        },
+        {
+            pos: [4, 3, 4],
+            state: 2
+        },
+        {
+            pos: [0, 4, 1],
+            state: 2
+        },
+        {
+            pos: [0, 4, 3],
+            state: 2
+        },
+        {
+            pos: [1, 4, 0],
+            state: 2
+        },
+        {
+            pos: [1, 4, 1],
+            state: 2
+        },
+        {
+            pos: [1, 4, 2],
+            state: 2
+        },
+        {
+            pos: [1, 4, 3],
+            state: 2
+        },
+        {
+            pos: [1, 4, 4],
+            state: 2
+        },
+        {
+            pos: [2, 4, 1],
+            state: 2
+        },
+        {
+            pos: [2, 4, 3],
+            state: 2
+        },
+        {
+            pos: [3, 4, 0],
+            state: 2
+        },
+        {
+            pos: [3, 4, 1],
+            state: 2
+        },
+        {
+            pos: [3, 4, 2],
+            state: 2
+        },
+        {
+            pos: [3, 4, 3],
+            state: 2
+        },
+        {
+            pos: [3, 4, 4],
+            state: 2
+        },
+        {
+            pos: [4, 4, 1],
+            state: 2
+        },
+        {
+            pos: [4, 4, 3],
+            state: 2
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                fuzzy_mode: "IGNORE_ALL",
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:interface",
+                priority: 0
+            },
+            pos: [2, 0, 2],
+            state: 3
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [0, 2, 2],
+            state: 4
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [2, 2, 0],
+            state: 4
+        },
+        {
+            nbt: {
+                inv: {
+                    item0: {},
+                    item2: {},
+                    item1: {},
+                    item3: {}
+                },
+                proxy: {
+                    p: 0
+                },
+                auto_export: "NO",
+                inscriber_buffer_size: "YES",
+                inscriber_separate_sides: "NO",
+                visual: {
+                    smash: 0b
+                },
+                ForgeCaps: {},
+                id: "ae2:inscriber",
+                internalCurrentPower: 0d
+            },
+            pos: [2, 2, 2],
+            state: 5
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [2, 2, 4],
+            state: 4
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [4, 2, 2],
+            state: 4
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:energy_acceptor",
+                internalCurrentPower: 0d
+            },
+            pos: [2, 4, 2],
+            state: 6
+        }
+    ],
+    palette: [
+        {
+            Name: "firmalife:metal/block/stainless_steel"
+        },
+        {
+            Name: "tfc:metal/block/wrought_iron"
+        },
+        {
+            Name: "minecraft:air"
+        },
+        {
+            Name: "ae2:interface"
+        },
+        {
+            Properties: {
+                powered: "false",
+                formed: "false"
+            },
+            Name: "ae2:crafting_unit"
+        },
+        {
+            Properties: {
+                waterlogged: "false",
+                spin: "0",
+                facing: "west"
+            },
+            Name: "ae2:inscriber"
+        },
+        {
+            Name: "ae2:energy_acceptor"
+        }
+    ],
+    DataVersion: 3465
+}

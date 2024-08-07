@@ -1,0 +1,13 @@
+name = "aleki's Ridiculously Simple Roofs"
+filename = "alekiRoofs-FORGE-1.20.1-1.0.3.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "994ea54e0a2a5a60f5d9bbb1aafb4b1403cef91d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5590292
+project-id = 1010046

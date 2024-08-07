@@ -1,0 +1,219 @@
+{
+    size: [3, 3, 3],
+    entities: [],
+    blocks: [
+        {
+            pos: [0, 0, 0],
+            state: 0
+        },
+        {
+            pos: [0, 0, 1],
+            state: 0
+        },
+        {
+            pos: [0, 0, 2],
+            state: 0
+        },
+        {
+            pos: [1, 0, 0],
+            state: 0
+        },
+        {
+            pos: [1, 0, 2],
+            state: 0
+        },
+        {
+            pos: [2, 0, 0],
+            state: 0
+        },
+        {
+            pos: [2, 0, 1],
+            state: 0
+        },
+        {
+            pos: [2, 0, 2],
+            state: 0
+        },
+        {
+            pos: [0, 1, 0],
+            state: 1
+        },
+        {
+            pos: [0, 1, 2],
+            state: 1
+        },
+        {
+            pos: [2, 1, 0],
+            state: 1
+        },
+        {
+            pos: [2, 1, 2],
+            state: 1
+        },
+        {
+            pos: [0, 2, 0],
+            state: 0
+        },
+        {
+            pos: [0, 2, 1],
+            state: 0
+        },
+        {
+            pos: [0, 2, 2],
+            state: 0
+        },
+        {
+            pos: [1, 2, 0],
+            state: 0
+        },
+        {
+            pos: [1, 2, 2],
+            state: 0
+        },
+        {
+            pos: [2, 2, 0],
+            state: 0
+        },
+        {
+            pos: [2, 2, 1],
+            state: 0
+        },
+        {
+            pos: [2, 2, 2],
+            state: 0
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                fuzzy_mode: "IGNORE_ALL",
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:interface",
+                priority: 0
+            },
+            pos: [1, 0, 1],
+            state: 2
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [0, 1, 1],
+            state: 3
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [1, 1, 0],
+            state: 3
+        },
+        {
+            nbt: {
+                inv: {
+                    item0: {},
+                    item2: {},
+                    item1: {},
+                    item3: {}
+                },
+                proxy: {
+                    p: 0
+                },
+                auto_export: "NO",
+                inscriber_buffer_size: "YES",
+                inscriber_separate_sides: "NO",
+                visual: {
+                    smash: 0b
+                },
+                ForgeCaps: {},
+                id: "ae2:inscriber",
+                internalCurrentPower: 0d
+            },
+            pos: [1, 1, 1],
+            state: 4
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [1, 1, 2],
+            state: 3
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                core: 0b,
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:crafting_unit"
+            },
+            pos: [2, 1, 1],
+            state: 3
+        },
+        {
+            nbt: {
+                proxy: {
+                    p: 0
+                },
+                visual: {},
+                ForgeCaps: {},
+                id: "ae2:energy_acceptor",
+                internalCurrentPower: 0d
+            },
+            pos: [1, 2, 1],
+            state: 5
+        }
+    ],
+    palette: [
+        {
+            Name: "firmalife:metal/block/stainless_steel"
+        },
+        {
+            Name: "tfc:metal/block/wrought_iron"
+        },
+        {
+            Name: "ae2:interface"
+        },
+        {
+            Properties: {
+                powered: "false",
+                formed: "false"
+            },
+            Name: "ae2:crafting_unit"
+        },
+        {
+            Properties: {
+                waterlogged: "false",
+                spin: "0",
+                facing: "west"
+            },
+            Name: "ae2:inscriber"
+        },
+        {
+            Name: "ae2:energy_acceptor"
+        }
+    ],
+    DataVersion: 3465
+}
